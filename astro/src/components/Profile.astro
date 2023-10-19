@@ -1,0 +1,27 @@
+---
+const { profile, mini } = Astro.props;
+const { Content } = await profile.render();
+const { name: fullName, title, picture } = profile.data;
+
+const name = (mini ? fullName.split(' ')[0] : fullName);
+const NameTag = mini ? "h4" : "h3";
+const TitleTag = mini ? "h5" : "h4";
+---
+
+<div class={`d-flex p-2 align-items-${mini ? 'center' : 'end'} ${mini ? 'shadow m-2' : ''}`}>
+  <img class="profile-pic" src={ picture.src } alt={`Drawn representation of ${title}`} />
+  <div class="flex-fill px-2">
+    <NameTag class="mb-0">{ name }</NameTag>
+    <TitleTag class="text-body-secondary mb-0">{ title }</TitleTag>
+  </div>
+</div>
+{ mini ?
+  '' :
+  <Content />
+}
+
+<style>
+  img.profile-pic {
+    max-width: 5rem;
+  }
+</style>

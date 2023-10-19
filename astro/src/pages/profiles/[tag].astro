@@ -1,0 +1,48 @@
+---
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const allProfiles = await getCollection('profiles');
+
+  return [
+    { params: { tag: 'board' }, props: { allProfiles, mini: false, title: 'Board Members' }},
+    { params: { tag: 'staff' }, props: { allProfiles, mini: false, title: 'Leadership & Staff'}},
+    { params: { tag: 'mutua11y' }, props: { allProfiles, mini: false, title: 'mutua11y Team Members' }},
+    { params: { tag: 'ta11y' }, props: { allProfiles, mini: true, title: 'ta11y Team Members' }},
+  ];
+}
+
+import Layout from '../../layouts/Layout.astro';
+import Profile from '../../components/Profile.astro';
+import { sortBy } from 'lodash-es';
+
+const { tag } = Astro.params;
+const { allProfiles, mini, title } = Astro.props;
+
+const profiles = sortBy(
+  allProfiles.filter((p) => p.data.tags?.includes(tag)),
+  mini
+  ? (p) => p.data.name.split(' ')[0]
+  : (p) => p.data.name.split(' ').slice(1).join(' ')
+);
+---
+
+<Layout title={title}>
+	<div class="mb-3" slot="header">
+		<h1 class="mb-0">{ title }</h1>
+    <a href="/profiles" class="text-secondary">&leftarrow; Back to Profiles</a>
+	</div>
+  <ul class={mini ? 'mini list-inline' : 'list-group'}>
+    { profiles.map((p) =>
+      <li class={mini ? 'list-inline-item' : 'd-block'}>
+        <Profile profile={p} mini={mini} />
+      </li>
+    )}
+  </ul>
+</Layout>
+
+<style>
+.mini .list-inline-item {
+  width: 18rem;
+}
+</style>

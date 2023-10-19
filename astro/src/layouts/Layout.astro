@@ -1,0 +1,31 @@
+---
+interface Props {
+  title: String;
+}
+
+const { title } = Astro.props;
+
+import '../styles/bootstrap.scss';
+---
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="Astro description" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="generator" content={Astro.generator} />
+  <link rel="icon" type="image/png" href="/images/favicon.png" />
+  <title>{title} | Accessible Community</title>
+  <script>
+    import "../scripts/dark-mode.js";
+  </script>
+</head>
+
+<body class="container-md my-4">
+  <slot name="header">
+    <h1>{ title }</h1>
+  </slot>
+  <slot />
+</body>
+</html>

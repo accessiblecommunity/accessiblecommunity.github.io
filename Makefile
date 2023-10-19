@@ -1,4 +1,5 @@
-SOURCE_DIR = ${CURDIR}/src
+CONTAINER = astro
+SOURCE_DIR = ${CURDIR}/astro
 
 # The OS environment variable is always defined by windows.
 ifdef OS
@@ -15,7 +16,7 @@ else
 endif
 
 serve: up $(SOURCE_DIR)/node_modules
-	@docker-compose exec website sh -c "npm run dev"
+	@docker-compose exec $(CONTAINER) sh -c "npm run dev"
 
 up:
 	@docker-compose up --detach
@@ -24,20 +25,20 @@ down:
 	@docker-compose down
 
 shell:
-	@docker-compose exec website bash
+	@docker-compose exec $(CONTAINER) bash
 
 version: up
 ifndef number
 	$(error Please define a 'number' that represents the new version)
 endif
-	docker-compose exec website sh -c "npm version ${number}"
+	docker-compose exec $(CONTAINER) sh -c "npm version ${number}"
 
 build:
 	@docker-compose build
 
 $(SOURCE_DIR)/node_modules:
 	@echo Install JS dependencies. This will take awhile.
-	docker-compose exec website sh -c "npm install"
+	docker-compose exec $(CONTAINER) sh -c "npm install"
 
 clean-js-dist:
 	$(RemoveDirCmd) $(call FixPath,$(SOURCE_DIR)/dist)
