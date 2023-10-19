@@ -1,2 +1,3 @@
 # accessiblecommunity.github.io
-Main website
+
+Main website developed using [Astro](https://docs.astro.build).
