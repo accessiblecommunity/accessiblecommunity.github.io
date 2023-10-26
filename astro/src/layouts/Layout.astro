@@ -6,6 +6,8 @@ interface Props {
 const { title } = Astro.props;
 
 import '../styles/bootstrap.scss';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
 ---
 
 <!doctype html>
@@ -22,10 +24,15 @@ import '../styles/bootstrap.scss';
   </script>
 </head>
 
+
 <body class="container-md my-4">
-  <slot name="header">
-    <h1>{ title }</h1>
+  <Header>
+    <slot name="header">
+      <h2>{ title }</h2>
+    </slot>
+  </Header>
   </slot>
   <slot />
+  <Footer />
 </body>
 </html>
