@@ -1,13 +1,37 @@
 ---
+const currentYear = new Date().getFullYear();
 ---
 
 <hr />
 <div>
-    <p>© 2019 Accessible Community</p>
+    <nav>
+        <ul>
+            <li>
+                <a href="/about">About</a>
+            </li>
+            <li>
+                <a href="/services">Services</a>
+            </li>
+            <li>
+                <a href="/resources">Resources</a>
+            </li>
+            <li>
+                <a href="/team">Team Members</a>
+            </li>
+            <li>
+                <a href="/join-us">Join Us</a>
+            </li>
+            <li>
+                <a href="/blog">Blog</a>
+            </li>
+        </ul>
+    </nav>
     <dl>
         <dt>Mailing Address</dt><dd>PO Box 46; Paeonian Springs, VA, 20129</dd>
         <dt>Email</dt><dd><a href="mailto:info@accessiblecommunity.org">info@accessiblecommunity.org</a></dd>
         <dt>Phone Number</dt>
         <dd>703-651-6703</dd>
     </dl>
+    <p><small>© <time datetime="{currentYear}">{currentYear}</time> Accessible Community</small></p>
+    <p><small>Accessible Community is a 501(c)3 organization.</small></p>
 </div>
