@@ -1,7 +1,82 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { Icon } from 'astro-icon'
+
+const donationLinks = [{
+  icon: 'cib:cc-paypal',
+  href: 'https://paypal.me/AccessibleCommunity',
+  title: 'Donate via Paypal',
+  theme: 'paypal',
+}, {
+  icon: 'cib:cc-stripe',
+  href: 'https://donate.stripe.com/eVadR0agM8ec1TW5kk',
+  title: 'Donate via Stripe',
+  theme: 'stripe',
+}, {
+  icon: 'envelope-at',
+  href: 'mailto:director@accessiblecommunity.org',
+  title: 'Email the Director',
+  description: 'If you would like to make a donation through corporate or government giving, by check, or some other means, please email our director to discuss your donation.',
+  theme: 'ac',
+}]
 ---
 
 <Layout title="Donate">
-<p>Links to donations should go here.</p>
+  <div class="container">
+    <div class="row justify-content-center">
+      <p class="col col-lg-8">
+        Accessible Community is a 501(c)3 organization.
+        Your donation goes towards supporting our programs, accommodations and technology costs.
+      </p>
+    </div>
+    <div class="row justify-content-center align-items-center">
+      <div class="col-sm-6 col-lg-4">
+        <p>
+          <strong>Thank you for your support!</strong>
+        </p>
+        <p>
+          We are currently registered to solicit donations in:
+          <ul>
+            <li>Maryland</li>
+            <li>Virginia</li>
+          </ul>
+        </p>
+        <p>
+          We can also accept donations from individuals who currently reside in:
+          <ul>
+            <li>Delaware</li>
+            <li>Iowa</li>
+            <li>Idaho</li>
+            <li>Indiana</li>
+            <li>Montana</li>
+            <li>Nebraska</li>
+            <li>South Dakota</li>
+            <li>Vermont</li>
+            <li>Wyoming</li>
+          </ul>
+        </p>
+      </div>
+      <div class="col-sm-6 col-lg-4">
+        <h3 class="d-block d-sm-none">Donation Options</h3>
+        <ul class="list-unstyled text-center">
+          { donationLinks.map(({description, icon, href, title, theme}) =>
+            <li class="mb-4 text-center">
+              <a class:list={[`btn btn-outline-${theme} btn-large`]} href={ href }>
+                <Icon class="bi mx-auto" aria-hidden="true" name={ icon } />
+                { title }
+              </a>
+              { description ? <div class="my-3 small">{description}</div> : ''}
+            </li>
+          )}
+        </ul>
+      </div>
+    </div>
+  </div>
 </Layout>
+
+<style>
+  .btn-large .bi {
+    height: 2.5rem;
+    display: block;
+  }
+</style>
