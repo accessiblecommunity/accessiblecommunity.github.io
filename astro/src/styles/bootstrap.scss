@@ -26,6 +26,18 @@ $color-mode-type: data;
 @import "bootstrap/scss/variables-dark";
 
 // 4. Include any default map overrides here
+$brand-colors: (
+  "ac": #041058,
+  "facebook": #4267B2,
+  "instagram": #5B51D8,
+  "linkedin": #2E64BC,
+  "mastodon": #6364FF,
+  "paypal": #253B80, // Dark cornflower blue
+  "stripe": #625BF6, // Stripe Blurple
+  "threads": black,
+  "twitter": #1DA1F2,
+);
+$theme-colors: map-merge($theme-colors, $brand-colors);
 
 // 5. Include remainder of required parts
 @import "bootstrap/scss/maps";
