@@ -36,11 +36,11 @@ const donationLinks = [{
           Your donation goes towards supporting our programs, accommodations and technology costs.
         </p>
         <div class="d-grid gap-4 d-sm-flex justify-content-sm-center">
-          <a type="button" class="btn btn-primary d-flex justify-content-center align-items-center px-4 gap-3">
+          <a type="button" class="btn btn-primary d-flex justify-content-center align-items-center px-4 gap-3" href={donationLinks[0].href} target="_blank">
             <span class="cib-paypal">Donate with</span>
             <Icon class="bi" alt="Paypal" name='cib:paypal' />
           </a>
-          <a type="button" class="btn btn-primary d-flex justify-content-center align-items-center px-4">
+          <a type="button" class="btn btn-primary d-flex justify-content-center align-items-center px-4" href={donationLinks[1].href} target="_blank">
             <span>Donate with</span>
             <Icon class="bi" alt="Stripe" name='cib:stripe' />
           </a>
@@ -113,7 +113,7 @@ const donationLinks = [{
         <div class="col-lg-3 col-xl-2">
           <div class="d-none d-lg-flex flex-column gap-3">
             { donationLinks.map(({icon, href, title, theme}) =>
-              <a class:list={[`btn btn-sm btn-outline-${theme}`]} href={ href }>
+              <a class:list={[`btn btn-sm btn-outline-${theme}`]} href={ href } target="_blank">
                 <Icon class="bi mx-auto" aria-hidden="true" name={ icon } />
                 { title }
               </a>
@@ -126,7 +126,7 @@ const donationLinks = [{
       </p>
       <div class="d-grid d-sm-flex d-lg-none justify-content-sm-center gap-3 py-3">
         { donationLinks.map(({icon, href, title, theme}) =>
-          <a class:list={[`btn btn-sm btn-outline-${theme}`]} href={ href }>
+          <a class:list={[`btn btn-sm btn-outline-${theme}`]} href={ href } target="_blank">
             <Icon class="bi mx-auto" aria-hidden="true" name={ icon } />
             { title }
           </a>
