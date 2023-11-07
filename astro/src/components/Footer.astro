@@ -1,13 +1,106 @@
 ---
+const currentYear = new Date().getFullYear();
 ---
 
-<hr />
-<div>
-    <p>© 2019 Accessible Community</p>
-    <dl>
-        <dt>Mailing Address</dt><dd>PO Box 46; Paeonian Springs, VA, 20129</dd>
-        <dt>Email</dt><dd><a href="mailto:info@accessiblecommunity.org">info@accessiblecommunity.org</a></dd>
-        <dt>Phone Number</dt>
-        <dd>703-651-6703</dd>
-    </dl>
+<hr class="hr-footer"/>
+<div class="container ac-purple-bg container-footer">
+    <div class="row align-items-start justify-content-between">
+        <div class="col-md-3">
+            <nav class="nav-footer">
+                <ul class="list-group  list-group-flush list-footer">
+                    <li class="list-group-item list-item-footer list-item-footer-first">
+                        <a href="/about" class="ac-text-light">About</a>
+                    </li>
+                    <li class="list-group-item list-item-footer">
+                        <a href="/services" class="ac-text-light">Services</a>
+                    </li>
+                    <li class="list-group-item list-item-footer">
+                        <a href="/resources" class="ac-text-light">Resources</a>
+                    </li>
+                    <li class="list-group-item list-item-footer">
+                        <a href="/team" class="ac-text-light">Team Members</a>
+                    </li>
+                    <li class="list-group-item list-item-footer">
+                        <a href="/donate" class="ac-text-light">Donate</a>
+                    </li>
+                    <li class="list-group-item list-item-footer">
+                        <a href="/join-us" class="ac-text-light">Join Us</a>
+                    </li>
+                    <li class="list-group-item list-item-footer">
+                        <a href="/blog" class="ac-text-light">Blog</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        <div class="col-md-5 col-lg-5 info-footer">
+            <dl class="ac-text-light">
+                <dt>Mailing Address</dt><dd>PO Box 46; Paeonian Springs, VA, 20129</dd>
+                <dt>Email</dt><dd><a href="mailto:info@accessiblecommunity.org"  class="ac-text-light">info@accessiblecommunity.org</a></dd>
+                <dt>Phone Number</dt>
+                <dd>703-651-6703</dd>
+                <dt>Socials</dt>
+                <dd class="icon-footer icon-footer-first"><a href="https://www.facebook.com/AccessibleCommunity" class=".ac-text-light"><img src="" alt="Facebook" class="icon-image-footer"></a></dd>
+                <dd class="icon-footer"><a href="https://in.linkedin.com/company/accessible-community" class=".ac-text-light"><img src="" alt="LinkedIn" class="icon-image-footer"></a></dd>
+                <dd class="icon-footer"><a href="https://www.instagram.com/accessible_community/" class=".ac-text-light"><img src="" alt="Instagram" class="icon-image-footer"></a></dd>
+            </dl>
+        </div>
+    </div>
+    <div class="text-center legal-footer">
+        <p class="ac-text-light"><small>Accessible Community is a 501(c)3 organization.</small></p>
+        <p class="ac-text-light"><small>© <time datetime="{currentYear}">{currentYear}</time> Accessible Community</small></p>
+    </div>
 </div>
+
+<style>
+    /* first declaration that is commented out below is for debugging purposes. */
+    /* * {
+        border: 1px solid white;
+    } */
+    
+    .hr-footer {
+        margin-bottom: 0;
+    }
+
+    .ac-purple-bg {
+        background-color: #041058;
+    }
+
+    .container-footer {
+        padding: 2% 5% 2% 5%;
+    }
+
+    .nav-footer {
+        margin-bottom: 2%;
+    }
+
+    .list-item-footer {
+        background: transparent;
+        padding-left: 0;
+    }
+
+    .list-item-footer-first {
+        padding-top: 0;
+    }
+
+    .ac-text-light {
+        color: #dfe1ed;
+    }
+
+    .icon-footer {
+        display: inline-block;
+        padding: 
+        0% 1%;
+    }
+
+    .icon-footer-first {
+        padding-left: 0;
+    }
+
+    .icon-image-footer {
+        color: #dfe1ed;
+    }
+
+    .legal-footer {
+        padding-top: 2%;
+    }
+</style>
