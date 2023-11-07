@@ -2,40 +2,93 @@
 const currentYear = new Date().getFullYear();
 ---
 
-<hr />
-<div>
-    <nav>
-        <ul>
-            <li>
-                <a href="/about">About</a>
+<hr class="hr-footer"/>
+<div class="container ac-purple-bg container-footer">
+    <nav class="nav-footer">
+        <ul class="list-group  list-group-flush list-footer">
+            <li class="list-group-item transparent-item">
+                <a href="/about" class="ac-text-light">About</a>
             </li>
-            <li>
-                <a href="/services">Services</a>
+            <li class="list-group-item transparent-item">
+                <a href="/services" class="ac-text-light">Services</a>
             </li>
-            <li>
-                <a href="/resources">Resources</a>
+            <li class="list-group-item transparent-item">
+                <a href="/resources" class="ac-text-light">Resources</a>
             </li>
-            <li>
-                <a href="/team">Team Members</a>
+            <li class="list-group-item transparent-item">
+                <a href="/team" class="ac-text-light">Team Members</a>
             </li>
-            <li>
-                <a href="/join-us">Join Us</a>
+            <li class="list-group-item transparent-item">
+                <a href="/donate" class="ac-text-light">Donate</a>
             </li>
-            <li>
-                <a href="/blog">Blog</a>
+            <li class="list-group-item transparent-item">
+                <a href="/join-us" class="ac-text-light">Join Us</a>
+            </li>
+            <li class="list-group-item transparent-item">
+                <a href="/blog" class="ac-text-light">Blog</a>
             </li>
         </ul>
     </nav>
-    <dl>
+    <dl class="ac-text-light">
         <dt>Mailing Address</dt><dd>PO Box 46; Paeonian Springs, VA, 20129</dd>
-        <dt>Email</dt><dd><a href="mailto:info@accessiblecommunity.org">info@accessiblecommunity.org</a></dd>
+        <dt>Email</dt><dd><a href="mailto:info@accessiblecommunity.org"  class="ac-text-light">info@accessiblecommunity.org</a></dd>
         <dt>Phone Number</dt>
         <dd>703-651-6703</dd>
         <dt>Socials</dt>
-        <dd><img src="" alt=""></dd>
-        <dd><img src="" alt=""></dd>
-        <dd><img src="" alt=""></dd>
+        <dd class="icon-footer icon-footer-first"><a href="https://www.facebook.com/AccessibleCommunity" class=".ac-text-light"><img src="" alt="Facebook" class="icon-image-footer"></a></dd>
+        <dd class="icon-footer"><a href="https://in.linkedin.com/company/accessible-community" class=".ac-text-light"><img src="" alt="LinkedIn" class="icon-image-footer"></a></dd>
+        <dd class="icon-footer"><a href="https://www.instagram.com/accessible_community/" class=".ac-text-light"><img src="" alt="Instagram" class="icon-image-footer"></a></dd>
     </dl>
-    <p><small>© <time datetime="{currentYear}">{currentYear}</time> Accessible Community</small></p>
-    <p><small>Accessible Community is a 501(c)3 organization.</small></p>
+    <div class="text-center">
+        <p class="ac-text-light"><small>Accessible Community is a 501(c)3 organization.</small></p>
+        <p class="ac-text-light"><small>© <time datetime="{currentYear}">{currentYear}</time> Accessible Community</small></p>
+    </div>
 </div>
+
+<style>
+    * {
+        /* border: 1px solid white; */
+    }
+    
+    .hr-footer {
+        margin-bottom: 0;
+    }
+
+    .ac-purple-bg {
+        background-color: #041058;
+    }
+
+    .container-footer {
+        padding-bottom: 2%;
+    }
+
+    .nav-footer {
+        margin-bottom: 2%;
+    }
+
+    .list-footer {
+        padding-top: 0.5%;
+    }
+
+    .transparent-item {
+        background: transparent;
+    }
+
+    .ac-text-light {
+        color: #dfe1ed;
+    }
+
+    .icon-footer {
+        display: inline-block;
+        padding: 
+        0% 1%;
+    }
+
+    .icon-footer-first {
+        padding-left: 0;
+    }
+
+    .icon-image-footer {
+        color: #dfe1ed;
+    }
+</style>
