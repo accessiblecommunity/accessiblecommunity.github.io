@@ -7,6 +7,7 @@
 
 // 2. Include any default variable overrides here
 $font-family-sans-serif:      'Archivo', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !default;
+$font-weight-bold:            600;
 
 $h1-font-size:                2rem;
 $h2-font-size:                1.75rem;
@@ -17,9 +18,20 @@ $h6-font-size:                1rem;
 $headings-color:              #041058;
 $headings-font-weight:        400;
 
-$container-padding-x:         3rem;
+$display-font-sizes: (
+  1: 4rem,
+  2: 3.5rem,
+  3: 3rem,
+  4: 2.5rem,
+  5: 2rem,
+  6: 1.5rem
+);
+$display-font-family: 'Archivo';
+$display-font-weight: 400;
 
-$color-mode-type: data;
+
+$container-padding-x:  3rem;
+$color-mode-type:      data;
 
 // 3. Include remainder of required Bootstrap stylesheets (including any separate color mode stylesheets)
 @import "bootstrap/scss/variables";
@@ -68,6 +80,21 @@ $theme-colors: map-merge($theme-colors, $brand-colors);
     color: #041058;
     text-decoration: none;
 }
+
+.ac-text-light, .ac-text-dark {
+  font-weight: 400;
+}
+.ac-text-light > strong,
+.ac-text-dark > strong {
+  font-weight: 600;
+}
+.ac-text-light {
+  color: white;
+}
+.ac-text-dark {
+  color: var(--ac-navy);
+}
+
 @include color-mode(dark) {
     .ac-text, h1, h2, h3, h4, h5, h6 {
         color: var(--bs-primary-text-emphasis);

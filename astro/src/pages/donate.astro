@@ -1,7 +1,13 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import { Icon } from 'astro-icon'
+import { getImage } from "astro:assets";
 
+import bg from '../images/hands-blue-1920x1080.png'
+const optimizedBg = await getImage({src: bg, format: 'avif'})
+const heroBgUrl = `url(${optimizedBg.src})`;
+
+const directorEmail = 'mailto:director@accessiblecommunity.org'
 const donationLinks = [{
   icon: 'cib:cc-paypal',
   href: 'https://paypal.me/AccessibleCommunity',
@@ -14,35 +20,84 @@ const donationLinks = [{
   theme: 'stripe',
 }, {
   icon: 'envelope-at',
-  href: 'mailto:director@accessiblecommunity.org',
+  href: directorEmail,
   title: 'Email the Director',
-  description: 'If you would like to make a donation through corporate or government giving, by check, or some other means, please email our director to discuss your donation.',
   theme: 'ac',
 }]
 ---
-
 <Layout title="Donate">
-  <div class="container">
-    <div class="row justify-content-center">
-      <p class="col col-lg-8">
-        Accessible Community is a 501(c)3 organization.
-        Your donation goes towards supporting our programs, accommodations and technology costs.
-      </p>
+  <section class="hero" style={`background: no-repeat center ${heroBgUrl}`} slot="header">
+    <div class="container text-center py-5 px-4">
+      <h2 class="visually-hidden">Donate</h2>
+      <h3 class="display-3 fw-bold text-white">Together we can do so much.</h3>
+      <div class="col-lg-6 mx-auto text-white">
+        <p class="lead mb-4">
+          <span class="ac-text-white text-brand">Accessible <strong>Community</strong></span> is a 501(c)3 organization.
+          Your donation goes towards supporting our programs, accommodations and technology costs.
+        </p>
+        <div class="d-grid gap-4 d-sm-flex justify-content-sm-center">
+          <a type="button" class="btn btn-primary d-flex justify-content-center align-items-center px-4 gap-3">
+            <span class="cib-paypal">Donate with</span>
+            <Icon class="bi" alt="Paypal" name='cib:paypal' />
+          </a>
+          <a type="button" class="btn btn-primary d-flex justify-content-center align-items-center px-4">
+            <span>Donate with</span>
+            <Icon class="bi" alt="Stripe" name='cib:stripe' />
+          </a>
+        </div>
+      </div>
     </div>
-    <div class="row justify-content-center align-items-center">
-      <div class="col-sm-6 col-lg-4">
-        <p>
-          <strong>Thank you for your support!</strong>
-        </p>
-        <p>
-          We are currently registered to solicit donations in:
+  </section>
+
+  <section class="bg-white">
+    <div class="container py-5 px-4">
+      <div class="row justify-content-center">
+        <div class="col col-lg-8">
+          <h2 class="display-4 fw-bold ac-text">
+            <img class="bi d-inline-block mb-1 me-2" src="/images/ac_logo_blue.png" style="height: 1em" alt="">
+            <span>Our mission.</span>
+          </h2>
+        </div>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col col-lg-8 lead">
+          <p>
+            Your support of <span class="ac-text text-brand">Accessible <strong>Community</strong></span> provides programs, accommodations and technology to...
+          </p>
           <ul>
-            <li>Maryland</li>
-            <li>Virginia</li>
+            <li>Help smaller organizations with limited resources engage and support people with disabilities,</li>
+            <li>Empower people with disabilities to be part of the conversation about accessibility in their communities,</li>
+            <li>Motivate organizations by making accessibility visible and providing a marketing advantage for being disability-inclusive, and</li>
+            <li>Mature the accessibility profession by increasing communication, education and efficiency.</li>
           </ul>
-        </p>
-        <p>
-          We can also accept donations from individuals who currently reside in:
+          <p>
+            Contribute today and help make our communities more accessible. 
+            <span class="fw-bold ac-text">Thank you for your support!</span>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-body-tertiary p-5">
+    <div class="container shadow-lg rounded p-4">
+      <h2 class="display-4 text-center fw-bold ac-text mb-4">How can I donate?</h2>
+      <div class="row justify-content-center">
+        <div class="col-md-5 col-lg-3 d-flex flex-column justify-content-start">
+          <div>
+            <p>We are currently registered to solicit donations in:</p>
+            <ul>
+              <li>Maryland</li>
+              <li>Virginia</li>
+            </ul>
+          </div>
+          <div class="d-none d-md-block mt-4 me-4">
+            <strong>Note:</strong>
+            If you would like to make a donation through corporate or government giving, by check, or some other means, please <a href={ directorEmail }>email our director</a> to discuss your donation.
+          </div>
+        </div>
+        <div class="col-md-5 col-lg-3">
+          <p>We can also accept donations from individuals who currently reside in:</p>
           <ul>
             <li>Delaware</li>
             <li>Iowa</li>
@@ -54,28 +109,58 @@ const donationLinks = [{
             <li>Vermont</li>
             <li>Wyoming</li>
           </ul>
-        </p>
-      </div>
-      <div class="col-sm-6 col-lg-4">
-        <h3 class="d-block d-sm-none">Donation Options</h3>
-        <ul class="list-unstyled text-center">
-          { donationLinks.map(({description, icon, href, title, theme}) =>
-            <li class="mb-4 text-center">
-              <a class:list={[`btn btn-outline-${theme} btn-large`]} href={ href }>
+        </div>
+        <div class="col-lg-3 col-xl-2">
+          <div class="d-none d-lg-flex flex-column gap-3">
+            { donationLinks.map(({icon, href, title, theme}) =>
+              <a class:list={[`btn btn-sm btn-outline-${theme}`]} href={ href }>
                 <Icon class="bi mx-auto" aria-hidden="true" name={ icon } />
                 { title }
               </a>
-              { description ? <div class="my-3 small">{description}</div> : ''}
-            </li>
-          )}
-        </ul>
+            )}
+          </div>    
+        </div>
+      </div>
+      <p class="d-md-none">
+        If you would like to make a donation through corporate or government giving, by check, or some other means, please <a href={ directorEmail }>email our director</a> to discuss your donation.
+      </p>
+      <div class="d-grid d-sm-flex d-lg-none justify-content-sm-center gap-3 py-3">
+        { donationLinks.map(({icon, href, title, theme}) =>
+          <a class:list={[`btn btn-sm btn-outline-${theme}`]} href={ href }>
+            <Icon class="bi mx-auto" aria-hidden="true" name={ icon } />
+            { title }
+          </a>
+        )}
       </div>
     </div>
   </div>
 </Layout>
 
-<style>
-  .btn-large .bi {
+<style lang="scss">
+  .hero {
+    background-color: var(--ac-navy);
+  }
+  .text-brand strong {
+    font-weight: 600 !important;
+  }
+
+  // Fix the top buttons to make them look the same
+  span.cib-paypal {
+    margin-top: 0.4em;
+    margin-bottom: 0.4em;
+    margin-left: 0.4em;
+  }
+  [astro-icon="cib:paypal"] {
+    margin-left: -0.8em;
+    margin-right: 0.4em;
+    height: 1.6em;
+  }
+  [astro-icon="cib:stripe"] {
+    margin-left: 0.3em; // Simulate space
+    height: 2.4em;
+  }
+
+  .btn-sm .bi {
     height: 2.5rem;
     display: block;
   }
