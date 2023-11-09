@@ -1,14 +1,16 @@
 ---
 const {title, author, date} = Astro.props;
+const currentYear = newDate().getFullYear();
+const currentMonth = newDate().getMonth();
+const today = newDate().geyDate();
 ---
 
-
+<!-- blog layout -->
 <article>
     <h2>{title}</h2>
     <div>
-        <a>{author}</a>
-        <p>Published on: {date}</p>
+        <a href="#">{author}</a>
+        <p>Published on: ${currentMonth},${today} ${currentYear}</p>
     </div>
 <!-- blog contents -->
-    <a
 </article>
