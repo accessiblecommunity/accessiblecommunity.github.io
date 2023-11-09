@@ -9,8 +9,10 @@ const today = newDate().geyDate();
 <article>
     <h2>{title}</h2>
     <div>
+        <!-- linking to author information -->
         <a href="#">{author}</a>
         <p>Published on: ${currentMonth},${today} ${currentYear}</p>
     </div>
 <!-- blog contents -->
+<slot/>
 </article>
