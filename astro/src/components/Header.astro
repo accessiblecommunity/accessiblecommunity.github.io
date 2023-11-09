@@ -4,7 +4,7 @@
 <header>
   <a href="#main-content" class="visually-hidden-focusable position-absolute p-4 skip-link">Skip to Main Content</a>
   <a href="#footer" class="visually-hidden-focusable position-absolute p-4 skip-link">Skip to Footer</a>
-  <nav class="navbar navbar-expand-lg flex-wrap">
+  <nav class="navbar navbar-expand-md flex-wrap">
     <div class="container-fluid">
       <a class="navbar-brand" href="/">
           <img class="img-fluid align-text-top" style="height: 1.1em; " src="/images/ac_logo_blue.png" />
@@ -14,67 +14,67 @@
         <span class="navbar-toggler-icon menu-toggle-navbar"></span>
       </button>
       <div class="collapse navbar-collapse"  id="navbarSupportedContent">
-        <ul aria-role="navigation" class="navbar-nav">
+        <ul aria-role="navigation" class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item dropdown">
             <a href="/about" role="button" data-bs-toggle="dropdown" aria-expanded="false" class="nav-link dropdown-toggle ac-text-dark" >
               About
             </a>
-            <ul class="dropdown-menu">
-              <li><a href="" class="dropdown-item ac-text-dark"></a></li>
+            <ul class="dropdown-menu p-0 menu-nav">
+              <li><a href="" class="dropdown-item link-dropdown">Mission, Vision, Values</a></li>
             </ul>
           </li>
           <li class="nav-item dropdown">
             <a href="/services" role="button" data-bs-toggle="dropdown" aria-expanded="false" class="nav-link dropdown-toggle ac-text-dark" >
               Services
             </a>
-            <ul class="dropdown-menu">
-              <li><a href="" class="dropdown-item ac-text-dark"><strong>t</strong>a11y</a></li>
-              <li><a href="" class="dropdown-item ac-text-dark"><strong>mutu</strong>a11y</a></li>
-              <li><a href="" class="dropdown-item ac-text-dark"><strong>loc</strong>a11y</a></li>
-              <li><a href="" class="dropdown-item ac-text-dark">Tip of the Week</a></li>
-              <li><a href="" class="dropdown-item ac-text-dark">Newsletter Sign-Up</a></li>
+            <ul class="dropdown-menu p-0 menu-nav">
+              <li><a href="" class="dropdown-item link-dropdown"><strong>t</strong>a11y</a></li>
+              <li><a href="" class="dropdown-item link-dropdown"><strong>mutu</strong>a11y</a></li>
+              <li><a href="" class="dropdown-item link-dropdown"><strong>loc</strong>a11y</a></li>
+              <li><a href="" class="dropdown-item link-dropdown">Tip of the Week</a></li>
+              <li><a href="" class="dropdown-item link-dropdown">Newsletter Sign-Up</a></li>
             </ul>
           </li>
           <li class="nav-item dropdown">
             <a href="/team" role="button" data-bs-toggle="dropdown" aria-expanded="false" class="nav-link dropdown-toggle ac-text-dark" >
               Team Members
             </a>
-            <ul class="dropdown-menu">
-              <li><a href="" class="dropdown-item ac-text-dark">Board Members</a></li>
-              <li><a href="" class="dropdown-item ac-text-dark">Leadership and Staff</a></li>
-              <li><a href="" class="dropdown-item ac-text-dark"><strong>mutu</strong>a11y Team</a></li>
-              <li><a href="" class="dropdown-item ac-text-dark"><strong>t</strong>a11y Team</a></li>
-              <li><a href="" class="dropdown-item ac-text-dark">Previous Contributors</a></li>
+            <ul class="dropdown-menu p-0 menu-nav">
+              <li><a href="" class="dropdown-item link-dropdown">Board Members</a></li>
+              <li><a href="" class="dropdown-item link-dropdown">Leadership and Staff</a></li>
+              <li><a href="" class="dropdown-item link-dropdown"><strong>mutu</strong>a11y Team</a></li>
+              <li><a href="" class="dropdown-item link-dropdown"><strong>t</strong>a11y Team</a></li>
+              <li><a href="" class="dropdown-item link-dropdown">Previous Contributors</a></li>
             </ul>
           </li>
           <li class="nav-item dropdown">
             <a href="/join-us" role="button" data-bs-toggle="dropdown" aria-expanded="false" class="nav-link dropdown-toggle ac-text-dark" >
               Join Us
             </a>
-            <ul class="dropdown-menu">
-              <li><a href="" class="dropdown-item ac-text-dark">Donations</a></li>
-              <li><a href="" class="dropdown-item ac-text-dark">Sponsorships</a></li>
-              <li><a href="" class="dropdown-item ac-text-dark">Volunteer Form</a></li>
-              <li><a href="" class="dropdown-item ac-text-dark">Policies</a></li>
+            <ul class="dropdown-menu p-0 menu-nav">
+              <li><a href="/donate" class="dropdown-item link-dropdown">Donations</a></li>
+              <li><a href="" class="dropdown-item link-dropdown">Sponsorships</a></li>
+              <li><a href="" class="dropdown-item link-dropdown">Volunteer Form</a></li>
+              <li><a href="" class="dropdown-item link-dropdown">Policies</a></li>
             </ul>
           </li>
           <li class="nav-item dropdown">
-            <a href="/blog" role="button" data-bs-toggle="dropdown" aria-expanded="false" class="nav-link dropdown-toggle ac-text-dark" >
+            <a href="" role="button" data-bs-toggle="dropdown" aria-expanded="false" class="nav-link dropdown-toggle ac-text-dark" >
               Blog
             </a>
-            <ul class="dropdown-menu">
-              <li><a href="" class="dropdown-item ac-text-dark">Accessibility</a></li>
-              <li><a href="" class="dropdown-item ac-text-dark">Announcements</a></li>
-              <li><a href="" class="dropdown-item ac-text-dark">Events</a></li>
+            <ul class="dropdown-menu p-0 menu-nav">
+              <li><a href="" class="dropdown-item link-dropdown">Accessibility</a></li>
+              <li><a href="" class="dropdown-item link-dropdown">Announcements</a></li>
+              <li><a href="" class="dropdown-item link-dropdown">Events</a></li>
             </ul>
           </li>
         </ul>
-        <form role="search" class="d-flex" >
+        <!-- <a href="/donate" role="button" class="btn .d-sm-block link-button-navbar">Donate</a> -->
+        <form role="search" class="d-flex">
           <input type="search" placeholder="Search" aria-label="Search" class="form-control me-2" >
-          <button type="submit" class="btn link-button-navbar">Search</button>
+          <button type="submit" class="btn btn-outline-success link-button-navbar">Search</button>
         </form>  
       </div>
-      <a href="/donate" role="button" class="btn .d-sm-block link-button-navbar">Donate</a>
     </div>
   </nav>
   
@@ -96,7 +96,22 @@
     color: #041058;
   }
 
-  .skip-link, .link-button-navbar {
+  .menu-nav {
+    border-width: 3.5px;
+    border-color: #041058;
+  }
+
+  .link-dropdown {
+    color: #041058;
+    border-bottom: 1px solid #041058;
+  }
+
+  .link-dropdown:focus {
+    color: #dfe1ed;
+    background-color: #041058;
+  }
+
+  .skip-link, .link-dropdown:hover, .link-button-navbar {
     color: #dfe1ed;
     background-color: #041058;
   }
@@ -108,11 +123,11 @@
   }
 </style>
 
-<!-- <script>
+<script>
     import { Collapse, Dropdown } from '~bootstrap-es'
 
     Array.from(document.querySelectorAll('.dropdown'))
       .forEach(node => new Dropdown(node))
     Array.from(document.querySelectorAll('.collapse'))
       .forEach(node => new Collapse(node))
-</script> -->
+</script>
