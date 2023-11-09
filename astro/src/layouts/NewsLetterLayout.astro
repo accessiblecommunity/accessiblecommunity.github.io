@@ -12,22 +12,29 @@ const {title, author, date } = Astro.props;
     <title> {title} </title>
     </head>
     <body>
+        <!-- heading section -->
         <header>
             <slot />
         </header>
-        <!-- aside navigation -->
-        <div>
-            <nav aria-label="Side">
-            </nav>
-        </div>
+        <!-- heading section ends here -->
+        <!--main -->
         <main>
-            <slot /> 
+            <!-- sidebar -->
+           <article>
+             <!-- title of the blog -->
+
+             <!-- author and date -->
+
+             <!-- blog contents -->
+
+           </article>
         </main>
+        <!-- main section ends here -->
+        <!-- footer section -->
         <footer>
             <slot />
         </footer>
+        <!-- footer secton ends here -->
         </div>
-
-
     </body>
 </html>
