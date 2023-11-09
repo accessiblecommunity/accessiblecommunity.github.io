@@ -5,6 +5,9 @@ tags:
     - board
     - staff
 picture: ../../images/profiles/Rachael_profile.png
+links:
+    email: rachael@accessiblecommunity.org
+    linkedin: https://www.linkedin.com/in/rachael-bradley-montgomery-ph-d-6847144/
 ---
 Rachael has been working in disability-related education, inclusion, usability, and accessibility for over 20 years but when she developed chemical sensitivity a few years ago, she gained insight into just how much of day-to-day life takes place away from the larger organizations she typically supports. Rachael founded Accessible Community to connect people with disabilities to the communities around them.
 
