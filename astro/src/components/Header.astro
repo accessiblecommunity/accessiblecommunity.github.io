@@ -2,6 +2,8 @@
 ---
 
 <header>
+  <a href="#main-content" class="visually-hidden-focusable position-absolute p-4 skip-link">Skip to Main Content</a>
+  <a href="#footer" class="visually-hidden-focusable position-absolute p-4 skip-link">Skip to Footer</a>
   <nav class="navbar navbar-expand-lg flex-wrap">
     <div class="container-fluid">
       <a class="navbar-brand" href="/">
@@ -40,8 +42,8 @@
             <ul class="dropdown-menu">
               <li><a href="" class="dropdown-item ac-text-dark">Board Members</a></li>
               <li><a href="" class="dropdown-item ac-text-dark">Leadership and Staff</a></li>
-              <li><a href="" class="dropdown-item ac-text-dark"><strong>mutu</strong>a11y</a></li>
-              <li><a href="" class="dropdown-item ac-text-dark"><strong>t</strong>a11y</a></li>
+              <li><a href="" class="dropdown-item ac-text-dark"><strong>mutu</strong>a11y Team</a></li>
+              <li><a href="" class="dropdown-item ac-text-dark"><strong>t</strong>a11y Team</a></li>
               <li><a href="" class="dropdown-item ac-text-dark">Previous Contributors</a></li>
             </ul>
           </li>
@@ -86,11 +88,15 @@
     outline: 1px solid black;
   } */
 
+  .skip-link {
+    z-index: 1;
+  }
+
   .ac-text-dark {
     color: #041058;
   }
 
-  .link-button-navbar {
+  .skip-link, .link-button-navbar {
     color: #dfe1ed;
     background-color: #041058;
   }
@@ -101,3 +107,12 @@
     border-top-width: 1.5px;
   }
 </style>
+
+<!-- <script>
+    import { Collapse, Dropdown } from '~bootstrap-es'
+
+    Array.from(document.querySelectorAll('.dropdown'))
+      .forEach(node => new Dropdown(node))
+    Array.from(document.querySelectorAll('.collapse'))
+      .forEach(node => new Collapse(node))
+</script> -->
