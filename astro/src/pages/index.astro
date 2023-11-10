@@ -1,19 +1,126 @@
 ---
+import { Icon } from 'astro-icon';
+
+import Hero from '../components/Hero.astro';
 import Layout from '../layouts/Layout.astro';
+import Section from '../components/Section.astro';
+
+import heroBg from '../images/wheelchair-hall-blue-1920x1080.png'
+
+const features = [{
+  icon: 'ta11y-logo',
+  title: '<strong>t</strong>a11y.<strong>org</strong>',
+  text: 'An online tool for learning about and evaluating the accessibility of social media, websites, facilities, events and procedures.',
+  link: 'https://www.ta11y.org',
+},{
+  icon: 'mutua11y-logo',
+  title: '<strong>mutu</strong>a11y.<strong>org</strong>',
+  text: 'A platform for accessibility professionals, local government, communities and organizations to share information and ideas',
+  link: 'https://www.mutua11y.org',
+},{
+  icon: 'loca11y-logo',
+  title: '<strong>loc</strong>a11y.<strong>org</strong>',
+  text: '<strong>Coming soon:</strong> An online tool for people with disabilities to find and recommend local organizations and events where they can successfully engage and participate.',
+  link: 'https://www.loca11y.org',
+}]
+
 ---
 
 <Layout title="Accessible Community">
   <span slot="header" />
-  <p>
-    One in every three households includes someone who has a disability. These individuals and families often struggle to find places in their community where they can successfully shop, eat, and participate in community life. Meanwhile, organizations who want to reach the disability community often struggle with what to do to improve and how to reach out when they offer accommodations.
-  </p>
-  <p>
-    Accessible Community provides online tools and programs to:
-    <ul>
+  <Hero image={ heroBg }>
+    <h2 class="display-3 text-white heading" slot="heading">
+      Nurturing
+      <strong>disability-inclusive communities</strong>
+      through ethical technology.
+    </h2>
+    <!-- p class="lead">
+      One in every three households includes someone who has a disability. These individuals and families often struggle to find places in their community where they can successfully shop, eat, and participate in community life.
+      Meanwhile, organizations who want to reach the disability community often struggle with what to do to improve and how to reach out when they offer accommodations.
+    </p -->
+  </Hero>
+
+  <section class="bg-white p-5">
+    <div class="container d-flex flex-column flex-lg-row gap-5 py-5 justify-content-lg-evenly text-center text-ac">
+      <div class="col col-lg-3 shadow-lg rounded bg-body-secondary p-4">
+        <div class="accent">26%</div>
+        <p class="display-5">of Americans have a disability.</p>
+      </div>
+      <div class="col col-lg-3 shadow-lg rounded bg-body-secondary p-4">
+        <div>
+          <span class="accent-2">1</span>
+          <span class="display-5 align-text-bottom"> in </span>
+          <span class="accent-2">3</span>
+        </div>
+        <p class="display-6">households includes someone who has a disability.</p>
+      </div>
+      <div class="col col-lg-3 shadow-lg rounded bg-body-secondary p-4">
+        <div class="display-5">They have</div>
+        <div class="accent-2">$200B</div>
+        <div class="display-5">in discretionary spending.</div>
+      </div>
+    </div>
+  </section>
+
+  <Section theme="white">
+    <h2 class="display-4 fw-bold">What we do...</h2>
+    <p class="lead">
+      Accessible Community provides online tools and programs to:
+    </p>
+    <ul class="lead">
       <li>Help smaller organizations with limited resources engage and support people with disabilities</li>
       <li>Empower people with disabilities to be part of the conversation about accessibility in their communities</li>
       <li>Motivate organizations by making accessibility visible and providing a marketing advantage for being disability-friendly</li>
       <li>Mature the accessibility profession by increasing communication, education and efficiency</li>
     </ul>
-    </p>
+  </Section>
+
+  <Section theme="body-tertiary">
+    <h2 class="display-4 pb-2 border-bottom text-ac">Our <strong>tools</strong> and <strong>services</strong></h2>
+    <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
+      { features.map(({ icon, title, text, link }) =>
+        <div class="feature col">
+          <div class="d-flex align-items-center gap-2 mb-1">
+            <div class="feature-icon d-inline-flex align-items-center justify-content-center text-bg-ac bg-gradient">
+              <Icon class="bi" name={ icon } height="2em" />
+              </div>
+            <h3 class="my-1 fs-1 text-ac" set:html={ title }></h3>
+          </div>
+          <p set:html={text} />
+          <p>
+            Go to
+            <a href={link} class="icon-link">
+              <span set:html={title} />
+              <Icon name="bi:chevron-right" class="bi" height="1em"></Icon>
+          </a>
+          </p>
+        </div>
+      )}
+    </div>  
+  </Section>
+
 </Layout>
+
+<style>
+  .heading strong {
+    display: block;
+  }
+  .accent {
+    font-size: 5.5rem;
+    line-height: 6rem;
+  }
+  .accent-2 {
+    font-size: 4.7rem;
+    line-height: 5rem;
+  }
+
+  .feature-icon {
+    width: 3rem;
+    height: 3rem;
+    border-radius: .75rem;
+  }
+
+  [astro-icon="loca11y-logo"] {
+    margin-left: 0.2em;
+  }
+</style>
