@@ -2,85 +2,84 @@
 ---
   
 <header>
-  <a href="#main-content" class="visually-hidden-focusable position-absolute p-4 skip-link">Skip to Main Content</a>
-  <a href="#footer" class="visually-hidden-focusable position-absolute p-4 skip-link">Skip to Footer</a>
-  <nav class="navbar navbar-expand-md flex-wrap">
+  <a class="visually-hidden-focusable position-absolute btn btn-lg skip-link" href="#main-content">Skip to Main Content</a>
+  <nav class="navbar navbar-expand-md">
     <div class="container-fluid">
-      <a class="navbar-brand" href="/">
-          <img class="img-fluid align-text-top" style="height: 1.1em; " src="/images/ac_logo_blue.png" />
-          Accessible <strong>Community</strong>
-      </a>
-      <button type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler">
-        <span class="navbar-toggler-icon menu-toggle-navbar"></span>
-      </button>
-      <div class="collapse navbar-collapse"  id="navbarSupportedContent">
-        <ul aria-role="navigation" class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item dropdown">
-            <a href="" role="button" data-bs-toggle="dropdown" aria-expanded="false" class="nav-link dropdown-toggle ac-text-dark" >
-              About
-            </a>
-            <ul class="dropdown-menu p-0 menu-nav">
-              <li><a href="" class="dropdown-item link-dropdown">Mission, Vision, Values</a></li>
-              <li><a href="" class="dropdown-item link-dropdown">History</a></li>
-              <li><a href="" class="dropdown-item link-dropdown">Leadership</a></li>
-            </ul>
-          </li>
-          <li class="nav-item dropdown">
-            <a href="" role="button" data-bs-toggle="dropdown" aria-expanded="false" class="nav-link dropdown-toggle ac-text-dark" >
-              Services
-            </a>
-            <ul class="dropdown-menu p-0 menu-nav">
-              <li><a href="" class="dropdown-item link-dropdown"><strong>t</strong>a11y</a></li>
-              <li><a href="" class="dropdown-item link-dropdown"><strong>mutu</strong>a11y</a></li>
-              <li><a href="" class="dropdown-item link-dropdown"><strong>loc</strong>a11y</a></li>
-              <li><a href="" class="dropdown-item link-dropdown">Tip of the Week</a></li>
-              <li><a href="" class="dropdown-item link-dropdown">Newsletter Sign-Up</a></li>
-            </ul>
-          </li>
-          <li class="nav-item dropdown">
-            <a href="" role="button" data-bs-toggle="dropdown" aria-expanded="false" class="nav-link dropdown-toggle ac-text-dark" >
-              Team Members
-            </a>
-            <ul class="dropdown-menu p-0 menu-nav">
-              <li><a href="" class="dropdown-item link-dropdown">Board Members</a></li>
-              <li><a href="" class="dropdown-item link-dropdown">Leadership and Staff</a></li>
-              <li><a href="" class="dropdown-item link-dropdown"><strong>mutu</strong>a11y Team</a></li>
-              <li><a href="" class="dropdown-item link-dropdown"><strong>t</strong>a11y Team</a></li>
-              <li><a href="" class="dropdown-item link-dropdown">Previous Contributors</a></li>
-            </ul>
-          </li>
-          <li class="nav-item dropdown">
-            <a href="" role="button" data-bs-toggle="dropdown" aria-expanded="false" class="nav-link dropdown-toggle ac-text-dark" >
-              Join Us
-            </a>
-            <ul class="dropdown-menu p-0 menu-nav">
-              <li><a href="/donate" class="dropdown-item link-dropdown">Donations</a></li>
-              <li><a href="" class="dropdown-item link-dropdown">Sponsorships</a></li>
-              <li><a href="" class="dropdown-item link-dropdown">Volunteer Form</a></li>
-              <li><a href="" class="dropdown-item link-dropdown">Policies</a></li>
-            </ul>
-          </li>
-          <li class="nav-item dropdown">
-            <a href="" role="button" data-bs-toggle="dropdown" aria-expanded="false" class="nav-link dropdown-toggle ac-text-dark" >
-              Blog
-            </a>
-            <ul class="dropdown-menu p-0 menu-nav">
-              <li><a href="" class="dropdown-item link-dropdown">Accessibility</a></li>
-              <li><a href="" class="dropdown-item link-dropdown">Announcements</a></li>
-              <li><a href="" class="dropdown-item link-dropdown">Events</a></li>
-            </ul>
-          </li>
-        </ul>
-        <!-- <a href="/donate" role="button" class="btn .d-sm-block link-button-navbar">Donate</a> -->
-        <form role="search" class="d-flex">
-          <input type="search" placeholder="Search" aria-label="Search" class="form-control me-2" >
-          <button type="submit" class="btn btn-outline-success link-button-navbar">Search</button>
-        </form>  
+      <div class="d-flex me-2 stacking-helper">
+        <div>
+          <a class="navbar-brand ac-text" href="/">
+              <img class="img-fluid align-text-top" style="height: 1.1em; " src="/images/ac_logo_blue.png" />
+              Accessible <strong>Community</strong>
+          </a>
+        </div>
+        <div class="mt-2">
+          <button class="navbar-toggler dropdown-toggle btn border-2 toggle-menu ac-text" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span>Menu</span>
+          </button>
+        </div>
+      </div>
+      <div id="navbarSupportedContent" class="collapse align-items-center navbar-collapse justify-content-end">
+          <ul class="navbar-nav me-2 my-2 main-list" aria-role="navigation">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle toggle-dropdown ac-text" href="" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                About
+              </a>
+              <ul class="dropdown-menu p-0 menu-nav">
+                <li><a class="dropdown-item link-dropdown ac-text" href="">Mission, Vision, Values</a></li>
+                <li><a class="dropdown-item link-dropdown ac-text" href="">History</a></li>
+                <li><a class="dropdown-item link-dropdown ac-text" href="">Leadership</a></li>
+              </ul>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle toggle-dropdown ac-text" href="" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Services
+              </a>
+              <ul class="dropdown-menu p-0 menu-nav">
+                <li><a class="dropdown-item link-dropdown ac-text" href=""><strong>t</strong>a11y</a></li>
+                <li><a class="dropdown-item link-dropdown ac-text" href=""><strong>mutu</strong>a11y</a></li>
+                <li><a class="dropdown-item link-dropdown ac-text" href=""><strong>loc</strong>a11y</a></li>
+                <li><a class="dropdown-item link-dropdown ac-text" href="">Tip of the Week</a></li>
+                <li><a class="dropdown-item link-dropdown ac-text" href="">Newsletter Sign-Up</a></li>
+              </ul>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle toggle-dropdown ac-text" href="" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Team Members
+              </a>
+              <ul class="dropdown-menu p-0 menu-nav">
+                <li><a class="dropdown-item link-dropdown ac-text" href="">Board Members</a></li>
+                <li><a class="dropdown-item link-dropdown ac-text" href="">Leadership and Staff</a></li>
+                <li><a class="dropdown-item link-dropdown ac-text" href=""><strong>mutu</strong>a11y Team</a></li>
+                <li><a class="dropdown-item link-dropdown ac-text" href=""><strong>t</strong>a11y Team</a></li>
+                <li><a class="dropdown-item link-dropdown ac-text" href="">Previous Contributors</a></li>
+              </ul>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle toggle-dropdown ac-text" href="" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Join Us
+              </a>
+              <ul class="dropdown-menu p-0 menu-nav">
+                <li><a class="dropdown-item link-dropdown ac-text" href="/donate">Donations</a></li>
+                <li><a class="dropdown-item link-dropdown ac-text" href="">Sponsorships</a></li>
+                <li><a class="dropdown-item link-dropdown ac-text" href="">Volunteer Form</a></li>
+                <li><a class="dropdown-item link-dropdown ac-text" href="">Policies</a></li>
+              </ul>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle toggle-dropdown ac-text" href="" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Blog
+              </a>
+              <ul class="dropdown-menu p-0 menu-nav">
+                <li><a class="dropdown-item link-dropdown ac-text" href="">Accessibility</a></li>
+                <li><a class="dropdown-item link-dropdown ac-text" href="">Announcements</a></li>
+                <li><a class="dropdown-item link-dropdown ac-text" href="">Events</a></li>
+              </ul>
+            </li>
+          </ul>
+          <a class="btn btn-lg my-2 donate-link-navbar ac-text" href="/donate" role="button">Donate</a>
       </div>
     </div>
   </nav>
-  
-  <hr class="hr-navbar"/>
 </header>
 <slot />
 
@@ -90,38 +89,73 @@
     outline: 1px solid black;
   } */
 
-  .skip-link {
-    z-index: 1;
+  *:focus-visible, .toggle-menu:focus {
+    outline: 6px dashed #041058;
+    outline-offset: 1px 2px;
+    box-shadow: none;
+    border-radius: 0.5rem;
   }
 
-  .ac-text-dark {
+  .skip-link {
+    z-index: 1;
+    top: 8px;
+    left: 24px;
+  }
+
+  .skip-link, .link-dropdown:hover {
+    color: #dfe1ed;
+    background-color: #041058;
+  }
+
+  .stacking-helper {
+    flex-direction: column;
+  }
+
+  .toggle-menu {
+    background-color: #dfe1ed;
+    border: none;
+  }
+
+  .toggle-dropdown:focus {
     color: #041058;
   }
 
-  .menu-nav {
-    border-width: 3.5px;
-    border-color: #041058;
+  .toggle-dropdown:hover, .toggle-dropdown:active {
+    background-color: #041058;
+    animation-timing-function: ease-in-out;
+  }
+
+  .toggle-dropdown:hover, .toggle-dropdown:active, .donate-link-navbar {
+    color: #dfe1ed;
+  }
+
+  .main-list {
+    border: 3.5px solid;
+    border-radius: 0.5rem;
+  }
+
+  .main-list, .menu-nav {
+    border-color: #dfe1ed;
+  }
+
+  .main-list a {
+    padding-left: 0.5rem;
+  }
+
+ .menu-nav {
+    border-width: 8px;
   }
 
   .link-dropdown {
-    color: #041058;
-    border-bottom: 1px solid #041058;
+    border-bottom: 3.5px solid #dfe1ed;
   }
 
-  .link-dropdown:focus {
-    color: #dfe1ed;
+  .link-dropdown:hover {
+    animation-timing-function: ease;
+  }
+
+  .donate-link-navbar { 
     background-color: #041058;
-  }
-
-  .skip-link, .link-dropdown:hover, .link-button-navbar {
-    color: #dfe1ed;
-    background-color: #041058;
-  }
-
-  .hr-navbar {
-    border-color: #041058;
-    opacity: 100%;
-    border-top-width: 1.5px;
   }
 </style>
 
