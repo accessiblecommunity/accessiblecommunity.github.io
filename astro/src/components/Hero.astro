@@ -9,7 +9,6 @@ const {
 import { getImage } from "astro:assets";
 const optimizedBg = await getImage({src: image, format: 'avif'})
 const heroBgUrl = `url(${optimizedBg.src})`;
-
 ---
 <section class={`bg-${theme}`} style={`background: no-repeat center ${heroBgUrl}`} slot="header">
   <div class="container text-center py-5 px-4">
