@@ -31,8 +31,10 @@ import Header from '../components/Header.astro';
       <h2>{ title }</h2>
     </slot>
   </Header>
-  </slot>
-  <slot />
+  <main id="main-content">
+    </slot>
+    <slot />
+  </main>
   <Footer />
 </body>
 </html>
