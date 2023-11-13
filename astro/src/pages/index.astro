@@ -15,24 +15,36 @@ const daniela = await getEntry('profiles', 'daniela');
 <Layout title="Accessible Community">
   <span slot="header" />
   <Hero image={ heroBg }>
-    <h2 class="display-3 text-white heading" slot="heading">
+    <h2 class="display-3 text-white heading py-5" slot="heading">
       Nurturing
       <strong>disability-inclusive communities</strong>
       through ethical technology.
     </h2>
     <!-- p class="lead">
-      One in every three households includes someone who has a disability. These individuals and families often struggle to find places in their community where they can successfully shop, eat, and participate in community life.
+      
       Meanwhile, organizations who want to reach the disability community often struggle with what to do to improve and how to reach out when they offer accommodations.
     </p -->
   </Hero>
 
+  <Section theme="body-tertiary">
+    <h2 class="display-4 fw-bold">What we believe...</h2>
+    <p class="lead">One in every three households includes someone who has a disability. These individuals and families often struggle to find places in their community where they can successfully shop, eat, and participate in community life.</p>
+    <ul class="lead">
+      <li><strong>Communities matter</strong>. Being a part of a local community is important.</li>
+      <li>Local communities are made up of <strong>people</strong> and <strong>small organizations</strong>.</li>
+      <li>A majority of small organizations do not have the knowledge or resources to become effectively reach people with disabilities.</li>
+      <li>People with disabilities want to be a part of their community and part of the solution in removing barriers to that community.</li>
+      <li>Incentivizing those we work with by creating scenarios where all parties win.</li>
+    </ul>
+  </Section>
+
   <section class="bg-white p-5">
     <div class="container d-flex flex-column flex-lg-row gap-5 py-5 justify-content-lg-evenly text-center text-ac">
-      <div class="col col-lg-3 shadow-lg rounded bg-body-secondary p-4">
+      <div class="col col-lg-4 col-xl-3 shadow-lg rounded bg-body-secondary p-4">
         <div class="accent">26%</div>
         <p class="display-5">of Americans have a disability.</p>
       </div>
-      <div class="col col-lg-3 shadow-lg rounded bg-body-secondary p-4">
+      <div class="col col-lg-4 col-xl-3 shadow-lg rounded bg-body-secondary p-4">
         <div>
           <span class="accent-2">1</span>
           <span class="display-5 align-text-bottom"> in </span>
@@ -40,7 +52,7 @@ const daniela = await getEntry('profiles', 'daniela');
         </div>
         <p class="display-6">households includes someone who has a disability.</p>
       </div>
-      <div class="col col-lg-3 shadow-lg rounded bg-body-secondary p-4">
+      <div class="col col-lg-4 col-xl-3 shadow-lg rounded bg-body-secondary p-4">
         <div class="display-5">They have</div>
         <div class="accent-2">$200B</div>
         <div class="display-5">in discretionary spending.</div>
@@ -51,7 +63,7 @@ const daniela = await getEntry('profiles', 'daniela');
   <Section theme="body-tertiary">
     <h2 class="display-4 fw-bold">What we do...</h2>
     <p class="lead">
-      Accessible Community provides online tools and programs to:
+      <span class="text-brand">Accessible <strong>Community</strong></span> provides online tools and programs to:
     </p>
     <ul class="lead">
       <li>Help smaller organizations with limited resources engage and support people with disabilities</li>
