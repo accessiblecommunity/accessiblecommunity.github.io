@@ -1,11 +1,90 @@
 ---
+import { Icon } from 'astro-icon';
+
+import Hero from '../components/Hero.astro';
 import Layout from '../layouts/Layout.astro';
+import Section from '../components/Section.astro'
+
+import heroBg from '../images/hands-blue-1920x1080.png'
+
+const services = [{
+  icon: 'ta11y-logo',
+  title: '<strong>t</strong>a11y.<strong>org</strong>',
+  text: 'An online tool for learning about and evaluating the accessibility of social media, websites, facilities, events and procedures.',
+  link: 'https://www.ta11y.org',
+},{
+  icon: 'mutua11y-logo',
+  title: '<strong>mutu</strong>a11y.<strong>org</strong>',
+  text: 'A platform for accessibility professionals, local government, communities and organizations to share information and ideas.',
+  link: 'https://www.mutua11y.org',
+},{
+  icon: 'loca11y-logo',
+  title: '<strong>loc</strong>a11y.<strong>org</strong>',
+  text: '<strong>Coming soon:</strong> A tool for people with disabilities to find and recommend local organizations and events where they can successfully engage and participate.',
+  // link: 'https://www.loca11y.org',
+}]
+
 ---
 
 <Layout title="Services">
-<ul>
-  <li><strong>t</strong>a11y</li>
-  <li><strong>mutu</strong>a11y</li>
-  <li><strong>loc</strong>a11y</li>
-</ul>
+  <span slot="header" />
+
+  <Hero image={ heroBg }>
+    <h2 class="display-3 text-white py-4" slot="heading">
+      An <strong>ethical</strong> technology <strong>nonprofit</strong>.
+    </h2>
+    <p class="lead">
+      At <span class="ac-text-white text-brand">Accessible <strong>Community</strong></span>,
+      we believe that technology <br/>
+      can <strong>build community</strong> and <strong>increase equity</strong>.<br/>
+      For people with disabilities and their caretakers,<br/>
+      <strong>community and equity</strong> are two important goals.
+    </p>
+  </Hero>
+
+  <Section theme="body-tertiary p-4">
+    <h2 class="display-4 text-ac">Our <strong>tools</strong> and <strong>services</strong></h2>
+    <p class="border-bottom pb-2 lead text-ac me-4">
+      We create tools and services to <strong>teach accessibility</strong>
+      and <strong>promote accessible organizations</strong>. We practice what we preach; the tools we develop
+      are fully accessible, following the best practices, guidelines and standards to ensure
+      usability, not just compliance. The "a11y" in our tool names stands for accessibility 
+      (11 letters between the 'a' and 'y').
+    </p>
+    <div class="row g-4 py-4 row-cols-1 row-cols-lg-3">
+      { services.map(({ icon, title, text, link }) =>
+        <div class="feature col">
+          <div class="d-flex align-items-center gap-2 mb-1">
+            <div class="feature-icon d-inline-flex align-items-center justify-content-center text-bg-ac bg-gradient">
+              <Icon class="bi" name={ icon } height="1.5em" />
+              </div>
+            <h3 class="my-1 fs-1 text-ac" set:html={ title }></h3>
+          </div>
+          <p class="mx-5 me-4" set:html={text} />
+          { link ? 
+          <p class="ms-5 me-4">
+            Go to
+            <a href={link} class="icon-link" target="_blank">
+              <span set:html={title} />
+              <Icon name="bi:chevron-right" class="bi" height="1em"></Icon>
+          </a>
+          </p>
+          : ''
+        }
+        </div>
+      )}
+    </div>  
+  </Section>
 </Layout>
+
+<style>
+  .feature-icon {
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: .75rem;
+  }
+
+  [astro-icon="loca11y-logo"] {
+    margin-left: 0.2em;
+  }
+</style>

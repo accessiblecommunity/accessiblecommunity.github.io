@@ -1,0 +1,22 @@
+---
+const { 
+  image,
+  headline = "Hero heading.",
+  theme = "ac",
+  textColor = "white",
+} = Astro.props;
+
+import { getImage } from "astro:assets";
+const optimizedBg = await getImage({src: image, format: 'avif'})
+const heroBgUrl = `url(${optimizedBg.src})`;
+---
+<section class={`bg-${theme}`} style={`background: no-repeat center ${heroBgUrl}`} slot="header">
+  <div class="container text-center py-5 px-4">
+    <slot name="heading">
+      <h2 class:list={["display-3 fw-bold", `text-${textColor}`]}>{ headline }</h2>
+    </slot>
+    <div class:list={["col-lg-6 mx-auto", `text-${textColor}`]}>
+      <slot />
+    </div>
+  </div>
+</section>
