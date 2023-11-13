@@ -1,48 +1,72 @@
 ---
+import { Icon } from 'astro-icon';
+
 const currentYear = new Date().getFullYear();
+
+const facebookURL = "https://www.facebook.com/AccessibleCommunity";
+const linkedinURL = "https://in.linkedin.com/company/accessible-community";
+const instagramURL = "https://www.instagram.com/accessible_community/";
+
+const Socials = [{
+  name: 'Facebook',
+  icon: 'cib:facebook',
+  href: facebookURL,
+  className: 'cib-facebook',
+// }, {
+//   name: 'LinkedIn',
+//   icon: 'cib:linkeidn',
+//   href: linkedinURL,
+//   className: 'cib-linkedin',
+}, {
+  name: 'Instagram',
+  icon: 'cib:instagram',
+  href: instagramURL,
+  className: 'cib-instagram',
+}]
 ---
 
-<hr class="hr-footer"/>
 <footer id="footer">
-    <div class="ac-purple-bg container-footer">
+    <div class="bg-ac container-footer">
         <div class="row align-items-start justify-content-between">
             <div class="col-md-3">
                 <nav class="nav-footer">
                     <ul class="list-group  list-group-flush list-footer">
                         <li class="list-group-item list-item-footer list-item-footer-first">
-                            <a href="/about" class="ac-text-light">About</a>
+                            <a class="ac-text-light" href="/about">About</a>
                         </li>
                         <li class="list-group-item list-item-footer">
-                            <a href="/services" class="ac-text-light">Services</a>
+                            <a class="ac-text-light" href="/services">Services</a>
                         </li>
                         <li class="list-group-item list-item-footer">
-                            <a href="/resources" class="ac-text-light">Resources</a>
+                            <a class="ac-text-light" href="/team">Team Members</a>
                         </li>
                         <li class="list-group-item list-item-footer">
-                            <a href="/team" class="ac-text-light">Team Members</a>
+                            <a class="ac-text-light" href="/join-us">Join Us</a>
                         </li>
                         <li class="list-group-item list-item-footer">
-                            <a href="/donate" class="ac-text-light">Donate</a>
-                        </li>
-                        <li class="list-group-item list-item-footer">
-                            <a href="/join-us" class="ac-text-light">Join Us</a>
-                        </li>
-                        <li class="list-group-item list-item-footer">
-                            <a href="/blog" class="ac-text-light">Blog</a>
+                            <a class="ac-text-light" href="/blog">Blog</a>
                         </li>
                     </ul>
                 </nav>
             </div>
             <div class="col-md-5 col-lg-5 info-footer">
                 <dl class="ac-text-light">
-                    <dt>Mailing Address</dt><dd>PO Box 46; Paeonian Springs, VA, 20129</dd>
-                    <dt>Email</dt><dd><a href="mailto:info@accessiblecommunity.org"  class="ac-text-light">info@accessiblecommunity.org</a></dd>
+                    <dt>Mailing Address</dt>
+                        <dd>PO Box 46; Paeonian Springs, VA, 20129</dd>
+                    <dt>Email</dt>
+                        <dd>
+                            <a class="ac-text-light" href="mailto:info@accessiblecommunity.org">info@accessiblecommunity.org</a>
+                        </dd>
                     <dt>Phone Number</dt>
-                    <dd>703-651-6703</dd>
+                        <dd>703-651-6703</dd>
                     <dt>Socials</dt>
-                    <dd class="icon-footer icon-footer-first"><a href="https://www.facebook.com/AccessibleCommunity" class=".ac-text-light"><img src="" alt="Facebook" class="icon-image-footer"></a></dd>
-                    <dd class="icon-footer"><a href="https://in.linkedin.com/company/accessible-community" class=".ac-text-light"><img src="" alt="LinkedIn" class="icon-image-footer"></a></dd>
-                    <dd class="icon-footer"><a href="https://www.instagram.com/accessible_community/" class=".ac-text-light"><img src="" alt="Instagram" class="icon-image-footer"></a></dd>
+                    { Socials.map(({icon, href, name}) =>
+                        <dd class="d-inline-block">
+                            <a class="ac-text-light" href={ href } target="_blank">
+                                <Icon class="bi social-icon" alt={ name } name={ icon } />
+                            </a>
+                        </dd>
+                    )}
                 </dl>
             </div>
         </div>
@@ -58,14 +82,6 @@ const currentYear = new Date().getFullYear();
     /* * {
         border: 1px solid white;
     } */
-    
-    .hr-footer {
-        margin-bottom: 0;
-    }
-
-    .ac-purple-bg {
-        background-color: #041058;
-    }
 
     .container-footer {
         padding: 2% 5% 2% 5%;
@@ -84,22 +100,10 @@ const currentYear = new Date().getFullYear();
         padding-top: 0;
     }
 
-    .ac-text-light {
-        color: #dfe1ed;
-    }
-
-    .icon-footer {
-        display: inline-block;
-        padding: 
-        0% 1%;
-    }
-
-    .icon-footer-first {
-        padding-left: 0;
-    }
-
-    .icon-image-footer {
-        color: #dfe1ed;
+    .social-icon {
+        margin: 14.5px;
+        width: 29px;
+        height: 29px;
     }
 
     .legal-footer {
