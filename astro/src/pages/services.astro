@@ -37,7 +37,7 @@ const services = [{
       At <span class="ac-text-white text-brand">Accessible <strong>Community</strong></span>,
       we believe that technology <br/>
       can <strong>build community</strong> and <strong>increase equity</strong>.<br/>
-      For people with disabilities and their families, <br />
+      For people with disabilities and their caretakers,<br/>
       <strong>community and equity</strong> are two important goals.
     </p>
   </Hero>
@@ -49,7 +49,7 @@ const services = [{
       and <strong>promote accessible organizations</strong>. We practice what we preach; the tools we develop
       are fully accessible, following the best practices, guidelines and standards to ensure
       usability, not just compliance. The "a11y" in our tool names stands for accessibility 
-      (11 letters between a and y).
+      (11 letters between the 'a' and 'y').
     </p>
     <div class="row g-4 py-4 row-cols-1 row-cols-lg-3">
       { services.map(({ icon, title, text, link }) =>
@@ -64,7 +64,7 @@ const services = [{
           { link ? 
           <p class="ms-5 me-4">
             Go to
-            <a href={link} class="icon-link">
+            <a href={link} class="icon-link" target="_blank">
               <span set:html={title} />
               <Icon name="bi:chevron-right" class="bi" height="1em"></Icon>
           </a>
