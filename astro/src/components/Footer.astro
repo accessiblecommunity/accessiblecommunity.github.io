@@ -31,19 +31,19 @@ const Socials = [{
             <div class="col-md-3">
                 <nav class="nav-footer">
                     <ul class="list-group  list-group-flush list-footer">
-                        <li class="list-group-item list-item-footer list-item-footer-first">
+                        <li class="list-group-item bg-transparent ps-0 pt-0">
                             <a class="ac-text-light" href="/about">About</a>
                         </li>
-                        <li class="list-group-item list-item-footer">
+                        <li class="list-group-item bg-transparent ps-0">
                             <a class="ac-text-light" href="/services">Services</a>
                         </li>
-                        <li class="list-group-item list-item-footer">
+                        <li class="list-group-item bg-transparent ps-0">
                             <a class="ac-text-light" href="/team">Team Members</a>
                         </li>
-                        <li class="list-group-item list-item-footer">
+                        <li class="list-group-item bg-transparent ps-0">
                             <a class="ac-text-light" href="/join-us">Join Us</a>
                         </li>
-                        <li class="list-group-item list-item-footer">
+                        <li class="list-group-item bg-transparent ps-0">
                             <a class="ac-text-light" href="/blog">Blog</a>
                         </li>
                     </ul>
@@ -63,7 +63,7 @@ const Socials = [{
                     { Socials.map(({icon, href, name}) =>
                         <dd class="d-inline-block">
                             <a class="ac-text-light" href={ href } target="_blank">
-                                <Icon class="bi social-icon" alt={ name } name={ icon } />
+                                <Icon class="social-icon" alt={ name } name={ icon } />
                             </a>
                         </dd>
                     )}
@@ -89,15 +89,6 @@ const Socials = [{
 
     .nav-footer {
         margin-bottom: 2%;
-    }
-
-    .list-item-footer {
-        background: transparent;
-        padding-left: 0;
-    }
-
-    .list-item-footer-first {
-        padding-top: 0;
     }
 
     .social-icon {

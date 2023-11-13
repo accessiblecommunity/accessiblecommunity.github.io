@@ -31,7 +31,7 @@
               </ul>
             </li>
             <li class="nav-item">
-              <a class="nav-link text-ac" href="/services" role="button">
+              <a class="nav-link ac-text" href="/services" role="button">
                 Services
               </a>
               <!-- <ul class="dropdown-menu p-0 menu-nav">
@@ -76,7 +76,7 @@
               </ul>
             </li>
           </ul>
-          <a class="btn btn-lg my-2 donate-link-navbar ac-text" href="/donate" role="button">Donate</a>
+          <a class="btn btn-lg my-2 bg-ac ac-text-light" href="/donate" role="button">Donate</a>
       </div>
     </div>
   </nav>
@@ -134,11 +134,12 @@
   }
 
   .main-list {
-    border: 3.5px solid;
+    border-width: 3.5px;
+    border-style: solid;
     border-radius: 0.5rem;
   }
 
-  .main-list, .menu-nav {
+  .main-list, .menu-nav, .link-dropdown {
     border-color: #dfe1ed;
   }
 
@@ -151,15 +152,12 @@
   }
 
   .link-dropdown {
-    border-bottom: 3.5px solid #dfe1ed;
+    border-bottom-width: 3.5px;
+    border-bottom-style: solid;
   }
 
   .link-dropdown:hover {
     animation-timing-function: ease;
-  }
-
-  .donate-link-navbar { 
-    background-color: #041058;
   }
 </style>
 
