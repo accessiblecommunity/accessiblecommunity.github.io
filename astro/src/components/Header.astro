@@ -3,19 +3,19 @@
   
 <header class="bg-white sticky-top">
   <a class="visually-hidden-focusable position-absolute btn btn-lg skip-link" href="#main-content">Skip to Main Content</a>
-  <nav class="navbar navbar-expand-md">
-    <div class="container-fluid mx-5">
-      <div class="d-flex me-3 stacking-helper">
+  <nav class="navbar navbar-expand-lg">
+    <div class="container-fluid p-auto">
+      <div class="d-flex align-items-center">
         <div>
-          <a class="navbar-brand ac-text" href="/">
-              <img class="img-fluid align-text-top" style="height: 1.1em; " src="/images/ac_logo_blue.png" />
-              Accessible <strong>Community</strong>
-          </a>
-        </div>
-        <div class="mt-2">
           <button class="navbar-toggler dropdown-toggle btn border-2 toggle-menu ac-text" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span>Menu</span>
           </button>
+        </div>
+        <div class="ms-2">
+          <a class="navbar-brand me-auto ac-text" href="/">
+              <img class="img-fluid align-text-top" style="height: 1.1em; " src="/images/ac_logo_blue.png" />
+              Accessible <strong>Community</strong>
+          </a>
         </div>
       </div>
       <div id="navbarSupportedContent" class="collapse align-items-center navbar-collapse justify-content-end">
@@ -105,10 +105,6 @@
   .skip-link, .link-dropdown:hover {
     color: #dfe1ed;
     background-color: #041058;
-  }
-
-  .stacking-helper {
-    flex-direction: column;
   }
 
   .toggle-menu {
