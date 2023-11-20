@@ -26,11 +26,23 @@ const Socials = [{
 ---
 <!-- d-flex flex-row justify-content-between -->
 <footer id="footer">
-    <div class="bg-ac px-2 container-footer">
+    <div class="bg-ac px-4 pt-2 container-footer">
         <div class="row align-items-start justify-content-between">
+            <div class="col-md-3 info-footer">
+                <dl class="mb-0 ac-text-light">
+                    <dt class="display-65">Mailing Address</dt>
+                        <dd class="display-7">PO Box 46; Paeonian Springs, VA, 20129</dd>
+                    <dt class="display-65">Email</dt>
+                        <dd class="display-7">
+                            <a class="ac-text-light" href="mailto:info@accessiblecommunity.org">info@accessiblecommunity.org</a>
+                        </dd>
+                    <dt class="display-65">Phone Number</dt>
+                        <dd class="display-7">703-651-6703</dd>
+                </dl>
+            </div>
             <div class="col-md-4">
                 <nav class="nav-footer">
-                    <ul class="list-unstyled d-flex flex-column flex-md-row">
+                    <ul class="list-unstyled d-flex flex-column flex-md-row justify-content-between">
                         <li class="fw-bold display-65 ac-text-light">
                             Company
                                 <ul class="p-0 list-unstyled mb-2 me-4">
@@ -62,31 +74,22 @@ const Socials = [{
                     </ul>
                 </nav>
             </div>
-            <div class="col-md-3 info-footer">
-                <dl class="ac-text-light">
-                    <dt class="display-65">Mailing Address</dt>
-                        <dd class="display-7">PO Box 46; Paeonian Springs, VA, 20129</dd>
-                    <dt class="display-65">Email</dt>
-                        <dd class="display-7">
-                            <a class="ac-text-light" href="mailto:info@accessiblecommunity.org">info@accessiblecommunity.org</a>
-                        </dd>
-                    <dt class="display-65">Phone Number</dt>
-                        <dd class="display-7">703-651-6703</dd>
-                </dl>
-            </div>
-            <div class="col-md-3 d-flex flex-column">
-                <ul class="ps-0 mb-0 text-center">
-                    { Socials.map(({icon, href, className, name}) =>
-                    <li class="d-inline-block">
-                        <a class="d-inline-block ac-text-light" href={ href } target="_blank">
-                            <Icon name={ icon } class={ className } class= "social-icon" height="29" width="29" alt={ name }></Icon> 
-                        </a>
-                    </li>
-                    )}
-                </ul>
-                <div class="align-self-end">
-                    <p class="text-center display-7 ac-text-light"><small>Accessible Community is a 501(c)3&nbsp;organization.</small></p>
-                    <p class="text-center display-7 ac-text-light"><small>© <time datetime="{currentYear}">{currentYear}</time> Accessible Community</small></p>
+            <div class="col-md-4 flex-column">
+                <div>
+                    <p class="fw-bold display-65 text-center mb-0">Engage with Us on Social Media</p>
+                    <ul class="ps-0 mb-0 text-center">
+                        { Socials.map(({icon, href, className, name}) =>
+                        <li class="d-inline-block">
+                            <a class="d-inline-block ac-text-light" href={ href } target="_blank">
+                                <Icon name={ icon } class={ className } class= "social-icon" height="29" width="29" alt={ name }></Icon> 
+                            </a>
+                        </li>
+                        )}
+                    </ul>
+                </div>
+                <div class="mt-2 legal-footer">
+                    <p class="pt-2 text-center display-65 mb-0 ac-text-light"><small>Accessible Community is a 501(c)3&nbsp;organization.</small></p>
+                    <p class="text-center display-65 mb-0 ac-text-light"><small>© <time datetime="{currentYear}">{currentYear}</time> Accessible&nbsp;Community</small></p>
                 </div>
             </div>
         </div>
@@ -95,11 +98,10 @@ const Socials = [{
 
 <style>
     /* first declaration that is commented out below is for debugging purposes. */
-    * {
+    /* * {
         border: 1px solid white;
-    }
+    } */
     .container-footer {
-        padding-top: 14.5px; 
         padding-bottom: 0.5rem; 
     }
 
@@ -108,6 +110,10 @@ const Socials = [{
     }
 
     .social-icon {
-        margin: 0px 14.5px 14.5px 14.5px;
+        margin: 14.5px;
+    }
+
+    .legal-footer {
+        border-top: 1px solid #dfe1ed;
     }
 </style>
