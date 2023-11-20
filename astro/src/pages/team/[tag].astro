@@ -13,7 +13,10 @@ export async function getStaticPaths() {
 }
 
 import Layout from '../../layouts/Layout.astro';
+import Hero from '../../components/Hero.astro';
 import Profile from '../../components/Profile.astro';
+import Section from '../../components/Section.astro';
+
 import { sortBy } from 'lodash-es';
 
 const { tag } = Astro.params;
@@ -28,17 +31,23 @@ const profiles = sortBy(
 ---
 
 <Layout title={title}>
-	<div class="mb-3" slot="header">
-		<h2 class="mb-0">{ title }</h2>
-    <a href="/team" class="text-secondary">&leftarrow; Back to Team</a>
-	</div>
-  <ul class={mini ? 'mini list-inline' : 'list-group'}>
-    { profiles.map((p) =>
-      <li class={mini ? 'list-inline-item' : 'd-block'}>
-        <Profile profile={p} mini={mini} />
-      </li>
-    )}
-  </ul>
+  <span slot="header" />
+
+  <Hero image={ null } columns="col-lg-6">
+    <h1 class="display-3 text-white p-0" slot="heading">
+      Our {title}
+    </h1>
+  </Hero>
+
+  <Section theme="body-tertiary py-3 px-5">
+    <ul class={mini ? 'mini list-inline' : 'list-group'}>
+      { profiles.map((p) =>
+        <li class={mini ? 'list-inline-item' : 'd-block'}>
+          <Profile profile={p} mini={mini} />
+        </li>
+      )}
+    </ul>
+  </Section>
 </Layout>
 
 <style>
