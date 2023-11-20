@@ -9,24 +9,24 @@ const instagramURL = "https://www.instagram.com/accessible_community/";
 
 const Socials = [{
   name: 'Facebook',
-  icon: 'cib:facebook',
+  icon: 'bi:facebook',
   href: facebookURL,
-  className: 'cib-facebook',
+  className: 'bi bi-facebook social-icon',
 }, {
   name: 'LinkedIn',
-  icon: 'cib:linkedin',
+  icon: 'bi:linkedin',
   href: linkedinURL,
-  className: 'cib-linkedin',
+  className: 'bi bi-linkedin social-icon',
 }, {
   name: 'Instagram',
-  icon: 'cib:instagram',
+  icon: 'bi:instagram',
   href: instagramURL,
-  className: 'cib-instagram',
+  className: 'bi bi-instagram social-icon',
 }]
 ---
 
 <footer id="footer">
-    <div class="bg-ac container-footer">
+    <div class="bg-ac px-2 container-footer">
         <div class="row align-items-start justify-content-between">
             <div class="col-md-3">
                 <nav class="nav-footer">
@@ -49,7 +49,7 @@ const Socials = [{
                     </ul>
                 </nav>
             </div>
-            <div class="col-md-5 col-lg-5 info-footer">
+            <div class="col-md-4 col-lg-4 info-footer">
                 <dl class="ac-text-light">
                     <dt>Mailing Address</dt>
                         <dd>PO Box 46; Paeonian Springs, VA, 20129</dd>
@@ -59,18 +59,21 @@ const Socials = [{
                         </dd>
                     <dt>Phone Number</dt>
                         <dd>703-651-6703</dd>
-                    <dt>Socials</dt>
-                    { Socials.map(({icon, href, name}) =>
-                        <dd class="d-inline-block">
-                            <a class="ac-text-light" href={ href } target="_blank">
-                                <Icon class="social-icon" alt={ name } name={ icon } />
-                            </a>
-                        </dd>
-                    )}
                 </dl>
             </div>
+            <div class="col-md-4">
+                <ul class="ps-0 text-center text-md-end">
+                    { Socials.map(({icon, href, className, name}) =>
+                    <li class="d-inline-block">
+                        <a class="d-inline-block ac-text-light" href={ href } target="_blank">
+                            <Icon name={ icon } class={ className } class= "social-icon" height="29" width="29" alt={ name }></Icon> 
+                        </a>
+                    </li>
+                    )}
+                </ul>
+            </div>
         </div>
-        <div class="text-center legal-footer">
+        <div class="text-center">
             <p class="ac-text-light"><small>Accessible Community is a 501(c)3 organization.</small></p>
             <p class="ac-text-light"><small>© <time datetime="{currentYear}">{currentYear}</time> Accessible Community</small></p>
         </div>
@@ -79,12 +82,13 @@ const Socials = [{
 
 <style>
     /* first declaration that is commented out below is for debugging purposes. */
-    /* * {
+    * {
         border: 1px solid white;
-    } */
+    }
 
     .container-footer {
-        padding: 2% 5% 2% 5%;
+        padding-top: 0.5rem; 
+        padding-bottom: 0.5rem; 
     }
 
     .nav-footer {
@@ -93,11 +97,5 @@ const Socials = [{
 
     .social-icon {
         margin: 14.5px;
-        width: 29px;
-        height: 29px;
-    }
-
-    .legal-footer {
-        padding-top: 2%;
     }
 </style>
