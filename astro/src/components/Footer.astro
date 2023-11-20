@@ -24,45 +24,58 @@ const Socials = [{
   className: 'bi bi-instagram social-icon',
 }]
 ---
-
+<!-- d-flex flex-row justify-content-between -->
 <footer id="footer">
     <div class="bg-ac px-2 container-footer">
         <div class="row align-items-start justify-content-between">
-            <div class="col-md-3">
+            <div class="col-md-4">
                 <nav class="nav-footer">
-                    <ul class="list-group  list-group-flush list-footer">
-                        <li class="list-group-item bg-transparent ps-0 pt-0">
-                            <a class="ac-text-light" href="/about">About</a>
-                        </li>
-                        <li class="list-group-item bg-transparent ps-0">
-                            <a class="ac-text-light" href="/services">Services</a>
-                        </li>
-                        <li class="list-group-item bg-transparent ps-0">
-                            <a class="ac-text-light" href="/team">Team Members</a>
-                        </li>
-                        <li class="list-group-item bg-transparent ps-0">
-                            <a class="ac-text-light" href="/join-us">Join Us</a>
-                        </li>
-                        <li class="list-group-item bg-transparent ps-0">
-                            <a class="ac-text-light" href="/blog">Blog</a>
+                    <ul class="list-unstyled justify-content-between">
+                        <li class="fw-bold display-65 ac-text-light">
+                            Company
+                                <ul class="p-0 list-unstyled mb-2">
+                                    <li class="display-7">
+                                        <a class="ac-text-light" href="">Accessibility&nbsp;Statement</a>
+                                    </li>
+                                    <li class="display-7">
+                                        <a class="ac-text-light" href="">Staff Positions</a>
+                                    </li>
+                                    <li class="display-7">
+                                        <a class="ac-text-light" href="">Technology&nbsp;Guidance</a>
+                                    </li>
+                                </ul>
+                            </li>  
+                        <li class="fw-bold display-65 ac-text-light">
+                        Policies
+                            <ul class="p-0 list-unstyled me-4">
+                                <li class="display-7">
+                                    <a class="ac-text-light" href="">Privacy&nbsp;Policy</a>
+                                </li>
+                                <li class="display-7">
+                                    <a class="ac-text-light" href="">Staff&nbsp;Policy</a>
+                                </li>
+                                <li class="display-7">
+                                    <a class="ac-text-light" href="">Code&nbsp;of&nbsp;Conduct</a>
+                                </li>
+                            </ul>
                         </li>
                     </ul>
                 </nav>
             </div>
-            <div class="col-md-4 col-lg-4 info-footer">
+            <div class="col-md-3 info-footer">
                 <dl class="ac-text-light">
-                    <dt>Mailing Address</dt>
-                        <dd>PO Box 46; Paeonian Springs, VA, 20129</dd>
-                    <dt>Email</dt>
-                        <dd>
+                    <dt class="display-65">Mailing Address</dt>
+                        <dd class="display-7">PO Box 46; Paeonian Springs, VA, 20129</dd>
+                    <dt class="display-65">Email</dt>
+                        <dd class="display-7">
                             <a class="ac-text-light" href="mailto:info@accessiblecommunity.org">info@accessiblecommunity.org</a>
                         </dd>
-                    <dt>Phone Number</dt>
-                        <dd>703-651-6703</dd>
+                    <dt class="display-65">Phone Number</dt>
+                        <dd class="display-7">703-651-6703</dd>
                 </dl>
             </div>
             <div class="col-md-4">
-                <ul class="ps-0 text-center text-md-end">
+                <ul class="ps-0 mb-0 text-center text-md-end">
                     { Socials.map(({icon, href, className, name}) =>
                     <li class="d-inline-block">
                         <a class="d-inline-block ac-text-light" href={ href } target="_blank">
@@ -71,23 +84,24 @@ const Socials = [{
                     </li>
                     )}
                 </ul>
+                <!-- <p class="ac-text-light text-center text-md-end"><small>Accessible Community is a 501(c)3&nbsp;organization.</small></p>
+                <p class="ac-text-light text-center text-md-end"><small>© <time datetime="{currentYear}">{currentYear}</time> Accessible Community</small></p> -->
             </div>
         </div>
-        <div class="text-center">
-            <p class="ac-text-light"><small>Accessible Community is a 501(c)3 organization.</small></p>
-            <p class="ac-text-light"><small>© <time datetime="{currentYear}">{currentYear}</time> Accessible Community</small></p>
+        <div class="text-center justify-content-center">
+            <p class="mb-0 me-2 ac-text-light"><small>Accessible Community is a 501(c)3 organization.</small></p>
+            <p class="mb-0 ac-text-light"><small>© <time datetime="{currentYear}">{currentYear}</time> Accessible Community</small></p>
         </div>
     </div>
 </footer>
 
 <style>
     /* first declaration that is commented out below is for debugging purposes. */
-    * {
+    /* * {
         border: 1px solid white;
-    }
-
+    } */
     .container-footer {
-        padding-top: 0.5rem; 
+        padding-top: 14.5px; 
         padding-bottom: 0.5rem; 
     }
 
@@ -96,6 +110,6 @@ const Socials = [{
     }
 
     .social-icon {
-        margin: 14.5px;
+        margin: 0px 14.5px 14.5px 14.5px;
     }
 </style>
