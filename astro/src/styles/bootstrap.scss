@@ -18,6 +18,9 @@ $h6-font-size:                1rem;
 $headings-color:              #041058;
 $headings-font-weight:        400;
 
+$blockquote-font-size:        1.25em;
+$code-color:                  #590455;
+
 $display-font-sizes: (
   1: 4rem,
   2: 3.5rem,
@@ -43,6 +46,8 @@ $color-mode-type:      data;
 // 4. Include any default map overrides here
 $brand-colors: (
   "ac": #041058,
+  "ac2": #95B2E0,
+  "ac3": #A9B6FB,
   "facebook": #4267B2,
   "instagram": #5B51D8,
   "linkedin": #2E64BC,
