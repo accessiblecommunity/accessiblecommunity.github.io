@@ -1,54 +1,97 @@
 ---
+import { Icon } from 'astro-icon';
+
 const currentYear = new Date().getFullYear();
+
+const facebookURL = "https://www.facebook.com/AccessibleCommunity";
+const linkedinURL = "https://in.linkedin.com/company/accessible-community";
+const instagramURL = "https://www.instagram.com/accessible_community/";
+
+const Socials = [{
+  name: 'Facebook',
+  icon: 'bi:facebook',
+  href: facebookURL,
+  className: 'bi bi-facebook social-icon',
+}, {
+  name: 'LinkedIn',
+  icon: 'bi:linkedin',
+  href: linkedinURL,
+  className: 'bi bi-linkedin social-icon',
+}, {
+  name: 'Instagram',
+  icon: 'bi:instagram',
+  href: instagramURL,
+  className: 'bi bi-instagram social-icon',
+}]
 ---
 
-<hr class="hr-footer"/>
 <footer id="footer">
-    <div class="ac-purple-bg container-footer">
+    <div class="bg-ac px-4 pt-2 container-footer">
         <div class="row align-items-start justify-content-between">
-            <div class="col-md-3">
+            <div class="col-md-3 info-footer">
+                <dl class="mb-0 ac-text-light">
+                    <dt class="display-65">Mailing Address</dt>
+                        <dd class="display-7">PO Box 46; Paeonian Springs, VA, 20129</dd>
+                    <dt class="display-65">Email</dt>
+                        <dd class="display-7">
+                            <a class="ac-text-light" href="mailto:info@accessiblecommunity.org">info@accessiblecommunity.org</a>
+                        </dd>
+                    <dt class="display-65">Phone Number</dt>
+                        <dd class="display-7">703-651-6703</dd>
+                </dl>
+            </div>
+            <div class="col-md-4">
                 <nav class="nav-footer">
-                    <ul class="list-group  list-group-flush list-footer">
-                        <li class="list-group-item list-item-footer list-item-footer-first">
-                            <a href="/about" class="ac-text-light">About</a>
-                        </li>
-                        <li class="list-group-item list-item-footer">
-                            <a href="/services" class="ac-text-light">Services</a>
-                        </li>
-                        <li class="list-group-item list-item-footer">
-                            <a href="/resources" class="ac-text-light">Resources</a>
-                        </li>
-                        <li class="list-group-item list-item-footer">
-                            <a href="/team" class="ac-text-light">Team Members</a>
-                        </li>
-                        <li class="list-group-item list-item-footer">
-                            <a href="/donate" class="ac-text-light">Donate</a>
-                        </li>
-                        <li class="list-group-item list-item-footer">
-                            <a href="/join-us" class="ac-text-light">Join Us</a>
-                        </li>
-                        <li class="list-group-item list-item-footer">
-                            <a href="/blog" class="ac-text-light">Blog</a>
+                    <ul class="list-unstyled d-flex flex-column flex-md-row justify-content-between">
+                        <li class="fw-bold display-65 ac-text-light">
+                            Community
+                                <ul class="p-0 list-unstyled mb-2 me-4">
+                                    <li>
+                                        <a class="display-7 ac-text-light" href="">Accessibility&nbsp;Statement</a>
+                                    </li>
+                                    <li>
+                                        <a class="display-7 ac-text-light" href="">Staff Positions</a>
+                                    </li>
+                                    <li>
+                                        <a class="display-7 ac-text-light" href="">Technology&nbsp;Guidance</a>
+                                    </li>
+                                </ul>
+                            </li>  
+                        <li class="fw-bold display-65 ac-text-light">
+                        Policies
+                            <ul class="p-0 list-unstyled me-4">
+                                <li>
+                                    <a class="display-7 ac-text-light" href="">Privacy&nbsp;Policy</a>
+                                </li>
+                                <li>
+                                    <a class="display-7 ac-text-light" href="">Staff&nbsp;Policy</a>
+                                </li>
+                                <li>
+                                    <a class="display-7 ac-text-light" href="">Code&nbsp;of&nbsp;Conduct</a>
+                                </li>
+                            </ul>
                         </li>
                     </ul>
                 </nav>
             </div>
-            <div class="col-md-5 col-lg-5 info-footer">
-                <dl class="ac-text-light">
-                    <dt>Mailing Address</dt><dd>PO Box 46; Paeonian Springs, VA, 20129</dd>
-                    <dt>Email</dt><dd><a href="mailto:info@accessiblecommunity.org"  class="ac-text-light">info@accessiblecommunity.org</a></dd>
-                    <dt>Phone Number</dt>
-                    <dd>703-651-6703</dd>
-                    <dt>Socials</dt>
-                    <dd class="icon-footer icon-footer-first"><a href="https://www.facebook.com/AccessibleCommunity" class=".ac-text-light"><img src="" alt="Facebook" class="icon-image-footer"></a></dd>
-                    <dd class="icon-footer"><a href="https://in.linkedin.com/company/accessible-community" class=".ac-text-light"><img src="" alt="LinkedIn" class="icon-image-footer"></a></dd>
-                    <dd class="icon-footer"><a href="https://www.instagram.com/accessible_community/" class=".ac-text-light"><img src="" alt="Instagram" class="icon-image-footer"></a></dd>
-                </dl>
+            <div class="col-md-4 flex-column">
+                <div>
+                    <p class="fw-bold display-65 text-center mb-0 ac-text-light">Find Us on Social</p>
+                    <ul class="ps-0 mb-0 text-center">
+                        { Socials.map(({icon, href, className, name}) =>
+                        <li class="d-inline-block">
+                            <a class="d-inline-block ac-text-light" href={ href } target="_blank">
+                                <Icon name={ icon } class={ className } class= "social-icon" height="29" width="29" alt={ name }></Icon> 
+                            </a>
+                        </li>
+                        )}
+                    </ul>
+                </div>
+                <div class="mt-2 legal-footer">
+                    <p class="pt-2 text-center display-65 mb-0 ac-text-light"><small>Accessible Community is a 501(c)3&nbsp;organization.</small></p>
+                    <p class="text-center display-65 mb-0 ac-text-light"><small>© <time datetime="{currentYear}">{currentYear}</time> Accessible&nbsp;Community</small></p>
+                </div>
             </div>
-        </div>
-        <div class="text-center legal-footer">
-            <p class="ac-text-light"><small>Accessible Community is a 501(c)3 organization.</small></p>
-            <p class="ac-text-light"><small>© <time datetime="{currentYear}">{currentYear}</time> Accessible Community</small></p>
         </div>
     </div>
 </footer>
@@ -58,51 +101,27 @@ const currentYear = new Date().getFullYear();
     /* * {
         border: 1px solid white;
     } */
-    
-    .hr-footer {
-        margin-bottom: 0;
-    }
 
-    .ac-purple-bg {
-        background-color: #041058;
+    *:focus-visible {
+    outline: 6px dashed white;
+    outline-offset: 3px;
+    box-shadow: none;
+    border-radius: 0.5rem;
     }
 
     .container-footer {
-        padding: 2% 5% 2% 5%;
+        padding-bottom: 0.5rem; 
     }
 
     .nav-footer {
         margin-bottom: 2%;
     }
 
-    .list-item-footer {
-        background: transparent;
-        padding-left: 0;
-    }
-
-    .list-item-footer-first {
-        padding-top: 0;
-    }
-
-    .ac-text-light {
-        color: #dfe1ed;
-    }
-
-    .icon-footer {
-        display: inline-block;
-        padding: 
-        0% 1%;
-    }
-
-    .icon-footer-first {
-        padding-left: 0;
-    }
-
-    .icon-image-footer {
-        color: #dfe1ed;
+    .social-icon {
+        margin: 14.5px;
     }
 
     .legal-footer {
-        padding-top: 2%;
+        border-top: 1px solid #dfe1ed;
     }
 </style>
