@@ -4,19 +4,25 @@
 <form class="col-md-6 p-4 border-ac tip-form">
   <p class="display-6">Want a <strong class="text-ac">free and simple</strong> way to learn about accessibility? Sign up for our weekly "Tip of the Week" email to receive quick accessibility tips that can improve your website, social media, events, and more.</p>
   <p class="display-7">Fill out this short form to sign up. Required fields are marked with an asterisk (<abbr class="display-65 text-ac" title="required">*</abbr>).</p>
-  <div class="mb-3">
-   <label for="firstNameField" class="form-label w-100 mb-1 display-65">First Name <abbr class="display-65 text-ac" title="required">*</abbr></label>
-   <input type="text" class="form-control form-field" id="firstNameField" autocomplete="given-name" required>
- </div>
- <div class="mb-3">
-  <label for="lastNameField" class="form-label w-100 mb-1 display-65">Last Name</label>
-  <input type="text" class="form-control form-field" id="lastNameField" autocomplete="family-name">
-</div>
- <div class="mb-3">
-  <label for="emailField" class="form-label w-100 mb-1 display-65">Email address <abbr class="display-65 text-ac" title="required">*</abbr></label>
-  <input type="email" class="form-control form-field" id="emailField" autocomplete="email" required>
- </div>
- <button type="submit" class="btn bg-ac text-white display-65">Sign Up</button>
+  <div class="row d-flex justify-content-between">
+    <div class="mb-3 col">
+      <label for="firstNameField" class="form-label w-100 mb-1 display-65">First Name <abbr class="display-65 text-ac" title="required">*</abbr></label>
+      <input type="text" class="form-control form-field" id="firstNameField" autocomplete="given-name" required>
+    </div>
+    <div class="mb-3 col">
+      <label for="lastNameField" class="form-label w-100 mb-1 display-65">Last Name</label>
+      <input type="text" class="form-control form-field" id="lastNameField" autocomplete="family-name">
+    </div>
+  </div>
+    <div class="mb-3">
+      <label for="emailField" class="form-label w-100 mb-1 display-65">Email address <abbr class="display-65 text-ac" title="required">*</abbr></label>
+      <input type="email" class="form-control form-field" id="emailField" autocomplete="email" required>
+    </div>
+  <div class="row">
+    <div class="col">
+      <button type="submit" class="btn bg-ac text-white display-65 w-100 tip-button">Sign Up</button>
+    </div>
+  </div>
 </form>
 
 <style>
@@ -30,6 +36,10 @@
     outline-offset: 1px 2px;
     box-shadow: none;
     border-radius: 0.5rem;
+  }
+
+  .tip-button:focus-visible {
+    outline-offset: 3px;
   }
 
   .tip-form {
