@@ -2,13 +2,15 @@
 import { Icon } from 'astro-icon';
 ---
   
-<header class="bg-white sticky-top">
-  <a class="visually-hidden-focusable position-absolute btn btn-lg skip-link" href="#main-content">Skip to Main Content</a>
+<header class="sticky-top bg-body">
+  <a class="visually-hidden-focusable position-absolute btn btn-lg btn-ac" href="#main-content">
+    Skip to Main Content
+  </a>
   <nav class="navbar navbar-expand-lg">
     <div class="container-fluid px-2">
       <div class="d-flex align-items-center">
         <div class="pe-2">
-          <button class="navbar-toggler dropdown-toggle toggle-menu ac-text" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <button class="navbar-toggler toggle-menu text-ac" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <Icon name="bi:list" class="bi bi-list" height="24" width="24"></Icon>
           </button>
         </div>
@@ -18,17 +20,15 @@ import { Icon } from 'astro-icon';
             Accessible <strong>Community</strong>
           </a>
         </div>
-        <div class="mt-2">
-          <button class="navbar-toggler dropdown-toggle btn border-2 toggle-menu text-ac" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span>Menu</span>
-          </button>
-        </div>
       </div>
       <div id="navbarSupportedContent" class="collapse align-items-center navbar-collapse justify-content-end">
           <ul class="navbar-nav my-2 main-list" aria-role="navigation">
             <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle display-65 text-ac" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <a class="nav-link d-inline-block pe-1 display-65 main-menu-item text-ac" href="/about" role="button">
                 About
+              </a>
+              <a class="nav-link d-inline-block ps-0 dropdown-toggle dropdown-toggle-split display-65 main-menu-item text-ac" href="/services" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <span class="visually-hidden">Toggle Services Menu</span>
               </a>
               <ul class="dropdown-menu p-0 menu-nav">
                 <li><a class="dropdown-item display-7 link-dropdown text-ac" href="">Mission, Vision, Values</a></li>
@@ -36,17 +36,18 @@ import { Icon } from 'astro-icon';
                 <li><a class="dropdown-item display-7 link-dropdown text-ac" href="">Leadership</a></li>
               </ul>
             </li>
-            <li class="nav-item">
-              <a class="nav-link display-65 main-menu-item ac-text" href="/services" role="button">
+            <li class="nav-item dropdown">
+              <a class="nav-link d-inline-block pe-1 display-65 main-menu-item text-ac" href="/services" role="button">
                 Services
               </a>
-              <!-- <ul class="dropdown-menu p-0 menu-nav">
-                <li><a class="dropdown-item link-dropdown text-ac" href=""><strong>t</strong>a11y</a></li>
-                <li><a class="dropdown-item link-dropdown text-ac" href=""><strong>mutu</strong>a11y</a></li>
-                <li><a class="dropdown-item link-dropdown text-ac" href=""><strong>loc</strong>a11y</a></li>
-                <li><a class="dropdown-item link-dropdown text-ac" href="">Tip of the Week</a></li>
-                <li><a class="dropdown-item link-dropdown text-ac" href="">Newsletter Sign-Up</a></li>
-              </ul> -->
+              <a class="nav-link d-inline-block ps-0 dropdown-toggle dropdown-toggle-split display-65 main-menu-item text-ac" href="/services" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <span class="visually-hidden">Toggle Services Menu</span>
+              </a>
+              <ul class="dropdown-menu p-0 menu-nav">
+                <li><a class="dropdown-item display-7 link-dropdown text-ac" href="https://www.ta11y.org/"><strong>t</strong>a11y</a></li>
+                <li><a class="dropdown-item display-7 link-dropdown text-ac" href="https://www.mutua11y.org/"><strong>mutu</strong>a11y</a></li>
+                <li><a class="dropdown-item display-7 link-dropdown disabled" href="#"><strong>loc</strong>a11y</a></li>
+              </ul>
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle display-65 main-menu-item text-ac" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -82,35 +83,38 @@ import { Icon } from 'astro-icon';
               </ul>
             </li>
           </ul>
-          <a class="btn btn-ac my-2 ms-3 display-65 donate-button" href="/donate" role="button">Donate</a>
+          <a class="btn btn-ac my-2 mx-3 display-65 donate-button" href="/donate" role="button">Donate</a>
       </div>
     </div>
   </nav>
 </header>
 <slot />
 
-<style>
+<style lang="scss">
   /* first declaration that is commented out below is for debugging purposes. */
   /* * {
     outline: 1px solid black;
   } */
 
+  @import "../styles/ac.scss";
+  @import "bootstrap/scss/mixins/_color-mode.scss";
+
   *:focus-visible, .toggle-menu:focus {
-    outline: 6px dashed #041058;
+    outline: 6px dashed $ac-navy;
     outline-offset: 1px 2px;
     box-shadow: none;
     border-radius: 0.5rem;
   }
 
   .skip-link {
-    z-index: 1;
+    z-index: 5;
     top: 8px;
     left: 24px;
   }
 
-  .skip-link, .link-dropdown:hover {
+  .link-dropdown:hover {
     color: #dfe1ed;
-    background-color: #041058;
+    background: solid $ac-navy;
   }
 
   .toggle-menu {
@@ -148,7 +152,7 @@ import { Icon } from 'astro-icon';
     padding-left: 0.5rem;
   }
 
- .menu-nav {
+  .menu-nav {
     border-width: 8px;
   }
 
@@ -167,6 +171,31 @@ import { Icon } from 'astro-icon';
 
   [astro-icon="ac-logo"] {
     height: 1.1em;
+  }
+
+  @include color-mode(dark) {
+    *:focus-visible, .toggle-menu:focus {
+      outline: 6px dashed white;
+      outline-offset: 1px 2px;
+    }
+
+    .skip-link, .link-dropdown:hover {
+      color: var(--ac-navy);
+      background-color: white;
+    }
+
+    .main-menu-item:focus {
+      color: white;
+    }
+
+    .main-menu-item:hover, .main-menu-item:active {
+      background-color: white;
+    }
+
+    .navbar-toggler {
+      color: white !important;
+      background-color: $ac-navy;
+    }
   }
 </style>
 

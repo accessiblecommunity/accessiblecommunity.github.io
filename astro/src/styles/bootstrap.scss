@@ -40,6 +40,8 @@ $color-mode-type:      media-query;
 @import "bootstrap/scss/variables";
 @import "bootstrap/scss/variables-dark";
 
+@import "./ac";
+
 // 4. Include any default map overrides here
 $custom-colors: (
   "ac": #041058,
