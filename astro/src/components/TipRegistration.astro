@@ -3,20 +3,30 @@
 
 <form>
  <div class="mb-3">
-   <label for="firstNameField" class="form-label w-100">First Name</label>
-   <input type="text" class="form-control" id="firstNameField" aria-describedby="emailHelp">
+   <label for="firstNameField" class="form-label w-100 mb-1">First Name</label>
+   <input type="text" class="form-control form-field" id="firstNameField" aria-describedby="emailHelp">
  </div>
  <div class="mb-3">
-  <label for="lastNameField" class="form-label w-100">Last Name</label>
-  <input type="text" class="form-control" id="lastNameField" aria-describedby="emailHelp">
+  <label for="lastNameField" class="form-label w-100 mb-1">Last Name</label>
+  <input type="text" class="form-control form-field" id="lastNameField" aria-describedby="emailHelp">
 </div>
  <div class="mb-3">
-  <label for="emailField" class="form-label w-100">Email address</label>
-  <input type="email" class="form-control" id="emailField" aria-describedby="emailHelp">
+  <label for="emailField" class="form-label w-100 mb-1">Email address</label>
+  <input type="email" class="form-control form-field" id="emailField" aria-describedby="emailHelp">
  </div>
  <button type="submit" class="btn bg-ac text-white">Submit</button>
 </form>
 
 <style>
+  /* first declaration that is commented out below is for debugging purposes. */
+  /* * {
+    outline: 1px solid black;
+  } */
 
+  *:focus-visible, .form-field:focus {
+    outline: 6px dashed #041058;
+    outline-offset: 1px 2px;
+    box-shadow: none;
+    border-radius: 0.5rem;
+  }
 </style>
