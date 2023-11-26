@@ -5,7 +5,7 @@ import Hero from '../components/Hero.astro';
 import Layout from '../layouts/Layout.astro';
 import Section from '../components/Section.astro'
 
-import heroBg from '../images/hands-blue-1920x1080.png'
+import heroBg from '../images/girl-using-laptop-blue-1920x1080.png'
 
 const services = [{
   icon: 'ta11y-logo',
@@ -29,21 +29,25 @@ const services = [{
 <Layout title="Services">
   <span slot="header" />
 
-  <Hero image={ heroBg }>
-    <h2 class="display-3 text-white py-4" slot="heading">
+  <Hero image={ heroBg } columns="col-sm-12 col-md-9 col-lg-7 col-xl-6 col-xxl-5">
+    <div class="display-3 text-white py-4" slot="heading">
       An <strong>ethical</strong> technology <strong>nonprofit</strong>.
-    </h2>
-    <p class="lead">
-      At <span class="ac-text-white text-brand">Accessible <strong>Community</strong></span>,
-      we believe that technology <br/>
-      can <strong>build community</strong> and <strong>increase equity</strong>.<br/>
-      For people with disabilities and their caretakers,<br/>
-      <strong>community and equity</strong> are two important goals.
-    </p>
+    </div>
+    <div class="hero-bd p-1">
+      <p class="lead mb-0">
+        At <span class="text-brand">Accessible <strong>Community</strong></span>,
+        we believe that technology
+        can <strong>build community</strong> and <strong>increase equity</strong>.
+      </p>
+      <p class="lead">
+        For people with disabilities and their caretakers,
+        <strong>community and equity</strong> are two important goals.
+      </p>
+    </div>
   </Hero>
 
   <Section theme="body-tertiary p-4">
-    <h2 class="display-4 text-ac">Our <strong>tools</strong> and <strong>services</strong></h2>
+    <h1 class="display-4 text-ac">Our <strong>tools</strong> and <strong>services</strong></h1>
     <p class="border-bottom pb-2 lead text-ac me-4">
       We create tools and services to <strong>teach accessibility</strong>
       and <strong>promote accessible organizations</strong>. We practice what we preach; the tools we develop
@@ -58,7 +62,7 @@ const services = [{
             <div class="feature-icon d-inline-flex align-items-center justify-content-center text-bg-ac bg-gradient">
               <Icon class="bi" name={ icon } height="1.5em" />
               </div>
-            <h3 class="my-1 fs-1 text-ac" set:html={ title }></h3>
+            <h2 class="my-1 fs-1 text-ac" set:html={ title }></h2>
           </div>
           <p class="mx-5 me-4" set:html={text} />
           { link ? 
@@ -78,6 +82,13 @@ const services = [{
 </Layout>
 
 <style>
+  .hero-bd {
+    background-color: #04105860;
+    border-radius: 0.2em;
+    margin-left: 1em;
+    margin-right: 1em;
+  }
+
   .feature-icon {
     width: 2.5rem;
     height: 2.5rem;

@@ -19,9 +19,6 @@ import Header from '../components/Header.astro';
   <meta name="generator" content={Astro.generator} />
   <link rel="icon" type="image/png" href="/images/favicon.png" />
   <title>{title} | Accessible Community</title>
-  <script>
-    import "../scripts/dark-mode.js";
-  </script>
 </head>
 
 
@@ -31,6 +28,11 @@ import Header from '../components/Header.astro';
       <h2>{ title }</h2>
     </slot>
   </Header>
+  <!-- <section class="bg-ac p-2">
+    <div class="container-fluid">
+      <h2 class="h4 text-white ms-4 my-0 p-0">{ title }</h2>
+    </div>
+  </section>   -->
   <main id="main-content">
     </slot>
     <slot />

@@ -32,16 +32,18 @@ $display-font-sizes: (
 $display-font-family: 'Archivo';
 $display-font-weight: 400;
 
-
 $container-padding-x:  3rem;
-$color-mode-type:      data;
+
+$color-mode-type:      media-query;
 
 // 3. Include remainder of required Bootstrap stylesheets (including any separate color mode stylesheets)
 @import "bootstrap/scss/variables";
 @import "bootstrap/scss/variables-dark";
 
+@import "./ac";
+
 // 4. Include any default map overrides here
-$brand-colors: (
+$custom-colors: (
   "ac": #041058,
   "facebook": #4267B2,
   "instagram": #5B51D8,
@@ -52,12 +54,32 @@ $brand-colors: (
   "threads": black,
   "twitter": #1DA1F2,
 );
-$theme-colors: map-merge($theme-colors, $brand-colors);
+$theme-colors: map-merge($theme-colors, $custom-colors);
 
-// 5. Include remainder of required parts
+// 5a. Include remainder of required parts
 @import "bootstrap/scss/maps";
 @import "bootstrap/scss/mixins";
 @import "bootstrap/scss/utilities";
+
+// Custom Themes: Light mode.
+$custom-colors-text: ("ac": #041058);
+$custom-colors-bg-subtle: ("ac": #8d9dfa);
+$custom-colors-border-subtle: ("ac": #3754f6);
+
+$theme-colors-text: map-merge($theme-colors-text, $custom-colors-text);
+$theme-colors-bg-subtle: map-merge($theme-colors-bg-subtle, $custom-colors-bg-subtle);
+$theme-colors-border-subtle: map-merge($theme-colors-border-subtle, $custom-colors-border-subtle);
+
+// Custom Themes: Dark mode
+$custom-colors-text-dark: ("ac": #8d9dfa);
+$custom-colors-bg-subtle-dark: ("ac": #041058);
+$custom-colors-border-subtle-dark: ("ac": #8d9dfa);
+
+$theme-colors-text-dark: map-merge($theme-colors-text-dark, $custom-colors-text-dark);
+$theme-colors-bg-subtle-dark: map-merge($theme-colors-bg-subtle-dark, $custom-colors-bg-subtle-dark);
+$theme-colors-border-subtle-dark: map-merge($theme-colors-border-subtle-dark, $custom-colors-border-subtle-dark);
+
+// 5b. Include remainder of required parts
 @import "bootstrap/scss/root";
 @import "bootstrap/scss/reboot";
 
@@ -79,27 +101,14 @@ $theme-colors: map-merge($theme-colors, $brand-colors);
 @import "bootstrap/scss/utilities/api";
 
 // 8. Add additional custom code here
-.ac-text {
-    color: #041058;
-    text-decoration: none;
-}
-
-.ac-text-light, .ac-text-dark {
-  font-weight: 400;
-}
-.ac-text-light > strong,
-.ac-text-dark > strong {
-  font-weight: 600;
-}
-.ac-text-light {
-  color: white;
-}
-.ac-text-dark {
-  color: var(--ac-navy);
+@include color-mode(dark) {
+  .text-ac {
+    color: white !important;
+  }
 }
 
 @include color-mode(dark) {
-    .ac-text, h1, h2, h3, h4, h5, h6 {
+    h1, h2, h3, h4, h5, h6 {
         color: var(--bs-primary-text-emphasis);
     }
     .bi {

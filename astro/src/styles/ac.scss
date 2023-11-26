@@ -1,6 +1,9 @@
 @charset "UTF-8";
 
-$ac-navy: #041058;
+$ac-navy:            #041058;
+$ac-navy-rgb:          4, 16, 88;
+
+$color-mode-type:      media-query;
 
 :root {
   --ac-navy: $ac-navy;
