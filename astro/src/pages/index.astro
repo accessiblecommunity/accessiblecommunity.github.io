@@ -1,6 +1,4 @@
 ---
-import { Icon } from 'astro-icon';
-
 import Hero from '../components/Hero.astro';
 import Layout from '../layouts/Layout.astro';
 import Section from '../components/Section.astro';
@@ -15,15 +13,18 @@ const daniela = await getEntry('profiles', 'daniela');
 <Layout title="Accessible Community">
   <span slot="header" />
   <Hero image={ heroBg }>
-    <h2 class="display-3 text-white heading py-5" slot="heading">
-      Nurturing
-      <strong>disability-inclusive communities</strong>
-      through ethical technology.
-    </h2>
-    <!-- p class="lead">
-      
-      Meanwhile, organizations who want to reach the disability community often struggle with what to do to improve and how to reach out when they offer accommodations.
-    </p -->
+    <div class="row justify-content-center" slot="heading">
+      <h2 class="display-3 text-white py-4 col col-lg-9 col-xl-8 col-xxl-7">
+        An <strong>ethical</strong> technology <strong>nonprofit</strong> for people with disabilites.
+      </h2>
+    </div>
+    <p class="lead">
+      At <span class="ac-text-white text-brand">Accessible <strong>Community</strong></span>,
+      we believe that technology <br/>
+      can <strong>build community</strong> and <strong>increase equity</strong>.<br/>
+      For people with disabilities and their caretakers,<br/>
+      <strong>community and equity</strong> are two important goals.
+    </p>
   </Hero>
 
   <Section theme="body-tertiary">

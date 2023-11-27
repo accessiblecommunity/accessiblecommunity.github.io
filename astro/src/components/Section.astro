@@ -2,11 +2,12 @@
 interface Props {
   theme: string;
   shadow?: boolean;
+  id?: string;
 }
 
-const { theme, shadow = false } = Astro.props;
+const { theme, shadow = false, id = undefined } = Astro.props;
 ---
-<section class:list={[`bg-${theme}`, { 'p-5': shadow }]}>
+<section id={id} class:list={[`bg-${theme}`, { 'p-5': shadow }]}>
   <div class:list={["container", shadow ? "shadow-lg rounded p-4" : "py-5 px-4"]}>
     <slot />
   </div>
