@@ -12,19 +12,23 @@ const daniela = await getEntry('profiles', 'daniela');
 
 <Layout title="Home">
   <span slot="header" />
-  <Hero image={ heroBg }>
-    <div class="row justify-content-center" slot="heading">
-      <h2 class="display-3 text-white py-4 col col-lg-9 col-xl-8 col-xxl-7">
-        An <strong>ethical</strong> technology <strong>nonprofit</strong> for people with disabilites.
-      </h2>
+
+  <Hero image={ heroBg } columns="col-sm-12 col-md-9 col-lg-7 col-xl-6 col-xxl-5">
+    <h1 class="display-3 text-white py-4 mx-auto" style="max-width: 15em;" slot="heading">
+      An <strong>ethical</strong> technology <strong>nonprofit</strong>
+      for people with disabilites.
+    </h1>
+    <div class="d-flex flex-column align-items-center">
+      <p class="lead mb-0" style="max-width: 25em;">
+        At <span class="text-brand">Accessible <strong>Community</strong></span>,
+        we believe that technology
+        can <strong>build community</strong> and <strong>increase equity</strong>.
+      </p>
+      <p class="lead" style="max-width: 22em;">
+        For people with disabilities and their caretakers,
+        <strong>community and equity</strong> are two important goals.
+      </p>
     </div>
-    <p class="lead">
-      At <span class="ac-text-white text-brand">Accessible <strong>Community</strong></span>,
-      we believe that technology <br/>
-      can <strong>build community</strong> and <strong>increase equity</strong>.<br/>
-      For people with disabilities and their caretakers,<br/>
-      <strong>community and equity</strong> are two important goals.
-    </p>
   </Hero>
 
   <Section theme="body-tertiary">
@@ -104,9 +108,6 @@ const daniela = await getEntry('profiles', 'daniela');
 </Layout>
 
 <style>
-  .heading strong {
-    display: block;
-  }
   .accent {
     font-size: 5.5rem;
     line-height: 6rem;

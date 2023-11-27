@@ -3,12 +3,24 @@ interface Props {
   theme: string;
   shadow?: boolean;
   id?: string;
+  py?: number;
 }
 
-const { theme, shadow = false, id = undefined } = Astro.props;
+const { theme, shadow = false, id = undefined, py = 5 } = Astro.props;
+const shadowPadding = `p-${py - 1} p-sm-${py}`
 ---
-<section id={id} class:list={[`bg-${theme}`, { 'p-5': shadow }]}>
-  <div class:list={["container", shadow ? "shadow-lg rounded p-4" : "py-5 px-4"]}>
-    <slot />
-  </div>
+<section id={id} class:list={[`bg-${theme}`, shadow ? shadowPadding : '' ]}>
+  { shadow ?
+    <div class:list={["shadow-lg rounded",]}>
+      <div class:list={["container-fluid", `py-${py}`]}>
+        <div class={`mx-sm-${py - 1}`}>
+          <slot />
+        </div>
+      </div>
+    </div>
+  :
+    <div class:list={["container", `py-${py}`]}>
+      <slot />
+    </div>
+  }
 </section>
