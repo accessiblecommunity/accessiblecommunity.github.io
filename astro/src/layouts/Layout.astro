@@ -9,6 +9,7 @@ import '../styles/bootstrap.scss';
 
 import Footer from '../components/Footer.astro';
 import Header from '../components/Header.astro';
+import Section from '../components/Section.astro';
 ---
 
 <!doctype html>
@@ -24,17 +25,12 @@ import Header from '../components/Header.astro';
 
 
 <body>
-  <Header>
-    <slot name="header">
-      <h2>{ title }</h2>
-    </slot>
-  </Header>
-  <!-- <section class="bg-ac p-2">
-    <div class="container-fluid">
-      <h2 class="h4 text-white ms-4 my-0 p-0">{ title }</h2>
-    </div>
-  </section>   -->
+  <Header />
   <main id="main-content">
+    <slot name="header">
+      <Section theme="ac">
+        <h1 class="display-3 fw-bold text-center text-white">{ title }</h1>
+      </Section>
     </slot>
     <slot />
   </main>

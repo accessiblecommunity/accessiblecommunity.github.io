@@ -30,16 +30,8 @@ const profiles = sortBy(
 );
 ---
 
-<Layout title={title}>
-  <span slot="header" />
-
-  <Hero image={ null } columns="col-lg-6">
-    <h1 class="display-3 text-white p-0" slot="heading">
-      Our {title}
-    </h1>
-  </Hero>
-
-  <Section theme="body-tertiary py-3 px-5">
+<Layout title={`Our ${title}`}>
+  <Section theme="body-tertiary">
     <ul class={mini ? 'mini list-inline' : 'list-group'}>
       { profiles.map((p) =>
         <li class={mini ? 'list-inline-item' : 'd-block'}>

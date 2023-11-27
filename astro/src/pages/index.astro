@@ -11,9 +11,7 @@ const daniela = await getEntry('profiles', 'daniela');
 ---
 
 <Layout title="Home">
-  <span slot="header" />
-
-  <Hero image={ heroBg } columns="col-sm-12 col-md-9 col-lg-7 col-xl-6 col-xxl-5">
+  <Hero image={ heroBg } columns="col-sm-12 col-md-9 col-lg-7 col-xl-6 col-xxl-5" slot="header">
     <h1 class="display-3 text-white py-4 mx-auto" style="max-width: 15em;" slot="heading">
       An <strong>ethical</strong> technology <strong>nonprofit</strong>
       for people with disabilites.

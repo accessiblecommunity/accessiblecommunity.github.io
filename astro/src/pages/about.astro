@@ -10,25 +10,23 @@ import partnerImage from '../images/business-partners-on-floor.jpg';
 ---
 
 <Layout title="About">
-  <span slot="header" />
-
-  <Section theme="body-tertiary">
-      <div class="row flex-lg-row-reverse align-items-center justify-content-center gy-4 p-4">
-        <div class="col-10 col-sm-8 col-lg-6 col-xl-5 col-xxl-4">
-          <Image src={missionImage} alt="Four connected circles with " class="img-fluid" width="400" height="400" loading="lazy" />
-        </div>
-        <div class="col-lg-6 col-xl-7 col-xxl-6">
-          <h1 class="visually-hidden">About Accessible Community</h1>
-          <p class="display-5 text-body-emphasis mb-3">
-            Establishing and nurturing <br/>
-            <strong>disability-inclusive communities</strong>
-            through ethical and humane technology.
-          </p>
-          <p class="lead">
-            Accessible Community is a 501(c)3 nonprofit that provides tools, resources and an online community to bring together accessibility experts, volunteers, businesses, organizational and community leaders, and individuals with diverse abilities to create a more inclusive world.
-          </p>
-        </div>
+  <Section theme="body-tertiary" slot="header">
+    <div class="row flex-lg-row-reverse align-items-center justify-content-center gy-4 p-4">
+      <div class="col-10 col-sm-8 col-lg-6 col-xl-5 col-xxl-4">
+        <Image src={missionImage} alt="Four connected circles with " class="img-fluid" width="400" height="400" loading="lazy" />
       </div>
+      <div class="col-lg-6 col-xl-7 col-xxl-6">
+        <h1 class="visually-hidden">About Accessible Community</h1>
+        <p class="display-5 text-body-emphasis mb-3">
+          Establishing and nurturing <br/>
+          <strong>disability-inclusive communities</strong>
+          through ethical and humane technology.
+        </p>
+        <p class="lead">
+          Accessible Community is a 501(c)3 nonprofit that provides tools, resources and an online community to bring together accessibility experts, volunteers, businesses, organizational and community leaders, and individuals with diverse abilities to create a more inclusive world.
+        </p>
+      </div>
+    </div>
   </Section>
 
   <Section theme="ac">
@@ -98,7 +96,7 @@ import partnerImage from '../images/business-partners-on-floor.jpg';
 
   <Section theme="body-tertiary" shadow={true}>
     <div class="row gap-4">
-      <h2 class="col display-5 text-center py-3"><strong>Communities</strong> are made up of <strong>small organizations</strong>.</h2>
+      <h2 class="col display-4 text-center py-3"><strong>Communities</strong> are made up of <strong class="text-nowrap">small organizations</strong>.</h2>
     </div>
     <div class="d-flex flex-column flex-lg-row gap-4 justify-content-lg-center align-items-center">
       <div class="col col-lg-6 col-xl-6 col-xxl-5">
