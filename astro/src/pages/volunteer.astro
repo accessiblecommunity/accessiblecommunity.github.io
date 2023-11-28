@@ -26,15 +26,12 @@ import Section from '../components/Section.astro';
     </div>
     <div class="col-md-6 mb-3">
       <label for="countryField" class="form-label mb-1 display-65">Country <abbr class="display-65 text-ac" title="required">*</abbr></label>
-      <select id="countryField" class="form-select w-100" ria-describedby="countryHelp" required>
-        <option selected>Select Your Country...</option>
-        <option>...</option>
-      </select>
+      <input type="text" class="form-control w-100 form-field" id="countryField" autocomplete="country-name" aria-describedby="emailHelp" required>
       <div id="countryHelp" class="form-text">The country where you spend the majority of your time.</div>
     </div>
     <div class="col-md-6 mb-3">
       <fieldset>
-        <legend class="mb-1 display-65">
+        <legend class="mb-2 display-65">
           Which Area(s) Would You Like to Volunteer? <abbr class="display-65 text-ac" title="required">*</abbr>
         </legend>
         <div class="form-check d-flex mb-2 align-items-center">
@@ -76,13 +73,29 @@ import Section from '../components/Section.astro';
       </fieldset>
     </div>
     <div class="col-md-6 mb-3">
-      <label for="hoursField" class="form-label mb-1 display-65">How Many Hours Per Week Would You Like to Volunteer? <abbr class="display-65 text-ac" title="required">*</abbr></label>
-      <select id="hoursField" class="form-select w-100">
-        <option selected>I can volunteer...</option>
-        <option >Less than 4 hours a week</option>
-        <option >4 hours a week</option>
-        <option >More than 4 hours a week</option>
-      </select>
+      <fieldset>
+        <legend class="mb-2 display-65">
+          How Many Hours Per Week Would You Like to Volunteer? <abbr class="display-65 text-ac" title="required">*</abbr>
+        </legend>
+        <div class="form-check d-flex mb-2 align-items-center">
+          <input class="form-check-input check" type="radio" name="hoursLess" id="hoursLess" aria-checked="false">
+          <label class="form-check-label ps-2 display-65" for="hoursLess">
+            Less than 4 hours a week
+          </label>
+        </div>
+        <div class="form-check d-flex mb-2 align-items-center">
+          <input class="form-check-input check" type="radio" name="hoursAround" id="hoursAround" aria-checked="false">
+          <label class="form-check-label ps-2 display-65" for="hoursAround">
+            Around 4 hours a week
+          </label>
+        </div>
+        <div class="form-check d-flex mb-2 align-items-center">
+          <input class="form-check-input check" type="radio" name="hoursMore" id="hoursMore" aria-checked="false">
+          <label class="form-check-label ps-2 display-65" for="hoursMore">
+            More than 4 hours a week
+          </label>
+        </div>
+      </fieldset>
     </div>
     <div class="form-floating col-md-6 mb-3">
       <label for="accommodateTextarea" class="form-label mb-1 display-65">Please list any accomodations needed for remote meetings and work.</label>
@@ -118,11 +131,11 @@ import Section from '../components/Section.astro';
    height: 30px;
   }
 
-  input[type=checkbox] {
+  input[type=checkbox], input[type=radio] {
     accent-color: #041058;
   }
 
-  input[type=checkbox]:hover {
+  input[type=checkbox]:hover, input[type=radio]:hover {
     border-color: #041058;
   }
 
