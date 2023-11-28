@@ -5,5 +5,109 @@ import Section from '../components/Section.astro';
 
 <Layout title="Volunteer">
  <Section theme="body-tertiary p-4">
+<form class="col p-4 border-ac volunteer-form">
+  <p class="display-5">Thank you for your interest in volunteering with Accessible <strong>Community</strong>.</p>
+  <p class="display-6 col-lg-9">We are a growing <strong class="text-ac">international&nbsp;community</strong> of volunteers working together to improve our communities for people with disabilities.</p>
+  <p class="display-6 col-lg-9">We are looking for individuals with passion and dedication who are willing to spend about 4&nbsp;hours a week volunteering their talents. To succeed, we need a wide variety of skills.</p>
+  <p class="display-7 col-lg-9">If you are interested in volunteering your time and talents, then please complete the form below. Required fields have an asterisk (<abbr class="display-65 text-ac" title="required">*</abbr>).</p>
+  <div class="row">
+    <div class="col-md-6 mb-3">
+      <label for="firstNameField" class="form-label mb-1 display-65">First Name<abbr class="display-65 text-ac" title="required">*</abbr></label>
+      <input type="text" class="form-control w-100 form-field" id="firstNameField" autocomplete="given-name" required>
+    </div>
+    <div class="col-md-6 mb-3">
+      <label for="lastNameField" class="form-label mb-1 display-65">Last Name</label>
+      <input type="text" class="form-control w-100 form-field" id="lastNameField" autocomplete="family-name">
+    </div>
+    <div class="col mb-3">
+      <label for="emailField" class="form-label mb-1 display-65">Email address <abbr class="display-65 text-ac" title="required">*</abbr></label>
+      <input type="email" class="form-control w-100 form-field" id="emailField" autocomplete="email" required aria-describedby="emailHelp">
+      <div id="emailHelp class="form-text">The email you would like us to associate with your account accesses. This is ideally a Gmail address.</div>
+    </div>
+    <div class="col mb-3">
+     <label for="countryField" class="form-label mb-1 display-65">Country <abbr class="display-65 text-ac" title="required">*</abbr></label>
+     <select id="countryField" class="form-select w-100 selection-dropdown" aria-describedby="countryHelp">
+      <option selected>Select Your Country...</option>
+      <option>...</option>
+    </select>
+    <div id="countryHelp" class="form-text">The country where you spend the majority of your time.</div>
+    </div>
+    <div class="col mb-3">
+     <fieldset>
+      <legend class="mb-1 display-65">
+       Choose the Area(s) You Are Interested In
+      </legend>
+      <div class="form-check">
+       <input class="form-check-input check" type="checkbox" name="flexRadioDefault" id="interestEval" aria-checked="false">
+       <label class="form-check-label ps-2 display-65" for="interestEval">
+         Accessibility Evaluation
+       </label>
+      </div>
+      <div class="form-check">
+       <input class="form-check-input check" type="checkbox" name="flexRadioDefault" id="interestDev" aria-checked="false">
+       <label class="form-check-label ps-2 display-65" for="interestDev">
+        Development
+       </label>
+      </div>
+      <div class="form-check">
+       <input class="form-check-input check" type="checkbox" name="flexRadioDefault" id="interestDev" aria-checked="false">
+       <label class="form-check-label ps-2 display-65" for="interestDev">
+        Running the Organization
+       </label>
+      </div>
+      <div class="form-check">
+       <input class="form-check-input check" type="checkbox" name="flexRadioDefault" id="interestDev" aria-checked="false">
+       <label class="form-check-label ps-2 display-65" for="interestDev">
+        UX and Design
+       </label>
+      </div>
+      <div class="form-check">
+       <input class="form-check-input check" type="checkbox" name="flexRadioDefault" id="interestDev" aria-checked="false">
+       <label class="form-check-label ps-2 display-65" for="interestDev">
+        Writing Content
+       </label>
+      </div>
+      <div class="form-check">
+       <input class="form-check-input check" type="checkbox" name="flexRadioDefault" id="interestDev" aria-checked="false">
+       <label class="form-check-label ps-2 display-65" for="interestDev">
+        Other
+       </label>
+      </div>
+     </fieldset>
+    </div>
+    <div class="row">
+    <div class="col">
+      <button type="submit" class="btn bg-ac text-white display-65 w-100 volunteer-button">Submit</button>
+    </div>
+  </div>
+</form>
+
+<style>
+  /* first declaration that is commented out below is for debugging purposes. */
+  /* * {
+    outline: 1px solid black;
+  } */
+
+  *:focus-visible, .form-field:focus {
+    outline: 6px dashed #041058;
+    outline-offset: 1px 2px;
+    box-shadow: none;
+    border-radius: 0.5rem;
+  }
+
+  .check {
+   width: 30px;
+   height: 30px;
+  }
+
+  .volunteer-button:focus-visible {
+    outline-offset: 3px;
+  }
+
+  .volunteer-form {
+    border: 3.5px solid;
+    border-radius: 0.5rem;
+  }
+</style>
  </Section>
 </Layout>
