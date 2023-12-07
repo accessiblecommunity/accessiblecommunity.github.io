@@ -79,6 +79,24 @@ $theme-colors: map-merge($theme-colors, $brand-colors);
 @import "bootstrap/scss/utilities/api";
 
 // 8. Add additional custom code here
+*:focus-visible, .form-field:focus, .toggle-menu:focus {
+  outline: 3px dashed #041058;
+  outline-offset: none;
+  box-shadow: none;
+  border-radius: 2%;
+}
+
+.form-field:focus {
+  border-style: solid;
+}
+
+.btn:focus-visible {
+  outline: 3px dashed #041058;
+  outline-offset: 0.25rem;
+  box-shadow: none;
+  border-radius: 0.375rem;
+}
+
 .ac-text {
     color: #041058;
     text-decoration: none;
