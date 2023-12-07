@@ -20,12 +20,18 @@ if (image) {
 
 ---
 <section class={`bg-${theme}`} style={`background: no-repeat center ${heroBgUrl}`} slot="header">
-  <div class="container text-center py-5">
+  <div class="container text-center hero px-1">
     <slot name="heading">
-      <h1 class:list={["display-3 fw-bold", `text-${textColor}`]}>{ headline }</h1>
+      <h2 class:list={["display-3 fw-bold", `text-${textColor}`]}>{ headline }</h2>
     </slot>
     <div class:list={[columns, "mx-auto", `text-${textColor}`]}>
       <slot />
     </div>
   </div>
 </section>
+
+<style>
+  .hero {
+    padding: 4rem 0;
+  }
+</style>

@@ -20,9 +20,6 @@ $h6-font-size:                1rem;
 $headings-color:              #041058;
 $headings-font-weight:        400;
 
-$blockquote-font-size:        1.25em;
-$code-color:                  #590455;
-
 $display-font-sizes: (
   1: 4rem,
   2: 3.5rem,
@@ -36,6 +33,14 @@ $display-font-sizes: (
 );
 $display-font-family: $font-family-sans-serif;
 $display-font-weight: 400;
+
+$breadcrumb-font-size:        0.9em;
+$breadcrumb-margin-bottom:    0;
+$navbar-brand-font-size:      1.3rem;
+$navbar-brand-padding-y:      0;
+
+$blockquote-font-size:        1.25em;
+$code-color:                  #590455;
 
 $container-padding-x:  3rem;
 
@@ -102,6 +107,7 @@ $theme-colors-border-subtle-dark: map-merge($theme-colors-border-subtle-dark, $c
 @import "bootstrap/scss/nav";
 @import "bootstrap/scss/navbar";
 // @import "bootstrap/scss/card";
+@import "bootstrap/scss/breadcrumb";
 @import "bootstrap/scss/list-group";
 @import "bootstrap/scss/placeholders";
 
