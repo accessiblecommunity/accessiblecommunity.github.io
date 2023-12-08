@@ -9,30 +9,30 @@ import Section from '../components/Section.astro';
   <p class="display-5">Thank you for your interest in volunteering with Accessible&nbsp;<strong>Community</strong>.</p>
   <p class="display-6 col-lg-9">We are a growing <strong class="text-ac">international&nbsp;community</strong> of volunteers working together to improve our communities for people with disabilities.</p>
   <p class="display-6 col-lg-9">We are looking for individuals with passion and dedication who are willing to spend about 4&nbsp;hours a week volunteering their talents. To succeed, we need a wide variety of skills.</p>
-  <p class="display-7 col-lg-9">If you are interested in volunteering your time and talents, then please complete the form below. Required fields have an asterisk&nbsp;(<abbr class="display-65 text-ac" title="required">*</abbr>).</p>
+  <p class="display-7 col-lg-9">If you are interested in volunteering your time and talents, then please complete the form below. Required fields have an asterisk (<span class="single-asterisk">*</span>).</p>
   <div class="row">
     <div class="col-md-6 mb-3">
-      <label for="firstNameField" class="form-label mb-1 display-65">First Name <abbr class="display-65 text-ac" title="required">*</abbr></label>
+      <label for="firstNameField" class="form-label mb-1 display-65 required-field">First Name</label>
       <input type="text" class="form-control w-100 form-field" id="firstNameField" autocomplete="given-name" required>
     </div>
     <div class="col-md-6 mb-3">
-      <label for="lastNameField" class="form-label mb-1 display-65">Last Name <abbr class="display-65 text-ac" title="required">*</abbr></label>
+      <label for="lastNameField" class="form-label mb-1 display-65 required-field">Last Name</label>
       <input type="text" class="form-control w-100 form-field" id="lastNameField" autocomplete="family-name" required>
     </div>
     <div class="col-md-6 mb-3">
-      <label for="emailField" class="form-label mb-1 display-65">Email address <abbr class="display-65 text-ac" title="required">*</abbr></label>
+      <label for="emailField" class="form-label mb-1 display-65 required-field">Email address</label>
       <input type="email" class="form-control w-100 form-field" id="emailField" autocomplete="email" aria-describedby="emailHelp" required>
-      <div id="emailHelp" class="form-text">The email you would like us to associate with your account accesses. This is ideally a Gmail address.</div>
+      <div id="emailHelp" class="form-text display-7">The email you would like us to associate with your account accesses. This is ideally a Gmail address.</div>
     </div>
     <div class="col-md-6 mb-3">
-      <label for="countryField" class="form-label mb-1 display-65">Country <abbr class="display-65 text-ac" title="required">*</abbr></label>
+      <label for="countryField" class="form-label mb-1 display-65 required-field">Country</label>
       <input type="text" class="form-control w-100 form-field" id="countryField" autocomplete="country-name" aria-describedby="emailHelp" required>
-      <div id="countryHelp" class="form-text">The country where you spend the majority of your time.</div>
+      <div id="countryHelp" class="form-text display-7">The country where you spend the majority of your time.</div>
     </div>
     <div class="col-md-6 mb-3">
       <fieldset>
-        <legend class="mb-2 display-65">
-          Which Area(s) Would You Like to Volunteer? <abbr class="display-65 text-ac" title="required">*</abbr>
+        <legend class="mb-2 display-65 required-field">
+          Which Area(s) Would You Like to Volunteer?</abbr>
         </legend>
         <div class="form-check d-flex mb-2 align-items-center">
           <input class="form-check-input check" type="checkbox" name="flexRadioDefault" id="interestEval" aria-checked="false">
@@ -74,8 +74,8 @@ import Section from '../components/Section.astro';
     </div>
     <div class="col-md-6 mb-3">
       <fieldset>
-        <legend class="mb-2 display-65">
-          How Many Hours Per Week Would You Like to Volunteer? <abbr class="display-65 text-ac" title="required">*</abbr>
+        <legend class="mb-2 display-65 required-field">
+          How Many Hours Per Week Would You Like to Volunteer?
         </legend>
         <div class="form-check d-flex mb-2 align-items-center">
           <input class="form-check-input check" type="radio" name="hoursLess" id="hoursLess" aria-checked="false">
@@ -97,14 +97,12 @@ import Section from '../components/Section.astro';
         </div>
       </fieldset>
     </div>
-    <div class="form-floating col-md-6 mb-3">
+    <div class="form-floating mb-3">
       <label for="accommodateTextarea" class="form-label mb-1 display-65">Please list any accomodations needed for remote meetings and work.</label>
       <textarea class="form-control w-100 form-text-area" id="accomodateTextarea"></textarea>
     </div>
-    <div class="row">
-    <div class="col">
-      <button type="submit" class="btn bg-ac text-white display-65 w-100 volunteer-button">Submit</button>
-    </div>
+    <div class="col-md-6">
+      <button type="submit" class="btn bg-ac text-white display-65 w-100 general-button">Submit</button>
   </div>
 </form>
 
@@ -114,16 +112,18 @@ import Section from '../components/Section.astro';
     outline: 1px solid black;
   } */
 
-  *:focus-visible, .form-field:focus {
-    outline: 6px dashed #041058;
-    outline-offset: 0px;
-    box-shadow: none;
-    border-radius: 0.5rem;
-  }
-
   .volunteer-form {
     border: 3.5px solid;
     border-radius: 0.5rem;
+  }
+
+  .single-asterisk {
+    color: #041058;
+  }
+
+  .required-field::after {
+    content: " *";
+    color: #041058;
   }
 
   .check {
@@ -144,11 +144,7 @@ import Section from '../components/Section.astro';
   }
 
   .form-text-area {
-    height: 100px;
-  }
-
-  .volunteer-button:focus-visible {
-    outline-offset: 3px;
+    height: 6em;
   }
 
 </style>
