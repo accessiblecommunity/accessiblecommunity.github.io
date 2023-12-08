@@ -4,6 +4,7 @@ import { Icon } from 'astro-icon';
 import Hero from '../components/Hero.astro';
 import Layout from '../layouts/Layout.astro';
 import Section from '../components/Section.astro';
+import TipRegistration from '../components/TipRegistration.astro';
 
 import heroBg from '../images/wheelchair-hall-blue-1920x1080.png'
 
@@ -99,6 +100,12 @@ const daniela = await getEntry('profiles', 'daniela');
         </figcaption>
       </figure>
     </div>
+  </Section>
+
+  <Section theme="body-tertiary">
+    <TipRegistration>
+
+    </TipRegistration>
   </Section>
 </Layout>
 
