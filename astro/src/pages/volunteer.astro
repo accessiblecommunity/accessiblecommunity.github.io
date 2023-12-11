@@ -9,12 +9,12 @@ import Section from '../components/Section.astro';
   <div class="col-md-9">
     <p class="display-6">Thank you for wanting to learn about our volunteer opportunities at Accessible Community. We have five different teams to choose from, and we have provided decriptions of each team to help you choose one (or more) to join. Everyone, including our staff, is a volunteer.</p>
     <p class="display-6"><strong>All our teams meet virtually on Zoom.</strong> This allows us to have an international team of volunteers.</p>
-    <p class="display-6">After you determine which team(s) you want to volunteer with, or if you think you could help in another way not listed, you may <a class="volunteer-link" href="">fill&nbsp;out&nbsp;a&nbsp;volunteer&nbsp;form</a>.</p>
+    <p class="display-6">After you determine which team(s) you want to volunteer with, or if you think you could help in another way not listed, you may <a href="#form">fill&nbsp;out&nbsp;a&nbsp;volunteer&nbsp;form</a>.</p>
     <p class="display-6">All meeting times are in <strong>Eastern Daylight Time (<abbr>EDT</abbr>)</strong>. For teams that meet on more than one day, you may choose which day(s) to attend.</p>
   </div>
   <div class="row">
     <div class="col-md-6">
-      <div class="card mb-3 team-card">
+      <div class="card mb-3 shadow team-card">
         <div class="card-header team-header">
           <h3 class="fw-bold display-5">Content Team</h3>
         </div>
@@ -27,7 +27,7 @@ import Section from '../components/Section.astro';
       </div>
     </div>
     <div class="col-md-6">
-      <div class="card mb-3 team-card">
+      <div class="card mb-3 shadow team-card">
         <div class="card-header team-header">
           <h3 class="fw-bold display-5">Development Team</h3>
         </div>
@@ -42,7 +42,7 @@ import Section from '../components/Section.astro';
     </div>
   <div class="row">
     <div class="col-md-6">
-      <div class="card mb-3 team-card">
+      <div class="card mb-3 shadow team-card">
         <div class="card-header team-header">
           <h3 class="fw-bold display-5">Evaluation Team</h3>
         </div>
@@ -55,7 +55,7 @@ import Section from '../components/Section.astro';
       </div>
     </div>
     <div class="col-md-6">
-      <div class="card mb-3 team-card">
+      <div class="card mb-3 shadow team-card">
         <div class="card-header team-header">
           <h3 class="fw-bold display-5">Leadership Team</h3>
         </div>
@@ -70,7 +70,7 @@ import Section from '../components/Section.astro';
   </div>
   <div class="row">
     <div class="col-md-6">
-      <div class="card mb-3 team-card">
+      <div class="card mb-3 shadow team-card">
         <div class="card-header team-header">
           <h3 class="fw-bold display-5">User Experience (<abbr>UX</abbr>) Team</h3>
         </div>
@@ -84,7 +84,7 @@ import Section from '../components/Section.astro';
     </div>
   </div>
  </Section>
- <Section theme="body-tertiary p-4">
+ <Section id="form" theme="body-tertiary p-4">
   <h2 class="display-4 fw-bold">Volunteer Form</h2>
   <form class="col p-4 border-ac volunteer-form">
     <p class="display-5">Thank you for your interest in volunteering with Accessible&nbsp;<strong>Community</strong>.</p>
@@ -194,9 +194,9 @@ import Section from '../components/Section.astro';
     outline: 1px solid black;
   } */
 
-  .team-card {
+  /* .team-card {
     border: 3.5px solid #041058;;
-  }
+  } */
 
   .team-header {
     background-color: white;
