@@ -1,90 +1,109 @@
 ---
+interface Crumbs {
+  name: String;
+  href: URL;
+}
+
+interface Props {
+  title: String;
+  crumbs?: Array<Crumbs>;
+}
+
+import { isEmpty } from 'lodash-es';
 import { Icon } from 'astro-icon';
+
+const { title, crumbs = [] } = Astro.props;
+const breadCrumbs = isEmpty(crumbs) && title != 'Home' ? [{ name: 'Home', href: '/' }] : crumbs;
 ---
   
 <header class="sticky-top bg-body">
-  <a class="visually-hidden-focusable position-absolute btn btn-lg btn-ac" href="#main-content">
-    Skip to Main Content
-  </a>
-  <nav class="navbar navbar-expand-lg">
-    <div class="container-fluid px-2">
-      <div class="d-flex align-items-center">
-        <div class="pe-2">
-          <button class="navbar-toggler toggle-menu text-ac" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <Icon name="bi:list" class="bi bi-list" height="24" width="24"></Icon>
-          </button>
-        </div>
-        <div>
-          <a class="navbar-brand me-auto text-ac" href="/">
-            <Icon name="ac-logo" class="img-fluid align-text-top" />
-            Accessible <strong>Community</strong>
+  <nav class="navbar navbar-expand-lg align-items-top">
+    <div class="container-fluid px-3">
+      <a class="visually-hidden-focusable btn btn-ac text-small me-2" href="#main-content">
+        Skip to Main Content
+      </a>
+      <Icon name="ac-logo" class="navbar-brand me-2" />
+      <div class="me-auto my-1">
+        <a class="navbar-brand lh-sm text-ac" href="/" tabindex="-1">Accessible <strong>Community</strong></a>
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb lh-sm">
+            { breadCrumbs.map(({name, href}) =>
+              <li class="breadcrumb-item"><a href={href} class="text-ac">{name}</a></li>
+            )}
+            <li class="breadcrumb-item active" aria-current="page"><h1>{ title }</h1></li>
+          </ol>
+        </nav>
+      </div>
+      <div>
+        <button class="navbar-toggler toggle-menu text-ac" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <Icon name="bi:list" class="bi bi-list" height="24" width="24"></Icon>
+        </button>
+      </div>
+    </div>
+    <div id="navbarSupportedContent" class="collapse navbar-collapse mx-3">
+      <ul class="navbar-nav main-list my-1 mx-1" aria-role="navigation">
+        <li class="nav-item text-nowrap dropdown">
+          <a class="nav-link d-inline-block pe-1 display-65 main-menu-item text-ac" href="/about" role="button">
+            About
           </a>
-        </div>
-      </div>
-      <div id="navbarSupportedContent" class="collapse align-items-center navbar-collapse justify-content-end">
-          <ul class="navbar-nav my-2 main-list" aria-role="navigation">
-            <li class="nav-item dropdown">
-              <a class="nav-link d-inline-block pe-1 display-65 main-menu-item text-ac" href="/about" role="button">
-                About
-              </a>
-              <a class="nav-link d-inline-block ps-0 dropdown-toggle dropdown-toggle-split display-65 main-menu-item text-ac" href="/services" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                <span class="visually-hidden">Toggle Services Menu</span>
-              </a>
-              <ul class="dropdown-menu p-0 menu-nav">
-                <li><a class="dropdown-item display-7 link-dropdown text-ac" href="">Mission, Vision, Values</a></li>
-                <li><a class="dropdown-item display-7 link-dropdown text-ac" href="">History</a></li>
-                <li><a class="dropdown-item display-7 link-dropdown text-ac" href="">Leadership</a></li>
-              </ul>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link d-inline-block pe-1 display-65 main-menu-item text-ac" href="/services" role="button">
-                Services
-              </a>
-              <a class="nav-link d-inline-block ps-0 dropdown-toggle dropdown-toggle-split display-65 main-menu-item text-ac" href="/services" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                <span class="visually-hidden">Toggle Services Menu</span>
-              </a>
-              <ul class="dropdown-menu p-0 menu-nav">
-                <li><a class="dropdown-item display-7 link-dropdown text-ac" href="https://www.ta11y.org/"><strong>t</strong>a11y</a></li>
-                <li><a class="dropdown-item display-7 link-dropdown text-ac" href="https://www.mutua11y.org/"><strong>mutu</strong>a11y</a></li>
-                <li><a class="dropdown-item display-7 link-dropdown disabled" href="#"><strong>loc</strong>a11y</a></li>
-              </ul>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle display-65 main-menu-item text-ac" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Team Members
-              </a>
-              <ul class="dropdown-menu p-0 menu-nav">
-                <li><a class="dropdown-item display-7 link-dropdown text-ac" href="/team/board">Board Members</a></li>
-                <li><a class="dropdown-item display-7 link-dropdown text-ac" href="/team/staff">Leadership and Staff</a></li>
-                <li><a class="dropdown-item display-7 link-dropdown text-ac" href="/team/mutua11y"><strong>mutu</strong>a11y Team</a></li>
-                <li><a class="dropdown-item display-7 link-dropdown text-ac" href="/team/ta11y"><strong>t</strong>a11y Team</a></li>
-                <li><a class="dropdown-item display-7 link-dropdown text-ac" href="">Previous Contributors</a></li>
-              </ul>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle display-65 main-menu-item text-ac" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Join Us
-              </a>
-              <ul class="dropdown-menu p-0 menu-nav">
-                <li><a class="dropdown-item display-7 link-dropdown text-ac" href="/volunteer">Volunteer</a></li>
-                <li><a class="dropdown-item display-7 link-dropdown text-ac" href="/donate">Donate</a></li>
-                <li><a class="dropdown-item display-7 link-dropdown text-ac" href="">Sponsor</a></li>
-                <li><a class="dropdown-item display-7 link-dropdown text-ac" href="">Policies</a></li>
-              </ul>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle display-65 main-menu-item text-ac" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Blog
-              </a>
-              <ul class="dropdown-menu p-0 menu-nav">
-                <li><a class="dropdown-item display-7 link-dropdown text-ac" href="">Accessibility</a></li>
-                <li><a class="dropdown-item display-7 link-dropdown text-ac" href="">Announcements</a></li>
-                <li><a class="dropdown-item display-7 link-dropdown text-ac" href="">Events</a></li>
-              </ul>
-            </li>
+          <a class="nav-link d-inline-block ps-0 dropdown-toggle dropdown-toggle-split display-65 main-menu-item text-ac" href="/services" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <span class="visually-hidden">Toggle Services Menu</span>
+          </a>
+          <ul class="dropdown-menu p-0 menu-nav">
+            <li><a class="dropdown-item display-7 link-dropdown text-ac" href="">Mission, Vision, Values</a></li>
+            <li><a class="dropdown-item display-7 link-dropdown text-ac" href="">History</a></li>
+            <li><a class="dropdown-item display-7 link-dropdown text-ac" href="">Leadership</a></li>
           </ul>
-          <a class="btn btn-ac my-2 mx-3 display-65 donate-button" href="/donate" role="button">Donate</a>
-      </div>
+        </li>
+        <li class="nav-item text-nowrap dropdown">
+          <a class="nav-link d-inline-block pe-1 display-65 main-menu-item text-ac" href="/services" role="button">
+            Services
+          </a>
+          <a class="nav-link d-inline-block ps-0 dropdown-toggle dropdown-toggle-split display-65 main-menu-item text-ac" href="/services" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <span class="visually-hidden">Toggle Services Menu</span>
+          </a>
+          <ul class="dropdown-menu p-0 menu-nav">
+            <li><a class="dropdown-item display-7 link-dropdown text-ac" href="/services#ta11y"><strong>t</strong>a11y</a></li>
+            <li><a class="dropdown-item display-7 link-dropdown text-ac" href="/services#mutua11y"><strong>mutu</strong>a11y</a></li>
+            <li><a class="dropdown-item display-7 link-dropdown text-ac" href="/services#loca11y"><strong>loc</strong>a11y</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle display-65 main-menu-item text-ac" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Team Members
+          </a>
+          <ul class="dropdown-menu p-0 menu-nav">
+            <li><a class="dropdown-item display-7 link-dropdown text-ac" href="/team/board">Board Members</a></li>
+            <li><a class="dropdown-item display-7 link-dropdown text-ac" href="/team/staff">Leadership and Staff</a></li>
+            <li><a class="dropdown-item display-7 link-dropdown text-ac" href="/team/mutua11y"><strong>mutu</strong>a11y Team</a></li>
+            <li><a class="dropdown-item display-7 link-dropdown text-ac" href="/team/ta11y"><strong>t</strong>a11y Team</a></li>
+            <li><a class="dropdown-item display-7 link-dropdown text-ac" href="">Previous Contributors</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle display-65 main-menu-item text-ac" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Join Us
+          </a>
+          <ul class="dropdown-menu p-0 menu-nav">
+            <li><a class="dropdown-item display-7 link-dropdown text-ac" href="/donate">Donations</a></li>
+            <li><a class="dropdown-item display-7 link-dropdown text-ac" href="">Sponsorships</a></li>
+            <li><a class="dropdown-item display-7 link-dropdown text-ac" href="">Volunteer Form</a></li>
+            <li><a class="dropdown-item display-7 link-dropdown text-ac" href="">Policies</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle display-65 main-menu-item text-ac" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Blog
+          </a>
+          <ul class="dropdown-menu p-0 menu-nav">
+            <li><a class="dropdown-item display-7 link-dropdown text-ac" href="">Accessibility</a></li>
+            <li><a class="dropdown-item display-7 link-dropdown text-ac" href="">Announcements</a></li>
+            <li><a class="dropdown-item display-7 link-dropdown text-ac" href="">Events</a></li>
+          </ul>
+        </li>
+      </ul>
+      <a class="btn btn-ac display-65 mx-1" href="/donate" role="button">Donate</a>
+      <!-- <a class="btn btn-ac my-2 ms-3 display-65" href="/donate" role="button">Donate</a> -->
     </div>
   </nav>
 </header>
@@ -99,22 +118,15 @@ import { Icon } from 'astro-icon';
   @import "../styles/ac.scss";
   @import "bootstrap/scss/mixins/_color-mode.scss";
 
-  *:focus-visible, .toggle-menu:focus {
-    outline: 6px dashed $ac-navy;
-    outline-offset: 1px 2px;
-    box-shadow: none;
-    border-radius: 0.5rem;
+  [astro-icon="ac-logo"] {
+    height: 2em;
+    color: $ac-navy;
   }
-
-  .skip-link {
-    z-index: 5;
-    top: 8px;
-    left: 24px;
-  }
-
-  .link-dropdown:hover {
-    color: #dfe1ed;
-    background: solid $ac-navy;
+  .breadcrumb-item h1 {
+    color: inherit;
+    font-size: 1em;
+    display: inline-block;
+    margin: inherit;
   }
 
   .toggle-menu {
@@ -128,13 +140,10 @@ import { Icon } from 'astro-icon';
     color: #041058;
   }
 
-  .main-menu-item:hover, .main-menu-item:active {
-    background-color: #041058;
+  .main-menu-item:hover, .main-menu-item:active, .link-dropdown:hover {
+    background-color: $ac-navy;
     animation-timing-function: ease-in-out;
-  }
-
-  .main-menu-item:hover, .main-menu-item:active, .donate-link-navbar {
-    color: #dfe1ed;
+    color: #dfe1ed !important;
   }
 
   .main-list {
@@ -152,8 +161,8 @@ import { Icon } from 'astro-icon';
     padding-left: 0.5rem;
   }
 
-  .menu-nav {
-    border-width: 8px;
+ .menu-nav {
+    border-width: 6px;
   }
 
   .link-dropdown {
@@ -163,14 +172,6 @@ import { Icon } from 'astro-icon';
 
   .link-dropdown:hover {
     animation-timing-function: ease;
-  }
-
-  .donate-button:hover {
-    color: white;
-  }
-
-  [astro-icon="ac-logo"] {
-    height: 1.1em;
   }
 
   @include color-mode(dark) {
@@ -200,10 +201,10 @@ import { Icon } from 'astro-icon';
 </style>
 
 <script>
-    import { Collapse, Dropdown } from '~bootstrap-es'
+  import { Collapse, Dropdown } from '~bootstrap-es'
 
-    Array.from(document.querySelectorAll('.dropdown'))
-      .forEach(node => new Dropdown(node));
-    Array.from(document.querySelectorAll('.collapse'))
-      .forEach(node => new Collapse(node, { toggle: false }));
+  Array.from(document.querySelectorAll('.dropdown'))
+    .forEach(node => new Dropdown(node));
+  Array.from(document.querySelectorAll('.collapse'))
+    .forEach(node => new Collapse(node, { toggle: false }));
 </script>
