@@ -103,6 +103,7 @@ const breadCrumbs = isEmpty(crumbs) && title != 'Home' ? [{ name: 'Home', href: 
         </li>
       </ul>
       <a class="btn btn-ac display-65 mx-1" href="/donate" role="button">Donate</a>
+      <!-- <a class="btn btn-ac my-2 ms-3 display-65" href="/donate" role="button">Donate</a> -->
     </div>
   </nav>
 </header>
@@ -128,18 +129,6 @@ const breadCrumbs = isEmpty(crumbs) && title != 'Home' ? [{ name: 'Home', href: 
     margin: inherit;
   }
 
-  *:focus-visible, .toggle-menu:focus {
-    outline: 6px dashed $ac-navy;
-    outline-offset: 1px 2px;
-    box-shadow: none;
-    border-radius: 0.5rem;
-  }
-
-  .link-dropdown:hover {
-    color: #dfe1ed;
-    background: solid $ac-navy;
-  }
-
   .toggle-menu {
     background-color: #dfe1ed;
     border: none;
@@ -151,13 +140,10 @@ const breadCrumbs = isEmpty(crumbs) && title != 'Home' ? [{ name: 'Home', href: 
     color: #041058;
   }
 
-  .main-menu-item:hover, .main-menu-item:active {
-    background-color: #041058;
+  .main-menu-item:hover, .main-menu-item:active, .link-dropdown:hover {
+    background-color: $ac-navy;
     animation-timing-function: ease-in-out;
-  }
-
-  .main-menu-item:hover, .main-menu-item:active, .donate-link-navbar {
-    color: #dfe1ed;
+    color: #dfe1ed !important;
   }
 
   .main-list {
@@ -175,8 +161,8 @@ const breadCrumbs = isEmpty(crumbs) && title != 'Home' ? [{ name: 'Home', href: 
     padding-left: 0.5rem;
   }
 
-  .menu-nav {
-    border-width: 8px;
+ .menu-nav {
+    border-width: 6px;
   }
 
   .link-dropdown {
@@ -215,10 +201,10 @@ const breadCrumbs = isEmpty(crumbs) && title != 'Home' ? [{ name: 'Home', href: 
 </style>
 
 <script>
-    import { Collapse, Dropdown } from '~bootstrap-es'
+  import { Collapse, Dropdown } from '~bootstrap-es'
 
-    Array.from(document.querySelectorAll('.dropdown'))
-      .forEach(node => new Dropdown(node));
-    Array.from(document.querySelectorAll('.collapse'))
-      .forEach(node => new Collapse(node, { toggle: false }));
+  Array.from(document.querySelectorAll('.dropdown'))
+    .forEach(node => new Dropdown(node));
+  Array.from(document.querySelectorAll('.collapse'))
+    .forEach(node => new Collapse(node, { toggle: false }));
 </script>
