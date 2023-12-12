@@ -41,9 +41,10 @@ const donationLinks = [{
 }]
 ---
 <Layout title="Donate">
-  <h1 class="visually-hidden" slot="header">Donate</h1>
-
-  <Hero image={ heroBg } headline="Together we can do so much.">
+  <Hero image={ heroBg } slot="header">
+    <div slot="heading">
+      <h2 class="display-3 fw-bold text-white">Together we can do so much.</h2>
+    </div>
     <p class="lead mb-4">
       <span class="text-brand">Accessible <strong>Community</strong></span> is a 501(c)3 organization.
       Your donation goes towards supporting our programs, accommodations and technology costs.
