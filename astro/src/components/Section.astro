@@ -8,7 +8,7 @@ interface Props {
 }
 
 const { theme, shadow = false, id = undefined, py = 5 } = Astro.props;
-const { fluid = !shadow } = Astro.props;
+const { fluid = shadow } = Astro.props;
 const shadowPadding = `p-${py - 1} p-sm-${py}`
 ---
 <section id={id} class:list={[`bg-${theme} py-4`, shadow ? shadowPadding : '' ]}>
