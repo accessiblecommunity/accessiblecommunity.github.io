@@ -19,6 +19,14 @@ const profiles = defineCollection({
   }),
 })
 
+const quotes = defineCollection({
+  type: 'content',
+  schema: ({ image }) => z.object({
+    quotee: z.string(),
+  }),
+})
+
 export const collections = {
   profiles,
+  quotes,
 };

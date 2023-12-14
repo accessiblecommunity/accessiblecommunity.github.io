@@ -1,9 +1,8 @@
 ---
-import { Icon } from 'astro-icon';
-
 import Hero from '../components/Hero.astro';
 import Layout from '../layouts/Layout.astro';
 import Section from '../components/Section.astro';
+import TipRegistration from '../components/TipRegistration.astro';
 
 import heroBg from '../images/wheelchair-hall-blue-1920x1080.png'
 
@@ -13,17 +12,22 @@ const daniela = await getEntry('profiles', 'daniela');
 ---
 
 <Layout title="Home">
-  <span slot="header" />
-  <Hero image={ heroBg }>
-    <h2 class="display-3 text-white heading py-5" slot="heading">
-      Nurturing
-      <strong>disability-inclusive communities</strong>
-      through ethical technology.
-    </h2>
-    <!-- p class="lead">
-      
-      Meanwhile, organizations who want to reach the disability community often struggle with what to do to improve and how to reach out when they offer accommodations.
-    </p -->
+  <Hero image={ heroBg } columns="col-sm-12 col-md-9 col-lg-7 col-xl-6 col-xxl-5" slot="header">
+    <h1 class="display-3 text-white py-4 mx-auto" style="max-width: 15em;" slot="heading">
+      An <strong>ethical</strong> technology <strong>nonprofit</strong>
+      for people with disabilites.
+    </h1>
+    <div class="d-flex flex-column align-items-center">
+      <p class="lead mb-0" style="max-width: 25em;">
+        At <span class="text-brand">Accessible <strong>Community</strong></span>,
+        we believe that technology
+        can <strong>build community</strong> and <strong>increase equity</strong>.
+      </p>
+      <p class="lead" style="max-width: 22em;">
+        For people with disabilities and their caretakers,
+        <strong>community and equity</strong> are two important goals.
+      </p>
+    </div>
   </Hero>
 
   <Section theme="body-tertiary">
@@ -100,12 +104,15 @@ const daniela = await getEntry('profiles', 'daniela');
       </figure>
     </div>
   </Section>
+
+  <Section theme="body-tertiary">
+    <TipRegistration>
+
+    </TipRegistration>
+  </Section>
 </Layout>
 
 <style>
-  .heading strong {
-    display: block;
-  }
   .accent {
     font-size: 5.5rem;
     line-height: 6rem;

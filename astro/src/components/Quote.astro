@@ -1,0 +1,32 @@
+---
+
+import { Icon } from 'astro-icon';
+import { getEntry } from 'astro:content';
+
+const { q, 'class': className } = Astro.props;
+const quote = await getEntry('quotes', q);
+const { Content = 'p' } = await quote?.render();
+
+---
+<figure class:list={['bg-ac2 rounded p-3 d-flex flex-column justify-content-center', className]}>
+  <blockquote class="blockquote text-ac">
+    <sup aria-hidden="true"><Icon name="quote-left" />&nbsp;</sup>
+    <Content />
+    <sup aria-hidden="true">&nbsp;<Icon name="quote-right" /></sup>
+  </blockquote>
+  <figcaption class="blockquote-footer text-ac text-end">{quote?.data.quotee}</figcaption>
+</figure>
+
+<style>
+[astro-icon="quote-left"],
+[astro-icon="quote-right"] {
+  height: 0.7em;
+}
+
+.blockquote :global(p) {
+  display: inline;
+}
+.blockquote-footer {
+  font-size: 1em;
+}
+</style>
