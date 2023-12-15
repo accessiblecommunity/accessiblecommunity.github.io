@@ -1,2 +1,18 @@
 ---
+let testName = 'Quotee Name';
 ---
+
+<figure class="col col-lg-4 text-start p-4 bg-body-tertiary rounded">
+ <blockquote class="blockquote">
+   <p>Quote will go here</p>
+ </blockquote>
+ <figcaption class="blockquote-footer fs-4 d-flex justify-content-end align-items-center gap-2">
+   <div class="text-start">
+     <span>{testName},</span>
+     <!-- role will go below the span, with team if included -->
+     <div class="fs-6"><strong>t</strong>a11y <strong>content</strong></div>
+   </div>
+   <!-- image source will be from profile, and name of 'quotee' will be used for alt text -->
+   <img class="profile-pic" src={} alt={`Drawn representation of ${testName}`} />
+ </figcaption>
+</figure>
