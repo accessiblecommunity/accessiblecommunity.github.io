@@ -10,7 +10,7 @@ export async function getStaticPaths() {
         allProfiles,
         mini: false,
         title: 'Board Members',
-        heading: 'Meet out board',
+        heading: 'Meet Our Board',
       }
     },
     { params: { tag: 'staff' }, props:
@@ -18,22 +18,22 @@ export async function getStaticPaths() {
         allProfiles,
         mini: false,
         title: 'Leadership & Staff',
-        heading: 'Meet our leadership',
+        heading: 'Meet Our Leadership',
       }},
     { params: { tag: 'mutua11y' }, props:
       {
         allProfiles,
         mini: false,
-        title: 'mutua11y',
-        heading: 'Meet our team',
+        title: 'mutua11y Team',
+        heading: 'Meet Our mutua11y Team',
       }
     },
     { params: { tag: 'ta11y' }, props:
       {
         allProfiles,
         mini: true,
-        title: 'ta11y',
-        heading: 'Meet our team',
+        title: 'ta11y Team',
+        heading: 'Meet Our ta11y Team',
       }
     },
   ];
@@ -58,7 +58,7 @@ const profiles = sortBy(
 const crumbs = [{
   name: 'Home', href: '/',
 }, {
-  name: 'Team Members', href: '/team',
+  name: 'Team Members', href: '/team-members',
 }]
 ---
 
