@@ -113,7 +113,7 @@ const breadCrumbs = isEmpty(crumbs) && title != 'Home' ? [{ name: 'Home', href: 
 
   [astro-icon="ac-logo"] {
     height: 2em;
-    color: $ac-navy;
+    color: var(--ac-navy);
   }
 
   .breadcrumb-item h1 {
@@ -124,18 +124,18 @@ const breadCrumbs = isEmpty(crumbs) && title != 'Home' ? [{ name: 'Home', href: 
   }
 
   .toggle-menu {
-    background-color: #dfe1ed;
+    background-color: white;
     border: none;
     padding-inline: 3px;
     font-size: 1.1rem;
   }
 
   .main-menu-item:focus {
-    color: $ac-navy;
+    color: var(--ac-navy);
   }
 
   .main-menu-item:hover, .main-menu-item:active, .link-dropdown:hover {
-    background-color: $ac-navy;
+    background-color: var(--ac-navy);
     animation-timing-function: ease-in-out;
     color: #dfe1ed !important;
   }
@@ -189,7 +189,7 @@ const breadCrumbs = isEmpty(crumbs) && title != 'Home' ? [{ name: 'Home', href: 
 
     .navbar-toggler {
       color: white !important;
-      background-color: $ac-navy;
+      background-color: var(--ac-navy);
     }
   }
 </style>
