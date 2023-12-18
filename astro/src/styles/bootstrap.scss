@@ -138,9 +138,11 @@ $theme-colors-border-subtle-dark: map-merge($theme-colors-border-subtle-dark, $c
   .text-ac {
     color: white !important;
   }
+
   h1, h2, h3, h4, h5, h6 {
     color: var(--bs-primary-text-emphasis);
   }
+  
   .bi {
     filter: invert(75%) sepia(53%) saturate(3857%) hue-rotate(191deg) brightness(100%) contrast(94%);
   }
