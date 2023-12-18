@@ -117,7 +117,7 @@ $theme-colors-border-subtle-dark: map-merge($theme-colors-border-subtle-dark, $c
 
 // 8. Add additional custom code here
 *:focus-visible, .form-field:focus, .toggle-menu:focus {
-  outline: 3px dashed #041058;
+  outline: 3px dashed $ac-navy;
   outline-offset: none;
   box-shadow: none;
   border-radius: 2%;
@@ -128,7 +128,7 @@ $theme-colors-border-subtle-dark: map-merge($theme-colors-border-subtle-dark, $c
 }
 
 .btn:focus-visible {
-  outline: 3px dashed #041058;
+  outline: 3px dashed $ac-navy;
   outline-offset: 0.25rem;
   box-shadow: none;
   border-radius: 0.375rem;

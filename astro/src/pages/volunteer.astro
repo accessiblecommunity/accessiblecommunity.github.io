@@ -208,12 +208,12 @@ import Section from '../components/Section.astro';
   }
 
   .single-asterisk {
-    color: var(--ac-navy);
+    color: $ac-navy;
   }
 
   .required-field::after {
     content: " *";
-    color: var(--ac-navy);
+    color: $ac-navy;
   }
 
   .check {
@@ -222,11 +222,11 @@ import Section from '../components/Section.astro';
   }
 
   input[type=checkbox], input[type=radio] {
-    accent-color: var(--ac-navy);
+    accent-color: $ac-navy;
   }
 
   input[type=checkbox]:hover, input[type=radio]:hover {
-    border-color: var(--ac-navy);
+    border-color: $ac-navy;
   }
 
   fieldset label {
