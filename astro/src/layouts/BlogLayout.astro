@@ -1,0 +1,21 @@
+---
+import Layout from "./Layout.astro";
+import Section from "../components/Section.astro";
+
+const { frontmatter } = Astro.props;
+const crumbs = [{
+  name: 'Home', href: "/"
+}, {
+  name: 'Blog', href: "/blog"
+}]
+
+const heading = `Blog: ${frontmatter.title}`
+---
+
+<Layout crumbs={crumbs} title={frontmatter.title} heading={heading}>
+  <Section theme="light">
+    <div class="lead">
+      <slot />
+    </div>
+  </Section>
+</Layout>
