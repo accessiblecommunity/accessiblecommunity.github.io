@@ -5,19 +5,48 @@ export async function getStaticPaths() {
   const allProfiles = await getCollection('profiles');
 
   return [
-    { params: { tag: 'board' }, props: { allProfiles, mini: false, title: 'Board Members' }},
-    { params: { tag: 'staff' }, props: { allProfiles, mini: false, title: 'Leadership & Staff'}},
-    { params: { tag: 'mutua11y' }, props: { allProfiles, mini: false, title: 'mutua11y Team Members' }},
-    { params: { tag: 'ta11y' }, props: { allProfiles, mini: true, title: 'ta11y Team Members' }},
+    { params: { tag: 'board' }, props:
+      {
+        allProfiles,
+        mini: false,
+        title: 'Board Members',
+        heading: 'Meet out board',
+      }
+    },
+    { params: { tag: 'staff' }, props:
+      {
+        allProfiles,
+        mini: false,
+        title: 'Leadership & Staff',
+        heading: 'Meet our leadership',
+      }},
+    { params: { tag: 'mutua11y' }, props:
+      {
+        allProfiles,
+        mini: false,
+        title: 'mutua11y',
+        heading: 'Meet our team',
+      }
+    },
+    { params: { tag: 'ta11y' }, props:
+      {
+        allProfiles,
+        mini: true,
+        title: 'ta11y',
+        heading: 'Meet our team',
+      }
+    },
   ];
 }
 
 import Layout from '../../layouts/Layout.astro';
 import Profile from '../../components/Profile.astro';
+import Section from '../../components/Section.astro';
+
 import { sortBy } from 'lodash-es';
 
 const { tag } = Astro.params;
-const { allProfiles, mini, title } = Astro.props;
+const { allProfiles, mini, title, heading } = Astro.props;
 
 const profiles = sortBy(
   allProfiles.filter((p) => p.data.tags?.includes(tag)),
@@ -25,20 +54,24 @@ const profiles = sortBy(
   ? (p) => p.data.name.split(' ')[0]
   : (p) => p.data.name.split(' ').slice(1).join(' ')
 );
+
+const crumbs = [{
+  name: 'Home', href: '/',
+}, {
+  name: 'Team Members', href: '/team',
+}]
 ---
 
-<Layout title={title}>
-	<div class="mb-3" slot="header">
-		<h2 class="mb-0">{ title }</h2>
-    <a href="/team" class="text-secondary">&leftarrow; Back to Team</a>
-	</div>
-  <ul class={mini ? 'mini list-inline' : 'list-group'}>
-    { profiles.map((p) =>
-      <li class={mini ? 'list-inline-item' : 'd-block'}>
-        <Profile profile={p} mini={mini} />
-      </li>
-    )}
-  </ul>
+<Layout title={title} crumbs={crumbs} heading={heading}>
+  <Section theme="body-tertiary" fluid={mini}>
+    <ul class={mini ? 'mini list-inline text-center' : 'list-group'}>
+      { profiles.map((p) =>
+        <li class={mini ? 'list-inline-item' : 'd-block'}>
+          <Profile profile={p} mini={mini} />
+        </li>
+      )}
+    </ul>
+  </Section>
 </Layout>
 
 <style>

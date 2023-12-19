@@ -1,19 +1,131 @@
 ---
+import Hero from '../components/Hero.astro';
 import Layout from '../layouts/Layout.astro';
+import Section from '../components/Section.astro';
+import TipRegistration from '../components/TipRegistration.astro';
+
+import heroBg from '../images/wheelchair-hall-blue-1920x1080.png'
+
+import { getEntry } from 'astro:content';
+const daniela = await getEntry('profiles', 'daniela');
+
 ---
 
-<Layout title="Accessible Community">
-  <span slot="header" />
-  <p>
-    One in every three households includes someone who has a disability. These individuals and families often struggle to find places in their community where they can successfully shop, eat, and participate in community life. Meanwhile, organizations who want to reach the disability community often struggle with what to do to improve and how to reach out when they offer accommodations.
-  </p>
-  <p>
-    Accessible Community provides online tools and programs to:
-    <ul>
-      <li>Help smaller organizations with limited resources engage and support people with disabilities</li>
-      <li>Empower people with disabilities to be part of the conversation about accessibility in their communities</li>
-      <li>Motivate organizations by making accessibility visible and providing a marketing advantage for being disability-friendly</li>
-      <li>Mature the accessibility profession by increasing communication, education and efficiency</li>
+<Layout title="Home">
+  <Hero image={ heroBg } columns="col-sm-12 col-md-9 col-lg-7 col-xl-6 col-xxl-5" slot="header">
+    <h1 class="display-3 text-white py-4 mx-auto" style="max-width: 15em;" slot="heading">
+      An <strong>ethical</strong> technology <strong>nonprofit</strong>
+      for people with disabilites.
+    </h1>
+    <div class="d-flex flex-column align-items-center">
+      <p class="lead mb-0" style="max-width: 25em;">
+        At <span class="text-brand">Accessible <strong>Community</strong></span>,
+        we believe that technology
+        can <strong>build community</strong> and <strong>increase equity</strong>.
+      </p>
+      <p class="lead" style="max-width: 22em;">
+        For people with disabilities and their caretakers,
+        <strong>community and equity</strong> are two important goals.
+      </p>
+    </div>
+  </Hero>
+
+  <Section theme="body-tertiary">
+    <h2 class="display-4 fw-bold">What we believe...</h2>
+    <p class="lead">One in every three households includes someone who has a disability. These individuals and families often struggle to find places in their community where they can successfully shop, eat, and participate in community life.</p>
+    <ul class="lead">
+      <li><strong>Communities matter</strong>. Being a part of a local community is important.</li>
+      <li>Local communities are made up of <strong>people</strong> and <strong>small organizations</strong>.</li>
+      <li>A majority of small organizations do not have the knowledge or resources to effectively reach people with disabilities.</li>
+      <li>People with disabilities want to be a part of their community and part of the solution in removing barriers to that community.</li>
+      <li>We can <strong>incentivize</strong> those people and organizations we partner with by creating scenarios where <strong>all parties win</strong>.</li>
     </ul>
+  </Section>
+
+  <section class="bg-white p-5">
+    <div class="container d-flex flex-column flex-lg-row gap-5 py-5 justify-content-lg-evenly text-center text-ac">
+      <div class="col col-lg-4 col-xl-3 shadow-lg rounded bg-body-secondary p-4">
+        <div class="accent">26%</div>
+        <p class="display-5">of Americans have a disability.</p>
+      </div>
+      <div class="col col-lg-4 col-xl-3 shadow-lg rounded bg-body-secondary p-4">
+        <div>
+          <span class="accent-2">1</span>
+          <span class="display-5 align-text-bottom"> in </span>
+          <span class="accent-2">3</span>
+        </div>
+        <p class="display-6">households includes someone who has a disability.</p>
+      </div>
+      <div class="col col-lg-4 col-xl-3 shadow-lg rounded bg-body-secondary p-4">
+        <div class="display-5">They have</div>
+        <div class="accent-2">$200B</div>
+        <div class="display-5">in discretionary spending.</div>
+      </div>
+    </div>
+  </section>
+
+  <Section theme="body-tertiary">
+    <h2 class="display-4 fw-bold">What we do...</h2>
+    <p class="lead">
+      <span class="text-brand">Accessible <strong>Community</strong></span> provides online tools and programs to:
     </p>
+    <ul class="lead">
+      <li>Help smaller organizations with limited resources engage and support people with disabilities.</li>
+      <li>Empower people with disabilities to be part of the conversation about accessibility in their communities.</li>
+      <li>Motivate organizations by making accessibility visible and providing a marketing advantage for being disability-friendly.</li>
+      <li>Mature the accessibility profession by increasing communication, education and efficiency.</li>
+    </ul>
+  </Section>
+
+  <Section theme="white">
+    <div class="container d-flex flex-column flex-lg-row gap-5 py-5 justify-content-lg-evenly">
+      <figure class="col col-lg-4 text-start p-4 bg-body-tertiary rounded">
+        <blockquote class="blockquote">
+          <p>I am proud to be part of this community that drives the change toward a more accessible digital world for all people.</p>
+        </blockquote>
+        <figcaption class="blockquote-footer fs-4 d-flex justify-content-end align-items-center gap-2">
+          <div class="text-start">
+            <span>{daniela.data.name},</span>
+            <div class="fs-6"><strong>t</strong>a11y <strong>content</strong></div>
+          </div>
+          <img class="profile-pic" src={daniela.data.picture.src} alt={`Drawn representation of ${daniela.data.name}`} />
+        </figcaption>
+      </figure>
+      <figure class="col col-lg-4 text-start p-4 bg-ac rounded">
+        <blockquote class="blockquote text-light">
+          <p>This whole mentorship program is an inspiration and catalyst for my growth and improving my knowledge in this field.</p>
+        </blockquote>
+        <figcaption class="blockquote-footer mt-1 fs-4 d-flex justify-content-end align-items-center gap-2">
+          <div class="text-start">
+            <span>Rashimi,</span>
+            <div class="fs-6"><strong>mutu</strong>a11y <strong>protegé</strong></div>
+          </div>
+        </figcaption>
+      </figure>
+    </div>
+  </Section>
+
+  <Section theme="body-tertiary">
+    <TipRegistration>
+
+    </TipRegistration>
+  </Section>
 </Layout>
+
+<style>
+  .accent {
+    font-size: 5.5rem;
+    line-height: 6rem;
+  }
+  .accent-2 {
+    font-size: 4.7rem;
+    line-height: 5rem;
+  }
+  img.profile-pic {
+    display: inline-block;
+    max-width: 3em;
+  }
+  div.fs-6 {
+    line-height: 0.9em;
+  }
+</style>

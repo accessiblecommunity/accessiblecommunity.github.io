@@ -1,13 +1,22 @@
 ---
-interface Props {
-  title: String;
+interface Crumbs {
+  name: String;
+  href: URL;
 }
 
-const { title } = Astro.props;
+interface Props {
+  title: String;
+  crumbs?: Array<Crumbs>;
+  heading?: String;
+}
 
 import '../styles/bootstrap.scss';
+
 import Footer from '../components/Footer.astro';
 import Header from '../components/Header.astro';
+import Section from '../components/Section.astro';
+
+const { title, crumbs, heading } = Astro.props;
 ---
 
 <!doctype html>
@@ -19,20 +28,19 @@ import Header from '../components/Header.astro';
   <meta name="generator" content={Astro.generator} />
   <link rel="icon" type="image/png" href="/images/favicon.png" />
   <title>{title} | Accessible Community</title>
-  <script>
-    import "../scripts/dark-mode.js";
-  </script>
 </head>
 
 
 <body>
-  <Header>
+  <Header title={title} crumbs={crumbs} />
+  <main id="main-content">
     <slot name="header">
-      <h2>{ title }</h2>
+      <Section theme="ac">
+        <h2 class="display-3 fw-bold text-center text-white">{ heading || title }</h2>
+      </Section>
     </slot>
-  </Header>
-  </slot>
-  <slot />
+    <slot />
+  </main>
   <Footer />
 </body>
 </html>

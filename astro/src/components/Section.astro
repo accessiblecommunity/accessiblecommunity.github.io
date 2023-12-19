@@ -1,0 +1,28 @@
+---
+interface Props {
+  theme: string;
+  shadow?: boolean;
+  id?: string;
+  py?: number;
+  fluid?: boolean;
+}
+
+const { theme, shadow = false, id = undefined, py = 5 } = Astro.props;
+const { fluid = shadow } = Astro.props;
+const shadowPadding = `p-${py - 1} p-sm-${py}`
+---
+<section id={id} class:list={[`bg-${theme} py-4`, shadow ? shadowPadding : '' ]}>
+  { shadow ?
+    <div class:list={["shadow-lg rounded",]}>
+      <div class:list={[`container${fluid ? '-fluid' : ''}`, `py-${py}`]}>
+        <div class={`mx-sm-${py - 1}`}>
+          <slot />
+        </div>
+      </div>
+    </div>
+  :
+    <div class:list={[`container${fluid ? '-fluid' : ''}`, `py-${py}`]}>
+      <slot />
+    </div>
+  }
+</section>
