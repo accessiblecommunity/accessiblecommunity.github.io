@@ -7,87 +7,102 @@ export default {
     eventTarget.addEventListener('app-toggled', (event) => {
       if (event.detail.state === true) {
         const styleGuide = document.createElement('div');
-        styleGuide.setAttribute('class', 'p-2 bg-ac');
+        styleGuide.setAttribute('class', 'p-2');
         styleGuide.setAttribute('id', 'style-guide');
         styleGuide.innerHTML = `
-<div class="accordion">
-  <div class="accordion-item list-group rounded-0">
-    <h2 class="accordion-header">
-      <div class="list-group-item d-flex justify-content-between align-items-center" style="font-size: 1.2rem">
-        <strong>Style Guide</strong>
-        <button id="style-guide-close" class="btn-close" style="font-size: 1rem" aria-label="Close Style Guide"></button>
-      </div>
-    </h2>
-  </div>
-  <div class="accordion-item">
-    <h3 class="accordion-header">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#style-guide-headers" aria-expanded="false" aria-controls="style-guide-headers">
-        Typography: Headers &amp; Display
-      </button>
-    </h3>
-    <div id="style-guide-headers" class="accordion-collapse collapse" data-bs-parent="#style-guide">
-      <div class="accordion-body row">
-        <div class="col col-md-6">
-          <p>The standard headings for use.</p>
-          <p class="h1">Heading 1 (Up in breadcrumbs)</p>
-          <p class="h2">Heading 2</p>
-          <p class="h3">Heading 3</p>
-          <p class="h4">Heading 4</p>
-          <p class="h5">Heading 5</p>
-          <p class="h6">Heading 6</p>
-        </div>
-        <hr class="d-md-none" />
-        <div class="col col-md-6">
-          <p>The display titles are designed for when additional visual emphasis is needed on a header. These aren't meant to be used for normal text.</p>
-          <p class="display-1">Display 1</p>
-          <p class="display-2">Display 2</p>
-          <p class="display-3">Display 3</p>
-          <p class="display-4">Display 4</p>
-          <p class="display-5">Display 5</p>
-          <p class="display-6">Display 6</p>
-          <p class="display-65">Display 65</p>
-          <p class="display-7">Display 7</p>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="accordion-item">
-    <h3 class="accordion-header">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#style-guide-text" aria-expanded="false" aria-controls="style-guide-text">
-        Typography: Text &amp; Content
-      </button>
-    </h3>
-    <div id="style-guide-text" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-      <div class="accordion-body row">
-        <div class="col col-md-6">
-          <p>A normal paragraph: One that displays the standard normal font that used for the majority of text on the site. <strong>Bold text should be used for emphasis</strong>. Italics should never be used, and underlines only for links. <code>Code elements</code> should be used when describing technical content.</p>
-          <hr />
-          <p class="lead">Lead Paragraph: One that's designed for callouts or extra attention. <strong>Bold text should be used for extra emphasis</strong>.</p>            
-        </div>
-        <hr class="d-md-none" />
-        <div class="col col-md-6">
-          <p class="small">A small paragraph: One used for less notable details and other facts. <span class="text-muted">This text may be muted to further reduce the visual impact on the page.</span></p>
-          <hr />
-          <figure>
-            <blockquote class="blockquote">
-              <p>Quotes or testimonials should be contained in a <code>blockquote</code> element in a <code>figure</code>.</p>
-            </blockquote>
-            <figcaption class="blockquote-footer">
-              The attribution of the quote or testmonial.
-            </figcaption>
-          </figure>
-        </div>
+<ul class="nav nav-tabs" id="style-guide-tabs" role="tablist">
+  <li class="nav-item" role="presentation">
+    <button class="nav-link active" id="style-guide-description" data-bs-toggle="tab" data-bs-target="#style-guide-description-pane" type="button" role="tab" aria-controls="style-guide-description-pane" aria-selected="true">
+      <h2 class="mb-0" style="font-size: 1.1em;">Style Guide</h2>
+    </button>
+  </li>
+  <li class="nav-item" role="presentation">
+    <button class="nav-link" id="style-guide-headers" data-bs-toggle="tab" data-bs-target="#style-guide-headers-pane" type="button" role="tab" aria-controls="style-guide-headers-pane" aria-selected="false">
+      Headers
+    </button>
+  </li>
+  <li class="nav-item" role="presentation">
+    <button class="nav-link" id="style-guide-text" data-bs-toggle="tab" data-bs-target="#style-guide-text-pane" type="button" role="tab" aria-controls="style-guide-text-pane" aria-selected="false">
+      Typography
+    </button>
+  </li>
+  <li class="nav-item" role="presentation">
+    <button class="nav-link" id="style-guide-spacing" data-bs-toggle="tab" data-bs-target="#style-guide-spacing-pane" type="button" role="tab" aria-controls="style-guide-spacing-pane" aria-selected="false">
+      Spacing
+    </button>
+  </li>
+  <li class="nav-item" role="presentation">
+    <button class="nav-link" id="style-guide-colors" data-bs-toggle="tab" data-bs-target="#style-guide-colors-pane" type="button" role="tab" aria-controls="style-guide-colors-pane" aria-selected="false">
+      Colors
+    </button>
+  </li>
+  <li class="ms-auto nav-item me-1 my-1" role="presentation">
+    <button class="btn-close" id="style-guide-close" aria-label="Close Style Guide"></button>
+  </li>
+</ul>
+
+<div class="tab-content border-start border-end border-bottom p-3" id="style-guide-panes">
+  <div class="tab-pane fade show active" id="style-guide-description-pane" role="tabpanel" aria-labelledby="style-guide-description" tabindex="0">
+    <div class="row justify-content-center">
+      <div class="col col-md-8 text-center">
+        This is the style guide for this website. It includes the components, elements, colors and other styles that should be used
+        when writing components. Anything found in this style guide should be defined globally for use on any page or component.
       </div>
     </div>
   </div>
-  <div class="accordion-item">
-    <h3 class="accordion-header">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#style-guide-spacing" aria-expanded="false" aria-controls="style-guide-spacing">
-        Spacing: Margins &amp; Padding
-      </button>
-    </h3>
-    <div id="style-guide-spacing" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-      <div class="accordion-body">
+
+  <div class="tab-pane fade" id="style-guide-headers-pane" role="tabpanel" aria-labelledby="style-guide-headers" tabindex="0">
+    <div class="row mh-50 overflow-y-scroll">
+      <div class="col col-md-6">
+        <p>The standard headings for use.</p>
+        <p class="h1">Heading 1 (Up in breadcrumbs)</p>
+        <p class="h2">Heading 2</p>
+        <p class="h3">Heading 3</p>
+        <p class="h4">Heading 4</p>
+        <p class="h5">Heading 5</p>
+        <p class="h6">Heading 6</p>
+      </div>
+      <hr class="d-md-none" />
+      <div class="col col-md-6">
+        <p>The display titles are designed for when additional visual emphasis is needed on a header. These aren't meant to be used for normal text.</p>
+        <p class="display-1">Display 1</p>
+        <p class="display-2">Display 2</p>
+        <p class="display-3">Display 3</p>
+        <p class="display-4">Display 4</p>
+        <p class="display-5">Display 5</p>
+        <p class="display-6">Display 6</p>
+        <p class="display-65">Display 65</p>
+        <p class="display-7">Display 7</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="tab-pane fade" id="style-guide-text-pane" role="tabpanel" aria-labelledby="style-guide-text" tabindex="0">
+    <div class="row mh-50 overflow-y-scroll">
+      <div class="col col-md-6">
+        <p>A normal paragraph: One that displays the standard normal font that used for the majority of text on the site. <strong>Bold text should be used for emphasis</strong>. Italics should never be used, and underlines only for links. <code>Code elements</code> should be used when describing technical content.</p>
+        <hr />
+        <p class="lead">Lead Paragraph: One that's designed for callouts or extra attention. <strong>Bold text should be used for extra emphasis</strong>.</p>
+      </div>
+      <hr class="d-md-none" />
+      <div class="col col-md-6">
+        <p class="small">A small paragraph: One used for less notable details and other facts. <span class="text-muted">This text may be muted to further reduce the visual impact on the page.</span></p>
+        <hr />
+        <figure>
+          <blockquote class="blockquote">
+            <p>Quotes or testimonials should be contained in a <code>blockquote</code> element in a <code>figure</code>.</p>
+          </blockquote>
+          <figcaption class="blockquote-footer">
+            The attribution of the quote or testmonial.
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+  </div>
+
+  <div class="tab-pane fade" id="style-guide-spacing-pane" role="tabpanel" aria-labelledby="style-guide-spacing" tabindex="0">
+    <div class="accordion-body row mh-50 overflow-y-scroll align-items-center">
+      <div class="col col-lg-7">
         <div class="card p-5 bg-body-secondary">
           <div class="card p-4 bg-body-tertiary">
             <div class="card p-3">
@@ -99,33 +114,60 @@ export default {
             </div>
           </div>
         </div>
-        <p class="text-center">Padding and Margin levels 1-5.</p>
+      </div>
+      <div class="col col-lg-5">
+        <p class="text-center">Padding and Margin levels 5-1. <br />Padding: <code>p-5</code> &rarr; <code>p-1</code>. Margins: <code>m-5</code> &rarr; <code>m-1</code>.</p>
+        <p>
+          Include vertical space between parts of the page.
+          Modern design style does not compress <code>line-height</code> and leaves extra vertical padding and margin between areas.
+          As a result, leave enough horizontal space so that the vertical space doesn't look out of place.
+        </p>
       </div>
     </div>
   </div>
-  <div class="accordion-item">
-    <h3 class="accordion-header">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#style-guide-colors" aria-expanded="false" aria-controls="style-guide-colors">
-        Colors
-      </button>
-    </h3>
-    <div id="style-guide-colors" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-      <div class="accordion-body d-flex justify-content-center gap-2">
-        <div>
-          <div class="rounded border border-ac">&nbsp; &nbsp;</div>
-          <span>(default)</span>
+
+  <div class="tab-pane fade" id="style-guide-colors-pane" role="tabpanel" aria-labelledby="style-guide-colors" tabindex="0">
+    <div class="row">
+      <div class="col col-md-6">
+        <div class="d-flex justify-content-center gap-2">
+          <p>Backgrounds:</p>
+          <div>
+            <div class="rounded border border-ac">&nbsp; &nbsp;</div>
+            <span>(default)</span>
+          </div>
+          <div>
+            <div class="rounded border bg-ac">&nbsp; &nbsp;</div>
+            <span><code>ac</code> (Our brand)</span>
+          </div>
+          <div>
+            <div class="rounded border border-ac bg-body-secondary">&nbsp; &nbsp;</div>
+            <code>body-secondary</code>
+          </div>
+          <div>
+            <div class="rounded border border-ac bg-body-tertiary">&nbsp; &nbsp;</div>
+            <code>body-tertiary</code>
+          </div>
         </div>
-        <div>
-          <div class="rounded border bg-ac">&nbsp; &nbsp;</div>
-          <span><code>ac</code> (Our brand)</span>
-        </div>
-        <div>
-          <div class="rounded border border-ac bg-body-secondary">&nbsp; &nbsp;</div>
-          <code>body-secondary</code>
-        </div>
-        <div>
-          <div class="rounded border border-ac bg-body-tertiary">&nbsp; &nbsp;</div>
-          <code>body-tertiary</code>
+      </div>
+      <div class="col col-md-6">
+        <div class="d-flex justify-content-center gap-2">
+          <p>Foregrounds:</p>
+          <div>
+            <div class="rounded border" style="background-color: var(--bs-body-color);">&nbsp; &nbsp;</div>
+            <span>(default)</span>
+          </div>
+          <div>
+            <div class="rounded border bg-ac">&nbsp; &nbsp;</div>
+            <span><code>ac</code> (Our brand)</span>
+          </div>
+          <div>
+            <div class="rounded border border-ac" style="background-color: var(--bs-secondary-color);">&nbsp; &nbsp;</div>
+            <code>secondary</code>
+          </div>
+          <div>
+            <div class="rounded border border-ac" style="background-color: var(--bs-tertiary-color);">&nbsp; &nbsp;</div>
+            <code>tertiary</code>
+          </div>
         </div>
       </div>
     </div>
@@ -145,11 +187,6 @@ export default {
             })
           );
         }
-  
-        // For some reason, this is working without the include.
-        // If it stops, include the following:
-        // Array.from(document.querySelectorAll('.accordion'))
-        //   .forEach(node => new Accordion(node));
       }
       else {
         const styleGuide = document.getElementById("style-guide");
