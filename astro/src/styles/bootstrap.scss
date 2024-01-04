@@ -41,7 +41,7 @@ $display-font-weight: 400;
 $breadcrumb-font-size:        0.9em;
 $breadcrumb-margin-bottom:    0;
 
-$lead-font-size:              1.1rem;
+$lead-font-size:              1.25rem;
 $lead-font-weight:            400;
 
 $navbar-brand-font-size:      1.3rem;
@@ -141,6 +141,12 @@ $utilities: map-merge(
 @import "bootstrap/scss/utilities/api";
 
 // 8. Add additional custom code here
+
+.bg-ac-alpha-3 {
+  @extend .bg-ac;
+  --bs-bg-opacity: 0.3;
+}
+
 *:focus-visible, .form-field:focus, .toggle-menu:focus {
   outline: 3px dashed #041058;
   outline-offset: none;
