@@ -2,7 +2,7 @@
 name: Gladys Phan
 title: Mentoring Program Manager, mutua11y
 tags:
-    - staff
+    - leadership
     - mutua11y
 picture: ../../images/profiles/gladys.png
 ---

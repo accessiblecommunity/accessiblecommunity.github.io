@@ -169,6 +169,11 @@ $utilities: map-merge(
   font-family: $headings-font-family;
 }
 
+img.profile-pic {
+  display: inline-block;
+  max-width: 3em;
+}
+
 @include color-mode(dark) {
   .text-ac {
     color: white !important;
