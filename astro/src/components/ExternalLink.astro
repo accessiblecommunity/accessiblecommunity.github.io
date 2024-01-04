@@ -1,0 +1,34 @@
+---
+interface Props {
+  href: URL | string;
+  // Any additional HTML classes to apply to the link.
+  class?: string;
+  // Whether to wrap the slot in a span to avoid gaps between child elements. Defaults to false.
+  gaps?: boolean;
+}
+
+const { href, 'class': className = '', gaps = false } = Astro.props;
+
+import { Icon } from 'astro-icon';
+---
+
+<a href={href} class:list={['icon-link', className]} target="_blank">
+  { gapped ?
+    <slot /> :
+    <span>
+      <slot />
+    </span>
+  }
+  <Icon name="bi:arrow-up-right-square" class="bi external" alt="External link" />
+</a>
+
+<style is:global>
+  .icon-link > .bi.external {
+    /* These make it act like a `sup` */
+    font-size: 70%;
+    position: relative;
+    top: -0.5em;
+    /* This counters most of the 0.375 gap in the default icon-link */
+    left: -0.2em;
+  }
+</style>
