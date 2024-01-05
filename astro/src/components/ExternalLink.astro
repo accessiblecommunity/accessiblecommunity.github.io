@@ -14,7 +14,8 @@ import { Icon } from 'astro-icon';
 
 <a href={href} class:list={['icon-link', className]} target="_blank">
   { gaps ?
-    <slot /> :
+    <slot />
+  :
     <span>
       <slot />
     </span>
