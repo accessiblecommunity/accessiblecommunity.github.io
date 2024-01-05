@@ -1,9 +1,18 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import Section from '../../components/Section.astro';
+
+const title = 'Partners'
+const heading = 'Our partners and supporters'
+
+const crumbs = [{
+  name: 'Home', href: '/',
+}, {
+  name: 'Team Members', href: '/team',
+}]
 ---
 
-<Layout title="Our partners and supporters">
+<Layout title={title} crumbs={crumbs} heading={heading}>
  <Section theme="body-tertiary">
   <p class="lead">Thank you to the organizations that partner with us and support our work in various ways.</p>
   <ul class="row list-unstyled">
