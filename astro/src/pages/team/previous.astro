@@ -1,16 +1,25 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import Section from '../../components/Section.astro';
+
+const title = 'Previous Contributors'
+const heading = 'Our previous contributors'
+
+const crumbs = [{
+  name: 'Home', href: '/',
+}, {
+  name: 'Team Members', href: '/team',
+}]
 ---
 
-<Layout title="Our previous contributors">
+<Layout title={title} crumbs={crumbs} heading={heading}>
  <Section theme="body-tertiary">
   <div class="col-xxl-9 pb-3">
    <p class="lead">We sincerely appreciate the time and energy that each person listed below has contributed to our mission.</p>
   </div>
   <div>
    <div>
-    <div class="card mb-3 shadow team-card">
+    <div class="card mb-5 shadow team-card">
       <h2 class="card-header text-ac team-header">Board Members</h2>
       <div class="card-body">
         <ul>
@@ -21,7 +30,7 @@ import Section from '../../components/Section.astro';
     </div>
    </div>
    <div>
-    <div class="card mb-3 shadow team-card">
+    <div class="card mb-5 shadow team-card">
       <h2 class="card-header text-ac team-header">Leadership Team</h2>
       <div class="card-body">
         <ul>
@@ -32,7 +41,7 @@ import Section from '../../components/Section.astro';
     </div>
    </div>
    <div>
-    <div class="card mb-3 shadow team-card">
+    <div class="card mb-5 shadow team-card">
       <h2 class="card-header text-ac team-header">Contributors</h2>
       <div class="card-body">
         <ul>
@@ -45,7 +54,7 @@ import Section from '../../components/Section.astro';
     </div>
    </div>
    <div>
-    <div class="card mb-3 shadow team-card">
+    <div class="card mb-5 shadow team-card">
       <h2 class="card-header text-ac team-header">Interns</h2>
       <div class="card-body">
         <ul class="row justify-content-end">
@@ -63,7 +72,7 @@ import Section from '../../components/Section.astro';
     </div>
    </div>
    <div>
-    <div class="card mb-3 shadow team-card">
+    <div class="card mb-5 shadow team-card">
       <h2 class="card-header text-ac team-header">Special Projects</h2>
       <div class="card-body">
         <h3>University of Maryland, Impact Consulting Fellowship (Spring 2021)</h3>
