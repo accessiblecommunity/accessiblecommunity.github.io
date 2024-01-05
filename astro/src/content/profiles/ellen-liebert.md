@@ -2,7 +2,7 @@
 name: Ellen Liebert
 title: ta11y Project Manager
 tags:
-    - staff
+    - leadership
     - ta11y
 picture: ../../images/profiles/Ellen_profile.png
 ---

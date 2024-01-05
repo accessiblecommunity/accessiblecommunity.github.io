@@ -3,7 +3,7 @@ name: Rachael Bradley Montgomery
 title: Founder & Executive Director
 tags:
     - board
-    - staff
+    - leadership
 picture: ../../images/profiles/Rachael_profile.png
 links:
     email: rachael@accessiblecommunity.org
