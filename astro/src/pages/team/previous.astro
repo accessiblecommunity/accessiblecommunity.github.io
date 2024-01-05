@@ -1,0 +1,111 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Section from '../../components/Section.astro';
+
+const title = 'Previous Contributors'
+const heading = 'Our previous contributors'
+
+const crumbs = [{
+  name: 'Home', href: '/',
+}, {
+  name: 'Team Members', href: '/team',
+}]
+---
+
+<Layout title={title} crumbs={crumbs} heading={heading}>
+ <Section theme="body-tertiary">
+  <div class="col-xxl-9 pb-3">
+   <p class="lead">We sincerely appreciate the time and energy that each person listed below has contributed to our mission.</p>
+  </div>
+  <div>
+   <div>
+    <div class="card mb-5 shadow team-card">
+      <h2 class="card-header text-ac team-header">Board Members</h2>
+      <div class="card-body">
+        <ul>
+          <li>Tammi Smith (Board Secretary 2019-2021)</li>
+          <li>Ben Wilson (Board President 2017-2019)</li>
+        </ul>
+      </div>
+    </div>
+   </div>
+   <div>
+    <div class="card mb-5 shadow team-card">
+      <h2 class="card-header text-ac team-header">Leadership Team</h2>
+      <div class="card-body">
+        <ul>
+          <li>Abdullah (Director of Donor Relations 2020-2021)</li>
+          <li>Marjana C. (Loca11y Project Manager 2022)</li>
+        </ul>
+      </div>
+    </div>
+   </div>
+   <div>
+    <div class="card mb-5 shadow team-card">
+      <h2 class="card-header text-ac team-header">Contributors</h2>
+      <div class="card-body">
+        <ul>
+          <li>Brian Chu</li>
+          <li>Hayley Dott</li>
+          <li>Albert Kim</li>
+          <li>Eleanor Waldschuetz</li>
+        </ul>
+      </div>
+    </div>
+   </div>
+   <div>
+    <div class="card mb-5 shadow team-card">
+      <h2 class="card-header text-ac team-header">Interns</h2>
+      <div class="card-body">
+        <ul class="row justify-content-end">
+          <li class="col-md-6">Arshiya Bharatam</li>
+          <li class="col-md-6">Young Chen</li>
+          <li class="col-md-6">Coleen Cox</li>
+          <li class="col-md-6">Yash Dubey</li>
+          <li class="col-md-6">Tarry G.</li>
+          <li class="col-md-6">Ashley McNair</li>
+          <li class="col-md-6">Alexander Steele</li>
+          <li class="col-md-6">Evan Tansil</li>
+          <li class="col-md-6">Gabrielle Trilling</li>
+        </ul>
+      </div>
+    </div>
+   </div>
+   <div>
+    <div class="card mb-5 shadow team-card">
+      <h2 class="card-header text-ac team-header">Special Projects</h2>
+      <div class="card-body">
+        <h3>University of Maryland, Impact Consulting Fellowship (Spring 2021)</h3>
+        <ul>
+          <li>Percy Chipunza</li>
+          <li>Nathan Gallagher</li>
+          <li>Steven Haigler</li>
+          <li>Andrew Kasner</li>
+          <li>Melanie Rojas</li>
+        </ul>
+        <h3>University of Maryland, Capstone Project (Spring 2021)</h3>
+        <ul>
+          <li>Manar Al-badarneh</li>
+          <li>Emily Barbagallo</li>
+          <li>Andrew Day</li>
+          <li>Angad Dhillon</li>
+          <li>Jonathan Fuentes</li>
+          <li>Sammi Lacovara</li>
+        </ul>
+      </div>
+    </div>
+   </div>
+  </div>
+ </Section>
+</Layout>
+
+<style>
+  /* first declaration that is commented out below is for debugging purposes. */
+  /* {
+    outline: 1px solid black;
+  } */
+
+ .team-header {
+   background-color: white;
+ }
+</style>
