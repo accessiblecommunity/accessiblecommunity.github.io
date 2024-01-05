@@ -2,12 +2,21 @@
 import Layout from '../../layouts/Layout.astro';
 import Section from '../../components/Section.astro';
 import ExternalLink from '../../components/ExternalLink.astro';
+
+const title = 'Our Policies'
+const heading = 'Our policies'
+
+const crumbs = [{
+  name: 'Home', href: '/',
+}, {
+  name: 'About', href: '/about',
+}]
 ---
 
-<Layout title="Our policies">
+<Layout title={title} crumbs={crumbs} heading={heading}>
  <Section theme="body-tertiary">
   <p>All contributors to <span class="text-brand text-ac">Accessible <strong>Community</strong></span> must read and agree to the following policies. This includes our leadership and staff. If you are interested in volunteering on any team, you will need to agree to the following policies.</p>
-  <p>Links to all policies are available on both our website and on Google Docs.</p>
+  <p class="mb-5">Links to all policies are available on both our website and on Google Docs.</p>
   <h2>Policy Links</h2>
   <ul>
    <li><a href="../../code-of-conduct">Code of Conduct (Webpage version)</a></li>
