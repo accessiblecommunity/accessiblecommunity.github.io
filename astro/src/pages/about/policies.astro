@@ -21,7 +21,7 @@ const crumbs = [{
   </div>
 
  <Section theme="body">
-  <h3 id="user"><strong>User</strong> Policies</h3>
+  <h3 id="user" class="display-4"><strong>User</strong> Policies</h3>
   <p>
     These are policies for users of the tools that <span class="text-brand text-ac">Accessible <strong>Community</strong></span>
     develops. Our users should know that these policies exist and where to find them.
@@ -31,12 +31,12 @@ const crumbs = [{
       <a href="../../privacy-policy" class="text-ac">Privacy Policy</a>
       <!-- TODO: Add the link for Google Docs -->
       <ExternalLink href="#" gaps={true}>
-        <Icon name="googledocs" class="bi" alt="Privacy Policy in Google Docs" />
+        <Icon name="googledocs" class="bi" height="1.1em" alt="Privacy Policy in Google Docs" />
       </ExternalLink>
     </li>
   </ul>
 
-  <h3 id="staff" class="mt-5"><strong>Staff</strong> Policies</h3>
+  <h3 id="staff" class="display-4 mt-5"><strong>Staff</strong> Policies</h3>
   <p>
     All contributors to <span class="text-brand text-ac">Accessible <strong>Community</strong></span>
     must read and agree to the following policies. This includes our board of directors, our
@@ -73,6 +73,9 @@ const crumbs = [{
 </Layout>
 
 <style>
+  li {
+    line-height: 1.75em;
+  }
   [astro-icon="googledocs"] {
     margin-right: -0.2em;
   }
