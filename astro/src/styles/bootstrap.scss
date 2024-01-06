@@ -182,6 +182,10 @@ $utilities: map-merge(
   font-family: $headings-font-family;
 }
 
+.card, .card-header {
+  background-color: $body-secondary-bg;
+}
+
 img.profile-pic {
   display: inline-block;
   max-width: 3em;
