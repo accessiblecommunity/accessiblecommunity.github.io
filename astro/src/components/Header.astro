@@ -114,11 +114,6 @@ const breadCrumbs = isEmpty(crumbs) && title != 'Home' ? [{ name: 'Home', href: 
   }
 
   @include color-mode(dark) {
-    *:focus-visible, .navbar-toggler:focus {
-      outline: 6px dashed white;
-      outline-offset: 1px 2px;
-    }
-
     .skip-link, .link-dropdown:hover {
       color: var(--ac-navy);
       background-color: white;
