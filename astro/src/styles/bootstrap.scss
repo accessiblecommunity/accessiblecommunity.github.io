@@ -65,6 +65,8 @@ $custom-colors: (
   "ac": #041058,
   "ac2": #95B2E0,
   "ac3": #A9B6FB,
+  "secondary": yellow,
+  "tertiary": red,
   "facebook": #4267B2,
   "instagram": #5B51D8,
   "linkedin": #2E64BC,
@@ -75,6 +77,9 @@ $custom-colors: (
   "twitter": #1DA1F2,
 );
 $theme-colors: map-merge($theme-colors, $custom-colors);
+
+$body-secondary-bg: map-get($custom-colors, secondary);
+$body-tertiary-bg: map-get($custom-colors, tertiary);
 
 // 5a. Include remainder of required parts
 @import "bootstrap/scss/maps";
