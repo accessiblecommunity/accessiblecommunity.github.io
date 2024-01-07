@@ -241,6 +241,10 @@ img.profile-pic {
     text-decoration-color: RGBA(var(--bs-light-rgb), var(--bs-link-underline-opacity, 1)) !important;    
   }
 
+  .breadcrumb-item, .breadcrumb-item.active, .nav-link, .dropdown-item, .dropdown-item:hover {
+    color: #FFFFFF;
+  }
+
   textarea, input {
     border-color: #FFFFFF;
   }
