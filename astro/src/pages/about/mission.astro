@@ -10,7 +10,7 @@ import missionImage from '../../images/mission.png';
 import partnerImage from '../../images/np_Business-partners-discussing-work-arranging-business-papers-and-charts-on-floor_bYWo15_large.jpg';
 ---
 <Layout title="Mission">
-  <Section theme="body-tertiary" slot="header">
+  <Section theme="body-secondary" slot="header">
     <div class="row flex-lg-row-reverse align-items-center justify-content-center gy-4 p-4">
       <div class="col-10 col-sm-8 col-lg-6 col-xl-5 col-xxl-4">
         <Image src={missionImage} alt="Image depicting Accessible Community's vision. Four circles connected with our logo. Contained in the circles are People with Disabilities, Local Organizations, Community Leaders, and Accessibility Experts." class="img-fluid" width="400" height="400" loading="lazy" />
@@ -58,7 +58,7 @@ import partnerImage from '../../images/np_Business-partners-discussing-work-arra
     </div>
   </Section>
 
-  <Section theme="bg-light">
+  <Section theme="body-secondary">
     <h2 class="display-3 fw-bold pb-3">Our motivation.</h2>
     <p class="lead">One in every three households includes someone who has a disability. These individuals and families often struggle to find places in their community where they can successfully shop, eat, and participate in community life.</p>
     <ul class="lead">
@@ -162,6 +162,7 @@ img.profile-pic {
   display: inline-block;
   max-width: 3em;
 }
+
 div.fs-6 {
   line-height: 0.9em;
 }
@@ -173,6 +174,7 @@ div.fs-6 {
     margin-bottom: 0;
   }
 }
+
 @include media-breakpoint-up(xl) {
   .img-orgs {
     max-width: 35rem;

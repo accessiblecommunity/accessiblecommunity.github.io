@@ -48,7 +48,7 @@ const crumbs = [{
 ---
 
 <Layout title={title} crumbs={crumbs} heading={heading}>
-  <Section theme="body-tertiary" fluid={mini}>
+  <Section theme="body-secondary" fluid={mini}>
     <ul class={mini ? 'mini list-inline text-center' : 'list-group'}>
       { profiles.map((p) =>
         <li class={mini ? 'list-inline-item text-start' : 'd-block mb-5'}>
@@ -63,4 +63,5 @@ const crumbs = [{
 .mini .list-inline-item {
   width: 18rem;
 }
+
 </style>

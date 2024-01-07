@@ -46,7 +46,7 @@ const daniela = await getEntry('profiles', 'daniela');
     </div>
   </Hero>
 
-  <Section theme="body-tertiary">
+  <Section theme="body-secondary">
     <h2 class="display-3 fw-bold">What we believe...</h2>
     <div class="d-flex flex-column flex-xl-row justify-content-xl-evenly align-items-center">
       <div class="col col-xl-8 col-xxl-9">
@@ -80,7 +80,7 @@ const daniela = await getEntry('profiles', 'daniela');
     </div>
   </Section>
 
-  <Section theme="body-secondary">
+  <Section theme="body-tertiary">
     <div class="container d-flex flex-column flex-xl-row-reverse gap-4 justify-content-xl-between">
       <div class="col col-xl-7">
         <h2 class="display-3 fw-bold">What we do...</h2>
@@ -96,11 +96,11 @@ const daniela = await getEntry('profiles', 'daniela');
           </li>
         </ul>
       </div>
-      <figure class="col col-xl-4 text-start p-4 bg-body-tertiary rounded d-flex flex-column justify-content-center">
+      <figure class="col col-xl-4 text-start p-4 bg-body-secondary shadow-lg rounded d-flex flex-column justify-content-center">
         <blockquote class="blockquote">
           <p>I am proud to be part of this community that drives the change toward a more accessible digital world for all people.</p>
         </blockquote>
-        <figcaption class="blockquote-footer fs-4 d-flex justify-content-end align-items-center gap-2">
+        <figcaption class="blockquote-footer text-body fs-4 d-flex justify-content-end align-items-center gap-2">
           <div class="text-start">
             <span>{daniela.data.name},</span>
             <div class="fs-6 text-brand"><strong>t</strong>a11y <strong>content</strong></div>
@@ -111,7 +111,7 @@ const daniela = await getEntry('profiles', 'daniela');
     </div>
   </Section>
 
-  <Section theme="body">
+  <Section theme="body-tertiary">
     <h2 class="display-3 fw-bold">Our services.</h2>
     <div class="d-flex flex-column flex-xl-row gap-4 py-3 justify-content-lg-evenly text-ac">
       <div class="col col-xl-3 shadow-lg rounded bg-body-secondary p-4">
@@ -167,11 +167,11 @@ const daniela = await getEntry('profiles', 'daniela');
       </div>
     </div>
     <p class="lead pt-5">
-      Learn more about <a href="/services" class="link-offset-2">our services</a>.
+      Learn more about <a href="/services" class="link-offset-2 link-ac">our services</a>.
     </p>
   </Section>
 
-  <Section theme="body-tertiary" id="journey">
+  <Section theme="body-secondary" id="journey">
     <h2 class="display-4 fw-bold mb-4">Start your organization's disability-inclusion journey.</h2>
     <div class="d-flex flex-column flex-lg-row gap-4 justify-content-lg-evenly">
       <TipRegistration />
@@ -190,6 +190,7 @@ const daniela = await getEntry('profiles', 'daniela');
     /* Until the SVG is squared up */
     margin: 0 -0.3em;
   }
+  
   div.fs-6 {
     line-height: 0.9em;
   }
