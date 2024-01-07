@@ -65,21 +65,31 @@ $custom-colors: (
   "ac": #041058,
   "ac2": #95B2E0,
   "ac3": #A9B6FB,
-  "secondary": yellow,
-  "tertiary": red,
+  // "light-secpondary": #fcfeff,
+  // "light-tertiary": #eff0f3,
+  // "dark-secondary": #232635,
+  // "dark-tertiary": #6C717E,
   "facebook": #4267B2,
   "instagram": #5B51D8,
   "linkedin": #2E64BC,
   "mastodon": #6364FF,
   "paypal": #253B80, // Dark cornflower blue
   "stripe": #625BF6, // Stripe Blurple
-  "threads": black,
+  "threads": #000000,
   "twitter": #1DA1F2,
 );
 $theme-colors: map-merge($theme-colors, $custom-colors);
 
-$body-secondary-bg: map-get($custom-colors, secondary);
-$body-tertiary-bg: map-get($custom-colors, tertiary);
+// Define background colors for light mode
+$body-secondary-bg:                 #FCFEFF;
+$body-tertiary-bg:                  #EFF0F3;
+$body-color:                        #000000;
+
+// Define background colors for dark mode
+$body-secondary-bg-dark:            #232635;
+$body-tertiary-bg-dark:             #6C717E;
+$body-color-dark:                   #FFFFFF;
+$primary-text-emphasis-dark:        #FFFFFF;
 
 // 5a. Include remainder of required parts
 @import "bootstrap/scss/maps";
@@ -171,11 +181,19 @@ $utilities: map-merge(
 }
 
 .hero-link:focus-visible, .hero-button:focus-visible {
-  outline-color: white;
+  outline-color: #FFFFFF;
 }
 
 .form-field:focus {
   border-style: solid;
+}
+
+.breadcrumb-item, .breadcrumb-item.active, .nav-link, .dropdown-item, .dropdown-item:hover {
+  color: #000000;
+}
+
+.dropdown-item:hover {
+  background-color: $body-tertiary-bg;
 }
 
 .navbar-brand, .text-brand {
@@ -192,16 +210,48 @@ img.profile-pic {
 }
 
 @include color-mode(dark) {
-  *:focus-visible, .form-field:focus, .toggle-menu:focus, .navbar-toggler:focus, .btn:focus-visible {
-    outline-color: white;
+  *:focus-visible, .form-field:focus, .toggle-menu:focus, .navbar-toggler:focus, .btn:focus-visible, .nav-link:focus-visible {
+    outline-color: #FFFFFF;
   }
 
   .text-ac {
-    color: white !important;
+    color: #FFFFFF !important;
   }
+
+  .border-ac {
+    border-color: white !important;
+  }
+
+  .breadcrumb-item, .breadcrumb-item.active, .nav-link, .dropdown-item, .dropdown-item:hover {
+    color: #FFFFFF;
+  }
+
+  .dropdown-item:hover {
+    background-color: $body-tertiary-bg-dark;
+  }
+
+  .card, .card-header {
+    background-color: $body-secondary-bg-dark;
+  }
+
+  .general-button {
+    color: #041058;
+    background-color: #FFFFFF;
+  }
+
+  .general-button:hover {
+    color: #041058;
+    background-color: $body-tertiary-bg;
+  }
+
+  .nav-link:hover {
+    color: $body-tertiary-bg;
+  }
+
   h1, h2, h3, h4, h5, h6 {
     color: var(--bs-primary-text-emphasis);
   }
+
   .bi {
     filter: invert(75%) sepia(53%) saturate(3857%) hue-rotate(191deg) brightness(100%) contrast(94%);
   }
