@@ -146,15 +146,15 @@ $utilities: map-merge(
   --bs-bg-opacity: 0.3;
 }
 
-*:focus-visible, .form-field:focus, .toggle-menu:focus {
+*:focus-visible, .form-field:focus, .toggle-menu:focus, .navbar-toggler:focus, .nav-link:focus-visible {
   outline: 3px dashed #041058;
-  outline-offset: none;
+  outline-offset: 0.025em;
   box-shadow: none;
   border-radius: 2%;
 }
 
-.form-field:focus {
-  border-style: solid;
+.dropdown-item:focus-visible {
+  outline-offset: -0.15em;
 }
 
 .btn:focus-visible {
@@ -162,6 +162,14 @@ $utilities: map-merge(
   outline-offset: 0.25rem;
   box-shadow: none;
   border-radius: 0.375rem;
+}
+
+.hero-link:focus-visible, .hero-button:focus-visible {
+  outline-color: white;
+}
+
+.form-field:focus {
+  border-style: solid;
 }
 
 .navbar-brand, .text-brand {
@@ -174,6 +182,10 @@ img.profile-pic {
 }
 
 @include color-mode(dark) {
+  *:focus-visible, .form-field:focus, .toggle-menu:focus, .navbar-toggler:focus, .btn:focus-visible {
+    outline-color: white;
+  }
+
   .text-ac {
     color: var(--bs-light) !important;
   }

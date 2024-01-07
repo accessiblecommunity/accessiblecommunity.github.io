@@ -47,7 +47,7 @@ const breadCrumbs = isEmpty(crumbs) && title != 'Home' ? [{ name: 'Home', href: 
           <ul class="dropdown-menu">
             <li><a class="dropdown-item" href="/about/mission">Mission &amp; Vision</a></li>
             <li><a class="dropdown-item" href="/about/story">Founder's Story</a></li>
-            <li><a class="dropdown-item" href="/about/policies">Our policies</a></li>
+            <li><a class="dropdown-item" href="/about/policies">Our Policies</a></li>
           </ul>
         </li>
         <li class="nav-item">
@@ -60,6 +60,7 @@ const breadCrumbs = isEmpty(crumbs) && title != 'Home' ? [{ name: 'Home', href: 
             <li><a class="dropdown-item" href="/team/leadership">Leadership</a></li>
             <li><a class="dropdown-item" href="/team/staff">Staff</a></li>
             <li><a class="dropdown-item" href="/team/previous">Previous Contributors</a></li>
+            <li><a class="dropdown-item" href="/team/partners">Partners</a></li>
           </ul>
         </li>
         <li class="nav-item dropdown">
@@ -116,11 +117,6 @@ const breadCrumbs = isEmpty(crumbs) && title != 'Home' ? [{ name: 'Home', href: 
   @include color-mode(dark) {
     [astro-icon="ac-logo"] {
       color: white;
-    }
-
-    *:focus-visible, .navbar-toggler:focus {
-      outline: 6px dashed white;
-      outline-offset: 1px 2px;
     }
 
     .skip-link, .link-dropdown:hover {
