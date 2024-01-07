@@ -84,7 +84,8 @@ $theme-colors: map-merge($theme-colors, $custom-colors);
 $body-secondary-bg:                 #FCFEFF;
 $body-tertiary-bg:                  #EFF0F3;
 $body-color:                        #000000;   
-$box-shadow-lg:                     0.5rem 0.5rem 3.5rem rgba(#3e3f41, 0.9);
+$box-shadow:                        0rem 0rem 0.5rem rgba(#3e3f41, 0.9);
+$box-shadow-lg:                     0.5rem 0.5rem 3rem rgba(#151616, 0.9);
 
 // Define background colors for dark mode
 $body-secondary-bg-dark:            #232635;
@@ -272,7 +273,7 @@ img.profile-pic {
     color: $body-tertiary-bg;
   }
 
-  .shadow-lg {
+  .shadow-lg, .shadow {
     box-shadow: none !important;
   }
 
