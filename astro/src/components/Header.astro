@@ -115,6 +115,10 @@ const breadCrumbs = isEmpty(crumbs) && title != 'Home' ? [{ name: 'Home', href: 
   }
 
   @include color-mode(dark) {
+    [astro-icon="ac-logo"] {
+      color: white;
+    }
+
     .skip-link, .link-dropdown:hover {
       color: var(--ac-navy);
       background-color: white;

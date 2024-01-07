@@ -1,12 +1,14 @@
 ---
 import { Icon } from 'astro-icon';
+import { Image } from 'astro:assets';
 
+import ExternalLink from '../components/ExternalLink.astro';
 import Hero from '../components/Hero.astro';
 import Layout from '../layouts/Layout.astro';
 import Section from '../components/Section.astro'
 
 import heroBg from '../images/girl-using-laptop-blue-1920x1080.png'
-// import heroBg from '../images/man-with-prosthetic-hand-typing.jpg'
+import tallyScreen from '../images/tally-screenshot.png'
 
 const services = [{
   icon: 'ta11y-logo',
@@ -24,7 +26,7 @@ const services = [{
   icon: 'loca11y-logo',
   name: 'loca11y',
   title: '<strong>loc</strong>a11y.<strong>org</strong>',
-  text: 'A tool for people with disabilities to find and recommend organizations and events where they can successfully engage and participate.',
+  text: 'A tool for people with disabilities to find and recommend organizations and events where they can participate and engage.',
   // link: 'https://www.loca11y.org',
 }]
 ---
@@ -32,136 +34,167 @@ const services = [{
 <Layout title="Services">
   <Hero image={ heroBg } columns="col-sm-12 col-md-9 col-lg-7 col-xl-6 col-xxl-5" slot="header">
     <h2 class="display-3 text-white py-4" slot="heading">
-      <span class="fw-bolder">Tools</span> and <span class="fw-bolder">services</span> for equity.
+      <span class="fw-bold">Tools</span> and <span class="fw-bold">services</span> for equity.
     </h2>
-    <div class="hero-bd p-1">
-      <p class="lead mb-0">
+    <div class="bg-ac-alpha-3 hero-bd p-1 px-2">
+      <p class="text-brand mb-0">
         We create tools and services to <strong>teach accessibility</strong>
         and <strong>promote accessible organizations</strong>. We practice what we preach; the tools we develop
         are fully accessible, following the best practices, guidelines and standards to ensure
         usability, not just compliance. 
         </p>
     </div>
-  </Hero>
-  <div class="bg-ac py-2">
-    <div class="container text-white text-center">
-    The <code class="text-white d-inline">a11y</code> in our tool names stands for accessibility
-    (there are 11 letters between the 'a' and 'y').
+    <div slot="action" class="py-2 bg-ac-alpha-3">
+      <div class="container text-white text-center">
+        The <code class="text-white d-inline">a11y</code> in our tool names stands for accessibility
+        (there are 11 letters between the 'a' and 'y').
+      </div>
     </div>
-  </div>
+  </Hero>
 
   <Section theme="body-tertiary" py={4}>
     <div class="row row-gap-4 row-cols-1 row-cols-lg-3 mb-3">
       { services.map(({ icon, name, title, text, link }) =>
-        <div class="feature col">
+        <div class="feature col d-flex flex-column justify-content-between">
           <div class="d-flex align-items-center gap-2 mb-1">
             <div class="feature-icon d-inline-flex align-items-center justify-content-center text-bg-ac bg-gradient">
               <Icon class="bi" name={ icon } height="1.5em" />
               </div>
             <h2 class="my-1 fs-1 text-ac" set:html={ title }></h2>
           </div>
-          <p class="ms-5 me-3">
+          <p class="ms-5 me-3 flex-fill">
             <span set:html={text} />
           </p>
-          <div class="ms-5 me-3 d-flex flex-lg-column-reverse flex-xl-row justify-content-start">
-            <a href={`#${name}`} class="icon-link text-ac text-nowrap me-4">
-              Learn more
-              <span class="visually-hidden">about {name}.org</span>
-              <Icon name="bi:arrow-down-square" class="bi" height="1em"></Icon>
-            </a>
-            { link ?
-              <div class="text-ac text-nowrap">
-                Visit 
-                <a href={link} class="icon-link text-ac text-brand" target="_blank">
-                  <span set:html={title} />
-                  <Icon name="bi:arrow-up-right-square" class="bi" height="1em"></Icon>
-                </a>
-              </div>
-            :
-              <div class="fw-bold flex-fill">Coming soon.</div>
-            }
+          <div class="ms-5 me-3">
+            <div class="d-flex flex-lg-column-reverse flex-xl-row justify-content-start">
+              <a href={`#${name}`} class="icon-link link-ac text-nowrap me-4">
+                Learn more
+                <span class="visually-hidden">about {name}.org</span>
+                <Icon name="bi:arrow-down-square" class="bi" />
+              </a>
+              { link ?
+                <div class="text-ac text-nowrap">
+                  Visit 
+                  <ExternalLink
+                    href={link}
+                    class="link-ac text-brand"
+                    gaps={true}
+                  >
+                    <span set:html={title} />
+                  </ExternalLink>
+                </div>
+              :
+                <div class="text-brand fw-bold flex-fill">Coming soon.</div>
+              }
+            </div>
           </div>
         </div>
       )}
     </div>
   </Section>
 
-  <Section theme="body-tertiary" shadow={true}>
-    <h2 class="display-4 fw-bold">Why three different tools?</h2>
-    <p aria-hidden="true">
-      <span class="placeholder col-6"></span>
-      <span class="placeholder col-7 me-1"></span>
-      <span class="placeholder col-3"></span>
-      <span class="placeholder col-4 me-1"></span>
-      <span class="placeholder col-4"></span>
-      <span class="placeholder col-8"></span>
-      <span class="placeholder col-7"></span>
-      <span class="placeholder col-5 me-1"></span>
-      <span class="placeholder col-2"></span>
-      <span class="placeholder col-9"></span>
-      <span class="placeholder col-7"></span>
-      <span class="placeholder col-4"></span>
-    </p>
+  <Section id="ta11y" theme="body" shadow={true} fluid={false}>
+    <div class="row p-4 justify-content-evenly align-items-center rounded-3">
+      <div class="col-lg-7 py-lg-4">
+        <h2 class="display-3 fw-bold">About t<span class="fw-lighter">a11y</span>.org</h2>
+        <p>
+          Accessibility is in the details and checklists help evaluate and track accessibility. 
+        </p>
+        <p>
+          <span class="text-brand"><strong>t</strong>a11y</span> provides a free, accessible way
+          to use publicly available checklists without printing out hundreds of pages of paper.
+          This one-stop online tool makes it easier to start and evaluate an accessibility program,
+          evaluate web or facility accessibility, spot check social media posts, or plan an
+          accessible event. Results are retained for future use and private. 
+        </p>
+        <p>
+          <span class="text-brand fw-bold">Target Audience:</span> Anyone who wants to learn more about disability inclusion and use checklists to manage their progress.
+        </p>
+        <p>
+          <span class="text-brand fw-bold">What it is not:</span> A certification or legal guarantee of accessibility.
+        </p>
+      </div>
+      <div class="col-lg-5 p-0 overflow-hidden">
+        <Image
+          src={tallyScreen}
+          class="ta11y-screen"
+          width="720"
+          alt="A screenshot of tally.org"
+        />
+      </div>
+    </div>
   </Section>
 
-  <Section id="ta11y" theme="body-bg">
-    <h2 class="fw-bold">About t<span class="fw-lighter">a11y</span>.org</h2>
-    <p aria-hidden="true">
-      <span class="placeholder col-6"></span>
-      <span class="placeholder col-7 me-1"></span>
-      <span class="placeholder col-3"></span>
-      <span class="placeholder col-4 me-1"></span>
-      <span class="placeholder col-4"></span>
-      <span class="placeholder col-8"></span>
-      <span class="placeholder col-7"></span>
-      <span class="placeholder col-5 me-1"></span>
-      <span class="placeholder col-2"></span>
-      <span class="placeholder col-9"></span>
-      <span class="placeholder col-7"></span>
-      <span class="placeholder col-4"></span>
+  <Section id="mutua11y" theme="ac">
+    <h2 class="display-3 fw-bold text-bg-ac">About mutu<span class="fw-lighter">a11y</span>.org</h2>
+    <p class="text-bg-ac">
+      An online community to connect and advance disability-related professionals. 
+      <span class="text-brand"><strong>mutu</strong>a11y</span> provides a platform for
+      accessibility professionals and others interested to collaborate on projects and ideas;
+      thus establishing "open-source accessibility."
     </p>
-  </Section>
-
-  <Section id="mutua11y" theme="ac text-white">
-    <h2 class="fw-bold text-white">About mutu<span class="fw-lighter">a11y</span>.org</h2>
-    <p aria-hidden="true">
-      <span class="placeholder col-6"></span>
-      <span class="placeholder col-7 me-1"></span>
-      <span class="placeholder col-3"></span>
-      <span class="placeholder col-4 me-1"></span>
-      <span class="placeholder col-4"></span>
-      <span class="placeholder col-8"></span>
-      <span class="placeholder col-7"></span>
-      <span class="placeholder col-5 me-1"></span>
-      <span class="placeholder col-2"></span>
-      <span class="placeholder col-9"></span>
-      <span class="placeholder col-7"></span>
-      <span class="placeholder col-4"></span>
+    <ul class="text-bg-ac">
+      <li>
+        The <span class="text-brand fw-bold">mutu<span class="fw-lighter">a11y</span> mentoring</span>
+        program matches senior accessibility experts with novice accessibility professionals to
+        mentor and guide them in their career development.
+      </li>
+      <li>
+        <span class="text-brand fw-bold">mutu<span class="fw-lighter">a11y</span> pathways</span>
+        advertises and promotes apprenticeships, internships and fellowships in various accessibility
+        and disability-inclusion industries.
+      </li>
+      <li>
+        A combination of discussion threads and workshops focus on helping advance accessibility
+        by creating new resources and approaches.
+      </li>
+    </ul>
+    <p class="text-bg-ac">
+      <span class="text-brand fw-bold">Target Audience:</span> Accessibility and disability-inclusion
+      professionals.
+    </p>
+    <p class="text-bg-ac">
+      <span class="text-brand fw-bold">What it is not:</span> A job board, digital only though we are starting
+      by focusing on the digital space.
     </p>
   </Section>
 
   <Section id="loca11y" theme="body-secondary">
-    <h2 class="fw-bold">About loc<span class="fw-lighter">a11y</span>.org</h2>
-    <p aria-hidden="true">
-      <span class="placeholder col-6"></span>
-      <span class="placeholder col-7 me-1"></span>
-      <span class="placeholder col-3"></span>
-      <span class="placeholder col-4 me-1"></span>
-      <span class="placeholder col-4"></span>
-      <span class="placeholder col-8"></span>
-      <span class="placeholder col-7"></span>
-      <span class="placeholder col-5 me-1"></span>
-      <span class="placeholder col-2"></span>
-      <span class="placeholder col-9"></span>
-      <span class="placeholder col-7"></span>
-      <span class="placeholder col-4"></span>
+    <h2 class="display-3 fw-bold">About loc<span class="fw-lighter">a11y</span>.org</h2>
+    <p>
+      <span class="text-brand"><strong>loc</strong>a11y</span> provides an online tool for
+      people with disabilities to find and recommend local organizations and events where they
+      can successfully engage and participate. <span class="text-brand"><strong>loc</strong>a11y</span>
+      is designed by people with disabilities for people with disabilities. It is also designed
+      to celebrate and recognize local organizations. A user can recommend organizations by
+      disability where they are successful, share comments about their experiences, and search
+      against information relevant to their disability. It also supports organizations by
+      allowing them to promote their accessibility and review feedback before it becomes public. 
+    </p>
+    <p>
+      <span class="text-brand"><strong>loc</strong>a11y</span> also includes a calendar of events
+      that can be filtered by organization or by disability. This allows people with disabilities
+      and their caretakers to find events where they can participate. It also allows organizations
+      to work together to coordinate, deconflict and promote disability related events.
+    </p>
+    <p>
+      <span class="text-brand fw-bold">Target Audience:</span> People with Disabilities. Organizations that
+      want to reach people with disabilities in their community.
+    </p>
+    <p>
+      <span class="text-brand fw-bold">What it is not:</span> Google Maps or Yelp.
+      <span class="text-brand"><strong>loc</strong>a11y</span> reports positive feedback only and
+      centers on accessibility, rather than quality of services.
     </p>
   </Section>
 </Layout>
 
-<style>
+<style lang="scss">
+  @import "bootstrap/scss/functions";
+  @import "bootstrap/scss/variables";
+  @import "bootstrap/scss/mixins/breakpoints";
+
   .hero-bd {
-    background-color: #04105860;
     border-radius: 0.2em;
     margin-left: 1em;
     margin-right: 1em;
@@ -175,5 +208,15 @@ const services = [{
 
   [astro-icon="loca11y-logo"] {
     margin-left: 0.2em;
+  }
+
+  .ta11y-screen {
+      transform: translateX(-140px);
+    }
+
+  @include media-breakpoint-up(lg) {
+    .ta11y-screen {
+      transform: translateX(-165px) translateY(45px) rotate(10deg);
+    }
   }
 </style>

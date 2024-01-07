@@ -59,30 +59,28 @@ const donationLinks = [{
     </div>
   </Hero>
 
-  <Section theme="white">
+  <Section theme="body">
     <div class="row justify-content-center">
-      <div class="col col-lg-8">
+      <div class="col col-lg-10">
         <h2 class="display-4 text-ac mb-3">
           <Icon class="bi d-inline-block mb-1 me-1" name="ac-logo" style="height: 1em" alt="" />
           <span>Support our <strong>mission</strong>.</span>
         </h2>
-      </div>
-    </div>
-    <div class="row justify-content-center">
-      <div class="col col-lg-8 lead">
-        <p>
-          Your support of <span class="text-ac text-brand">Accessible <strong>Community</strong></span> provides programs, accommodations and technology to...
-        </p>
-        <ul>
-          <li>Help smaller organizations with limited resources engage and support people with disabilities,</li>
-          <li>Empower people with disabilities to be part of the conversation about accessibility in their communities,</li>
-          <li>Motivate organizations by making accessibility visible and providing a marketing advantage for being disability-inclusive, and</li>
-          <li>Mature the accessibility profession by increasing communication, education and efficiency.</li>
-        </ul>
-        <p>
-          Contribute today and help make our communities more accessible. 
-          <span class="fw-bold text-ac">Thank you for your support!</span>
-        </p>
+        <div class="lead">
+          <p>
+            Your support of <span class="text-ac text-brand">Accessible <strong>Community</strong></span> provides programs, accommodations and technology to...
+          </p>
+          <ul>
+            <li>Help smaller organizations with limited resources engage and support people with disabilities,</li>
+            <li>Empower people with disabilities to be part of the conversation about accessibility in their communities,</li>
+            <li>Motivate organizations by making accessibility visible and providing a marketing advantage for being disability-inclusive, and</li>
+            <li>Mature the accessibility profession by increasing communication, education and efficiency.</li>
+          </ul>
+          <p>
+            Contribute today and help make our communities more accessible. 
+            <span class="fw-bold text-brand text-ac">Thank you for your support!</span>
+          </p>
+        </div>
       </div>
     </div>
   </Section>
@@ -136,19 +134,17 @@ const donationLinks = [{
 </Layout>
 
 <style lang="scss">
-  .hero {
-    background-color: var(--ac-navy);
-  }
-
   span.cib-paypal {
     margin-top: 0.4em;
     margin-bottom: 0.4em;
   }
   [astro-icon="cib:paypal"] {
     height: 1.6em;
+    filter: none;
   }
   [astro-icon="cib:stripe"] {
     height: 2.4em;
+    filter: none;
   }
   .btn-sm .bi {
     height: 2.5rem;
