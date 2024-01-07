@@ -64,10 +64,10 @@ $custom-colors: (
   "ac": #041058,
   "ac2": #95B2E0,
   "ac3": #A9B6FB,
-  // "light-secpondary": #fcfeff,
-  // "light-tertiary": #eff0f3,
-  // "dark-secondary": #232635,
-  // "dark-tertiary": #6C717E,
+  "light-secondary": #fcfeff,
+  "light-tertiary": #eff0f3,
+  "dark-secondary": #232635,
+  "dark-tertiary": #6C717E,
   "facebook": #4267B2,
   "instagram": #5B51D8,
   "linkedin": #2E64BC,
@@ -214,10 +214,6 @@ input[type=checkbox], input[type=radio] {
   accent-color: #041058;
 }
 
-.check {
-  border-image-width: 2;
-}
-
 img.profile-pic {
   display: inline-block;
   max-width: 3em;
@@ -239,6 +235,10 @@ img.profile-pic {
   .link-ac {
     color: var(--bs-light) !important;
     text-decoration-color: RGBA(var(--bs-light-rgb), var(--bs-link-underline-opacity, 1)) !important;    
+  }
+
+  .shadow, .shadow-lg {
+    box-shadow: none !important;
   }
 
   .breadcrumb-item, .breadcrumb-item.active, .nav-link, .dropdown-item, .dropdown-item:hover {
