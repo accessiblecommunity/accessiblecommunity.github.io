@@ -204,6 +204,19 @@ $utilities: map-merge(
   background-color: $body-secondary-bg;
 }
 
+textarea, input {
+  border-width: 1.5px 1.5px;
+  border-color: #000000;
+}
+
+input[type=checkbox], input[type=radio] {
+  accent-color: #041058;
+}
+
+.check {
+  border-image-width: 2;
+}
+
 img.profile-pic {
   display: inline-block;
   max-width: 3em;
@@ -239,13 +252,27 @@ img.profile-pic {
     background-color: #FFFFFF;
   }
 
+  .general-button:focus {
+    color: #041058;
+    background-color: #FFFFFF;
+  }
+
   .general-button:hover {
     color: #041058;
     background-color: $body-tertiary-bg;
   }
 
+  .required-field::after {
+    content: " *";
+    color: #FFFFFF;
+  }
+
   .nav-link:hover {
     color: $body-tertiary-bg;
+  }
+
+  textarea, input {
+    border-color: #FFFFFF;
   }
 
   h1, h2, h3, h4, h5, h6 {
