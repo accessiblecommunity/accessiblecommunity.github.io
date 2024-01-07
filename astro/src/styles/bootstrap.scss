@@ -48,11 +48,10 @@ $navbar-brand-font-size:      1.3rem;
 $navbar-brand-padding-y:      0;
 
 $blockquote-font-size:        1.25em;
+$blockquote-footer-color:     #67777E;
 $code-color:                  #590455;
 
 $container-padding-x:  3rem;
-
-$color-mode-type:      media-query;
 
 // 3. Include remainder of required Bootstrap stylesheets (including any separate color mode stylesheets)
 @import "bootstrap/scss/variables";
@@ -176,7 +175,11 @@ img.profile-pic {
 
 @include color-mode(dark) {
   .text-ac {
-    color: white !important;
+    color: var(--bs-light) !important;
+  }
+  .link-ac {
+    color: var(--bs-light) !important;
+    text-decoration-color: RGBA(var(--bs-light-rgb), var(--bs-link-underline-opacity, 1)) !important;    
   }
   h1, h2, h3, h4, h5, h6 {
     color: var(--bs-primary-text-emphasis);
