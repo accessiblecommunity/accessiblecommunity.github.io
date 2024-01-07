@@ -48,11 +48,10 @@ $navbar-brand-font-size:      1.3rem;
 $navbar-brand-padding-y:      0;
 
 $blockquote-font-size:        1.25em;
+$blockquote-footer-color:     #67777E;
 $code-color:                  #590455;
 
 $container-padding-x:  3rem;
-
-$color-mode-type:      media-query;
 
 // 3. Include remainder of required Bootstrap stylesheets (including any separate color mode stylesheets)
 @import "bootstrap/scss/variables";
@@ -230,51 +229,16 @@ img.profile-pic {
   }
 
   .text-ac {
-    color: #FFFFFF !important;
+    color: var(--bs-light) !important;
   }
 
   .border-ac {
-    border-color: white !important;
+    border-color: var(--bs-light) !important;
   }
 
-  .breadcrumb-item, .breadcrumb-item.active, .nav-link, .dropdown-item, .dropdown-item:hover {
-    color: #FFFFFF;
-  }
-
-  .dropdown-item:hover {
-    background-color: $body-tertiary-bg-dark;
-  }
-
-  .card, .card-header {
-    background-color: $body-secondary-bg-dark;
-  }
-
-  .general-button {
-    color: #041058;
-    background-color: #FFFFFF;
-  }
-
-  .general-button:focus {
-    color: #041058;
-    background-color: #FFFFFF;
-  }
-
-  .general-button:hover {
-    color: #041058;
-    background-color: $body-tertiary-bg;
-  }
-
-  .required-field::after {
-    content: " *";
-    color: #FFFFFF;
-  }
-
-  .nav-link:hover {
-    color: $body-tertiary-bg;
-  }
-
-  .shadow-lg, .shadow {
-    box-shadow: none !important;
+  .link-ac {
+    color: var(--bs-light) !important;
+    text-decoration-color: RGBA(var(--bs-light-rgb), var(--bs-link-underline-opacity, 1)) !important;    
   }
 
   textarea, input {

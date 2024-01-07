@@ -25,16 +25,16 @@ const daniela = await getEntry('profiles', 'daniela');
       we build ethical technology solutions to nurture disability-inclusive communities.
     </div>
     <div slot="action" class="bg-ac-alpha-3 py-3 text-white d-flex flex-column gap-2 flex-lg-row align-items-center justify-content-lg-evenly">
-      <a href="#journey" class="icon-link text-white hero-link">
+      <a href="#journey" class="icon-link link-light">
         <Icon name="bi:pencil-fill" class="bi" alt="" aria-hidden="true"></Icon>
         Start your accessibility journey
       </a>
-      <a href="/volunteer" class="icon-link text-white hero-link">
+      <a href="/volunteer" class="icon-link link-light">
         <Icon name="bi:people-fill" class="bi" alt="" aria-hidden="true"></Icon>
         Join our organization
       </a>
       <ExternalLink
-        class="text-white hero-link"
+        class="link-light"
         href="https://gofund.me/94499fef"
         gaps={true}
       >
@@ -53,11 +53,10 @@ const daniela = await getEntry('profiles', 'daniela');
         <p>
           According to the CDC,
           <ExternalLink
-            class="text-ac"
+            class="link-ac"
             href="https://www.cdc.gov/ncbddd/disabilityandhealth/infographic-disability-impacts-all.html"
-          >
-            1 in every 4 people has a disability.
-          </ExternalLink>
+            inline={true}
+          >1 in every 4 people has a disability.</ExternalLink>
           Yet we consistently create barriers that stop people with disabilities from
           participating, both in-person and online. Individuals and families with disabilities
           often struggle to find places in their community where they can successfully shop, eat,
@@ -70,7 +69,7 @@ const daniela = await getEntry('profiles', 'daniela');
           <span class="text-brand text-ac">Accessible <strong>Community</strong></span> exemplifies
           “Nothing about us without us.” Our non-profit is led by people with disabilities and
           caretakers who want to break down these barriers and create more accessible communities.
-          Read our <a href="/about/story" class="text-ac">founder's story</a> to learn more.
+          Read our <a href="/about/story" class="link-ac link-offset-2">founder's story</a> to learn more.
         </p>
       </div>
       <div class="d-none d-xl-block col-lg-10 col-xl-3 col-xxl-2">
@@ -90,14 +89,14 @@ const daniela = await getEntry('profiles', 'daniela');
             Empower people with disabilities to be part of the conversation about inclusion and accessibility in their communities by creating a safe platform to share positive experiences. 
           </li>
           <li>
-            Motivate organizations to include people with disabilities by making accessibility visible and a market advantage.
+            Motivate organizations to include people with disabilities by making accessibility a visible market advantage.
           </li>
           <li>
             Provide tools and an online community that connects and advances disability-related professions. 
           </li>
         </ul>
       </div>
-      <figure class="col col-xl-4 text-start p-4 bg-body-secondary shadow-lg rounded">
+      <figure class="col col-xl-4 text-start p-4 bg-body-secondary shadow-lg rounded d-flex flex-column justify-content-center">
         <blockquote class="blockquote">
           <p>I am proud to be part of this community that drives the change toward a more accessible digital world for all people.</p>
         </blockquote>
@@ -113,7 +112,7 @@ const daniela = await getEntry('profiles', 'daniela');
   </Section>
 
   <Section theme="body-tertiary">
-    <h2 class="display-3 fw-bold">Our services</h2>
+    <h2 class="display-3 fw-bold">Our services.</h2>
     <div class="d-flex flex-column flex-xl-row gap-4 py-3 justify-content-lg-evenly text-ac">
       <div class="col col-xl-3 shadow-lg rounded bg-body-secondary p-4">
         <h3 class="display-5">
@@ -143,7 +142,7 @@ const daniela = await getEntry('profiles', 'daniela');
         </p>
         <div class="text-center">
           Visit 
-          <ExternalLink class="text-ac text-brand" href="https://www.ta11y.org">
+          <ExternalLink class="link-ac text-brand" href="https://www.ta11y.org">
             <strong>t</strong>a11y.<strong>org</strong>
           </ExternalLink>
         </div>
@@ -161,19 +160,19 @@ const daniela = await getEntry('profiles', 'daniela');
         </p>
         <div class="text-center">
           Visit 
-          <ExternalLink href="https://www.mutua11y.org" class="text-ac text-brand">
+          <ExternalLink href="https://www.mutua11y.org" class="link-ac text-brand">
             <strong>mutu</strong>a11y.<strong>org</strong>
           </ExternalLink>
         </div>
       </div>
     </div>
     <p class="lead pt-5">
-      Learn more about <a href="/services">our services</a>.
+      Learn more about <a href="/services" class="link-offset-2">our services</a>.
     </p>
   </Section>
 
   <Section theme="body-secondary" id="journey">
-    <h2 class="display-4 fw-bold mb-4">Start your organization's disability-inclusion journey</h2>
+    <h2 class="display-4 fw-bold mb-4">Start your organization's disability-inclusion journey.</h2>
     <div class="d-flex flex-column flex-lg-row gap-4 justify-content-lg-evenly">
       <TipRegistration />
       <div class="col-lg-5">
@@ -191,9 +190,7 @@ const daniela = await getEntry('profiles', 'daniela');
     /* Until the SVG is squared up */
     margin: 0 -0.3em;
   }
-  .display-inline {
-    font-size: 2em;
-  }
+  
   div.fs-6 {
     line-height: 0.9em;
   }

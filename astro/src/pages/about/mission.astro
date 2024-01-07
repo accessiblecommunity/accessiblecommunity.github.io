@@ -1,4 +1,5 @@
 ---
+import ExternalLink from '../../components/ExternalLink.astro';
 import Layout from '../../layouts/Layout.astro';
 import Quote from '../../components/Quote.astro';
 import Section from '../../components/Section.astro';
@@ -6,7 +7,7 @@ import { Image } from 'astro:assets';
 
 import missionImage from '../../images/mission.png';
 // https://thenounproject.com/photo/business-partners-discussing-work-arranging-business-papers-and-charts-on-floor-bYWo15/
-import partnerImage from '../../images/business-partners-on-floor.jpg';
+import partnerImage from '../../images/np_Business-partners-discussing-work-arranging-business-papers-and-charts-on-floor_bYWo15_large.jpg';
 ---
 <Layout title="Mission">
   <Section theme="body-secondary" slot="header">
@@ -15,49 +16,50 @@ import partnerImage from '../../images/business-partners-on-floor.jpg';
         <Image src={missionImage} alt="Image depicting Accessible Community's vision. Four circles connected with our logo. Contained in the circles are People with Disabilities, Local Organizations, Community Leaders, and Accessibility Experts." class="img-fluid" width="400" height="400" loading="lazy" />
       </div>
       <div class="col-lg-6 col-xl-7 col-xxl-6">
-        <h2 class="display-5 text-body-emphasis mb-3">
+        <h2 class="display-4 text-body-emphasis mb-3">
           Establishing and nurturing <br/>
           <strong>disability-inclusive communities</strong>
-          through ethical and humane technology.
+          through ethical technology.
         </h2>
         <p class="lead">
-          Accessible Community is a 501(c)3 nonprofit that provides tools, resources and an online community to bring together accessibility experts, volunteers, businesses, organizational and community leaders, and individuals with disabilities to create a more inclusive world.
+          <span class="text-brand text-ac">Accessible <strong>Community</strong></span>
+          is a 501(c)3 nonprofit that provides tools, resources and an online community to bring
+          together accessibility experts, volunteers, businesses, organizational and community
+          leaders, and individuals with disabilities to create a more inclusive world.
         </p>
       </div>
     </div>
   </Section>
 
   <Section theme="ac">
-    <div class="container d-flex flex-column flex-lg-row gap-5 py-3 justify-content-lg-evenly">
-      <div class="text-white col col-lg-5 col-xl-4 col-xxl-4">
-        <h2 class="display-4 text-white fw-bold pb-4">Our mission.</h2>
-        <p>
-          <span class="text-brand">Accessible <strong>Community</strong></span> helps:
-        </p>
-        <ul>
-          <li>small-to-medium size organizations become accessible,</li>
-          <li>people with disabilities find accessible and disability support organizations,</li>
-          <li>emerging accessibility professionals grow their experience and connections, and</li>
-          <li>senior accessibility experts and organization leaders to collaborate and share.</li>
+    <div class="container d-flex flex-column flex-lg-row gap-4 gy-5 py-3 justify-content-lg-between">
+      <div class="text-white col col-lg-7">
+        <h2 class="display-3 text-white pb-4">Our <strong>mission</strong>.</h2>
+        <ul class="ms-2">
+          <li>
+            Empower people with disabilities to be part of the conversation about inclusion and
+            accessibility in their communities by creating a safe platform to share positive
+            experiences.
+          </li> 
+          <li>
+            Motivate organizations to include people with disabilities by making accessibility
+            a visible market advantage.
+          </li>
+          <li>Provide tools and an online community that connects and advances disability-related professions.</li> 
         </ul>
       </div>
-      <div class="text-white col col-lg-7 col-xl-6 col-xxl-5">
-        <h2 class="display-4 text-white fw-bold pb-4">Our goals.</h2>
-        <p>
-          <span class="text-brand">Accessible <strong>Community</strong></span> provides online tools and programs to:
-        </p>
-        <ul>
-          <li>Help smaller organizations with limited resources engage and support people with disabilities.</li>
-          <li>Empower people with disabilities to be part of the conversation about accessibility in their communities.</li>
-          <li>Motivate organizations by making accessibility visible and providing a marketing advantage for being disability-friendly.</li>
-          <li>Mature the accessibility profession by increasing communication, education and efficiency.</li>
+      <div class="text-white col col-lg-4">
+        <h2 class="display-3 text-white pb-4">Our <strong>goals</strong>.</h2>
+        <ul class="ms-2">
+          <li>Connect people with disabilities to the organizations where they can be successful, and</li>
+          <li>Help community organizations become more disability inclusive.</li>
         </ul>
       </div>
     </div>
   </Section>
 
   <Section theme="body-secondary">
-    <h2 class="display-4 fw-bold">What we believe...</h2>
+    <h2 class="display-3 fw-bold pb-3">Our motivation.</h2>
     <p class="lead">One in every three households includes someone who has a disability. These individuals and families often struggle to find places in their community where they can successfully shop, eat, and participate in community life.</p>
     <ul class="lead">
       <li><strong>Communities matter</strong>. Being a part of a local community is important.</li>
@@ -70,14 +72,19 @@ import partnerImage from '../../images/business-partners-on-floor.jpg';
 
   <Section theme="body-tertiary" shadow={true}>
     <div class="row gap-4">
-      <h2 class="col display-4 text-center py-4"><strong>Communities</strong> are <strong>people</strong>.</h2>
+      <h2 class="col display-3 text-center py-4"><strong>Communities</strong> are <strong>people</strong>.</h2>
     </div>
     <div class="d-flex flex-column flex-lg-row gap-3 justify-content-lg-evenly">
       <Quote q="loneliness" class="col col-lg-3 col-xl-3" />
       <div class="text-ac col col-lg-8 col-xl-7">
         <p class="lead">
-          <a class="text-ac fw-medium" href="https://www.cdc.gov/ncbddd/disabilityandhealth/infographic-disability-impacts-all.html" target="_blank">
-          <strong>27% of adults</strong> in the United States</a> have at least <strong>one type of disability</strong>.
+          <ExternalLink
+            href="https://www.cdc.gov/ncbddd/disabilityandhealth/infographic-disability-impacts-all.html"
+            class="link-ac fw-medium"
+          >
+            <strong>27% of adults</strong> in the United States
+          </ExternalLink>
+          have at least <strong>one type of disability</strong>.
           These individuals and families <strong>may struggle</strong>
           to find places in their community where they can successfully <strong>shop, eat, and participate in community
           life</strong>. When they are successful, they will often recommend those places to their local social
@@ -94,35 +101,43 @@ import partnerImage from '../../images/business-partners-on-floor.jpg';
 
   <Section theme="body-tertiary" shadow={true}>
     <div class="row gap-4">
-      <h2 class="col display-4 text-center py-3"><strong>Communities</strong> are made up of <strong class="text-nowrap">small organizations</strong>.</h2>
+      <h2 class="col display-3 text-center py-3"><strong>Communities</strong> are made up of <strong class="text-nowrap">small organizations</strong>.</h2>
     </div>
     <div class="d-flex flex-column flex-lg-row gap-4 justify-content-lg-center align-items-center">
       <div class="col col-lg-6 col-xl-6 col-xxl-5">
         <p class="text-start">
-          Over 
-          <a class="text-body-emphasis fw-bold" href="https://advocacy.sba.gov/wp-content/uploads/2021/08/Small-Business-Economic-Profile-US.pdf" target="_blank">
-          <strong>98%</strong> of the <strong>32.5 million</strong> small businesses</a>
-          in America have less than 20 employees. These small businesses, along with non-profits, religious congregations, and other
-          community organizations make up a large portion of the world we live in.
+          Over
+          <ExternalLink
+            class="link-body-emphasis"
+            href="https://advocacy.sba.gov/wp-content/uploads/2021/08/Small-Business-Economic-Profile-US.pdf"
+            inline={true}
+          ><strong>98%</strong> of the <strong>32.5 million</strong> small businesses</ExternalLink>
+          in America have less than 20 employees. These small businesses, along with non-profits,
+          religious congregations, and other community organizations make up a large portion of the
+          world we live in.
         </p>
         <p class="text-start mb-0">
-          Yet, few of these organizations can afford to hire accessibility expertise. As a result, these organizations
-          often fail to serve the 
-          <a class="text-body-emphasis fw-bold" href="https://adata.org/factsheet/understanding-disability-statistics" target="_blank">
-          <strong>56.7 million</strong> Americans with disabilities</a>.
+          Yet, few of these organizations can afford to hire accessibility expertise. As a result,
+          these organizations often fail to serve the
+          <ExternalLink
+            class="link-body-emphasis"
+            href="https://adata.org/factsheet/understanding-disability-statistics"
+            inline={true}
+          ><strong>56.7 million</strong> Americans with disabilities.</ExternalLink>
           This gap discriminates against individuals with diverse abilities and undermines these organizations, who
           miss out on the over
-          <a class="text-body-emphasis fw-bold" href="https://www.dol.gov/agencies/odep/publications/fact-sheets/diverse-perspectives-people-with-disabilities-fulfilling-your-business-goals#:~:text=Organizations%20such%20as%20the%20National,also%20a%20significant%20market%20segment" target="_blank">
-          <strong>$200 billion</strong> of discretionary spending</a> they possess.
+          <ExternalLink
+            class="text-body-emphasis link-body-emphasis"
+            href="https://www.dol.gov/agencies/odep/publications/fact-sheets/diverse-perspectives-people-with-disabilities-fulfilling-your-business-goals#:~:text=Organizations%20such%20as%20the%20National,also%20a%20significant%20market%20segment"
+            inline={true}
+          ><strong>$200 billion</strong> of discretionary spending</ExternalLink>
+          they possess.
         </p>
       </div>
       <div class="col col-lg-6 col-xl-6 col-xxl-5">
         <Image class="rounded img-fluid" src={partnerImage} alt="Business partners discussing work arranging business papers and charts on floor" loading="lazy" format='avif' />
       </div>
     </div>
-    <p class="caption small text-center py-2">
-      Business partners discussing work arranging business papers and charts on floor by Jacob Lund Photography from <a href="https://thenounproject.com/photo/business-partners-discussing-work-arranging-business-papers-and-charts-on-floor-bYWo15/" target="_blank" title="Business partners discussing work arranging business papers and charts on floor Photo">Noun Project</a> (CC BY-NC-ND 2.0)
-    </p>
   </Section>
 
 </Layout>
@@ -159,6 +174,7 @@ div.fs-6 {
     margin-bottom: 0;
   }
 }
+
 @include media-breakpoint-up(xl) {
   .img-orgs {
     max-width: 35rem;
