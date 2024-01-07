@@ -83,7 +83,8 @@ $theme-colors: map-merge($theme-colors, $custom-colors);
 // Define background colors for light mode
 $body-secondary-bg:                 #FCFEFF;
 $body-tertiary-bg:                  #EFF0F3;
-$body-color:                        #000000;
+$body-color:                        #000000;   
+$box-shadow-lg:                     0.5rem 0.5rem 3.5rem rgba(#3e3f41, 0.9);
 
 // Define background colors for dark mode
 $body-secondary-bg-dark:            #232635;
@@ -269,6 +270,10 @@ img.profile-pic {
 
   .nav-link:hover {
     color: $body-tertiary-bg;
+  }
+
+  .shadow-lg {
+    box-shadow: none !important;
   }
 
   textarea, input {
