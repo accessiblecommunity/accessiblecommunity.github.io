@@ -1,5 +1,4 @@
 ---
-layout: ../../layouts/BlogLayout.astro
 title: 'Announcing useable'
 date-published: 2023-07-23
 tags:

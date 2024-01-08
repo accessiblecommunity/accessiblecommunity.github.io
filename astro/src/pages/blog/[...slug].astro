@@ -1,0 +1,44 @@
+---
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const allBlogs = await getCollection('blogs');
+  const categories = [...new Set(allBlogs.map((blog) => blog.data.tags).flat())];
+
+  const crumbs = [{
+    name: 'Home', href: "/"
+  }, {
+    name: 'Blog', href: "/blog"
+  }]
+
+  return allBlogs.map(blog => ({
+    params: { slug: blog.slug }, props: { blog, categories, crumbs },
+  }));
+}
+
+const { blog, categories, crumbs } = Astro.props;
+const heading = `Blog: ${blog.data.title}`
+const { Content } = await blog.render();
+
+import Layout from "../../layouts/Layout.astro";
+import Section from "../../components/Section.astro";
+---
+<Layout crumbs={crumbs} title={blog.data.title} heading={heading}>
+  <Section theme="light">
+    <div class="d-flex gap-4">
+      <div class="col col-lg-9">
+        <div class="lead">
+          <Content />
+        </div>      
+      </div>
+      <div class="d-none d-md-block col-md-3">
+        <h3>Categories</h3>
+        <ul>
+          { categories.map(cat => 
+            <li>{ cat }</li>
+          )}
+        </ul>
+      </div>
+    </div>
+  </Section>
+</Layout>
