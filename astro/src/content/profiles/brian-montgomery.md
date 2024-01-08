@@ -2,7 +2,7 @@
 name: Brian Montgomery
 title: Technical Director
 tags:
-    - staff
+    - leadership
 picture: ../../images/profiles/Brian2.png
 links:
     linkedin: https://www.linkedin.com/in/brian-montgomery-139175172/

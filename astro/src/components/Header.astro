@@ -19,7 +19,7 @@ const breadCrumbs = isEmpty(crumbs) && title != 'Home' ? [{ name: 'Home', href: 
 <header class="sticky-top bg-body">
   <nav class="navbar navbar-expand-lg align-items-top">
     <div class="container-fluid px-3">
-      <a class="visually-hidden-focusable btn btn-ac text-small me-2" href="#main-content">
+      <a class="visually-hidden-focusable btn btn-ac btn-sm btn-skip me-2" href="#main-content">
         Skip to Main Content
       </a>
       <Icon name="ac-logo" class="navbar-brand me-2" />
@@ -35,75 +35,47 @@ const breadCrumbs = isEmpty(crumbs) && title != 'Home' ? [{ name: 'Home', href: 
         </nav>
       </div>
       <div>
-        <button class="navbar-toggler toggle-menu text-ac" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <Icon name="bi:list" class="bi bi-list" height="24" width="24"></Icon>
         </button>
       </div>
     </div>
     <div id="navbarSupportedContent" class="collapse navbar-collapse mx-3">
-      <ul class="navbar-nav main-list my-1 mx-1" aria-role="navigation">
-        <li class="nav-item text-nowrap dropdown">
-          <a class="nav-link d-inline-block pe-1 display-65 main-menu-item text-ac" href="/about" role="button">
-            About
-          </a>
-          <a class="nav-link d-inline-block ps-0 dropdown-toggle dropdown-toggle-split display-65 main-menu-item text-ac" href="/services" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            <span class="visually-hidden">Toggle Services Menu</span>
-          </a>
-          <ul class="dropdown-menu p-0 menu-nav">
-            <li><a class="dropdown-item display-7 link-dropdown text-ac" href="">Mission, Vision, Values</a></li>
-            <li><a class="dropdown-item display-7 link-dropdown text-ac" href="">History</a></li>
-            <li><a class="dropdown-item display-7 link-dropdown text-ac" href="">Leadership</a></li>
+      <ul class="navbar-nav my-1 mx-4" aria-role="navigation">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">About</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="/about/mission">Mission &amp; Vision</a></li>
+            <li><a class="dropdown-item" href="/about/story">Founder's Story</a></li>
+            <li><a class="dropdown-item" href="/about/policies">Our Policies</a></li>
           </ul>
         </li>
-        <li class="nav-item text-nowrap dropdown">
-          <a class="nav-link d-inline-block pe-1 display-65 main-menu-item text-ac" href="/services" role="button">
-            Services
-          </a>
-          <a class="nav-link d-inline-block ps-0 dropdown-toggle dropdown-toggle-split display-65 main-menu-item text-ac" href="/services" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            <span class="visually-hidden">Toggle Services Menu</span>
-          </a>
-          <ul class="dropdown-menu p-0 menu-nav">
-            <li><a class="dropdown-item display-7 link-dropdown text-ac" href="/services#ta11y"><strong>t</strong>a11y</a></li>
-            <li><a class="dropdown-item display-7 link-dropdown text-ac" href="/services#mutua11y"><strong>mutu</strong>a11y</a></li>
-            <li><a class="dropdown-item display-7 link-dropdown text-ac" href="/services#loca11y"><strong>loc</strong>a11y</a></li>
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" href="/services">Services</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Team</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="/team/board">Board Members</a></li>
+            <li><a class="dropdown-item" href="/team/leadership">Leadership</a></li>
+            <li><a class="dropdown-item" href="/team/staff">Staff</a></li>
+            <li><a class="dropdown-item" href="/team/previous">Previous Contributors</a></li>
+            <li><a class="dropdown-item" href="/team/partners">Partners</a></li>
           </ul>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle display-65 main-menu-item text-ac" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Team Members
-          </a>
-          <ul class="dropdown-menu p-0 menu-nav">
-            <li><a class="dropdown-item display-7 link-dropdown text-ac" href="/team/board">Board Members</a></li>
-            <li><a class="dropdown-item display-7 link-dropdown text-ac" href="/team/staff">Leadership and Staff</a></li>
-            <li><a class="dropdown-item display-7 link-dropdown text-ac" href="/team/mutua11y"><strong>mutu</strong>a11y Team</a></li>
-            <li><a class="dropdown-item display-7 link-dropdown text-ac" href="/team/ta11y"><strong>t</strong>a11y Team</a></li>
-            <li><a class="dropdown-item display-7 link-dropdown text-ac" href="">Previous Contributors</a></li>
+          <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Join us</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="/volunteer">Volunteer</a></li>
+            <li><a class="dropdown-item" href="/donate">Donate</a></li>
+            <li><a class="dropdown-item" href="/sponsor">Sponsor</a></li>
           </ul>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle display-65 main-menu-item text-ac" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Join Us
-          </a>
-          <ul class="dropdown-menu p-0 menu-nav">
-            <li><a class="dropdown-item display-7 link-dropdown text-ac" href="/volunteer">Volunteer</a></li>
-            <li><a class="dropdown-item display-7 link-dropdown text-ac" href="/donate">Donate</a></li>
-            <li><a class="dropdown-item display-7 link-dropdown text-ac" href="">Sponsor</a></li>
-            <li><a class="dropdown-item display-7 link-dropdown text-ac" href="">Policies</a></li>
-          </ul>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle display-65 main-menu-item text-ac" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Blog
-          </a>
-          <ul class="dropdown-menu p-0 menu-nav">
-            <li><a class="dropdown-item display-7 link-dropdown text-ac" href="">Accessibility</a></li>
-            <li><a class="dropdown-item display-7 link-dropdown text-ac" href="">Announcements</a></li>
-            <li><a class="dropdown-item display-7 link-dropdown text-ac" href="">Events</a></li>
-          </ul>
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="/blog">Blog</a>
+          </li>
         </li>
       </ul>
       <a class="btn btn-ac display-65 mx-1" href="/donate" role="button">Donate</a>
-      <!-- <a class="btn btn-ac my-2 ms-3 display-65" href="/donate" role="button">Donate</a> -->
     </div>
   </nav>
 </header>
@@ -118,10 +90,15 @@ const breadCrumbs = isEmpty(crumbs) && title != 'Home' ? [{ name: 'Home', href: 
   @import "../styles/ac.scss";
   @import "bootstrap/scss/mixins/_color-mode.scss";
 
+  .btn-skip {
+    font-size: 0.6em;
+  }
+
   [astro-icon="ac-logo"] {
     height: 2em;
     color: $ac-navy;
   }
+
   .breadcrumb-item h1 {
     color: inherit;
     font-size: 1em;
@@ -129,67 +106,21 @@ const breadCrumbs = isEmpty(crumbs) && title != 'Home' ? [{ name: 'Home', href: 
     margin: inherit;
   }
 
-  .toggle-menu {
+  .navbar-toggler {
     background-color: #dfe1ed;
+    color: $ac-navy;
     border: none;
     padding-inline: 3px;
     font-size: 1.1rem;
   }
 
-  .main-menu-item:focus {
-    color: #041058;
-  }
-
-  .main-menu-item:hover, .main-menu-item:active, .link-dropdown:hover {
-    background-color: $ac-navy;
-    animation-timing-function: ease-in-out;
-    color: #dfe1ed !important;
-  }
-
-  .main-list {
-    border-width: 3.5px;
-    border-style: solid;
-    border-radius: 0.5rem;
-    margin-inline-end: 0;
-  }
-
-  .main-list, .menu-nav, .link-dropdown {
-    border-color: #dfe1ed;
-  }
-
-  .main-list a {
-    padding-left: 0.5rem;
-  }
-
- .menu-nav {
-    border-width: 6px;
-  }
-
-  .link-dropdown {
-    border-bottom-width: 3.5px;
-    border-bottom-style: solid;
-  }
-
-  .link-dropdown:hover {
-    animation-timing-function: ease;
-  }
-
   @include color-mode(dark) {
-    *:focus-visible, .toggle-menu:focus {
-      outline: 6px dashed white;
-      outline-offset: 1px 2px;
+    [astro-icon="ac-logo"] {
+      color: white;
     }
 
     .skip-link, .link-dropdown:hover {
       color: var(--ac-navy);
-      background-color: white;
-    }
-
-    .main-menu-item:focus {
-      color: white;
-    }
-
-    .main-menu-item:hover, .main-menu-item:active {
       background-color: white;
     }
 

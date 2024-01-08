@@ -10,30 +10,15 @@ export async function getStaticPaths() {
         allProfiles,
         mini: false,
         title: 'Board Members',
-        heading: 'Meet out board',
+        heading: 'Meet our board',
       }
     },
-    { params: { tag: 'staff' }, props:
+    { params: { tag: 'leadership' }, props:
       {
         allProfiles,
         mini: false,
-        title: 'Leadership & Staff',
+        title: 'Leadership',
         heading: 'Meet our leadership',
-      }},
-    { params: { tag: 'mutua11y' }, props:
-      {
-        allProfiles,
-        mini: false,
-        title: 'mutua11y',
-        heading: 'Meet our team',
-      }
-    },
-    { params: { tag: 'ta11y' }, props:
-      {
-        allProfiles,
-        mini: true,
-        title: 'ta11y',
-        heading: 'Meet our team',
       }
     },
   ];
@@ -66,7 +51,7 @@ const crumbs = [{
   <Section theme="body-tertiary" fluid={mini}>
     <ul class={mini ? 'mini list-inline text-center' : 'list-group'}>
       { profiles.map((p) =>
-        <li class={mini ? 'list-inline-item' : 'd-block'}>
+        <li class={mini ? 'list-inline-item text-start' : 'd-block mb-5'}>
           <Profile profile={p} mini={mini} />
         </li>
       )}

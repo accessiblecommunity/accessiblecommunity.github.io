@@ -1,0 +1,50 @@
+---
+interface Props {
+  href: URL | string;
+  // Any additional HTML classes to apply to the link.
+  class?: string;
+  // Whether to wrap the slot in a span to avoid gaps between child elements. Defaults to false.
+  gaps?: boolean;
+  // Whether to force the link to be completely inline with surrounding text. Defaults to false.
+  inline?: boolean;
+}
+
+const { href, 'class': className = '', gaps = false, inline = false } = Astro.props;
+
+import { Icon } from 'astro-icon';
+
+// The below is formatted to remove as much whitespace as possible.
+---
+
+<a
+  href={href}
+  class:list={['icon-link', className, inline && 'd-inline']}
+  target="_blank"
+>{ 
+gaps ?
+  <slot />
+:
+  <span><slot /></span>
+}<Icon
+  name="bi:arrow-up-right-square"
+  class:list={['bi', 'external']}
+  role="img"
+  aria-label="External link"
+/></a>
+
+<style is:global>
+  .icon-link > .bi.external {
+    /* These make it act like a `sup` */
+    font-size: 70%;
+    position: relative;
+    top: -0.5em;
+    /* This counters most of the 0.375 gap in the default icon-link */
+    left: -0.2em;
+  }
+  .icon-link.d-inline > .bi.external {
+    /* No gap, so move it back. */
+    left: 0.0em;
+    margin-left: .2em;
+    margin-right: .2em;
+  }
+</style>

@@ -1,6 +1,7 @@
 import { defineConfig } from 'astro/config';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import styleGuide from './style-guide/register.js'
 
 // https://flaviocopes.com/fix-dirname-not-defined-es-module-scope/
 const __filename = fileURLToPath(import.meta.url);
@@ -20,5 +21,8 @@ export default defineConfig({
     ssr: {
       noExternal: ['bootstrap'],
     },
-  }
+  },
+  integrations: [
+    styleGuide(),
+  ]
 });

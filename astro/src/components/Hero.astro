@@ -19,15 +19,16 @@ if (image) {
 }
 
 ---
-<section class={`bg-${theme}`} style={`background: no-repeat center ${heroBgUrl}`} slot="header">
+<section class={`bg-${theme}`} style={`background: no-repeat center ${heroBgUrl}`}>
   <div class="container text-center hero px-1">
     <slot name="heading">
-      <h2 class:list={["display-3 fw-bold", `text-${textColor}`]}>{ headline }</h2>
+      <h2 class:list={["display-2 fw-bold", `text-${textColor}`]}>{ headline }</h2>
     </slot>
     <div class:list={[columns, "mx-auto", `text-${textColor}`]}>
       <slot />
     </div>
   </div>
+  <slot name="action" />
 </section>
 
 <style>

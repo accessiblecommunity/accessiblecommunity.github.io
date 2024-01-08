@@ -1,0 +1,38 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Section from '../../components/Section.astro';
+
+import { Image } from 'astro:assets';
+import dequeLogo from '../../images/partner-logos/Deque_Logo_HeroBlue_cropped.png';
+import knowbilityLogo from '../../images/partner-logos/knowbility-logo-large.png';
+import levelAccessLogo from '../../images/partner-logos/Color Level Access Logo.png';
+import mitreLogo from '../../images/partner-logos/MITRE_cropped.png';
+import pearsonLogo from '../../images/partner-logos/pearson logo.png';
+import teachAccessLogo from '../../images/partner-logos/teach_access_cropped.png';
+import tetraLogicalLogo from '../../images/partner-logos/Tetralogical-full-logo-without-padding-color-for-light-backgrounds.png';
+import tpgiLogo from '../../images/partner-logos/TPGi-FullColor.png';
+
+const title = 'Partners'
+const heading = 'Our partners and supporters'
+
+const crumbs = [{
+  name: 'Home', href: '/',
+}, {
+  name: 'Team Members', href: '/team',
+}]
+---
+
+<Layout title={title} crumbs={crumbs} heading={heading}>
+ <Section theme="body-tertiary">
+  <p class="lead mb-5">Thank you to the organizations that partner with us and support our work in various ways.</p>
+  <ul class="row list-unstyled text-center">
+    <li class="col-md-4 p-4"><a href="https://www.deque.com/" target="_blank"><Image src={dequeLogo} width="150" alt="Deque"></a></li>
+    <li class="col-md-4 p-4 partner-logo"><a href="https://knowbility.org/" target="_blank"><Image src={knowbilityLogo} width="150" alt="Knowbility"></a></li>
+    <li class="col-md-4 p-4 partner-logo"><a href="https://www.levelaccess.com/" target="_blank"><Image src={levelAccessLogo} width="150" alt="Level Access"></a></li>
+    <li class="col-md-4 p-4 partner-logo"><a href="https://www.pearson.com/en-us.html" target="_blank"><Image src={pearsonLogo} width="150" alt="Pearson"></a></li>
+    <li class="col-md-4 p-4 partner-logo"><a href="https://teachaccess.org/" target="_blank"><Image src={teachAccessLogo} width="150" alt="Teach Access"></a></li>
+    <li class="col-md-4 p-4 partner-logo"><a href="https://tetralogical.com/" target="_blank"><Image src={tetraLogicalLogo} width="150" alt="TetraLogical"></a></li>
+    <li class="col-md-4 p-4 partner-logo"><a href="https://www.tpgi.com/" target="_blank"><Image src={tpgiLogo} width="150" alt="TPGi"></a></li>
+  </ul>
+ </Section>
+</Layout>
