@@ -10,6 +10,8 @@
 @import "bootstrap/scss/functions";
 
 // 2. Include any default variable overrides here
+@import "./ac";
+
 $font-size-root:              18px;
 $font-family-sans-serif:      'Atkinson Hyperlegible', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !default;
 $font-weight-bold:            700;
@@ -20,7 +22,7 @@ $h3-font-size:                1.5rem;
 $h4-font-size:                1.25rem;
 $h5-font-size:                1.1rem;
 $h6-font-size:                1rem;
-$headings-color:              #041058;
+
 $headings-font-family:        'Archivo Variable', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !default;
 $headings-font-weight:        400;
 
@@ -48,16 +50,16 @@ $navbar-brand-font-size:      1.3rem;
 $navbar-brand-padding-y:      0;
 
 $blockquote-font-size:        1.25em;
-$blockquote-footer-color:     #67777E;
+$blockquote-footer-color:     #67777E;  // No dark mode
+
 $code-color:                  #590455;
+// $code-color-dark:             tint-color($code-color, 40%) !default;
 
 $container-padding-x:  3rem;
 
 // 3. Include remainder of required Bootstrap stylesheets (including any separate color mode stylesheets)
 @import "bootstrap/scss/variables";
 @import "bootstrap/scss/variables-dark";
-
-@import "./ac";
 
 // 4. Include any default map overrides here
 $custom-colors: (
@@ -98,18 +100,30 @@ $primary-text-emphasis-dark:        #FFFFFF;
 @import "bootstrap/scss/utilities";
 
 // Custom Themes: Light mode.
-$custom-colors-text: ("ac": #041058);
-$custom-colors-bg-subtle: ("ac": #8d9dfa);
-$custom-colors-border-subtle: ("ac": #3754f6);
+$custom-colors-text: (
+  // "ac": #041058,
+);
+$custom-colors-bg-subtle: (
+  "tertiary": $tertiary-bg-subtle,
+);
+$custom-colors-border-subtle: (
+  // "ac": #3754f6,
+);
 
 $theme-colors-text: map-merge($theme-colors-text, $custom-colors-text);
 $theme-colors-bg-subtle: map-merge($theme-colors-bg-subtle, $custom-colors-bg-subtle);
 $theme-colors-border-subtle: map-merge($theme-colors-border-subtle, $custom-colors-border-subtle);
 
 // Custom Themes: Dark mode
-$custom-colors-text-dark: ("ac": #8d9dfa);
-$custom-colors-bg-subtle-dark: ("ac": #041058);
-$custom-colors-border-subtle-dark: ("ac": #8d9dfa);
+$custom-colors-text-dark: (
+  // "ac": #8d9dfa,
+);
+$custom-colors-bg-subtle-dark: (
+  // "ac": #041058,
+);
+$custom-colors-border-subtle-dark: (
+  // "ac": #8d9dfa,
+);
 
 $theme-colors-text-dark: map-merge($theme-colors-text-dark, $custom-colors-text-dark);
 $theme-colors-bg-subtle-dark: map-merge($theme-colors-bg-subtle-dark, $custom-colors-bg-subtle-dark);
@@ -164,7 +178,7 @@ $utilities: map-merge(
 }
 
 *:focus-visible, .form-field:focus, .toggle-menu:focus, .navbar-toggler:focus, .nav-link:focus-visible {
-  outline: 3px dashed #041058;
+  outline: 3px dashed $primary;
   outline-offset: 0.025em;
   box-shadow: none;
   border-radius: 2%;
@@ -175,7 +189,7 @@ $utilities: map-merge(
 }
 
 .btn:focus-visible {
-  outline: 3px dashed #041058;
+  outline: 3px dashed $primary;
   outline-offset: 0.25rem;
   box-shadow: none;
   border-radius: 0.375rem;

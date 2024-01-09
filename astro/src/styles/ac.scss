@@ -1,10 +1,99 @@
 @charset "UTF-8";
 
-$ac-navy:            #041058;
-$ac-navy-rgb:          4, 16, 88;
+$color-mode-type:                   media-query;
+$ac-navy:                           #041058;  // To be deleted
 
-$color-mode-type:      media-query;
+/**
+ * Themes in general.
+ * 
+ * bg-subtle is a significantly lighter version of the color.
+ * border-subtle is a slightly darker (or lighter) version of the bg-subtle.
+ * text-emphasis is a significantly darker (or lighter) version of the base color.
+ */
 
-:root {
-  --ac-navy: $ac-navy;
-}
+// Main Body
+// $body-color:                        black;  // Fix.
+$body-color-dark:                   white;
+
+/************************
+ * Body (Default) "Theme"
+ ************************/
+$body-emphasis-color:               black; 
+$body-bg:                           white;
+// $border-color:                      $gray-300 !default;
+
+// $body-emphasis-color-dark:          $white !default;
+// $body-bg-dark:                      $gray-900 !default;
+// $border-color-dark:                 $gray-700 !default;
+
+
+// Body Secondary. Used for:
+//     Captions (Table/Figure), Form text, Input placeholder, Disabled (Links/Pagination), 
+//     Toast Headers, List groups, Breadcrumbs, Progress and Hover backgrounds
+// $body-secondary-color:      rgba($body-color, .75) !default;
+// $body-secondary-bg:         $gray-200 !default;
+
+// $body-secondary-color-dark:         rgba($body-color-dark, .75) !default;
+// $body-secondary-bg-dark:            $gray-800 !default;
+
+
+// Body Tertiary. Used for:
+//     Dropdown link disabled, Backgrounds of various inputs
+// $body-tertiary-color:       rgba($body-color, .5) !default;
+// $body-tertiary-bg:          $gray-100 !default;
+
+// $body-tertiary-color-dark:          rgba($body-color-dark, .5) !default;
+// $body-tertiary-bg-dark:             mix($gray-800, $gray-900, 50%) !default;
+  
+
+ // Primary Theme (No dark mode)
+$primary:                           #041058;
+
+/**********************
+ * Primary Subtle Theme
+ **********************/
+$primary-text-emphasis:             #030C3F;
+$primary-bg-subtle:                 #A9B6FB;
+$primary-border-subtle:             #7085F8;
+
+$primary-text-emphasis-dark:        #8D9DFA;
+$primary-bg-subtle-dark:            #030C3F;
+$primary-border-subtle-dark:        #8D9DFA;
+
+// Secondary Theme (No dark mode)
+// $secondary:                      $gray-600 !default;
+
+/************************
+ * Secondary Subtle Theme
+ ************************/
+// $secondary-text-emphasis:           shade-color($secondary, 60%) !default;
+$secondary-bg-subtle:               #FCFEFF; // Fix: Too light.
+// $secondary-border-subtle:           tint-color($secondary, 60%) !default;
+
+// $secondary-text-emphasis-dark:      tint-color($secondary, 40%) !default;
+// $secondary-bg-subtle-dark:          shade-color($secondary, 80%) !default;
+// $secondary-border-subtle-dark:      shade-color($secondary, 40%) !default;
+
+
+/***********************
+* Tertiary Subtle Theme
+***********************/
+// $tertiary-text-emphasis:            shade-color($secondary, 60%) !default;
+$tertiary-bg-subtle:                #EFF0F3;
+// $tertiary-border-subtle:            tint-color($secondary, 60%) !default;
+
+// $tertiary-text-emphasis-dark:       tint-color($secondary, 40%) !default;
+// $tertiary-bg-subtle-dark:           shade-color($secondary, 80%) !default;
+// $tertiary-border-subtle-dark:       shade-color($secondary, 40%) !default;
+
+
+// Headings
+$headings-color:                    $primary;
+// $headings-color-dark:               inherit !default;
+
+// Links
+$link-color:                        $primary; //!default
+// $link-hover-color:                  shift-color($link-color, $link-shade-percentage) !default;
+
+// $link-color-dark:                   tint-color($primary, 40%) !default;
+// $link-hover-color-dark:             shift-color($link-color-dark, -$link-shade-percentage) !default;
