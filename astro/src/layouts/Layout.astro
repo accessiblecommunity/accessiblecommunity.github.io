@@ -35,7 +35,7 @@ const { title, crumbs, heading } = Astro.props;
   <Header title={title} crumbs={crumbs} />
   <main id="main-content">
     <slot name="header">
-      <Section theme="ac">
+      <Section theme="primary">
         <h2 class="display-3 fw-bold text-center text-white">{ heading || title }</h2>
       </Section>
     </slot>

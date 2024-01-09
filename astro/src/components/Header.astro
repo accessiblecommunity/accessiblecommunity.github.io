@@ -16,19 +16,19 @@ const { title, crumbs = [] } = Astro.props;
 const breadCrumbs = isEmpty(crumbs) && title != 'Home' ? [{ name: 'Home', href: '/' }] : crumbs;
 ---
   
-<header class="sticky-top bg-body-secondary">
+<header class="sticky-top bg-body">
   <nav class="navbar navbar-expand-lg align-items-top">
     <div class="container-fluid px-3">
-      <a class="visually-hidden-focusable btn btn-ac btn-sm btn-skip me-2 skip-link" href="#main-content">
+      <a class="visually-hidden-focusable btn btn-primary btn-sm btn-skip me-2 skip-link" href="#main-content">
         Skip to Main Content
       </a>
       <Icon name="ac-logo" class="navbar-brand me-2 brand-logo" />
       <div class="me-auto my-1">
-        <a class="navbar-brand lh-sm text-ac" href="/" tabindex="-1">Accessible <strong>Community</strong></a>
+        <a class="navbar-brand lh-sm text-primary" href="/" tabindex="-1">Accessible <strong>Community</strong></a>
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb lh-sm">
             { breadCrumbs.map(({name, href}) =>
-              <li class="breadcrumb-item"><a href={href} class="text-ac">{name}</a></li>
+              <li class="breadcrumb-item"><a href={href} class="text-primary">{name}</a></li>
             )}
             <li class="breadcrumb-item active" aria-current="page"><h1>{ title }</h1></li>
           </ol>
@@ -75,7 +75,7 @@ const breadCrumbs = isEmpty(crumbs) && title != 'Home' ? [{ name: 'Home', href: 
           </li>
         </li>
       </ul>
-      <a class="btn btn-ac display-65 mx-1 general-button" href="/donate" role="button">Donate</a>
+      <a class="btn btn-primary display-65 mx-1 general-button" href="/donate" role="button">Donate</a>
     </div>
   </nav>
 </header>

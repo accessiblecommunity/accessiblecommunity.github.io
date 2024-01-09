@@ -57,15 +57,15 @@ $code-color:                  #590455;
 
 $container-padding-x:  3rem;
 
+$box-shadow:                        0rem 0rem 0.5rem rgba(#3e3f41, 0.9);
+$box-shadow-lg:                     0.5rem 0.5rem 3rem rgba(#151616, 0.9);
+
 // 3. Include remainder of required Bootstrap stylesheets (including any separate color mode stylesheets)
 @import "bootstrap/scss/variables";
 @import "bootstrap/scss/variables-dark";
 
 // 4. Include any default map overrides here
 $custom-colors: (
-  "ac": #041058,
-  "ac2": #95B2E0,
-  "ac3": #A9B6FB,
   // "light-secpondary": #fcfeff,
   // "light-tertiary": #eff0f3,
   // "dark-secondary": #232635,
@@ -80,19 +80,6 @@ $custom-colors: (
   "twitter": #1DA1F2,
 );
 $theme-colors: map-merge($theme-colors, $custom-colors);
-
-// Define background colors for light mode
-$body-secondary-bg:                 #FCFEFF;
-$body-tertiary-bg:                  #EFF0F3;
-$body-color:                        #000000;   
-$box-shadow:                        0rem 0rem 0.5rem rgba(#3e3f41, 0.9);
-$box-shadow-lg:                     0.5rem 0.5rem 3rem rgba(#151616, 0.9);
-
-// Define background colors for dark mode
-$body-secondary-bg-dark:            #232635;
-$body-tertiary-bg-dark:             #6C717E;
-$body-color-dark:                   #FFFFFF;
-$primary-text-emphasis-dark:        #FFFFFF;
 
 // 5a. Include remainder of required parts
 @import "bootstrap/scss/maps";
@@ -119,7 +106,7 @@ $custom-colors-text-dark: (
   // "ac": #8d9dfa,
 );
 $custom-colors-bg-subtle-dark: (
-  // "ac": #041058,
+  "tertiary": $tertiary-bg-subtle-dark,
 );
 $custom-colors-border-subtle-dark: (
   // "ac": #8d9dfa,
@@ -172,8 +159,8 @@ $utilities: map-merge(
 
 // 8. Add additional custom code here
 
-.bg-ac-alpha-3 {
-  @extend .bg-ac;
+.bg-primary-alpha-3 {
+  @extend .bg-primary;
   --bs-bg-opacity: 0.3;
 }
 
@@ -242,16 +229,9 @@ img.profile-pic {
     outline-color: #FFFFFF;
   }
 
-  .text-ac {
+  // TODO: Fix this.
+  .text-primary {
     color: var(--bs-light) !important;
-  }
-  .link-ac {
-    color: var(--bs-light) !important;
-    text-decoration-color: RGBA(var(--bs-light-rgb), var(--bs-link-underline-opacity, 1)) !important;    
-  }
-
-  .border-ac {
-    border-color: white !important;
   }
 
   .breadcrumb-item, .breadcrumb-item.active, .nav-link, .dropdown-item, .dropdown-item:hover {
@@ -296,10 +276,6 @@ img.profile-pic {
 
   textarea, input {
     border-color: #FFFFFF;
-  }
-
-  h1, h2, h3, h4, h5, h6 {
-    color: var(--bs-primary-text-emphasis);
   }
 
   .bi {

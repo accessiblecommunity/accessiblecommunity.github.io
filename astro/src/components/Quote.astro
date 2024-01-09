@@ -8,13 +8,13 @@ const quote = await getEntry('quotes', q);
 const { Content = 'p' } = await quote?.render();
 
 ---
-<figure class:list={['bg-ac2 rounded p-3 d-flex flex-column justify-content-center', className]}>
-  <blockquote class="blockquote text-ac">
+<figure class:list={['bg-primary2 rounded p-3 d-flex flex-column justify-content-center', className]}>
+  <blockquote class="blockquote text-primary">
     <sup aria-hidden="true"><Icon name="quote-left" />&nbsp;</sup>
     <Content />
     <sup aria-hidden="true">&nbsp;<Icon name="quote-right" /></sup>
   </blockquote>
-  <figcaption class="blockquote-footer text-ac text-end">{quote?.data.quotee}</figcaption>
+  <figcaption class="blockquote-footer text-primary text-end">{quote?.data.quotee}</figcaption>
 </figure>
 
 <style>
