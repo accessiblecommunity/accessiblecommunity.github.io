@@ -30,7 +30,7 @@ const breadCrumbs = isEmpty(crumbs) && title != 'Home' ? [{ name: 'Home', href: 
             { breadCrumbs.map(({name, href}) =>
               <li class="breadcrumb-item"><a href={href} class="text-ac">{name}</a></li>
             )}
-            <li class="breadcrumb-item active" aria-current="page"><h1>{ title }</h1></li>
+            <li class="breadcrumb-item active" aria-current="page">{ title }</li>
           </ol>
         </nav>
       </div>
@@ -66,16 +66,16 @@ const breadCrumbs = isEmpty(crumbs) && title != 'Home' ? [{ name: 'Home', href: 
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Join us</a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="/volunteer">Volunteer</a></li>
-            <li><a class="dropdown-item" href="/donate">Donate</a></li>
-            <li><a class="dropdown-item" href="/sponsor">Sponsor</a></li>
+            <li><a class="dropdown-item" href="/join-us/volunteer">Volunteer</a></li>
+            <li><a class="dropdown-item" href="/join-us/donate">Donate</a></li>
+            <li><a class="dropdown-item" href="/join-us/sponsor">Sponsor</a></li>
           </ul>
           <li class="nav-item">
             <a class="nav-link" aria-current="page" href="/blog">Blog</a>
           </li>
         </li>
       </ul>
-      <a class="btn btn-ac display-65 mx-1" href="/donate" role="button">Donate</a>
+      <a class="btn btn-ac display-65 mx-1" href="/join-us/donate" role="button">Donate</a>
     </div>
   </nav>
 </header>

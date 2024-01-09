@@ -1,7 +1,7 @@
 ---
 const { 
   image,
-  headline = "Hero heading.",
+  header = "Hero heading.",
   theme = "ac",
   textColor = "white",
   columns = "col-lg-6",
@@ -22,7 +22,7 @@ if (image) {
 <section class={`bg-${theme}`} style={`background: no-repeat center ${heroBgUrl}`}>
   <div class="container text-center hero px-1">
     <slot name="heading">
-      <h2 class:list={["display-2 fw-bold", `text-${textColor}`]}>{ headline }</h2>
+      <h1 class:list={["display-2 fw-bold", `text-${textColor}`]}>{ header }</h1>
     </slot>
     <div class:list={[columns, "mx-auto", `text-${textColor}`]}>
       <slot />

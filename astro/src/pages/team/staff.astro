@@ -10,8 +10,8 @@ import { isEmpty, intersection, sortBy } from 'lodash-es';
 
 const allProfiles = await getCollection('profiles');
 const mini = true;
-const title = 'Staff'
-const heading = 'Meet our staff'
+const title = 'Staff';
+const heading = title;
 
 const profiles = sortBy(
   allProfiles.filter((p) => isEmpty(intersection(p.data.tags, ['board', 'leadership']))),
@@ -21,8 +21,8 @@ const profiles = sortBy(
 const crumbs = [{
   name: 'Home', href: '/',
 }, {
-  name: 'Team Members', href: '/team',
-}]
+  name: 'Team', href: '/team',
+}];
 ---
 
 <Layout title={title} crumbs={crumbs} heading={heading}>
