@@ -1,11 +1,11 @@
 ---
 import { Icon } from 'astro-icon'
 
-import Layout from '../../layouts/Layout.astro';
-import Hero from '../../components/Hero.astro';
-import Section from '../../components/Section.astro';
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+import Section from '../components/Section.astro';
 
-import heroBg from '../../images/hands-blue-1920x1080.png'
+import heroBg from '../images/hands-blue-1920x1080.png'
 
 const directorEmail = 'mailto:director@accessiblecommunity.org'
 const paypalUrl = 'https://paypal.me/AccessibleCommunity';
@@ -45,8 +45,6 @@ const heading = title;
 
 const crumbs = [{
   name: 'Home', href: '/',
-}, {
-  name: 'Join Us', href: '/join-us',
 }];
 ---
 <Layout title={title} crumb={crumbs} heading={heading}>
