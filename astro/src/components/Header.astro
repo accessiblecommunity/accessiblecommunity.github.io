@@ -16,15 +16,17 @@ const { title, crumbs = [] } = Astro.props;
 const breadCrumbs = isEmpty(crumbs) && title != 'Home' ? [{ name: 'Home', href: '/' }] : crumbs;
 ---
   
-<header class="sticky-top bg-body">
+<header class="sticky-top">
   <nav class="navbar navbar-expand-lg align-items-top">
     <div class="container-fluid px-3">
       <a class="visually-hidden-focusable btn btn-primary btn-sm btn-skip me-2 skip-link" href="#main-content">
         Skip to Main Content
       </a>
-      <Icon name="ac-logo" class="navbar-brand me-2 brand-logo" />
+      <div class="d-none d-sm-block navbar-brand me-2">
+        <Icon name="ac-logo" class="brand-logo" />
+      </div>
       <div class="me-auto my-1">
-        <a class="navbar-brand lh-sm text-primary" href="/" tabindex="-1">Accessible <strong>Community</strong></a>
+        <a class="navbar-brand lh-sm" href="/" tabindex="-1">Accessible <strong>Community</strong></a>
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb lh-sm">
             { breadCrumbs.map(({name, href}) =>
@@ -96,7 +98,6 @@ const breadCrumbs = isEmpty(crumbs) && title != 'Home' ? [{ name: 'Home', href: 
 
   [astro-icon="ac-logo"] {
     height: 2em;
-    color: $ac-navy;
   }
 
   .breadcrumb-item h1 {
@@ -115,10 +116,6 @@ const breadCrumbs = isEmpty(crumbs) && title != 'Home' ? [{ name: 'Home', href: 
   }
 
   @include color-mode(dark) {
-    [astro-icon="ac-logo"] {
-      color: white;
-    }
-
     .skip-link {
       color: $ac-navy;
       background-color: white;

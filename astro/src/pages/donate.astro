@@ -51,7 +51,7 @@ const donationLinks = [{
     </p>
     <div class="d-grid gap-4 d-sm-flex justify-content-sm-center">
       { heroButtons.map(({icon, href, name, className}) =>
-        <a class="btn btn-primary d-flex justify-content-center align-items-center px-4 gap-1 hero-button" href={ href } target="_blank">
+        <a class="btn btn-primary border-light d-flex justify-content-center align-items-center px-4 gap-1 hero-button" href={ href } target="_blank">
           <span class={ className }>Donate with</span>
           <Icon class="bi" alt={ name } name={ icon } />
         </a>

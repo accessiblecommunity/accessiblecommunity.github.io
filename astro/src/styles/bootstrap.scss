@@ -1,4 +1,5 @@
 @charset "UTF-8";
+@use "sass:map";
 
 // Fontsource input
 @import "@fontsource-variable/archivo";
@@ -40,17 +41,61 @@ $display-font-sizes: (
 $display-font-family: $headings-font-family;
 $display-font-weight: 400;
 
-$breadcrumb-font-size:        0.9em;
-$breadcrumb-margin-bottom:    0;
-
 $lead-font-size:              1.25rem;
 $lead-font-weight:            400;
 
-$navbar-brand-font-size:      1.3rem;
-$navbar-brand-padding-y:      0;
+//***********************
+//* Navbar & Breadcrumbs
+//**********************/
+// $navbar-light-color:                rgba(var(--#{$prefix}emphasis-color-rgb), .65) !default;
+$navbar-light-hover-color:          #0821AD;  // TODO: Fix
+$navbar-light-active-color:         $ac-navy;
+// $navbar-light-disabled-color:       rgba(var(--#{$prefix}emphasis-color-rgb), .3) !default;
+$navbar-light-icon-color:           $ac-navy;
+
+$navbar-light-brand-color:          $ac-navy;
+$navbar-light-brand-hover-color:    #0821AD;  // TODO: Fix
+// $navbar-dark-brand-color:           $navbar-dark-active-color !default;
+// $navbar-dark-brand-hover-color:     $navbar-dark-active-color !default;
+$navbar-dark-icon-color:            white;
+
+$navbar-brand-font-size:            1.2rem;
+$navbar-brand-padding-y:            0;
+
+$breadcrumb-font-size:              0.9em;
+$breadcrumb-margin-bottom:          0;
+
+//************
+//* Dropdowns
+//***********/
+// $dropdown-color:                    var(--#{$prefix}body-color) !default;
+// $dropdown-bg:                       var(--#{$prefix}body-bg) !default;
+// $dropdown-border-color:             var(--#{$prefix}border-color-translucent) !default;
+// $dropdown-link-color:               var(--#{$prefix}body-color) !default;
+// $dropdown-link-hover-color:         $dropdown-link-color !default;
+// $dropdown-link-hover-bg:            var(--#{$prefix}tertiary-bg) !default;
+// $dropdown-link-active-color:        $component-active-color !default;
+// $dropdown-link-active-bg:           $component-active-bg !default;
+
+// $dropdown-dark-color:               $gray-300 !default;
+// $dropdown-dark-bg:                  $gray-800 !default;
+// $dropdown-dark-border-color:        $dropdown-border-color !default;
+// $dropdown-dark-link-color:          $dropdown-dark-color !default;
+// $dropdown-dark-link-hover-color:    $white !default;
+// $dropdown-dark-link-hover-bg:       rgba($white, .15) !default;
+// $dropdown-dark-link-active-color:   $dropdown-link-active-color !default;
+// $dropdown-dark-link-active-bg:      $dropdown-link-active-bg !default;
+// $dropdown-dark-link-disabled-color: $gray-500 !default;
+
 
 $blockquote-font-size:        1.25em;
 $blockquote-footer-color:     #67777E;  // No dark mode
+
+$btn-hover-bg-shade-amount:       25%;
+$btn-hover-bg-tint-amount:        25%;
+$btn-hover-border-shade-amount:   30%;
+$btn-hover-border-tint-amount:    20%;
+
 
 $code-color:                  #590455;
 // $code-color-dark:             tint-color($code-color, 40%) !default;
@@ -60,63 +105,84 @@ $container-padding-x:  3rem;
 $box-shadow:                        0rem 0rem 0.5rem rgba(#3e3f41, 0.9);
 $box-shadow-lg:                     0.5rem 0.5rem 3rem rgba(#151616, 0.9);
 
+//********
+// Shadows - Tweaked from https://codyhouse.co/nuggets/beautiful-css-shadows
+//********
+                // inner glow 
+$box-shadow-sm: inset 0 0 1px 2px hsla(0, 0%, 100%, 0.125),
+                // multiple soft shadows
+                0 0.5px 1px hsla(0, 0%, 0%, 0.1),
+                0 2px 3px hsla(0, 0%, 0%, 0.2),
+                0 0.4rem 0.667rem hsla(0, 0%, 0%, 0.4);
+
+                // inner glow
+$box-shadow:    inset 0 0 1px 2px hsla(0, 0%, 100%, 0.125),
+                // multiple soft shadows
+                0 1px 2px hsla(0, 0%, 0%, 0.1),
+                0 4px 7px hsla(0, 0%, 0%, 0.2),
+                0 0.6rem 1.2rem hsla(0, 0%, 0%, 0.4);
+
+                // inner glow
+$box-shadow-lg: inset 0 0 2px 3px hsla(0, 0%, 100%, 0.125),
+                // multiple soft shadows
+                0 1.5px 3px hsla(0, 0%, 0%, 0.1),
+                0 0.333rem 0.667rem hsla(0, 0%, 0%, 0.2),
+                0 1rem 2rem hsla(0, 0%, 0%, 0.4);
+
+
 // 3. Include remainder of required Bootstrap stylesheets (including any separate color mode stylesheets)
 @import "bootstrap/scss/variables";
 @import "bootstrap/scss/variables-dark";
 
 // 4. Include any default map overrides here
 $custom-colors: (
-  // "light-secpondary": #fcfeff,
-  // "light-tertiary": #eff0f3,
-  // "dark-secondary": #232635,
-  // "dark-tertiary": #6C717E,
-  "facebook": #4267B2,
+  "tertiary": #909293,
+);
+// TODO: Add in the brand colors only for buttons or other things that we need.
+//       Don't generate a bunch of styles that will not be needed.
+$brand-colors: (
+  "facebook":  #4267B2,
   "instagram": #5B51D8,
-  "linkedin": #2E64BC,
-  "mastodon": #6364FF,
-  "paypal": #253B80, // Dark cornflower blue
-  "stripe": #625BF6, // Stripe Blurple
-  "threads": #000000,
-  "twitter": #1DA1F2,
+  "linkedin":  #2E64BC,
+  "mastodon":  #6364FF,
+  "paypal":    #253B80, // Dark cornflower blue
+  "stripe":    #625BF6, // Stripe Blurple
+  "threads":   #000000,
+  "twitter":   #1DA1F2,
 );
 $theme-colors: map-merge($theme-colors, $custom-colors);
 
 // 5a. Include remainder of required parts
 @import "bootstrap/scss/maps";
 @import "bootstrap/scss/mixins";
+
+//****************
+//* Utilities API
+//***************/
+
+// The utilities don't pick up additional themes, so we'll add them automatically.
+$custom-util-text-emphasis-colors: ();
+$custom-util-bg-subtle: ();
+$custom-util-border-subtle: ();
+
+@each $theme in map-keys($custom-colors) {
+  $custom-util-text-emphasis-colors: map.set(
+    $custom-util-text-emphasis-colors, "#{$theme}-emphasis", "var(--#{$prefix}#{$theme}-text-emphasis)"
+  );
+  $custom-util-bg-subtle: map.set(
+    $custom-util-bg-subtle, "#{$theme}-subtle", "var(--#{$prefix}#{$theme}-bg-subtle)"
+  );
+  $custom-util-border-subtle: map.set(
+    $custom-util-border-subtle, "#{$theme}-subtle", "var(--#{$prefix}#{$theme}-border-subtle)"
+  );
+}
+
+$utilities-text-emphasis-colors: map-merge($utilities-text-emphasis-colors, $custom-util-text-emphasis-colors);
+$utilities-bg-subtle: map-merge($utilities-bg-subtle, $custom-util-bg-subtle);
+$utilities-border-subtle: map-merge($utilities-border-subtle, $custom-util-border-subtle);
+
 @import "bootstrap/scss/utilities";
 
-// Custom Themes: Light mode.
-$custom-colors-text: (
-  // "ac": #041058,
-);
-$custom-colors-bg-subtle: (
-  "tertiary": $tertiary-bg-subtle,
-);
-$custom-colors-border-subtle: (
-  // "ac": #3754f6,
-);
-
-$theme-colors-text: map-merge($theme-colors-text, $custom-colors-text);
-$theme-colors-bg-subtle: map-merge($theme-colors-bg-subtle, $custom-colors-bg-subtle);
-$theme-colors-border-subtle: map-merge($theme-colors-border-subtle, $custom-colors-border-subtle);
-
-// Custom Themes: Dark mode
-$custom-colors-text-dark: (
-  // "ac": #8d9dfa,
-);
-$custom-colors-bg-subtle-dark: (
-  "tertiary": $tertiary-bg-subtle-dark,
-);
-$custom-colors-border-subtle-dark: (
-  // "ac": #8d9dfa,
-);
-
-$theme-colors-text-dark: map-merge($theme-colors-text-dark, $custom-colors-text-dark);
-$theme-colors-bg-subtle-dark: map-merge($theme-colors-bg-subtle-dark, $custom-colors-bg-subtle-dark);
-$theme-colors-border-subtle-dark: map-merge($theme-colors-border-subtle-dark, $custom-colors-border-subtle-dark);
-
-// Utilities API
 $utilities: map-merge(
   $utilities,
   (
@@ -131,6 +197,35 @@ $utilities: map-merge(
   )
 );
 
+// Custom Themes: Light mode.
+$custom-colors-text: (
+  "tertiary": $tertiary-text-emphasis,
+);
+$custom-colors-bg-subtle: (
+  "tertiary": $tertiary-bg-subtle,
+);
+$custom-colors-border-subtle: (
+  "tertiary": $tertiary-border-subtle,
+);
+
+$theme-colors-text: map-merge($theme-colors-text, $custom-colors-text);
+$theme-colors-bg-subtle: map-merge($theme-colors-bg-subtle, $custom-colors-bg-subtle);
+$theme-colors-border-subtle: map-merge($theme-colors-border-subtle, $custom-colors-border-subtle);
+
+// Custom Themes: Dark mode
+$custom-colors-text-dark: (
+  "tertiary": $tertiary-text-emphasis-dark,
+);
+$custom-colors-bg-subtle-dark: (
+  "tertiary": $tertiary-bg-subtle-dark,
+);
+$custom-colors-border-subtle-dark: (
+  "tertiary": $tertiary-border-subtle-dark,
+);
+
+$theme-colors-text-dark: map-merge($theme-colors-text-dark, $custom-colors-text-dark);
+$theme-colors-bg-subtle-dark: map-merge($theme-colors-bg-subtle-dark, $custom-colors-bg-subtle-dark);
+$theme-colors-border-subtle-dark: map-merge($theme-colors-border-subtle-dark, $custom-colors-border-subtle-dark);
 
 // 5b. Include remainder of required parts
 @import "bootstrap/scss/root";
@@ -147,6 +242,7 @@ $utilities: map-merge(
 @import "bootstrap/scss/dropdown";
 @import "bootstrap/scss/nav";
 @import "bootstrap/scss/navbar";
+@import "navbar-fix";
 @import "bootstrap/scss/card";
 @import "bootstrap/scss/breadcrumb";
 @import "bootstrap/scss/list-group";
@@ -198,7 +294,7 @@ $utilities: map-merge(
   background-color: $body-tertiary-bg;
 }
 
-.navbar-brand, .text-brand {
+.text-brand {
   font-family: $headings-font-family;
 }
 
@@ -234,6 +330,7 @@ img.profile-pic {
     color: var(--bs-light) !important;
   }
 
+  // TODO: Move breadcrumb and dropdowns to use Bootstrap SASS Variables
   .breadcrumb-item, .breadcrumb-item.active, .nav-link, .dropdown-item, .dropdown-item:hover {
     color: #FFFFFF;
   }
@@ -268,10 +365,6 @@ img.profile-pic {
 
   .nav-link:hover {
     color: $body-tertiary-bg;
-  }
-
-  .shadow-lg, .shadow {
-    box-shadow: none !important;
   }
 
   textarea, input {

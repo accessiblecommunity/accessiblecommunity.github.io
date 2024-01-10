@@ -4,7 +4,8 @@ import { Icon } from 'astro-icon';
 import ExternalLink from '../components/ExternalLink.astro';
 import Hero from '../components/Hero.astro';
 import Layout from '../layouts/Layout.astro';
-import Section from '../components/Section.astro';
+import Section from '../components/ThemedSection.astro';
+import Box from '../components/ThemedBox.astro';
 import TipRegistration from '../components/TipRegistration.astro';
 
 import heroBg from '../images/wheelchair-hall-blue-1920x1080.png'
@@ -46,7 +47,7 @@ const daniela = await getEntry('profiles', 'daniela');
     </div>
   </Hero>
 
-  <Section theme="body-secondary">
+  <Section theme="secondary" style="subtle">
     <h2 class="display-3 fw-bold">What we believe...</h2>
     <div class="d-flex flex-column flex-xl-row justify-content-xl-evenly align-items-center">
       <div class="col col-xl-8 col-xxl-9">
@@ -80,7 +81,7 @@ const daniela = await getEntry('profiles', 'daniela');
     </div>
   </Section>
 
-  <Section theme="body-tertiary">
+  <Section theme="tertiary" style="body">
     <div class="container d-flex flex-column flex-xl-row-reverse gap-4 justify-content-xl-between">
       <div class="col col-xl-7">
         <h2 class="display-3 fw-bold">What we do...</h2>
@@ -111,10 +112,10 @@ const daniela = await getEntry('profiles', 'daniela');
     </div>
   </Section>
 
-  <Section theme="body-tertiary">
+  <Section theme="secondary" style="subtle">
     <h2 class="display-3 fw-bold">Our services.</h2>
     <div class="d-flex flex-column flex-xl-row gap-4 py-3 justify-content-lg-evenly text-primary">
-      <div class="col col-xl-3 shadow-lg rounded bg-body-secondary p-4">
+      <Box text={true} class="col col-xl-3 shadow-sm rounded">
         <h3 class="display-5">
           <Icon class="bi" name="loca11y-logo" height="1.1em" />
           <span class="text-brand">
@@ -128,8 +129,8 @@ const daniela = await getEntry('profiles', 'daniela');
         <div class="text-center">
           <span class="text-brand fw-bold">Coming soon.</span>
         </div>
-      </div>
-      <div class="col col-xl-3 shadow-lg rounded bg-body-secondary p-4">
+      </Box>
+      <Box text={true} class="col col-xl-3 shadow rounded">
         <h3 class="display-5">
           <Icon class="bi" name="ta11y-logo" height="1em" />
           <span class="text-brand">
@@ -146,8 +147,8 @@ const daniela = await getEntry('profiles', 'daniela');
             <strong>t</strong>a11y.<strong>org</strong>
           </ExternalLink>
         </div>
-      </div>
-      <div class="col col-xl-3 shadow-lg rounded bg-body-secondary p-4">
+      </Box>
+      <Box text={true} class="col col-xl-3 shadow-lg rounded">
         <h3 class="display-5">
           <Icon class="bi" name="mutua11y-logo" height="1em" />
           <span class="text-brand">
@@ -164,14 +165,14 @@ const daniela = await getEntry('profiles', 'daniela');
             <strong>mutu</strong>a11y.<strong>org</strong>
           </ExternalLink>
         </div>
-      </div>
+      </Box>
     </div>
     <p class="lead pt-5">
       Learn more about <a href="/services" class="link-offset-2">our services</a>.
     </p>
   </Section>
 
-  <Section theme="body-secondary" id="journey">
+  <Section theme="primary" style="subtle" id="journey">
     <h2 class="display-4 fw-bold mb-4">Start your organization's disability-inclusion journey.</h2>
     <div class="d-flex flex-column flex-lg-row gap-4 justify-content-lg-evenly">
       <TipRegistration />

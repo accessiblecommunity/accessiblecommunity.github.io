@@ -7,7 +7,7 @@ export default {
     eventTarget.addEventListener('app-toggled', (event) => {
       if (event.detail.state === true) {
         const styleGuide = document.createElement('div');
-        styleGuide.setAttribute('class', 'p-2');
+        styleGuide.setAttribute('class', 'p-2 bg-body');
         styleGuide.setAttribute('id', 'style-guide');
         styleGuide.innerHTML = `
 <ul class="nav nav-tabs" id="style-guide-tabs" role="tablist">
@@ -127,28 +127,37 @@ export default {
   </div>
 
   <div class="tab-pane fade" id="style-guide-themes-pane" role="tabpanel" aria-labelledby="style-guide-themes" tabindex="0">
-    <div class="d-flex justify-content-center align-items-center gap-2">
-      <div class="px-3 py-2 text-body-emphasis bg-body border border-3 rounded">
-        Body
-      </div>
-      <div class="px-3 py-2 text-bg-primary border border-primary border-3 rounded">
+    <ul class="small list-inline list-unstyled">
+      <li class="list-inline-item p-2 m-1 text-body-emphasis bg-body border border-3 rounded">
+        Default
+      </li>
+      <li class="list-inline-item p-2 m-1 text-bg-primary border border-primary border-3 rounded">
         Primary
-      </div>
-      <div class="px-3 py-2 text-primary-emphasis bg-primary-subtle border border-primary-subtle border-3 rounded">
+      </li>
+      <li class="list-inline-item p-2 m-1 bg-body text-body border border-primary border-3 rounded">
+        Primary (Body)
+      </li>
+      <li class="list-inline-item p-2 m-1 bg-primary-subtle text-primary-emphasis border border-primary-subtle border-3 rounded">
         Primary (Subtle)
-      </div>
-      <div class="px-3 py-2 text-bg-secondary border border-secondary border-3 rounded">
+      </li>
+      <li class="list-inline-item p-2 m-1 text-bg-secondary border border-secondary border-3 rounded">
         Secondary
-      </div>
-      <div class="px-3 py-2 text-secondary-emphasis bg-secondary-subtle border border-secondary-subtle border-3 rounded">
-        Secondary Subtle
-      </div>
-      <div class="px-3 py-2 bg-body-tertiary text-body-tertiary border border-tertiary border-3 rounded">
+      </li>
+      <li class="list-inline-item p-2 m-1 bg-body-secondary text-body-secondary border border-secondary border-3 rounded">
+        Secondary (Body)
+      </li>
+      <li class="list-inline-item p-2 m-1 text-secondary-emphasis bg-secondary-subtle border border-secondary-subtle border-3 rounded">
+        Secondary (Subtle)
+      </li>
+      <li class="list-inline-item p-2 m-1 text-bg-tertiary border border-tertiary border-3 rounded">
         Tertiary
-      </div>
-      <div class="px-3 py-2 text-tertiary-emphasis bg-tertiary-subtle border border-tertiary-subtle border-3 rounded">
-        Tertiary Subtle
-      </div>
+      </li>
+      <li class="list-inline-item p-2 m-1 bg-body-tertiary text-body-tertiary border border-tertiary border-3 rounded">
+        Tertiary (Body)
+      </li>
+      <li class="list-inline-item p-2 m-1 text-tertiary-emphasis bg-tertiary-subtle border border-tertiary-subtle border-3 rounded">
+        Tertiary (Subtle)
+      </li>
     </div>
   </div>
 </div>`;

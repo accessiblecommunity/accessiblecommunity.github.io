@@ -1,23 +1,23 @@
 @charset "UTF-8";
 
 $color-mode-type:                   media-query;
-$ac-navy:                           #041058;  // To be deleted
+$ac-navy:                           #041058;
 
-/**
- * Themes in general.
- * 
- * bg-subtle is a significantly lighter version of the color.
- * border-subtle is a slightly darker (or lighter) version of the bg-subtle.
- * text-emphasis is a significantly darker (or lighter) version of the base color.
- */
+//**
+//* Themes in general.
+//* 
+//* bg-subtle is a significantly lighter version of the color.
+//* border-subtle is a slightly darker (or lighter) version of the bg-subtle.
+//* text-emphasis is a significantly darker (or lighter) version of the base color.
+//*/
 
 // Main Body
-$body-color:                        black;  // Fix.
+// $body-color:                        black;
 $body-color-dark:                   white;
 
-/************************
- * Body (Default) "Theme"
- ************************/
+//************************
+//* Body (Default) "Theme"
+//************************
 $body-emphasis-color:               black; 
 $body-bg:                           white;
 // $border-color:                      $gray-300 !default;
@@ -27,11 +27,11 @@ $body-bg:                           white;
 // $border-color-dark:                 $gray-700 !default;
 
 
-/***************************
-/* Body Secondary. Used for:
-/*     Captions (Table/Figure), Form text, Input placeholder, Disabled (Links/Pagination), 
-/*     Toast Headers, List groups, Breadcrumbs, Progress and Hover backgrounds
-/***************************/
+//***************************
+//* Body Secondary. Used for:
+//*     Captions (Table/Figure), Form text, Input placeholder, Disabled (Links/Pagination), 
+//*     Toast Headers, List groups, Breadcrumbs, Progress and Hover backgrounds
+//***************************
 // $body-secondary-color:              rgba($body-color, .75) !default;
 // $body-secondary-bg:                 $gray-200 !default;
 
@@ -39,68 +39,66 @@ $body-bg:                           white;
 // $body-secondary-bg-dark:            $gray-800 !default;
 
 
-/**************************
-/* Body Tertiary. Used for:
-/*     Dropdown link disabled, Backgrounds of various inputs
-/**************************/
+//**************************
+//* Body Tertiary. Used for:
+//*     Dropdown link disabled, Backgrounds of various inputs
+//**************************
 // $body-tertiary-color:               rgba($body-color, .5) !default;
 // $body-tertiary-bg:                  $gray-100 !default;
 
 // $body-tertiary-color-dark:          rgba($body-color-dark, .5) !default;
 // $body-tertiary-bg-dark:             mix($gray-800, $gray-900, 50%) !default;
 
-/****************
- * Primary Theme
- ***************/
+//****************
+//* Primary Theme
+//****************
 $primary:                           #041058;
 // Note: No dark mode on primary
 
 // Primary Subtle Theme
 $primary-text-emphasis:             #030C3F;
-$primary-bg-subtle:                 #A9B6FB;
-$primary-border-subtle:             #7085F8;
+$primary-bg-subtle:                 #BFC7F6;
+$primary-border-subtle:             #9FABF2;
 
-$primary-text-emphasis-dark:        #A9B6FB;
-$primary-bg-subtle-dark:            #030C3F;
+$primary-text-emphasis-dark:        #B7BDE1;
+$primary-bg-subtle-dark:            #041058;
 $primary-border-subtle-dark:        #8D9DFA;
 
-/*****************
-* Secondary Theme
-*****************/
-// $secondary:                      $gray-600 !default;
+//*****************
+//* Secondary Theme
+//*****************
+$secondary:                         #888E98;
 // Note: No dark mode on secondary
 
 // Secondary Subtle Theme
-// $secondary-text-emphasis:           shade-color($secondary, 60%) !default;
-$secondary-bg-subtle:               #FCFEFF; // Fix: Too light.
-// $secondary-border-subtle:           tint-color($secondary, 60%) !default;
+$secondary-text-emphasis:           $ac-navy;
+$secondary-bg-subtle:               #D4D6DA;
+$secondary-border-subtle:           #BABEC3;
 
-// $secondary-text-emphasis-dark:      tint-color($secondary, 40%) !default;
-$secondary-bg-subtle-dark:          #232635;
-// $secondary-border-subtle-dark:      shade-color($secondary, 40%) !default;
+$secondary-text-emphasis-dark:      white;
+$secondary-bg-subtle-dark:          #5E6787;
+$secondary-border-subtle-dark:      #959CB5;
 
 
-/***********************
-* Tertiary Subtle Theme
-***********************/
-// $tertiary-text-emphasis:            shade-color($secondary, 60%) !default;
-$tertiary-bg-subtle:                #EFF0F3;
-// $tertiary-border-subtle:            tint-color($secondary, 60%) !default;
+//***********************
+//* Tertiary Subtle Theme
+//***********************
+$tertiary-text-emphasis:            $ac-navy;
+$tertiary-bg-subtle:                #EEEFF0;
+$tertiary-border-subtle:            #D4D6DA;
 
-// $tertiary-text-emphasis-dark:       tint-color($secondary, 40%) !default;
-$tertiary-bg-subtle-dark:           #6C717E;
-// $tertiary-border-subtle-dark:       shade-color($secondary, 40%) !default;
+$tertiary-text-emphasis-dark:       white;
+$tertiary-bg-subtle-dark:           #0D0E15;
+$tertiary-border-subtle-dark:       #41466A;
 
 
 // Headings
 $headings-color:                    $primary;
-$headings-color-dark:               #7085F8; //37A4F8;
+$headings-color-dark:               #087CD5;
 
 // Links
-$link-color:                        $primary; //!default
+$link-color:                        #214895; // TODO: Not quite right.
+$link-color-dark:                   #087CD5;
 // $link-hover-color:                  shift-color($link-color, $link-shade-percentage) !default;
-
-$link-color-dark:                   #7085F8; //37A4F8;
 // $link-hover-color-dark:             shift-color($link-color-dark, -$link-shade-percentage) !default;
-
 $link-shade-percentage:             40%;

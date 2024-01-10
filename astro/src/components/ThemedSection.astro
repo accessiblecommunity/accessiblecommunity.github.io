@@ -1,0 +1,28 @@
+---
+interface Props {
+  id?: string;
+  theme?: string;
+  style?: string;  // 'body' or 'subtle'
+  text?: boolean;
+  py?: number;
+  fluid?: boolean;
+}
+
+const {
+  id = undefined,
+  theme = "default",
+  style = undefined,
+  text = false,
+  py = 5,
+  fluid = false
+} = Astro.props;
+
+import { getBackgroundAndText } from '../lib/themes.ts';
+
+const bgAndTextClass = getBackgroundAndText(theme, style, text);
+---
+<section id={id} class:list={['py-4', bgAndTextClass ]}>
+  <div class:list={[`container${fluid ? '-fluid' : ''}`, `py-${py}`]}>
+    <slot />
+  </div>
+</section>
