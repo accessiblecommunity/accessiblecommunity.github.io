@@ -1,6 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import Section from '../../components/Section.astro';
+import ThemedSection from '../../components/ThemedSection.astro';
 
 const title = 'Previous Contributors'
 const heading = 'Our previous contributors'
@@ -13,7 +13,7 @@ const crumbs = [{
 ---
 
 <Layout title={title} crumbs={crumbs} heading={heading}>
- <Section theme="body-tertiary">
+ <ThemedSection style="tertiary">
   <div class="col-xxl-9 pb-3">
    <p class="lead">We sincerely appreciate the time and energy that each person listed below has contributed to our mission.</p>
   </div>
@@ -96,7 +96,7 @@ const crumbs = [{
     </div>
    </div>
   </div>
- </Section>
+ </ThemedSection>
 </Layout>
 
 <style>

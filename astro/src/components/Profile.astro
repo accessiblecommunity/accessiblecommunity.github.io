@@ -39,7 +39,7 @@ const socialLinks = toPairs(links).map(([type, url]) => {
 });
 ---
 
-<div class={`d-flex p-2 align-items-${mini ? 'center' : 'end'} ${mini ? 'shadow m-2' : ''}`}>
+<div class={`d-flex p-2 align-items-${mini ? 'center' : 'end'} ${mini ? 'bg-body shadow-sm m-2' : ''}`}>
   <img class="profile-pic" src={ picture.src } alt={`Drawn representation of ${name}`} />
   <div class="flex-fill px-2">
     <NameTag class:list={["mb-0", { small: mini }]}>

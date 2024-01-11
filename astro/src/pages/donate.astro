@@ -3,7 +3,8 @@ import { Icon } from 'astro-icon'
 
 import Layout from '../layouts/Layout.astro';
 import Hero from '../components/Hero.astro';
-import Section from '../components/Section.astro';
+import ShadowBoxSection from '../components/ShadowBoxSection.astro';
+import ThemedSection from '../components/ThemedSection.astro';
 
 import heroBg from '../images/hands-blue-1920x1080.png'
 
@@ -37,7 +38,7 @@ const donationLinks = [{
   icon: 'envelope-at',
   href: directorEmail,
   title: 'Email the Director',
-  theme: 'ac',
+  theme: 'primary',
 }]
 ---
 <Layout title="Donate">
@@ -59,7 +60,7 @@ const donationLinks = [{
     </div>
   </Hero>
 
-  <Section theme="body">
+  <ThemedSection style="tertiary">
     <div class="row justify-content-center">
       <div class="col col-lg-10">
         <h2 class="display-4 text-primary mb-3">
@@ -83,10 +84,10 @@ const donationLinks = [{
         </div>
       </div>
     </div>
-  </Section>
+  </ThemedSection>
 
-  <Section theme="body-tertiary" shadow={true}>
-    <h2 class="display-4 text-center fw-bold text-primary my-3">How can I donate?</h2>
+  <ShadowBoxSection theme="info" style="secondary">
+    <h2 class="display-4 text-center fw-bold my-3">How can I donate?</h2>
     <div class="row justify-content-center">
       <div class="col-md-5 col-lg-3 d-flex flex-column justify-content-start">
         <div>
@@ -130,7 +131,7 @@ const donationLinks = [{
       <strong>Note:</strong>
       If you would like to make a donation through corporate or government giving, by check, or some other means, please <a href={ directorEmail }>email our director</a> to discuss your donation.
     </p>
-  </Section>
+  </ShadowBoxSection>
 </Layout>
 
 <style lang="scss">

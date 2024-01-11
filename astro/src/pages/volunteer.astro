@@ -1,6 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Section from '../components/Section.astro';
+import ThemedSection from '../components/ThemedSection.astro';
 
 const title = 'Volunteer'
 const heading = title
@@ -13,7 +13,7 @@ const crumbs = [{
 ---
 
 <Layout title={title} crumbs={crumbs} heading={heading}>
- <Section theme="body-tertiary">
+ <ThemedSection style="tertiary">
   <h2 class="display-4 fw-bold">Volunteer Teams</h2>
   <div class="col-md-9">
     <p>Thank you for wanting to learn about our volunteer opportunities at <span class="text-brand text-primary">Accessible <strong>Community</strong></span>. We have five different teams to choose from, and we have provided decriptions of each team to help you choose one (or more) to join. Everyone, including our staff, is a volunteer.</p>
@@ -82,8 +82,9 @@ const crumbs = [{
      </div>
     </div>
   </div>
- </Section>
- <Section id="form" theme="body-secondary">
+ </ThemedSection>
+
+ <ThemedSection id="form" style="secondary">
   <h2 class="display-4 fw-bold mb-4">Volunteer Form</h2>
   <form class="col p-4 border-primary volunteer-form">
     <p class="lead">Thank you for your interest in volunteering with <span class="text-brand text-primary">Accessible <strong>Community</strong></span>.</p>
@@ -220,5 +221,5 @@ const crumbs = [{
   }
 
 </style>
- </Section>
+ </ThemedSection>
 </Layout>

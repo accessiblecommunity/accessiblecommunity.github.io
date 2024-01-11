@@ -1,4 +1,16 @@
-/* Bootstrap Theme Management Functions */
+/** 
+ * Bootstrap Theme Management Functions 
+ * 
+ * Theme is the name of the theme you are trying to use. 
+ * No theme (undefined) means to use the standard body "theme".
+ * 
+ * Style is the type of augmentation you want to use.
+ * No style (undefined) means to use the standard "theme" with no augmentation.
+ *   - For the body theme, this is 'secondary' or 'tertiary'.
+ *     (We've also added a 'primary', although it doesn't do much.)
+ *   - For other themes ('primary', 'info', etc), the only style is 'subtle'.
+ *     (Subtle themes are dark-mode compliant).
+ */
 
 export function getBackgroundAndText(
   theme: string | undefined,

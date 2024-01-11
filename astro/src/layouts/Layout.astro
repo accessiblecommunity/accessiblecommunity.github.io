@@ -14,7 +14,7 @@ import '../styles/bootstrap.scss';
 
 import Footer from '../components/Footer.astro';
 import Header from '../components/Header.astro';
-import Section from '../components/Section.astro';
+import ThemedSection from '../components/ThemedSection.astro';
 
 const { title, crumbs, heading } = Astro.props;
 ---
@@ -35,9 +35,9 @@ const { title, crumbs, heading } = Astro.props;
   <Header title={title} crumbs={crumbs} />
   <main id="main-content">
     <slot name="header">
-      <Section theme="primary">
+      <ThemedSection theme="primary">
         <h2 class="display-3 fw-bold text-center text-white">{ heading || title }</h2>
-      </Section>
+      </ThemedSection>
     </slot>
     <slot />
   </main>

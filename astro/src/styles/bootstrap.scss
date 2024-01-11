@@ -364,8 +364,7 @@ img.profile-pic {
     border-color: #FFFFFF;
   }
 
-  .bi {
-    // blue-30
+  .bi {  // blue-30
     filter: brightness(0) saturate(100%) invert(71%) sepia(19%) saturate(851%) hue-rotate(172deg) brightness(91%) contrast(95%);
   }
 }

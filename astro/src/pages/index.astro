@@ -4,8 +4,8 @@ import { Icon } from 'astro-icon';
 import ExternalLink from '../components/ExternalLink.astro';
 import Hero from '../components/Hero.astro';
 import Layout from '../layouts/Layout.astro';
-import Section from '../components/ThemedSection.astro';
-import Box from '../components/ThemedBox.astro';
+import ThemedSection from '../components/ThemedSection.astro';
+import ThemedBox from '../components/ThemedBox.astro';
 import TipRegistration from '../components/TipRegistration.astro';
 
 import heroBg from '../images/wheelchair-hall-blue-1920x1080.png'
@@ -47,7 +47,7 @@ const daniela = await getEntry('profiles', 'daniela');
     </div>
   </Hero>
 
-  <Section style="secondary">
+  <ThemedSection style="secondary">
     <h2 class="display-3 fw-bold">What we believe...</h2>
     <div class="d-flex flex-column flex-xl-row justify-content-xl-evenly align-items-center">
       <div class="col col-xl-8 col-xxl-9">
@@ -79,9 +79,9 @@ const daniela = await getEntry('profiles', 'daniela');
         </p>
       </div>
     </div>
-  </Section>
+  </ThemedSection>
 
-  <Section style="tertiary">
+  <ThemedSection style="tertiary">
     <div class="container d-flex flex-column flex-xl-row-reverse gap-4 justify-content-xl-between">
       <div class="col col-xl-7">
         <h2 class="display-3 fw-bold">What we do...</h2>
@@ -110,12 +110,12 @@ const daniela = await getEntry('profiles', 'daniela');
         </figcaption>
       </figure>
     </div>
-  </Section>
+  </ThemedSection>
 
-  <Section theme="secondary" style="subtle">
+  <ThemedSection theme="secondary" style="subtle">
     <h2 class="display-3 fw-bold">Our services.</h2>
     <div class="d-flex flex-column flex-xl-row gap-4 py-3 justify-content-lg-evenly text-primary">
-      <Box text={true} border={1} class="border-primary col col-xl-3 shadow rounded">
+      <ThemedBox text={true} border={1} class="border-primary col col-xl-3 shadow rounded">
         <h3 class="display-5">
           <Icon class="bi" name="loca11y-logo" height="1.1em" />
           <span class="text-brand">
@@ -129,8 +129,8 @@ const daniela = await getEntry('profiles', 'daniela');
         <div class="text-center">
           <span class="text-brand fw-bold">Coming soon.</span>
         </div>
-      </Box>
-      <Box text={true} border={1} class="border-primary col col-xl-3 shadow rounded">
+      </ThemedBox>
+      <ThemedBox text={true} border={1} class="border-primary col col-xl-3 shadow rounded">
         <h3 class="display-5">
           <Icon class="bi" name="ta11y-logo" height="1em" />
           <span class="text-brand">
@@ -147,8 +147,8 @@ const daniela = await getEntry('profiles', 'daniela');
             <strong>t</strong>a11y.<strong>org</strong>
           </ExternalLink>
         </div>
-      </Box>
-      <Box text={true} border={1} class="border-primary col col-xl-3 shadow rounded">
+      </ThemedBox>
+      <ThemedBox text={true} border={1} class="border-primary col col-xl-3 shadow rounded">
         <h3 class="display-5">
           <Icon class="bi" name="mutua11y-logo" height="1em" />
           <span class="text-brand">
@@ -165,14 +165,14 @@ const daniela = await getEntry('profiles', 'daniela');
             <strong>mutu</strong>a11y.<strong>org</strong>
           </ExternalLink>
         </div>
-      </Box>
+      </ThemedBox>
     </div>
     <p class="lead pt-5">
       Learn more about <a href="/services" class="link-offset-2">our services</a>.
     </p>
-  </Section>
+  </ThemedSection>
 
-  <Section style="tertiary" id="journey">
+  <ThemedSection style="tertiary" id="journey">
     <h2 class="display-4 fw-bold mb-4">Start your organization's disability-inclusion journey.</h2>
     <div class="d-flex flex-column flex-lg-row gap-4 justify-content-lg-evenly">
       <TipRegistration />

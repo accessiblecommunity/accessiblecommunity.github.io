@@ -1,6 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import Section from '../../components/Section.astro';
+import ThemedSection from '../../components/ThemedSection.astro';
 
 import { Image } from 'astro:assets';
 import dequeLogo from '../../images/partner-logos/Deque_Logo_HeroBlue_cropped.png';
@@ -23,7 +23,7 @@ const crumbs = [{
 ---
 
 <Layout title={title} crumbs={crumbs} heading={heading}>
- <Section theme="body-tertiary">
+ <ThemedSection style="tertiary">
   <p class="lead mb-5">Thank you to the organizations that partner with us and support our work in various ways.</p>
   <ul class="row list-unstyled text-center">
     <li class="col-md-4 p-4"><a href="https://www.deque.com/" target="_blank"><Image src={dequeLogo} width="150" alt="Deque"></a></li>
@@ -34,5 +34,5 @@ const crumbs = [{
     <li class="col-md-4 p-4 partner-logo"><a href="https://tetralogical.com/" target="_blank"><Image src={tetraLogicalLogo} width="150" alt="TetraLogical"></a></li>
     <li class="col-md-4 p-4 partner-logo"><a href="https://www.tpgi.com/" target="_blank"><Image src={tpgiLogo} width="150" alt="TPGi"></a></li>
   </ul>
- </Section>
+ </ThemedSection>
 </Layout>
