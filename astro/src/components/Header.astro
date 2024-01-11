@@ -77,13 +77,13 @@ const breadCrumbs = isEmpty(crumbs) && title != 'Home' ? [{ name: 'Home', href: 
           </li>
         </li>
       </ul>
-      <a class="btn btn-primary display-65 mx-1 general-button" href="/donate" role="button">Donate</a>
+      <a class="btn btn-info display-65 mx-1 general-button" href="/donate" role="button">Donate</a>
     </div>
   </nav>
 </header>
 <slot />
 
-<style lang="scss">
+<style is:global lang="scss">
   /* first declaration that is commented out below is for debugging purposes. */
   /* * {
     outline: 1px solid black;
