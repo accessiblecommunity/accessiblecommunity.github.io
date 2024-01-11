@@ -2,14 +2,12 @@
 import Layout from '../layouts/Layout.astro';
 import ThemedSection from '../components/ThemedSection.astro';
 
-const title = 'Volunteer'
-const heading = title
+const title = 'Volunteer';
+const heading = title;
 
 const crumbs = [{
   name: 'Home', href: '/',
-}, {
-  name: 'Join us', href: '/join-us',
-}]
+}];
 ---
 
 <Layout title={title} crumbs={crumbs} heading={heading}>
@@ -180,7 +178,7 @@ const crumbs = [{
       </div>
       <div class="form-floating mb-3">
         <label for="accommodateTextarea" class="form-label mb-1">Please list any accomodations needed for remote meetings and work.</label>
-        <textarea class="form-control w-100 form-text-area" id="accomodateTextarea"></textarea>
+        <textarea class="form-control w-100 form-text-area" id="accommodateTextarea"></textarea>
       </div>
       <div class="col-md-6 mx-auto">
         <button type="submit" class="btn bg-primary text-white w-100 general-button">Submit</button>

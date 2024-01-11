@@ -7,12 +7,21 @@ import ThemedSection from '../../components/ThemedSection.astro';
 import ShadowBoxSection from '../../components/ShadowBoxSection.astro';
 import { Image } from 'astro:assets';
 
+const title = 'Mission & Vision';
+const heading = title;
+
+const crumbs = [{
+  name: 'Home', href: '/',
+}, {
+  name: 'About', href: '/about',
+}];
+
 import missionImage from '../../images/mission.png';
 // https://thenounproject.com/photo/business-partners-discussing-work-arranging-business-papers-and-charts-on-floor-bYWo15/
 import partnerImage from '../../images/np_Business-partners-discussing-work-arranging-business-papers-and-charts-on-floor_bYWo15_large.jpg';
 ---
-<Layout title="Mission">
-  <ThemedSection style="secondary" slot="header">
+<Layout title={title} crumbs={crumbs} heading={heading}>
+  <ThemedSection theme="body-tertiary">
     <div class="row flex-lg-row-reverse align-items-center justify-content-center gy-4 p-4">
       <div class="col-10 col-sm-8 col-lg-6 col-xl-5 col-xxl-4">
         <Image src={missionImage} alt="Image depicting Accessible Community's vision. Four circles connected with our logo. Contained in the circles are People with Disabilities, Local Organizations, Community Leaders, and Accessibility Experts." class="img-fluid" width="400" height="400" loading="lazy" />
@@ -143,7 +152,6 @@ import partnerImage from '../../images/np_Business-partners-discussing-work-arra
       </div>
     </div>
   </ShadowBoxSection>
-
 </Layout>
 
 <style lang="scss">

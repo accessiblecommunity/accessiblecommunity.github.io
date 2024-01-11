@@ -40,11 +40,19 @@ const donationLinks = [{
   title: 'Email the Director',
   theme: 'primary',
 }]
+
+const title = 'Donate';
+const heading = title;
+
+const crumbs = [{
+  name: 'Home', href: '/',
+}];
 ---
-<Layout title="Donate">
+<Layout title={title} crumb={crumbs} heading={heading}>
   <Hero image={ heroBg } slot="header">
-    <div slot="heading">
-      <h2 class="display-3 fw-bold text-white">Together we can do so much.</h2>
+    <div slot="heading" class="mb-4">
+      <h1 class="visually-hidden">Donate</h1>
+      <span class="display-2 fw-bold text-white">Together we can do so much.</span>
     </div>
     <p class="lead mb-4">
       <span class="text-brand">Accessible <strong>Community</strong></span> is a 501(c)3 organization.
@@ -63,9 +71,9 @@ const donationLinks = [{
   <ThemedSection style="tertiary">
     <div class="row justify-content-center">
       <div class="col col-lg-10">
-        <h2 class="display-4 text-primary mb-3">
+        <h2 class="display-3 text-primary mb-3">
           <Icon class="bi d-inline-block mb-1 me-1" name="ac-logo" style="height: 1em" alt="" />
-          <span>Support our <strong>mission</strong>.</span>
+          <span class="">Support our <strong>mission</strong>.</span>
         </h2>
         <div class="lead">
           <p>
@@ -87,7 +95,7 @@ const donationLinks = [{
   </ThemedSection>
 
   <ShadowBoxSection theme="info" style="secondary">
-    <h2 class="display-4 text-center fw-bold my-3">How can I donate?</h2>
+    <h2 class="display-3 text-center fw-bold my-3">How can I donate?</h2>
     <div class="row justify-content-center">
       <div class="col-md-5 col-lg-3 d-flex flex-column justify-content-start">
         <div>
@@ -147,6 +155,11 @@ const donationLinks = [{
 
   [astro-icon="cib:stripe"] {
     height: 2.4em;
+    filter: none;
+  }
+
+  [astro-icon="cib:cc-stripe"],
+  [astro-icon="cib:cc-paypal"] {
     filter: none;
   }
 

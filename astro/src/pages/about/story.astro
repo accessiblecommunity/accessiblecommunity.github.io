@@ -7,10 +7,16 @@ import { Icon } from 'astro-icon';
 
 import { getEntry } from 'astro:content';
 const rachael = await getEntry('profiles', 'rachael-bradley-montgomery');
+
+const crumbs = [{
+  name: 'Home', href: '/',
+}, {
+  name: 'About', href: '/about',
+}];
 ---
 
-<Layout title="Founder's story">
-  <ThemedSection>
+<Layout crumbs={crumbs} title="Founder's Story">
+  <ThemedSection style="tertiary">
     <p>
       People with disabilities are the 
       <ExternalLink

@@ -1,13 +1,18 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+
+const title = 'Blog';
+const heading = title;
 ---
 
-<Layout title="Blog">
-<h2 slot="header">Categories</h2>
-<ul>
-  <li>Accessibility</li>
-  <li>Announcements</li>
-  <li>Events</li>
-  <li>...</li>
-</ul>
+<Layout title={title} heading={heading}>
+<div class="container-fluid">
+  <h2 slot="header">Categories</h2>
+  <ul class="py-5 display-5">
+    <li>Accessibility</li>
+    <li>Announcements</li>
+    <li>Events</li>
+    <li>...</li>
+  </ul>
+</div>
 </Layout>
