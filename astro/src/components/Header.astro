@@ -89,8 +89,7 @@ const breadCrumbs = isEmpty(crumbs) && title != 'Home' ? [{ name: 'Home', href: 
     outline: 1px solid black;
   } */
 
-  @import "../styles/ac.scss";
-  @import "bootstrap/scss/mixins/_color-mode.scss";
+  @import '../styles/dark-mode.scss';
 
   .btn-skip {
     font-size: 0.6em;
@@ -109,7 +108,7 @@ const breadCrumbs = isEmpty(crumbs) && title != 'Home' ? [{ name: 'Home', href: 
 
   .navbar-toggler {
     background-color: #dfe1ed;
-    color: $ac-navy;
+    color: var(--bs-primary);
     border: none;
     padding-inline: 3px;
     font-size: 1.1rem;
@@ -117,7 +116,7 @@ const breadCrumbs = isEmpty(crumbs) && title != 'Home' ? [{ name: 'Home', href: 
 
   @include color-mode(dark) {
     .skip-link {
-      color: $ac-navy;
+      color: var(--bs-primary);
       background-color: white;
     }
 
@@ -127,7 +126,7 @@ const breadCrumbs = isEmpty(crumbs) && title != 'Home' ? [{ name: 'Home', href: 
 
     .navbar-toggler {
       color: #FFFFFF !important;
-      background-color: $ac-navy;
+      background-color: var(--bs-primary);
     }
   }
 </style>
