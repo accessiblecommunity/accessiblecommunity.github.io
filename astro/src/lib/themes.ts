@@ -5,15 +5,23 @@ export function getBackgroundAndText(
   style: string | undefined,
   text: boolean = false
 ) {
-  if ( theme === undefined )
-    return `bg-body${text ? ' text-body-emphasis' : ''}`;
-  else if ( style === "subtle" )
-    return `bg-${theme}-subtle${text ? ` text-${theme}-emphasis` : ''}`;
-  else if ( style === "body" ) {
-    const textTheme = ( theme === "primary" ) ? 'body' : theme;
-    return `bg-body-${theme}${text ? ` text-${textTheme}-emphasis` : ''}`;
+  const classes: Array<string> = [];
+
+  if ( theme === undefined ) {
+    classes.push(`bg-body${style ? `-${style}` : ''}`);
+    if (text) {
+      const textStyle = (style === 'primary') ? 'emphasis' : style;
+      classes.push(`text-body-${textStyle}`);
+    }
+  } else if (style === 'subtle') {
+    classes.push(`bg-${theme}-subtle`);
+    if (text)
+      classes.push(`text-${theme}-emphasis`);
+  } else {
+    classes.push(`${text ? 'text-' : ''}bg-${theme}`);
   }
-  else return `${text ? 'text-' : ''}bg-${theme}`;
+
+  return classes.join(' ');
 }
 
 export function getBorder(
@@ -21,11 +29,14 @@ export function getBorder(
   theme: string | undefined,
   subtle: boolean
 ) {
-  if (!size)
-    return ''
-  const sizeCls = `border${size > 1 ? ` border-${size}` : ''}`;
-  if (theme === "default")
-    return sizeCls;
-  else
-    return `${sizeCls} border-${theme}${subtle ? '-subtle' : ''}`
+  const classes: Array<string> = [];
+
+  if (size > 0)
+    classes.push('border');
+  if (size > 1)
+    classes.push(`border-${size}`);
+  if (theme)
+    classes.push(`border-${theme}${subtle ? '-subtle' : ''}`);
+
+  return classes.join(' ');
 }

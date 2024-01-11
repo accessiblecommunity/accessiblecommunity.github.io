@@ -1,10 +1,10 @@
 ---
 interface Props {
   theme?: string;
-  style?: string;  // 'body' or 'subtle'
+  style?: string;
   text?: boolean;
   border?: number;
-  class?: string
+  class?: string,
 }
 
 const {
@@ -18,8 +18,9 @@ const {
 import { getBackgroundAndText, getBorder } from '../lib/themes.ts'
 
 const bgAndTextClasses = getBackgroundAndText(theme, style, text);
-const borderClasses = getBorder(border, theme, style == 'subtle');
+const borderClasses = getBorder(border, theme, style === 'subtle');
 ---
-<div class:list={['p-4', bgAndTextClasses, borderClasses, extraClasses ]}>
+
+<div class:list={[bgAndTextClasses, borderClasses, 'p-4', extraClasses ]}>
   <slot />
 </div>

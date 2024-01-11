@@ -1,28 +1,30 @@
 ---
 interface Props {
-  theme: string;
-  shadow?: boolean;
   id?: string;
+  theme?: string;
+  style?: string;
+  text?: boolean;
   py?: number;
   fluid?: boolean;
 }
 
-const { theme, shadow = false, id = undefined, py = 5 } = Astro.props;
-const { fluid = shadow } = Astro.props;
-const shadowPadding = `p-${py - 1} p-sm-${py}`
+const {
+  id = undefined,
+  theme = undefined,
+  style = undefined,
+  text = false,
+  py = 5,
+  fluid = false
+} = Astro.props;
+
+import { getBackgroundAndText } from '../lib/themes.ts';
+
+const bgAndTextClass = getBackgroundAndText(theme, style, text);
 ---
-<section id={id} class:list={[`bg-${theme} py-4`, shadow ? shadowPadding : '' ]}>
-  { shadow ?
-    <div class:list={["shadow-lg rounded",]}>
-      <div class:list={[`container${fluid ? '-fluid' : ''}`, `py-${py}`]}>
-        <div class={`mx-sm-${py - 1}`}>
-          <slot />
-        </div>
-      </div>
-    </div>
-  :
-    <div class:list={[`container${fluid ? '-fluid' : ''}`, `py-${py}`]}>
-      <slot />
-    </div>
-  }
+
+<section id={id} class:list={['py-4', bgAndTextClass ]}>
+  Fix ME!!!
+  <div class:list={[`container${fluid ? '-fluid' : ''}`, `py-${py}`]}>
+    <slot />
+  </div>
 </section>

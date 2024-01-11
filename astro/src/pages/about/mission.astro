@@ -2,7 +2,9 @@
 import ExternalLink from '../../components/ExternalLink.astro';
 import Layout from '../../layouts/Layout.astro';
 import Quote from '../../components/Quote.astro';
-import Section from '../../components/Section.astro';
+import ThemedBox from '../../components/ThemedBox.astro';
+import ThemedSection from '../../components/ThemedSection.astro';
+import ShadowBoxSection from '../../components/ShadowBoxSection.astro';
 import { Image } from 'astro:assets';
 
 import missionImage from '../../images/mission.png';
@@ -10,7 +12,7 @@ import missionImage from '../../images/mission.png';
 import partnerImage from '../../images/np_Business-partners-discussing-work-arranging-business-papers-and-charts-on-floor_bYWo15_large.jpg';
 ---
 <Layout title="Mission">
-  <Section theme="body-secondary" slot="header">
+  <ThemedSection style="secondary" slot="header">
     <div class="row flex-lg-row-reverse align-items-center justify-content-center gy-4 p-4">
       <div class="col-10 col-sm-8 col-lg-6 col-xl-5 col-xxl-4">
         <Image src={missionImage} alt="Image depicting Accessible Community's vision. Four circles connected with our logo. Contained in the circles are People with Disabilities, Local Organizations, Community Leaders, and Accessibility Experts." class="img-fluid" width="400" height="400" loading="lazy" />
@@ -29,9 +31,9 @@ import partnerImage from '../../images/np_Business-partners-discussing-work-arra
         </p>
       </div>
     </div>
-  </Section>
+  </ThemedSection>
 
-  <Section theme="primary">
+  <ThemedSection theme="primary" text={true}>
     <div class="container d-flex flex-column flex-lg-row gap-4 gy-5 py-3 justify-content-lg-between">
       <div class="text-white col col-lg-7">
         <h2 class="display-3 text-white pb-4">Our <strong>mission</strong>.</h2>
@@ -56,9 +58,9 @@ import partnerImage from '../../images/np_Business-partners-discussing-work-arra
         </ul>
       </div>
     </div>
-  </Section>
+  </ThemedSection>
 
-  <Section theme="bg-light">
+  <ThemedSection style="tertiary">
     <h2 class="display-3 fw-bold pb-3">Our motivation.</h2>
     <p class="lead">One in every three households includes someone who has a disability. These individuals and families often struggle to find places in their community where they can successfully shop, eat, and participate in community life.</p>
     <ul class="lead">
@@ -68,14 +70,16 @@ import partnerImage from '../../images/np_Business-partners-discussing-work-arra
       <li>People with disabilities want to be a part of their community and part of the solution in removing barriers to that community.</li>
       <li>We can <strong>incentivize</strong> those people and organizations we partner with by creating scenarios where <strong>all parties win</strong>.</li>
     </ul>
-  </Section>
+  </ThemedSection>
 
-  <Section theme="body-tertiary" shadow={true}>
+  <ShadowBoxSection theme="info">
     <div class="row gap-4">
       <h2 class="col display-3 text-center py-4"><strong>Communities</strong> are <strong>people</strong>.</h2>
     </div>
     <div class="d-flex flex-column flex-lg-row gap-3 justify-content-lg-evenly">
-      <Quote q="loneliness" class="col col-lg-3 col-xl-3" />
+      <ThemedBox theme="info" style="subtle" class="my-auto col col-lg-3 col-xl-3 rounded shadow-sm">
+        <Quote q="loneliness" />
+      </ThemedBox>
       <div class="text-primary col col-lg-8 col-xl-7">
         <p class="lead">
           <ExternalLink
@@ -97,14 +101,14 @@ import partnerImage from '../../images/np_Business-partners-discussing-work-arra
         </p>
       </div>
     </div>
-  </Section>
+  </ShadowBoxSection>
 
-  <Section theme="body-tertiary" shadow={true}>
+  <ShadowBoxSection theme="secondary-subtle">
     <div class="row gap-4">
       <h2 class="col display-3 text-center py-3"><strong>Communities</strong> are made up of <strong class="text-nowrap">small organizations</strong>.</h2>
     </div>
-    <div class="d-flex flex-column flex-lg-row gap-4 justify-content-lg-center align-items-center">
-      <div class="col col-lg-6 col-xl-6 col-xxl-5">
+    <div class="d-flex flex-column flex-xl-row gap-4 justify-content-xl-center align-items-center px-4">
+      <div class="col col-xl-6 col-xxl-5">
         <p class="text-start">
           Over
           <ExternalLink
@@ -134,11 +138,11 @@ import partnerImage from '../../images/np_Business-partners-discussing-work-arra
           they possess.
         </p>
       </div>
-      <div class="col col-lg-6 col-xl-6 col-xxl-5">
+      <div class="col col-xl-6 col-xxl-5">
         <Image class="rounded img-fluid" src={partnerImage} alt="Business partners discussing work arranging business papers and charts on floor" loading="lazy" format='avif' />
       </div>
     </div>
-  </Section>
+  </ShadowBoxSection>
 
 </Layout>
 

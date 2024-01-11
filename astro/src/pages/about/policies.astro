@@ -1,6 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import Section from '../../components/Section.astro';
+import ThemedSection from '../../components/ThemedSection.astro';
 import ExternalLink from '../../components/ExternalLink.astro';
 
 import { Icon } from 'astro-icon';
@@ -20,7 +20,7 @@ const crumbs = [{
     <strong>Note:</strong> Links to all policies are available on both our website and on Google Docs.
   </div>
 
- <Section theme="body-secondary">
+ <ThemedSection>
   <h3 id="user" class="display-4"><strong>User</strong> Policies</h3>
   <p>
     These are policies for users of the tools that <span class="text-brand text-primary">Accessible <strong>Community</strong></span>
@@ -69,7 +69,7 @@ const crumbs = [{
       </ExternalLink>
     </li>
   </ul>
- </Section>
+ </ThemedSection>
 </Layout>
 
 <style>

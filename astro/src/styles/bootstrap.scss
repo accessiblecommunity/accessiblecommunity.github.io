@@ -87,23 +87,18 @@ $breadcrumb-margin-bottom:          0;
 // $dropdown-dark-link-active-bg:      $dropdown-link-active-bg !default;
 // $dropdown-dark-link-disabled-color: $gray-500 !default;
 
-
-$blockquote-font-size:        1.25em;
-$blockquote-footer-color:     #67777E;  // No dark mode
+$blockquote-font-size:            1.25em;
+$blockquote-footer-color:         $secondary;  // No dark mode
 
 $btn-hover-bg-shade-amount:       25%;
 $btn-hover-bg-tint-amount:        25%;
 $btn-hover-border-shade-amount:   30%;
 $btn-hover-border-tint-amount:    20%;
 
-
 $code-color:                  #590455;
 // $code-color-dark:             tint-color($code-color, 40%) !default;
 
 $container-padding-x:  3rem;
-
-$box-shadow:                        0rem 0rem 0.5rem rgba(#3e3f41, 0.9);
-$box-shadow-lg:                     0.5rem 0.5rem 3rem rgba(#151616, 0.9);
 
 //********
 // Shadows - Tweaked from https://codyhouse.co/nuggets/beautiful-css-shadows
@@ -136,11 +131,8 @@ $box-shadow-lg: inset 0 0 2px 3px hsla(0, 0%, 100%, 0.125),
 
 // 4. Include any default map overrides here
 $custom-colors: (
-  "tertiary": #909293,
-);
 // TODO: Add in the brand colors only for buttons or other things that we need.
 //       Don't generate a bunch of styles that will not be needed.
-$brand-colors: (
   "facebook":  #4267B2,
   "instagram": #5B51D8,
   "linkedin":  #2E64BC,
@@ -161,11 +153,12 @@ $theme-colors: map-merge($theme-colors, $custom-colors);
 //***************/
 
 // The utilities don't pick up additional themes, so we'll add them automatically.
+$custom-themes: [];
 $custom-util-text-emphasis-colors: ();
 $custom-util-bg-subtle: ();
 $custom-util-border-subtle: ();
 
-@each $theme in map-keys($custom-colors) {
+@each $theme in $custom-themes {
   $custom-util-text-emphasis-colors: map.set(
     $custom-util-text-emphasis-colors, "#{$theme}-emphasis", "var(--#{$prefix}#{$theme}-text-emphasis)"
   );
@@ -199,13 +192,13 @@ $utilities: map-merge(
 
 // Custom Themes: Light mode.
 $custom-colors-text: (
-  "tertiary": $tertiary-text-emphasis,
+  // "tertiary": $tertiary-text-emphasis,
 );
 $custom-colors-bg-subtle: (
-  "tertiary": $tertiary-bg-subtle,
+  // "tertiary": $tertiary-bg-subtle,
 );
 $custom-colors-border-subtle: (
-  "tertiary": $tertiary-border-subtle,
+  // "tertiary": $tertiary-border-subtle,
 );
 
 $theme-colors-text: map-merge($theme-colors-text, $custom-colors-text);
@@ -214,13 +207,13 @@ $theme-colors-border-subtle: map-merge($theme-colors-border-subtle, $custom-colo
 
 // Custom Themes: Dark mode
 $custom-colors-text-dark: (
-  "tertiary": $tertiary-text-emphasis-dark,
+  // "tertiary": $tertiary-text-emphasis-dark,
 );
 $custom-colors-bg-subtle-dark: (
-  "tertiary": $tertiary-bg-subtle-dark,
+  // "tertiary": $tertiary-bg-subtle-dark,
 );
 $custom-colors-border-subtle-dark: (
-  "tertiary": $tertiary-border-subtle-dark,
+  // "tertiary": $tertiary-border-subtle-dark,
 );
 
 $theme-colors-text-dark: map-merge($theme-colors-text-dark, $custom-colors-text-dark);
@@ -372,7 +365,8 @@ img.profile-pic {
   }
 
   .bi {
-    filter: invert(75%) sepia(53%) saturate(3857%) hue-rotate(191deg) brightness(100%) contrast(94%);
+    // blue-30
+    filter: brightness(0) saturate(100%) invert(71%) sepia(19%) saturate(851%) hue-rotate(172deg) brightness(91%) contrast(95%);
   }
 }
 

@@ -5,7 +5,8 @@ import { Image } from 'astro:assets';
 import ExternalLink from '../components/ExternalLink.astro';
 import Hero from '../components/Hero.astro';
 import Layout from '../layouts/Layout.astro';
-import Section from '../components/Section.astro'
+import ShadowBoxSection from '../components/ShadowBoxSection.astro'
+import ThemedSection from '../components/ThemedSection.astro'
 
 import heroBg from '../images/girl-using-laptop-blue-1920x1080.png'
 import tallyScreen from '../images/tally-screenshot.png'
@@ -52,7 +53,7 @@ const services = [{
     </div>
   </Hero>
 
-  <Section theme="body-secondary" py={4}>
+  <ThemedSection style="tertiary" py={4}>
     <div class="row row-gap-4 row-cols-1 row-cols-lg-3 mb-3">
       { services.map(({ icon, name, title, text, link }) =>
         <div class="feature col d-flex flex-column justify-content-between">
@@ -91,9 +92,9 @@ const services = [{
         </div>
       )}
     </div>
-  </Section>
+  </ThemedSection>
 
-  <Section id="ta11y" theme="body" shadow={true} fluid={false}>
+  <ShadowBoxSection id="ta11y" theme="info" fluid={false}>
     <div class="row p-4 justify-content-evenly align-items-center rounded-3">
       <div class="col-lg-7 py-lg-4">
         <h2 class="display-3 fw-bold">About t<span class="fw-lighter">a11y</span>.org</h2>
@@ -123,10 +124,10 @@ const services = [{
         />
       </div>
     </div>
-  </Section>
+  </ShadowBoxSection>
 
 
-  <Section id="mutua11y" theme="primary">
+  <ThemedSection id="mutua11y" theme="primary">
     <h2 class="display-3 fw-bold text-bg-primary">About mutu<span class="fw-lighter">a11y</span>.org</h2>
     <p class="text-bg-primary">
       An online community to connect and advance disability-related professionals. 
@@ -158,9 +159,9 @@ const services = [{
       <span class="text-brand fw-bold">What it is not:</span> A job board, digital only though we are starting
       by focusing on the digital space.
     </p>
-  </Section>
+  </ThemedSection>
 
-  <Section id="loca11y" theme="body-secondary">
+  <ThemedSection id="loca11y" style="secondary">
     <h2 class="display-3 fw-bold">About loc<span class="fw-lighter">a11y</span>.org</h2>
     <p>
       <span class="text-brand"><strong>loc</strong>a11y</span> provides an online tool for
@@ -187,7 +188,7 @@ const services = [{
       <span class="text-brand"><strong>loc</strong>a11y</span> reports positive feedback only and
       centers on accessibility, rather than quality of services.
     </p>
-  </Section>
+  </ThemedSection>
 </Layout>
 
 <style lang="scss">

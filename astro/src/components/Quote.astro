@@ -3,12 +3,13 @@
 import { Icon } from 'astro-icon';
 import { getEntry } from 'astro:content';
 
-const { q, 'class': className } = Astro.props;
+const { q, 'class': extraClasses } = Astro.props;
 const quote = await getEntry('quotes', q);
 const { Content = 'p' } = await quote?.render();
 
 ---
-<figure class:list={['bg-primary2 rounded p-3 d-flex flex-column justify-content-center', className]}>
+
+<figure class={extraClasses}>
   <blockquote class="blockquote text-primary">
     <sup aria-hidden="true"><Icon name="quote-left" />&nbsp;</sup>
     <Content />

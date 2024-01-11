@@ -127,36 +127,39 @@ export default {
   </div>
 
   <div class="tab-pane fade" id="style-guide-themes-pane" role="tabpanel" aria-labelledby="style-guide-themes" tabindex="0">
-    <ul class="small list-inline list-unstyled">
-      <li class="list-inline-item p-2 m-1 text-body-emphasis bg-body border border-3 rounded">
-        Default
+    <ul class="small list-inline list-unstyled text-center">
+      <li class="list-inline-item p-2 m-1 text-body bg-body border border-3 rounded">
+        body
       </li>
-      <li class="list-inline-item p-2 m-1 text-bg-primary border border-primary border-3 rounded">
-        Primary
-      </li>
-      <li class="list-inline-item p-2 m-1 bg-body text-body border border-primary border-3 rounded">
-        Primary (Body)
-      </li>
-      <li class="list-inline-item p-2 m-1 bg-primary-subtle text-primary-emphasis border border-primary-subtle border-3 rounded">
-        Primary (Subtle)
-      </li>
-      <li class="list-inline-item p-2 m-1 text-bg-secondary border border-secondary border-3 rounded">
-        Secondary
+      <li class="list-inline-item p-2 m-1 bg-body text-body-emphasis border border-primary border-3 rounded">
+        body-primary
       </li>
       <li class="list-inline-item p-2 m-1 bg-body-secondary text-body-secondary border border-secondary border-3 rounded">
-        Secondary (Body)
-      </li>
-      <li class="list-inline-item p-2 m-1 text-secondary-emphasis bg-secondary-subtle border border-secondary-subtle border-3 rounded">
-        Secondary (Subtle)
-      </li>
-      <li class="list-inline-item p-2 m-1 text-bg-tertiary border border-tertiary border-3 rounded">
-        Tertiary
+        body-secondary
       </li>
       <li class="list-inline-item p-2 m-1 bg-body-tertiary text-body-tertiary border border-tertiary border-3 rounded">
-        Tertiary (Body)
+        body-tertiary
       </li>
-      <li class="list-inline-item p-2 m-1 text-tertiary-emphasis bg-tertiary-subtle border border-tertiary-subtle border-3 rounded">
-        Tertiary (Subtle)
+      <div class="vr"></div>
+      <li class="list-inline-item p-2 m-1 text-bg-primary border border-primary border-3 rounded">
+        primary
+      </li>
+      <li class="list-inline-item p-2 m-1 bg-primary-subtle text-primary-emphasis border border-primary-subtle border-3 rounded">
+        primary-subtle
+      </li>
+      <div class="vr"></div>
+      <li class="list-inline-item p-2 m-1 text-bg-secondary border border-secondary border-3 rounded">
+        secondary
+      </li>
+      <li class="list-inline-item p-2 m-1 text-secondary-emphasis bg-secondary-subtle border border-secondary-subtle border-3 rounded">
+        secondary-subtle
+      </li>
+      <div class="vr"></div>
+      <li class="list-inline-item p-2 m-1 text-bg-info border border-info border-3 rounded">
+        info
+      </li>
+      <li class="list-inline-item p-2 m-1 text-info-emphasis bg-info-subtle border border-info-subtle border-3 rounded">
+        info-subtle
       </li>
     </div>
   </div>

@@ -47,7 +47,7 @@ const daniela = await getEntry('profiles', 'daniela');
     </div>
   </Hero>
 
-  <Section theme="secondary" style="subtle">
+  <Section style="secondary">
     <h2 class="display-3 fw-bold">What we believe...</h2>
     <div class="d-flex flex-column flex-xl-row justify-content-xl-evenly align-items-center">
       <div class="col col-xl-8 col-xxl-9">
@@ -81,7 +81,7 @@ const daniela = await getEntry('profiles', 'daniela');
     </div>
   </Section>
 
-  <Section theme="tertiary" style="body">
+  <Section style="tertiary">
     <div class="container d-flex flex-column flex-xl-row-reverse gap-4 justify-content-xl-between">
       <div class="col col-xl-7">
         <h2 class="display-3 fw-bold">What we do...</h2>
@@ -97,8 +97,8 @@ const daniela = await getEntry('profiles', 'daniela');
           </li>
         </ul>
       </div>
-      <figure class="col col-xl-4 text-start p-4 bg-body-tertiary shadow-lg rounded  d-flex flex-column justify-content-center">
-        <blockquote class="blockquote">
+      <figure class="col col-xl-4 text-start p-4 bg-info-subtle border border-2 border-info-subtle shadow rounded  d-flex flex-column justify-content-center">
+        <blockquote class="blockquote text-info-emphasis">
           <p>I am proud to be part of this community that drives the change toward a more accessible digital world for all people.</p>
         </blockquote>
         <figcaption class="blockquote-footer text-body fs-4 d-flex justify-content-end align-items-center gap-2">
@@ -115,7 +115,7 @@ const daniela = await getEntry('profiles', 'daniela');
   <Section theme="secondary" style="subtle">
     <h2 class="display-3 fw-bold">Our services.</h2>
     <div class="d-flex flex-column flex-xl-row gap-4 py-3 justify-content-lg-evenly text-primary">
-      <Box text={true} class="col col-xl-3 shadow-sm rounded">
+      <Box text={true} border={1} class="border-primary col col-xl-3 shadow rounded">
         <h3 class="display-5">
           <Icon class="bi" name="loca11y-logo" height="1.1em" />
           <span class="text-brand">
@@ -130,7 +130,7 @@ const daniela = await getEntry('profiles', 'daniela');
           <span class="text-brand fw-bold">Coming soon.</span>
         </div>
       </Box>
-      <Box text={true} class="col col-xl-3 shadow rounded">
+      <Box text={true} border={1} class="border-primary col col-xl-3 shadow rounded">
         <h3 class="display-5">
           <Icon class="bi" name="ta11y-logo" height="1em" />
           <span class="text-brand">
@@ -148,7 +148,7 @@ const daniela = await getEntry('profiles', 'daniela');
           </ExternalLink>
         </div>
       </Box>
-      <Box text={true} class="col col-xl-3 shadow-lg rounded">
+      <Box text={true} border={1} class="border-primary col col-xl-3 shadow rounded">
         <h3 class="display-5">
           <Icon class="bi" name="mutua11y-logo" height="1em" />
           <span class="text-brand">
@@ -172,7 +172,7 @@ const daniela = await getEntry('profiles', 'daniela');
     </p>
   </Section>
 
-  <Section theme="primary" style="subtle" id="journey">
+  <Section style="tertiary" id="journey">
     <h2 class="display-4 fw-bold mb-4">Start your organization's disability-inclusion journey.</h2>
     <div class="d-flex flex-column flex-lg-row gap-4 justify-content-lg-evenly">
       <TipRegistration />
