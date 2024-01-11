@@ -37,7 +37,7 @@ $body-color-dark:                   white;
 //*     Captions (Table/Figure), Form text, Input placeholder, Disabled (Links/Pagination), 
 //*     Toast Headers, List groups, Breadcrumbs, Progress and Hover backgrounds
 //***************************
-$body-secondary-color:              #6E7786; // gray-50
+$body-secondary-color:              #545B62; // gray-50
 // $body-secondary-bg:                 $gray-200 !default;
 
 // $body-secondary-color-dark:         rgba($body-color-dark, .75) !default;
@@ -52,7 +52,7 @@ $body-tertiary-color:               #989CAD; // gray-30
 // $body-tertiary-bg:                  $gray-100 !default;
 
 // $body-tertiary-color-dark:          rgba($body-color-dark, .5) !default;
-// $body-tertiary-bg-dark:             mix($gray-800, $gray-900, 50%) !default;
+$body-tertiary-bg-dark:             #383D46; // 2 shades darker than default
 
 
 //****************
@@ -66,7 +66,7 @@ $primary-text-emphasis:             #030D45; // primary + 3 shade
 $primary-bg-subtle:                 #C2E6FF; // blue-00
 $primary-border-subtle:             #9ECBF1; // blue-10
 
-$primary-text-emphasis-dark:        #7EB0E4; // blue-20
+$primary-text-emphasis-dark:        #9ECBF1; // blue-10
 $primary-bg-subtle-dark:            #020A32; // primary + 6 shade
 $primary-border-subtle-dark:        #030D45; // primary + 3 shade
 
@@ -105,7 +105,7 @@ $info-border-subtle-dark:           #006161; // cyan-70
 
 // Headings
 $headings-color:                    $primary;
-$headings-color-dark:               #6397D6; // blue-30 
+$headings-color-dark:               #7EB0E4; // blue-20
 
 // Links
 $link-color:                        #253E92; // blue-80

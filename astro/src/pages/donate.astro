@@ -71,7 +71,7 @@ const crumbs = [{
   <ThemedSection style="tertiary">
     <div class="row justify-content-center">
       <div class="col col-lg-10">
-        <h2 class="display-3 text-primary mb-3">
+        <h2 class="display-3 mb-3">
           <Icon class="bi d-inline-block mb-1 me-1" name="ac-logo" style="height: 1em" alt="" />
           <span class="">Support our <strong>mission</strong>.</span>
         </h2>
@@ -127,7 +127,7 @@ const crumbs = [{
       <div class="col-lg-3 col-xl-2">
         <div class="d-grid d-sm-flex flex-lg-column justify-content-sm-center gap-3 pb-3">
           { donationLinks.map(({icon, href, title, theme}) =>
-            <a class:list={[`btn btn-sm btn-outline-${theme}`]} href={ href } target="_blank">
+            <a class:list={[`btn btn-sm btn-primary rounded-2 shadow-sm`]} href={ href } target="_blank">
               <Icon class="bi mx-auto" aria-hidden="true" name={ icon } />
               { title }
             </a>
@@ -158,13 +158,9 @@ const crumbs = [{
     filter: none;
   }
 
-  [astro-icon="cib:cc-stripe"],
-  [astro-icon="cib:cc-paypal"] {
-    filter: none;
-  }
-
   .btn-sm .bi {
-    height: 2.5rem;
+    height: 2.2rem;
     display: block;
+    filter: none;
   }
 </style>
