@@ -5,9 +5,18 @@ import Section from '../../components/Section.astro';
 
 import { getEntry } from 'astro:content';
 const rachael = await getEntry('profiles', 'rachael-bradley-montgomery');
+
+const title = 'Founder\'s Story';
+const heading = title;
+
+const crumbs = [{
+  name: 'Home', href: '/',
+}, {
+  name: 'About', href: '/about',
+}];
 ---
 
-<Layout title="Founder's story">
+<Layout title={title} crumbs={crumbs} heading={heading}>
   <Section theme="body-tertiary">
     <p>
       People with disabilities are the 

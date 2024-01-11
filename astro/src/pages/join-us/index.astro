@@ -1,0 +1,28 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const title = 'Join Us';
+const heading = title;
+
+const crumbs = [{
+  name: 'Home', href: '/',
+}, {
+  name: 'Join Us', href: '/join-us',
+}];
+---
+
+<Layout title={title} crumbs={crumbs} heading={heading}>
+  <div class="container-fluid">
+    <ul class="py-5 display-5">
+      <li>
+        <a href="/volunteer">Volunteer</a>
+      </li>
+      <li>
+        <a href="/donate">Donate</a>
+      </li>
+      <li>
+        <a href="/join-us/sponsor">Sponsor</a>
+      </li>
+    </ul>
+  </div>
+</Layout>

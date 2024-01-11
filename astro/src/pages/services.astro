@@ -28,14 +28,17 @@ const services = [{
   title: '<strong>loc</strong>a11y.<strong>org</strong>',
   text: 'A tool for people with disabilities to find and recommend organizations and events where they can participate and engage.',
   // link: 'https://www.loca11y.org',
-}]
+}];
+
+const title = 'Services';
+const heading = title;
 ---
 
-<Layout title="Services">
+<Layout title={title} heading={heading}>
   <Hero image={ heroBg } columns="col-sm-12 col-md-9 col-lg-7 col-xl-6 col-xxl-5" slot="header">
-    <h2 class="display-3 text-white py-4" slot="heading">
+    <div class="display-3 py-4" slot="heading">
       <span class="fw-bold">Tools</span> and <span class="fw-bold">services</span> for equity.
-    </h2>
+    </div>
     <div class="bg-ac-alpha-3 hero-bd p-1 px-2">
       <p class="text-brand mb-0">
         We create tools and services to <strong>teach accessibility</strong>

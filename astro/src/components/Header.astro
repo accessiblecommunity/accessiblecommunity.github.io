@@ -30,7 +30,7 @@ const breadCrumbs = isEmpty(crumbs) && title != 'Home' ? [{ name: 'Home', href: 
             { breadCrumbs.map(({name, href}) =>
               <li class="breadcrumb-item"><a href={href} class="text-ac">{name}</a></li>
             )}
-            <li class="breadcrumb-item active" aria-current="page"><h1>{ title }</h1></li>
+            <li class="breadcrumb-item active" aria-current="page">{ title }</li>
           </ol>
         </nav>
       </div>
@@ -68,7 +68,7 @@ const breadCrumbs = isEmpty(crumbs) && title != 'Home' ? [{ name: 'Home', href: 
           <ul class="dropdown-menu">
             <li><a class="dropdown-item" href="/volunteer">Volunteer</a></li>
             <li><a class="dropdown-item" href="/donate">Donate</a></li>
-            <li><a class="dropdown-item" href="/sponsor">Sponsor</a></li>
+            <li><a class="dropdown-item" href="/join-us/sponsor">Sponsor</a></li>
           </ul>
           <li class="nav-item">
             <a class="nav-link" aria-current="page" href="/blog">Blog</a>

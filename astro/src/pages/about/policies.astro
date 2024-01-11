@@ -5,14 +5,14 @@ import ExternalLink from '../../components/ExternalLink.astro';
 
 import { Icon } from 'astro-icon';
 
-const title = 'Our Policies'
-const heading = 'Our policies'
+const title = 'Our Policies';
+const heading = title;
 
 const crumbs = [{
   name: 'Home', href: '/',
 }, {
   name: 'About', href: '/about',
-}]
+}];
 ---
 
 <Layout title={title} crumbs={crumbs} heading={heading}>
@@ -21,7 +21,7 @@ const crumbs = [{
   </div>
 
  <Section theme="body">
-  <h3 id="user" class="display-4"><strong>User</strong> Policies</h3>
+  <h2 id="user" class="display-4"><strong>User</strong> Policies</h2>
   <p>
     These are policies for users of the tools that <span class="text-brand text-ac">Accessible <strong>Community</strong></span>
     develops. Our users should know that these policies exist and where to find them.
@@ -36,7 +36,7 @@ const crumbs = [{
     </li>
   </ul>
 
-  <h3 id="staff" class="display-4 mt-5"><strong>Staff</strong> Policies</h3>
+  <h2 id="staff" class="display-4 mt-5"><strong>Staff</strong> Policies</h2>
   <p>
     All contributors to <span class="text-brand text-ac">Accessible <strong>Community</strong></span>
     must read and agree to the following policies. This includes our board of directors, our

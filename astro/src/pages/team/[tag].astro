@@ -10,7 +10,7 @@ export async function getStaticPaths() {
         allProfiles,
         mini: false,
         title: 'Board Members',
-        heading: 'Meet our board',
+        heading: 'Board Members',
       }
     },
     { params: { tag: 'leadership' }, props:
@@ -18,7 +18,7 @@ export async function getStaticPaths() {
         allProfiles,
         mini: false,
         title: 'Leadership',
-        heading: 'Meet our leadership',
+        heading: 'Leadership',
       }
     },
   ];
@@ -43,8 +43,8 @@ const profiles = sortBy(
 const crumbs = [{
   name: 'Home', href: '/',
 }, {
-  name: 'Team Members', href: '/team',
-}]
+  name: 'Team', href: '/team',
+}];
 ---
 
 <Layout title={title} crumbs={crumbs} heading={heading}>

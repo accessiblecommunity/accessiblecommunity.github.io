@@ -39,11 +39,18 @@ const donationLinks = [{
   title: 'Email the Director',
   theme: 'ac',
 }]
+
+const title = 'Donate';
+const heading = title;
+
+const crumbs = [{
+  name: 'Home', href: '/',
+}];
 ---
-<Layout title="Donate">
+<Layout title={title} crumb={crumbs} heading={heading}>
   <Hero image={ heroBg } slot="header">
     <div slot="heading">
-      <h2 class="display-3 fw-bold text-white">Together we can do so much.</h2>
+      <span class="display-3 fw-bold text-white">Together we can do so much.</span>
     </div>
     <p class="lead mb-4">
       <span class="text-brand">Accessible <strong>Community</strong></span> is a 501(c)3 organization.
