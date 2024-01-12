@@ -59,7 +59,7 @@ const services = [{
         <div class="feature col d-flex flex-column justify-content-between">
           <div class="d-flex align-items-center gap-2 mb-1">
             <div class="feature-icon d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient">
-              <Icon class="bi" name={ icon } height="1.5em" />
+              <Icon class="bi" name={ icon } height="1.5em" role="img" aria-hidden="true"/>
               </div>
             <h2 class="my-1 fs-1 text-primary" set:html={ title }></h2>
           </div>
@@ -71,7 +71,7 @@ const services = [{
               <a href={`#${name}`} class="icon-link  text-nowrap me-4">
                 Learn more
                 <span class="visually-hidden">about {name}.org</span>
-                <Icon name="bi:arrow-down-square" class="bi" />
+                <Icon name="bi:arrow-down-square" class="bi" role="img" aria-hidden="true"/>
               </a>
               { link ?
                 <div class="text-primary text-nowrap">

@@ -23,10 +23,10 @@ const breadCrumbs = isEmpty(crumbs) && title != 'Home' ? [{ name: 'Home', href: 
         Skip to Main Content
       </a>
       <div class="d-none d-sm-block navbar-brand me-2">
-        <Icon name="ac-logo" class="brand-logo" />
+        <Icon name="ac-logo" class="brand-logo" role="img" aria-hidden="true"/>
       </div>
       <div class="me-auto my-1">
-        <a class="navbar-brand lh-sm" href="/" tabindex="-1">Accessible <strong>Community</strong></a>
+        <a class="navbar-brand lh-sm" href="/">Accessible <strong>Community</strong></a>
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb lh-sm">
             { breadCrumbs.map(({name, href}) =>
@@ -53,7 +53,7 @@ const breadCrumbs = isEmpty(crumbs) && title != 'Home' ? [{ name: 'Home', href: 
           </ul>
         </li>
         <li class="nav-item">
-          <a class="nav-link" aria-current="page" href="/services">Services</a>
+          <a class="nav-link" href="/services">Services</a>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Team</a>
@@ -73,7 +73,7 @@ const breadCrumbs = isEmpty(crumbs) && title != 'Home' ? [{ name: 'Home', href: 
             <li><a class="dropdown-item" href="/join-us/sponsor">Sponsor</a></li>
           </ul>
           <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="/blog">Blog</a>
+            <a class="nav-link" href="/blog">Blog</a>
           </li>
         </li>
       </ul>

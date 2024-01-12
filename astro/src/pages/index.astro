@@ -97,11 +97,11 @@ const daniela = await getEntry('profiles', 'daniela');
           </li>
         </ul>
       </div>
-      <figure class="col col-xl-4 text-start p-4 bg-info-subtle border border-2 border-info-subtle shadow rounded  d-flex flex-column justify-content-center">
-        <blockquote class="blockquote text-info-emphasis">
+      <figure class="col col-xl-4 text-start p-4 bg-info border border-info shadow rounded d-flex flex-column justify-content-center">
+        <blockquote class="blockquote text-light">
           <p>I am proud to be part of this community that drives the change toward a more accessible digital world for all people.</p>
         </blockquote>
-        <figcaption class="blockquote-footer text-body fs-4 d-flex justify-content-end align-items-center gap-2">
+        <figcaption class="blockquote-footer text-light fs-4 d-flex justify-content-end align-items-center gap-2">
           <div class="text-start">
             <span>{daniela.data.name},</span>
             <div class="fs-6 text-brand"><strong>t</strong>a11y <strong>content</strong></div>
@@ -117,7 +117,7 @@ const daniela = await getEntry('profiles', 'daniela');
     <div class="d-flex flex-column flex-xl-row gap-4 py-3 justify-content-lg-evenly text-primary">
       <ThemedBox text={true} border={1} class="border-primary col col-xl-3 shadow rounded">
         <h3 class="display-5">
-          <Icon class="bi" name="loca11y-logo" height="1.1em" />
+          <Icon class="bi" name="loca11y-logo" height="1.1em" role="img" aria-hidden="true"/>
           <span class="text-brand">
             <strong>loc</strong>a11y.<strong>org</strong>
           </span>
@@ -132,7 +132,7 @@ const daniela = await getEntry('profiles', 'daniela');
       </ThemedBox>
       <ThemedBox text={true} border={1} class="border-primary col col-xl-3 shadow rounded">
         <h3 class="display-5">
-          <Icon class="bi" name="ta11y-logo" height="1em" />
+          <Icon class="bi" name="ta11y-logo" height="1em" role="img" aria-hidden="true"/>
           <span class="text-brand">
             <strong>t</strong>a11y.<strong>org</strong>
           </span>
@@ -150,7 +150,7 @@ const daniela = await getEntry('profiles', 'daniela');
       </ThemedBox>
       <ThemedBox text={true} border={1} class="border-primary col col-xl-3 shadow rounded">
         <h3 class="display-5">
-          <Icon class="bi" name="mutua11y-logo" height="1em" />
+          <Icon class="bi" name="mutua11y-logo" height="1em" role="img" aria-hidden="true"/>
           <span class="text-brand">
             <strong>mutu</strong>a11y.<strong>org</strong>
           </span>
