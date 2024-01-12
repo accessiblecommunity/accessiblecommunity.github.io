@@ -248,6 +248,10 @@ $theme-colors-border-subtle-dark: map-merge($theme-colors-border-subtle-dark, $c
   border-radius: 2%;
 }
 
+.hero-link:focus-visible, .link-light:focus-visible {
+  outline-color: #FFFFFF;
+}
+
 .dropdown-item:focus-visible {
   outline-offset: -0.15em;
 }

@@ -29,12 +29,12 @@ const Socials = [{
   <div class="py-5 px-4 pt-2 container-footer">
     <div class="row align-items-start justify-content-between">
       <div class="col-lg-3 info-footer">
-        <dl class="ac-text-light">
+        <dl class="link-light">
           <dt class="fw-bold display-65">Mailing Address</dt>
           <dd>PO Box 46; Paeonian Springs, VA, 20129</dd>
           <dt class="fw-bold display-65">Email</dt>
           <dd>
-            <a class="ac-text-light" href="mailto:info@accessiblecommunity.org">info@accessiblecommunity.org</a>
+            <a class="link-light" href="mailto:info@accessiblecommunity.org">info@accessiblecommunity.org</a>
           </dd>
           <dt class="fw-bold display-65">Phone Number</dt>
           <dd>703-651-6703</dd>
@@ -43,34 +43,34 @@ const Socials = [{
       <div class="col-lg-4 col-md-2">
         <nav class="nav-footer">
           <ul class="list-unstyled d-flex flex-column flex-lg-row justify-content-between">
-            <li class="ac-text-light">
+            <li class="link-light">
             <span class="fw-bold display-65">User Policies</span>
               <ul class="p-0 list-unstyled mb-2 me-2 me-md-4">
                 <li>
-                  <a class="ac-text-light" href="">Accessibility&nbsp;Statement</a>
+                  <a class="link-light" href="">Accessibility&nbsp;Statement</a>
                 </li>
                 <li>
-                  <a class="ac-text-light" href="/privacy-policy">Privacy Policy</a>   
+                  <a class="link-light" href="/privacy-policy">Privacy Policy</a>   
                 </li>
               </ul>
             </li>  
-            <li class="ac-text-light">
+            <li class="link-light">
             <span class="fw-bold display-65">Staff Policies</span>
               <ul class="p-0 list-unstyled me-4">
                 <li>
-                  <a class="ac-text-light" href="/code-of-conduct">Code&nbsp;of&nbsp;Conduct</a>
+                  <a class="link-light" href="/code-of-conduct">Code&nbsp;of&nbsp;Conduct</a>
                 </li>
                 <li>
-                  <a class="ac-text-light" href="/harrassment-policy">Harrassment&nbsp;Policy</a>
+                  <a class="link-light" href="/harrassment-policy">Harrassment&nbsp;Policy</a>
                 </li>
                 <li>
-                  <a class="ac-text-light" href="/non-discrimination-policy">Non-Discrimination Policy</a>
+                  <a class="link-light" href="/non-discrimination-policy">Non-Discrimination Policy</a>
                 </li>
                 <li>
-                  <a class="ac-text-light" href="/privacy-policy">Privacy&nbsp;Policy</a>
+                  <a class="link-light" href="/privacy-policy">Privacy&nbsp;Policy</a>
                 </li>
                 <li>
-                  <a class="ac-text-light" href="/technology-policy">Technology&nbsp;Policy</a>
+                  <a class="link-light" href="/technology-policy">Technology&nbsp;Policy</a>
                 </li>
               </ul>
             </li>
@@ -79,11 +79,11 @@ const Socials = [{
       </div>
       <div class="col-lg-3 flex-column text-center">
         <div>
-          <span class="fw-bold display-65 mb-0 ac-text-light">Find Us on Social</span>
+          <span class="fw-bold display-65 mb-0 link-light">Find Us on Social</span>
           <ul class="ps-0 mb-0">
           { Socials.map(({icon, href, className, name}) =>
             <li class="d-inline-block">
-              <a class="d-inline-block ac-text-light" href={ href } target="_blank">
+              <a class="d-inline-block link-light" href={ href } target="_blank">
                 <Icon name={ icon } class={ className } class= "social-icon" height="29" width="29" alt={ name }></Icon> 
               </a>
             </li>
@@ -91,8 +91,8 @@ const Socials = [{
           </ul>
         </div>
         <div class="mt-2 legal-footer">
-          <p class="pt-2 text-center mb-0 ac-text-light"><small>Accessible Community is a 501(c)3&nbsp;organization.</small></p>
-          <p class="text-center mb-0 ac-text-light"><small>© <time datetime="{currentYear}">{currentYear}</time> Accessible&nbsp;Community</small></p>
+          <p class="pt-2 text-center mb-0 link-light"><small>Accessible Community is a 501(c)3&nbsp;organization.</small></p>
+          <p class="text-center mb-0 link-light"><small>© <time datetime="{currentYear}">{currentYear}</time> Accessible&nbsp;Community</small></p>
         </div>
        </div>
       </div>
@@ -104,14 +104,6 @@ const Socials = [{
   /* * {
       border: 1px solid white;
   } */
-
-  :focus-visible {
-    outline-color: white;
-  }
-
-  .ac-text-light {
-    color: white;
-  }
 
   .container-footer {
     padding-bottom: 0.5rem; 
