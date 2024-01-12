@@ -1,13 +1,10 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Section from '../components/Section.astro';
-
-const title = 'Non-Discrimination Policy';
-const heading = title;
+import ThemedSection from '../components/ThemedSection.astro';
 ---
-
-<Layout title={title} heading={heading}>
- <Section theme="body-tertiary">
+  
+<Layout title="Non-Discrimination Policy">
+ <ThemedSection style="secondary">
   <p>Accessible Community is committed to providing an environment that is free of discrimination and harassment for leadership, staff, board of directors, and interns.</p>
   <p>Discrimination is based on race, color, religion, sex, pregnancy, sexual orientation, gender identity, national origin, physical or cognitive disability, age, genetic information, or veteran status. Discrimination is unethical and illegal and will not be tolerated.</p>
   <h2>Equal Opportunity</h2>
@@ -17,5 +14,5 @@ const heading = title;
   <h2>Reporting</h2>
   <p>Any leader, board member, staff, intern or client who believes that they or any other affiliate of Accessible Community has been discriminated against is strongly encouraged to report this concern promptly to the Executive Director at director@accessiblecommunity.org.</p>
   <p>If reporting to the Executive Director is not possible or appropriate, they can reach out to the chair of the board of directors at board@accessiblecommunity.org.</p>
- </Section>
+ </ThemedSection>
 </Layout>

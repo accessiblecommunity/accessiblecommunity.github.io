@@ -1,9 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import Section from '../../components/Section.astro';
-
-const title = 'Sponsor';
-const heading = title;
+import ThemedSection from '../../components/ThemedSection.astro';
 
 const crumbs = [{
   name: 'Home', href: '/',
@@ -12,8 +9,8 @@ const crumbs = [{
 }];
 ---
 
-<Layout title={title} crumbs={crumbs} heading={heading}>
- <Section>
-  <p>Sponsor infomation coming soon.</p>
- </Section>
+<Layout crumbs={crumbs} title="Sponsor">
+ <ThemedSection style="secondary">
+  <p class="display-5">Sponsor infomation coming soon.</p>
+ </ThemedSection>
 </Layout>

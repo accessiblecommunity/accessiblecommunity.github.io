@@ -7,7 +7,7 @@ export default {
     eventTarget.addEventListener('app-toggled', (event) => {
       if (event.detail.state === true) {
         const styleGuide = document.createElement('div');
-        styleGuide.setAttribute('class', 'p-2');
+        styleGuide.setAttribute('class', 'p-2 bg-body');
         styleGuide.setAttribute('id', 'style-guide');
         styleGuide.innerHTML = `
 <ul class="nav nav-tabs" id="style-guide-tabs" role="tablist">
@@ -32,8 +32,8 @@ export default {
     </button>
   </li>
   <li class="nav-item" role="presentation">
-    <button class="nav-link" id="style-guide-colors" data-bs-toggle="tab" data-bs-target="#style-guide-colors-pane" type="button" role="tab" aria-controls="style-guide-colors-pane" aria-selected="false">
-      Colors
+    <button class="nav-link" id="style-guide-themes" data-bs-toggle="tab" data-bs-target="#style-guide-themes-pane" type="button" role="tab" aria-controls="style-guide-themes-pane" aria-selected="false">
+      Themes
     </button>
   </li>
   <li class="ms-auto nav-item me-1 my-1" role="presentation">
@@ -126,50 +126,41 @@ export default {
     </div>
   </div>
 
-  <div class="tab-pane fade" id="style-guide-colors-pane" role="tabpanel" aria-labelledby="style-guide-colors" tabindex="0">
-    <div class="row">
-      <div class="col col-md-6">
-        <div class="d-flex justify-content-center gap-2">
-          <p>Backgrounds:</p>
-          <div>
-            <div class="rounded border border-ac">&nbsp; &nbsp;</div>
-            <span>(default)</span>
-          </div>
-          <div>
-            <div class="rounded border bg-ac">&nbsp; &nbsp;</div>
-            <span><code>ac</code> (Our brand)</span>
-          </div>
-          <div>
-            <div class="rounded border border-ac bg-body-secondary">&nbsp; &nbsp;</div>
-            <code>body-secondary</code>
-          </div>
-          <div>
-            <div class="rounded border border-ac bg-body-tertiary">&nbsp; &nbsp;</div>
-            <code>body-tertiary</code>
-          </div>
-        </div>
-      </div>
-      <div class="col col-md-6">
-        <div class="d-flex justify-content-center gap-2">
-          <p>Foregrounds:</p>
-          <div>
-            <div class="rounded border" style="background-color: var(--bs-body-color);">&nbsp; &nbsp;</div>
-            <span>(default)</span>
-          </div>
-          <div>
-            <div class="rounded border bg-ac">&nbsp; &nbsp;</div>
-            <span><code>ac</code> (Our brand)</span>
-          </div>
-          <div>
-            <div class="rounded border border-ac" style="background-color: var(--bs-secondary-color);">&nbsp; &nbsp;</div>
-            <code>secondary</code>
-          </div>
-          <div>
-            <div class="rounded border border-ac" style="background-color: var(--bs-tertiary-color);">&nbsp; &nbsp;</div>
-            <code>tertiary</code>
-          </div>
-        </div>
-      </div>
+  <div class="tab-pane fade" id="style-guide-themes-pane" role="tabpanel" aria-labelledby="style-guide-themes" tabindex="0">
+    <ul class="small list-inline list-unstyled text-center">
+      <li class="list-inline-item p-2 m-1 text-body bg-body border border-3 rounded">
+        body
+      </li>
+      <li class="list-inline-item p-2 m-1 bg-body text-body-emphasis border border-primary border-3 rounded">
+        body-primary
+      </li>
+      <li class="list-inline-item p-2 m-1 bg-body-secondary text-body-secondary border border-secondary border-3 rounded">
+        body-secondary
+      </li>
+      <li class="list-inline-item p-2 m-1 bg-body-tertiary text-body-tertiary border border-tertiary border-3 rounded">
+        body-tertiary
+      </li>
+      <div class="vr"></div>
+      <li class="list-inline-item p-2 m-1 text-bg-primary border border-primary border-3 rounded">
+        primary
+      </li>
+      <li class="list-inline-item p-2 m-1 bg-primary-subtle text-primary-emphasis border border-primary-subtle border-3 rounded">
+        primary-subtle
+      </li>
+      <div class="vr"></div>
+      <li class="list-inline-item p-2 m-1 text-bg-secondary border border-secondary border-3 rounded">
+        secondary
+      </li>
+      <li class="list-inline-item p-2 m-1 text-secondary-emphasis bg-secondary-subtle border border-secondary-subtle border-3 rounded">
+        secondary-subtle
+      </li>
+      <div class="vr"></div>
+      <li class="list-inline-item p-2 m-1 text-bg-info border border-info border-3 rounded">
+        info
+      </li>
+      <li class="list-inline-item p-2 m-1 text-info-emphasis bg-info-subtle border border-info-subtle border-3 rounded">
+        info-subtle
+      </li>
     </div>
   </div>
 </div>`;

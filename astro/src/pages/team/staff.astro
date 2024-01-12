@@ -1,10 +1,9 @@
 ---
 import { getCollection } from 'astro:content';
 
-
 import Layout from '../../layouts/Layout.astro';
 import Profile from '../../components/Profile.astro';
-import Section from '../../components/Section.astro';
+import ThemedSection from '../../components/ThemedSection.astro';
 
 import { isEmpty, intersection, sortBy } from 'lodash-es';
 
@@ -26,7 +25,7 @@ const crumbs = [{
 ---
 
 <Layout title={title} crumbs={crumbs} heading={heading}>
-  <Section theme="body-tertiary" fluid={mini}>
+  <ThemedSection theme="secondary" style="subtle" fluid={mini}>
     <ul class={mini ? 'mini list-inline text-center' : 'list-group'}>
       { profiles.map((p) =>
         <li class="list-inline-item text-start">
@@ -34,7 +33,7 @@ const crumbs = [{
         </li>
       )}
     </ul>
-  </Section>
+  </ThemedSection>
 </Layout>
 
 <style>
