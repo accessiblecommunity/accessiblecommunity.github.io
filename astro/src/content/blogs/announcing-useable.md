@@ -1,6 +1,6 @@
 ---
 title: 'Announcing useable'
-date-published: 2023-07-23
+published: 2023-07-23
 tags:
   - announcements
 
