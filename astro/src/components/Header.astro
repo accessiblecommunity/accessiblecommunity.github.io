@@ -23,10 +23,10 @@ const breadCrumbs = isEmpty(crumbs) && title != 'Home' ? [{ name: 'Home', href: 
         Skip to Main Content
       </a>
       <div class="d-none d-sm-block navbar-brand me-2">
-        <Icon name="ac-logo" class="brand-logo" />
+        <Icon name="ac-logo" class="brand-logo" role="img" aria-hidden="true"/>
       </div>
       <div class="me-auto my-1">
-        <a class="navbar-brand lh-sm" href="/" tabindex="-1">Accessible <strong>Community</strong></a>
+        <a class="navbar-brand lh-sm" href="/">Accessible <strong>Community</strong></a>
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb lh-sm">
             { breadCrumbs.map(({name, href}) =>
