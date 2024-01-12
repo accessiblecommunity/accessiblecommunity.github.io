@@ -296,6 +296,28 @@ input[type=checkbox], input[type=radio] {
   border-image-width: 2;
 }
 
+// Form Label Utilities
+// Place a <span class="asterisk" /> after a label or inside a legend.
+// When inside a legend, place a `aria-hidden="true"` attribute on it.
+// This is to still mark the fields that are required, but to not have
+// the screen reader read "star".
+.asterisk {
+  color: var(--bs-info-text-emphasis);
+  font-weight: 900;
+  font-size: 125%;
+  line-height: 100%;
+}
+.required-field + .asterisk {
+  margin-left: 0.15em;
+}
+.required-field > .asterisk {
+  margin-left: -0.15em;
+}
+.required-field + .asterisk::before,
+.required-field > .asterisk::before {
+  content: "*";
+}
+
 img.profile-pic {
   display: inline-block;
   max-width: 3em;
@@ -337,11 +359,6 @@ img.profile-pic {
   .general-button:hover {
     color: #041058;
     background-color: $body-tertiary-bg;
-  }
-
-  .required-field::after {
-    content: " *";
-    color: #FFFFFF;
   }
 
   .nav-link:hover {
