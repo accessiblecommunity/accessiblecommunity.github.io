@@ -2,32 +2,40 @@
 import Layout from '../layouts/Layout.astro';
 import ThemedSection from '../components/ThemedSection.astro';
 
-const title = 'Volunteer';
-const heading = title;
-
 const crumbs = [{
   name: 'Home', href: '/',
 }];
 ---
 
-<Layout title={title} crumbs={crumbs} heading={heading}>
+<Layout crumbs={crumbs} title="Volunteer">
  <ThemedSection style="tertiary">
   <h2 class="display-4 fw-bold">Volunteer Teams</h2>
   <div class="col-md-9">
     <p>Thank you for wanting to learn about our volunteer opportunities at <span class="text-brand text-primary">Accessible <strong>Community</strong></span>. We have five different teams to choose from, and we have provided decriptions of each team to help you choose one (or more) to join. Everyone, including our staff, is a volunteer.</p>
-    <p>After you determine which team(s) you want to volunteer with, or if you think you could help in another way not listed, you may <a href="#form">fill&nbsp;out&nbsp;a&nbsp;volunteer&nbsp;form</a>.</p>
     <p><strong>All our teams meet virtually on Zoom.</strong> This allows us to have an international team of volunteers.</p>
-    <p class="mb-5">All meeting times are in <strong>Eastern Daylight Time (<abbr>EDT</abbr>)</strong>. For teams that meet on more than one day, you may choose which day(s) to attend.</p>
+    <p>After you determine which team(s) you want to volunteer with, or if you think you could help in another way not listed, you may <a href="#form">fill&nbsp;out&nbsp;a&nbsp;volunteer&nbsp;form</a>.</p>
   </div>
   <div class="row">
     <div class="col-md-6">
       <div class="card mb-3 shadow team-card">
         <h3 class="display-5 card-header text-primary">Content Team</h3>
         <div class="card-body">
-          <p class="card-text"><span class="fw-bold">Description:</span> Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit nam assumenda dolore, minima ab hic facilis eum temporibus. Inventore expedita soluta repellendus veritatis excepturi corporis commodi, voluptas in rerum aperiam.</p>
-          <p><span class="fw-bold">Meeting Day:</span> Someday at <time datetime="17:00">5:00 pm</time> (<abbr title="Eastern Daylight Time">EDT</abbr>)</p>
+          <p class="card-text">
+            <span class="fw-bold">Description:</span>
+            <a href="">Ta11y’s learning content</a> team joins accessibility novices with experienced professionals to
+            produce our accessibility guidance.
+          </p>
+          <ul>
+            <li>Writers can grow their skills and expand their knowledge.</li>
+            <li>Editors can help others improve their writing skills.</li>
+            <li>Artists can support content with reinforcing images.</li>
+            <li>Experts can review content and help others learn.</li>
+          </ul>
+          <p>
+            We ask you to dedicate 3-5 hours a week, attend a weekly stand-up, and use Slack to stay connected between meetings. We use writing guides, templates, and a review process to ensure a final product you will be proud to include in your portfolio.            
+          </p>
           <p><span class="fw-bold">Team Leader:</span> Ellen</p>
-          <p>For more info on the Content&nbsp;Team, <a class="volunteer-link" href="">email&nbsp;Ellen</a>.</p>
+          <p>For more info on the Content&nbsp;Team, <a class="volunteer-link" href="mailto:ellen@accessiblecommunity.org">email&nbsp;Ellen</a>.</p>
         </div>
       </div>
     </div>
@@ -35,10 +43,16 @@ const crumbs = [{
       <div class="card mb-3 shadow team-card">
         <h3 class="display-5 card-header text-primary">Development Team</h3>
         <div class="card-body">
-          <p class="card-text"><span class="fw-bold">Description:</span> Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit nam assumenda dolore, minima ab hic facilis eum temporibus. Inventore expedita soluta repellendus veritatis excepturi corporis commodi, voluptas in rerum aperiam.</p>
-          <p><span class="fw-bold">Meeting Day:</span> Someday at <time datetime="17:00">5:00 pm</time> (<abbr title="Eastern Daylight Time">EDT</abbr>)</p>
+          <p class="card-text">
+            <span class="fw-bold">Description:</span>
+            Web developers that work together to build our tools and websites. We welcome both experienced and
+            inexperienced programmers who can dedicate 3-5 hours a week. Frontend development consists of Vue and
+            React-based solutions, while backend developers utilize Python, Django, FastAPI, SqlAlchemy and Postgres.
+            Team communication occurs via Slack with stand-ups occurring on weekly basis. If you have some development
+            skills and are willing to help build tools for people with disabilities, please reach out.            
+          </p>
           <p><span class="fw-bold">Team Leader:</span> Brian</p>
-          <p>For more info on the Development&nbsp;Team, <a class="volunteer-link" href="">email&nbsp;Brian</a>.</p>
+          <p>For more info on the Development&nbsp;Team, <a class="volunteer-link" href="mailto:brian@accessiblecommunity.org">email&nbsp;Brian</a>.</p>
         </div>
       </div>
     </div>
@@ -48,10 +62,9 @@ const crumbs = [{
       <div class="card mb-3 shadow team-card">
         <h3 class="display-5 card-header text-primary">Evaluation Team</h3>
         <div class="card-body">
-          <p class="card-text"><span class="fw-bold">Description:</span> Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit nam assumenda dolore, minima ab hic facilis eum temporibus. Inventore expedita soluta repellendus veritatis excepturi corporis commodi, voluptas in rerum aperiam.</p>
-          <p><span class="fw-bold">Meeting Day:</span> Tuesdays at <time datetime="16:00">4:00 pm</time> (<abbr title="Eastern Daylight Time">EDT</abbr>) and Fridays at <time datetime="08:00">8:00 pm</time> (<abbr title="Eastern Daylight Time">EDT</abbr>)</p>
+          <p class="card-text"><span class="fw-bold">Description:</span> Coming soon.</p>
           <p><span class="fw-bold">Team Leader:</span> Rachael</p>
-          <p>For more info on the Evaluation&nbsp;Team, <a class="volunteer-link" href="">email&nbsp;Rachael</a>.</p>
+          <p>For more info on the Evaluation&nbsp;Team, <a class="volunteer-link" href="mailto:rachael@accessiblecommunity.org">email&nbsp;Rachael</a>.</p>
         </div>
       </div>
     </div>
@@ -59,10 +72,9 @@ const crumbs = [{
       <div class="card mb-3 shadow team-card">
         <h3 class="display-5 card-header text-primary">Leadership Team</h3>
         <div class="card-body">
-          <p class="card-text"><span class="fw-bold">Description:</span> Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit nam assumenda dolore, minima ab hic facilis eum temporibus. Inventore expedita soluta repellendus veritatis excepturi corporis commodi, voluptas in rerum aperiam.</p>
-          <p><span class="fw-bold">Meeting Day:</span> Someday at <time datetime="17:00">5:00 pm</time> (<abbr title="Eastern Daylight Time">EDT</abbr>)</p>
+          <p class="card-text"><span class="fw-bold">Description:</span> Coming soon.</p>
           <p><span class="fw-bold">Team Leader:</span> Rachael</p>
-          <p>For more info on the Leadership&nbsp;Team, <a class="volunteer-link" href="">email&nbsp;Rachael</a>.</p>
+          <p>For more info on the Leadership&nbsp;Team, <a class="volunteer-link" href="mailto:rachael@accessiblecommunity.org">email&nbsp;Rachael</a>.</p>
         </div>
       </div>
     </div>
@@ -72,10 +84,9 @@ const crumbs = [{
       <div class="card mb-3 shadow team-card">
         <h3 class="display-5 card-header text-primary">User Experience (<abbr>UX</abbr>) Team</h3>
         <div class="card-body">
-          <p class="card-text"><span class="fw-bold">Description:</span> Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit nam assumenda dolore, minima ab hic facilis eum temporibus. Inventore expedita soluta repellendus veritatis excepturi corporis commodi, voluptas in rerum aperiam.</p>
-          <p><span class="fw-bold">Meeting Day:</span> Someday at <time datetime="17:00">5:00 pm</time> (<abbr title="Eastern Daylight Time">EDT</abbr>)</p>
+          <p class="card-text"><span class="fw-bold">Description:</span> Coming soon.</p>
           <p><span class="fw-bold">Team Leader:</span> Michael</p>
-          <p>For more info on the <abbr>UX</abbr>&nbsp;Team, <a class="volunteer-link" href="">email&nbsp;Michael</a>.</p>
+          <p>For more info on the <abbr>UX</abbr>&nbsp;Team, <a class="volunteer-link" href="mailto:michael@accessiblecommunity.org">email&nbsp;Michael</a>.</p>
         </div>
      </div>
     </div>
@@ -187,7 +198,8 @@ const crumbs = [{
         <button type="submit" class="btn btn-info w-100 general-button">Submit</button>
     </div>
   </form>
-</Section>
+ </ThemedSection>
+</Layout>
 
 <style>
   /* first declaration that is commented out below is for debugging purposes. */
@@ -222,5 +234,3 @@ const crumbs = [{
   }
 
 </style>
- </ThemedSection>
-</Layout>
