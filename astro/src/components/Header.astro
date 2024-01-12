@@ -16,21 +16,23 @@ const { title, crumbs = [] } = Astro.props;
 const breadCrumbs = isEmpty(crumbs) && title != 'Home' ? [{ name: 'Home', href: '/' }] : crumbs;
 ---
   
-<header class="sticky-top bg-body">
+<header class="sticky-top">
   <nav class="navbar navbar-expand-lg align-items-top">
     <div class="container-fluid px-3">
-      <a class="visually-hidden-focusable btn btn-ac btn-sm btn-skip me-2" href="#main-content">
+      <a class="visually-hidden-focusable btn btn-primary btn-sm btn-skip me-2 skip-link" href="#main-content">
         Skip to Main Content
       </a>
-      <Icon name="ac-logo" class="navbar-brand me-2" />
+      <div class="d-none d-sm-block navbar-brand me-2">
+        <Icon name="ac-logo" class="brand-logo" />
+      </div>
       <div class="me-auto my-1">
-        <a class="navbar-brand lh-sm text-ac" href="/" tabindex="-1">Accessible <strong>Community</strong></a>
+        <a class="navbar-brand lh-sm" href="/" tabindex="-1">Accessible <strong>Community</strong></a>
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb lh-sm">
             { breadCrumbs.map(({name, href}) =>
-              <li class="breadcrumb-item"><a href={href} class="text-ac">{name}</a></li>
+              <li class="breadcrumb-item"><a href={href} class="text-primary">{name}</a></li>
             )}
-            <li class="breadcrumb-item active" aria-current="page"><h1>{ title }</h1></li>
+            <li class="breadcrumb-item active" aria-current="page">{ title }</li>
           </ol>
         </nav>
       </div>
@@ -51,7 +53,7 @@ const breadCrumbs = isEmpty(crumbs) && title != 'Home' ? [{ name: 'Home', href: 
           </ul>
         </li>
         <li class="nav-item">
-          <a class="nav-link" aria-current="page" href="/services">Services</a>
+          <a class="nav-link" href="/services">Services</a>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Team</a>
@@ -68,27 +70,26 @@ const breadCrumbs = isEmpty(crumbs) && title != 'Home' ? [{ name: 'Home', href: 
           <ul class="dropdown-menu">
             <li><a class="dropdown-item" href="/volunteer">Volunteer</a></li>
             <li><a class="dropdown-item" href="/donate">Donate</a></li>
-            <li><a class="dropdown-item" href="/sponsor">Sponsor</a></li>
+            <li><a class="dropdown-item" href="/join-us/sponsor">Sponsor</a></li>
           </ul>
           <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="/blog">Blog</a>
+            <a class="nav-link" href="/blog">Blog</a>
           </li>
         </li>
       </ul>
-      <a class="btn btn-ac display-65 mx-1" href="/donate" role="button">Donate</a>
+      <a class="btn btn-info display-65 mx-1 general-button" href="/donate" role="button">Donate</a>
     </div>
   </nav>
 </header>
 <slot />
 
-<style lang="scss">
+<style is:global lang="scss">
   /* first declaration that is commented out below is for debugging purposes. */
   /* * {
     outline: 1px solid black;
   } */
 
-  @import "../styles/ac.scss";
-  @import "bootstrap/scss/mixins/_color-mode.scss";
+  @import '../styles/dark-mode.scss';
 
   .btn-skip {
     font-size: 0.6em;
@@ -96,7 +97,6 @@ const breadCrumbs = isEmpty(crumbs) && title != 'Home' ? [{ name: 'Home', href: 
 
   [astro-icon="ac-logo"] {
     height: 2em;
-    color: $ac-navy;
   }
 
   .breadcrumb-item h1 {
@@ -108,25 +108,25 @@ const breadCrumbs = isEmpty(crumbs) && title != 'Home' ? [{ name: 'Home', href: 
 
   .navbar-toggler {
     background-color: #dfe1ed;
-    color: $ac-navy;
+    color: var(--bs-primary);
     border: none;
     padding-inline: 3px;
     font-size: 1.1rem;
   }
 
   @include color-mode(dark) {
-    [astro-icon="ac-logo"] {
-      color: white;
-    }
-
-    .skip-link, .link-dropdown:hover {
-      color: var(--ac-navy);
+    .skip-link {
+      color: var(--bs-primary);
       background-color: white;
     }
 
+    .brand-logo {
+      color: #FFFFFF;
+    }
+
     .navbar-toggler {
-      color: white !important;
-      background-color: $ac-navy;
+      color: #FFFFFF !important;
+      background-color: var(--bs-primary);
     }
   }
 </style>

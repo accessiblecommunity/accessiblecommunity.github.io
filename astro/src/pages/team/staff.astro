@@ -1,17 +1,16 @@
 ---
 import { getCollection } from 'astro:content';
 
-
 import Layout from '../../layouts/Layout.astro';
 import Profile from '../../components/Profile.astro';
-import Section from '../../components/Section.astro';
+import ThemedSection from '../../components/ThemedSection.astro';
 
 import { isEmpty, intersection, sortBy } from 'lodash-es';
 
 const allProfiles = await getCollection('profiles');
 const mini = true;
-const title = 'Staff'
-const heading = 'Meet our staff'
+const title = 'Staff';
+const heading = title;
 
 const profiles = sortBy(
   allProfiles.filter((p) => isEmpty(intersection(p.data.tags, ['board', 'leadership']))),
@@ -21,12 +20,12 @@ const profiles = sortBy(
 const crumbs = [{
   name: 'Home', href: '/',
 }, {
-  name: 'Team Members', href: '/team',
-}]
+  name: 'Team', href: '/team',
+}];
 ---
 
 <Layout title={title} crumbs={crumbs} heading={heading}>
-  <Section theme="body-tertiary" fluid={mini}>
+  <ThemedSection theme="secondary" style="subtle" fluid={mini}>
     <ul class={mini ? 'mini list-inline text-center' : 'list-group'}>
       { profiles.map((p) =>
         <li class="list-inline-item text-start">
@@ -34,7 +33,7 @@ const crumbs = [{
         </li>
       )}
     </ul>
-  </Section>
+  </ThemedSection>
 </Layout>
 
 <style>

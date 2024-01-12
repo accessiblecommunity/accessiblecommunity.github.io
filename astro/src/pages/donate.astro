@@ -3,7 +3,8 @@ import { Icon } from 'astro-icon'
 
 import Layout from '../layouts/Layout.astro';
 import Hero from '../components/Hero.astro';
-import Section from '../components/Section.astro';
+import ShadowBoxSection from '../components/ShadowBoxSection.astro';
+import ThemedSection from '../components/ThemedSection.astro';
 
 import heroBg from '../images/hands-blue-1920x1080.png'
 
@@ -37,13 +38,21 @@ const donationLinks = [{
   icon: 'envelope-at',
   href: directorEmail,
   title: 'Email the Director',
-  theme: 'ac',
+  theme: 'primary',
 }]
+
+const title = 'Donate';
+const heading = title;
+
+const crumbs = [{
+  name: 'Home', href: '/',
+}];
 ---
-<Layout title="Donate">
+<Layout title={title} crumb={crumbs} heading={heading}>
   <Hero image={ heroBg } slot="header">
-    <div slot="heading">
-      <h2 class="display-3 fw-bold text-white">Together we can do so much.</h2>
+    <div slot="heading" class="mb-4">
+      <h1 class="visually-hidden">Donate</h1>
+      <span class="display-2 fw-bold text-white">Together we can do so much.</span>
     </div>
     <p class="lead mb-4">
       <span class="text-brand">Accessible <strong>Community</strong></span> is a 501(c)3 organization.
@@ -51,7 +60,7 @@ const donationLinks = [{
     </p>
     <div class="d-grid gap-4 d-sm-flex justify-content-sm-center">
       { heroButtons.map(({icon, href, name, className}) =>
-        <a class="btn btn-primary d-flex justify-content-center align-items-center px-4 gap-1 hero-button" href={ href } target="_blank">
+        <a class="btn btn-primary border-light d-flex justify-content-center align-items-center px-4 gap-1 hero-button" href={ href } target="_blank">
           <span class={ className }>Donate with</span>
           <Icon class="bi" alt={ name } name={ icon } />
         </a>
@@ -59,16 +68,16 @@ const donationLinks = [{
     </div>
   </Hero>
 
-  <Section theme="body">
+  <ThemedSection style="tertiary">
     <div class="row justify-content-center">
       <div class="col col-lg-10">
-        <h2 class="display-4 text-ac mb-3">
+        <h2 class="display-3 mb-3">
           <Icon class="bi d-inline-block mb-1 me-1" name="ac-logo" style="height: 1em" alt="" />
-          <span>Support our <strong>mission</strong>.</span>
+          <span class="">Support our <strong>mission</strong>.</span>
         </h2>
         <div class="lead">
           <p>
-            Your support of <span class="text-ac text-brand">Accessible <strong>Community</strong></span> provides programs, accommodations and technology to...
+            Your support of <span class="text-primary text-brand">Accessible <strong>Community</strong></span> provides programs, accommodations and technology to...
           </p>
           <ul>
             <li>Help smaller organizations with limited resources engage and support people with disabilities,</li>
@@ -78,15 +87,15 @@ const donationLinks = [{
           </ul>
           <p>
             Contribute today and help make our communities more accessible. 
-            <span class="fw-bold text-brand text-ac">Thank you for your support!</span>
+            <span class="fw-bold text-brand text-primary">Thank you for your support!</span>
           </p>
         </div>
       </div>
     </div>
-  </Section>
+  </ThemedSection>
 
-  <Section theme="body-tertiary" shadow={true}>
-    <h2 class="display-4 text-center fw-bold text-ac my-3">How can I donate?</h2>
+  <ShadowBoxSection theme="info" style="secondary">
+    <h2 class="display-3 text-center fw-bold my-3">How can I donate?</h2>
     <div class="row justify-content-center">
       <div class="col-md-5 col-lg-3 d-flex flex-column justify-content-start">
         <div>
@@ -118,7 +127,7 @@ const donationLinks = [{
       <div class="col-lg-3 col-xl-2">
         <div class="d-grid d-sm-flex flex-lg-column justify-content-sm-center gap-3 pb-3">
           { donationLinks.map(({icon, href, title, theme}) =>
-            <a class:list={[`btn btn-sm btn-outline-${theme}`]} href={ href } target="_blank">
+            <a class:list={[`btn btn-sm btn-primary rounded-2 shadow-sm`]} href={ href } target="_blank">
               <Icon class="bi mx-auto" aria-hidden="true" name={ icon } />
               { title }
             </a>
@@ -130,7 +139,7 @@ const donationLinks = [{
       <strong>Note:</strong>
       If you would like to make a donation through corporate or government giving, by check, or some other means, please <a href={ directorEmail }>email our director</a> to discuss your donation.
     </p>
-  </Section>
+  </ShadowBoxSection>
 </Layout>
 
 <style lang="scss">
@@ -138,16 +147,20 @@ const donationLinks = [{
     margin-top: 0.4em;
     margin-bottom: 0.4em;
   }
+
   [astro-icon="cib:paypal"] {
     height: 1.6em;
     filter: none;
   }
+
   [astro-icon="cib:stripe"] {
     height: 2.4em;
     filter: none;
   }
+
   .btn-sm .bi {
-    height: 2.5rem;
+    height: 2.2rem;
     display: block;
+    filter: none;
   }
 </style>

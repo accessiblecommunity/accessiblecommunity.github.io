@@ -4,7 +4,8 @@ import { Icon } from 'astro-icon';
 import ExternalLink from '../components/ExternalLink.astro';
 import Hero from '../components/Hero.astro';
 import Layout from '../layouts/Layout.astro';
-import Section from '../components/Section.astro';
+import ThemedSection from '../components/ThemedSection.astro';
+import ThemedBox from '../components/ThemedBox.astro';
 import TipRegistration from '../components/TipRegistration.astro';
 
 import heroBg from '../images/wheelchair-hall-blue-1920x1080.png'
@@ -16,15 +17,15 @@ const daniela = await getEntry('profiles', 'daniela');
 
 <Layout title="Home">
   <Hero image={ heroBg } columns="col-sm-12 col-md-9 col-lg-8 col-xl-6 col-xxl-5" slot="header">
-    <h2 class="display-2 text-white py-4 mx-auto" style="max-width: 15em;" slot="heading">
-      <span class="text-nowrap">Be <strong>accessible</strong>.</span>
-      <span class="text-nowrap">Be <strong>inclusive</strong>.</span>
-    </h2>
+    <h1 class="visually-hidden" slot="heading">Accessible Community</h1>
+    <div class="display-2 text-white py-4 mx-auto" style="max-width: 15em;" slot="heading">
+      <span class="text-nowrap">Be <strong>accessible</strong>.</span> <span class="text-nowrap">Be <strong>inclusive</strong>.</span>
+    </div>
     <div class="lead text-center">
       At <span class="text-brand">Accessible <strong>Community</strong></span>,
       we build ethical technology solutions to nurture disability-inclusive communities.
     </div>
-    <div slot="action" class="bg-ac-alpha-3 py-3 text-white d-flex flex-column gap-2 flex-lg-row align-items-center justify-content-lg-evenly">
+    <div slot="action" class="bg-primary-alpha-3 py-3 text-white d-flex flex-column gap-2 flex-lg-row align-items-center justify-content-lg-evenly">
       <a href="#journey" class="icon-link link-light">
         <Icon name="bi:pencil-fill" class="bi" alt="" aria-hidden="true"></Icon>
         Start your accessibility journey
@@ -46,14 +47,14 @@ const daniela = await getEntry('profiles', 'daniela');
     </div>
   </Hero>
 
-  <Section theme="body-tertiary">
+  <ThemedSection style="secondary">
     <h2 class="display-3 fw-bold">What we believe...</h2>
     <div class="d-flex flex-column flex-xl-row justify-content-xl-evenly align-items-center">
       <div class="col col-xl-8 col-xxl-9">
         <p>
           According to the CDC,
           <ExternalLink
-            class="link-ac"
+            class=""
             href="https://www.cdc.gov/ncbddd/disabilityandhealth/infographic-disability-impacts-all.html"
             inline={true}
           >1 in every 4 people has a disability.</ExternalLink>
@@ -62,25 +63,25 @@ const daniela = await getEntry('profiles', 'daniela');
           often struggle to find places in their community where they can successfully shop, eat,
           and participate in community life.
         </p>
-        <p class="d-xl-none display-4 text-center text-ac py-3 mx-5 border-ac border-top border-bottom">
+        <p class="d-xl-none display-4 text-center text-primary py-3 mx-5 border-primary-subtle border-top border-bottom">
           <strong>1</strong> in every <strong>4 people</strong> has a <strong>disability</strong>.
         </p>
         <p>
-          <span class="text-brand text-ac">Accessible <strong>Community</strong></span> exemplifies
+          <span class="text-brand text-primary">Accessible <strong>Community</strong></span> exemplifies
           “Nothing about us without us.” Our non-profit is led by people with disabilities and
           caretakers who want to break down these barriers and create more accessible communities.
-          Read our <a href="/about/story" class="link-ac link-offset-2">founder's story</a> to learn more.
+          Read our <a href="/about/story" class=" link-offset-2">founder's story</a> to learn more.
         </p>
       </div>
       <div class="d-none d-xl-block col-lg-10 col-xl-3 col-xxl-2">
-        <p class="display-4 text-center text-ac py-3 border-ac border-top border-bottom">
+        <p class="display-4 text-center text-primary py-3 border-primary-subtle border-top border-bottom">
           <strong>1</strong> in every <strong>4 people</strong> has a <strong>disability</strong>.          
         </p>
       </div>
     </div>
-  </Section>
+  </ThemedSection>
 
-  <Section theme="body-secondary">
+  <ThemedSection style="tertiary">
     <div class="container d-flex flex-column flex-xl-row-reverse gap-4 justify-content-xl-between">
       <div class="col col-xl-7">
         <h2 class="display-3 fw-bold">What we do...</h2>
@@ -96,11 +97,11 @@ const daniela = await getEntry('profiles', 'daniela');
           </li>
         </ul>
       </div>
-      <figure class="col col-xl-4 text-start p-4 bg-body-tertiary rounded d-flex flex-column justify-content-center">
-        <blockquote class="blockquote">
+      <figure class="col col-xl-4 text-start p-4 bg-info border border-info shadow rounded d-flex flex-column justify-content-center">
+        <blockquote class="blockquote text-light">
           <p>I am proud to be part of this community that drives the change toward a more accessible digital world for all people.</p>
         </blockquote>
-        <figcaption class="blockquote-footer fs-4 d-flex justify-content-end align-items-center gap-2">
+        <figcaption class="blockquote-footer text-light fs-4 d-flex justify-content-end align-items-center gap-2">
           <div class="text-start">
             <span>{daniela.data.name},</span>
             <div class="fs-6 text-brand"><strong>t</strong>a11y <strong>content</strong></div>
@@ -109,12 +110,12 @@ const daniela = await getEntry('profiles', 'daniela');
         </figcaption>
       </figure>
     </div>
-  </Section>
+  </ThemedSection>
 
-  <Section theme="body">
+  <ThemedSection theme="secondary" style="subtle">
     <h2 class="display-3 fw-bold">Our services.</h2>
-    <div class="d-flex flex-column flex-xl-row gap-4 py-3 justify-content-lg-evenly text-ac">
-      <div class="col col-xl-3 shadow-lg rounded bg-body-secondary p-4">
+    <div class="d-flex flex-column flex-xl-row gap-4 py-3 justify-content-lg-evenly text-primary">
+      <ThemedBox text={true} border={1} class="border-primary col col-xl-3 shadow rounded">
         <h3 class="display-5">
           <Icon class="bi" name="loca11y-logo" height="1.1em" />
           <span class="text-brand">
@@ -128,8 +129,8 @@ const daniela = await getEntry('profiles', 'daniela');
         <div class="text-center">
           <span class="text-brand fw-bold">Coming soon.</span>
         </div>
-      </div>
-      <div class="col col-xl-3 shadow-lg rounded bg-body-secondary p-4">
+      </ThemedBox>
+      <ThemedBox text={true} border={1} class="border-primary col col-xl-3 shadow rounded">
         <h3 class="display-5">
           <Icon class="bi" name="ta11y-logo" height="1em" />
           <span class="text-brand">
@@ -142,12 +143,12 @@ const daniela = await getEntry('profiles', 'daniela');
         </p>
         <div class="text-center">
           Visit 
-          <ExternalLink class="link-ac text-brand" href="https://www.ta11y.org">
+          <ExternalLink class=" text-brand" href="https://www.ta11y.org">
             <strong>t</strong>a11y.<strong>org</strong>
           </ExternalLink>
         </div>
-      </div>
-      <div class="col col-xl-3 shadow-lg rounded bg-body-secondary p-4">
+      </ThemedBox>
+      <ThemedBox text={true} border={1} class="border-primary col col-xl-3 shadow rounded">
         <h3 class="display-5">
           <Icon class="bi" name="mutua11y-logo" height="1em" />
           <span class="text-brand">
@@ -160,18 +161,18 @@ const daniela = await getEntry('profiles', 'daniela');
         </p>
         <div class="text-center">
           Visit 
-          <ExternalLink href="https://www.mutua11y.org" class="link-ac text-brand">
+          <ExternalLink href="https://www.mutua11y.org" class=" text-brand">
             <strong>mutu</strong>a11y.<strong>org</strong>
           </ExternalLink>
         </div>
-      </div>
+      </ThemedBox>
     </div>
     <p class="lead pt-5">
       Learn more about <a href="/services" class="link-offset-2">our services</a>.
     </p>
-  </Section>
+  </ThemedSection>
 
-  <Section theme="body-tertiary" id="journey">
+  <ThemedSection style="tertiary" id="journey">
     <h2 class="display-4 fw-bold mb-4">Start your organization's disability-inclusion journey.</h2>
     <div class="d-flex flex-column flex-lg-row gap-4 justify-content-lg-evenly">
       <TipRegistration />

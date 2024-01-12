@@ -1,29 +1,24 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Section from '../components/Section.astro';
-
-const title = 'Volunteer'
-const heading = title
+import ThemedSection from '../components/ThemedSection.astro';
 
 const crumbs = [{
   name: 'Home', href: '/',
-}, {
-  name: 'Join us', href: '/join-us',
-}]
+}];
 ---
 
-<Layout title={title} crumbs={crumbs} heading={heading}>
- <Section theme="white">
+<Layout crumbs={crumbs} title="Volunteer">
+ <ThemedSection style="tertiary">
   <h2 class="display-4 fw-bold">Volunteer Teams</h2>
   <div class="col-md-9">
-    <p>Thank you for wanting to learn about our volunteer opportunities at <span class="text-brand text-ac">Accessible <strong>Community</strong></span>. We have five different teams to choose from, and we have provided decriptions of each team to help you choose one (or more) to join. Everyone, including our staff, is a volunteer.</p>
+    <p>Thank you for wanting to learn about our volunteer opportunities at <span class="text-brand text-primary">Accessible <strong>Community</strong></span>. We have five different teams to choose from, and we have provided decriptions of each team to help you choose one (or more) to join. Everyone, including our staff, is a volunteer.</p>
     <p><strong>All our teams meet virtually on Zoom.</strong> This allows us to have an international team of volunteers.</p>
     <p>After you determine which team(s) you want to volunteer with, or if you think you could help in another way not listed, you may <a href="#form">fill&nbsp;out&nbsp;a&nbsp;volunteer&nbsp;form</a>.</p>
   </div>
   <div class="row">
     <div class="col-md-6">
       <div class="card mb-3 shadow team-card">
-        <h3 class="display-5 card-header text-ac team-header">Content Team</h3>
+        <h3 class="display-5 card-header text-primary">Content Team</h3>
         <div class="card-body">
           <p class="card-text">
             <span class="fw-bold">Description:</span>
@@ -46,7 +41,7 @@ const crumbs = [{
     </div>
     <div class="col-md-6">
       <div class="card mb-3 shadow team-card">
-        <h3 class="display-5 card-header text-ac team-header">Development Team</h3>
+        <h3 class="display-5 card-header text-primary">Development Team</h3>
         <div class="card-body">
           <p class="card-text">
             <span class="fw-bold">Description:</span>
@@ -65,7 +60,7 @@ const crumbs = [{
   <div class="row">
     <div class="col-md-6">
       <div class="card mb-3 shadow team-card">
-        <h3 class="display-5 card-header text-ac team-header">Evaluation Team</h3>
+        <h3 class="display-5 card-header text-primary">Evaluation Team</h3>
         <div class="card-body">
           <p class="card-text"><span class="fw-bold">Description:</span> Coming soon.</p>
           <p><span class="fw-bold">Team Leader:</span> Rachael</p>
@@ -75,7 +70,7 @@ const crumbs = [{
     </div>
     <div class="col-md-6">
       <div class="card mb-3 shadow team-card">
-        <h3 class="display-5 card-header text-ac team-header">Leadership Team</h3>
+        <h3 class="display-5 card-header text-primary">Leadership Team</h3>
         <div class="card-body">
           <p class="card-text"><span class="fw-bold">Description:</span> Coming soon.</p>
           <p><span class="fw-bold">Team Leader:</span> Rachael</p>
@@ -87,7 +82,7 @@ const crumbs = [{
   <div class="row">
     <div class="col-md-6">
       <div class="card mb-3 shadow team-card">
-        <h3 class="display-5 card-header text-ac team-header">User Experience (<abbr>UX</abbr>) Team</h3>
+        <h3 class="display-5 card-header text-primary">User Experience (<abbr>UX</abbr>) Team</h3>
         <div class="card-body">
           <p class="card-text"><span class="fw-bold">Description:</span> Coming soon.</p>
           <p><span class="fw-bold">Team Leader:</span> Michael</p>
@@ -96,37 +91,39 @@ const crumbs = [{
      </div>
     </div>
   </div>
- </Section>
- <Section id="form" theme="body-tertiary">
+ </ThemedSection>
+
+ <ThemedSection id="form" style="secondary">
   <h2 class="display-4 fw-bold mb-4">Volunteer Form</h2>
-  <form class="col p-4 border-ac volunteer-form">
-    <p class="lead">Thank you for your interest in volunteering with <span class="text-brand text-ac">Accessible <strong>Community</strong></span>.</p>
-    <p class="col-lg-9">We are a growing <strong class="text-ac">international community</strong> of volunteers working together to improve our communities for people with disabilities.</p>
+  <form class="col p-4 border-primary volunteer-form">
+    <p class="lead">Thank you for your interest in volunteering with <span class="text-brand text-primary">Accessible <strong>Community</strong></span>.</p>
+    <p class="col-lg-9">We are a growing <strong class="text-primary">international community</strong> of volunteers working together to improve our communities for people with disabilities.</p>
     <p class="col-lg-9">We are looking for individuals with passion and dedication who are willing to spend about 4&nbsp;hours a week volunteering their talents. To succeed, we need a wide variety of skills.</p>
-    <p class="col-lg-9">If you are interested in volunteering your time and talents, then please complete the form below. Required fields have an asterisk (<span class="single-asterisk">*</span>).</p>
+    <p class="col-lg-9">If you are interested in volunteering your time and talents, then please complete the form below. Required fields have an asterisk (<span class="asterisk">*</span>).</p>
     <div class="row">
       <div class="col-md-6 mb-3">
-        <label for="firstNameField" class="form-label mb-1 required-field">First Name</label>
+        <label for="firstNameField" class="form-label mb-1 required-field">First Name</label><span class="asterisk" />
         <input type="text" class="form-control w-100 form-field" id="firstNameField" autocomplete="given-name" required>
       </div>
       <div class="col-md-6 mb-3">
-        <label for="lastNameField" class="form-label mb-1 required-field">Last Name</label>
+        <label for="lastNameField" class="form-label mb-1 required-field">Last Name</label><span class="asterisk" />
         <input type="text" class="form-control w-100 form-field" id="lastNameField" autocomplete="family-name" required>
       </div>
       <div class="col-md-6 mb-3">
-        <label for="emailField" class="form-label mb-1 required-field">Email address</label>
+        <label for="emailField" class="form-label mb-1 required-field">Email address</label><span class="asterisk" />
         <input type="email" class="form-control w-100 form-field" id="emailField" autocomplete="email" aria-describedby="emailHelp" required>
         <div id="emailHelp" class="form-text">The email you would like us to associate with your account accesses. This is ideally a Gmail address.</div>
       </div>
       <div class="col-md-6 mb-3">
-        <label for="countryField" class="form-label mb-1 required-field">Country</label>
-        <input type="text" class="form-control w-100 form-field" id="countryField" autocomplete="country-name" aria-describedby="emailHelp" required>
+        <label for="countryField" class="form-label mb-1 required-field">Country</label><span class="asterisk" />
+        <input type="text" class="form-control w-100 form-field" id="countryField" autocomplete="country-name" aria-describedby="countryHelp" required>
         <div id="countryHelp" class="form-text">The country where you spend the majority of your time.</div>
       </div>
       <div class="col-md-6 mb-3">
         <fieldset>
           <legend class="mb-2 fs-5 required-field">
-            On which Team(s) Would You Like to Volunteer?
+            Which team(s) are you interested in assisting?
+            <span class="asterisk" aria-hidden="true" />
           </legend>
           <div class="form-check d-flex mb-2 align-items-center">
             <input class="form-check-input check" type="checkbox" name="flexRadioDefault" id="interestWrite" aria-checked="false">
@@ -169,22 +166,23 @@ const crumbs = [{
       <div class="col-md-6 mb-3">
         <fieldset>
           <legend class="mb-2 fs-5 required-field">
-            How Many Hours Per Week Would You Like to Volunteer?
+            How many hours per week can you contribute?
+            <span class="asterisk" aria-hidden="true" />
           </legend>
           <div class="form-check d-flex mb-2 align-items-center">
-            <input class="form-check-input check" type="radio" name="hoursLess" id="hoursLess" aria-checked="false">
+            <input class="form-check-input check" type="radio" name="hours" value="less" id="hoursLess" aria-checked="false">
             <label class="form-check-label ps-2" for="hoursLess">
               Less than 4 hours a week
             </label>
           </div>
           <div class="form-check d-flex mb-2 align-items-center">
-            <input class="form-check-input check" type="radio" name="hoursAround" id="hoursAround" aria-checked="false">
+            <input class="form-check-input check" type="radio" name="hours" value="around" id="hoursAround" aria-checked="false">
             <label class="form-check-label ps-2" for="hoursAround">
               Around 4 hours a week
             </label>
           </div>
           <div class="form-check d-flex mb-2 align-items-center">
-            <input class="form-check-input check" type="radio" name="hoursMore" id="hoursMore" aria-checked="false">
+            <input class="form-check-input check" type="radio" name="hours" value="more" id="hoursMore" aria-checked="false">
             <label class="form-check-label ps-2" for="hoursMore">
               More than 4 hours a week
             </label>
@@ -193,13 +191,15 @@ const crumbs = [{
       </div>
       <div class="form-floating mb-3">
         <label for="accommodateTextarea" class="form-label mb-1">Please list any accomodations needed for remote meetings and work.</label>
-        <textarea class="form-control w-100 form-text-area" id="accomodateTextarea"></textarea>
+        <span class="asterisk" />
+        <textarea class="form-control w-100 form-text-area" id="accommodateTextarea"></textarea>
       </div>
       <div class="col-md-6 mx-auto">
-        <button type="submit" class="btn bg-ac text-white w-100 general-button">Submit</button>
+        <button type="submit" class="btn btn-info w-100 general-button">Submit</button>
     </div>
   </form>
-</Section>
+ </ThemedSection>
+</Layout>
 
 <style>
   /* first declaration that is commented out below is for debugging purposes. */
@@ -220,26 +220,9 @@ const crumbs = [{
     border-radius: 0.5rem;
   }
 
-  .single-asterisk {
-    color: #041058;
-  }
-
-  .required-field::after {
-    content: " *";
-    color: #041058;
-  }
-
   .check {
    width: 30px;
    height: 30px;
-  }
-
-  input[type=checkbox], input[type=radio] {
-    accent-color: #041058;
-  }
-
-  input[type=checkbox]:hover, input[type=radio]:hover {
-    border-color: #041058;
   }
 
   fieldset label {
@@ -251,5 +234,3 @@ const crumbs = [{
   }
 
 </style>
- </Section>
-</Layout>

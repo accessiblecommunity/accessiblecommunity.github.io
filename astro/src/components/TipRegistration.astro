@@ -1,7 +1,7 @@
 ---
 interface Props {
-  newsletters: boolean;
-  announcements: boolean;
+  newsletters?: boolean;
+  announcements?: boolean;
 }
 
 const { newsletters = false, announcements = false } = Astro.props;
@@ -9,7 +9,7 @@ const { newsletters = false, announcements = false } = Astro.props;
 
 <div
   id="mc_embed_signup"
-  class="col-lg-5 p-4 border-ac tip-form validate"
+  class="col-lg-5 p-4 border-primary tip-form validate"
 >
 <form
   action="https://accessiblecommunity.us14.list-manage.com/subscribe/post?u=c9f6664d008774e9c5d591533&amp;id=dbdbc147c8&amp;f_id=0082fde0f0"
@@ -19,9 +19,9 @@ const { newsletters = false, announcements = false } = Astro.props;
   target="_blank"
 >
   <slot>
-    <p class="lead">Want a <strong class="text-ac">free and simple</strong> way to learn about accessibility?</p>
+    <p class="lead">Want a <strong class="text-primary">free and simple</strong> way to learn about accessibility?</p>
     <p>Sign up for our weekly "Tip of the Week" email to receive quick accessibility tips that can improve your website, social media, events, and more.</p>
-    <p>Fill out this short form to sign up. Required fields have an asterisk (<span class="single-asterisk">*</span>).</p>
+    <p>Fill out this short form to sign up. Required fields have an asterisk (<span class="asterisk">*</span>).</p>
   </slot>
   { newsletters ?
     // This is MailChimp's newsletter groups
@@ -42,16 +42,16 @@ const { newsletters = false, announcements = false } = Astro.props;
     <input type="hidden" tabindex="-1" name="group[46629][1]" id="mce-group[46629]-46629-0" value="">
   }
   <div class="col mb-3">
-    <label for="mce-EMAIL" class="form-label mb-1 required-field">Email address</label>
+    <label for="mce-EMAIL" class="form-label mb-1 required-field">Email address</label><span class="asterisk" />
     <input id="mce-EMAIL" type="email" name="EMAIL" class="form-control w-100 form-field" autocomplete="email" required value="">
   </div>
   <div class="row">
     <div class="col-xl-5 mb-3">
-      <label for="mce-FNAME" class="form-label mb-1 required-field">First Name</label>
+      <label for="mce-FNAME" class="form-label mb-1 required-field">First Name</label><span class="asterisk" />
       <input id="mce-FNAME" type="text" name="FNAME" class="form-control w-100 form-field" autocomplete="given-name" required value="">
     </div>
     <div class="col-xl-7 mb-3">
-      <label for="mce-LNAME" class="form-label mb-1">Last Name</label>
+      <label for="mce-LNAME" class="form-label mb-1">Last Name</label><span class="asterisk" />
       <input id="mce-LNAME" type="text" name="LNAME" class="form-control w-100 form-field" autocomplete="family-name" value="">
     </div>
   </div>
@@ -87,7 +87,7 @@ const { newsletters = false, announcements = false } = Astro.props;
       <button
         id="mc-embedded-subscribe"
         type="submit"
-        class="btn bg-ac text-white w-100 general-button"
+        class="btn btn-info w-100 general-button"
       >Sign Up</button>
     </div>
   </div>
@@ -114,16 +114,5 @@ const { newsletters = false, announcements = false } = Astro.props;
   .tip-form {
     border: 3.5px solid;
     border-radius: 0.5rem;
-  }
-
-  .single-asterisk {
-    color: #041058;
-    font-weight: 700;
-  }
-
-  .required-field::after {
-    content: "*";
-    color: #041058;
-    font-weight: 700;
   }
 </style>

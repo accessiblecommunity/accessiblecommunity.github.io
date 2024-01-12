@@ -1,0 +1,16 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import ThemedSection from '../../components/ThemedSection.astro';
+
+const crumbs = [{
+  name: 'Home', href: '/',
+}, {
+  name: 'Join Us', href: '/join-us',
+}];
+---
+
+<Layout crumbs={crumbs} title="Sponsor">
+ <ThemedSection style="secondary">
+  <p class="display-5">Sponsor information coming soon.</p>
+ </ThemedSection>
+</Layout>

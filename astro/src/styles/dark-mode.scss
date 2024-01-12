@@ -1,0 +1,4 @@
+// To be included in components and pages that need additional dark mode rules.
+$color-mode-type:                   media-query;
+
+@import "bootstrap/scss/mixins/_color-mode.scss";
