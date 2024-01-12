@@ -29,12 +29,12 @@ const Socials = [{
     <div class="py-5 px-4 pt-2 container-footer">
         <div class="row align-items-start justify-content-between">
             <div class="col-md-3 info-footer">
-                <dl class="mb-0 ac-text-light">
+                <dl class="mb-0 link-light">
                     <dt class="display-65">Mailing Address</dt>
                     <dd class="display-7">PO Box 46; Paeonian Springs, VA, 20129</dd>
                     <dt class="display-65">Email</dt>
                     <dd class="display-7">
-                      <a class="ac-text-light" href="mailto:info@accessiblecommunity.org">info@accessiblecommunity.org</a>
+                      <a class="link-light" href="mailto:info@accessiblecommunity.org">info@accessiblecommunity.org</a>
                     </dd>
                     <dt class="display-65">Phone Number</dt>
                     <dd class="display-7">703-651-6703</dd>
@@ -43,31 +43,31 @@ const Socials = [{
             <div class="col-md-4">
                 <nav class="nav-footer">
                     <ul class="list-unstyled d-flex flex-column flex-md-row justify-content-between">
-                        <li class="fw-bold display-65 ac-text-light">
+                        <li class="fw-bold display-65 link-light">
                             Community
                                 <ul class="p-0 list-unstyled mb-2 me-4">
                                     <li>
-                                        <a class="display-7 ac-text-light" href="">Accessibility&nbsp;Statement</a>
+                                        <a class="display-7 link-light" href="">Accessibility&nbsp;Statement</a>
                                     </li>
                                 </ul>
                             </li>  
-                        <li class="fw-bold display-65 ac-text-light">
+                        <li class="fw-bold display-65 link-light">
                         Policies
                             <ul class="p-0 list-unstyled me-4">
                                 <li>
-                                    <a class="display-7 ac-text-light" href="/code-of-conduct">Code&nbsp;of&nbsp;Conduct</a>
+                                    <a class="display-7 link-light" href="/code-of-conduct">Code&nbsp;of&nbsp;Conduct</a>
                                 </li>
                                 <li>
-                                    <a class="display-7 ac-text-light" href="/harrassment-policy">Harrassment&nbsp;Policy</a>
+                                    <a class="display-7 link-light" href="/harrassment-policy">Harrassment&nbsp;Policy</a>
                                 </li>
                                 <li>
-                                    <a class="display-7 ac-text-light" href="/non-discrimination-policy">Non-Discrimination Policy</a>
+                                    <a class="display-7 link-light" href="/non-discrimination-policy">Non-Discrimination Policy</a>
                                 </li>
                                 <li>
-                                    <a class="display-7 ac-text-light" href="/privacy-policy">Privacy&nbsp;Policy</a>
+                                    <a class="display-7 link-light" href="/privacy-policy">Privacy&nbsp;Policy</a>
                                 </li>
                                 <li>
-                                    <a class="display-7 ac-text-light" href="/technology-policy">Technology&nbsp;Policy</a>
+                                    <a class="display-7 link-light" href="/technology-policy">Technology&nbsp;Policy</a>
                                 </li>
                             </ul>
                         </li>
@@ -76,11 +76,11 @@ const Socials = [{
             </div>
             <div class="col-md-4 flex-column">
                 <div>
-                    <p class="fw-bold display-65 text-center mb-0 ac-text-light">Find Us on Social</p>
+                    <p class="fw-bold display-65 text-center mb-0 link-light">Find Us on Social</p>
                     <ul class="ps-0 mb-0 text-center">
                         { Socials.map(({icon, href, className, name}) =>
                         <li class="d-inline-block">
-                            <a class="d-inline-block ac-text-light" href={ href } target="_blank">
+                            <a class="d-inline-block link-light" href={ href } target="_blank">
                                 <Icon name={ icon } class={ className } class="social-icon" height="29" width="29" role="img" aria-label={ name }></Icon> 
                             </a>
                         </li>
@@ -88,8 +88,8 @@ const Socials = [{
                     </ul>
                 </div>
                 <div class="mt-2 legal-footer">
-                    <p class="pt-2 text-center display-65 mb-0 ac-text-light"><small>Accessible Community is a 501(c)3&nbsp;organization.</small></p>
-                    <p class="text-center display-65 mb-0 ac-text-light"><small>© <time datetime="{currentYear}">{currentYear}</time> Accessible&nbsp;Community</small></p>
+                    <p class="pt-2 text-center display-65 mb-0 link-light"><small>Accessible Community is a 501(c)3&nbsp;organization.</small></p>
+                    <p class="text-center display-65 mb-0 link-light"><small>© <time datetime="{currentYear}">{currentYear}</time> Accessible&nbsp;Community</small></p>
                 </div>
             </div>
         </div>
@@ -101,10 +101,6 @@ const Socials = [{
   /* * {
       border: 1px solid white;
   } */
-
-  .ac-text-light {
-    color: white;
-  }
 
   .container-footer {
     padding-bottom: 0.5rem; 

@@ -248,7 +248,7 @@ $theme-colors-border-subtle-dark: map-merge($theme-colors-border-subtle-dark, $c
   border-radius: 2%;
 }
 
-.hero-link:focus-visible, footer:focus-visible {
+.hero-link:focus-visible, .link-light:focus-visible {
   outline-color: #FFFFFF;
 }
 
