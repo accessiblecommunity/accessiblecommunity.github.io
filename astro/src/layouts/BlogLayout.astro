@@ -1,19 +1,25 @@
 ---
 import { getEntry } from 'astro:content';
 import { getBlogCatalog } from '../lib/blog';
+import { getImage } from "astro:assets";
 import { isNil, kebabCase, startCase } from 'lodash-es';
+
+import blogImage from "../images/alvaro-serrano-hjwKMkehBco-unsplash.jpg"
+const optimizedBg = await getImage({src: blogImage, format: 'avif'})
+const blogBgUrl = `url(${optimizedBg.src})`;
 
 const defaultCrumbs = [{
   name: 'Home', href: "/"
 }, {
   name: 'Blog', href: "/blog"
-}]
+}];
 
-const { blog, catalog = await getBlogCatalog(), crumbs = defaultCrumbs } = Astro.props;
-const { title = blog.data.title } = Astro.props;
-const { authors, categories, months } = catalog;
+const { blog, catalog = await getBlogCatalog(), crumbs = defaultCrumbs, title = undefined, recent = false } = Astro.props;
+const { blogs = [], authors = [], categories = [], months = [] } = catalog;
 
-const { Content } = await blog.render();
+const isCustomHeading = !isNil(title);
+const heading = isCustomHeading ? title : blog.data.title;
+
 const blogAuthor = await getEntry(blog.data.author);
 const published = blog.data.published.toLocaleDateString('en-us', {
   year: 'numeric',
@@ -21,16 +27,27 @@ const published = blog.data.published.toLocaleDateString('en-us', {
   day: 'numeric',
 });
 
+const { Content } = await blog.render();
 import Layout from "../layouts/Layout.astro";
 import ThemedSection from "../components/ThemedSection.astro";
 ---
 
-<Layout crumbs={crumbs} title={title}>
-  <Fragment slot="header" />
-  <ThemedSection theme="body-tertiary">
-    <h1 class="display-3 border-bottom mb-3" set:text={blog.data.title} />
+<Layout crumbs={crumbs} title={heading}>
+  <div slot="header" class="bg-primary" style={`height: 10rem; background: no-repeat center ${blogBgUrl}`}>
+    <div class="bg-primary-alpha-6 h-100 d-flex align-items-end" style="--bs-bg-opacity: 0.75">
+      <div class="container">
+        <h1 class="display-2 text-white mb-1 w-100" set:text={heading} />
+      </div>
+    </div>
+  </div>
+  <ThemedSection style="tertiary" py={0}>
     <div class="d-flex gap-4">
-      <div class="col col-lg-9">
+      <div class:list={[recent ? "d-none d-lg-block" : "col", "col-lg-9"]}>
+        { isCustomHeading ?
+          <h2 class="display-4 border-bottom mb-3" set:text={blog.data.title} />
+        :
+          ''
+        }
         <div class="d-flex flex-row-reverse justify-content-between mb-4">
           <div class="display-6 text-secondary-emphasis me-3" set:text={published} />
           <div class="d-none d-md-flex align-end justify-content-start align-items-start gap-1 fs-4">
@@ -45,35 +62,44 @@ import ThemedSection from "../components/ThemedSection.astro";
           <Content />
         </article>      
       </div>
-      <div class="d-none d-lg-block col-lg-3">
-        <slot name="sidebar">
-          <h2 class="display-6 text-info-emphasis">Categories</h2>
+      <div class:list={[recent ? "col" : "d-none d-lg-block", "col-lg-3"]}>
+        { recent ?
+          <h2 class:list={['text-info-emphasis', isCustomHeading ? 'display-5' : 'display-6']}>Recent Posts</h2>
           <ul>
-            { categories.map(cat => 
+            { blogs.map(b =>
+              <li>
+                <a href={`/blog/${b.slug}`}>{ b.data.title }</a>
+              </li>
+            )}
+          </ul>
+        :
+          <h2 class:list={['text-info-emphasis', isCustomHeading ? 'display-5' : 'display-6']}>Categories</h2>
+          <ul>
+            { categories.map(cat =>
               <li>
                 <a href={`/blog/categories/${cat}`}>{startCase(cat)}</a>
               </li>
             )}
           </ul>
   
-          <h2 class="display-6 text-info-emphasis">Months</h2>
+          <h2 class:list={['text-info-emphasis', isCustomHeading ? 'display-5' : 'display-6']}>Months</h2>
           <ul>
-            { months.map(month => 
+            { months.map(month =>
               <li>
                 <a href={`/blog/months/${kebabCase(month)}`}>{ month }</a>
               </li>
             )}
           </ul>
   
-          <h2 class="display-6 text-info-emphasis">Authors</h2>
+          <h2 class:list={['text-info-emphasis', isCustomHeading ? 'display-5' : 'display-6']}>Authors</h2>
           <ul>
-            { authors.map(author => 
+            { authors.map(author =>
               <li>
                 <a href={`/blog/authors/${author.slug}`}>{ author.data.name }</a>
               </li>
             )}
           </ul>
-        </slot>
+        }
       </div>
     </div>
   </ThemedSection>

@@ -35,9 +35,16 @@ const { title, crumbs, heading } = Astro.props;
   <Header title={title} crumbs={crumbs} />
   <main id="main-content">
     <slot name="header">
-      <ThemedSection theme="primary">
-        <h1 class="display-3 fw-bold text-center text-white">{ heading || title }</h1>
-      </ThemedSection>
+      <div slot="header" class="bg-primary" style="height: 8rem;">
+        <div class="bg-primary-alpha-6 h-100 d-flex align-items-end" style="--bs-bg-opacity: 0.75">
+          <div class="container">
+            <h1
+              class:list={["display-3 text-white mb-1 w-100"]}
+              set:text={heading || title}
+            />
+          </div>
+        </div>
+      </div>
     </slot>
     <slot />
   </main>

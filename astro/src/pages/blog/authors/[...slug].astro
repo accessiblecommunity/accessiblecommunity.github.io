@@ -1,7 +1,6 @@
 ---
 import { getCollection } from 'astro:content';
-import { getBlogAuthors } from '../../../lib/blog'
-import { kebabCase } from 'lodash-es';
+import { getBlogAuthors, orderByRecent } from '../../../lib/blog'
 
 export async function getStaticPaths() {
   const authors  = await getBlogAuthors();
@@ -19,29 +18,18 @@ export async function getStaticPaths() {
 }
 
 const { crumbs, author } = Astro.props;
-const blogs = await getCollection('blogs', ({ data }) => {
+const authoredBlogs = await getCollection('blogs', ({ data }) => {
   return (data.author.slug === author.slug);
 });
+const orderedBlogs: Array<object> = await orderByRecent(authoredBlogs)
 
-import Layout from "../../../layouts/Layout.astro";
-import ThemedSection from "../../../components/Section.astro";
+import BlogLayout from '../../../layouts/BlogLayout.astro';
 ---
 
-<Layout crumbs={crumbs} title={author.data.name} heading={`By ${author.data.name}`}>
-  <ThemedSection theme="body-tertiary">
-    <h2>Recent Blogs</h2>
-    <ul>
-      { blogs.map(b => 
-        <li>
-          <a href={`/blog/${b.slug}`}>{ b.data.title } by {author.data.name}</a>
-        </li>
-      )}
-    </ul>
-  </ThemedSection>
-</Layout>
-
-<style>
-  div.fs-6 {
-    line-height: 0.9em;
-  }
-</style>
+<BlogLayout
+  title={`Blogs by ${author.data.name}`}
+  crumbs={crumbs}
+  blog={orderedBlogs[0]}
+  catalog={{ blogs: orderedBlogs.slice(1)}}
+  recent={true}
+/>

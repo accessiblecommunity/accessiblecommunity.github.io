@@ -1,5 +1,5 @@
 import { getCollection, getEntries } from 'astro:content';
-import { isEmpty, isNil, sortBy } from 'lodash-es';
+import { isEmpty, isNil, reverse, sortBy } from 'lodash-es';
 
 
 export async function getBlogAuthors(blogs?) {
@@ -28,13 +28,19 @@ export async function getBlogMonths(blogs?) {
   })))];
 }
 
-export async function getMostRecent(blogs?) {
+export async function orderByRecent(blogs?) {
   blogs = isNil(blogs) ? await getCollection('blogs') : blogs;
   if (isEmpty(blogs))
     return [];
 
   const sortedBlogs = sortBy(blogs, [b => b.data.published,]);
-  return sortedBlogs.at(-1);
+  reverse(sortedBlogs);
+  return sortedBlogs;
+}
+
+export async function getMostRecent(blogs?) {
+  const sortedBlogs = await orderByRecent(blogs);
+  return sortedBlogs[0];
 }
 
 export async function getBlogCatalog(blogs?) {
