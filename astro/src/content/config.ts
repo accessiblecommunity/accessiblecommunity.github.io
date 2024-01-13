@@ -8,6 +8,7 @@ const blogs = defineCollection({
     tags: z.array(z.string()),
     published: z.date(),
     image: z.string().optional(),
+    author: reference("profiles"),
   }),
 });
 

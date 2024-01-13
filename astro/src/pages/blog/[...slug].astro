@@ -1,55 +1,22 @@
 ---
-import { getCollection } from 'astro:content';
+import { getBlogCatalog } from '../../lib/blog'
 
 export async function getStaticPaths() {
-  const allBlogs = await getCollection('blogs');
-  const categories = [...new Set(allBlogs.map((blog) => blog.data.tags).flat())];
-  const months = [...new Set(allBlogs.map((blog) => blog.data.published.toLocaleDateString('en-us', {
-    year: 'numeric',
-    month: 'long',
-  })))];
-
+  const catalog = await getBlogCatalog();
   const crumbs = [{
     name: 'Home', href: "/"
   }, {
     name: 'Blog', href: "/blog"
   }]
 
-  return allBlogs.map(blog => ({
-    params: { slug: blog.slug }, props: { blog, categories, crumbs, months },
+  return catalog.blogs.map(blog => ({
+    params: { slug: blog.slug }, props: { blog, catalog, crumbs },
   }));
 }
 
-const { blog, categories, crumbs, months } = Astro.props;
-const heading = `Blog: ${blog.data.title}`
-const { Content } = await blog.render();
+const { blog, catalog, crumbs } = Astro.props;
 
-import Layout from "../../layouts/Layout.astro";
-import Section from "../../components/Section.astro";
+import BlogLayout from "../../layouts/BlogLayout.astro";
 ---
 
-<Layout crumbs={crumbs} title={blog.data.title} heading={heading}>
-  <Section theme="light">
-    <div class="d-flex gap-4">
-      <div class="col col-lg-9">
-        <article>
-          <Content />
-        </article>      
-      </div>
-      <div class="d-none d-md-block col-md-3">
-        <h3>Categories</h3>
-        <ul>
-          { categories.map(cat => 
-            <li>{ cat }</li>
-          )}
-        </ul>
-        <h3>Months</h3>
-        <ul>
-          { months.map(month => 
-            <li>{ month }</li>
-          )}
-        </ul>
-      </div>
-    </div>
-  </Section>
-</Layout>
+<BlogLayout blog={blog} catalog={catalog} crumbs={crumbs} />

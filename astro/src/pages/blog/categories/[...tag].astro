@@ -1,0 +1,52 @@
+---
+import { getEntry } from 'astro:content';
+import { getAllBlogsAndRelated } from '../../../lib/blog'
+import { startCase } from 'lodash-es';
+
+export async function getStaticPaths() {
+  const { blogs: allBlogs, categories } = await getAllBlogsAndRelated();
+  const crumbs = [{
+    name: 'Home', href: "/"
+  }, {
+    name: 'Blog', href: "/blog"
+  }, {
+    name: 'Categories', href: "/blog/categories"
+  }]
+
+  return categories.map(category => ({
+    params: { tag: category }, props: { allBlogs, crumbs, category },
+  })); 
+}
+
+const { allBlogs, crumbs, category } = Astro.props;
+
+const blogs = [];
+for (const blog of allBlogs) {
+  if (blog.data.tags.includes(category)) {
+    blog.author = await getEntry(blog.data.author);
+    blogs.push(blog);
+  };
+}
+
+import Layout from "../../../layouts/Layout.astro";
+import ThemedSection from "../../../components/Section.astro";
+---
+
+<Layout crumbs={crumbs} title={startCase(category)}>
+  <ThemedSection theme="body-tertiary">
+    <h2>Recent Blogs</h2>
+    <ul>
+      { blogs.map(b => 
+        <li>
+          <a href={`/blog/${b.slug}`}>{ b.data.title } by {b.author.data.name}</a>
+        </li>
+      )}
+    </ul>
+  </ThemedSection>
+</Layout>
+
+<style>
+  div.fs-6 {
+    line-height: 0.9em;
+  }
+</style>getBlogCataloggetBlogCatalog

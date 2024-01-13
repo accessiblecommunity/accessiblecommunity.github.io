@@ -1,0 +1,86 @@
+---
+import { getEntry } from 'astro:content';
+import { getBlogCatalog } from '../lib/blog';
+import { isNil, kebabCase, startCase } from 'lodash-es';
+
+const defaultCrumbs = [{
+  name: 'Home', href: "/"
+}, {
+  name: 'Blog', href: "/blog"
+}]
+
+const { blog, catalog = await getBlogCatalog(), crumbs = defaultCrumbs } = Astro.props;
+const { title = blog.data.title } = Astro.props;
+const { authors, categories, months } = catalog;
+
+const { Content } = await blog.render();
+const blogAuthor = await getEntry(blog.data.author);
+const published = blog.data.published.toLocaleDateString('en-us', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
+
+import Layout from "../layouts/Layout.astro";
+import ThemedSection from "../components/Section.astro";
+---
+
+<Layout crumbs={crumbs} title={title}>
+  <Fragment slot="header" />
+  <ThemedSection theme="body-tertiary">
+    <h1 class="display-3 border-bottom mb-3" set:text={blog.data.title} />
+    <div class="d-flex gap-4">
+      <div class="col col-lg-9">
+        <div class="d-flex flex-row-reverse justify-content-between mb-4">
+          <div class="display-6 text-secondary me-3" set:text={published} />
+          <div class="d-none d-md-flex align-end justify-content-start align-items-start gap-1 fs-4">
+            <img class="profile-pic" src={blogAuthor.data.picture.src} alt={`Drawn representation of ${blogAuthor.data.name}`} />
+            <div class="text-start text-info">
+              <span>{blogAuthor.data.name}</span>
+              <div class="fs-6 text-brand" set:text={blogAuthor.data.title} />
+            </div>
+          </div>  
+        </div>
+        <article>
+          <Content />
+        </article>      
+      </div>
+      <div class="d-none d-lg-block col-lg-3">
+        <slot name="sidebar">
+          <h3 class="display-6">Categories</h3>
+          <ul>
+            { categories.map(cat => 
+              <li>
+                <a href={`/blog/categories/${cat}`}>{startCase(cat)}</a>
+              </li>
+            )}
+          </ul>
+  
+          <h3 class="display-6">Months</h3>
+          <ul>
+            { months.map(month => 
+              <li>
+                <a href={`/blog/months/${kebabCase(month)}`}>{ month }</a>
+              </li>
+            )}
+          </ul>
+  
+          <h3 class="display-6">Authors</h3>
+          <ul>
+            { authors.map(author => 
+              <li>
+                <a href={`/blog/authors/${author.slug}`}>{ author.data.name }</a>
+              </li>
+            )}
+          </ul>
+        </slot>
+      </div>
+    </div>
+  </ThemedSection>
+</Layout>
+
+<style>
+  div.fs-6 {
+    line-height: 0.9em;
+  }
+</style>

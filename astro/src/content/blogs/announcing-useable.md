@@ -3,6 +3,7 @@ title: 'Announcing useable'
 published: 2023-07-23
 tags:
   - announcements
+author: rachael-bradley-montgomery
 
 ---
 Accessible **Community** is committed to nurturing disability-friendly communities through ethical technology. **loc**a11y, a tool for connecting people with disabilities to the local businesses and organizations that are serving them, relies on a mapping of accessibility requirements to disabilities. Unlike many functional needs mappings, our tools require a taxonomy that includes both physical and digital environments including facilities, events, websites, social media, and accommodations.

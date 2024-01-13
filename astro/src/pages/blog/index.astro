@@ -1,13 +1,12 @@
 ---
-import Layout from '../../layouts/Layout.astro';
+import { getBlogCatalog } from '../../lib/blog'
+
+const catalog = await getBlogCatalog();
+const crumbs = [{
+  name: 'Home', href: "/",
+}]
+
+import BlogLayout from "../../layouts/BlogLayout.astro";
 ---
 
-<Layout title="Blog">
-<h2 slot="header">Categories</h2>
-<ul>
-  <li>Accessibility</li>
-  <li>Announcements</li>
-  <li>Events</li>
-  <li>...</li>
-</ul>
-</Layout>
+<BlogLayout title="Blog" blog={catalog.recent} catalog={catalog} crumbs={crumbs} />
