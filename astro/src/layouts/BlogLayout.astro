@@ -22,7 +22,7 @@ const published = blog.data.published.toLocaleDateString('en-us', {
 });
 
 import Layout from "../layouts/Layout.astro";
-import ThemedSection from "../components/Section.astro";
+import ThemedSection from "../components/ThemedSection.astro";
 ---
 
 <Layout crumbs={crumbs} title={title}>
@@ -32,10 +32,10 @@ import ThemedSection from "../components/Section.astro";
     <div class="d-flex gap-4">
       <div class="col col-lg-9">
         <div class="d-flex flex-row-reverse justify-content-between mb-4">
-          <div class="display-6 text-secondary me-3" set:text={published} />
+          <div class="display-6 text-secondary-emphasis me-3" set:text={published} />
           <div class="d-none d-md-flex align-end justify-content-start align-items-start gap-1 fs-4">
             <img class="profile-pic" src={blogAuthor.data.picture.src} alt={`Drawn representation of ${blogAuthor.data.name}`} />
-            <div class="text-start text-info">
+            <div class="text-start text-secondary-emphasis">
               <span>{blogAuthor.data.name}</span>
               <div class="fs-6 text-brand" set:text={blogAuthor.data.title} />
             </div>
@@ -47,7 +47,7 @@ import ThemedSection from "../components/Section.astro";
       </div>
       <div class="d-none d-lg-block col-lg-3">
         <slot name="sidebar">
-          <h3 class="display-6">Categories</h3>
+          <h2 class="display-6 text-info-emphasis">Categories</h2>
           <ul>
             { categories.map(cat => 
               <li>
@@ -56,7 +56,7 @@ import ThemedSection from "../components/Section.astro";
             )}
           </ul>
   
-          <h3 class="display-6">Months</h3>
+          <h2 class="display-6 text-info-emphasis">Months</h2>
           <ul>
             { months.map(month => 
               <li>
@@ -65,7 +65,7 @@ import ThemedSection from "../components/Section.astro";
             )}
           </ul>
   
-          <h3 class="display-6">Authors</h3>
+          <h2 class="display-6 text-info-emphasis">Authors</h2>
           <ul>
             { authors.map(author => 
               <li>

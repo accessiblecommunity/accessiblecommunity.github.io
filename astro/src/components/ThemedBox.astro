@@ -1,0 +1,26 @@
+---
+interface Props {
+  theme?: string;
+  style?: string;
+  text?: boolean;
+  border?: number;
+  class?: string,
+}
+
+const {
+  theme = undefined,
+  style = undefined,
+  text = true,
+  border = 0,
+  class: extraClasses = "",
+} = Astro.props;
+
+import { getBackgroundAndText, getBorder } from '../lib/themes.ts'
+
+const bgAndTextClasses = getBackgroundAndText(theme, style, text);
+const borderClasses = getBorder(border, theme, style === 'subtle');
+---
+
+<div class:list={[bgAndTextClasses, borderClasses, 'p-4', extraClasses ]}>
+  <slot />
+</div>

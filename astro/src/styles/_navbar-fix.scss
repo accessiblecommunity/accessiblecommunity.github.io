@@ -1,0 +1,37 @@
+// Bootstrap doesn't correctly handle navbar dark mode via media-query.
+// This is a fix.
+
+.navbar {
+  background-color: $body-bg;
+}
+
+.navbar-brand {
+  font-family: $headings-font-family;
+}
+
+.navbar-brand > svg {
+  color: $navbar-light-icon-color;
+}
+
+@if $enable-dark-mode {
+  @include color-mode(dark) {
+    .navbar {
+      // scss-docs-start navbar-dark-css-vars
+      --#{$prefix}navbar-color: #{$navbar-dark-color};
+      --#{$prefix}navbar-hover-color: #{$navbar-dark-hover-color};
+      --#{$prefix}navbar-disabled-color: #{$navbar-dark-disabled-color};
+      --#{$prefix}navbar-active-color: #{$navbar-dark-active-color};
+      --#{$prefix}navbar-brand-color: #{$navbar-dark-brand-color};
+      --#{$prefix}navbar-brand-hover-color: #{$navbar-dark-brand-hover-color};
+      --#{$prefix}navbar-toggler-border-color: #{$navbar-dark-toggler-border-color};
+      --#{$prefix}navbar-toggler-icon-bg: #{escape-svg($navbar-dark-toggler-icon-bg)};
+      // scss-docs-end navbar-dark-css-vars
+      background-color: $ac-navy;
+    }
+
+    .navbar-brand > svg {
+      color: $navbar-dark-icon-color;
+    }
+  }
+}  
+

@@ -5,7 +5,8 @@ import { Image } from 'astro:assets';
 import ExternalLink from '../components/ExternalLink.astro';
 import Hero from '../components/Hero.astro';
 import Layout from '../layouts/Layout.astro';
-import Section from '../components/Section.astro'
+import ShadowBoxSection from '../components/ShadowBoxSection.astro'
+import ThemedSection from '../components/ThemedSection.astro'
 
 import heroBg from '../images/girl-using-laptop-blue-1920x1080.png'
 import tallyScreen from '../images/tally-screenshot.png'
@@ -28,15 +29,15 @@ const services = [{
   title: '<strong>loc</strong>a11y.<strong>org</strong>',
   text: 'A tool for people with disabilities to find and recommend organizations and events where they can participate and engage.',
   // link: 'https://www.loca11y.org',
-}]
+}];
 ---
 
 <Layout title="Services">
   <Hero image={ heroBg } columns="col-sm-12 col-md-9 col-lg-7 col-xl-6 col-xxl-5" slot="header">
-    <h2 class="display-3 text-white py-4" slot="heading">
-      <span class="fw-bold">Tools</span> and <span class="fw-bold">services</span> for equity.
-    </h2>
-    <div class="bg-ac-alpha-3 hero-bd p-1 px-2">
+    <div class="py-4" slot="heading">
+      <h1 class="display-3 text-light"><strong>Tools</strong> and <strong>services</strong> for equity.</h1>
+    </div>
+    <div class="bg-primary-alpha-3 hero-bd p-1 px-2">
       <p class="text-brand mb-0">
         We create tools and services to <strong>teach accessibility</strong>
         and <strong>promote accessible organizations</strong>. We practice what we preach; the tools we develop
@@ -44,7 +45,7 @@ const services = [{
         usability, not just compliance. 
         </p>
     </div>
-    <div slot="action" class="py-2 bg-ac-alpha-3">
+    <div slot="action" class="py-2 bg-primary-alpha-3">
       <div class="container text-white text-center">
         The <code class="text-white d-inline">a11y</code> in our tool names stands for accessibility
         (there are 11 letters between the 'a' and 'y').
@@ -52,32 +53,32 @@ const services = [{
     </div>
   </Hero>
 
-  <Section theme="body-tertiary" py={4}>
+  <ThemedSection style="tertiary" py={4}>
     <div class="row row-gap-4 row-cols-1 row-cols-lg-3 mb-3">
       { services.map(({ icon, name, title, text, link }) =>
         <div class="feature col d-flex flex-column justify-content-between">
           <div class="d-flex align-items-center gap-2 mb-1">
-            <div class="feature-icon d-inline-flex align-items-center justify-content-center text-bg-ac bg-gradient">
-              <Icon class="bi" name={ icon } height="1.5em" />
+            <div class="feature-icon d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient">
+              <Icon class="bi" name={ icon } height="1.5em" role="img" aria-hidden="true"/>
               </div>
-            <h2 class="my-1 fs-1 text-ac" set:html={ title }></h2>
+            <h2 class="my-1 fs-1 text-primary" set:html={ title }></h2>
           </div>
           <p class="ms-5 me-3 flex-fill">
             <span set:html={text} />
           </p>
           <div class="ms-5 me-3">
             <div class="d-flex flex-lg-column-reverse flex-xl-row justify-content-start">
-              <a href={`#${name}`} class="icon-link link-ac text-nowrap me-4">
+              <a href={`#${name}`} class="icon-link  text-nowrap me-4">
                 Learn more
                 <span class="visually-hidden">about {name}.org</span>
-                <Icon name="bi:arrow-down-square" class="bi" />
+                <Icon name="bi:arrow-down-square" class="bi" role="img" aria-hidden="true"/>
               </a>
               { link ?
-                <div class="text-ac text-nowrap">
+                <div class="text-primary text-nowrap">
                   Visit 
                   <ExternalLink
                     href={link}
-                    class="link-ac text-brand"
+                    class=" text-brand"
                     gaps={true}
                   >
                     <span set:html={title} />
@@ -91,9 +92,9 @@ const services = [{
         </div>
       )}
     </div>
-  </Section>
+  </ThemedSection>
 
-  <Section id="ta11y" theme="body" shadow={true} fluid={false}>
+  <ShadowBoxSection id="ta11y" theme="info" fluid={false}>
     <div class="row p-4 justify-content-evenly align-items-center rounded-3">
       <div class="col-lg-7 py-lg-4">
         <h2 class="display-3 fw-bold">About t<span class="fw-lighter">a11y</span>.org</h2>
@@ -123,17 +124,17 @@ const services = [{
         />
       </div>
     </div>
-  </Section>
+  </ShadowBoxSection>
 
-  <Section id="mutua11y" theme="ac">
-    <h2 class="display-3 fw-bold text-bg-ac">About mutu<span class="fw-lighter">a11y</span>.org</h2>
-    <p class="text-bg-ac">
+  <ThemedSection id="mutua11y" theme="primary">
+    <h2 class="display-3 fw-bold text-bg-primary">About mutu<span class="fw-lighter">a11y</span>.org</h2>
+    <p class="text-bg-primary">
       An online community to connect and advance disability-related professionals. 
       <span class="text-brand"><strong>mutu</strong>a11y</span> provides a platform for
       accessibility professionals and others interested to collaborate on projects and ideas;
       thus establishing "open-source accessibility."
     </p>
-    <ul class="text-bg-ac">
+    <ul class="text-bg-primary">
       <li>
         The <span class="text-brand fw-bold">mutu<span class="fw-lighter">a11y</span> mentoring</span>
         program matches senior accessibility experts with novice accessibility professionals to
@@ -149,17 +150,17 @@ const services = [{
         by creating new resources and approaches.
       </li>
     </ul>
-    <p class="text-bg-ac">
+    <p class="text-bg-primary">
       <span class="text-brand fw-bold">Target Audience:</span> Accessibility and disability-inclusion
       professionals.
     </p>
-    <p class="text-bg-ac">
+    <p class="text-bg-primary">
       <span class="text-brand fw-bold">What it is not:</span> A job board, digital only though we are starting
       by focusing on the digital space.
     </p>
-  </Section>
+  </ThemedSection>
 
-  <Section id="loca11y" theme="body-secondary">
+  <ThemedSection id="loca11y" style="secondary">
     <h2 class="display-3 fw-bold">About loc<span class="fw-lighter">a11y</span>.org</h2>
     <p>
       <span class="text-brand"><strong>loc</strong>a11y</span> provides an online tool for
@@ -186,7 +187,7 @@ const services = [{
       <span class="text-brand"><strong>loc</strong>a11y</span> reports positive feedback only and
       centers on accessibility, rather than quality of services.
     </p>
-  </Section>
+  </ThemedSection>
 </Layout>
 
 <style lang="scss">

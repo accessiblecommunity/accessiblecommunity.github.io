@@ -1,0 +1,115 @@
+@charset "UTF-8";
+
+$color-mode-type:                   media-query;
+$ac-navy:                           #041058;
+
+//*******************
+// Coloring subtle themes.
+// 
+// `text-emphasis` is a darker version of the base color.
+// `bg-subtle` is a significantly lighter version of the base color.
+// `border-subtle` is a lighter version of the base color, and a slightly darker version of bg-subtle.
+//
+// `text-emphasis-dark` is a lighter version of the base color.
+// `bg-subtle-dark` is a significantly darker version of the color.
+// `border-subtle-dark` is a slightly darker version of the base color.
+//
+//*******************
+
+// Main Body
+// $body-color:                        $gray-900 !default;
+$body-color-dark:                   white;
+
+//************************
+//* Body (Default) "Theme"
+//************************
+// $body-emphasis-color:               $black !default;
+// $body-bg:                           $white !default;
+// $border-color:                      $gray-300 !default;
+
+// $body-emphasis-color-dark:          $white !default;
+// $body-bg-dark:                      $gray-900 !default;
+// $border-color-dark:                 $gray-700 !default;
+
+
+//***************************
+//* Body Secondary. Used for:
+//*     Captions (Table/Figure), Form text, Input placeholder, Disabled (Links/Pagination), 
+//*     Toast Headers, List groups, Breadcrumbs, Progress and Hover backgrounds
+//***************************
+$body-secondary-color:              #545B62; // gray-50
+// $body-secondary-bg:                 $gray-200 !default;
+
+// $body-secondary-color-dark:         rgba($body-color-dark, .75) !default;
+// $body-secondary-bg-dark:            $gray-800 !default;
+
+
+//**************************
+//* Body Tertiary. Used for:
+//*     Dropdown link disabled, Backgrounds of various inputs
+//**************************
+$body-tertiary-color:               #989CAD; // gray-30
+// $body-tertiary-bg:                  $gray-100 !default;
+
+// $body-tertiary-color-dark:          rgba($body-color-dark, .5) !default;
+$body-tertiary-bg-dark:             #383D46; // 2 shades darker than default
+
+
+//****************
+//* Primary Theme
+//****************
+$primary:                           $ac-navy;
+// Note: No dark mode on primary
+
+// Primary Subtle Theme
+$primary-text-emphasis:             #030D45; // primary + 3 shade
+$primary-bg-subtle:                 #C2E6FF; // blue-00
+$primary-border-subtle:             #9ECBF1; // blue-10
+
+$primary-text-emphasis-dark:        #9ECBF1; // blue-10
+$primary-bg-subtle-dark:            #020A32; // primary + 6 shade
+$primary-border-subtle-dark:        #030D45; // primary + 3 shade
+
+
+
+//*****************
+//* Secondary Theme
+//*****************
+$secondary:                         #6E7786; // gray-50   
+// Note: No dark mode on secondary
+
+// Secondary Subtle Theme
+$secondary-text-emphasis:           #3A444C; // gray-80
+$secondary-bg-subtle:               #E6E6E7; // gray-00
+$secondary-border-subtle:           #CACBD4; // gray-10
+
+$secondary-text-emphasis-dark:      #989CAD; // gray-30
+$secondary-bg-subtle-dark:          #2B3438; // gray-90  
+$secondary-border-subtle-dark:      #4B555F; // gray-70
+
+
+//**************
+//* Info Theme
+//**************
+$info:                              #066F80; // branded cyan
+// Note: No dark mode on info
+
+// Secondary Subtle Theme
+$info-text-emphasis:                #004F4F; // cyan-80
+$info-bg-subtle:                    #67DCE0; // cyan-00  
+$info-border-subtle:                #33CCCC; // cyan-10
+
+$info-text-emphasis-dark:           #11BABA; // cyan-20
+$info-bg-subtle-dark:               #003D3D; // cyan-90
+$info-border-subtle-dark:           #006161; // cyan-70
+
+// Headings
+$headings-color:                    $primary;
+$headings-color-dark:               #7EB0E4; // blue-20
+
+// Links
+$link-color:                        #253E92; // blue-80
+$link-color-dark:                   #7EB0E4; // blue-20
+$link-shade-percentage:             40%;
+// $link-hover-color:                  shift-color($link-color, $link-shade-percentage) !default;
+// $link-hover-color-dark:             shift-color($link-color-dark, -$link-shade-percentage) !default;
