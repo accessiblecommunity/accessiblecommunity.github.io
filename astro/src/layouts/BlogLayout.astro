@@ -2,7 +2,7 @@
 import { getEntry } from 'astro:content';
 import { getBlogCatalog } from '../lib/blog';
 import { getImage } from "astro:assets";
-import { isNil, kebabCase, startCase } from 'lodash-es';
+import { isEmpty, isNil, kebabCase, startCase } from 'lodash-es';
 
 import blogImage from "../images/alvaro-serrano-hjwKMkehBco-unsplash.jpg"
 const optimizedBg = await getImage({src: blogImage, format: 'avif'})
@@ -14,11 +14,25 @@ const defaultCrumbs = [{
   name: 'Blog', href: "/blog"
 }];
 
-const { blog, catalog = await getBlogCatalog(), crumbs = defaultCrumbs, title = undefined, recent = false } = Astro.props;
-const { blogs = [], authors = [], categories = [], months = [] } = catalog;
+interface Props {
+  blog: object,  // TODO: Determine how to get type definition from content.
+  catalog: object, // TODO: Define catalog definition in blog library
+  crumbs?: object,
+  title?: string, // What to show in the breadcrumbs as the title. Defaults to blog post title.
+  heading?: string, // What to show in the header. Default to blog post title.
+  sidebar?: boolean, // Whether to prefer the sidebar when the display gets small.
+};
 
-const isCustomHeading = !isNil(title);
-const heading = isCustomHeading ? title : blog.data.title;
+const {
+  blog,
+  catalog = await getBlogCatalog(),
+  crumbs = defaultCrumbs,
+  title = undefined,
+  heading = undefined,
+  sidebar = false
+} = Astro.props;
+const { blogs = [], authors = [], categories = [], months = [] } = catalog;
+const isCustomHeading = !isNil(heading);
 
 const blogAuthor = await getEntry(blog.data.author);
 const published = blog.data.published.toLocaleDateString('en-us', {
@@ -32,17 +46,17 @@ import Layout from "../layouts/Layout.astro";
 import ThemedSection from "../components/ThemedSection.astro";
 ---
 
-<Layout crumbs={crumbs} title={heading}>
+<Layout crumbs={crumbs} title={title || blog.data.title}>
   <div slot="header" class="bg-primary" style={`height: 10rem; background: no-repeat center ${blogBgUrl}`}>
     <div class="bg-primary-alpha-6 h-100 d-flex align-items-end" style="--bs-bg-opacity: 0.75">
       <div class="container">
-        <h1 class="display-2 text-white mb-1 w-100" set:text={heading} />
+        <h1 class="display-2 text-white mb-1 w-100" set:text={heading || blog.data.title} />
       </div>
     </div>
   </div>
   <ThemedSection style="tertiary" py={0}>
     <div class="d-flex gap-4">
-      <div class:list={[recent ? "d-none d-lg-block" : "col", "col-lg-9"]}>
+      <div class:list={[sidebar ? "d-none d-lg-block" : "col", "col-lg-9"]}>
         { isCustomHeading ?
           <h2 class="display-4 border-bottom mb-3" set:text={blog.data.title} />
         :
@@ -62,8 +76,10 @@ import ThemedSection from "../components/ThemedSection.astro";
           <Content />
         </article>      
       </div>
-      <div class:list={[recent ? "col" : "d-none d-lg-block", "col-lg-3"]}>
-        { recent ?
+      <div class:list={[sidebar ? "col" : "d-none d-lg-block", "col-lg-3"]}>
+        { isEmpty(blogs) ?
+          ''
+        :
           <h2 class:list={['text-info-emphasis', isCustomHeading ? 'display-5' : 'display-6']}>Recent Posts</h2>
           <ul>
             { blogs.map(b =>
@@ -72,6 +88,9 @@ import ThemedSection from "../components/ThemedSection.astro";
               </li>
             )}
           </ul>
+        }
+        { isEmpty(categories) ?
+          ''
         :
           <h2 class:list={['text-info-emphasis', isCustomHeading ? 'display-5' : 'display-6']}>Categories</h2>
           <ul>
@@ -81,7 +100,10 @@ import ThemedSection from "../components/ThemedSection.astro";
               </li>
             )}
           </ul>
-  
+        }
+        { isEmpty(months) ?
+          ''
+        :
           <h2 class:list={['text-info-emphasis', isCustomHeading ? 'display-5' : 'display-6']}>Months</h2>
           <ul>
             { months.map(month =>
@@ -90,7 +112,10 @@ import ThemedSection from "../components/ThemedSection.astro";
               </li>
             )}
           </ul>
-  
+        }
+        { isEmpty(authors) ?
+          ''
+        :
           <h2 class:list={['text-info-emphasis', isCustomHeading ? 'display-5' : 'display-6']}>Authors</h2>
           <ul>
             { authors.map(author =>

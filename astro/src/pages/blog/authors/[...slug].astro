@@ -27,9 +27,10 @@ import BlogLayout from '../../../layouts/BlogLayout.astro';
 ---
 
 <BlogLayout
-  title={`Blogs by ${author.data.name}`}
+  title={author.data.name}
+  heading={`Blogs by ${author.data.name}`}
   crumbs={crumbs}
   blog={orderedBlogs[0]}
-  catalog={{ blogs: orderedBlogs.slice(1)}}
-  recent={true}
+  catalog={{ blogs: orderedBlogs }}
+  sidebar={true}
 />

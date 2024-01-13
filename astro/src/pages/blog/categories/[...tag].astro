@@ -31,7 +31,7 @@ import BlogLayout from '../../../layouts/BlogLayout.astro';
   title={`${startCase(category)} Blogs`}
   crumbs={crumbs}
   blog={orderedBlogs[0]}
-  catalog={{ blogs: orderedBlogs.slice(1)}}
-  recent={true}
+  catalog={{ blogs: orderedBlogs }}
+  sidebar={true}
 />
   
