@@ -17,33 +17,23 @@ const breadCrumbs = isEmpty(crumbs) && title != 'Home' ? [{ name: 'Home', href: 
 ---
   
 <header class="sticky-top">
-  <nav class="navbar navbar-expand-lg align-items-top">
-    <div class="container-fluid px-3">
-      <a class="visually-hidden-focusable btn btn-primary btn-sm btn-skip me-2 skip-link" href="#main-content">
-        Skip to Main Content
-      </a>
+  <div class="navbar navbar-expand-lg align-items-top">
+    <a class="visually-hidden-focusable btn btn-primary skip-link" href="#main-content">
+      Skip to Main Content
+    </a>
+    <div id="brand-nav" class="container-fluid px-3">
       <div class="d-none d-sm-block navbar-brand me-2">
         <Icon name="ac-logo" class="brand-logo" role="img" aria-hidden="true"/>
       </div>
-      <div class="me-auto my-1">
-        <a class="navbar-brand lh-sm" href="/">Accessible <strong>Community</strong></a>
-        <nav aria-label="breadcrumb">
-          <ol class="breadcrumb lh-sm">
-            { breadCrumbs.map(({name, href}) =>
-              <li class="breadcrumb-item"><a href={href} class="text-primary">{name}</a></li>
-            )}
-            <li class="breadcrumb-item active" aria-current="page">{ title }</li>
-          </ol>
-        </nav>
+      <div class="my-1 flex-fill align-self-start">
+        <a class="navbar-brand" href="/">Accessible <strong>Community</strong></a>
       </div>
-      <div>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <Icon name="bi:list" class="bi bi-list" height="24" width="24"></Icon>
-        </button>
-      </div>
+      <button class="navbar-toggler px-1" type="button" data-bs-toggle="collapse" data-bs-target="#site-nav" aria-controls="site-nav" aria-expanded="false" aria-label="Toggle site navigation">
+        <Icon name="bi:list" class="bi" height="1.4em" width="1.4em"></Icon>
+      </button>
     </div>
-    <div id="navbarSupportedContent" class="collapse navbar-collapse mx-3">
-      <ul class="navbar-nav my-1 mx-4" aria-role="navigation">
+    <nav id="site-nav" class="collapse navbar-collapse mx-3" aria-label="Site">
+      <ul class="navbar-nav my-1 mx-4">
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">About</a>
           <ul class="dropdown-menu">
@@ -78,7 +68,15 @@ const breadCrumbs = isEmpty(crumbs) && title != 'Home' ? [{ name: 'Home', href: 
         </li>
       </ul>
       <a class="btn btn-info display-65 mx-1 general-button" href="/donate" role="button">Donate</a>
-    </div>
+    </nav>
+  </div>
+  <nav id="breadcrumbs-nav" aria-label="Breadcrumb" class="position-absolute">
+    <ol class="breadcrumb lh-sm">
+      { breadCrumbs.map(({name, href}) =>
+        <li class="breadcrumb-item"><a href={href} class="text-primary">{name}</a></li>
+      )}
+      <li class="breadcrumb-item active" aria-current="page">{ title }</li>
+    </ol>
   </nav>
 </header>
 <slot />
@@ -91,25 +89,36 @@ const breadCrumbs = isEmpty(crumbs) && title != 'Home' ? [{ name: 'Home', href: 
 
   @import '../styles/dark-mode.scss';
 
-  .btn-skip {
-    font-size: 0.6em;
+  .skip-link:focus,
+  .skip-link:focus-within {
+    position: absolute;
+    font-size: 1.2rem;
+    padding: 0.25rem 2.5rem;
+    top:  1.05rem;
+    left: 0.8rem;
+    z-index: 999;
   }
 
   [astro-icon="ac-logo"] {
     height: 2em;
   }
-
-  .breadcrumb-item h1 {
-    color: inherit;
-    font-size: 1em;
-    display: inline-block;
-    margin: inherit;
+  #brand-nav {
+    height: 3.5rem
+  }
+  #breadcrumbs-nav {
+    top:  2.25rem;
+    left: 3.9rem;
+  }
+  @media (max-width: 576px) {  // TODO: Use BS sizing later.
+    #breadcrumbs-nav {
+      left: 1rem;
+    }
   }
 
   .navbar-toggler {
     background-color: #dfe1ed;
+    border-color: var(--bs-primary-text-emphasis);
     color: var(--bs-primary);
-    border: none;
     padding-inline: 3px;
     font-size: 1.1rem;
   }
