@@ -43,5 +43,9 @@ import BlogLayout from '../../../layouts/BlogLayout.astro';
   blog={orderedBlogs[0]}
   catalog={{ blogs: orderedBlogs }}
   sidebar={true}
-/>
+>
+  <Fragment slot="header">
+    <strong>Blogs</strong> during {month}
+  </Fragment>
+</BlogLayout>
   

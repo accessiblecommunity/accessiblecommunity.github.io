@@ -49,7 +49,13 @@ import ThemedSection from "../components/ThemedSection.astro";
 
 <Layout crumbs={crumbs} title={title || blog.data.title}>
   <BlogHeading slot="header">
-    { heading || blog.data.title }
+    <slot name="header">
+      { isCustomHeading ?
+        <strong set:text={heading} />
+      :
+        <Fragment><strong>Blog</strong> - {blog.data.title}</Fragment>
+      }
+    </slot>
   </BlogHeading>
   <ThemedSection style="tertiary" py={0}>
     <div class="d-flex gap-4">
@@ -59,15 +65,18 @@ import ThemedSection from "../components/ThemedSection.astro";
         :
           ''
         }
-        <div class="d-flex flex-row-reverse justify-content-between mb-4">
-          <div class="text-brand text-secondary-emphasis me-3" set:text={published} />
-          <div class="d-none d-md-flex align-end justify-content-start align-items-start gap-1 fs-4">
-            <img class="profile-pic" src={blogAuthor.data.picture.src} alt={`Drawn representation of ${blogAuthor.data.name}`} />
-            <div class="text-start text-secondary-emphasis">
-              <span>{blogAuthor.data.name}</span>
-              <div class="fs-6 text-brand" set:text={blogAuthor.data.title} />
+        <div class="d-flex flex-column flex-md-row justify-content-between mb-4">
+          <div>
+            <div class="d-block d-md-none display-6">{blogAuthor.data.name}</div>
+            <div class="d-none d-md-flex align-end justify-content-start align-items-start gap-1 fs-4">
+              <img class="profile-pic" src={blogAuthor.data.picture.src} alt={`Drawn representation of ${blogAuthor.data.name}`} />
+              <div class="text-start text-secondary-emphasis">
+                <span>{blogAuthor.data.name}</span>
+                <div class="fs-6 text-brand" set:text={blogAuthor.data.title} />
+              </div>
             </div>
-          </div>  
+          </div>
+          <div class="text-brand text-secondary-emphasis me-3" set:text={published} />
         </div>
         <article>
           <Content />
