@@ -95,7 +95,7 @@ const crumbs = [{
 
  <ThemedSection id="form" style="secondary">
   <h2 class="display-4 fw-bold mb-4">Volunteer Form</h2>
-  <form class="col p-4 border-primary volunteer-form">
+  <form id="volunteerFormEl" class="col p-4 border-primary volunteer-form">
     <p class="lead">Thank you for your interest in volunteering with <span class="text-brand text-primary">Accessible <strong>Community</strong></span>.</p>
     <p class="col-lg-9">We are a growing <strong class="text-primary">international community</strong> of volunteers working together to improve our communities for people with disabilities.</p>
     <p class="col-lg-9">We are looking for individuals with passion and dedication who are willing to spend about 4&nbsp;hours a week volunteering their talents. To succeed, we need a wide variety of skills.</p>
@@ -103,20 +103,20 @@ const crumbs = [{
     <div class="row">
       <div class="col-md-6 mb-3">
         <label for="firstNameField" class="form-label mb-1 required-field">First Name</label><span class="asterisk" />
-        <input type="text" class="form-control w-100 form-field" id="firstNameField" autocomplete="given-name" required>
+        <input type="text" name="FirstName" class="form-control w-100 form-field" id="firstNameField" autocomplete="given-name" required>
       </div>
       <div class="col-md-6 mb-3">
         <label for="lastNameField" class="form-label mb-1 required-field">Last Name</label><span class="asterisk" />
-        <input type="text" class="form-control w-100 form-field" id="lastNameField" autocomplete="family-name" required>
+        <input type="text" name="LastName" class="form-control w-100 form-field" id="lastNameField" autocomplete="family-name" required>
       </div>
       <div class="col-md-6 mb-3">
         <label for="emailField" class="form-label mb-1 required-field">Email address</label><span class="asterisk" />
-        <input type="email" class="form-control w-100 form-field" id="emailField" autocomplete="email" aria-describedby="emailHelp" required>
+        <input type="email" name="Email" class="form-control w-100 form-field" id="emailField" autocomplete="email" aria-describedby="emailHelp" required>
         <div id="emailHelp" class="form-text">The email you would like us to associate with your account accesses. This is ideally a Gmail address.</div>
       </div>
       <div class="col-md-6 mb-3">
         <label for="countryField" class="form-label mb-1 required-field">Country</label><span class="asterisk" />
-        <input type="text" class="form-control w-100 form-field" id="countryField" autocomplete="country-name" aria-describedby="countryHelp" required>
+        <input type="text" name="Country" class="form-control w-100 form-field" id="countryField" autocomplete="country-name" aria-describedby="countryHelp" required>
         <div id="countryHelp" class="form-text">The country where you spend the majority of your time.</div>
       </div>
       <div class="col-md-6 mb-3">
@@ -126,37 +126,37 @@ const crumbs = [{
             <span class="asterisk" aria-hidden="true" />
           </legend>
           <div class="form-check d-flex mb-2 align-items-center">
-            <input class="form-check-input check" type="checkbox" name="flexRadioDefault" id="interestWrite" aria-checked="false">
+            <input class="form-check-input check" type="checkbox" name="Teams" value="Content" id="interestWrite" aria-checked="false">
             <label class="form-check-label ps-2" for="interestWrite">
               Content Team
             </label>
           </div>
           <div class="form-check d-flex mb-2 align-items-center">
-            <input class="form-check-input check" type="checkbox" name="flexRadioDefault" id="interestDev" aria-checked="false">
+            <input class="form-check-input check" type="checkbox" name="Teams" value="Development" id="interestDev" aria-checked="false">
             <label class="form-check-label ps-2" for="interestDev">
               Development Team
             </label>
           </div>
           <div class="form-check d-flex mb-2 align-items-center">
-            <input class="form-check-input check" type="checkbox" name="flexRadioDefault" id="interestEval" aria-checked="false">
+            <input class="form-check-input check" type="checkbox" name="Teams" value="Evaluation" id="interestEval" aria-checked="false">
             <label class="form-check-label ps-2" for="interestEval">
               Evaluation Team
             </label>
           </div>
           <div class="form-check d-flex mb-2 align-items-center">
-            <input class="form-check-input check" type="checkbox" name="flexRadioDefault" id="interestRun" aria-checked="false">
+            <input class="form-check-input check" type="checkbox" name="Teams" value="Leadership" id="interestRun" aria-checked="false">
             <label class="form-check-label ps-2" for="interestRun">
               Leadership Team
             </label>
           </div>
           <div class="form-check d-flex mb-2 align-items-center">
-            <input class="form-check-input check" type="checkbox" name="flexRadioDefault" id="interestUX" aria-checked="false">
+            <input class="form-check-input check" type="checkbox" name="Teams" value="UI/UX" id="interestUX" aria-checked="false">
             <label class="form-check-label ps-2" for="interestUX">
               UX Team
             </label>
           </div>
           <div class="form-check d-flex mb-2 align-items-center">
-            <input class="form-check-input check" type="checkbox" name="flexRadioDefault" id="interestOther" aria-checked="false">
+            <input class="form-check-input check" type="checkbox" name="Teams" value="Other" id="interestOther" aria-checked="false">
             <label class="form-check-label ps-2" for="interestOther">
               Other
             </label>
@@ -170,19 +170,19 @@ const crumbs = [{
             <span class="asterisk" aria-hidden="true" />
           </legend>
           <div class="form-check d-flex mb-2 align-items-center">
-            <input class="form-check-input check" type="radio" name="hours" value="less" id="hoursLess" aria-checked="false">
+            <input class="form-check-input check" type="radio" name="Hours" value="Less than 4 hours" id="hoursLess" aria-checked="false">
             <label class="form-check-label ps-2" for="hoursLess">
               Less than 4 hours a week
             </label>
           </div>
           <div class="form-check d-flex mb-2 align-items-center">
-            <input class="form-check-input check" type="radio" name="hours" value="around" id="hoursAround" aria-checked="false">
+            <input class="form-check-input check" type="radio" name="Hours" value="About 4 hours" id="hoursAround" aria-checked="false">
             <label class="form-check-label ps-2" for="hoursAround">
               Around 4 hours a week
             </label>
           </div>
           <div class="form-check d-flex mb-2 align-items-center">
-            <input class="form-check-input check" type="radio" name="hours" value="more" id="hoursMore" aria-checked="false">
+            <input class="form-check-input check" type="radio" name="Hours" value="More than 4 hours" id="hoursMore" aria-checked="false">
             <label class="form-check-label ps-2" for="hoursMore">
               More than 4 hours a week
             </label>
@@ -192,14 +192,48 @@ const crumbs = [{
       <div class="form-floating mb-3">
         <label for="accommodateTextarea" class="form-label mb-1">Please list any accomodations needed for remote meetings and work.</label>
         <span class="asterisk" />
-        <textarea class="form-control w-100 form-text-area" id="accommodateTextarea"></textarea>
+        <textarea name="Accommodations" class="form-control w-100 form-text-area" id="accommodateTextarea"></textarea>
       </div>
       <div class="col-md-6 mx-auto">
-        <button type="submit" class="btn btn-info w-100 general-button">Submit</button>
+        <button id="volunteerSubmit" type="submit" class="btn btn-info w-100 general-button">Submit</button>
+      </div>
     </div>
   </form>
+  <div class="d-none col p-4 border-primary volunteer-form" id="volunteerSuccess">
+    <div class="lead">
+      Thank you for your interest in volunteering with <span class="text-brand text-primary">Accessible <strong>Community</strong></span>.
+      We'll be in touch shortly.
+    </div>
+  </div>
  </ThemedSection>
 </Layout>
+
+<script is:inline>
+  const form = document.querySelector("#volunteerFormEl")
+  const submitButton = document.querySelector("#volunteerSubmit")
+  const scriptURL = 'https://script.google.com/macros/s/AKfycbzmihK0h2VZTdtNk3V2ONzdGKz6rwbyEbZrReuKIgwWoyDKzklQ3LcRbq-Po93qdXlqoQ/exec'
+
+  form.addEventListener('submit', e => {
+    submitButton.disabled = true;
+    e.preventDefault();
+
+    let requestBody = new FormData(form);
+    const teams = requestBody.getAll("Teams");
+    requestBody.delete("Teams")
+    requestBody.set("Teams", teams.join(", "));
+
+    fetch(
+      scriptURL, { method: 'POST', body: requestBody}
+    ).then(response => {
+      form.classList.add('d-none');
+      const successMessage = document.querySelector("#volunteerSuccess")
+      successMessage.classList.remove('d-none');
+    }).catch(error => {
+      alert('Error!', error.message)
+      submitButton.disabled = false
+    });
+  })
+</script>
 
 <style>
   /* first declaration that is commented out below is for debugging purposes. */
