@@ -14,6 +14,12 @@ export async function getStaticPaths() {
   }));
 }
 
+interface Props {
+  blog: object;     // TODO: Get object type definition from content.
+  catalog: object;  // TODO: Define object in blog library
+  crumbs: Array<object>;
+}
+
 const { blog, catalog, crumbs } = Astro.props;
 
 import BlogLayout from "../../layouts/BlogLayout.astro";

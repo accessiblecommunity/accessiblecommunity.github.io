@@ -18,6 +18,11 @@ export async function getStaticPaths() {
   })); 
 }
 
+interface Props {
+  month: string;
+  crumbs: Array<object>;
+}
+
 const { crumbs, month } = Astro.props;
 const monthBlogs = await getCollection('blogs', ({ data }) => {
   const published = data.published.toLocaleDateString('en-us', {
@@ -32,7 +37,8 @@ import BlogLayout from '../../../layouts/BlogLayout.astro';
 ---
 
 <BlogLayout
-  title={`Blogs during ${month}`}
+  title={month}
+  heading={`Blogs during ${month}`}
   crumbs={crumbs}
   blog={orderedBlogs[0]}
   catalog={{ blogs: orderedBlogs }}

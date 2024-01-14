@@ -18,6 +18,11 @@ export async function getStaticPaths() {
   })); 
 }
 
+interface Props {
+  category: string;
+  crumbs: Array<object>;
+}
+
 const { crumbs, category } = Astro.props;
 const categoryBlogs = await getCollection('blogs', ({ data }) => {
   return data.tags.includes(category);
@@ -28,7 +33,8 @@ import BlogLayout from '../../../layouts/BlogLayout.astro';
 ---
 
 <BlogLayout
-  title={`${startCase(category)} Blogs`}
+  title={startCase(category)}
+  heading={startCase(category)}
   crumbs={crumbs}
   blog={orderedBlogs[0]}
   catalog={{ blogs: orderedBlogs }}

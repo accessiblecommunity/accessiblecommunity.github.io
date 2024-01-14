@@ -17,6 +17,11 @@ export async function getStaticPaths() {
   })); 
 }
 
+interface Props {
+  author: object;  // TODO: Determine how to get type definition from content.
+  crumbs: Array<object>;
+}
+
 const { crumbs, author } = Astro.props;
 const authoredBlogs = await getCollection('blogs', ({ data }) => {
   return (data.author.slug === author.slug);

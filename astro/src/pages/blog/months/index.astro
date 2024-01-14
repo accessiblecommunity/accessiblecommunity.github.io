@@ -1,0 +1,31 @@
+---
+import { getBlogMonths } from '../../../lib/blog';
+import { kebabCase } from 'lodash-es';
+
+const months = await getBlogMonths();
+const title = 'Months';
+const crumbs = [{
+    name: 'Home', href: "/"
+  }, {
+    name: 'Blog', href: "/blog"
+  }]
+
+import BlogHeading from '../../../components/BlogHeading.astro';
+import Layout from "../../../layouts/Layout.astro";
+import ThemedSection from "../../../components/ThemedSection.astro";
+---
+<Layout crumbs={crumbs} title={title}>
+  <BlogHeading slot="header">
+    Blog
+  </BlogHeading>
+  <ThemedSection style="tertiary" py={0}>
+    <h2 class="text-info-emphasis display-5" set:text={title} />
+    <ul>
+      { months.map(month =>
+        <li>
+          <a href={`/blog/months/${kebabCase(month)}`}>{ month }</a>
+        </li>
+      )}
+    </ul>
+</ThemedSection>
+</Layout>
