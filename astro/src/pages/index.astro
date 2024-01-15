@@ -8,7 +8,7 @@ import ThemedSection from '../components/ThemedSection.astro';
 import ThemedBox from '../components/ThemedBox.astro';
 import TipRegistration from '../components/TipRegistration.astro';
 
-import heroBg from '../images/wheelchair-hall-blue-1920x1080.png'
+import heroBg from "../images/colored-hero/wheelchair_hall.png"
 
 import { getEntry } from 'astro:content';
 const daniela = await getEntry('profiles', 'daniela');
@@ -25,7 +25,7 @@ const daniela = await getEntry('profiles', 'daniela');
       At <span class="text-brand">Accessible <strong>Community</strong></span>,
       we build ethical technology solutions to nurture disability-inclusive communities.
     </div>
-    <div slot="action" class="bg-primary-alpha-3 py-3 text-white d-flex flex-column gap-2 flex-lg-row align-items-center justify-content-lg-evenly">
+    <div slot="action" class="bg-primary bg-opacity-50 py-3 text-white d-flex flex-column gap-2 flex-lg-row align-items-center justify-content-lg-evenly">
       <a href="#journey" class="icon-link link-light hero-link">
         <Icon name="bi:pencil-fill" class="bi" alt="" aria-hidden="true"></Icon>
         Start your accessibility journey
