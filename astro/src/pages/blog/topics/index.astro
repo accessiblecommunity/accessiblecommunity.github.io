@@ -1,9 +1,9 @@
 ---
-import { getBlogCategories } from '../../../lib/blog';
+import { getBlogTopics } from '../../../lib/blog';
 import { startCase } from 'lodash-es';
 
-const categories = await getBlogCategories();
-const title = 'Categories';
+const topics = await getBlogTopics();
+const title = 'Topics';
 const crumbs = [{
     name: 'Home', href: "/"
   }, {
@@ -16,14 +16,14 @@ import ThemedSection from "../../../components/ThemedSection.astro";
 ---
 <Layout crumbs={crumbs} title={title}>
   <BlogHeading slot="header">
-    <strong>Blogs</strong> by categories
+    <strong>Blogs</strong> by topic
   </BlogHeading>
   <ThemedSection style="tertiary" py={0}>
     <h2 class="text-info-emphasis display-5" set:text={title} />
     <ul>
-      { categories.map(cat =>
+      { topics.map(cat =>
         <li>
-          <a href={`/blog/categories/${cat}`}>{startCase(cat)}</a>
+          <a href={`/blog/topics/${cat}`}>{startCase(cat)}</a>
         </li>
       )}
     </ul>

@@ -1,9 +1,9 @@
 ---
-import { getBlogMonths } from '../../../lib/blog';
+import { getBlogDates } from '../../../lib/blog';
 import { kebabCase } from 'lodash-es';
 
-const months = await getBlogMonths();
-const title = 'Months';
+const dates = await getBlogDates();
+const title = 'Dates';
 const crumbs = [{
     name: 'Home', href: "/"
   }, {
@@ -16,14 +16,14 @@ import ThemedSection from "../../../components/ThemedSection.astro";
 ---
 <Layout crumbs={crumbs} title={title}>
   <BlogHeading slot="header">
-    <strong>Blogs</strong> by month
+    <strong>Blogs</strong> by date
   </BlogHeading>
   <ThemedSection style="tertiary" py={0}>
     <h2 class="text-info-emphasis display-5" set:text={title} />
     <ul>
-      { months.map(month =>
+      { dates.map(month =>
         <li>
-          <a href={`/blog/months/${kebabCase(month)}`}>{ month }</a>
+          <a href={`/blog/dates/${kebabCase(month)}`}>{ month }</a>
         </li>
       )}
     </ul>

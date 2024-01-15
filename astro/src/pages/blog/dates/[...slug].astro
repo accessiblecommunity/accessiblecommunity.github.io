@@ -1,19 +1,19 @@
 ---
 import { getCollection } from 'astro:content';
-import { getBlogMonths, orderByRecent } from '../../../lib/blog';
+import { getBlogDates, orderByRecent } from '../../../lib/blog';
 import { kebabCase } from 'lodash-es';
 
 export async function getStaticPaths() {
-  const months = await getBlogMonths();
+  const dates = await getBlogDates();
   const crumbs = [{
     name: 'Home', href: "/"
   }, {
     name: 'Blog', href: "/blog"
   }, {
-    name: 'Months', href: "/blog/months"
+    name: 'Dates', href: "/blog/dates"
   }]
 
-  return months.map(month => ({
+  return dates.map(month => ({
     params: { slug: kebabCase(month) }, props: { crumbs, month },
   })); 
 }

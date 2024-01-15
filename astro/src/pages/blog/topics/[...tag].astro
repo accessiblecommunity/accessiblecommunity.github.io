@@ -1,19 +1,19 @@
 ---
 import { getCollection } from 'astro:content';
-import { getBlogCategories, orderByRecent } from '../../../lib/blog';
+import { getBlogTopics, orderByRecent } from '../../../lib/blog';
 import { startCase } from 'lodash-es';
 
 export async function getStaticPaths() {
-  const categories = await getBlogCategories();
+  const topics = await getBlogTopics();
   const crumbs = [{
     name: 'Home', href: "/"
   }, {
     name: 'Blog', href: "/blog"
   }, {
-    name: 'Categories', href: "/blog/categories"
+    name: 'Topics', href: "/blog/topics"
   }]
 
-  return categories.map(category => ({
+  return topics.map(category => ({
     params: { tag: category }, props: { crumbs, category },
   })); 
 }

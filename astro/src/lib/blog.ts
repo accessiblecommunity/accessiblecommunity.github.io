@@ -11,14 +11,14 @@ export async function getBlogAuthors(blogs?) {
   return authors
 }
 
-export async function getBlogCategories(blogs?) {
+export async function getBlogTopics(blogs?) {
   blogs = isNil(blogs) ? await getCollection('blogs') : blogs;
   if (isEmpty(blogs))
     return [];
   return [...new Set(blogs.map((blog) => blog.data.tags).flat())];
 }
 
-export async function getBlogMonths(blogs?) {
+export async function getBlogDates(blogs?) {
   blogs = isNil(blogs) ? await getCollection('blogs') : blogs;
   if (isEmpty(blogs))
     return [];
@@ -45,16 +45,16 @@ export async function getMostRecent(blogs?) {
 
 export async function getBlogCatalog(blogs?) {
   blogs = isNil(blogs) ? await getCollection('blogs') : blogs;
-  const categories = await getBlogCategories(blogs);
+  const topics = await getBlogTopics(blogs);
   const authors = await getBlogAuthors(blogs);
-  const months = await getBlogMonths(blogs);
+  const dates = await getBlogDates(blogs);
   const recent = await getMostRecent(blogs);
 
   return {
     blogs,
     authors,
-    categories,
-    months,
+    topics,
+    dates,
     recent,
   };
 }  

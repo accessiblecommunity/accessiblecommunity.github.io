@@ -31,7 +31,7 @@ const {
   heading = undefined,
   sidebar = false
 } = Astro.props;
-const { blogs = [], authors = [], categories = [], months = [] } = catalog;
+const { blogs = [], authors = [], topics = [], dates = [] } = catalog;
 const isCustomHeading = !isNil(heading);
 
 const blogAuthor = await getEntry(blog.data.author);
@@ -86,7 +86,7 @@ import ThemedSection from "../components/ThemedSection.astro";
         { isEmpty(blogs) ?
           ''
         :
-          <h2 class="text-info-emphasis display-6">Recent Posts</h2>
+          <h2 class="text-info-emphasis display-6">Blog Posts</h2>
           <ul>
             { blogs.map(b =>
               <li>
@@ -95,26 +95,14 @@ import ThemedSection from "../components/ThemedSection.astro";
             )}
           </ul>
         }
-        { isEmpty(categories) ?
+        { isEmpty(topics) ?
           ''
         :
-          <h2 class="text-info-emphasis display-6">Categories</h2>
+          <h2 class="text-info-emphasis display-6">Topics</h2>
           <ul>
-            { categories.map(cat =>
+            { topics.map(cat =>
               <li>
-                <a href={`/blog/categories/${cat}`}>{startCase(cat)}</a>
-              </li>
-            )}
-          </ul>
-        }
-        { isEmpty(months) ?
-          ''
-        :
-          <h2 class="text-info-emphasis display-6">Months</h2>
-          <ul>
-            { months.map(month =>
-              <li>
-                <a href={`/blog/months/${kebabCase(month)}`}>{ month }</a>
+                <a href={`/blog/topics/${cat}`}>{startCase(cat)}</a>
               </li>
             )}
           </ul>
@@ -127,6 +115,18 @@ import ThemedSection from "../components/ThemedSection.astro";
             { authors.map(author =>
               <li>
                 <a href={`/blog/authors/${author.slug}`}>{ author.data.name }</a>
+              </li>
+            )}
+          </ul>
+        }
+        { isEmpty(dates) ?
+          ''
+        :
+          <h2 class="text-info-emphasis display-6">Dates</h2>
+          <ul>
+            { dates.map(month =>
+              <li>
+                <a href={`/blog/dates/${kebabCase(month)}`}>{ month }</a>
               </li>
             )}
           </ul>
