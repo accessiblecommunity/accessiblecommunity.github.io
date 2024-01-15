@@ -1,12 +1,7 @@
 ---
 import { getEntry } from 'astro:content';
 import { getBlogCatalog } from '../lib/blog';
-import { getImage } from "astro:assets";
 import { isEmpty, isNil, kebabCase, startCase } from 'lodash-es';
-
-import blogImage from "../images/alvaro-serrano-hjwKMkehBco-unsplash.jpg"
-const optimizedBg = await getImage({src: blogImage, format: 'avif'})
-const blogBgUrl = `url(${optimizedBg.src})`;
 
 const defaultCrumbs = [{
   name: 'Home', href: "/"

@@ -21,23 +21,34 @@ import missionImage from '../../images/mission.png';
 import partnerImage from '../../images/np_Business-partners-discussing-work-arranging-business-papers-and-charts-on-floor_bYWo15_large.jpg';
 ---
 <Layout title={title} crumbs={crumbs} heading={heading}>
-  <ThemedSection theme="body-tertiary">
-    <div class="row flex-lg-row-reverse align-items-center justify-content-center gy-4 p-4">
-      <div class="col-10 col-sm-8 col-lg-6 col-xl-5 col-xxl-4">
-        <Image src={missionImage} alt="Image depicting Accessible Community's vision. Four circles connected with our logo. Contained in the circles are People with Disabilities, Local Organizations, Community Leaders, and Accessibility Experts." class="img-fluid" width="400" height="400" loading="lazy" />
-      </div>
+  <ThemedSection theme="body-tertiary" slot="header">
+    <div class="row flex-column-reverse flex-lg-row align-items-center justify-content-center gy-4 p-4">
       <div class="col-lg-6 col-xl-7 col-xxl-6">
-        <h2 class="display-4 text-body-emphasis mb-3">
+        <h1 class="visually-hidden">Mission and Vision</h1>
+        <h2 class="display-5 text-info-emphasis mb-1">
+          <span>Our <strong>vision</strong>.</span>
+        </h2>
+        <p class="display-4 text-body-emphasis mb-3">
           Establishing and nurturing <br/>
           <strong>disability-inclusive communities</strong>
           through ethical technology.
-        </h2>
+        </p>
         <p class="lead">
-          <span class="text-brand text-primary">Accessible <strong>Community</strong></span>
+          <span class="text-brand text-primary-emphasis">Accessible <strong>Community</strong></span>
           is a 501(c)3 nonprofit that provides tools, resources and an online community to bring
           together accessibility experts, volunteers, businesses, organizational and community
           leaders, and individuals with disabilities to create a more inclusive world.
         </p>
+      </div>
+      <div class="col-10 col-sm-8 col-lg-6 col-xl-5 col-xxl-4">
+        <Image
+          src={missionImage}
+          class="img-fluid"
+          width="400"
+          height="400"
+          loading="lazy"
+          alt="Image depicting Accessible Community's vision. Four circles connected with our logo. Contained in the circles are People with Disabilities, Local Organizations, Community Leaders, and Accessibility Experts."
+        />
       </div>
     </div>
   </ThemedSection>
