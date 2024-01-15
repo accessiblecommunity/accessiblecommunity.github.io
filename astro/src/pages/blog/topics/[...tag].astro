@@ -1,0 +1,47 @@
+---
+import { getCollection } from 'astro:content';
+import { getBlogTopics, orderByRecent } from '../../../lib/blog';
+import { startCase } from 'lodash-es';
+
+export async function getStaticPaths() {
+  const topics = await getBlogTopics();
+  const crumbs = [{
+    name: 'Home', href: "/"
+  }, {
+    name: 'Blog', href: "/blog"
+  }, {
+    name: 'Topics', href: "/blog/topics"
+  }]
+
+  return topics.map(category => ({
+    params: { tag: category }, props: { crumbs, category },
+  })); 
+}
+
+interface Props {
+  category: string;
+  crumbs: Array<object>;
+}
+
+const { crumbs, category } = Astro.props;
+const categoryBlogs = await getCollection('blogs', ({ data }) => {
+  return data.tags.includes(category);
+});
+const orderedBlogs: Array<object> = await orderByRecent(categoryBlogs)
+
+import BlogLayout from '../../../layouts/BlogLayout.astro';
+---
+
+<BlogLayout
+  title={startCase(category)}
+  heading={startCase(category)}
+  crumbs={crumbs}
+  blog={orderedBlogs[0]}
+  catalog={{ blogs: orderedBlogs }}
+  sidebar={true}
+>
+  <Fragment slot="header">
+    <strong>Blogs</strong> - {startCase(category)}
+  </Fragment>
+</BlogLayout>
+  

@@ -1,0 +1,143 @@
+---
+import { getEntry } from 'astro:content';
+import { getBlogCatalog } from '../lib/blog';
+import { getImage } from "astro:assets";
+import { isEmpty, isNil, kebabCase, startCase } from 'lodash-es';
+
+import blogImage from "../images/alvaro-serrano-hjwKMkehBco-unsplash.jpg"
+const optimizedBg = await getImage({src: blogImage, format: 'avif'})
+const blogBgUrl = `url(${optimizedBg.src})`;
+
+const defaultCrumbs = [{
+  name: 'Home', href: "/"
+}, {
+  name: 'Blog', href: "/blog"
+}];
+
+interface Props {
+  blog: object,  // TODO: Determine how to get type definition from content.
+  catalog: object, // TODO: Define catalog definition in blog library
+  crumbs?: object,
+  title?: string, // What to show in the breadcrumbs as the title. Defaults to blog post title.
+  heading?: string, // What to show in the header. Default to blog post title.
+  sidebar?: boolean, // Whether to prefer the sidebar when the display gets small.
+};
+
+const {
+  blog,
+  catalog = await getBlogCatalog(),
+  crumbs = defaultCrumbs,
+  title = undefined,
+  heading = undefined,
+  sidebar = false
+} = Astro.props;
+const { blogs = [], authors = [], topics = [], dates = [] } = catalog;
+const isCustomHeading = !isNil(heading);
+
+const blogAuthor = await getEntry(blog.data.author);
+const published = blog.data.published.toLocaleDateString('en-us', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
+
+const { Content } = await blog.render();
+import BlogHeading from '../components/BlogHeading.astro';
+import Layout from "../layouts/Layout.astro";
+import ThemedSection from "../components/ThemedSection.astro";
+---
+
+<Layout crumbs={crumbs} title={title || blog.data.title}>
+  <BlogHeading slot="header">
+    <slot name="header">
+      { isCustomHeading ?
+        <strong set:text={heading} />
+      :
+        <Fragment><strong>Blog</strong> - {blog.data.title}</Fragment>
+      }
+    </slot>
+  </BlogHeading>
+  <ThemedSection style="tertiary" py={0}>
+    <div class="d-flex gap-4">
+      <div class:list={[sidebar ? "d-none d-lg-block" : "col", "col-lg-9"]}>
+        { isCustomHeading ?
+          <h2 class="display-4 border-bottom mb-3" set:text={blog.data.title} />
+        :
+          ''
+        }
+        <div class="d-flex flex-column flex-md-row justify-content-between mb-4">
+          <div>
+            <div class="d-block d-md-none display-6">{blogAuthor.data.name}</div>
+            <div class="d-none d-md-flex align-end justify-content-start align-items-start gap-1 fs-4">
+              <img class="profile-pic" src={blogAuthor.data.picture.src} alt={`Drawn representation of ${blogAuthor.data.name}`} />
+              <div class="text-start text-secondary-emphasis">
+                <span>{blogAuthor.data.name}</span>
+                <div class="fs-6 text-brand" set:text={blogAuthor.data.title} />
+              </div>
+            </div>
+          </div>
+          <div class="text-brand text-secondary-emphasis me-3" set:text={published} />
+        </div>
+        <article>
+          <Content />
+        </article>      
+      </div>
+      <div class:list={[sidebar ? "col" : "d-none d-lg-block", "col-lg-3"]}>
+        { isEmpty(blogs) ?
+          ''
+        :
+          <h2 class="text-info-emphasis display-6">Blog Posts</h2>
+          <ul>
+            { blogs.map(b =>
+              <li>
+                <a href={`/blog/${b.slug}`}>{ b.data.title }</a>
+              </li>
+            )}
+          </ul>
+        }
+        { isEmpty(topics) ?
+          ''
+        :
+          <h2 class="text-info-emphasis display-6">Topics</h2>
+          <ul>
+            { topics.map(cat =>
+              <li>
+                <a href={`/blog/topics/${cat}`}>{startCase(cat)}</a>
+              </li>
+            )}
+          </ul>
+        }
+        { isEmpty(authors) ?
+          ''
+        :
+          <h2 class="text-info-emphasis display-6">Authors</h2>
+          <ul>
+            { authors.map(author =>
+              <li>
+                <a href={`/blog/authors/${author.slug}`}>{ author.data.name }</a>
+              </li>
+            )}
+          </ul>
+        }
+        { isEmpty(dates) ?
+          ''
+        :
+          <h2 class="text-info-emphasis display-6">Dates</h2>
+          <ul>
+            { dates.map(month =>
+              <li>
+                <a href={`/blog/dates/${kebabCase(month)}`}>{ month }</a>
+              </li>
+            )}
+          </ul>
+        }
+      </div>
+    </div>
+  </ThemedSection>
+</Layout>
+
+<style>
+  div.fs-6 {
+    line-height: 0.9em;
+  }
+</style>

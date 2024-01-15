@@ -1,5 +1,18 @@
 import { defineCollection, reference, z } from 'astro:content';
 
+// 2. Define a `type` and `schema` for each collection
+const blogs = defineCollection({
+  type: 'content',
+  schema: z.object({
+    title: z.string(),
+    tags: z.array(z.string()),
+    published: z.date(),
+    image: z.string().optional(),
+    author: reference("profiles"),
+  }),
+});
+
+
 const profiles = defineCollection({
   type: 'content',
   schema: ({ image }) => z.object({
@@ -27,6 +40,7 @@ const quotes = defineCollection({
 })
 
 export const collections = {
+  blogs,
   profiles,
   quotes,
 };

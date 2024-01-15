@@ -242,6 +242,11 @@ $theme-colors-border-subtle-dark: map-merge($theme-colors-border-subtle-dark, $c
   --bs-bg-opacity: 0.3;
 }
 
+.bg-primary-alpha-6 {
+  @extend .bg-primary;
+  --bs-bg-opacity: 0.6;
+}
+
 *:focus-visible, .form-field:focus, .toggle-menu:focus, .navbar-toggler:focus, .nav-link:focus-visible {
   outline: 3px dashed $primary;
   outline-offset: 0.025em;

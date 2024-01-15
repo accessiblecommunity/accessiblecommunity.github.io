@@ -1,0 +1,32 @@
+---
+import { getBlogCatalog } from '../../lib/blog'
+
+export async function getStaticPaths() {
+  const catalog = await getBlogCatalog();
+  const crumbs = [{
+    name: 'Home', href: "/"
+  }, {
+    name: 'Blog', href: "/blog"
+  }]
+
+  return catalog.blogs.map(blog => ({
+    params: { slug: blog.slug }, props: { blog, catalog, crumbs },
+  }));
+}
+
+interface Props {
+  blog: object;     // TODO: Get object type definition from content.
+  catalog: object;  // TODO: Define object in blog library
+  crumbs: Array<object>;
+}
+
+const { blog, catalog, crumbs } = Astro.props;
+
+import BlogLayout from "../../layouts/BlogLayout.astro";
+---
+
+<BlogLayout
+  blog={blog}
+  catalog={catalog}
+  crumbs={crumbs}
+/>

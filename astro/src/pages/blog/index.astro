@@ -1,18 +1,19 @@
 ---
-import Layout from '../../layouts/Layout.astro';
+import { getBlogCatalog } from '../../lib/blog'
 
-const title = 'Blog';
-const heading = title;
+const catalog = await getBlogCatalog();
+const crumbs = [{
+  name: 'Home', href: "/",
+}]
+
+import BlogLayout from "../../layouts/BlogLayout.astro";
 ---
 
-<Layout title={title} heading={heading}>
-<div class="container-fluid">
-  <h2 slot="header">Categories</h2>
-  <ul class="py-5 display-5">
-    <li>Accessibility</li>
-    <li>Announcements</li>
-    <li>Events</li>
-    <li>...</li>
-  </ul>
-</div>
-</Layout>
+<BlogLayout
+  title="Blog"
+  heading="Blog"
+  blog={catalog.recent}
+  catalog={catalog}
+  crumbs={crumbs}
+  sidebar={true}
+/>

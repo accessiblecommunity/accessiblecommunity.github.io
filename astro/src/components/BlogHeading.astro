@@ -1,0 +1,25 @@
+---
+import { getImage } from "astro:assets";
+
+import blogImage from "../images/alvaro-serrano-hjwKMkehBco-unsplash.jpg"
+const optimizedBg = await getImage({src: blogImage, format: 'avif'})
+const blogBackgroundImageUrl = `url(${optimizedBg.src})`;
+---
+
+<div class="bg-primary blog-heading" style={``}>
+  <div class="bg-primary-alpha-6 h-100 d-flex align-items-end" style="--bs-bg-opacity: 0.8">
+    <div class="container">
+      <h1 class="display-2 text-white mb-1 w-100">
+        <slot />
+      </h1>
+    </div>
+  </div>
+</div>
+
+<style is:global define:vars={{ blogBackgroundImageUrl, }}>
+  .blog-heading {
+    height: 10rem;
+    background: no-repeat center var(--blogBackgroundImageUrl);
+  }
+</style>
+
