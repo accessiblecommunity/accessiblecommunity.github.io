@@ -283,10 +283,6 @@ $theme-colors-border-subtle-dark: map-merge($theme-colors-border-subtle-dark, $c
   font-family: $headings-font-family;
 }
 
-.card, .card-header {
-  background-color: $body-secondary-bg;
-}
-
 textarea, input {
   border-width: 1.5px 1.5px;
   border-color: #000000;
@@ -344,10 +340,6 @@ img.profile-pic {
 
   .dropdown-item:hover {
     background-color: $body-tertiary-bg-dark;
-  }
-
-  .card, .card-header {
-    background-color: $body-secondary-bg-dark;
   }
 
   .general-button {
