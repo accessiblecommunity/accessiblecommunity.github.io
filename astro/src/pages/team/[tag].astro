@@ -10,15 +10,15 @@ export async function getStaticPaths() {
         allProfiles,
         mini: false,
         title: 'Board Members',
-        heading: 'Board Members',
+        heading: 'Board <strong>Members</strong>',
       }
     },
     { params: { tag: 'leadership' }, props:
       {
         allProfiles,
         mini: false,
-        title: 'Leadership',
-        heading: 'Leadership',
+        title: 'Leadership Team',
+        heading: 'Leadership <strong>Team</strong>',
       }
     },
   ];
@@ -26,6 +26,7 @@ export async function getStaticPaths() {
 
 import Layout from '../../layouts/Layout.astro';
 import Profile from '../../components/Profile.astro';
+import TeamHeading from '../../components/TeamHeading.astro';
 import ThemedSection from '../../components/ThemedSection.astro';
 
 import { sortBy } from 'lodash-es';
@@ -47,7 +48,8 @@ const crumbs = [{
 }];
 ---
 
-<Layout title={title} crumbs={crumbs} heading={heading}>
+<Layout title={title} crumbs={crumbs}>
+  <TeamHeading slot="header" set:html={heading} />
   <ThemedSection style="tertiary" fluid={mini}>
     <ul class={mini ? 'mini list-inline text-center' : 'list-group'}>
       { profiles.map((p) =>

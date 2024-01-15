@@ -2,7 +2,7 @@
 const { 
   image,
   header = "Hero heading.",
-  theme = "ac",
+  theme = "primary",
   textColor = "white",
   columns = "col-lg-6",
 } = Astro.props;
@@ -20,7 +20,7 @@ if (image) {
 
 ---
 <section class={`bg-${theme}`} style={`background: no-repeat center ${heroBgUrl}`}>
-  <div class="container text-center hero px-1">
+  <div class="container text-center hero px-2">
     <slot name="heading">
       <h1 class:list={["display-2 fw-bold", `text-${textColor}`]}>{ header }</h1>
     </slot>

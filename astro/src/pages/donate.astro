@@ -1,12 +1,12 @@
 ---
-import { Icon } from 'astro-icon'
+import { Icon } from 'astro-icon';
 
 import Layout from '../layouts/Layout.astro';
 import Hero from '../components/Hero.astro';
 import ShadowBoxSection from '../components/ShadowBoxSection.astro';
 import ThemedSection from '../components/ThemedSection.astro';
 
-import heroBg from '../images/hands-blue-1920x1080.png'
+import heroBg from '../images/colored-hero/hands-together.png'
 
 const directorEmail = 'mailto:director@accessiblecommunity.org'
 const paypalUrl = 'https://paypal.me/AccessibleCommunity';
@@ -52,7 +52,7 @@ const crumbs = [{
   <Hero image={ heroBg } slot="header">
     <div slot="heading" class="mb-4">
       <h1 class="visually-hidden">Donate</h1>
-      <span class="display-2 fw-bold text-white">Together we can do so much.</span>
+      <span class="display-2 text-white"><strong>Building tools</strong> that build communities.</span>
     </div>
     <p class="lead mb-4">
       <span class="text-brand">Accessible <strong>Community</strong></span> is a 501(c)3 organization.

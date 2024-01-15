@@ -1,0 +1,30 @@
+---
+import { getImage } from "astro:assets";
+
+import blogImage from "../images/colored-hero/team.png"
+const optimizedBg = await getImage({src: blogImage, format: 'avif'})
+const teamBackgroundImageUrl = `url(${optimizedBg.src})`;
+
+const { element: Element = 'h1', fluid = false } = Astro.props;
+---
+
+<div class="bg-primary team-heading">
+  <div class="bg-primary h-100 d-flex align-items-end" style="--bs-bg-opacity: 0.1">
+    <div class={`container${fluid ? '-fluid px-4' : ''}`}>
+      <slot name="preface" />
+      <Element class="display-2 text-white mb-1 w-100">
+        <slot />
+      </Element>
+    </div>
+  </div>
+</div>
+
+<style is:global define:vars={{ teamBackgroundImageUrl }}>
+  .team-heading {
+    height: 9rem;
+    background: no-repeat var(--teamBackgroundImageUrl);
+    background-position: center 30%;
+    background-size: cover;
+  }
+</style>
+

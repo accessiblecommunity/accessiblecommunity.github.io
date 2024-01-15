@@ -1,9 +1,13 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import TeamHeading from '../../components/TeamHeading.astro';
 ---
 
 <Layout title="Team">
-  <div class="container-fluid">
+  <TeamHeading slot="header">
+    Team
+  </TeamHeading>
+  <section class="container-fluid">
     <ul class="py-5 display-5">
       <li>
         <a href="/team/board">Board Members</a>
@@ -21,5 +25,5 @@ import Layout from '../../layouts/Layout.astro';
         <a href="/team/partners">Partners</a>
       </li>
     </ul>
-  </div>
+  </section>
 </Layout>

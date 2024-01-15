@@ -1,9 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import TeamHeading from '../../components/TeamHeading.astro';
 import ThemedSection from '../../components/ThemedSection.astro';
-
-const title = 'Previous Contributors';
-const heading = title;
 
 const crumbs = [{
   name: 'Home', href: '/',
@@ -12,13 +10,16 @@ const crumbs = [{
 }];
 ---
 
-<Layout title={title} crumbs={crumbs} heading={heading}>
+<Layout title="Previous Contributors" crumbs={crumbs}>
+  <TeamHeading slot="header">
+    Previous <strong>Contributors</strong>
+  </TeamHeading>
   <ThemedSection style="secondary">
     <div class="col-xxl-9 pb-3">
       <p class="lead">We sincerely appreciate the time and energy that each person listed below has contributed to our mission.</p>
     </div>
     <div class="card mb-5 shadow team-card">
-      <h2 class="card-header text-primary-emphasis">Board Members</h2>
+      <h2 class="card-header text-primary-emphasis">Board <strong>Members</strong></h2>
       <div class="card-body">
         <ul>
           <li>Cham L. (Board Member, 2021-23)</li>
@@ -28,7 +29,7 @@ const crumbs = [{
       </div>
     </div>
     <div class="card mb-5 shadow team-card">
-      <h2 class="card-header text-primary-emphasis">Leadership Team</h2>
+      <h2 class="card-header text-primary-emphasis">Leadership <strong>Team</strong></h2>
       <div class="card-body">
         <ul>
           <li>Marjana C. (loca11y Project Manager, 2022)</li>
@@ -49,7 +50,7 @@ const crumbs = [{
       </div>
     </div>
     <div class="card mb-5 shadow team-card">
-      <h2 class="card-header text-primary-emphasis">Interns</h2>
+      <h2 class="card-header text-primary-emphasis">Internships</h2>
       <div class="card-body">
         <ul class="list-inline mx-3">
           <li class="list-inline-item">Arshiya Bharatam</li>
@@ -66,26 +67,9 @@ const crumbs = [{
       </div>
     </div>
     <div class="card mb-5 shadow team-card">
-      <h2 class="card-header text-primary-emphasis">Special Projects</h2>
+      <h2 class="card-header text-primary-emphasis">Special <strong>Projects</strong></h2>
       <div class="card-body">
-        <h3 class="display-6">University of Maryland, Impact Consulting Fellowship (Spring 2021)</h3>
-        <ul class="list-inline mx-3">
-          <li class="list-inline-item">Percy Chipunza</li>
-          <li class="list-inline-item">Nathan Gallagher</li>
-          <li class="list-inline-item">Steven Haigler</li>
-          <li class="list-inline-item">Andrew Kasner</li>
-          <li class="list-inline-item">Melanie Rojas</li>
-        </ul>
-        <h3 class="display-6">University of Maryland, Capstone Project (Spring 2021)</h3>
-        <ul class="list-inline mx-3">
-          <li class="list-inline-item">Manar Al-badarneh</li>
-          <li class="list-inline-item">Emily Barbagallo</li>
-          <li class="list-inline-item">Andrew Day</li>
-          <li class="list-inline-item">Angad Dhillon</li>
-          <li class="list-inline-item">Jonathan Fuentes</li>
-          <li class="list-inline-item">Sammi Lacovara</li>
-        </ul>
-        <h3 class="display-6">Toptal loca11y Volunteers (Summer/Fall 2023)</h3>
+        <h3 class="display-6"><strong>Toptal</strong> loca11y Volunteers (Summer/Fall 2023)</h3>
         <ul class="list-inline mx-3">
           <li class="list-inline-item">Joshua Calder</li>
           <li class="list-inline-item">Prateek Chaplot</li>
@@ -103,6 +87,23 @@ const crumbs = [{
           <li class="list-inline-item">Bilal Sammour</li>
           <li class="list-inline-item">Anna Shcherbakova</li>
           <li class="list-inline-item">Omar Tariq</li>
+        </ul>
+        <h3 class="display-6"><strong>University of Maryland</strong>, Impact Consulting Fellowship (Spring 2021)</h3>
+        <ul class="list-inline mx-3">
+          <li class="list-inline-item">Percy Chipunza</li>
+          <li class="list-inline-item">Nathan Gallagher</li>
+          <li class="list-inline-item">Steven Haigler</li>
+          <li class="list-inline-item">Andrew Kasner</li>
+          <li class="list-inline-item">Melanie Rojas</li>
+        </ul>
+        <h3 class="display-6"><strong>University of Maryland</strong>, Capstone Project (Spring 2021)</h3>
+        <ul class="list-inline mx-3">
+          <li class="list-inline-item">Manar Al-badarneh</li>
+          <li class="list-inline-item">Emily Barbagallo</li>
+          <li class="list-inline-item">Andrew Day</li>
+          <li class="list-inline-item">Angad Dhillon</li>
+          <li class="list-inline-item">Jonathan Fuentes</li>
+          <li class="list-inline-item">Sammi Lacovara</li>
         </ul>
       </div>
     </div>

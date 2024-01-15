@@ -1,12 +1,10 @@
 ---
-import Layout from '../../layouts/Layout.astro';
-import ThemedSection from '../../components/ThemedSection.astro';
 import ExternalLink from '../../components/ExternalLink.astro';
+import Layout from '../../layouts/Layout.astro';
+import TeamHeading from '../../components/TeamHeading.astro';
+import ThemedSection from '../../components/ThemedSection.astro';
 
 import { Icon } from 'astro-icon';
-
-const title = 'Our Policies';
-const heading = title;
 
 const crumbs = [{
   name: 'Home', href: '/',
@@ -15,7 +13,10 @@ const crumbs = [{
 }];
 ---
 
-<Layout title={title} crumbs={crumbs} heading={heading}>
+<Layout title="Our Policies" crumbs={crumbs}>
+  <TeamHeading slot="header">
+    Our <strong>Policies</strong>
+  </TeamHeading>
   <div class="bg-primary-alpha-3 text-primary text-center py-3">
     <strong>Note:</strong> Links to all policies are available on both our website and on Google Docs.
   </div>
