@@ -1,0 +1,27 @@
+---
+import ExternalLink from '../components/ExternalLink.astro';
+import Layout from '../layouts/Layout.astro';
+import ThemedSection from '../components/ThemedSection.astro';
+---
+
+<Layout title="Accessibility Statement">
+ <ThemedSection style="secondary">
+  <h2>Accessibility And Accommodations</h2>
+  <p>At Accessible Community, we believe that our commitment to creating accessible communities starts with us so we strive to provide accessible content and services.</p>
+  <p>We test our websites and services against
+   <ExternalLink
+    href="https://www.w3.org/TR/WCAG22/"
+    target="blank"
+    >WCAG 2.2 A, AA, and AAA criteria</ExternalLink>
+   and
+   <ExternalLink
+    href="https://www.w3.org/TR/coga-usable/"
+    target="_blank"
+    inline={true}
+   >Making Content Usable for People with Cognitive and Learning Disabilities</ExternalLink>
+   .
+  </p>
+  <p>If you find accessibility issues or have trouble using any of our sites or services, please let us know at <a href="mailto:website@accessiblecommunity.org">website@accessiblecommunity.org</a></p>
+  <p>If you would like to request accommodations or alternate versions of content, please email <a href="mailto:info@accessiblecommunity.org">info@accessiblecommunity.org</a></p>
+ </ThemedSection>
+</Layout>
