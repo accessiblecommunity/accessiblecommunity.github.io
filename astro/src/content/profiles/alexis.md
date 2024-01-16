@@ -1,6 +1,6 @@
 ---
 name: Alexis
-title: Evaluation Team
+title: Development Team, Evaluation Team
 tags:
     - ta11y
 picture: ../../images/profiles/Alexis.png
