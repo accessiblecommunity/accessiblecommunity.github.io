@@ -3,19 +3,19 @@
 import { Icon } from 'astro-icon';
 import { getEntry } from 'astro:content';
 
-const { q, 'class': extraClasses } = Astro.props;
+const { q, text = 'primary', 'class': extraClasses } = Astro.props;
 const quote = await getEntry('quotes', q);
 const { Content = 'p' } = await quote?.render();
 
 ---
 
 <figure class={extraClasses}>
-  <blockquote class="blockquote text-primary">
+  <blockquote class={`blockquote text-${text}`}>
     <sup aria-hidden="true"><Icon name="quote-left" />&nbsp;</sup>
     <Content />
     <sup aria-hidden="true">&nbsp;<Icon name="quote-right" /></sup>
   </blockquote>
-  <figcaption class="blockquote-footer text-primary text-end">{quote?.data.quotee}</figcaption>
+  <figcaption class={`blockquote-footer text-${text} text-end`}>{quote?.data.quotee}</figcaption>
 </figure>
 
 <style>
