@@ -25,10 +25,19 @@ const { title, crumbs, heading } = Astro.props;
   <meta name="description" content="Accessible Community is a 501(c)3 nonprofit that provides tools, resources and online communities to bring together accessibility experts, volunteers, businesses, organizational and community leaders, and individuals with disabilities to create a more inclusive world." />
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="generator" content={Astro.generator} />
+  {/* Opengraph Protocol support - https://ogp.me/ */}
+  <meta property="og:url" content={Astro.url} />
+  <meta property="og:image" content={`${Astro.site}images/ac_logo_blue.png`} />
+  <meta property="og:image:alt" content="Accessible Community logo" />
+  <slot name="metadata">
+    <meta property="og:type" content="website" />
+    <meta property="og:description" content="Accessible Community is a 501(c)3 nonprofit that provides tools, resources and online communities to bring together accessibility experts, volunteers, businesses, organizational and community leaders, and individuals with disabilities to create a more inclusive world." />
+    <meta property="og:title" content={`${title} - Accessible Community`} />
+    <meta property="twitter:title" content={`${title} - Accessible Community`} />
+  </slot>
   <link rel="icon" type="image/png" href="/images/favicon.png" />
   <title>{title} - Accessible Community</title>
 </head>
-
 
 <body>
   <Header title={title} crumbs={crumbs} />
