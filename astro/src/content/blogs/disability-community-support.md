@@ -1,8 +1,8 @@
 ---
-title: 'Why members of the disability community must support each other'
+title: Why the disability community must support each other
 published: 2023-06-05
 tags:
-  - announcements
+  - opinions
 author: rachael-bradley-montgomery
 
 ---
@@ -19,7 +19,7 @@ Finally, I want to acknowledge that this is not easy. Real accessibility takes e
 
 So what can you do about this?
 
-  - Commit to broad accessibility. Learn about the diversity within the disability community. Follow disability advocates and educators on social media. Respectfully ask questions when you don’t know.
-  - If you lead an organization, one resource is Accessible Community’s tip of the week. This gives you one recommended action you can complete in a week to improve accessibility.
-  - Stand up for your needs and those of others. I prefer to do so with an education-based approach and with compassion but find what works for you.
+- Commit to broad accessibility. Learn about the diversity within the disability community. Follow disability advocates and educators on social media. Respectfully ask questions when you don’t know.
+- If you lead an organization, one resource is Accessible Community’s tip of the week. This gives you one recommended action you can complete in a week to improve accessibility.
+- Stand up for your needs and those of others. I prefer to do so with an education-based approach and with compassion but find what works for you.
 

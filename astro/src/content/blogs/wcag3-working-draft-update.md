@@ -2,7 +2,7 @@
 title: 'Understanding the WCAG 3 Working Draft Update'
 published: 2023-07-24
 tags:
-  - announcements
+  - standards
 author: rachael-bradley-montgomery
 
 ---
