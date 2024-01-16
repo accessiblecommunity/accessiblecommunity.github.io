@@ -27,7 +27,6 @@ const { title, crumbs, heading } = Astro.props;
   <meta name="generator" content={Astro.generator} />
   {/* Opengraph Protocol support - https://ogp.me/ */}
   <meta property="og:url" content={Astro.url} />
-  <meta property="og:title" content={`Accessible Community - ${title}`} />
   <meta property="og:description" content="Accessible Community is a 501(c)3 nonprofit that provides tools and resources to create a more inclusive world for people with disabilities" />
   <meta property="og:image" content={`${Astro.site}images/website.jpg`} />
   <meta property="og:image:width" content="2400" />
@@ -35,7 +34,6 @@ const { title, crumbs, heading } = Astro.props;
   <meta property="og:image:alt" content="Accessible Community logo" />
   {/* Twitter's OGP metadata */}
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content={`Accessible Community - ${title}`} />
   <meta name="twitter:description" content="Accessible Community is a 501(c)3 nonprofit that provides tools and resources to create a more inclusive world for people with disabilities.">
   <meta property="twitter:domain" content={Astro.url.host}>
   <meta property="twitter:url" content={Astro.url}>
@@ -43,6 +41,8 @@ const { title, crumbs, heading } = Astro.props;
   <meta name="twitter:image:alt" content="Accessible Community logo" />
   <slot name="metadata">
     <meta property="og:type" content="website" />
+    <meta property="og:title" content={`Accessible Community - ${title}`} />
+    <meta name="twitter:title" content={`Accessible Community - ${title}`} />
   </slot>
   <link rel="icon" type="image/png" href="/images/favicon.png" />
   <title>{title} - Accessible Community</title>
