@@ -45,8 +45,6 @@ import ThemedSection from "../components/ThemedSection.astro";
 <Layout crumbs={crumbs} title={title || blog.data.title}>
   <Fragment slot="metadata">
     <meta property="og:type" content="article" />
-    <meta property="og:title" content={blog.data.title} />
-    <meta name="twitter:title" content={blog.data.title} />
     <meta property="article:published_time" content={blog.data.published.toISOString()} />
     <meta property="article:author" content={blogAuthor.data.name} />
     <meta property="article:section" content="Accessibility" />
