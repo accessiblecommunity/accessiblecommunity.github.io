@@ -60,7 +60,7 @@ const crumbs = [{
     </p>
     <div class="d-grid gap-4 d-sm-flex justify-content-sm-center">
       { heroButtons.map(({icon, href, name, className}) =>
-        <a class="btn btn-primary border-light d-flex justify-content-center align-items-center px-4 gap-1 hero-button" href={ href } target="_blank">
+        <a class="btn btn-primary border-light d-flex justify-content-center align-items-center px-4 gap-1 hero-button" href={ href } target="_blank" rel="noopener noreferrer">
           <span class={ className }>Donate with</span>
           <Icon class="bi" name={ icon } role="img" aria-label={ name }/>
         </a>
@@ -127,7 +127,7 @@ const crumbs = [{
       <div class="col-lg-3 col-xl-2">
         <div class="d-grid d-sm-flex flex-lg-column justify-content-sm-center gap-3 pb-3">
           { donationLinks.map(({icon, href, title, theme}) =>
-            <a class:list={[`btn btn-sm btn-primary rounded-2 shadow-sm`]} href={ href } target="_blank">
+            <a class:list={[`btn btn-sm btn-primary rounded-2 shadow-sm`]} href={ href } target="_blank" rel="noopener noreferrer">
               <Icon class="bi mx-auto" name={ icon } aria-hidden="true"/>
               { title }
             </a>
