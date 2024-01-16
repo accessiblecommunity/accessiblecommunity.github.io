@@ -1,0 +1,25 @@
+---
+title: Why the disability community must support each other
+published: 2023-06-05
+tags:
+  - opinions
+author: rachael-bradley-montgomery
+
+---
+
+I am arranging sign language interpreters for mutua11y’s upcoming workshops. I am surprised by how many of the interpreting companies’ websites (100% so far) are inaccessible. Some even use overlays. I am often also surprised by videos on accessibility that are not captioned or interpreted so the situation is a two way street.
+
+It has been my experience, both as an individual with a disability and an accessibility professional, that the disability community lives in silos.
+
+As an overarching community of people with disabilities, caretakers, allies, and advocates we need to do better in supporting each other. We need to put in the work to make our products, websites, content, etc. accessible. It is not enough to say, I need this accommodation. We must say, “I need this accommodation and recognize that you need a different accommodation.” We need to work together to demonstrate disability inclusion. Anything less undermines the overall message of inclusion and accessibility.
+
+It is also not helpful to assume that someone with one disability knows how to support someone else’s needs. Attacking each other when we don’t get it right also undermines our message and goal. I believe inaccessibility must be approached first as opportunities for education, inside and outside the disability community.
+
+Finally, I want to acknowledge that this is not easy. Real accessibility takes effort and engagement. It takes working together and thinking ahead. It also takes changing attitudes and shifting the focus from the work needed to the benefits gained.
+
+So what can you do about this?
+
+- Commit to broad accessibility. Learn about the diversity within the disability community. Follow disability advocates and educators on social media. Respectfully ask questions when you don’t know.
+- If you lead an organization, one resource is Accessible Community’s tip of the week. This gives you one recommended action you can complete in a week to improve accessibility.
+- Stand up for your needs and those of others. I prefer to do so with an education-based approach and with compassion but find what works for you.
+

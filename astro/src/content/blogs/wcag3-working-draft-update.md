@@ -1,0 +1,26 @@
+---
+title: 'Understanding the WCAG 3 Working Draft Update'
+published: 2023-07-24
+tags:
+  - standards
+author: rachael-bradley-montgomery
+
+---
+The WCAG 3 Working Draft has been updated. WCAG 3 doesn’t replace WCAG 2. WCAG 2 is used around the world and will still be required by different countries for a long time to come. 
+
+When we published the first public working draft, we received over 300 comments.  Public feedback is an important part of the W3C process and the Accessibility Guidelines Working Group (AG) took the comments we received seriously. We aggregated and organized the feedback and revised our approach to WCAG 3. 
+
+Below is an overview of what you will find in this draft: 
+
+- All content is labeled with content maturity levels: Placeholder, Exploratory, Developing, Refining, and Mature. There has been confusion in the past about how mature content is and when to adopt it. These maturity levels inform readers about how complete and ready to use each piece of content is.
+- You will find a placeholder list of guidelines. We have temporarily removed all of the draft guidelines that were in earlier drafts of WCAG 3. These guidelines were initial examples.  Over the next 6-9 months we will be writing an exploratory draft of outcomes for each guideline. Part of this process will be updating previous draft content, such as the APCA approach for color contrast, and adding that guidance back in within the context of the full set of guidelines.
+- This draft presents pieces of a conformance model which have shown promise during conversation and testing. These include conformance levels, percentages, pre-assessment checks, issue severity, and user generated content. This working draft does not contain a complete conformance model. We’ve reviewed numerous options but want to evaluate each for testability, repeatability, etc. before publishing the most promising model.
+- The AG is applying a more granular way of thinking about guidance based on how repeatable test results are by the same tester and across testers. Clearly identifying when tests contain a subjective component will help when explaining and applying WCAG 3.
+- We have added an approach that allows for guidance that only applies in certain conditions, such as situations where a specific language is used.
+- We have also added “Assertions”. Assertions are statements about whether a process was completed. Examples of such processes include usability testing, plain language evaluations, and assistive technology testing. Testing an assertion only includes evaluating whether an organization made an assertion, and if the required documentation is complete. Testing an assertion does not test the results of the process. The hope is that Assertions will allow WCAG to promote certain processes that improve accessibility without requiring repeatable results.
+
+You can read more about this update at the [WCAG 3 Introduction](https://www.w3.org/WAI/standards-guidelines/wcag/wcag3-intro/).
+
+We are not requesting wide review, that is, we are not looking for general public feedback on this draft, but you are always welcome to comment through [GitHub](https://github.com/w3c/wcag3/issues/new). If you are not able to use GitHub, email public-agwg-comments@w3.org. Please create 1 GitHub issue or send 1 email per topic.
+
+I will be posting additional details about WCAG 3 and the next steps for the Accessibility Guidelines Working Group over the next week or two.
