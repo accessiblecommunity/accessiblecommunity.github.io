@@ -7,7 +7,7 @@ author: rachael-bradley-montgomery
 
 ---
 
-I am arranging sign language interpreters for mutua11y’s upcoming workshops. I am surprised by how many of of the interpreting companies’ websites (100% so far) are inaccessible. Some even use overlays. I am often also surprised by videos on accessibility that are not captioned or interpreted so the situation is a two way street.
+I am arranging sign language interpreters for mutua11y’s upcoming workshops. I am surprised by how many of the interpreting companies’ websites (100% so far) are inaccessible. Some even use overlays. I am often also surprised by videos on accessibility that are not captioned or interpreted so the situation is a two way street.
 
 It has been my experience, both as an individual with a disability and an accessibility professional, that the disability community lives in silos.
 
