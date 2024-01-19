@@ -4,7 +4,7 @@ title: ta11y Project Manager
 tags:
     - leadership
     - ta11y
-picture: ../../images/profiles/Ellen_profile.png
+picture: ../../images/staff/Ellen_profile.png
 links:
     email: ellen@accessiblecommunity.org
 ---

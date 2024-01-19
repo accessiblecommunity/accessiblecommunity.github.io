@@ -1,0 +1,32 @@
+---
+import SocialLinks from './SocialLinks.astro';
+import StaffVignette from './StaffVignette.astro';
+
+const { member } = Astro.props;
+const { name, links } = member.data;
+const { Content } = await member.render();
+
+---
+
+<div class="staff-bio p-2">
+  <StaffVignette
+    member={member}
+    highlightName={true}
+    element="h2"
+    size="lg"
+    valign="end"
+  >
+    <SocialLinks links={links} adjective={`${name}'s`} />
+  </StaffVignette>
+</div>
+<Content />
+
+<style is:global>
+  .staff-bio .vignette-name {
+    color: var(--bs-primary-text-emphasis);
+    margin-bottom: 0.2rem;
+  }
+  .staff-bio .vignette-title {
+    font-size: 1.5rem;
+  }
+</style>

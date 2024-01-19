@@ -1,0 +1,97 @@
+---
+import type { string } from 'astro/zod';
+import { getEntry } from 'astro:content';
+
+interface Props {
+  member: string | object;
+  element?: string;
+  left?: boolean;
+  highlightName?: boolean;
+  firstNameOnly?: boolean;
+  branded?: boolean;
+  size?: string;
+  valign?: string;
+}
+
+const {
+  member,
+  highlightName = false,
+  firstNameOnly = false,
+  left = true,
+  branded = false,
+  valign = "start",
+  element = "div",
+  size = "",
+} = Astro.props;
+
+const memberObj = (typeof member == 'string') ? await getEntry('staff', member) : member;
+const { name, title, picture } = memberObj.data;
+
+function getDisplayName(name: string) {
+  const nameArray = name.split(' ');
+  if (highlightName)
+    nameArray[0] = `<strong>${nameArray[0]}</strong>`;
+  if (firstNameOnly)
+    return nameArray[0];
+
+    return nameArray.join(' ');
+}
+const displayName = getDisplayName(name);
+const NameTag = element;
+---
+
+<div class:list={[
+  'vignette',
+  size && `vignette-${size}`,
+  'd-inline-flex',
+  left ? 'flex-row-reverse' : 'justify-content-end',
+  `align-items-${valign}`,
+  `gap-${size == 'lg' ? '2' : '1'}`,
+]}>
+  <div class:list={["flex-fill text-start", branded && 'text-brand']}>
+    <NameTag
+      class="vignette-name"
+      set:html={displayName}
+    />
+    <div
+      class="vignette-title"
+      set:html={title}
+    />
+    <slot />
+  </div>
+  <img
+    class="staff-pic"
+    src={ picture.src }
+    alt={`Drawn representation of ${name}`}
+  />
+</div>
+
+<style is:global>
+  .vignette-name {
+    color: var(--bs-secondary-text-emphasis);
+    margin-bottom: 0;
+  }
+  .vignette-title {
+    color: var(--bs-secondary-color);
+    font-size: 85%;
+    margin-bottom: 0.25rem;
+  }
+  .blockquote-footer .vignette-title {
+    font-size: 80%;
+  }
+  .blockquote-footer .vignette-name,
+  .blockquote-footer .vignette-title {
+    color: inherit;
+  }
+  .blockquote-footer .vignette-title,
+  .vignette-lg .vignette-title {
+    line-height: 90%;
+    margin-bottom: 0.1em;
+  }
+  .vignette .staff-pic {
+    height:  3.5rem;
+  }
+  .vignette-lg .staff-pic {
+    height:  5rem;
+  }
+</style>

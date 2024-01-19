@@ -4,7 +4,7 @@ title: Mentoring Program Manager, mutua11y
 tags:
     - leadership
     - mutua11y
-picture: ../../images/profiles/gladys.png
+picture: ../../images/staff/gladys.png
 links:
     email: mentoring@accessiblecommunity.org
 ---

@@ -2,19 +2,18 @@
 import { getCollection } from 'astro:content';
 
 import Layout from '../../layouts/Layout.astro';
-import Profile from '../../components/Profile.astro';
+import StaffVignette from '../../components/StaffVignette.astro';
 import TeamHeading from '../../components/TeamHeading.astro';
 import ThemedSection from '../../components/ThemedSection.astro';
 
 import { isEmpty, intersection, sortBy } from 'lodash-es';
 
-const allProfiles = await getCollection('profiles');
+const staffProfiles = await getCollection('staff');
 const mini = true;
 const title = 'Staff';
-const heading = title;
 
-const profiles = sortBy(
-  allProfiles.filter((p) => isEmpty(intersection(p.data.tags, ['board', 'leadership']))),
+const staff = sortBy(
+  staffProfiles.filter((p) => isEmpty(intersection(p.data.tags, ['board', 'leadership']))),
   (p) => p.data.name.split(' ').slice(1).join(' ')
 );
 
@@ -29,19 +28,32 @@ const crumbs = [{
   <TeamHeading slot="header">
     Our <strong>Staff</strong>
   </TeamHeading>
-  <ThemedSection theme="secondary" style="subtle" fluid={mini}>
-    <ul class={mini ? 'mini list-inline text-center' : 'list-group'}>
-      { profiles.map((p) =>
-        <li class="list-inline-item text-start">
-          <Profile profile={p} mini={mini} />
+  <ThemedSection theme="secondary" style="subtle" fluid={true}>
+    <ul class="list-inline text-center">
+      { staff.map((stf) =>
+        <li class="list-inline-item staff-list m-2">
+          <div class="text-start bg-body shadow-sm rounded-1 p-2 pt-3 fs-4 w-100">
+            <StaffVignette
+              member={stf}
+              firstNameOnly={true}
+              highlightName={true}
+              branded={true}
+              valign="center"
+              size="lg"
+            />
+          </div>
         </li>
       )}
     </ul>
   </ThemedSection>
 </Layout>
 
-<style>
-.mini .list-inline-item {
+<style is:global>
+.staff-list {
   width: 18rem;
+}
+.staff-list .vignette-name {
+  color: var(--bs-primary-text-emphasis);
+  margin-bottom: -0.1em;
 }
 </style>
