@@ -27,11 +27,11 @@ const crumbs = [{
   </TeamHeading>
   <ThemedSection theme="secondary" style="subtle" fluid={true}>
     <ul class="list-inline text-center">
-      { staff.map((stf) =>
-        <li class="list-inline-item staff-list m-2">
+      { staff.map((member) =>
+        <li class="list-inline-item staff-list-item m-2">
           <div class="text-start bg-body shadow-sm rounded-1 p-2 pt-3 fs-4 w-100">
             <TeamVignette
-              member={stf}
+              member={member}
               firstNameOnly={true}
               highlightName={true}
               branded={true}
@@ -46,11 +46,14 @@ const crumbs = [{
 </Layout>
 
 <style is:global>
-.staff-list {
+.staff-list-item {
   width: 18rem;
 }
-.staff-list .vignette-name {
+.staff-list-item .vignette-name {
   color: var(--bs-primary-text-emphasis);
   margin-bottom: -0.1em;
+}
+.staff-list-item .vignette-title {
+  line-height: 1.1em;
 }
 </style>

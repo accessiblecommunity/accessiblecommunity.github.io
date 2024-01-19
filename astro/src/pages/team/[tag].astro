@@ -2,19 +2,19 @@
 import { getCollection } from 'astro:content';
 
 export async function getStaticPaths() {
-  const staff = await getCollection('team');
+  const team = await getCollection('team');
 
   return [
     { params: { tag: 'board' }, props:
       {
-        staff,
+        team,
         title: 'Board Members',
         heading: 'Board <strong>Members</strong>',
       }
     },
     { params: { tag: 'leadership' }, props:
       {
-        staff,
+        team,
         title: 'Leadership Team',
         heading: 'Leadership <strong>Team</strong>',
       }
@@ -30,10 +30,10 @@ import ThemedSection from '../../components/ThemedSection.astro';
 import { sortBy } from 'lodash-es';
 
 const { tag } = Astro.params;
-const { staff, title, heading } = Astro.props;
+const { team, title, heading } = Astro.props;
 
-const staffMembers = sortBy(
-  staff.filter((p) => p.data.tags?.includes(tag)),
+const teamMembers = sortBy(
+  team.filter(({data}) => data.tags?.includes(tag)),
   ({data}) => data.name.split(' ').slice(1).join(' ')
 );
 
@@ -48,7 +48,7 @@ const crumbs = [{
   <TeamHeading slot="header" set:html={heading} />
   <ThemedSection style="tertiary">
     <ul class="list-group">
-      { staffMembers.map(sm =>
+      { teamMembers.map(sm =>
         <li class="d-block mb-5"><TeamMemberBio member={sm} /></li>
       )}
     </ul>

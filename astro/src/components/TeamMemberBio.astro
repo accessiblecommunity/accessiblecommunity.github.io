@@ -8,7 +8,7 @@ const { Content } = await member.render();
 
 ---
 
-<div class="staff-bio p-2">
+<div class="team-bio p-2">
   <TeamVignette
     member={member}
     highlightName={true}
@@ -23,11 +23,11 @@ const { Content } = await member.render();
 <Content />
 
 <style is:global>
-  .staff-bio .vignette-name {
+  .team-bio .vignette-name {
     color: var(--bs-primary-text-emphasis);
     margin-bottom: 0.2rem;
   }
-  .staff-bio .vignette-title {
+  .team-bio .vignette-title {
     font-size: 1.5rem;
   }
 </style>
