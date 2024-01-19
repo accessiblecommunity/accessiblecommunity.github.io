@@ -1,4 +1,6 @@
 ---
+import {isEmpty} from 'lodash-es';
+
 import SocialLinks from './SocialLinks.astro';
 import TeamVignette from './TeamVignette.astro';
 
@@ -8,17 +10,20 @@ const { Content } = await member.render();
 
 ---
 
-<div class="team-bio p-2">
+<div class="team-bio py-2 d-flex justify-content-between align-items-end">
   <TeamVignette
     member={member}
     highlightName={true}
     branded={true}
     element="h2"
-    size="lg"
     valign="end"
-  >
-    <SocialLinks links={links} adjective={`${name}'s`} />
-  </TeamVignette>
+    responsive={true}
+  />
+  { !isEmpty(links) && (
+    <div class="d-none d-md-block display-5">
+      <SocialLinks links={links} adjective={`${name}'s`} />
+    </div>
+  )}
 </div>
 <Content />
 

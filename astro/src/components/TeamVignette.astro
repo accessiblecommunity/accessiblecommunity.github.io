@@ -10,6 +10,7 @@ interface Props {
   branded?: boolean;
   size?: string;
   valign?: string;
+  responsive?: boolean;
 }
 
 const {
@@ -21,6 +22,7 @@ const {
   valign = "start",
   element = "div",
   size = "",
+  responsive = false,
 } = Astro.props;
 
 const memberObj = (typeof member == 'string') ? await getEntry('team', member) : member;
@@ -42,6 +44,7 @@ const NameTag = element;
 <div class:list={[
   'vignette',
   size && `vignette-${size}`,
+  responsive && 'vignette-resp',
   'd-inline-flex',
   left ? 'flex-row-reverse' : 'justify-content-end',
   `align-items-${valign}`,
@@ -56,16 +59,19 @@ const NameTag = element;
       class="vignette-title"
       set:html={title}
     />
-    <slot />
   </div>
   <img
-    class="vignette-pic"
+    class:list={["vignette-pic", responsive && "d-none d-sm-block"]}
     src={ picture.src }
     alt={`Drawn representation of ${name}`}
   />
 </div>
 
-<style is:global>
+<style is:global lang="scss">
+  @import "bootstrap/scss/functions";
+  @import "bootstrap/scss/variables";
+  @import "bootstrap/scss/mixins/breakpoints";
+
   .vignette-name {
     color: var(--bs-secondary-text-emphasis);
     margin-bottom: 0;
@@ -83,6 +89,7 @@ const NameTag = element;
     color: inherit;
   }
   .blockquote-footer .vignette-title,
+  .vignette-resp .vignette-title,
   .vignette-lg .vignette-title {
     line-height: 90%;
     margin-bottom: 0.1em;
@@ -92,5 +99,10 @@ const NameTag = element;
   }
   .vignette-lg .vignette-pic {
     height:  5rem;
+  }
+  @include media-breakpoint-up(md) {
+    .vignette-resp .vignette-pic {
+      height:  5rem;
+    }
   }
 </style>
