@@ -41,7 +41,7 @@ const published = blog.data.published.toLocaleDateString('en-us', {
 const { Content } = await blog.render();
 import BlogHeading from '../components/BlogHeading.astro';
 import Layout from "../layouts/Layout.astro";
-import StaffVignette from '../components/StaffVignette.astro';
+import TeamVignette from '../components/TeamVignette.astro';
 import ThemedSection from "../components/ThemedSection.astro";
 ---
 
@@ -78,7 +78,7 @@ import ThemedSection from "../components/ThemedSection.astro";
           <div>
             <div class="d-block d-md-none display-6">{blogAuthor.data.name}</div>
             <div class="d-none d-md-block display-6">
-              <StaffVignette member={blogAuthor} />
+              <TeamVignette member={blogAuthor} />
             </div>
           </div>
           <div class="text-brand text-secondary-emphasis me-3" set:text={published} />

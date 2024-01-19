@@ -3,7 +3,7 @@ name: Brian Montgomery
 title: Technical Director
 tags:
     - leadership
-picture: ../../images/staff/Brian2.png
+picture: ../../images/team/Brian2.png
 links:
     email: brian@accessiblecommunity.org
     linkedin: https://www.linkedin.com/in/brian-montgomery-139175172/

@@ -3,7 +3,7 @@ name: Kate Trask
 title: Board Member
 tags:
     - board
-picture: ../../images/staff/KateT.png
+picture: ../../images/team/KateT.png
 ---
 Kate has been working for over 30 years in local government. Her work has primarily been in the field of Parks and Recreation, which includes therapeutic recreation, facility management, recreation programming, event planning, parks maintenance, and executive management.
 

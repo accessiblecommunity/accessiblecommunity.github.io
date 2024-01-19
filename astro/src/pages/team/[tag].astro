@@ -2,7 +2,7 @@
 import { getCollection } from 'astro:content';
 
 export async function getStaticPaths() {
-  const staff = await getCollection('staff');
+  const staff = await getCollection('team');
 
   return [
     { params: { tag: 'board' }, props:
@@ -23,7 +23,7 @@ export async function getStaticPaths() {
 }
 
 import Layout from '../../layouts/Layout.astro';
-import StaffBio from '../../components/StaffBio.astro';
+import TeamMemberBio from '../../components/TeamMemberBio.astro';
 import TeamHeading from '../../components/TeamHeading.astro';
 import ThemedSection from '../../components/ThemedSection.astro';
 
@@ -49,7 +49,7 @@ const crumbs = [{
   <ThemedSection style="tertiary">
     <ul class="list-group">
       { staffMembers.map(sm =>
-        <li class="d-block mb-5"><StaffBio member={sm} /></li>
+        <li class="d-block mb-5"><TeamMemberBio member={sm} /></li>
       )}
     </ul>
   </ThemedSection>

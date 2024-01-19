@@ -1,5 +1,4 @@
 ---
-import type { string } from 'astro/zod';
 import { getEntry } from 'astro:content';
 
 interface Props {
@@ -24,7 +23,7 @@ const {
   size = "",
 } = Astro.props;
 
-const memberObj = (typeof member == 'string') ? await getEntry('staff', member) : member;
+const memberObj = (typeof member == 'string') ? await getEntry('team', member) : member;
 const { name, title, picture } = memberObj.data;
 
 function getDisplayName(name: string) {

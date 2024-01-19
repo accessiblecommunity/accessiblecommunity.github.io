@@ -8,12 +8,12 @@ const blogs = defineCollection({
     tags: z.array(z.string()),
     published: z.date(),
     image: z.string().optional(),
-    author: reference("staff"),
+    author: reference("team"),
   }),
 });
 
 
-const staff = defineCollection({
+const team = defineCollection({
   type: 'content',
   schema: ({ image }) => z.object({
     name: z.string(),
@@ -41,6 +41,6 @@ const quotes = defineCollection({
 
 export const collections = {
   blogs,
-  staff,
+  team,
   quotes,
 };

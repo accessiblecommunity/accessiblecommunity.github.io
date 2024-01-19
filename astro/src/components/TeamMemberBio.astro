@@ -1,6 +1,6 @@
 ---
 import SocialLinks from './SocialLinks.astro';
-import StaffVignette from './StaffVignette.astro';
+import TeamVignette from './TeamVignette.astro';
 
 const { member } = Astro.props;
 const { name, links } = member.data;
@@ -9,15 +9,16 @@ const { Content } = await member.render();
 ---
 
 <div class="staff-bio p-2">
-  <StaffVignette
+  <TeamVignette
     member={member}
     highlightName={true}
+    branded={true}
     element="h2"
     size="lg"
     valign="end"
   >
     <SocialLinks links={links} adjective={`${name}'s`} />
-  </StaffVignette>
+  </TeamVignette>
 </div>
 <Content />
 

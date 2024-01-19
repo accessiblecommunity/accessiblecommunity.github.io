@@ -2,18 +2,15 @@
 import { getCollection } from 'astro:content';
 
 import Layout from '../../layouts/Layout.astro';
-import StaffVignette from '../../components/StaffVignette.astro';
+import TeamVignette from '../../components/TeamVignette.astro';
 import TeamHeading from '../../components/TeamHeading.astro';
 import ThemedSection from '../../components/ThemedSection.astro';
 
 import { isEmpty, intersection, sortBy } from 'lodash-es';
 
-const staffProfiles = await getCollection('staff');
-const mini = true;
-const title = 'Staff';
-
+const teamProfiles = await getCollection('team');
 const staff = sortBy(
-  staffProfiles.filter((p) => isEmpty(intersection(p.data.tags, ['board', 'leadership']))),
+  teamProfiles.filter((p) => isEmpty(intersection(p.data.tags, ['board', 'leadership']))),
   (p) => p.data.name.split(' ').slice(1).join(' ')
 );
 
@@ -24,7 +21,7 @@ const crumbs = [{
 }];
 ---
 
-<Layout title={title} crumbs={crumbs}>
+<Layout title="Staff" crumbs={crumbs}>
   <TeamHeading slot="header">
     Our <strong>Staff</strong>
   </TeamHeading>
@@ -33,7 +30,7 @@ const crumbs = [{
       { staff.map((stf) =>
         <li class="list-inline-item staff-list m-2">
           <div class="text-start bg-body shadow-sm rounded-1 p-2 pt-3 fs-4 w-100">
-            <StaffVignette
+            <TeamVignette
               member={stf}
               firstNameOnly={true}
               highlightName={true}
