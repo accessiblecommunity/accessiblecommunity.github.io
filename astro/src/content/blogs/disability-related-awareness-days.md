@@ -1,0 +1,21 @@
+---
+title: 'Disability Related Awareness Calendar'
+published: 2023-06-05
+tags:
+  - announcements
+author: rachael-bradley-montgomery
+
+---
+
+We have posted the list of 2024 [disabilty-related awareness dates](https://www.ta11y.org/learning/topic?key=plan.z_holidays) on ta11y.org.  Our goal is to provide a list of the calendar dates and links to content you can use to help raise awareness within your organization and community.
+
+Not sure how to get started?
+- Read through the list and pick a few disability related events you or your organization would like to highlight
+- Read through the linked content and search for additional information. Not all events have updated information yet this year but often a search will lead to content that you use from previous years.
+- Plan a few actions to raise awareness. Some ideas
+  - Post on social media on that day and link to the content
+  - Share information with coworkers or customers  
+  - Offer a discount for anyone who mentioned the event
+
+If you have suggestions for additions or revisions to the list, please let us know at info@accessiblecommunity.org
+
