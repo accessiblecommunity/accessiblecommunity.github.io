@@ -24,18 +24,18 @@ const crumbs = [{
         </div>
         <div>
           <span class="fw-bold">Together we can do so much.&nbsp;<sup aria-hidden="true"><Icon name="quote-right" height="0.5em" /></sup>
-        </div>          
+        </div>
       </blockquote>
       <div class="blockquote-footer text-end text-white me-5 display-6">
-        <span class="display-7">Hellen Keller</span>
+        <span class="display-7">Helen Keller</span>
       </div>
     </div>
-    <p class="lead bg-primary-alpha-3 rounded-1">
+    <p class="lead text-bg-hero">
       <span class="text-brand">Accessible <strong>Community</strong></span> is a volunteer-led
       and staffed 501(c)3 organization. We welcome any contributions to help make our communities
       more accessible and disability-inclusive.
     </p>
-    <div slot="action" class="bg-primary bg-opacity-50 py-3 text-white d-flex flex-column gap-2 flex-lg-row align-items-center justify-content-lg-evenly">
+    <Fragment slot="action">
       <a href="/donate" class="icon-link link-light hero-link">
         <Icon name="bi:gift-fill" class="bi" alt="" aria-hidden="true"></Icon>
         Give a donation
@@ -54,7 +54,7 @@ const crumbs = [{
           Help us launch <span class="text-brand"><strong>loc</strong>a11y.<strong>org</strong></span>
         </span>
       </ExternalLink>
-    </div>
+    </Fragment>
   </Hero>
 
   <ThemedSection style="tertiary">
@@ -68,10 +68,3 @@ const crumbs = [{
     </div>
   </ThemedSection>
 </Layout>
-
-<style>
-  [astro-icon="loca11y-logo"] {
-    /* Until the SVG is squared up */
-    margin: 0 -0.3em;
-  }
-</style>

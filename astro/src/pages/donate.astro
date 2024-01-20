@@ -6,7 +6,7 @@ import Hero from '../components/Hero.astro';
 import ShadowBoxSection from '../components/ShadowBoxSection.astro';
 import ThemedSection from '../components/ThemedSection.astro';
 
-import heroBg from '../images/colored-hero/hands-together.png'
+import heroBg from '../images/colored-hero/donate.png'
 
 const directorEmail = 'mailto:director@accessiblecommunity.org'
 const paypalUrl = 'https://paypal.me/AccessibleCommunity';
@@ -53,13 +53,15 @@ const crumbs = [{
   <Hero image={ heroBg } slot="header">
     <div slot="heading" class="mb-4">
       <h1 class="visually-hidden">Donate</h1>
-      <span class="display-2 text-white"><strong>Building tools</strong> that build communities.</span>
+      <span class="display-2">
+        <strong>Building tools</strong> that build communities.
+      </span>
     </div>
-    <p class="lead mb-4">
+    <p class="lead text-bg-hero mb-4">
       <span class="text-brand">Accessible <strong>Community</strong></span> is a 501(c)3 organization.
       Your donation goes towards supporting our programs, accommodations and technology costs.
     </p>
-    <div class="d-grid gap-4 d-sm-flex justify-content-sm-center">
+    <div class="d-grid gap-4 mx-4 d-sm-flex justify-content-sm-center">
       { heroButtons.map(({icon, href, name, className}) =>
         <a class="btn btn-primary border-light d-flex justify-content-center align-items-center px-4 gap-1 hero-button" href={ href } target="_blank" rel="noopener noreferrer">
           <span class={ className }>Donate with</span>
@@ -72,10 +74,7 @@ const crumbs = [{
   <ThemedSection style="tertiary">
     <div class="row justify-content-center">
       <div class="col col-lg-10">
-        <h2 class="display-3 mb-3">
-          <Icon class="bi d-inline-block mb-1 me-1" name="ac-logo" style="height: 1em" role="img" aria-hidden="true"/>
-          <span class="">Support our <strong>mission</strong>.</span>
-        </h2>
+        <h2 class="display-3">Support our <strong>mission</strong>.</h2>
         <div class="lead">
           <p>
             Your support of <span class="text-primary text-brand">Accessible <strong>Community</strong></span> provides programs, accommodations and technology to...

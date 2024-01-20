@@ -1,10 +1,18 @@
 ---
-const { 
+interface Props {
+  image: string;
+  header?: string;
+  theme?: string;
+  textColor?: string;
+  columns: string;
+  actionBreakpoint: string;
+}
+
+const {
   image,
-  header = "Hero heading.",
   theme = "primary",
-  textColor = "white",
   columns = "col-lg-6",
+  actionBreakpoint = "lg"
 } = Astro.props;
 
 import { getImage } from "astro:assets";
@@ -20,19 +28,51 @@ if (image) {
 
 ---
 <section class={`bg-${theme}`} style={`background: no-repeat center ${heroBgUrl}`}>
-  <div class="container text-center hero px-2">
-    <slot name="heading">
-      <h1 class:list={["display-2 fw-bold", `text-${textColor}`]}>{ header }</h1>
-    </slot>
-    <div class:list={[columns, "mx-auto", `text-${textColor}`]}>
+  <div class="container hero">
+    <slot name="heading" />
+    <div class:list={[columns, "mx-auto text-white"]}>
       <slot />
     </div>
   </div>
-  <slot name="action" />
+  { Astro.slots.has('action') && (
+    <div class="bg-primary py-3 text-white" style="--bs-bg-opacity: 0.4">
+      <div class={`d-flex flex-column flex-${actionBreakpoint}-row align-items-center justify-content-${actionBreakpoint}-evenly gap-2`}>
+        <slot name="action" />
+      </div>
+    </div>
+  )}
+  { Astro.slots.has('prologue') && (
+    <div class="bg-primary-alpha-3 py-2">
+      <div class="container-fluid mx-auto text-white text-center">
+        <slot name="prologue" />
+      </div>
+    </div>
+  )}
 </section>
 
-<style>
+<style is:global>
   .hero {
-    padding: 4rem 0;
+    padding: 4.5rem 0 3rem;
+    text-align: center;
+  }
+
+  .hero h1,
+  .hero h2,
+  .hero h3,
+  .hero h4,
+  .hero .display-1,
+  .hero .display-2,
+  .hero .display-3,
+  .hero .display-4,
+  .hero .display-5,
+  .hero .display-6 {
+    color: white;
+  }
+
+  .hero .text-bg-hero {
+    background-color: rgba(var(--bs-primary-rgb), var(--bs-bg-opacity));
+    border-radius: var(--bs-border-radius-sm);
+    --bs-bg-opacity: 0.25;
+    padding: 0.25rem 0.5rem; /* py-1 px-2 */
   }
 </style>
