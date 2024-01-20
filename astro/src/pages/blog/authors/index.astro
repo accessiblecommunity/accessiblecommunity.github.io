@@ -9,14 +9,14 @@ const crumbs = [{
     name: 'Blog', href: "/blog"
   }]
 
-import BlogHeading from '../../../components/BlogHeading.astro';
+import ImageHeading from '../../../components/ImageHeading.astro';
 import Layout from "../../../layouts/Layout.astro";
 import ThemedSection from "../../../components/ThemedSection.astro";
 ---
 <Layout crumbs={crumbs} title={title}>
-  <BlogHeading slot="header">
+  <ImageHeading image="blog" slot="header">
     <strong>Blogs</strong> by author
-  </BlogHeading>
+  </ImageHeading>
   <ThemedSection style="tertiary" py={0}>
     <h2 class="text-info-emphasis display-5" set:text={title} />
     <ul>

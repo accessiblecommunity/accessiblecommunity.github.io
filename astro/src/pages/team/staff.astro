@@ -3,7 +3,7 @@ import { getCollection } from 'astro:content';
 
 import Layout from '../../layouts/Layout.astro';
 import Profile from '../../components/Profile.astro';
-import TeamHeading from '../../components/TeamHeading.astro';
+import ImageHeading from '../../components/ImageHeading.astro';
 import ThemedSection from '../../components/ThemedSection.astro';
 
 import { isEmpty, intersection, sortBy } from 'lodash-es';
@@ -26,9 +26,9 @@ const crumbs = [{
 ---
 
 <Layout title={title} crumbs={crumbs}>
-  <TeamHeading slot="header">
+  <ImageHeading image="team" slot="header">
     Our <strong>Staff</strong>
-  </TeamHeading>
+  </ImageHeading>
   <ThemedSection theme="secondary" style="subtle" fluid={mini}>
     <ul class={mini ? 'mini list-inline text-center' : 'list-group'}>
       { profiles.map((p) =>

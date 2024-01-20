@@ -1,6 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import TeamHeading from '../../components/TeamHeading.astro';
+import ImageHeading from '../../components/ImageHeading.astro';
 import ThemedSection from '../../components/ThemedSection.astro';
 
 import { Image } from 'astro:assets';
@@ -21,9 +21,9 @@ const crumbs = [{
 ---
 
 <Layout crumbs={crumbs} title="Partners">
-  <TeamHeading slot="header">
+  <ImageHeading image="team" slot="header">
     <strong>Partners</strong>
-  </TeamHeading>
+  </ImageHeading>
  <ThemedSection style="secondary">
   <p class="lead mb-5 text-center">
     Thank you to the organizations that partner with us and support our work in various ways.

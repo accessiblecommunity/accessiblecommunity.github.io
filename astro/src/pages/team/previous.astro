@@ -1,6 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import TeamHeading from '../../components/TeamHeading.astro';
+import ImageHeading from '../../components/ImageHeading.astro';
 import ThemedSection from '../../components/ThemedSection.astro';
 
 const crumbs = [{
@@ -11,9 +11,9 @@ const crumbs = [{
 ---
 
 <Layout title="Previous Contributors" crumbs={crumbs}>
-  <TeamHeading slot="header">
+  <ImageHeading image="team" slot="header">
     Previous <strong>Contributors</strong>
-  </TeamHeading>
+  </ImageHeading>
   <ThemedSection style="secondary">
     <div class="col-xxl-9 pb-3">
       <p class="lead">We sincerely appreciate the time and energy that each person listed below has contributed to our mission.</p>
