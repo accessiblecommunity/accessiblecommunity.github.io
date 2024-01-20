@@ -1,6 +1,6 @@
 ---
 title: 'Disability Related Awareness Calendar'
-published: 2023-06-05
+published: 2024-01-20
 tags:
   - announcements
 author: rachael-bradley-montgomery
