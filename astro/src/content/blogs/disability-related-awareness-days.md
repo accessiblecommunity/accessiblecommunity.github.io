@@ -17,5 +17,5 @@ Not sure how to get started?
   - Share information with coworkers or customers  
   - Offer a discount for anyone who mentioned the event
 
-If you have suggestions for additions or revisions to the list, please let us know at info@accessiblecommunity.org
+If you have suggestions for additions or revisions to the list, please let us know at [info@accessiblecommunity.org](mailto:info@accessiblecommunity.org).
 
