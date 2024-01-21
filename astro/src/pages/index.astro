@@ -175,14 +175,24 @@ const daniela = await getEntry('profiles', 'daniela');
   <ThemedSection style="tertiary" id="journey">
     <h2 class="display-4 mb-4">Start your organization's <strong>disability-inclusion</strong> journey.</h2>
     <div class="d-flex flex-column flex-lg-row gap-4 justify-content-lg-evenly">
-      <TipRegistration />
-      <div class="col-lg-5">
-        <ul class="lead">
-          <li>10ish first steps to disability inclusion</li>
-          <li>Take a short quiz: How disability friendly are you?</li>
-          <li>Follow our social media content to learn more</li>
-        </ul>
-      </div>
+      <ThemedBox theme="primary" border={3} class="col-lg-5 rounded">
+        <p class="lead">
+          Would you like a <span class="text-brand fw-bold">free and simple</span> way to learn about accessibility?
+        </p>
+        <p>
+          Sign up for our weekly "Tip of the Week" email to receive quick accessibility tips that can improve your website, social media, events, and more.
+        </p>
+        <p>
+          Fill out the short registration form to sign up. We will not <a class="link-light" href="/privacy-policy">sell or share your data</a>.
+        </p>
+      </ThemedBox>
+      <TipRegistration>
+        <h3 class="display-6 text-info-emphasis mb-0"><strong>Tip of the Week</strong> Registration</h3>
+        <p class="small">
+          <span class="text-info-emphasis fw-bold">Note:</span> Required fields have an asterisk (<span class="asterisk">*</span>).
+        </p>
+      </TipRegistration>
+    </div>
   </Section>
 </Layout>
 

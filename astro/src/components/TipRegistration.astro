@@ -9,7 +9,7 @@ const { newsletters = false, announcements = false } = Astro.props;
 
 <div
   id="mc_embed_signup"
-  class="col-lg-5 p-4 border-primary tip-form validate"
+  class="col-lg-5 p-4 bg-body border-info tip-form validate"
 >
 <form
   action="https://accessiblecommunity.us14.list-manage.com/subscribe/post?u=c9f6664d008774e9c5d591533&amp;id=dbdbc147c8&amp;f_id=0082fde0f0"
@@ -80,8 +80,8 @@ const { newsletters = false, announcements = false } = Astro.props;
   }
   <div aria-hidden="true" style="position: absolute; left: -5000px;">
     <input type="hidden" name="tags" value="7203297">
-    {/* Mailchimp's security something or other. Why this is a text and not hidden?!? */}
-    <input type="text" name="b_c9f6664d008774e9c5d591533_dbdbc147c8" tabindex="-1" value="">
+    {/* Mailchimp's API or security token. Changed to a hidden */}
+    <input type="text" name="b_c9f6664d008774e9c5d591533_dbdbc147c8" aria-label="Security field, please ignore" tabindex="-1" value="">
   </div>
   <div class="row">
     <div class="col">

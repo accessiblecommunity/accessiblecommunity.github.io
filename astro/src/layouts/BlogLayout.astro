@@ -22,12 +22,14 @@ const {
   blog,
   catalog = await getBlogCatalog(),
   crumbs = defaultCrumbs,
-  title = undefined,
-  heading = undefined,
   sidebar = false
 } = Astro.props;
-const { blogs = [], authors = [], topics = [], dates = [] } = catalog;
+const {
+  title = blog.data.title,
+  heading = undefined,
+} = Astro.props;
 const isCustomHeading = !isNil(heading);
+const { blogs = [], authors = [], topics = [], dates = [] } = catalog;
 
 const blogAuthor = await getEntry(blog.data.author);
 const published = blog.data.published.toLocaleDateString('en-us', {
@@ -42,7 +44,18 @@ import Layout from "../layouts/Layout.astro";
 import ThemedSection from "../components/ThemedSection.astro";
 ---
 
-<Layout crumbs={crumbs} title={title || blog.data.title}>
+<Layout crumbs={crumbs} title={title}>
+  <Fragment slot="metadata">
+    <meta property="og:title" content={title} />
+    <meta name="twitter:title" content={title} />
+    <meta property="og:type" content="article" />
+    <meta property="article:published_time" content={blog.data.published.toISOString()} />
+    <meta property="article:author" content={blogAuthor.data.name} />
+    <meta property="article:section" content="Accessibility" />
+    { blog.data.tags.map(tag =>
+      <meta property="article:tag" content={tag} />
+    )}
+  </Fragment>
   <BlogHeading slot="header">
     <slot name="header">
       { isCustomHeading ?
@@ -73,7 +86,7 @@ import ThemedSection from "../components/ThemedSection.astro";
           </div>
           <div class="text-brand text-secondary-emphasis me-3" set:text={published} />
         </div>
-        <article>
+        <article class="py-4 mb-4">
           <Content />
         </article>      
       </div>

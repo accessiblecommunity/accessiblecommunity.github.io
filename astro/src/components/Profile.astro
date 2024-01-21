@@ -56,9 +56,8 @@ const socialLinks = toPairs(links).map(([type, url]) => {
     <ul class="list-inline">
       { socialLinks.map((sl) =>
         <li class="list-inline-item">
-          <a class:list={["icon-link align-text-top", `text-${sl.theme}`]} href={ sl.href } target="_blank">
-            <Icon class:list={['bi', { lg: !mini }]} aria-hidden="true" name={ sl.iconName } />
-            <span class="visually-hidden">{name}'s {`${sl.serviceName} ${sl.description}`}</span>
+          <a class:list={["icon-link align-text-top", `text-${sl.theme}`]} href={ sl.href } target="_blank" rel="noopener noreferrer">
+            <Icon name={ sl.iconName } class:list={['bi', { lg: !mini }]} role="img" aria-label={`link to ${name}'s ${sl.serviceName} ${sl.description}`} />
           </a>
         </li>
       )}

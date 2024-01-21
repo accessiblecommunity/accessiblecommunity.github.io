@@ -47,7 +47,7 @@ const Socials = [{
             <span class="fw-bold display-65">User Policies</span>
               <ul class="p-0 list-unstyled mb-2 me-2 me-md-4">
                 <li>
-                  <a class="link-light" href="">Accessibility&nbsp;Statement</a>
+                  <a class="link-light" href="/accessibility-statement">Accessibility&nbsp;Statement</a>
                 </li>
                 <li>
                   <a class="link-light" href="/privacy-policy">Privacy Policy</a>   
@@ -83,8 +83,8 @@ const Socials = [{
           <ul class="ps-0 mb-0">
           { Socials.map(({icon, href, className, name}) =>
             <li class="d-inline-block">
-              <a class="d-inline-block link-light" href={ href } target="_blank">
-                <Icon name={ icon } class={ className } class= "social-icon" height="29" width="29" alt={ name }></Icon> 
+              <a class="d-inline-block link-light" href={ href } target="_blank" rel="noopener noreferrer">
+                <Icon name={ icon } class={ className } class= "social-icon" height="29" width="29" role="img" aria-label={ name }></Icon> 
               </a>
             </li>
           )}

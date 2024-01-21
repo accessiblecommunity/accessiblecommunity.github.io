@@ -76,7 +76,9 @@ const breadCrumbs = isEmpty(crumbs) && title != 'Home' ? [{ name: 'Home', href: 
       { breadCrumbs.map(({name, href}) =>
         <li class="breadcrumb-item"><a href={href} class="text-primary">{name}</a></li>
       )}
-      <li class="breadcrumb-item active" aria-current="page">{ title }</li>
+      <li class="breadcrumb-item active" aria-current="page">
+        <span class="text-truncate" set:text={ title } />
+      </li>
     </ol>
   </nav>
 </header>
@@ -122,6 +124,11 @@ const breadCrumbs = isEmpty(crumbs) && title != 'Home' ? [{ name: 'Home', href: 
     color: var(--bs-primary);
     padding-inline: 3px;
     font-size: 1.1rem;
+  }
+
+  .breadcrumb-item > .text-truncate {
+    display: inline-block;
+    max-width: 10em;
   }
 
   @include color-mode(dark) {

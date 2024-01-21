@@ -1,6 +1,6 @@
 ---
 title: 'Welcome to our new website'
-published: 2023-06-05
+published: 2024-01-16
 tags:
   - announcements
 author: rachael-bradley-montgomery
@@ -9,10 +9,10 @@ author: rachael-bradley-montgomery
 
 Welcome to Accessible **Community**'s new, more accessible website. We were having trouble maintaining our accessibility on the content management system we've been using for the past few years so decided to rebuild. 
 
-Our new site uses mainly [Astro](https://astro.build) and [Bootstrap 5](https://getbootstrap.com/). We will be converting mu**tua11y** over to this framework in the next few months. 
+Our new site uses mainly [Astro](https://astro.build) and [Bootstrap 5](https://getbootstrap.com/). We will be converting **mutu**a11y over to this framework in the next few months. 
 
-My sincere thanks to Brian Montgomery and Alexis Rey for the many hours they have worked to get this ready.   
+My sincere thanks to Brian Montgomery and Alexis for the many hours they have worked to get this ready.   
 
-We are striving to be [WCAG 2.2 A, AA, and AAA](https://www.w3.org/TR/WCAG22/_) compliant and follow [Making Content Usable for People with Cognitive and Learning Disabilities](https://www.w3.org/TR/coga-usable/). We will be conducting more accessibility testing over the next few weeks.
+We are striving to be [WCAG 2.2 A, AA, and AAA](https://www.w3.org/TR/WCAG22/) compliant and follow [Making Content Usable for People with Cognitive and Learning Disabilities](https://www.w3.org/TR/coga-usable/). We will be conducting more accessibility testing over the next few weeks.
 
 If you find an accessibility issue, please let us know at website@accessiblecommunity.org. 
