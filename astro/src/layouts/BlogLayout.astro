@@ -41,6 +41,7 @@ const published = blog.data.published.toLocaleDateString('en-us', {
 const { Content } = await blog.render();
 import ImageHeading from '../components/ImageHeading.astro';
 import Layout from "../layouts/Layout.astro";
+import TeamVignette from '../components/TeamVignette.astro';
 import ThemedSection from "../components/ThemedSection.astro";
 ---
 
@@ -76,12 +77,8 @@ import ThemedSection from "../components/ThemedSection.astro";
         <div class="d-flex flex-column flex-md-row justify-content-between mb-4">
           <div>
             <div class="d-block d-md-none display-6">{blogAuthor.data.name}</div>
-            <div class="d-none d-md-flex align-end justify-content-start align-items-start gap-1 fs-4">
-              <img class="profile-pic" src={blogAuthor.data.picture.src} alt={`Drawn representation of ${blogAuthor.data.name}`} />
-              <div class="text-start text-secondary-emphasis">
-                <span>{blogAuthor.data.name}</span>
-                <div class="fs-6 text-brand" set:text={blogAuthor.data.title} />
-              </div>
+            <div class="d-none d-md-block display-6">
+              <TeamVignette member={blogAuthor} />
             </div>
           </div>
           <div class="text-brand text-secondary-emphasis me-3" set:text={published} />

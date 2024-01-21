@@ -2,12 +2,10 @@
 import ExternalLink from '../../components/ExternalLink.astro';
 import ImageHeading from '../../components/ImageHeading.astro';
 import Layout from '../../layouts/Layout.astro';
+import TeamVignette from '../../components/TeamVignette.astro';
 import ThemedBox from '../../components/ThemedBox.astro';
 import ThemedSection from '../../components/ThemedSection.astro';
 import { Icon } from 'astro-icon';
-
-import { getEntry } from 'astro:content';
-const rachael = await getEntry('profiles', 'rachael-bradley-montgomery');
 
 const crumbs = [{
   name: 'Home', href: '/',
@@ -94,18 +92,12 @@ const crumbs = [{
       a space online to make these recommendations or help organizations understand what they
       need to do to be accessible - so we are building one.
     </p>
-    <div class="align-end blockquote-footer text-primary-emphasis mt-4 fs-4 d-flex justify-content-end align-items-center gap-1">
-      <div class="text-start">
-        <span>{rachael.data.name}</span>
-        <div class="fs-6 text-brand" set:text={rachael.data.title} />
-      </div>
-      <img class="profile-pic" src={rachael.data.picture.src} alt={`Drawn representation of ${rachael.data.name}`} />
+    <div class="blockquote-footer text-primary-emphasis text-end fs-4 my-4">
+      <TeamVignette
+        member="rachael-bradley-montgomery"
+        left={false}
+        valign="center"
+      />
     </div>
   </ThemedSection>
 </Layout>
-
-<style>
-div.fs-6 {
-  line-height: 0.9em;
-}
-</style>

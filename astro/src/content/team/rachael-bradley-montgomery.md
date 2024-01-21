@@ -4,7 +4,7 @@ title: Founder & Executive Director
 tags:
     - board
     - leadership
-picture: ../../images/profiles/Rachael_profile.png
+picture: ../../images/team/Rachael_profile.png
 links:
     email: rachael@accessiblecommunity.org
     linkedin: https://www.linkedin.com/in/rachael-bradley-montgomery-ph-d-6847144/

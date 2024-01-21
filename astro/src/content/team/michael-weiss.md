@@ -3,7 +3,7 @@ name: Michael Weiss
 title: Director, User Experience
 tags:
     - leadership
-picture: ../../images/profiles/michael.png
+picture: ../../images/team/michael.png
 links:
     email: michael@accessiblecommunity.org
 ---

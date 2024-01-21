@@ -2,21 +2,19 @@
 import { getCollection } from 'astro:content';
 
 export async function getStaticPaths() {
-  const allProfiles = await getCollection('profiles');
+  const team = await getCollection('team');
 
   return [
     { params: { tag: 'board' }, props:
       {
-        allProfiles,
-        mini: false,
+        team,
         title: 'Board Members',
         heading: 'Board <strong>Members</strong>',
       }
     },
     { params: { tag: 'leadership' }, props:
       {
-        allProfiles,
-        mini: false,
+        team,
         title: 'Leadership Team',
         heading: 'Leadership <strong>Team</strong>',
       }
@@ -24,21 +22,20 @@ export async function getStaticPaths() {
   ];
 }
 
-import Layout from '../../layouts/Layout.astro';
-import Profile from '../../components/Profile.astro';
 import ImageHeading from '../../components/ImageHeading.astro';
+import Layout from '../../layouts/Layout.astro';
+import TeamMemberBio from '../../components/TeamMemberBio.astro';
+import TeamHeading from '../../components/TeamHeading.astro';
 import ThemedSection from '../../components/ThemedSection.astro';
 
 import { sortBy } from 'lodash-es';
 
 const { tag } = Astro.params;
-const { allProfiles, mini, title, heading } = Astro.props;
+const { team, title, heading } = Astro.props;
 
-const profiles = sortBy(
-  allProfiles.filter((p) => p.data.tags?.includes(tag)),
-  mini
-  ? (p) => p.data.name.split(' ')[0]
-  : (p) => p.data.name.split(' ').slice(1).join(' ')
+const teamMembers = sortBy(
+  team.filter(({data}) => data.tags?.includes(tag)),
+  ({data}) => data.name.split(' ').slice(1).join(' ')
 );
 
 const crumbs = [{
@@ -50,20 +47,11 @@ const crumbs = [{
 
 <Layout title={title} crumbs={crumbs}>
   <ImageHeading image="team" slot="header" set:html={heading} />
-  <ThemedSection style="tertiary" fluid={mini}>
-    <ul class={mini ? 'mini list-inline text-center' : 'list-group'}>
-      { profiles.map((p) =>
-        <li class={mini ? 'list-inline-item text-start' : 'd-block mb-5'}>
-          <Profile profile={p} mini={mini} />
-        </li>
+  <ThemedSection style="tertiary">
+    <ul class="list-group">
+      { teamMembers.map(sm =>
+        <li class="d-block mb-5"><TeamMemberBio member={sm} /></li>
       )}
     </ul>
   </ThemedSection>
 </Layout>
-
-<style>
-.mini .list-inline-item {
-  width: 18rem;
-}
-
-</style>
