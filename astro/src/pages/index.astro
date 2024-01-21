@@ -4,15 +4,12 @@ import { Icon } from 'astro-icon';
 import ExternalLink from '../components/ExternalLink.astro';
 import Hero from '../components/Hero.astro';
 import Layout from '../layouts/Layout.astro';
+import TeamVignette from '../components/TeamVignette.astro';
 import ThemedSection from '../components/ThemedSection.astro';
 import ThemedBox from '../components/ThemedBox.astro';
 import TipRegistration from '../components/TipRegistration.astro';
 
 import heroBg from "../images/colored-hero/wheelchair_hall.png"
-
-import { getEntry } from 'astro:content';
-const daniela = await getEntry('profiles', 'daniela');
-
 ---
 
 <Layout title="Home">
@@ -101,12 +98,13 @@ const daniela = await getEntry('profiles', 'daniela');
         <blockquote class="blockquote text-light">
           <p>I am proud to be part of this community that drives the change toward a more accessible digital world for all people.</p>
         </blockquote>
-        <figcaption class="blockquote-footer text-light fs-4 d-flex justify-content-end align-items-center gap-2">
-          <div class="text-start">
-            <span>{daniela.data.name},</span>
-            <div class="fs-6 text-brand"><strong>t</strong>a11y <strong>content</strong></div>
-          </div>
-          <img class="profile-pic" src={daniela.data.picture.src} alt={`Drawn representation of ${daniela.data.name}`} />
+        <figcaption class="blockquote-footer fs-4 text-light text-end">
+          <TeamVignette
+            member="daniela"
+            left={false}
+            firstNameOnly={true}
+            valign="center"
+          />
         </figcaption>
       </figure>
     </div>
@@ -200,8 +198,5 @@ const daniela = await getEntry('profiles', 'daniela');
   [astro-icon="loca11y-logo"] {
     /* Until the SVG is squared up */
     margin: 0 -0.3em;
-  }
-  div.fs-6 {
-    line-height: 0.9em;
   }
 </style>

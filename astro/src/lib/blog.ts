@@ -9,7 +9,7 @@ export async function getBlogAuthors(blogs?) {
   // Slug uniqueness is key.
   const authorSlugs = [...new Set(blogs.map(b => b.data.author.slug).flat())];
   const authorRefs = authorSlugs.map(slug => ({
-    slug, collection: 'profiles',
+    slug, collection: 'team',
   }));
   const authors = await getEntries(authorRefs);
   return authors
