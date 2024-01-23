@@ -1,7 +1,7 @@
 ---
 import ExternalLink from '../../components/ExternalLink.astro';
+import ImageHeading from '../../components/ImageHeading.astro';
 import Layout from '../../layouts/Layout.astro';
-import TeamHeading from '../../components/TeamHeading.astro';
 import ThemedSection from '../../components/ThemedSection.astro';
 
 import { Icon } from 'astro-icon';
@@ -14,10 +14,10 @@ const crumbs = [{
 ---
 
 <Layout title="Our Policies" crumbs={crumbs}>
-  <TeamHeading slot="header">
+  <ImageHeading image="policy" slot="header">
     Our <strong>Policies</strong>
-  </TeamHeading>
-  <div class="bg-primary-alpha-3 text-primary text-center py-3">
+  </ImageHeading>
+  <div class="text-bg-primary text-center p-3" >
     <strong>Note:</strong> Links to all policies are available on both our website and on Google Docs.
   </div>
 

@@ -1,6 +1,6 @@
 ---
-import BlogHeading from '../../components/BlogHeading.astro';
 import ExternalLink from '../../components/ExternalLink.astro';
+import ImageHeading from '../../components/ImageHeading.astro';
 import Layout from '../../layouts/Layout.astro';
 import TeamVignette from '../../components/TeamVignette.astro';
 import ThemedBox from '../../components/ThemedBox.astro';
@@ -15,9 +15,9 @@ const crumbs = [{
 ---
 
 <Layout crumbs={crumbs} title="Founder's Story">
-  <BlogHeading slot="header">
+  <ImageHeading image="blog" slot="header">
     Our Founder's <strong>Story</strong>
-  </BlogHeading>
+  </ImageHeading>
   <ThemedSection style="tertiary">
     <p>
       People with disabilities are the 

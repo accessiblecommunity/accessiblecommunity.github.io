@@ -1,6 +1,7 @@
 ---
+import { Icon } from 'astro-icon';
 import Layout from '../layouts/Layout.astro';
-import HandsHeading from '../components/HandsHeading.astro';
+import Hero from '../components/Hero.astro';
 import ThemedSection from '../components/ThemedSection.astro';
 
 const crumbs = [{
@@ -8,15 +9,44 @@ const crumbs = [{
 }, {
   name: 'Join Us', href: '/join-us',
 }];
+
+import heroBg from '../images/colored-hero/hands-together.png'
 ---
 
-<Layout crumbs={crumbs} title="Volunteer">
-  <HandsHeading slot="header" element="div">
-    <h1 slot="preface" class="visually-hidden">Volunteer</h1>
-    <strong>Together</strong> we can do
-    <span class="fw-bold text-nowrap">so much</span>.
-  </HandsHeading>
- <ThemedSection style="secondary">
+<Layout title="Volunteer" crumbs={crumbs}>
+  <Hero image={ heroBg } slot="header" actionBreakpoint="md">
+    <div slot="heading" class="mb-4">
+      <h1 class="visually-hidden">Volunteer</h1>
+      <blockquote class="display-2 text-white">
+        <div>
+          <sup aria-hidden="true"><Icon name="quote-left" height="0.5em" /></sup>&nbsp;<span class="small">Alone we can do so little;</span>
+        </div>
+        <div>
+          <span class="fw-bold">Together we can do so much.&nbsp;<sup aria-hidden="true"><Icon name="quote-right" height="0.5em" /></sup>
+        </div>
+      </blockquote>
+      <div class="blockquote-footer text-end text-white me-5 display-6">
+        <span class="display-7">Helen Keller</span>
+      </div>
+    </div>
+    <p class="lead text-bg-hero">
+      <span class="text-brand">Accessible <strong>Community</strong></span> is a volunteer-led
+      and staffed 501(c)3 organization. We welcome any contributions to help make our communities
+      more accessible and disability-inclusive.
+    </p>
+    <Fragment slot="action-bar">
+      <a href="#teams" class="icon-link link-light hero-link">
+        <Icon name="bi:people-fill" class="bi" alt="" aria-hidden="true"></Icon>
+        Learn more about our teams
+      </a>
+      <a href="#form" class="icon-link link-light hero-link">
+        <Icon name="bi:pencil-fill" class="bi" alt="" aria-hidden="true"></Icon>
+        Fill out the volunteer form
+      </a>
+    </Fragment>
+  </Hero>
+
+ <ThemedSection id="teams" style="secondary">
   <h2 class="display-3">Volunteer <span class="fw-bold">Teams</span></h2>
   <div>
     <p>Thank you for wanting to learn about our volunteer opportunities at <span class="text-brand text-primary">Accessible <strong>Community</strong></span>. We have five different teams to choose from, and we have provided decriptions of each team to help you choose one (or more) to join. Everyone, including our staff, is a volunteer.</p>

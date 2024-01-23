@@ -1,6 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 
+import ImageHeading from '../../components/ImageHeading.astro';
 import Layout from '../../layouts/Layout.astro';
 import TeamVignette from '../../components/TeamVignette.astro';
 import TeamHeading from '../../components/TeamHeading.astro';
@@ -22,9 +23,9 @@ const crumbs = [{
 ---
 
 <Layout title="Staff" crumbs={crumbs}>
-  <TeamHeading slot="header">
+  <ImageHeading image="team" slot="header">
     Our <strong>Staff</strong>
-  </TeamHeading>
+  </ImageHeading>
   <ThemedSection theme="secondary" style="subtle" fluid={true}>
     <ul class="list-inline text-center">
       { staff.map((member) =>

@@ -22,6 +22,7 @@ export async function getStaticPaths() {
   ];
 }
 
+import ImageHeading from '../../components/ImageHeading.astro';
 import Layout from '../../layouts/Layout.astro';
 import TeamMemberBio from '../../components/TeamMemberBio.astro';
 import TeamHeading from '../../components/TeamHeading.astro';
@@ -45,7 +46,7 @@ const crumbs = [{
 ---
 
 <Layout title={title} crumbs={crumbs}>
-  <TeamHeading slot="header" set:html={heading} />
+  <ImageHeading image="team" slot="header" set:html={heading} />
   <ThemedSection style="tertiary">
     <ul class="list-group">
       { teamMembers.map(sm =>
