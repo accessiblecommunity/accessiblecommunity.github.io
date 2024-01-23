@@ -15,7 +15,7 @@ const crumbs = [{
 ---
 
 <Layout title="Join Us" crumbs={crumbs}>
-  <Hero image={ heroBg } slot="header">
+  <Hero image={ heroBg } slot="header" actionBreakpoint="md">
     <div slot="heading" class="mb-4">
       <h1 class="visually-hidden">Join Us</h1>
       <blockquote class="display-2 text-white">
@@ -35,7 +35,7 @@ const crumbs = [{
       and staffed 501(c)3 organization. We welcome any contributions to help make our communities
       more accessible and disability-inclusive.
     </p>
-    <Fragment slot="action">
+    <Fragment slot="action-bar">
       <a href="/donate" class="icon-link link-light hero-link">
         <Icon name="bi:gift-fill" class="bi" alt="" aria-hidden="true"></Icon>
         Give a donation

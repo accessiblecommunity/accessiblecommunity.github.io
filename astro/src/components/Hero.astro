@@ -34,10 +34,10 @@ if (image) {
       <slot />
     </div>
   </div>
-  { Astro.slots.has('action') && (
-    <div class="bg-primary py-3 text-white" style="--bs-bg-opacity: 0.4">
+  { Astro.slots.has('action-bar') && (
+    <div class="bg-primary bg-opacity-50 py-3 text-white">
       <div class={`d-flex flex-column flex-${actionBreakpoint}-row align-items-center justify-content-${actionBreakpoint}-evenly gap-2`}>
-        <slot name="action" />
+        <slot name="action-bar" />
       </div>
     </div>
   )}
@@ -52,7 +52,7 @@ if (image) {
 
 <style is:global>
   .hero {
-    padding: 4.5rem 0 3rem;
+    padding: 4.5rem 0 3rem !important;
     text-align: center;
   }
 
