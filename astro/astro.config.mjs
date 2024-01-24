@@ -5,6 +5,7 @@ import styleGuide from './style-guide/register.js';
 
 // https://flaviocopes.com/fix-dirname-not-defined-es-module-scope/
 import mdx from "@astrojs/mdx";
+import sitemap from "@astrojs/sitemap";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
@@ -26,5 +27,5 @@ export default defineConfig({
       noExternal: ['bootstrap']
     }
   },
-  integrations: [styleGuide(), mdx()]
+  integrations: [styleGuide(), mdx(), sitemap()]
 });
