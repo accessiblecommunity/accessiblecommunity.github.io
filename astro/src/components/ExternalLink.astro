@@ -16,23 +16,7 @@ import { Icon } from 'astro-icon';
 // The below is formatted to remove as much whitespace as possible.
 ---
 
-<a
-  href={href}
-  class:list={['icon-link', className, inline && 'd-inline']}
-  target="_blank"
-  rel="noopener noreferrer"
->{ 
-gaps ?
-  <slot />
-:
-  <span><slot /></span>
-}<Icon
-  name="bi:arrow-up-right-square"
-  class:list={['bi', 'external']}
-  role="img"
-  aria-label="External link"
-/></a>
-
+{/* Style is up top to remove additional whitespace after the tag */}
 <style is:global>
   .icon-link > .bi.external {
     /* These make it act like a `sup` */
@@ -49,3 +33,16 @@ gaps ?
     margin-right: .2em;
   }
 </style>
+<a
+  href={href}
+  class:list={['icon-link', className, inline && 'd-inline']}
+  target="_blank"
+  rel="noopener noreferrer"
+>{
+gaps ? <slot /> : <span><slot /></span>
+}<Icon
+  name="bi:arrow-up-right-square"
+  class:list={['bi', 'external']}
+  role="img"
+  aria-label="External link"
+/></a>
