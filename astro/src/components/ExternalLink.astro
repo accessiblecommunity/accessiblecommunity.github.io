@@ -9,9 +9,14 @@ interface Props {
   inline?: boolean;
 }
 
-const { href, 'class': className = '', gaps = false, inline = false } = Astro.props;
+const {
+  href,
+  class: className = "",
+  gaps = false,
+  inline = false,
+} = Astro.props;
 
-import { Icon } from 'astro-icon';
+import { Icon } from "astro-icon";
 
 // The below is formatted to remove as much whitespace as possible.
 ---
@@ -28,21 +33,28 @@ import { Icon } from 'astro-icon';
   }
   .icon-link.d-inline > .bi.external {
     /* No gap, so move it back. */
-    left: 0.0em;
-    margin-left: .2em;
-    margin-right: .2em;
+    left: 0em;
+    margin-left: 0.2em;
+    margin-right: 0.2em;
   }
 </style>
 <a
   href={href}
-  class:list={['icon-link', className, inline && 'd-inline']}
+  class:list={["icon-link", className, inline && "d-inline"]}
   target="_blank"
   rel="noopener noreferrer"
->{
-gaps ? <slot /> : <span><slot /></span>
-}<Icon
-  name="bi:arrow-up-right-square"
-  class:list={['bi', 'external']}
-  role="img"
-  aria-label="External link"
-/></a>
+  >{
+    gaps ? (
+      <slot />
+    ) : (
+      <span>
+        <slot />
+      </span>
+    )
+  }<Icon
+    name="bi:arrow-up-right-square"
+    class:list={["bi", "external"]}
+    role="img"
+    aria-label="External link"
+  /></a
+>

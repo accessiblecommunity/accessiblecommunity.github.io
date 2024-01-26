@@ -1,57 +1,68 @@
 ---
-import { getCollection } from 'astro:content';
+import { getCollection } from "astro:content";
 
 export async function getStaticPaths() {
-  const team = await getCollection('team');
+  const team = await getCollection("team");
 
   return [
-    { params: { tag: 'board' }, props:
-      {
+    {
+      params: { tag: "board" },
+      props: {
         team,
-        title: 'Board Members',
-        heading: 'Board <strong>Members</strong>',
-      }
+        title: "Board Members",
+        heading: "Board <strong>Members</strong>",
+      },
     },
-    { params: { tag: 'leadership' }, props:
-      {
+    {
+      params: { tag: "leadership" },
+      props: {
         team,
-        title: 'Leadership Team',
-        heading: 'Leadership <strong>Team</strong>',
-      }
+        title: "Leadership Team",
+        heading: "Leadership <strong>Team</strong>",
+      },
     },
   ];
 }
 
-import ImageHeading from '../../components/ImageHeading.astro';
-import Layout from '../../layouts/Layout.astro';
-import TeamMemberBio from '../../components/TeamMemberBio.astro';
-import TeamHeading from '../../components/TeamHeading.astro';
-import ThemedSection from '../../components/ThemedSection.astro';
+import ImageHeading from "../../components/ImageHeading.astro";
+import Layout from "../../layouts/Layout.astro";
+import TeamMemberBio from "../../components/TeamMemberBio.astro";
+import TeamHeading from "../../components/TeamHeading.astro";
+import ThemedSection from "../../components/ThemedSection.astro";
 
-import { sortBy } from 'lodash-es';
+import { sortBy } from "lodash-es";
 
 const { tag } = Astro.params;
 const { team, title, heading } = Astro.props;
 
 const teamMembers = sortBy(
-  team.filter(({data}) => data.tags?.includes(tag)),
-  ({data}) => data.name.split(' ').slice(1).join(' ')
+  team.filter(({ data }) => data.tags?.includes(tag)),
+  ({ data }) => data.name.split(" ").slice(1).join(" ")
 );
 
-const crumbs = [{
-  name: 'Home', href: '/',
-}, {
-  name: 'Team', href: '/team',
-}];
+const crumbs = [
+  {
+    name: "Home",
+    href: "/",
+  },
+  {
+    name: "Team",
+    href: "/team",
+  },
+];
 ---
 
 <Layout title={title} crumbs={crumbs}>
   <ImageHeading image="team" slot="header" set:html={heading} />
   <ThemedSection style="tertiary">
     <ul class="list-group">
-      { teamMembers.map(sm =>
-        <li class="d-block mb-5"><TeamMemberBio member={sm} /></li>
-      )}
+      {
+        teamMembers.map((sm) => (
+          <li class="d-block mb-5">
+            <TeamMemberBio member={sm} />
+          </li>
+        ))
+      }
     </ul>
   </ThemedSection>
 </Layout>

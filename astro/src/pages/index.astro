@@ -1,19 +1,23 @@
 ---
-import { Icon } from 'astro-icon';
+import { Icon } from "astro-icon";
 
-import ExternalLink from '../components/ExternalLink.astro';
-import Hero from '../components/Hero.astro';
-import Layout from '../layouts/Layout.astro';
-import TeamVignette from '../components/TeamVignette.astro';
-import ThemedSection from '../components/ThemedSection.astro';
-import ThemedBox from '../components/ThemedBox.astro';
-import TipRegistration from '../components/TipRegistration.astro';
+import ExternalLink from "../components/ExternalLink.astro";
+import Hero from "../components/Hero.astro";
+import Layout from "../layouts/Layout.astro";
+import TeamVignette from "../components/TeamVignette.astro";
+import ThemedSection from "../components/ThemedSection.astro";
+import ThemedBox from "../components/ThemedBox.astro";
+import TipRegistration from "../components/TipRegistration.astro";
 
-import heroBg from "../images/colored-hero/wheelchair_hall.png"
+import heroBg from "../images/colored-hero/wheelchair_hall.png";
 ---
 
 <Layout title="Home">
-  <Hero image={ heroBg } columns="col-sm-12 col-md-9 col-lg-8 col-xl-6 col-xxl-5" slot="header">
+  <Hero
+    image={heroBg}
+    columns="col-sm-12 col-md-9 col-lg-8 col-xl-6 col-xxl-5"
+    slot="header"
+  >
     <Fragment slot="heading">
       <h1 class="visually-hidden">Accessible Community</h1>
       <div class="display-2 py-4 mx-auto" style="max-width: 15em;">
@@ -23,15 +27,16 @@ import heroBg from "../images/colored-hero/wheelchair_hall.png"
     </Fragment>
     <div class="lead text-bg-hero">
       At <span class="text-brand">Accessible <strong>Community</strong></span>,
-      we build ethical technology solutions to nurture disability-inclusive communities.
+      we build ethical technology solutions to nurture disability-inclusive
+      communities.
     </div>
     <Fragment slot="action-bar">
       <a href="#journey" class="icon-link link-light hero-link">
-        <Icon name="bi:pencil-fill" class="bi" alt="" aria-hidden="true"></Icon>
+        <Icon name="bi:pencil-fill" class="bi" alt="" aria-hidden="true" />
         Start your accessibility journey
       </a>
       <a href="/volunteer" class="icon-link link-light hero-link">
-        <Icon name="bi:people-fill" class="bi" alt="" aria-hidden="true"></Icon>
+        <Icon name="bi:people-fill" class="bi" alt="" aria-hidden="true" />
         Join our organization
       </a>
       <ExternalLink
@@ -39,9 +44,17 @@ import heroBg from "../images/colored-hero/wheelchair_hall.png"
         href="https://gofund.me/94499fef"
         gaps={true}
       >
-        <Icon name="loca11y-logo" class="bi" style="height: 1.1em; width: inherit" alt="" aria-hidden="true" />
+        <Icon
+          name="loca11y-logo"
+          class="bi"
+          style="height: 1.1em; width: inherit"
+          alt=""
+          aria-hidden="true"
+        />
         <span>
-          Help us launch <span class="text-brand"><strong>loc</strong>a11y.<strong>org</strong></span>
+          Help us launch <span class="text-brand"
+            ><strong>loc</strong>a11y.<strong>org</strong></span
+          >
         </span>
       </ExternalLink>
     </Fragment>
@@ -49,7 +62,9 @@ import heroBg from "../images/colored-hero/wheelchair_hall.png"
 
   <ThemedSection style="secondary">
     <h2 class="display-3">What we <strong>believe</strong>.</h2>
-    <div class="d-flex flex-column flex-xl-row justify-content-xl-evenly align-items-center">
+    <div
+      class="d-flex flex-column flex-xl-row justify-content-xl-evenly align-items-center"
+    >
       <div class="col col-xl-8 col-xxl-9">
         <p>
           According to the CDC,
@@ -57,49 +72,74 @@ import heroBg from "../images/colored-hero/wheelchair_hall.png"
             class=""
             href="https://www.cdc.gov/ncbddd/disabilityandhealth/infographic-disability-impacts-all.html"
             inline={true}
-          >1 in every 4 people has a disability.</ExternalLink>
-          Yet we consistently create barriers that stop people with disabilities from
-          participating, both in-person and online. Individuals and families with disabilities
-          often struggle to find places in their community where they can successfully shop, eat,
-          and engage in community life.
+          >
+            1 in every 4 people has a disability.
+          </ExternalLink>
+          Yet we consistently create barriers that stop people with disabilities
+          from participating, both in-person and online. Individuals and families
+          with disabilities often struggle to find places in their community where
+          they can successfully shop, eat, and engage in community life.
         </p>
-        <p class="d-xl-none display-4 text-center text-primary py-3 mx-5 border-primary-subtle border-top border-bottom">
-          <strong>1</strong> in every <strong>4 people</strong> has a <strong>disability</strong>.
+        <p
+          class="d-xl-none display-4 text-center text-primary py-3 mx-5 border-primary-subtle border-top border-bottom"
+        >
+          <strong>1</strong> in every <strong>4 people</strong> has a <strong
+            >disability</strong
+          >.
         </p>
         <p>
-          <span class="text-brand text-primary">Accessible <strong>Community</strong></span> exemplifies
-          “Nothing about us without us.” Our non-profit is led by people with disabilities and
-          caretakers who want to break down these barriers and create more accessible communities.
-          Read our <a href="/about/story" class=" link-offset-2">founder's story</a> to learn more.
+          <span class="text-brand text-primary"
+            >Accessible <strong>Community</strong></span
+          > exemplifies “Nothing about us without us.” Our non-profit is led by people
+          with disabilities and caretakers who want to break down these barriers
+          and create more accessible communities. Read our <a
+            href="/about/story"
+            class="link-offset-2">founder's story</a
+          > to learn more.
         </p>
       </div>
       <div class="d-none d-xl-block col-lg-10 col-xl-3 col-xxl-2">
-        <p class="display-4 text-center text-primary py-3 border-primary-subtle border-top border-bottom">
-          <strong>1</strong> in every <strong>4 people</strong> has a <strong>disability</strong>.          
+        <p
+          class="display-4 text-center text-primary py-3 border-primary-subtle border-top border-bottom"
+        >
+          <strong>1</strong> in every <strong>4 people</strong> has a <strong
+            >disability</strong
+          >.
         </p>
       </div>
     </div>
   </ThemedSection>
 
   <ThemedSection style="tertiary">
-    <div class="container d-flex flex-column flex-xl-row-reverse gap-4 justify-content-xl-between">
+    <div
+      class="container d-flex flex-column flex-xl-row-reverse gap-4 justify-content-xl-between"
+    >
       <div class="col col-xl-7">
         <h2 class="display-3">What we <strong>do</strong>.</h2>
         <ul class="lead ms-2">
           <li>
-            Empower people with disabilities to be part of the conversation about inclusion and accessibility in their communities by creating a safe platform to share positive experiences. 
+            Empower people with disabilities to be part of the conversation
+            about inclusion and accessibility in their communities by creating a
+            safe platform to share positive experiences.
           </li>
           <li>
-            Motivate organizations to include people with disabilities by making accessibility a visible market advantage.
+            Motivate organizations to include people with disabilities by making
+            accessibility a visible market advantage.
           </li>
           <li>
-            Provide tools and an online community that connects and advances disability-related professions. 
+            Provide tools and an online community that connects and advances
+            disability-related professions.
           </li>
         </ul>
       </div>
-      <figure class="col col-xl-4 text-start p-4 bg-info border border-info shadow rounded d-flex flex-column justify-content-center">
+      <figure
+        class="col col-xl-4 text-start p-4 bg-info border border-info shadow rounded d-flex flex-column justify-content-center"
+      >
         <blockquote class="blockquote text-light">
-          <p>I am proud to be part of this community that drives the change toward a more accessible digital world for all people.</p>
+          <p>
+            I am proud to be part of this community that drives the change
+            toward a more accessible digital world for all people.
+          </p>
         </blockquote>
         <figcaption class="blockquote-footer fs-4 text-light text-end">
           <TeamVignette
@@ -115,86 +155,132 @@ import heroBg from "../images/colored-hero/wheelchair_hall.png"
 
   <ThemedSection theme="secondary" style="subtle">
     <h2 class="display-3">Our <strong>services</strong>.</h2>
-    <div class="d-flex flex-column flex-xl-row gap-4 py-3 justify-content-lg-evenly text-primary">
-      <ThemedBox text={true} border={1} class="border-primary col col-xl-3 shadow rounded">
+    <div
+      class="d-flex flex-column flex-xl-row gap-4 py-3 justify-content-lg-evenly text-primary"
+    >
+      <ThemedBox
+        text={true}
+        border={1}
+        class="border-primary col col-xl-3 shadow rounded"
+      >
         <h3 class="display-5">
-          <Icon class="bi" name="loca11y-logo" height="1.1em" role="img" aria-hidden="true"/>
+          <Icon
+            class="bi"
+            name="loca11y-logo"
+            height="1.1em"
+            role="img"
+            aria-hidden="true"
+          />
           <span class="text-brand">
             <strong>loc</strong>a11y.<strong>org</strong>
           </span>
         </h3>
         <p class="text-center">
-          Find and recommend local organizations and events that provide accommodations and
-          remove barriers for people with disabilities.
+          Find and recommend local organizations and events that provide
+          accommodations and remove barriers for people with disabilities.
         </p>
         <div class="text-center">
           <span class="text-brand fw-bold">Coming soon.</span>
         </div>
       </ThemedBox>
-      <ThemedBox text={true} border={1} class="border-primary col col-xl-3 shadow rounded">
+      <ThemedBox
+        text={true}
+        border={1}
+        class="border-primary col col-xl-3 shadow rounded"
+      >
         <h3 class="display-5">
-          <Icon class="bi" name="ta11y-logo" height="1em" role="img" aria-hidden="true"/>
+          <Icon
+            class="bi"
+            name="ta11y-logo"
+            height="1em"
+            role="img"
+            aria-hidden="true"
+          />
           <span class="text-brand">
             <strong>t</strong>a11y.<strong>org</strong>
           </span>
         </h3>
         <p class="text-center">
-          Use publicly available accessibility checklists with helpful guides without printing
-          them out. Results are private and retained for your future use.
+          Use publicly available accessibility checklists with helpful guides
+          without printing them out. Results are private and retained for your
+          future use.
         </p>
         <div class="text-center">
-          Visit 
-          <ExternalLink class=" text-brand" href="https://www.ta11y.org">
+          Visit
+          <ExternalLink class="text-brand" href="https://www.ta11y.org">
             <strong>t</strong>a11y.<strong>org</strong>
           </ExternalLink>
         </div>
       </ThemedBox>
-      <ThemedBox text={true} border={1} class="border-primary col col-xl-3 shadow rounded">
+      <ThemedBox
+        text={true}
+        border={1}
+        class="border-primary col col-xl-3 shadow rounded"
+      >
         <h3 class="display-5">
-          <Icon class="bi" name="mutua11y-logo" height="1em" role="img" aria-hidden="true"/>
+          <Icon
+            class="bi"
+            name="mutua11y-logo"
+            height="1em"
+            role="img"
+            aria-hidden="true"
+          />
           <span class="text-brand">
             <strong>mutu</strong>a11y.<strong>org</strong>
           </span>
         </h3>
         <p class="text-center">
-          Connect with other disability-related professionals through mentoring, volunteering,
-          internships, workshops and other activities.
+          Connect with other disability-related professionals through mentoring,
+          volunteering, internships, workshops and other activities.
         </p>
         <div class="text-center">
-          Visit 
-          <ExternalLink href="https://www.mutua11y.org" class=" text-brand">
+          Visit
+          <ExternalLink href="https://www.mutua11y.org" class="text-brand">
             <strong>mutu</strong>a11y.<strong>org</strong>
           </ExternalLink>
         </div>
       </ThemedBox>
     </div>
     <p class="lead pt-5">
-      Learn more about <a href="/services" class="link-offset-2">our services</a>.
+      Learn more about <a href="/services" class="link-offset-2">our services</a
+      >.
     </p>
   </ThemedSection>
 
   <ThemedSection style="tertiary" id="journey">
-    <h2 class="display-4 mb-4">Start your organization's <strong>disability-inclusion</strong> journey.</h2>
+    <h2 class="display-4 mb-4">
+      Start your organization's <strong>disability-inclusion</strong> journey.
+    </h2>
     <div class="d-flex flex-column flex-lg-row gap-4 justify-content-lg-evenly">
       <ThemedBox theme="primary" border={3} class="col-lg-5 rounded">
         <p class="lead">
-          Would you like a <span class="text-brand fw-bold">free and simple</span> way to learn about accessibility?
+          Would you like a <span class="text-brand fw-bold"
+            >free and simple</span
+          > way to learn about accessibility?
         </p>
         <p>
-          Sign up for our weekly "Tip of the Week" email to receive quick accessibility tips that can improve your website, social media, events, and more.
+          Sign up for our weekly "Tip of the Week" email to receive quick
+          accessibility tips that can improve your website, social media,
+          events, and more.
         </p>
         <p>
-          Fill out the short registration form to sign up. We will not <a class="link-light" href="/privacy-policy">sell or share your data</a>.
+          Fill out the short registration form to sign up. We will not <a
+            class="link-light"
+            href="/privacy-policy">sell or share your data</a
+          >.
         </p>
       </ThemedBox>
       <TipRegistration>
-        <h3 class="display-6 text-info-emphasis mb-0"><strong>Tip of the Week</strong> Registration</h3>
+        <h3 class="display-6 text-info-emphasis mb-0">
+          <strong>Tip of the Week</strong> Registration
+        </h3>
         <p class="small">
-          <span class="text-info-emphasis fw-bold">Note:</span> Required fields have an asterisk (<span class="asterisk">*</span>).
+          <span class="text-info-emphasis fw-bold">Note:</span> Required fields have
+          an asterisk (<span class="asterisk">*</span>).
         </p>
       </TipRegistration>
     </div>
-  </Section>
+  </ThemedSection>
 </Layout>
 
 <style>

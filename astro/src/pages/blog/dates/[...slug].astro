@@ -1,21 +1,29 @@
 ---
-import { getCollection } from 'astro:content';
-import { getBlogDates, orderByRecent } from '../../../lib/blog';
-import { kebabCase } from 'lodash-es';
+import { getCollection } from "astro:content";
+import { getBlogDates, orderByRecent } from "../../../lib/blog";
+import { kebabCase } from "lodash-es";
 
 export async function getStaticPaths() {
   const dates = await getBlogDates();
-  const crumbs = [{
-    name: 'Home', href: "/"
-  }, {
-    name: 'Blog', href: "/blog"
-  }, {
-    name: 'Dates', href: "/blog/dates"
-  }]
+  const crumbs = [
+    {
+      name: "Home",
+      href: "/",
+    },
+    {
+      name: "Blog",
+      href: "/blog",
+    },
+    {
+      name: "Dates",
+      href: "/blog/dates",
+    },
+  ];
 
-  return dates.map(month => ({
-    params: { slug: kebabCase(month) }, props: { crumbs, month },
-  })); 
+  return dates.map((month) => ({
+    params: { slug: kebabCase(month) },
+    props: { crumbs, month },
+  }));
 }
 
 interface Props {
@@ -24,16 +32,16 @@ interface Props {
 }
 
 const { crumbs, month } = Astro.props;
-const monthBlogs = await getCollection('blogs', ({ data }) => {
-  const published = data.published.toLocaleDateString('en-us', {
-    year: 'numeric',
-    month: 'long',
+const monthBlogs = await getCollection("blogs", ({ data }) => {
+  const published = data.published.toLocaleDateString("en-us", {
+    year: "numeric",
+    month: "long",
   });
   return published === month;
 });
-const orderedBlogs: Array<object> = await orderByRecent(monthBlogs)
+const orderedBlogs: Array<object> = await orderByRecent(monthBlogs);
 
-import BlogLayout from '../../../layouts/BlogLayout.astro';
+import BlogLayout from "../../../layouts/BlogLayout.astro";
 ---
 
 <BlogLayout
@@ -48,4 +56,3 @@ import BlogLayout from '../../../layouts/BlogLayout.astro';
     <strong>Blogs</strong> during {month}
   </Fragment>
 </BlogLayout>
-  

@@ -1,19 +1,25 @@
 ---
-import { getBlogDates } from '../../../lib/blog';
-import { kebabCase } from 'lodash-es';
+import { getBlogDates } from "../../../lib/blog";
+import { kebabCase } from "lodash-es";
 
 const dates = await getBlogDates();
-const title = 'Dates';
-const crumbs = [{
-    name: 'Home', href: "/"
-  }, {
-    name: 'Blog', href: "/blog"
-  }]
+const title = "Dates";
+const crumbs = [
+  {
+    name: "Home",
+    href: "/",
+  },
+  {
+    name: "Blog",
+    href: "/blog",
+  },
+];
 
-import ImageHeading from '../../../components/ImageHeading.astro';
+import ImageHeading from "../../../components/ImageHeading.astro";
 import Layout from "../../../layouts/Layout.astro";
 import ThemedSection from "../../../components/ThemedSection.astro";
 ---
+
 <Layout crumbs={crumbs} title={title}>
   <ImageHeading image="blog" slot="header">
     <strong>Blogs</strong> by date
@@ -21,11 +27,13 @@ import ThemedSection from "../../../components/ThemedSection.astro";
   <ThemedSection style="tertiary" py={0}>
     <h2 class="text-info-emphasis display-5" set:text={title} />
     <ul>
-      { dates.map(month =>
-        <li>
-          <a href={`/blog/dates/${kebabCase(month)}`}>{ month }</a>
-        </li>
-      )}
+      {
+        dates.map((month) => (
+          <li>
+            <a href={`/blog/dates/${kebabCase(month)}`}>{month}</a>
+          </li>
+        ))
+      }
     </ul>
-</ThemedSection>
+  </ThemedSection>
 </Layout>

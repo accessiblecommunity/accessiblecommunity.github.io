@@ -1,17 +1,22 @@
 ---
-import ExternalLink from '../../components/ExternalLink.astro';
-import ImageHeading from '../../components/ImageHeading.astro';
-import Layout from '../../layouts/Layout.astro';
-import TeamVignette from '../../components/TeamVignette.astro';
-import ThemedBox from '../../components/ThemedBox.astro';
-import ThemedSection from '../../components/ThemedSection.astro';
-import { Icon } from 'astro-icon';
+import ExternalLink from "../../components/ExternalLink.astro";
+import ImageHeading from "../../components/ImageHeading.astro";
+import Layout from "../../layouts/Layout.astro";
+import TeamVignette from "../../components/TeamVignette.astro";
+import ThemedBox from "../../components/ThemedBox.astro";
+import ThemedSection from "../../components/ThemedSection.astro";
+import { Icon } from "astro-icon";
 
-const crumbs = [{
-  name: 'Home', href: '/',
-}, {
-  name: 'About', href: '/about',
-}];
+const crumbs = [
+  {
+    name: "Home",
+    href: "/",
+  },
+  {
+    name: "About",
+    href: "/about",
+  },
+];
 ---
 
 <Layout crumbs={crumbs} title="Founder's Story">
@@ -20,17 +25,22 @@ const crumbs = [{
   </ImageHeading>
   <ThemedSection style="tertiary">
     <p>
-      People with disabilities are the 
+      People with disabilities are the
       <ExternalLink
         href="https://wayback.archive-it.org/18689/20220312224657/https://www.nypl.org/blog/2013/08/23/diverse-perspectives-people-disabilities"
         inline={true}
-      >largest and most inclusive minority group</ExternalLink> in the world. Almost
+      >
+        largest and most inclusive minority group
+      </ExternalLink> in the world. Almost
       <ExternalLink
         href="https://www.cdc.gov/ncbddd/disabilityandhealth/infographic-disability-impacts-all.html"
         inline={true}
-      >1 in 4 people has a disability</ExternalLink>
-      and we are all just one unexpected event or a long life away from being a member of this
-      group. Despite this, we create environments with barriers built into them.
+      >
+        1 in 4 people has a disability
+      </ExternalLink>
+      and we are all just one unexpected event or a long life away from being a member
+      of this group. Despite this, we create environments with barriers built into
+      them.
     </p>
     <ThemedBox
       theme="primary"
@@ -40,25 +50,33 @@ const crumbs = [{
       class="mx-auto col-md-9 col-lg-7 col-xxl-10 rounded-1 mb-4"
     >
       <div class="display-6 text-center">
-        <sup aria-hidden="true"><Icon name="quote-left" height="1em" />&nbsp;</sup>
-        I founded Accessible <strong>Community</strong> after developing <strong>chemical sensitivity</strong>
+        <sup aria-hidden="true"
+          ><Icon name="quote-left" height="1em" />&nbsp;</sup
+        >
+        I founded Accessible <strong>Community</strong> after developing <strong
+          >chemical sensitivity</strong
+        >
         during pregnancy.
-        <sup aria-hidden="true">&nbsp;<Icon name="quote-right" height="1em" /></sup>
+        <sup aria-hidden="true"
+          >&nbsp;<Icon name="quote-right" height="1em" /></sup
+        >
       </div>
-    </ThemedBox>    
+    </ThemedBox>
     <p>
-      I founded Accessible Community after developing chemical sensitivity during pregnancy.
-      There is no existing solution to help me safely go to new places. My family has to
-      prescreen stores, restaurants and bathrooms for me. I have to skip getting on elevators
-      when someone is wearing perfume. I have moved to a job that allows me to work from home
-      in order to control my exposure to cleaning solutions and other chemicals. While I have
-      worked in the accessibility field for decades, experiencing these barriers has
-      dramatically changed my life and my perception of the world we create.
+      I founded Accessible Community after developing chemical sensitivity
+      during pregnancy. There is no existing solution to help me safely go to
+      new places. My family has to prescreen stores, restaurants and bathrooms
+      for me. I have to skip getting on elevators when someone is wearing
+      perfume. I have moved to a job that allows me to work from home in order
+      to control my exposure to cleaning solutions and other chemicals. While I
+      have worked in the accessibility field for decades, experiencing these
+      barriers has dramatically changed my life and my perception of the world
+      we create.
     </p>
     <p>
-      When I first was diagnosed, I mentioned to a handyman that I had chemical sensitivity.
-      “Oh, my mother has that.” he said. “She doesn't go anywhere anymore.” Several years later,
-      I more fully understand why.
+      When I first was diagnosed, I mentioned to a handyman that I had chemical
+      sensitivity. “Oh, my mother has that.” he said. “She doesn't go anywhere
+      anymore.” Several years later, I more fully understand why.
     </p>
     <ThemedBox
       theme="primary"
@@ -68,29 +86,39 @@ const crumbs = [{
       class="mx-auto col-md-10 col-lg-9 col-xl-10 rounded-1 mb-4"
     >
       <div class="display-6 text-center">
-        <sup aria-hidden="true"><Icon name="quote-left" height="1em" />&nbsp;</sup>
-        While I have worked in the accessibility field for decades, <strong>experiencing these barriers</strong>
-        has <strong>dramatically changed ... my perception</strong> of the world we create.
-        <sup aria-hidden="true">&nbsp;<Icon name="quote-right" height="1em" /></sup>
+        <sup aria-hidden="true"
+          ><Icon name="quote-left" height="1em" />&nbsp;</sup
+        >
+        While I have worked in the accessibility field for decades, <strong
+          >experiencing these barriers</strong
+        >
+        has <strong>dramatically changed ... my perception</strong> of the world
+        we create.
+        <sup aria-hidden="true"
+          >&nbsp;<Icon name="quote-right" height="1em" /></sup
+        >
       </div>
     </ThemedBox>
     <p>
-      We often discuss the need for ramps in physical spaces, captions for multimedia, and
-      screen reader support in digital content. We don't often discuss the need for seating
-      to support people with low stamina, reduced chemicals for people with chemical
-      sensitivities, menus listing alcohol and other ingredients for people sensitive to them,
-      or the ability to turn off animations or moving audio to support people with vestibular
+      We often discuss the need for ramps in physical spaces, captions for
+      multimedia, and screen reader support in digital content. We don't often
+      discuss the need for seating to support people with low stamina, reduced
+      chemicals for people with chemical sensitivities, menus listing alcohol
+      and other ingredients for people sensitive to them, or the ability to turn
+      off animations or moving audio to support people with vestibular
       disorders.
     </p>
     <p>
-      I realized we needed a more holistic approach to accessibility that addresses a wider
-      range of disabilities and helps organizations in our communities be more inclusive. We
-      also need a safe way for people with disabilities to share their recommendations. I
-      have a fantastic hairdresser, for example, who has learned how to work around my
-      disability. If you have chemical sensitivity and live near me, I could recommend her.
-      I'd love to hear recommendations on where I can safely shop for clothing.  There is not
-      a space online to make these recommendations or help organizations understand what they
-      need to do to be accessible - so we are building one.
+      I realized we needed a more holistic approach to accessibility that
+      addresses a wider range of disabilities and helps organizations in our
+      communities be more inclusive. We also need a safe way for people with
+      disabilities to share their recommendations. I have a fantastic
+      hairdresser, for example, who has learned how to work around my
+      disability. If you have chemical sensitivity and live near me, I could
+      recommend her. I'd love to hear recommendations on where I can safely shop
+      for clothing. There is not a space online to make these recommendations or
+      help organizations understand what they need to do to be accessible - so
+      we are building one.
     </p>
     <div class="blockquote-footer text-primary-emphasis text-end fs-4 my-4">
       <TeamVignette

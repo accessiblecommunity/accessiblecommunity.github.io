@@ -4,7 +4,7 @@ interface Props {
   style?: string;
   text?: boolean;
   border?: number;
-  class?: string,
+  class?: string;
 }
 
 const {
@@ -15,12 +15,12 @@ const {
   class: extraClasses = "",
 } = Astro.props;
 
-import { getBackgroundAndText, getBorder } from '../lib/themes.ts'
+import { getBackgroundAndText, getBorder } from "../lib/themes.ts";
 
 const bgAndTextClasses = getBackgroundAndText(theme, style, text);
-const borderClasses = getBorder(border, theme, style === 'subtle');
+const borderClasses = getBorder(border, theme, style === "subtle");
 ---
 
-<div class:list={[bgAndTextClasses, borderClasses, 'p-4', extraClasses ]}>
+<div class:list={[bgAndTextClasses, borderClasses, "p-4", extraClasses]}>
   <slot />
 </div>

@@ -1,56 +1,66 @@
 ---
-import { Icon } from 'astro-icon';
+import { Icon } from "astro-icon";
 
-import Layout from '../layouts/Layout.astro';
-import Hero from '../components/Hero.astro';
-import ShadowBoxSection from '../components/ShadowBoxSection.astro';
-import ThemedSection from '../components/ThemedSection.astro';
+import Layout from "../layouts/Layout.astro";
+import Hero from "../components/Hero.astro";
+import ShadowBoxSection from "../components/ShadowBoxSection.astro";
+import ThemedSection from "../components/ThemedSection.astro";
 
-import heroBg from '../images/colored-hero/donate.png'
+import heroBg from "../images/colored-hero/donate.png";
 
-const directorEmail = 'mailto:director@accessiblecommunity.org'
-const paypalUrl = 'https://paypal.me/AccessibleCommunity';
-const stripeUrl = 'https://donate.stripe.com/eVadR0agM8ec1TW5kk';
+const directorEmail = "mailto:director@accessiblecommunity.org";
+const paypalUrl = "https://paypal.me/AccessibleCommunity";
+const stripeUrl = "https://donate.stripe.com/eVadR0agM8ec1TW5kk";
 
-const heroButtons = [{
-  name: 'Paypal',
-  icon: 'cib:paypal',
-  href: paypalUrl,
-  className: 'cib-paypal',
-}, {
-  name: 'Stripe',
-  icon: 'cib:stripe',
-  href: stripeUrl,
-  className: 'cib-stripe',
-}]
+const heroButtons = [
+  {
+    name: "Paypal",
+    icon: "cib:paypal",
+    href: paypalUrl,
+    className: "cib-paypal",
+  },
+  {
+    name: "Stripe",
+    icon: "cib:stripe",
+    href: stripeUrl,
+    className: "cib-stripe",
+  },
+];
 
-const donationLinks = [{
-  icon: 'cib:cc-paypal',
-  href: paypalUrl,
-  title: 'Donate via Paypal',
-  theme: 'paypal',
-}, {
-  icon: 'cib:cc-stripe',
-  href: stripeUrl,
-  title: 'Donate via Stripe',
-  theme: 'stripe',
-}, {
-  icon: 'envelope-at',
-  href: directorEmail,
-  title: 'Email the Director',
-  theme: 'primary',
-}]
+const donationLinks = [
+  {
+    icon: "cib:cc-paypal",
+    href: paypalUrl,
+    title: "Donate via Paypal",
+    theme: "paypal",
+  },
+  {
+    icon: "cib:cc-stripe",
+    href: stripeUrl,
+    title: "Donate via Stripe",
+    theme: "stripe",
+  },
+  {
+    icon: "envelope-at",
+    href: directorEmail,
+    title: "Email the Director",
+    theme: "primary",
+  },
+];
 
-const title = 'Donate';
+const title = "Donate";
 const heading = title;
 
-const crumbs = [{
-  name: 'Home', href: '/',
-}];
+const crumbs = [
+  {
+    name: "Home",
+    href: "/",
+  },
+];
 ---
 
 <Layout title={title} crumbs={crumbs} heading={heading}>
-  <Hero image={ heroBg } slot="header">
+  <Hero image={heroBg} slot="header">
     <div slot="heading" class="mb-4">
       <h1 class="visually-hidden">Donate</h1>
       <span class="display-2">
@@ -58,16 +68,24 @@ const crumbs = [{
       </span>
     </div>
     <p class="lead text-bg-hero mb-5">
-      <span class="text-brand">Accessible <strong>Community</strong></span> is a 501(c)3 organization.
-      Your donation goes towards supporting our programs, accommodations and technology costs.
+      <span class="text-brand">Accessible <strong>Community</strong></span> is a
+      501(c)3 organization. Your donation goes towards supporting our programs, accommodations
+      and technology costs.
     </p>
     <div class="d-grid gap-4 mx-4 d-sm-flex justify-content-sm-center">
-      { heroButtons.map(({icon, href, name, className}) =>
-        <a class="btn btn-primary border-light d-flex justify-content-center align-items-center px-4 gap-1 hero-button" href={ href } target="_blank" rel="noopener noreferrer">
-          <span class={ className }>Donate with</span>
-          <Icon class="bi" name={ icon } role="img" aria-label={ name }/>
-        </a>
-      )}
+      {
+        heroButtons.map(({ icon, href, name, className }) => (
+          <a
+            class="btn btn-primary border-light d-flex justify-content-center align-items-center px-4 gap-1 hero-button"
+            href={href}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <span class={className}>Donate with</span>
+            <Icon class="bi" name={icon} role="img" aria-label={name} />
+          </a>
+        ))
+      }
     </div>
   </Hero>
 
@@ -77,17 +95,34 @@ const crumbs = [{
         <h2 class="display-3">Support our <strong>mission</strong>.</h2>
         <div class="lead">
           <p>
-            Your support of <span class="text-primary text-brand">Accessible <strong>Community</strong></span> provides programs, accommodations and technology to...
+            Your support of <span class="text-primary text-brand"
+              >Accessible <strong>Community</strong></span
+            > provides programs, accommodations and technology to...
           </p>
           <ul>
-            <li>Help smaller organizations with limited resources engage and support people with disabilities,</li>
-            <li>Empower people with disabilities to be part of the conversation about accessibility in their communities,</li>
-            <li>Motivate organizations by making accessibility visible and providing a marketing advantage for being disability-inclusive, and</li>
-            <li>Mature the accessibility profession by increasing communication, education and efficiency.</li>
+            <li>
+              Help smaller organizations with limited resources engage and
+              support people with disabilities,
+            </li>
+            <li>
+              Empower people with disabilities to be part of the conversation
+              about accessibility in their communities,
+            </li>
+            <li>
+              Motivate organizations by making accessibility visible and
+              providing a marketing advantage for being disability-inclusive,
+              and
+            </li>
+            <li>
+              Mature the accessibility profession by increasing communication,
+              education and efficiency.
+            </li>
           </ul>
           <p>
-            Contribute today and help make our communities more accessible. 
-            <span class="fw-bold text-brand text-primary">Thank you for your support!</span>
+            Contribute today and help make our communities more accessible.
+            <span class="fw-bold text-brand text-primary"
+              >Thank you for your support!</span
+            >
           </p>
         </div>
       </div>
@@ -107,11 +142,16 @@ const crumbs = [{
         </div>
         <div class="d-none d-md-block mt-3 me-3">
           <strong>Note:</strong>
-          If you would like to make a donation through corporate or government giving, by check, or some other means, please <a href={ directorEmail }>email our director</a> to discuss your donation.
+          If you would like to make a donation through corporate or government giving,
+          by check, or some other means, please <a href={directorEmail}
+            >email our director</a
+          > to discuss your donation.
         </div>
       </div>
       <div class="col-md-5 col-lg-3">
-        <p>We can also accept donations from individuals who currently reside in:</p>
+        <p>
+          We can also accept donations from individuals who currently reside in:
+        </p>
         <ul>
           <li>Delaware</li>
           <li>Idaho</li>
@@ -125,19 +165,31 @@ const crumbs = [{
         </ul>
       </div>
       <div class="col-lg-3 col-xl-2">
-        <div class="d-grid d-sm-flex flex-lg-column justify-content-sm-center gap-3 pb-3">
-          { donationLinks.map(({icon, href, title, theme}) =>
-            <a class:list={[`btn btn-sm btn-primary rounded-2 shadow-sm`]} href={ href } target="_blank" rel="noopener noreferrer">
-              <Icon class="bi mx-auto" name={ icon } aria-hidden="true"/>
-              { title }
-            </a>
-          )}
+        <div
+          class="d-grid d-sm-flex flex-lg-column justify-content-sm-center gap-3 pb-3"
+        >
+          {
+            donationLinks.map(({ icon, href, title, theme }) => (
+              <a
+                class:list={[`btn btn-sm btn-primary rounded-2 shadow-sm`]}
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Icon class="bi mx-auto" name={icon} aria-hidden="true" />
+                {title}
+              </a>
+            ))
+          }
         </div>
       </div>
     </div>
     <p class="d-md-none">
       <strong>Note:</strong>
-      If you would like to make a donation through corporate or government giving, by check, or some other means, please <a href={ directorEmail }>email our director</a> to discuss your donation.
+      If you would like to make a donation through corporate or government giving,
+      by check, or some other means, please <a href={directorEmail}
+        >email our director</a
+      > to discuss your donation.
     </p>
   </ShadowBoxSection>
 </Layout>

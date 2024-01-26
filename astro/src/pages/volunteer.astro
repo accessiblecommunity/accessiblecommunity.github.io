@@ -1,330 +1,545 @@
 ---
-import { Icon } from 'astro-icon';
-import Layout from '../layouts/Layout.astro';
-import Hero from '../components/Hero.astro';
-import ThemedSection from '../components/ThemedSection.astro';
+import { Icon } from "astro-icon";
+import Layout from "../layouts/Layout.astro";
+import Hero from "../components/Hero.astro";
+import ThemedSection from "../components/ThemedSection.astro";
 
-const crumbs = [{
-  name: 'Home', href: '/',
-}, {
-  name: 'Join Us', href: '/join-us',
-}];
+const crumbs = [
+  {
+    name: "Home",
+    href: "/",
+  },
+  {
+    name: "Join Us",
+    href: "/join-us",
+  },
+];
 
-import heroBg from '../images/colored-hero/hands-together.png'
+import heroBg from "../images/colored-hero/hands-together.png";
 ---
 
 <Layout title="Volunteer" crumbs={crumbs}>
-  <Hero image={ heroBg } slot="header" actionBreakpoint="md">
+  <Hero image={heroBg} slot="header" actionBreakpoint="md">
     <div slot="heading" class="mb-4">
       <h1 class="visually-hidden">Volunteer</h1>
       <blockquote class="display-2 text-white">
         <div>
-          <sup aria-hidden="true"><Icon name="quote-left" height="0.5em" /></sup>&nbsp;<span class="small">Alone we can do so little;</span>
+          <sup aria-hidden="true"><Icon name="quote-left" height="0.5em" /></sup
+          >&nbsp;<span class="small">Alone we can do so little;</span>
         </div>
         <div>
-          <span class="fw-bold">Together we can do so much.&nbsp;<sup aria-hidden="true"><Icon name="quote-right" height="0.5em" /></sup>
+          <span class="fw-bold"
+            >Together we can do so much.&nbsp;<sup aria-hidden="true"
+              ><Icon name="quote-right" height="0.5em" /></sup
+            >
+          </span>
+        </div>
+        <div class="blockquote-footer text-end text-white me-5 display-6">
+          <span class="display-7">Helen Keller</span>
         </div>
       </blockquote>
-      <div class="blockquote-footer text-end text-white me-5 display-6">
-        <span class="display-7">Helen Keller</span>
-      </div>
+      <p class="lead text-bg-hero">
+        <span class="text-brand">Accessible <strong>Community</strong></span> is
+        a volunteer-led and staffed 501(c)3 organization. We welcome any contributions
+        to help make our communities more accessible and disability-inclusive.
+      </p>
+      <Fragment slot="action-bar">
+        <a href="#teams" class="icon-link link-light hero-link">
+          <Icon name="bi:people-fill" class="bi" alt="" aria-hidden="true" />
+          Learn more about our teams
+        </a>
+        <a href="#form" class="icon-link link-light hero-link">
+          <Icon name="bi:pencil-fill" class="bi" alt="" aria-hidden="true" />
+          Fill out the volunteer form
+        </a>
+      </Fragment>
     </div>
-    <p class="lead text-bg-hero">
-      <span class="text-brand">Accessible <strong>Community</strong></span> is a volunteer-led
-      and staffed 501(c)3 organization. We welcome any contributions to help make our communities
-      more accessible and disability-inclusive.
-    </p>
-    <Fragment slot="action-bar">
-      <a href="#teams" class="icon-link link-light hero-link">
-        <Icon name="bi:people-fill" class="bi" alt="" aria-hidden="true"></Icon>
-        Learn more about our teams
-      </a>
-      <a href="#form" class="icon-link link-light hero-link">
-        <Icon name="bi:pencil-fill" class="bi" alt="" aria-hidden="true"></Icon>
-        Fill out the volunteer form
-      </a>
-    </Fragment>
-  </Hero>
 
- <ThemedSection id="teams" style="secondary">
-  <h2 class="display-3">Volunteer <span class="fw-bold">Teams</span></h2>
-  <div>
-    <p>Thank you for wanting to learn about our volunteer opportunities at <span class="text-brand text-primary">Accessible <strong>Community</strong></span>. We have five different teams to choose from, and we have provided decriptions of each team to help you choose one (or more) to join. Everyone, including our staff, is a volunteer.</p>
-    <p><strong>All our teams meet virtually on Zoom.</strong> This allows us to have an international team of volunteers.</p>
-    <p>After you determine which team(s) you want to volunteer with, or if you think you could help in another way not listed, <a href="#form">fill out our volunteer form</a>.</p>
-  </div>
-  <div class="row justify-content-center gap-5 py-4">
-    <div class="col-md-9 col-lg-5">
-      <div class="card mb-3 shadow team-card">
-        <h3 class="display-5 card-header">Content Team</h3>
-        <div class="card-body">
-          <p class="card-text">
-            <span class="fw-bold">Description:</span>
-            <a href="https://www.ta11y.org/learning" target="_blank" rel="noopener noreferrer">Ta11y's learning content</a> team joins accessibility novices with experienced professionals to
-            produce our accessibility guidance.
-          </p>
-          <ul>
-            <li>Writers can grow their skills and expand their knowledge.</li>
-            <li>Editors can help others improve their writing skills.</li>
-            <li>Artists can support content with reinforcing images.</li>
-            <li>Experts can review content and help others learn.</li>
-          </ul>
-          <p>
-            We ask you to dedicate 3-5 hours a week, attend a weekly stand-up, and use Slack to stay connected between meetings. We use writing guides, templates, and a review process to ensure a final product you will be proud to include in your portfolio.            
-          </p>
-          <p><span class="fw-bold">Team Leader:</span> Ellen</p>
-          <p>For more info on the Content&nbsp;Team, <a class="volunteer-link" href="mailto:ellen@accessiblecommunity.org">email&nbsp;Ellen</a>.</p>
-        </div>
+    <ThemedSection id="teams" style="secondary">
+      <h2 class="display-3">Volunteer <span class="fw-bold">Teams</span></h2>
+      <div>
+        <p>
+          Thank you for wanting to learn about our volunteer opportunities at <span
+            class="text-brand text-primary"
+            >Accessible <strong>Community</strong></span
+          >. We have five different teams to choose from, and we have provided
+          decriptions of each team to help you choose one (or more) to join.
+          Everyone, including our staff, is a volunteer.
+        </p>
+        <p>
+          <strong>All our teams meet virtually on Zoom.</strong> This allows us to
+          have an international team of volunteers.
+        </p>
+        <p>
+          After you determine which team(s) you want to volunteer with, or if
+          you think you could help in another way not listed, <a href="#form"
+            >fill out our volunteer form</a
+          >.
+        </p>
       </div>
-    </div>
-    <div class="col-md-9 col-lg-5">
-      <div class="card mb-3 shadow team-card">
-        <h3 class="display-5 card-header">Development Team</h3>
-        <div class="card-body">
-          <p class="card-text">
-            <span class="fw-bold">Description:</span>
-            Web developers that work together to build our tools and websites. We welcome both experienced and
-            inexperienced programmers who can dedicate at least 3-5 hours a week. Frontend development consists
-            of React and Vue-based solutions with Bootstrap, while backend developers utilize Python, Django,
-            FastAPI, SqlAlchemy and Postgres.
-          </p>
-          <p>
-            Team communication occurs via Slack with stand-ups occurring on weekly basis. If you have some development
-            skills and are willing to help build tools for people with disabilities, please reach out.            
-          </p>
-          <p><span class="fw-bold">Team Leader:</span> Brian</p>
-          <p>For more info on the Development&nbsp;Team, <a class="volunteer-link" href="mailto:brian@accessiblecommunity.org">email&nbsp;Brian</a>.</p>
+      <div class="row justify-content-center gap-5 py-4">
+        <div class="col-md-9 col-lg-5">
+          <div class="card mb-3 shadow team-card">
+            <h3 class="display-5 card-header">Content Team</h3>
+            <div class="card-body">
+              <p class="card-text">
+                <span class="fw-bold">Description:</span>
+                <a
+                  href="https://www.ta11y.org/learning"
+                  target="_blank"
+                  rel="noopener noreferrer">Ta11y's learning content</a
+                > team joins accessibility novices with experienced professionals
+                to produce our accessibility guidance.
+              </p>
+              <ul>
+                <li>
+                  Writers can grow their skills and expand their knowledge.
+                </li>
+                <li>Editors can help others improve their writing skills.</li>
+                <li>Artists can support content with reinforcing images.</li>
+                <li>Experts can review content and help others learn.</li>
+              </ul>
+              <p>
+                We ask you to dedicate 3-5 hours a week, attend a weekly
+                stand-up, and use Slack to stay connected between meetings. We
+                use writing guides, templates, and a review process to ensure a
+                final product you will be proud to include in your portfolio.
+              </p>
+              <p><span class="fw-bold">Team Leader:</span> Ellen</p>
+              <p>
+                For more info on the Content&nbsp;Team, <a
+                  class="volunteer-link"
+                  href="mailto:ellen@accessiblecommunity.org"
+                  >email&nbsp;Ellen</a
+                >.
+              </p>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
-    <div class="col-md-9 col-lg-5">
-      <div class="card mb-3 shadow team-card">
-        <h3 class="display-5 card-header">Evaluation Team</h3>
-        <div class="card-body">
-          <p class="card-text">
-            <span class="fw-bold">Description:</span>
-            The Evaluation Team tests the web site accessibility of small organizations that can't
-            afford accessibility audits. This allows professionals who are learning about
-            accessibility to practice and get feedback while helping smaller community
-            organizations. We ask that participants review sites using ta11y for a few hours each
-            week and attend a weekly meeting. 
-            <!-- TODO: Add back in once a web assessment form for orgs is present.
+        <div class="col-md-9 col-lg-5">
+          <div class="card mb-3 shadow team-card">
+            <h3 class="display-5 card-header">Development Team</h3>
+            <div class="card-body">
+              <p class="card-text">
+                <span class="fw-bold">Description:</span>
+                Web developers that work together to build our tools and websites.
+                We welcome both experienced and inexperienced programmers who can
+                dedicate at least 3-5 hours a week. Frontend development consists
+                of React and Vue-based solutions with Bootstrap, while backend developers
+                utilize Python, Django, FastAPI, SqlAlchemy and Postgres.
+              </p>
+              <p>
+                Team communication occurs via Slack with stand-ups occurring on
+                weekly basis. If you have some development skills and are
+                willing to help build tools for people with disabilities, please
+                reach out.
+              </p>
+              <p><span class="fw-bold">Team Leader:</span> Brian</p>
+              <p>
+                For more info on the Development&nbsp;Team, <a
+                  class="volunteer-link"
+                  href="mailto:brian@accessiblecommunity.org"
+                  >email&nbsp;Brian</a
+                >.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-9 col-lg-5">
+          <div class="card mb-3 shadow team-card">
+            <h3 class="display-5 card-header">Evaluation Team</h3>
+            <div class="card-body">
+              <p class="card-text">
+                <span class="fw-bold">Description:</span>
+                The Evaluation Team tests the web site accessibility of small organizations
+                that can't afford accessibility audits. This allows professionals
+                who are learning about accessibility to practice and get feedback
+                while helping smaller community organizations. We ask that participants
+                review sites using ta11y for a few hours each week and attend a weekly
+                meeting.
+                <!-- TODO: Add back in once a web assessment form for orgs is present.
               If you are interesting in requesting assistance with
             your web site, please complete the web site assessment request [link to form we don't
             have]. -->
-          </p>
-          <p><span class="fw-bold">Team Leader:</span> Rachael</p>
-          <p>For more info on the Evaluation&nbsp;Team, <a class="volunteer-link" href="mailto:rachael@accessiblecommunity.org">email&nbsp;Rachael</a>.</p>
+              </p>
+              <p><span class="fw-bold">Team Leader:</span> Rachael</p>
+              <p>
+                For more info on the Evaluation&nbsp;Team, <a
+                  class="volunteer-link"
+                  href="mailto:rachael@accessiblecommunity.org"
+                  >email&nbsp;Rachael</a
+                >.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-9 col-lg-5">
+          <div class="card mb-3 shadow team-card">
+            <h3 class="display-5 card-header">Leadership Team</h3>
+            <div class="card-body">
+              <p class="card-text">
+                <span class="fw-bold">Description:</span>
+                Accessible Community's leadership team manages the services and products
+                that Accessible Community provides. We welcome volunteers with an
+                interest in project management, finance, and other leadership skills
+                to apply for consideration in joining this team. Accessible Community
+                strives to be a disability led organization - lived experience with
+                disability is an important part of this area.
+              </p>
+              <p><span class="fw-bold">Team Leader:</span> Rachael</p>
+              <p>
+                For more info on the Leadership&nbsp;Team, <a
+                  class="volunteer-link"
+                  href="mailto:rachael@accessiblecommunity.org"
+                  >email&nbsp;Rachael</a
+                >.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-9 col-lg-5">
+          <div class="card mb-3 shadow team-card">
+            <h3 class="display-5 card-header">
+              User Experience (<abbr>UX</abbr>) Team
+            </h3>
+            <div class="card-body">
+              <p class="card-text">
+                <span class="fw-bold">Description:</span>
+                Accessible Community's User Experience (UX) team works collaboratively
+                to create inclusive and user-friendly digital experiences for all.
+                Grounded in the principles of human-centered design, the team conducts
+                research to gain deep insights into user behaviors, preferences,
+                and pain points. This research allows the team to design digital
+                experiences that enables a diverse set of users to utilize Accessible
+                Community's toolset.
+              </p>
+              <p class="card-text">
+                Currently, we are not looking for additional UX team volunteers.
+                If you are interested in participating in an upcoming user
+                research activity, please reach out.
+              </p>
+              <p><span class="fw-bold">Team Leader:</span> Michael</p>
+              <p>
+                For more info on the <abbr>UX</abbr>&nbsp;Team, <a
+                  class="volunteer-link"
+                  href="mailto:michael@accessiblecommunity.org"
+                  >email&nbsp;Michael</a
+                >.
+              </p>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="col-md-9 col-lg-5">
-      <div class="card mb-3 shadow team-card">
-        <h3 class="display-5 card-header">Leadership Team</h3>
-        <div class="card-body">
-          <p class="card-text">
-            <span class="fw-bold">Description:</span>
-            Accessible Community's leadership team manages the services and products that Accessible
-            Community provides. We welcome volunteers with an interest in project management, finance,
-            and other leadership skills to apply for consideration in joining this team. Accessible
-            Community strives to be a disability led organization - lived experience with disability
-            is an important part of this area.            
-          </p>
-          <p><span class="fw-bold">Team Leader:</span> Rachael</p>
-          <p>For more info on the Leadership&nbsp;Team, <a class="volunteer-link" href="mailto:rachael@accessiblecommunity.org">email&nbsp;Rachael</a>.</p>
+    </ThemedSection>
+
+    <ThemedSection id="form" style="tertiary">
+      <h2 class="display-3 mb-4 text-info-emphasis">
+        Volunteer <strong>Form</strong>
+      </h2>
+      <form id="volunteerFormEl" class="col p-4 border-info volunteer-form">
+        <p class="lead">
+          Thank you for your interest in volunteering with <span
+            class="text-brand text-primary"
+            >Accessible <strong>Community</strong></span
+          >.
+        </p>
+        <p class="col-lg-9">
+          We are a growing <strong class="text-primary"
+            >international community</strong
+          > of volunteers working together to improve our communities for people
+          with disabilities.
+        </p>
+        <p class="col-lg-9">
+          We are looking for individuals with passion and dedication who are
+          willing to spend about 4&nbsp;hours a week volunteering their talents.
+          To succeed, we need a wide variety of skills.
+        </p>
+        <p class="col-lg-9">
+          If you are interested in volunteering your time and talents, then
+          please complete the form below.
+        </p>
+        <p>
+          Required fields have an asterisk (<span class="asterisk">*</span>).
+        </p>
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <label for="firstNameField" class="form-label mb-1 required-field"
+              >First Name</label
+            ><span class="asterisk"></span>
+            <input
+              type="text"
+              name="FirstName"
+              class="form-control w-100 form-field"
+              id="firstNameField"
+              autocomplete="given-name"
+              required
+            />
+          </div>
+          <div class="col-md-6 mb-3">
+            <label for="lastNameField" class="form-label mb-1 required-field"
+              >Last Name</label
+            ><span class="asterisk"></span>
+            <input
+              type="text"
+              name="LastName"
+              class="form-control w-100 form-field"
+              id="lastNameField"
+              autocomplete="family-name"
+              required
+            />
+          </div>
+          <div class="col-md-6 mb-3">
+            <label for="emailField" class="form-label mb-1 required-field"
+              >Email address</label
+            ><span class="asterisk"></span>
+            <input
+              type="email"
+              name="Email"
+              class="form-control w-100 form-field"
+              id="emailField"
+              autocomplete="email"
+              aria-describedby="emailHelp"
+              required
+            />
+            <div id="emailHelp" class="form-text">
+              The email you would like us to associate with your account
+              accesses. This is ideally a Gmail address.
+            </div>
+          </div>
+          <div class="col-md-6 mb-3">
+            <label for="countryField" class="form-label mb-1 required-field"
+              >Country</label
+            ><span class="asterisk"></span>
+            <input
+              type="text"
+              name="Country"
+              class="form-control w-100 form-field"
+              id="countryField"
+              autocomplete="country-name"
+              aria-describedby="countryHelp"
+              required
+            />
+            <div id="countryHelp" class="form-text">
+              The country where you spend the majority of your time.
+            </div>
+          </div>
+          <div class="col-md-6 mb-3">
+            <fieldset>
+              <legend class="mb-2 fs-5 required-field">
+                Which team(s) are you interested in assisting?
+                <span class="asterisk" aria-hidden="true"></span>
+              </legend>
+              <div class="form-check d-flex mb-2 align-items-center">
+                <input
+                  class="form-check-input check"
+                  type="checkbox"
+                  name="Teams"
+                  value="Content"
+                  id="interestWrite"
+                  aria-checked="false"
+                />
+                <label class="form-check-label ps-2" for="interestWrite">
+                  Content Team
+                </label>
+              </div>
+              <div class="form-check d-flex mb-2 align-items-center">
+                <input
+                  class="form-check-input check"
+                  type="checkbox"
+                  name="Teams"
+                  value="Development"
+                  id="interestDev"
+                  aria-checked="false"
+                />
+                <label class="form-check-label ps-2" for="interestDev">
+                  Development Team
+                </label>
+              </div>
+              <div class="form-check d-flex mb-2 align-items-center">
+                <input
+                  class="form-check-input check"
+                  type="checkbox"
+                  name="Teams"
+                  value="Evaluation"
+                  id="interestEval"
+                  aria-checked="false"
+                />
+                <label class="form-check-label ps-2" for="interestEval">
+                  Evaluation Team
+                </label>
+              </div>
+              <div class="form-check d-flex mb-2 align-items-center">
+                <input
+                  class="form-check-input check"
+                  type="checkbox"
+                  name="Teams"
+                  value="Leadership"
+                  id="interestRun"
+                  aria-checked="false"
+                />
+                <label class="form-check-label ps-2" for="interestRun">
+                  Leadership Team
+                </label>
+              </div>
+              <div class="form-check d-flex mb-2 align-items-center">
+                <input
+                  class="form-check-input check"
+                  type="checkbox"
+                  name="Teams"
+                  value="UI/UX"
+                  id="interestUX"
+                  aria-checked="false"
+                />
+                <label class="form-check-label ps-2" for="interestUX">
+                  UX Team
+                </label>
+              </div>
+              <div class="form-check d-flex mb-2 align-items-center">
+                <input
+                  class="form-check-input check"
+                  type="checkbox"
+                  name="Teams"
+                  value="Other"
+                  id="interestOther"
+                  aria-checked="false"
+                />
+                <label class="form-check-label ps-2" for="interestOther">
+                  Other
+                </label>
+              </div>
+            </fieldset>
+          </div>
+          <div class="col-md-6 mb-3">
+            <fieldset>
+              <legend class="mb-2 fs-5 required-field">
+                How many hours per week can you contribute?
+                <span class="asterisk" aria-hidden="true"></span>
+              </legend>
+              <div class="form-check d-flex mb-2 align-items-center">
+                <input
+                  class="form-check-input check"
+                  type="radio"
+                  name="Hours"
+                  value="Less than 4 hours"
+                  id="hoursLess"
+                  aria-checked="false"
+                />
+                <label class="form-check-label ps-2" for="hoursLess">
+                  Less than 4 hours a week
+                </label>
+              </div>
+              <div class="form-check d-flex mb-2 align-items-center">
+                <input
+                  class="form-check-input check"
+                  type="radio"
+                  name="Hours"
+                  value="About 4 hours"
+                  id="hoursAround"
+                  aria-checked="false"
+                />
+                <label class="form-check-label ps-2" for="hoursAround">
+                  Around 4 hours a week
+                </label>
+              </div>
+              <div class="form-check d-flex mb-2 align-items-center">
+                <input
+                  class="form-check-input check"
+                  type="radio"
+                  name="Hours"
+                  value="More than 4 hours"
+                  id="hoursMore"
+                  aria-checked="false"
+                />
+                <label class="form-check-label ps-2" for="hoursMore">
+                  More than 4 hours a week
+                </label>
+              </div>
+            </fieldset>
+          </div>
+          <div class="form-floating mb-3">
+            <label for="accommodateTextarea" class="form-label mb-1"
+              >Please list any accomodations needed for remote meetings and
+              work.</label
+            >
+            <span class="asterisk"></span>
+            <textarea
+              name="Accommodations"
+              class="form-control w-100 form-text-area"
+              id="accommodateTextarea"></textarea>
+          </div>
+          <div class="col-md-6 mx-auto">
+            <button
+              id="volunteerSubmit"
+              type="submit"
+              class="btn btn-info w-100 general-button">Submit</button
+            >
+          </div>
+        </div>
+      </form>
+      <div
+        class="d-none col p-4 border-primary volunteer-form"
+        id="volunteerSuccess"
+      >
+        <div class="lead">
+          Thank you for your interest in volunteering with <span
+            class="text-brand text-primary"
+            >Accessible <strong>Community</strong></span
+          >. We'll be in touch shortly.
         </div>
       </div>
-    </div>
-    <div class="col-md-9 col-lg-5">
-      <div class="card mb-3 shadow team-card">
-        <h3 class="display-5 card-header">User Experience (<abbr>UX</abbr>) Team</h3>
-        <div class="card-body">
-          <p class="card-text">
-            <span class="fw-bold">Description:</span>
-            Accessible Community's User Experience (UX) team works collaboratively to create
-            inclusive and user-friendly digital experiences for all. Grounded in the principles
-            of human-centered design, the team conducts research to gain deep insights into
-            user behaviors, preferences, and pain points. This research allows the team to
-            design digital experiences that enables a diverse set of users to utilize
-            Accessible Community's toolset.
-          </p>
-          <p class="card-text">
-            Currently, we are not looking for additional UX team volunteers. If you are interested
-            in participating in an upcoming user research activity, please reach out.
-          </p>
-          <p><span class="fw-bold">Team Leader:</span> Michael</p>
-          <p>For more info on the <abbr>UX</abbr>&nbsp;Team, <a class="volunteer-link" href="mailto:michael@accessiblecommunity.org">email&nbsp;Michael</a>.</p>
-        </div>
-     </div>
-    </div>
-  </div>
- </ThemedSection>
+    </ThemedSection>
+  </Hero>
 
- <ThemedSection id="form" style="tertiary">
-  <h2 class="display-3 mb-4 text-info-emphasis">Volunteer <strong>Form</strong></h2>
-  <form id="volunteerFormEl" class="col p-4 border-info volunteer-form">
-    <p class="lead">Thank you for your interest in volunteering with <span class="text-brand text-primary">Accessible <strong>Community</strong></span>.</p>
-    <p class="col-lg-9">We are a growing <strong class="text-primary">international community</strong> of volunteers working together to improve our communities for people with disabilities.</p>
-    <p class="col-lg-9">We are looking for individuals with passion and dedication who are willing to spend about 4&nbsp;hours a week volunteering their talents. To succeed, we need a wide variety of skills.</p>
-    <p class="col-lg-9">If you are interested in volunteering your time and talents, then please complete the form below. </p>
-    <p>Required fields have an asterisk (<span class="asterisk">*</span>).</p>
-    <div class="row">
-      <div class="col-md-6 mb-3">
-        <label for="firstNameField" class="form-label mb-1 required-field">First Name</label><span class="asterisk" />
-        <input type="text" name="FirstName" class="form-control w-100 form-field" id="firstNameField" autocomplete="given-name" required>
-      </div>
-      <div class="col-md-6 mb-3">
-        <label for="lastNameField" class="form-label mb-1 required-field">Last Name</label><span class="asterisk" />
-        <input type="text" name="LastName" class="form-control w-100 form-field" id="lastNameField" autocomplete="family-name" required>
-      </div>
-      <div class="col-md-6 mb-3">
-        <label for="emailField" class="form-label mb-1 required-field">Email address</label><span class="asterisk" />
-        <input type="email" name="Email" class="form-control w-100 form-field" id="emailField" autocomplete="email" aria-describedby="emailHelp" required>
-        <div id="emailHelp" class="form-text">The email you would like us to associate with your account accesses. This is ideally a Gmail address.</div>
-      </div>
-      <div class="col-md-6 mb-3">
-        <label for="countryField" class="form-label mb-1 required-field">Country</label><span class="asterisk" />
-        <input type="text" name="Country" class="form-control w-100 form-field" id="countryField" autocomplete="country-name" aria-describedby="countryHelp" required>
-        <div id="countryHelp" class="form-text">The country where you spend the majority of your time.</div>
-      </div>
-      <div class="col-md-6 mb-3">
-        <fieldset>
-          <legend class="mb-2 fs-5 required-field">
-            Which team(s) are you interested in assisting?
-            <span class="asterisk" aria-hidden="true" />
-          </legend>
-          <div class="form-check d-flex mb-2 align-items-center">
-            <input class="form-check-input check" type="checkbox" name="Teams" value="Content" id="interestWrite" aria-checked="false">
-            <label class="form-check-label ps-2" for="interestWrite">
-              Content Team
-            </label>
-          </div>
-          <div class="form-check d-flex mb-2 align-items-center">
-            <input class="form-check-input check" type="checkbox" name="Teams" value="Development" id="interestDev" aria-checked="false">
-            <label class="form-check-label ps-2" for="interestDev">
-              Development Team
-            </label>
-          </div>
-          <div class="form-check d-flex mb-2 align-items-center">
-            <input class="form-check-input check" type="checkbox" name="Teams" value="Evaluation" id="interestEval" aria-checked="false">
-            <label class="form-check-label ps-2" for="interestEval">
-              Evaluation Team
-            </label>
-          </div>
-          <div class="form-check d-flex mb-2 align-items-center">
-            <input class="form-check-input check" type="checkbox" name="Teams" value="Leadership" id="interestRun" aria-checked="false">
-            <label class="form-check-label ps-2" for="interestRun">
-              Leadership Team
-            </label>
-          </div>
-          <div class="form-check d-flex mb-2 align-items-center">
-            <input class="form-check-input check" type="checkbox" name="Teams" value="UI/UX" id="interestUX" aria-checked="false">
-            <label class="form-check-label ps-2" for="interestUX">
-              UX Team
-            </label>
-          </div>
-          <div class="form-check d-flex mb-2 align-items-center">
-            <input class="form-check-input check" type="checkbox" name="Teams" value="Other" id="interestOther" aria-checked="false">
-            <label class="form-check-label ps-2" for="interestOther">
-              Other
-            </label>
-          </div>
-        </fieldset>
-      </div>
-      <div class="col-md-6 mb-3">
-        <fieldset>
-          <legend class="mb-2 fs-5 required-field">
-            How many hours per week can you contribute?
-            <span class="asterisk" aria-hidden="true" />
-          </legend>
-          <div class="form-check d-flex mb-2 align-items-center">
-            <input class="form-check-input check" type="radio" name="Hours" value="Less than 4 hours" id="hoursLess" aria-checked="false">
-            <label class="form-check-label ps-2" for="hoursLess">
-              Less than 4 hours a week
-            </label>
-          </div>
-          <div class="form-check d-flex mb-2 align-items-center">
-            <input class="form-check-input check" type="radio" name="Hours" value="About 4 hours" id="hoursAround" aria-checked="false">
-            <label class="form-check-label ps-2" for="hoursAround">
-              Around 4 hours a week
-            </label>
-          </div>
-          <div class="form-check d-flex mb-2 align-items-center">
-            <input class="form-check-input check" type="radio" name="Hours" value="More than 4 hours" id="hoursMore" aria-checked="false">
-            <label class="form-check-label ps-2" for="hoursMore">
-              More than 4 hours a week
-            </label>
-          </div>
-        </fieldset>
-      </div>
-      <div class="form-floating mb-3">
-        <label for="accommodateTextarea" class="form-label mb-1">Please list any accomodations needed for remote meetings and work.</label>
-        <span class="asterisk" />
-        <textarea name="Accommodations" class="form-control w-100 form-text-area" id="accommodateTextarea"></textarea>
-      </div>
-      <div class="col-md-6 mx-auto">
-        <button id="volunteerSubmit" type="submit" class="btn btn-info w-100 general-button">Submit</button>
-      </div>
-    </div>
-  </form>
-  <div class="d-none col p-4 border-primary volunteer-form" id="volunteerSuccess">
-    <div class="lead">
-      Thank you for your interest in volunteering with <span class="text-brand text-primary">Accessible <strong>Community</strong></span>.
-      We'll be in touch shortly.
-    </div>
-  </div>
- </ThemedSection>
-</Layout>
+  <script is:inline>
+    const form = document.querySelector("#volunteerFormEl");
+    const submitButton = document.querySelector("#volunteerSubmit");
+    const scriptURL =
+      "https://script.google.com/macros/s/AKfycbzmihK0h2VZTdtNk3V2ONzdGKz6rwbyEbZrReuKIgwWoyDKzklQ3LcRbq-Po93qdXlqoQ/exec";
 
-<script is:inline>
-  const form = document.querySelector("#volunteerFormEl")
-  const submitButton = document.querySelector("#volunteerSubmit")
-  const scriptURL = 'https://script.google.com/macros/s/AKfycbzmihK0h2VZTdtNk3V2ONzdGKz6rwbyEbZrReuKIgwWoyDKzklQ3LcRbq-Po93qdXlqoQ/exec'
+    form.addEventListener("submit", (e) => {
+      submitButton.disabled = true;
+      e.preventDefault();
 
-  form.addEventListener('submit', e => {
-    submitButton.disabled = true;
-    e.preventDefault();
+      let requestBody = new FormData(form);
+      const teams = requestBody.getAll("Teams");
+      requestBody.delete("Teams");
+      requestBody.set("Teams", teams.join(", "));
 
-    let requestBody = new FormData(form);
-    const teams = requestBody.getAll("Teams");
-    requestBody.delete("Teams")
-    requestBody.set("Teams", teams.join(", "));
-
-    fetch(
-      scriptURL, { method: 'POST', body: requestBody}
-    ).then(response => {
-      form.classList.add('d-none');
-      const successMessage = document.querySelector("#volunteerSuccess")
-      successMessage.classList.remove('d-none');
-    }).catch(error => {
-      alert('Error!', error.message)
-      submitButton.disabled = false
+      fetch(scriptURL, { method: "POST", body: requestBody })
+        .then((response) => {
+          form.classList.add("d-none");
+          const successMessage = document.querySelector("#volunteerSuccess");
+          successMessage.classList.remove("d-none");
+        })
+        .catch((error) => {
+          alert("Error!", error.message);
+          submitButton.disabled = false;
+        });
     });
-  })
-</script>
+  </script>
 
-<style>
-  /* first declaration that is commented out below is for debugging purposes. */
-  /* * {
+  <style>
+    /* first declaration that is commented out below is for debugging purposes. */
+    /* * {
     outline: 1px solid black;
   } */
 
-  .volunteer-form {
-    border: 3.5px solid;
-    border-radius: 0.5rem;
-  }
+    .volunteer-form {
+      border: 3.5px solid;
+      border-radius: 0.5rem;
+    }
 
-  .check {
-   width: 30px;
-   height: 30px;
-  }
+    .check {
+      width: 30px;
+      height: 30px;
+    }
 
-  fieldset label {
-    cursor: pointer;
-  }
+    fieldset label {
+      cursor: pointer;
+    }
 
-  .form-text-area {
-    height: 6em;
-  }
-
-</style>
+    .form-text-area {
+      height: 6em;
+    }
+  </style>
+</Layout>
