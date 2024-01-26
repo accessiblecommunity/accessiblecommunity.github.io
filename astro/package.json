@@ -19,5 +19,8 @@
     "bootstrap": "^5.3.2",
     "lodash-es": "^4.17.21",
     "sass": "^1.69.4"
+  },
+  "devDependencies": {
+    "prettier": "3.2.4"
   }
 }
