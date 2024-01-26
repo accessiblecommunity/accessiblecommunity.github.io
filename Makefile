@@ -27,6 +27,9 @@ down:
 shell:
 	@docker-compose exec $(CONTAINER) bash
 
+dist: up $(SOURCE_DIR)/node_modules
+	@docker-compose exec $(CONTAINER) sh -c "npm run build"
+
 version: up
 ifndef number
 	$(error Please define a 'number' that represents the new version)
@@ -48,6 +51,6 @@ clean-js-modules:
 
 clean: clean-js-dist clean-js-modules
 
-.PHONY: serve up down build shell \
+.PHONY: serve up down build shell dist version \
 	clean clean-js-dist clean-js-modules \
 	.FORCE
