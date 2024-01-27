@@ -25,7 +25,7 @@ import { Icon } from "astro-icon";
 <style is:global>
   .icon-link > .bi.external {
     /* These make it act like a `sup` */
-    font-size: 80%;
+    font-size: 0.8em;
     position: relative;
     top: -0.5em;
     /* This counters most of the 0.375 gap in the default icon-link */
@@ -47,9 +47,7 @@ import { Icon } from "astro-icon";
     gaps ? (
       <slot />
     ) : (
-      <span>
-        <slot />
-      </span>
+      <span><slot /></span>
     )
   }<Icon
     name="bi:arrow-up-right-square"
