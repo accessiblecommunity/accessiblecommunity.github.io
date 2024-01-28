@@ -12,9 +12,9 @@ import { isEmpty, intersection, sortBy } from "lodash-es";
 const teamProfiles = await getCollection("team");
 const staff = sortBy(
   teamProfiles.filter((p) =>
-    isEmpty(intersection(p.data.tags, ["board", "leadership"]))
+    isEmpty(intersection(p.data.tags, ["board", "leadership"])),
   ),
-  (p) => p.data.name.split(" ").slice(1).join(" ")
+  (p) => p.data.name.split(" ").slice(1).join(" "),
 );
 
 const crumbs = [

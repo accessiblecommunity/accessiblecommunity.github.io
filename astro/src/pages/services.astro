@@ -92,16 +92,14 @@ const services = [
                     aria-hidden="true"
                   />
                 </a>
-                {link ? (
+                {link ?
                   <div class="text-primary text-nowrap">
                     Visit
                     <ExternalLink href={link} class=" text-brand" gaps={true}>
                       <span set:html={title} />
                     </ExternalLink>
                   </div>
-                ) : (
-                  <div class="text-brand fw-bold flex-fill">Coming soon.</div>
-                )}
+                : <div class="text-brand fw-bold flex-fill">Coming soon.</div>}
               </div>
             </div>
           </div>

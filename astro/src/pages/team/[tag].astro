@@ -37,7 +37,7 @@ const { team, title, heading } = Astro.props;
 
 const teamMembers = sortBy(
   team.filter(({ data }) => data.tags?.includes(tag)),
-  ({ data }) => data.name.split(" ").slice(1).join(" ")
+  ({ data }) => data.name.split(" ").slice(1).join(" "),
 );
 
 const crumbs = [

@@ -44,11 +44,10 @@ import { Icon } from "astro-icon";
   target="_blank"
   rel="noopener noreferrer"
   >{
-    gaps ? (
+    /* prettier-ignore */
+    gaps ?
       <slot />
-    ) : (
-      <span><slot /></span>
-    )
+    : <span><slot /></span>
   }<Icon
     name="bi:arrow-up-right-square"
     class:list={["bi", "external"]}

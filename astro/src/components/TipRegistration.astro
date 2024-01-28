@@ -36,7 +36,7 @@ const { newsletters = false, announcements = false } = Astro.props;
       <p>Required fields have an asterisk (<span class="asterisk">*</span>).</p>
     </slot>
     {
-      newsletters ? (
+      newsletters ?
         // This is MailChimp's newsletter groups
         <div class="mc-field-group input-group">
           <strong>Newsletters from us </strong>
@@ -61,15 +61,13 @@ const { newsletters = false, announcements = false } = Astro.props;
             </li>
           </ul>
         </div>
-      ) : (
-        <input
+      : <input
           type="hidden"
           tabindex="-1"
           name="group[46629][1]"
           id="mce-group[46629]-46629-0"
           value=""
         />
-      )
     }
     <div class="col mb-3">
       <label for="mce-EMAIL" class="form-label mb-1 required-field"
@@ -114,7 +112,7 @@ const { newsletters = false, announcements = false } = Astro.props;
       </div>
     </div>
     {
-      announcements ? (
+      announcements ?
         // This is MailChimp's announcement groups
         <div class="mc-field-group input-group">
           <strong>Send me announcements for </strong>
@@ -154,9 +152,7 @@ const { newsletters = false, announcements = false } = Astro.props;
             </li>
           </ul>
         </div>
-      ) : (
-        ""
-      )
+      : ""
     }
     <div aria-hidden="true" style="position: absolute; left: -5000px;">
       <input type="hidden" name="tags" value="7203297" />

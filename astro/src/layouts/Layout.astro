@@ -10,65 +10,79 @@ interface Props {
   heading?: String;
 }
 
-import '../styles/bootstrap.scss';
+import "../styles/bootstrap.scss";
 
-import Footer from '../components/Footer.astro';
-import Header from '../components/Header.astro';
+import Footer from "../components/Footer.astro";
+import Header from "../components/Header.astro";
 
 const { title, crumbs, heading } = Astro.props;
 ---
 
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="description" content="Accessible Community is a 501(c)3 nonprofit that provides tools, resources and online communities to bring together accessibility experts, volunteers, businesses, organizational and community leaders, and individuals with disabilities to create a more inclusive world." />
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="generator" content={Astro.generator} />
-  {/* Opengraph Protocol support - https://ogp.me/ */}
-  <meta property="og:url" content={Astro.url} />
-  <meta property="og:description" content="Accessible Community is a 501(c)3 nonprofit that provides tools and resources to create a more inclusive world for people with disabilities" />
-  <meta property="og:image" content={`${Astro.site}images/website.jpg`} />
-  <meta property="og:image:width" content="2400" />
-  <meta property="og:image:height" content="1260" />
-  <meta property="og:image:alt" content="Accessible Community logo" />
-  {/* Twitter's OGP metadata */}
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:description" content="Accessible Community is a 501(c)3 nonprofit that provides tools and resources to create a more inclusive world for people with disabilities.">
-  <meta property="twitter:domain" content={Astro.url.host}>
-  <meta property="twitter:url" content={Astro.url}>
-  <meta name="twitter:image" content="https://accessiblecommunity.github.io/images/website.jpg">
-  <meta name="twitter:image:alt" content="Accessible Community logo" />
-  <slot name="metadata">
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content={`Accessible Community - ${title}`} />
-    <meta name="twitter:title" content={`Accessible Community - ${title}`} />
-  </slot>
-  <link rel="icon" type="image/png" href="/images/favicon.png" />
-  <link rel="sitemap" href="/sitemap-index.xml" />
-  <title>{title} - Accessible Community</title>
-</head>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="description"
+      content="Accessible Community is a 501(c)3 nonprofit that provides tools, resources and online communities to bring together accessibility experts, volunteers, businesses, organizational and community leaders, and individuals with disabilities to create a more inclusive world."
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+    {/* Opengraph Protocol support - https://ogp.me/ */}
+    <meta property="og:url" content={Astro.url} />
+    <meta
+      property="og:description"
+      content="Accessible Community is a 501(c)3 nonprofit that provides tools and resources to create a more inclusive world for people with disabilities"
+    />
+    <meta property="og:image" content={`${Astro.site}images/website.jpg`} />
+    <meta property="og:image:width" content="2400" />
+    <meta property="og:image:height" content="1260" />
+    <meta property="og:image:alt" content="Accessible Community logo" />
+    {/* Twitter's OGP metadata */}
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:description"
+      content="Accessible Community is a 501(c)3 nonprofit that provides tools and resources to create a more inclusive world for people with disabilities."
+    />
+    <meta property="twitter:domain" content={Astro.url.host} />
+    <meta property="twitter:url" content={Astro.url} />
+    <meta
+      name="twitter:image"
+      content="https://accessiblecommunity.github.io/images/website.jpg"
+    />
+    <meta name="twitter:image:alt" content="Accessible Community logo" />
+    <slot name="metadata">
+      <meta property="og:type" content="website" />
+      <meta property="og:title" content={`Accessible Community - ${title}`} />
+      <meta name="twitter:title" content={`Accessible Community - ${title}`} />
+    </slot>
+    <link rel="icon" type="image/png" href="/images/favicon.png" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <title>{title} - Accessible Community</title>
+  </head>
 
-<body>
-  <Header title={title} crumbs={crumbs} />
-  <main id="main-content">
-    <slot name="header">
-      <div slot="header" class="bg-primary" style="height: 8rem;">
-        <div class="bg-primary-alpha-6 h-100 d-flex align-items-end" style="--bs-bg-opacity: 0.75">
-          <div class="container">
-            <h1
-              class:list={["display-3 text-white mb-1 w-100"]}
-              set:text={heading || title}
-            />
+  <body>
+    <Header title={title} crumbs={crumbs} />
+    <main id="main-content">
+      <slot name="header">
+        <div slot="header" class="bg-primary" style="height: 8rem;">
+          <div
+            class="bg-primary-alpha-6 h-100 d-flex align-items-end"
+            style="--bs-bg-opacity: 0.75"
+          >
+            <div class="container">
+              <h1
+                class:list={["display-3 text-white mb-1 w-100"]}
+                set:text={heading || title}
+              />
+            </div>
           </div>
         </div>
-      </div>
-    </slot>
-    <slot />
-  </main>
-  <Footer />
-</body>
+      </slot>
+      <slot />
+    </main>
+    <Footer />
+  </body>
 
-<script src="../scripts/headings.js"></script>
-
+  <script src="../scripts/headings.js"></script>
 </html>

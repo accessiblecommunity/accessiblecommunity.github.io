@@ -1,7 +1,7 @@
 ---
-import ImageHeading from '../components/ImageHeading.astro';
-import Layout from '../layouts/Layout.astro';
-import ThemedSection from '../components/ThemedSection.astro';
+import ImageHeading from "../components/ImageHeading.astro";
+import Layout from "../layouts/Layout.astro";
+import ThemedSection from "../components/ThemedSection.astro";
 
 interface Props {
   title: String;
@@ -13,7 +13,7 @@ const { title } = Astro.props;
 <Layout title={title}>
   <ImageHeading image="policy" slot="header">
     <slot name="heading">
-      { title }
+      {title}
     </slot>
   </ImageHeading>
   <ThemedSection style="secondary">

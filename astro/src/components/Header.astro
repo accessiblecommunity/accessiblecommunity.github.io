@@ -59,7 +59,8 @@ const breadCrumbs =
           <ul class="dropdown-menu">
             <li>
               <a class="dropdown-item" href="/about/mission"
-                >Mission &amp; Vision</a>
+                >Mission &amp; Vision</a
+              >
             </li>
             <li>
               <a class="dropdown-item" href="/about/story">Founder's Story</a>
@@ -86,12 +87,14 @@ const breadCrumbs =
             </li>
             <li>
               <a class="dropdown-item" href="/team/leadership"
-                >Leadership Team</a>
+                >Leadership Team</a
+              >
             </li>
             <li><a class="dropdown-item" href="/team/staff">Staff</a></li>
             <li>
               <a class="dropdown-item" href="/team/previous"
-                >Previous Contributors</a>
+                >Previous Contributors</a
+              >
             </li>
             <li><a class="dropdown-item" href="/team/partners">Partners</a></li>
           </ul>
@@ -210,9 +213,9 @@ const breadCrumbs =
   import { Collapse, Dropdown } from "~bootstrap-es";
 
   Array.from(document.querySelectorAll(".dropdown")).forEach(
-    (node) => new Dropdown(node)
+    (node) => new Dropdown(node),
   );
   Array.from(document.querySelectorAll(".collapse")).forEach(
-    (node) => new Collapse(node, { toggle: false })
+    (node) => new Collapse(node, { toggle: false }),
   );
 </script>
