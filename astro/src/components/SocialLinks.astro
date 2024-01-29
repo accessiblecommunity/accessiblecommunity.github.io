@@ -1,11 +1,10 @@
 ---
-import { capitalize, isEmpty, toPairs } from 'lodash-es';
-import { Icon } from 'astro-icon';
-
+import { capitalize, isEmpty, toPairs } from "lodash-es";
+import { Icon } from "astro-icon";
 
 interface SocialLinkDictionary {
   [index: string]: URL;
-};
+}
 
 interface LinkConfig {
   href: URL;
@@ -16,31 +15,26 @@ interface LinkConfig {
 }
 
 interface Props {
-  links: SocialLinkDictionary,
-  adjective?: string,
-  gap?: number,
+  links: SocialLinkDictionary;
+  adjective?: string;
+  gap?: number;
 }
 
-const { links, adjective = '', gap = 2 } = Astro.props;
+const { links, adjective = "", gap = 2 } = Astro.props;
 const brandingThemes = {
-  email: 'primary',
+  email: "primary",
 };
 
-const socialLinks: Array<LinkConfig> = toPairs(
-  links
-).map(([type, url]) => {
+const socialLinks: Array<LinkConfig> = toPairs(links).map(([type, url]) => {
   const icon = (() => {
-    if (type == 'email')
-      return 'envelope-at';
-    else if (type == 'threads')
-      return 'threads-logo-black'
-    else
-      return `cib:${type}`
+    if (type == "email") return "envelope-at";
+    else if (type == "threads") return "threads-logo-black";
+    else return `cib:${type}`;
   })();
 
-  const href = type == 'email' ? `mailto:${url}` : url
-  const service = type == 'linkedin' ? 'LinkedIn' : capitalize(type);
-  const description = type == 'email' ? 'address' : 'profile';
+  const href = type == "email" ? `mailto:${url}` : url;
+  const service = type == "linkedin" ? "LinkedIn" : capitalize(type);
+  const description = type == "email" ? "address" : "profile";
   const theme = brandingThemes[type] ?? type;
 
   return {
@@ -51,33 +45,34 @@ const socialLinks: Array<LinkConfig> = toPairs(
     theme,
   };
 });
-
 ---
 
-{ !isEmpty(socialLinks) && (
-  <ul
-    class="list-inline hstack"
-    aria-label={`${adjective} Communications and Social Media Links`}
-  >
-    { socialLinks.map((sl) =>
-      <li class="list-inline-item">
-        <a
-          href={ sl.href }
-          class:list={["icon-link align-text-top", `text-${sl.theme}`]}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Icon
-            name={ sl.icon }
-            class={`bi m-${gap}`}
-            role="img"
-            aria-label={`${adjective} ${sl.service} ${sl.description}`}
-          />
-        </a>
-      </li>
-    )}
-  </ul>
-)}
+{
+  !isEmpty(socialLinks) && (
+    <ul
+      class="list-inline hstack"
+      aria-label={`${adjective} Communications and Social Media Links`}
+    >
+      {socialLinks.map((sl) => (
+        <li class="list-inline-item">
+          <a
+            href={sl.href}
+            class:list={["icon-link align-text-top", `text-${sl.theme}`]}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Icon
+              name={sl.icon}
+              class={`bi m-${gap}`}
+              role="img"
+              aria-label={`${adjective} ${sl.service} ${sl.description}`}
+            />
+          </a>
+        </li>
+      ))}
+    </ul>
+  )
+}
 
 <style>
   .icon-link > .bi {

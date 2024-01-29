@@ -1,0 +1,4 @@
+# Files that will be ignored by the Prettier extension
+dist
+**/*.scss
+**/*.mdx

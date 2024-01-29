@@ -12,7 +12,7 @@ const {
   image,
   theme = "primary",
   columns = "col-lg-6",
-  actionBreakpoint = "lg"
+  actionBreakpoint = "lg",
 } = Astro.props;
 
 import { getImage } from "astro:assets";
@@ -20,34 +20,43 @@ import { getImage } from "astro:assets";
 let heroBgUrl;
 
 if (image) {
-  const optimizedBg = await getImage({src: image, format: 'avif'})
+  const optimizedBg = await getImage({ src: image, format: "avif" });
   heroBgUrl = `url(${optimizedBg.src})`;
 } else {
-  heroBgUrl = '';
+  heroBgUrl = "";
 }
-
 ---
-<section class={`bg-${theme}`} style={`background: no-repeat center ${heroBgUrl}`}>
+
+<section
+  class={`bg-${theme}`}
+  style={`background: no-repeat center ${heroBgUrl}`}
+>
   <div class="container hero">
     <slot name="heading" />
     <div class:list={[columns, "mx-auto text-white"]}>
       <slot />
     </div>
   </div>
-  { Astro.slots.has('action-bar') && (
-    <div class="bg-primary bg-opacity-50 py-3 text-white">
-      <div class={`d-flex flex-column flex-${actionBreakpoint}-row align-items-center justify-content-${actionBreakpoint}-evenly gap-2`}>
-        <slot name="action-bar" />
+  {
+    Astro.slots.has("action-bar") && (
+      <div class="bg-primary bg-opacity-50 py-3 text-white">
+        <div
+          class={`d-flex flex-column flex-${actionBreakpoint}-row align-items-center justify-content-${actionBreakpoint}-evenly gap-2`}
+        >
+          <slot name="action-bar" />
+        </div>
       </div>
-    </div>
-  )}
-  { Astro.slots.has('prologue') && (
-    <div class="bg-primary-alpha-3 py-2">
-      <div class="container-fluid mx-auto text-white text-center">
-        <slot name="prologue" />
+    )
+  }
+  {
+    Astro.slots.has("prologue") && (
+      <div class="bg-primary bg-opacity-50 py-2">
+        <div class="container-fluid mx-auto text-white text-center">
+          <slot name="prologue" />
+        </div>
       </div>
-    </div>
-  )}
+    )
+  }
 </section>
 
 <style is:global>

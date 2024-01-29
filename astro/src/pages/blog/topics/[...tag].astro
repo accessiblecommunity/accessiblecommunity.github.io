@@ -1,21 +1,29 @@
 ---
-import { getCollection } from 'astro:content';
-import { getBlogTopics, orderByRecent } from '../../../lib/blog';
-import { startCase } from 'lodash-es';
+import { getCollection } from "astro:content";
+import { getBlogTopics, orderByRecent } from "../../../lib/blog";
+import { startCase } from "lodash-es";
 
 export async function getStaticPaths() {
   const topics = await getBlogTopics();
-  const crumbs = [{
-    name: 'Home', href: "/"
-  }, {
-    name: 'Blog', href: "/blog"
-  }, {
-    name: 'Topics', href: "/blog/topics"
-  }]
+  const crumbs = [
+    {
+      name: "Home",
+      href: "/",
+    },
+    {
+      name: "Blog",
+      href: "/blog",
+    },
+    {
+      name: "Topics",
+      href: "/blog/topics",
+    },
+  ];
 
-  return topics.map(category => ({
-    params: { tag: category }, props: { crumbs, category },
-  })); 
+  return topics.map((category) => ({
+    params: { tag: category },
+    props: { crumbs, category },
+  }));
 }
 
 interface Props {
@@ -24,12 +32,12 @@ interface Props {
 }
 
 const { crumbs, category } = Astro.props;
-const categoryBlogs = await getCollection('blogs', ({ data }) => {
+const categoryBlogs = await getCollection("blogs", ({ data }) => {
   return data.tags.includes(category);
 });
-const orderedBlogs: Array<object> = await orderByRecent(categoryBlogs)
+const orderedBlogs: Array<object> = await orderByRecent(categoryBlogs);
 
-import BlogLayout from '../../../layouts/BlogLayout.astro';
+import BlogLayout from "../../../layouts/BlogLayout.astro";
 ---
 
 <BlogLayout
@@ -44,4 +52,3 @@ import BlogLayout from '../../../layouts/BlogLayout.astro';
     <strong>Blogs</strong> - {startCase(category)}
   </Fragment>
 </BlogLayout>
-  

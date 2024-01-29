@@ -27,8 +27,11 @@ down:
 shell:
 	@docker-compose exec $(CONTAINER) bash
 
-dist: up $(SOURCE_DIR)/node_modules
-	@docker-compose exec $(CONTAINER) sh -c "npm run build"
+dist: up $(SOURCE_DIR)/dist
+
+prettier: up
+	@echo Verifying code formatting.
+	@docker-compose exec $(CONTAINER) sh -c "npx prettier ./src --write"
 
 version: up
 ifndef number
@@ -42,6 +45,10 @@ build:
 $(SOURCE_DIR)/node_modules:
 	@echo Install JS dependencies. This will take awhile.
 	docker-compose exec $(CONTAINER) sh -c "npm install"
+
+$(SOURCE_DIR)/dist:
+	@echo Running a local build.
+	@docker-compose exec $(CONTAINER) sh -c "npm run build"
 
 clean-js-dist:
 	$(RemoveDirCmd) $(call FixPath,$(SOURCE_DIR)/dist)

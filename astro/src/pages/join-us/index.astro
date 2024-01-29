@@ -1,29 +1,37 @@
 ---
-import ExternalLink from '../../components/ExternalLink.astro';
-import Hero from '../../components/Hero.astro';
-import { Icon } from 'astro-icon';
-import Layout from '../../layouts/Layout.astro';
-import Quote from '../../components/Quote.astro';
-import ThemedBox from '../../components/ThemedBox.astro';
-import ThemedSection from '../../components/ThemedSection.astro';
+import ExternalLink from "../../components/ExternalLink.astro";
+import Hero from "../../components/Hero.astro";
+import { Icon } from "astro-icon";
+import Layout from "../../layouts/Layout.astro";
+import Quote from "../../components/Quote.astro";
+import ThemedBox from "../../components/ThemedBox.astro";
+import ThemedSection from "../../components/ThemedSection.astro";
 
-import heroBg from '../../images/colored-hero/hands-together.png'
+import heroBg from "../../images/colored-hero/hands-together.png";
 
-const crumbs = [{
-  name: 'Home', href: '/',
-}];
+const crumbs = [
+  {
+    name: "Home",
+    href: "/",
+  },
+];
 ---
 
 <Layout title="Join Us" crumbs={crumbs}>
-  <Hero image={ heroBg } slot="header" actionBreakpoint="md">
+  <Hero image={heroBg} slot="header" actionBreakpoint="md">
     <div slot="heading" class="mb-4">
       <h1 class="visually-hidden">Join Us</h1>
       <blockquote class="display-2 text-white">
         <div>
-          <sup aria-hidden="true"><Icon name="quote-left" height="0.5em" /></sup>&nbsp;<span class="small">Alone we can do so little;</span>
+          <sup aria-hidden="true"><Icon name="quote-left" height="0.5em" /></sup
+          >&nbsp;<span class="small">Alone we can do so little;</span>
         </div>
         <div>
-          <span class="fw-bold">Together we can do so much.&nbsp;<sup aria-hidden="true"><Icon name="quote-right" height="0.5em" /></sup>
+          <span class="fw-bold"
+            >Together we can do so much.&nbsp;<sup aria-hidden="true"
+              ><Icon name="quote-right" height="0.5em" /></sup
+            >
+          </span>
         </div>
       </blockquote>
       <div class="blockquote-footer text-end text-white me-5 display-6">
@@ -31,17 +39,17 @@ const crumbs = [{
       </div>
     </div>
     <p class="lead text-bg-hero">
-      <span class="text-brand">Accessible <strong>Community</strong></span> is a volunteer-led
-      and staffed 501(c)3 organization. We welcome any contributions to help make our communities
-      more accessible and disability-inclusive.
+      <span class="text-brand">Accessible <strong>Community</strong></span> is a
+      volunteer-led and staffed 501(c)3 organization. We welcome any contributions
+      to help make our communities more accessible and disability-inclusive.
     </p>
     <Fragment slot="action-bar">
       <a href="/donate" class="icon-link link-light hero-link">
-        <Icon name="bi:gift-fill" class="bi" alt="" aria-hidden="true"></Icon>
+        <Icon name="bi:gift-fill" class="bi" alt="" aria-hidden="true" />
         Give a donation
       </a>
       <a href="/volunteer" class="icon-link link-light hero-link">
-        <Icon name="bi:people-fill" class="bi" alt="" aria-hidden="true"></Icon>
+        <Icon name="bi:people-fill" class="bi" alt="" aria-hidden="true" />
         Join our organization
       </a>
       <ExternalLink
@@ -49,20 +57,34 @@ const crumbs = [{
         href="https://gofund.me/94499fef"
         gaps={true}
       >
-        <Icon name="loca11y-logo" class="bi" style="height: 1.1em; width: inherit" alt="" aria-hidden="true" />
+        <Icon
+          name="loca11y-logo"
+          class="bi"
+          style="height: 1.1em; width: inherit"
+          alt=""
+          aria-hidden="true"
+        />
         <span>
-          Help us launch <span class="text-brand"><strong>loc</strong>a11y.<strong>org</strong></span>
+          Help us launch <span class="text-brand"
+            ><strong>loc</strong>a11y.<strong>org</strong></span
+          >
         </span>
       </ExternalLink>
     </Fragment>
   </Hero>
 
   <ThemedSection style="tertiary">
-    <div class="container d-flex flex-column flex-lg-row gap-5 justify-content-xl-between">
+    <div
+      class="container d-flex flex-column flex-lg-row gap-5 justify-content-xl-between"
+    >
       <ThemedBox theme="info" class="my-auto col col-lg-6 rounded shadow">
         <Quote q="community" text="white" />
       </ThemedBox>
-      <ThemedBox theme="info" style="subtle" class="my-auto col col-lg-6 rounded shadow">
+      <ThemedBox
+        theme="info"
+        style="subtle"
+        class="my-auto col col-lg-6 rounded shadow"
+      >
         <Quote q="kindness" />
       </ThemedBox>
     </div>

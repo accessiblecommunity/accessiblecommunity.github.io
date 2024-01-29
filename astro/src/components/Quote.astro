@@ -1,12 +1,10 @@
 ---
+import { Icon } from "astro-icon";
+import { getEntry } from "astro:content";
 
-import { Icon } from 'astro-icon';
-import { getEntry } from 'astro:content';
-
-const { q, text = 'primary', 'class': extraClasses } = Astro.props;
-const quote = await getEntry('quotes', q);
-const { Content = 'p' } = await quote?.render();
-
+const { q, text = "primary", class: extraClasses } = Astro.props;
+const quote = await getEntry("quotes", q);
+const { Content = "p" } = await quote?.render();
 ---
 
 <figure class={extraClasses}>
@@ -15,19 +13,21 @@ const { Content = 'p' } = await quote?.render();
     <Content />
     <sup aria-hidden="true">&nbsp;<Icon name="quote-right" /></sup>
   </blockquote>
-  <figcaption class={`blockquote-footer text-${text} text-end`}>{quote?.data.quotee}</figcaption>
+  <figcaption class={`blockquote-footer text-${text} text-end`}>
+    {quote?.data.quotee}
+  </figcaption>
 </figure>
 
 <style>
-[astro-icon="quote-left"],
-[astro-icon="quote-right"] {
-  height: 0.7em;
-}
+  [astro-icon="quote-left"],
+  [astro-icon="quote-right"] {
+    height: 0.7em;
+  }
 
-.blockquote :global(p) {
-  display: inline;
-}
-.blockquote-footer {
-  font-size: 1em;
-}
+  .blockquote :global(p) {
+    display: inline;
+  }
+  .blockquote-footer {
+    font-size: 1em;
+  }
 </style>
