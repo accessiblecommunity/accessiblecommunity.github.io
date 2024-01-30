@@ -85,4 +85,14 @@ const { title, crumbs, heading } = Astro.props;
   </body>
 
   <script src="../scripts/headings.js"></script>
+  {
+    import.meta.env.PROD && (
+      <script
+        is:inline
+        defer
+        data-domain="accessiblecommunity.org"
+        src="https://plausible.io/js/script.js"
+      />
+    )
+  }
 </html>
