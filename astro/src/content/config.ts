@@ -42,8 +42,20 @@ const quotes = defineCollection({
     }),
 });
 
+const testimonials = defineCollection({
+  type: "content",
+  schema: z.object({
+    teamMember: reference("team").optional(),
+    person: z.object({
+      name: z.string(),
+      title: z.string().optional(),
+    }).optional(),
+  }),
+});
+
 export const collections = {
   blogs,
   team,
   quotes,
+  testimonials,
 };

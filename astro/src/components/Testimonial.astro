@@ -1,0 +1,40 @@
+---
+import { getEntry } from "astro:content";
+import TeamVignette from "./TeamVignette.astro";
+
+interface Props {
+  slug: string;
+  text?: string;
+}
+
+const { slug, text = undefined } = Astro.props;
+
+const testimonial = await getEntry('testimonials', slug);
+const { Content, } = await testimonial?.render();
+
+const person = testimonial?.data.person;
+const teamMemberSlug = testimonial?.data.teamMember?.slug;
+console.log(person)
+        /* { person.title && (<div set:html={person.title} />)} */
+---
+
+<figure class="d-flex flex-column justify-content-center">
+  <blockquote class:list={["blockquote", text && `text-${text}`]}>
+    <Content />
+  </blockquote>
+  <figcaption class:list={["blockquote-footer fs-4", text && `text-${text}`, "text-end"]}>
+    { teamMemberSlug ? (
+      <TeamVignette
+        member={teamMemberSlug}
+        left={false}
+        firstNameOnly={true}
+        valign="center"
+      />
+    ) : (
+      <div class="d-inline-block">
+        <div> {person?.name} </div>
+        { person?.title && (<div> {person?.title} </div>) }
+      </div>
+    )}
+  </figcaption>
+</figure>
