@@ -27,7 +27,7 @@ down:
 shell:
 	@docker-compose exec $(CONTAINER) bash
 
-dist: up $(SOURCE_DIR)/dist
+dist: clean-js-dist $(SOURCE_DIR)/dist
 
 prettier: up
 	@echo Verifying code formatting.
@@ -46,14 +46,16 @@ $(SOURCE_DIR)/node_modules:
 	@echo Install JS dependencies. This will take awhile.
 	docker-compose exec $(CONTAINER) sh -c "npm install"
 
-$(SOURCE_DIR)/dist:
+$(SOURCE_DIR)/dist: up
 	@echo Running a local build.
 	@docker-compose exec $(CONTAINER) sh -c "npm run build"
 
 clean-js-dist:
+	@echo Removing the $(SOURCE_DIR)/dist directory.
 	$(RemoveDirCmd) $(call FixPath,$(SOURCE_DIR)/dist)
 
 clean-js-modules:
+	@echo Removing the $(SOURCE_DIR)/node_modules directory.
 	$(RemoveDirCmd) $(call FixPath,$(SOURCE_DIR)/node_modules)
 
 clean: clean-js-dist clean-js-modules
