@@ -1,0 +1,45 @@
+<svg version="1.0" width="456" height="208" style="font-size:13.3639px;font-family:Arial;text-anchor:middle" id="svg2" xmlns="http://www.w3.org/2000/svg">
+  <defs id="defs4">
+    <marker orient="auto" style="overflow:visible" id="Arrow2Lend">
+      <path d="M -10.690447,-4.4371087 1.3280185,-0.01761459 -10.690447,4.4018786 c 1.920048,-2.609267 1.9089846,-6.1791971 0,-8.8389873 z " id="path3277"></path>
+    </marker>
+  </defs>
+  <rect width="60" height="60" x="3" y="28.362183" style="stroke: rgb(0, 0, 0); fill: rgb(255, 125, 125);" id="rect2266"></rect>
+  <rect width="60" height="60" x="93" y="28.362183" style="stroke: rgb(0, 0, 0); fill: rgb(250, 206, 131);" id="rect3239"></rect>
+  <rect width="60" height="60" x="303" y="28.362183" style="stroke: rgb(0, 0, 0); fill: rgb(153, 252, 134);" id="rect3241"></rect>
+  <rect width="60" height="60" x="393" y="28.362183" style="stroke: rgb(0, 0, 0); fill: rgb(100, 162, 255);" id="rect3243"></rect>
+  <rect width="60" height="60" x="198" y="118.36218" style="stroke: rgb(0, 0, 0); fill: rgb(144, 144, 144);" id="rect3245"></rect>
+  <rect width="15" height="15" x="220" y="51.362183" style="fill:#ffffff;fill-opacity:0.313725;stroke:#000000" id="rect3247"></rect>
+  <g id="g3461">
+    <path d="M 63.512411,58.313421 H 90.251773" style="stroke:#000000" id="path3249"></path>
+    <path d="m 81.1819,53.87631 12.01846,4.4195 -12.01846,4.41949 c 1.92004,-2.60927 1.90898,-6.1792 0,-8.83899 z" id="path3457"></path>
+  </g>
+  <g id="g3467">
+    <path d="m 363.51241,58.313421 h 26.73936" style="stroke:#000000" id="path3469"></path>
+    <path d="m 381.1819,53.87631 12.01846,4.4195 -12.01846,4.41949 c 1.92004,-2.60927 1.90898,-6.1792 0,-8.83899 z" id="path3471"></path>
+  </g>
+  <g id="g3487">
+    <path d="m 152.51241,58.3798 h 61.17642" style="stroke:#000000" id="path3481"></path>
+    <path d="m 207.86009,53.94269 12.01846,4.4195 -12.01846,4.41949 c 1.92004,-2.60927 1.90898,-6.1792 0,-8.83899 z" id="path3483"></path>
+  </g>
+  <g id="g3491">
+    <path d="m 235.56649,58.3798 h 61.17642" style="stroke:#000000" id="path3493"></path>
+    <path d="m 290.91417,53.94269 12.01846,4.4195 -12.01846,4.41949 c 1.92004,-2.60927 1.90898,-6.1792 0,-8.83899 z" id="path3495"></path>
+  </g>
+  <g id="g3497">
+    <path d="M 227.5176,117.72434 V 72.34845" style="stroke:#000000" id="path3499"></path>
+    <path d="m 223.08049,78.17719 4.4195,-12.01846 4.41949,12.01846 c -2.60927,-1.92004 -6.1792,-1.90898 -8.83899,0 z" id="path3501"></path>
+  </g>
+  <text x="122.75858" y="23.637268" id="text3503" style="white-space: pre;"><tspan x="122.75858" y="23.637268" id="tspan3505">Transmitter</tspan></text>
+  <text x="332.38989" y="23.637268" id="text3507" style="white-space: pre;"><tspan x="332.38989" y="23.637268" id="tspan3509">Receiver</tspan></text>
+  <text x="422.38989" y="23.637268" id="text3511" style="white-space: pre;"><tspan x="422.38989" y="23.637268" id="tspan3513">Destination</tspan></text>
+  <text x="32.389877" y="23.637268" id="text3515" style="white-space: pre;"><tspan x="32.389877" y="23.637268" id="tspan3517">Source</tspan></text>
+  <text x="32.840134" y="10.647034" id="text3519" style="white-space: pre;"><tspan x="32.840134" y="10.647034" id="tspan3521">Information</tspan></text>
+  <text x="227.98044" y="207.1665" id="text3523" style="white-space: pre;"><tspan x="227.98044" y="207.1665" id="tspan3525">Source</tspan></text>
+  <text x="227.77161" y="194.17627" id="text3527" style="white-space: pre;"><tspan x="227.77161" y="194.17627" id="tspan3529">Noise</tspan></text>
+  <text x="268.97998" y="89.270203" id="text3531" style="white-space: pre;"><tspan x="268.97998" y="89.270203" id="tspan3533">Signal</tspan></text>
+  <text x="268.77118" y="76.28" id="text3535" style="white-space: pre;"><tspan x="268.77118" y="76.28" id="tspan3537">Received</tspan></text>
+  <text x="185.90634" y="76.28" id="text3539" style="white-space: pre;"><tspan x="185.90634" y="76.28" id="tspan3541">Signal</tspan></text>
+  <text x="377.78467" y="103.52252" id="text3543" style="white-space: pre;"><tspan x="377.78467" y="103.52252" id="tspan3545">Message</tspan></text>
+  <text x="77.784668" y="103.52252" id="text3547" style="white-space: pre;"><tspan x="77.784668" y="103.52252" id="tspan3549">Message</tspan></text>
+</svg>
