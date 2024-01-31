@@ -77,8 +77,8 @@ From a web accessibility ecosystem perspective we can think of this model as fol
 
 <ImageFigure src={overlayModel} class="my-2" alt="Information moves from left to right. The Author (Information Source) sends a message through the Browser (Transmitter). Assistive Technology (Receiver) changes the received signal into a message for the Person with a Disability (Destination)." />
 
-The author and browser work together to present the information as a signal that can
-be interpreted by the assistive technology. In WCAG terms, it creates a programmatic
+The author and browser work together to present information as a signal that can
+be interpreted by assistive technology. In web accessibility terms, the author and browser create a programmatic
 signal that the receiver can adapt to various sensory presentations (voice, braille,
 etc). The goal of a programmatic signal (text in the current technological environment)
 is to provide as universal a message as possible so that the receiver can translate it.
@@ -88,10 +88,10 @@ For example:
 * Language translation programs and AI convert the text into a form that the destination
   can understand.
 
-The challenge with overlays is that they attempt to put the translation portion on the
+I believe the challenge with overlays is that they attempt to put the translation portion on the
 wrong side of the communication channel. They attempt to translate the signal being
-received by assistive technology on the right side of the diagram, while sitting on
-top of the transmitter (aka the browser) on the left side of the diagram. To do this,
+received by assistive technology on the right side of the model, while sitting on
+top of the transmitter (aka the browser) on the left side of the model. To do this,
 overlays have to account for all the ways that the signal could be interpreted and
 send those variations over to the receiver. In short, they add a lot of noise.
 
