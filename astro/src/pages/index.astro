@@ -8,6 +8,7 @@ import TeamVignette from "../components/TeamVignette.astro";
 import ThemedSection from "../components/ThemedSection.astro";
 import ThemedBox from "../components/ThemedBox.astro";
 import TipRegistration from "../components/TipRegistration.astro";
+import Testimonial from "../components/Testimonial.astro";
 
 import heroBg from "../images/colored-hero/wheelchair_hall.png";
 ---
@@ -110,7 +111,7 @@ import heroBg from "../images/colored-hero/wheelchair_hall.png";
 
   <ThemedSection style="tertiary">
     <div
-      class="container d-flex flex-column flex-xl-row-reverse gap-4 justify-content-xl-between"
+      class="container d-flex flex-column flex-xl-row-reverse gap-4 justify-content-xl-between align-items-xl-center"
     >
       <div class="col col-xl-7">
         <h2 class="display-3">What we <strong>do</strong>.</h2>
@@ -130,24 +131,13 @@ import heroBg from "../images/colored-hero/wheelchair_hall.png";
           </li>
         </ul>
       </div>
-      <figure
-        class="col col-xl-4 text-start p-4 bg-info border border-info shadow rounded d-flex flex-column justify-content-center"
+      <ThemedBox
+        theme="info"
+        border={1}
+        class="col col-xl-4 text-start p-4 pb-0 shadow rounded"
       >
-        <blockquote class="blockquote text-light">
-          <p>
-            I am proud to be part of this community that drives the change
-            toward a more accessible digital world for all people.
-          </p>
-        </blockquote>
-        <figcaption class="blockquote-footer fs-4 text-light text-end">
-          <TeamVignette
-            member="daniela"
-            left={false}
-            firstNameOnly={true}
-            valign="center"
-          />
-        </figcaption>
-      </figure>
+        <Testimonial slug="daniela/short" text="light" />
+      </ThemedBox>
     </div>
   </ThemedSection>
 
