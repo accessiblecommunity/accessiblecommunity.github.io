@@ -44,6 +44,19 @@ $display-font-weight: 400;
 $lead-font-size:              1.25rem;
 $lead-font-weight:            400;
 
+//*********************************
+//* Breakpoints for Responsiveness
+//********************************/
+$grid-breakpoints: (
+  xxs: 0,
+  xs: 400px,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1400px
+);
+
 //***********************
 //* Navbar & Breadcrumbs
 //**********************/
