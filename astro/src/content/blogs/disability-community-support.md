@@ -2,7 +2,7 @@
 title: 'Why members of the disability community must support each other'
 published: 2023-06-05
 tags:
-  - announcements
+  - opinion
 author: rachael-bradley-montgomery
 
 ---
