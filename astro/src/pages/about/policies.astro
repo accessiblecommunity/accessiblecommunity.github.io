@@ -1,76 +1,134 @@
 ---
-import ExternalLink from '../../components/ExternalLink.astro';
-import Layout from '../../layouts/Layout.astro';
-import TeamHeading from '../../components/TeamHeading.astro';
-import ThemedSection from '../../components/ThemedSection.astro';
+import ExternalLink from "../../components/ExternalLink.astro";
+import ImageHeading from "../../components/ImageHeading.astro";
+import Layout from "../../layouts/Layout.astro";
+import ThemedSection from "../../components/ThemedSection.astro";
 
-import { Icon } from 'astro-icon';
+import { Icon } from "astro-icon";
 
-const crumbs = [{
-  name: 'Home', href: '/',
-}, {
-  name: 'About', href: '/about',
-}];
+const crumbs = [
+  {
+    name: "Home",
+    href: "/",
+  },
+  {
+    name: "About",
+    href: "/about",
+  },
+];
 ---
 
 <Layout title="Our Policies" crumbs={crumbs}>
-  <TeamHeading slot="header">
+  <ImageHeading image="policy" slot="header">
     Our <strong>Policies</strong>
-  </TeamHeading>
-  <div class="bg-primary-alpha-3 text-primary text-center py-3">
-    <strong>Note:</strong> Links to all policies are available on both our website and on Google Docs.
+  </ImageHeading>
+  <div class="text-bg-primary text-center p-3">
+    <strong>Note:</strong> Links to all policies are available on both our website
+    and on Google Docs.
   </div>
 
- <ThemedSection style="secondary">
-  <h2 id="user" class="display-4"><strong>User</strong> Policies</h2>
-  <p>
-    These are policies for users of the tools that <span class="text-brand text-primary">Accessible <strong>Community</strong></span>
-    develops. Our users should know that these policies exist and where to find them.
-  </p>
-  <ul>
-    <li>
-      <a href="../../privacy-policy" class="text-primary">Privacy Policy</a>
-      <!-- TODO: Add the link for Google Docs -->
-      <ExternalLink href="#" gaps={true}>
-        <Icon name="googledocs" class="bi" height="1.1em" alt="Privacy Policy in Google Docs" />
-      </ExternalLink>
-    </li>
-  </ul>
+  <ThemedSection style="secondary">
+    <h2 id="user" class="display-4"><strong>User</strong> Policies</h2>
+    <p>
+      These are policies for users of the tools that <span
+        class="text-brand text-primary"
+        >Accessible <strong>Community</strong></span
+      >
+      develops. Our users should know that these policies exist and where to find
+      them.
+    </p>
+    <ul>
+      <li>
+        <a href="../../accessibility-statement" class="text-primary"
+          >Accessibility Statement</a
+        >
+      </li>
+      <li>
+        <a href="../../privacy-policy" class="text-primary">Privacy Policy</a>
+        <ExternalLink
+          href="https://docs.google.com/document/d/1c0tRlnuFJu2ti1x-sNgj-C0Nr6hn3yu_/"
+          gaps={true}
+        >
+          <Icon
+            name="googledocs"
+            class="bi"
+            height="1.1em"
+            alt="Privacy Policy in Google Docs"
+          />
+        </ExternalLink>
+      </li>
+    </ul>
 
-  <h2 id="staff" class="display-4 mt-5"><strong>Staff</strong> Policies</h2>
-  <p>
-    All contributors to <span class="text-brand text-primary">Accessible <strong>Community</strong></span>
-    must read and agree to the following policies. This includes our board of directors, our
-    leadership and staff. If you are interested in volunteering on any team, you will need to
-    agree to the following policies.
-  </p>
-  <ul>
-    <li>
-      <a href="../../code-of-conduct" class="text-primary">Code of Conduct</a> 
-      <ExternalLink href="https://docs.google.com/document/d/1qN_AaJaMcjeyxg6zK63OJxsZbv-zwbONtFgZbiiISso/edit?usp=sharing" gaps={true}>
-        <Icon name="googledocs" class="bi primary" alt="Code of Conduct in Google Docs" />
-      </ExternalLink>
-    </li>
-    <li>
-      <a href="../../harrassment-policy" class="text-primary">Harrassment Policy</a>
-      <ExternalLink href="https://docs.google.com/document/d/1wmek800MZnU8pqtE-jo_EWqz4tCg4Q6W0Tcrnn4OF-8/edit?usp=sharing" gaps={true}>
-        <Icon name="googledocs" class="bi" alt="Harrassment Policy in Google Docs" />
-      </ExternalLink>
-    </li>
-    <li>
-      <a href="../../non-discrimination-policy" class="text-primary">Non-Discrimination Policy</a>
-      <ExternalLink href="https://docs.google.com/document/d/1pF-SJRIi4LgEtFWsOKN_d73jNkajJVtS952f0bOtaGc/edit?usp=sharing" gaps={true}>
-        <Icon name="googledocs" class="bi" alt="Non-Discrimination Policy in Google Docs" />
-      </ExternalLink>
-    </li>
-    <li>
-      <a href="../../technology-policy" class="text-primary">Technology Policy</a>
-      <ExternalLink href="https://docs.google.com/document/d/1sAHquNhpUr-OOADr6zg7-GaywF53PJbzn6fr0cn9x-w/edit?usp=sharing" gaps={true}>
-        <Icon name="googledocs" class="bi" alt="Technology Policy in Google Docs" />
-      </ExternalLink>
-    </li>
-  </ul>
- </ThemedSection>
+    <h2 id="staff" class="display-4 mt-5"><strong>Staff</strong> Policies</h2>
+    <p>
+      All contributors to <span class="text-brand text-primary"
+        >Accessible <strong>Community</strong></span
+      >
+      must read and agree to the following policies. This includes our board of directors,
+      our leadership and staff. If you are interested in volunteering on any team,
+      you will need to agree to the following policies.
+    </p>
+    <ul>
+      <li>
+        <a href="../../code-of-conduct" class="text-primary">Code of Conduct</a>
+        <ExternalLink
+          href="https://docs.google.com/document/d/1qN_AaJaMcjeyxg6zK63OJxsZbv-zwbONtFgZbiiISso/edit?usp=sharing"
+          gaps={true}
+        >
+          <Icon
+            name="googledocs"
+            class="bi primary"
+            alt="Code of Conduct in Google Docs"
+          />
+        </ExternalLink>
+      </li>
+      <li>
+        <a href="../../harrassment-policy" class="text-primary"
+          >Harrassment Policy</a
+        >
+        <ExternalLink
+          href="https://docs.google.com/document/d/1wmek800MZnU8pqtE-jo_EWqz4tCg4Q6W0Tcrnn4OF-8/edit?usp=sharing"
+          gaps={true}
+        >
+          <Icon
+            name="googledocs"
+            class="bi"
+            alt="Harrassment Policy in Google Docs"
+          />
+        </ExternalLink>
+      </li>
+      <li>
+        <a href="../../non-discrimination-policy" class="text-primary"
+          >Non-Discrimination Policy</a
+        >
+        <ExternalLink
+          href="https://docs.google.com/document/d/1pF-SJRIi4LgEtFWsOKN_d73jNkajJVtS952f0bOtaGc/edit?usp=sharing"
+          gaps={true}
+        >
+          <Icon
+            name="googledocs"
+            class="bi"
+            alt="Non-Discrimination Policy in Google Docs"
+          />
+        </ExternalLink>
+      </li>
+      <li>
+        <a href="../../technology-policy" class="text-primary"
+          >Technology Policy</a
+        >
+        <ExternalLink
+          href="https://docs.google.com/document/d/1sAHquNhpUr-OOADr6zg7-GaywF53PJbzn6fr0cn9x-w/edit?usp=sharing"
+          gaps={true}
+        >
+          <Icon
+            name="googledocs"
+            class="bi"
+            alt="Technology Policy in Google Docs"
+          />
+        </ExternalLink>
+      </li>
+    </ul>
+  </ThemedSection>
 </Layout>
 
 <style>

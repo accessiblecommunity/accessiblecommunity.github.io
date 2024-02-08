@@ -1,0 +1,77 @@
+---
+import { getImage } from "astro:assets";
+import { flatMap } from "lodash-es";
+
+// import handsImage from "../images/colored-hero/hands-together.png";
+// const optimizedHands = await getImage({src: handsImage, format: 'avif'})
+
+import blogImage from "../images/colored-hero/pen-paper.png";
+const optimizedBlog = await getImage({ src: blogImage, format: "avif" });
+
+import policyImage from "../images/colored-hero/policy.png";
+const optimizedPolicy = await getImage({ src: policyImage, format: "avif" });
+
+import teamImage from "../images/colored-hero/team.png";
+const optimizedTeam = await getImage({ src: teamImage, format: "avif" });
+
+const cssRules = {
+  blog: {
+    height: "12rem",
+    background: `no-repeat url(${optimizedBlog.src})`,
+    "background-position": "center bottom",
+    "background-size": "cover",
+  },
+  // hands: {
+  //   'height': '10rem',
+  //   'background': `url(${optimizedHands.src})`,
+  //   'background-position': 'left center',
+  // },
+  policy: {
+    height: "8.5rem",
+    background: `url(${optimizedPolicy.src})`,
+    "background-position": "center 60%",
+    "background-size": "cover",
+  },
+  team: {
+    height: "9rem",
+    background: `no-repeat url(${optimizedTeam.src})`,
+    "background-position": "center 30%",
+    "background-size": "cover",
+  },
+};
+
+interface Props {
+  image: string;
+  element?: string;
+  fluid?: boolean;
+}
+
+const { image, element: Element = "h1", fluid = false } = Astro.props;
+
+const darkenSlightly = image === "blog";
+const styleRules = flatMap(Object.entries(cssRules[image]), ([key, value]) => {
+  return `${key}: ${value};`;
+}).join(" ");
+---
+
+<div class="heading bg-primary" style={styleRules}>
+  <div
+    class:list={[
+      "h-100 d-flex align-items-end",
+      darkenSlightly && "bg-primary bg-opacity-25",
+    ]}
+  >
+    <div class={`container${fluid ? "-fluid px-4" : ""}`}>
+      <slot name="preface" />
+      <Element class="display-2 mb-1">
+        <slot />
+      </Element>
+    </div>
+  </div>
+</div>
+
+<style is:global>
+  .heading .display-2 {
+    color: white;
+  }
+</style>

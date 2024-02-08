@@ -9,33 +9,23 @@ interface Props {
   inline?: boolean;
 }
 
-const { href, 'class': className = '', gaps = false, inline = false } = Astro.props;
+const {
+  href,
+  class: className = "",
+  gaps = false,
+  inline = false,
+} = Astro.props;
 
-import { Icon } from 'astro-icon';
+import { Icon } from "astro-icon";
 
 // The below is formatted to remove as much whitespace as possible.
 ---
 
-<a
-  href={href}
-  class:list={['icon-link', className, inline && 'd-inline']}
-  target="_blank"
->{ 
-gaps ?
-  <slot />
-:
-  <span><slot /></span>
-}<Icon
-  name="bi:arrow-up-right-square"
-  class:list={['bi', 'external']}
-  role="img"
-  aria-label="External link"
-/></a>
-
+{/* Style is up top to remove additional whitespace after the tag */}
 <style is:global>
   .icon-link > .bi.external {
     /* These make it act like a `sup` */
-    font-size: 80%;
+    font-size: 0.8em;
     position: relative;
     top: -0.5em;
     /* This counters most of the 0.375 gap in the default icon-link */
@@ -43,8 +33,25 @@ gaps ?
   }
   .icon-link.d-inline > .bi.external {
     /* No gap, so move it back. */
-    left: 0.0em;
-    margin-left: .2em;
-    margin-right: .2em;
+    left: 0em;
+    margin-left: 0.2em;
+    margin-right: 0.2em;
   }
 </style>
+<a
+  href={href}
+  class:list={["icon-link", className, inline && "d-inline"]}
+  target="_blank"
+  rel="noopener noreferrer"
+  >{
+    /* prettier-ignore */
+    gaps ?
+      <slot />
+    : <span><slot /></span>
+  }<Icon
+    name="bi:arrow-up-right-square"
+    class:list={["bi", "external"]}
+    role="img"
+    aria-label="External link"
+  /></a
+>

@@ -1,5 +1,5 @@
 ---
-import { Icon } from 'astro-icon';
+import { Icon } from "astro-icon";
 
 const currentYear = new Date().getFullYear();
 
@@ -7,22 +7,26 @@ const facebookURL = "https://www.facebook.com/AccessibleCommunity";
 const linkedinURL = "https://in.linkedin.com/company/accessible-community";
 const instagramURL = "https://www.instagram.com/accessible_community/";
 
-const Socials = [{
-  name: 'Facebook',
-  icon: 'bi:facebook',
-  href: facebookURL,
-  className: 'bi bi-facebook social-icon',
-}, {
-  name: 'LinkedIn',
-  icon: 'bi:linkedin',
-  href: linkedinURL,
-  className: 'bi bi-linkedin social-icon',
-}, {
-  name: 'Instagram',
-  icon: 'bi:instagram',
-  href: instagramURL,
-  className: 'bi bi-instagram social-icon',
-}]
+const Socials = [
+  {
+    name: "Facebook",
+    icon: "bi:facebook",
+    href: facebookURL,
+    className: "bi bi-facebook social-icon",
+  },
+  {
+    name: "LinkedIn",
+    icon: "bi:linkedin",
+    href: linkedinURL,
+    className: "bi bi-linkedin social-icon",
+  },
+  {
+    name: "Instagram",
+    icon: "bi:instagram",
+    href: instagramURL,
+    className: "bi bi-instagram social-icon",
+  },
+];
 ---
 
 <footer id="footer" class="bg-primary py-5">
@@ -34,7 +38,9 @@ const Socials = [{
           <dd>PO Box 46; Paeonian Springs, VA, 20129</dd>
           <dt class="fw-bold display-65">Email</dt>
           <dd>
-            <a class="link-light" href="mailto:info@accessiblecommunity.org">info@accessiblecommunity.org</a>
+            <a class="link-light" href="mailto:info@accessiblecommunity.org"
+              >info@accessiblecommunity.org</a
+            >
           </dd>
           <dt class="fw-bold display-65">Phone Number</dt>
           <dd>703-651-6703</dd>
@@ -42,35 +48,45 @@ const Socials = [{
       </div>
       <div class="col-lg-4 col-md-2">
         <nav class="nav-footer">
-          <ul class="list-unstyled d-flex flex-column flex-lg-row justify-content-between">
+          <ul
+            class="list-unstyled d-flex flex-column flex-lg-row justify-content-between"
+          >
             <li class="link-light">
-            <span class="fw-bold display-65">User Policies</span>
+              <span class="fw-bold display-65">User Policies</span>
               <ul class="p-0 list-unstyled mb-2 me-2 me-md-4">
                 <li>
-                  <a class="link-light" href="">Accessibility&nbsp;Statement</a>
+                  <a class="link-light" href="/accessibility-statement"
+                    >Accessibility&nbsp;Statement</a
+                  >
                 </li>
                 <li>
-                  <a class="link-light" href="/privacy-policy">Privacy Policy</a>   
+                  <a class="link-light" href="/privacy-policy">Privacy Policy</a
+                  >
                 </li>
               </ul>
-            </li>  
+            </li>
             <li class="link-light">
-            <span class="fw-bold display-65">Staff Policies</span>
+              <span class="fw-bold display-65">Staff Policies</span>
               <ul class="p-0 list-unstyled me-4">
                 <li>
-                  <a class="link-light" href="/code-of-conduct">Code&nbsp;of&nbsp;Conduct</a>
+                  <a class="link-light" href="/code-of-conduct"
+                    >Code&nbsp;of&nbsp;Conduct</a
+                  >
                 </li>
                 <li>
-                  <a class="link-light" href="/harrassment-policy">Harrassment&nbsp;Policy</a>
+                  <a class="link-light" href="/harrassment-policy"
+                    >Harrassment&nbsp;Policy</a
+                  >
                 </li>
                 <li>
-                  <a class="link-light" href="/non-discrimination-policy">Non-Discrimination Policy</a>
+                  <a class="link-light" href="/non-discrimination-policy"
+                    >Non-Discrimination Policy</a
+                  >
                 </li>
                 <li>
-                  <a class="link-light" href="/privacy-policy">Privacy&nbsp;Policy</a>
-                </li>
-                <li>
-                  <a class="link-light" href="/technology-policy">Technology&nbsp;Policy</a>
+                  <a class="link-light" href="/technology-policy"
+                    >Technology&nbsp;Policy</a
+                  >
                 </li>
               </ul>
             </li>
@@ -79,24 +95,47 @@ const Socials = [{
       </div>
       <div class="col-lg-3 flex-column text-center">
         <div>
-          <span class="fw-bold display-65 mb-0 link-light">Find us on Social Media</span>
+          <span class="fw-bold display-65 mb-0 link-light"
+            >Find us on Social Media</span
+          >
           <ul class="ps-0 mb-0">
-          { Socials.map(({icon, href, className, name}) =>
-            <li class="d-inline-block">
-              <a class="d-inline-block link-light" href={ href } target="_blank">
-                <Icon name={ icon } class={ className } class= "social-icon" height="29" width="29" alt={ name }></Icon> 
-              </a>
-            </li>
-          )}
+            {
+              Socials.map(({ icon, href, className, name }) => (
+                <li class="d-inline-block">
+                  <a
+                    class="d-inline-block link-light"
+                    href={href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <Icon
+                      name={icon}
+                      class={className}
+                      class="social-icon"
+                      height="29"
+                      width="29"
+                      role="img"
+                      aria-label={name}
+                    />
+                  </a>
+                </li>
+              ))
+            }
           </ul>
         </div>
         <div class="mt-2 legal-footer">
-          <p class="pt-2 text-center mb-0 link-light"><small>Accessible Community is a 501(c)3&nbsp;organization.</small></p>
-          <p class="text-center mb-0 link-light"><small>© <time datetime="{currentYear}">{currentYear}</time> Accessible&nbsp;Community</small></p>
+          <p class="pt-2 text-center mb-0 link-light">
+            <small>Accessible Community is a 501(c)3&nbsp;organization.</small>
+          </p>
+          <p class="text-center mb-0 link-light">
+            <small
+              >© <time datetime="{currentYear}">{currentYear}</time> Accessible&nbsp;Community</small
+            >
+          </p>
         </div>
-       </div>
       </div>
     </div>
+  </div>
 </footer>
 
 <style>
@@ -106,7 +145,7 @@ const Socials = [{
   } */
 
   .container-footer {
-    padding-bottom: 0.5rem; 
+    padding-bottom: 0.5rem;
   }
 
   .nav-footer {

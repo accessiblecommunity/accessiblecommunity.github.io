@@ -1,10 +1,13 @@
 ---
-import { getBlogCatalog } from '../../lib/blog'
+import { getBlogCatalog } from "../../lib/blog";
 
 const catalog = await getBlogCatalog();
-const crumbs = [{
-  name: 'Home', href: "/",
-}]
+const crumbs = [
+  {
+    name: "Home",
+    href: "/",
+  },
+];
 
 import BlogLayout from "../../layouts/BlogLayout.astro";
 ---

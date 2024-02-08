@@ -9,54 +9,104 @@ interface Props {
   crumbs?: Array<Crumbs>;
 }
 
-import { isEmpty } from 'lodash-es';
-import { Icon } from 'astro-icon';
+import { isEmpty } from "lodash-es";
+import { Icon } from "astro-icon";
 
 const { title, crumbs = [] } = Astro.props;
-const breadCrumbs = isEmpty(crumbs) && title != 'Home' ? [{ name: 'Home', href: '/' }] : crumbs;
+const breadCrumbs =
+  isEmpty(crumbs) && title != "Home" ? [{ name: "Home", href: "/" }] : crumbs;
 ---
-  
+
 <header class="sticky-top">
   <div class="navbar navbar-expand-lg align-items-top">
-    <a class="visually-hidden-focusable btn btn-primary skip-link" href="#main-content">
+    <a
+      class="visually-hidden-focusable btn btn-primary skip-link"
+      href="#main-content"
+    >
       Skip to Main Content
     </a>
     <div id="brand-nav" class="container-fluid px-3">
       <div class="d-none d-sm-block navbar-brand me-2">
-        <Icon name="ac-logo" class="brand-logo" role="img" aria-hidden="true"/>
+        <Icon name="ac-logo" class="brand-logo" role="img" aria-hidden="true" />
       </div>
       <div class="my-1 flex-fill align-self-start">
-        <a class="navbar-brand" href="/">Accessible <strong>Community</strong></a>
+        <a class="navbar-brand" href="/"
+          >Accessible <strong>Community</strong></a
+        >
       </div>
-      <button class="navbar-toggler px-1" type="button" data-bs-toggle="collapse" data-bs-target="#site-nav" aria-controls="site-nav" aria-expanded="false" aria-label="Toggle site navigation">
-        <Icon name="bi:list" class="bi" height="1.4em" width="1.4em"></Icon>
+      <button
+        class="navbar-toggler px-1"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#site-nav"
+        aria-controls="site-nav"
+        aria-expanded="false"
+        aria-label="Toggle site navigation"
+      >
+        <Icon name="bi:list" class="bi" height="1.4em" width="1.4em" />
       </button>
     </div>
     <nav id="site-nav" class="collapse navbar-collapse mx-3" aria-label="Site">
       <ul class="navbar-nav my-1 mx-4">
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">About</a>
+          <a
+            class="nav-link dropdown-toggle"
+            data-bs-toggle="dropdown"
+            href="#"
+            role="button"
+            aria-expanded="false">About</a
+          >
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="/about/mission">Mission &amp; Vision</a></li>
-            <li><a class="dropdown-item" href="/about/story">Founder's Story</a></li>
-            <li><a class="dropdown-item" href="/about/policies">Our Policies</a></li>
+            <li>
+              <a class="dropdown-item" href="/about/mission"
+                >Mission &amp; Vision</a
+              >
+            </li>
+            <li>
+              <a class="dropdown-item" href="/about/story">Founder's Story</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="/about/policies">Our Policies</a>
+            </li>
           </ul>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/services">Services</a>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Team</a>
+          <a
+            class="nav-link dropdown-toggle"
+            data-bs-toggle="dropdown"
+            href="#"
+            role="button"
+            aria-expanded="false">Team</a
+          >
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="/team/board">Board Members</a></li>
-            <li><a class="dropdown-item" href="/team/leadership">Leadership Team</a></li>
+            <li>
+              <a class="dropdown-item" href="/team/board">Board Members</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="/team/leadership"
+                >Leadership Team</a
+              >
+            </li>
             <li><a class="dropdown-item" href="/team/staff">Staff</a></li>
-            <li><a class="dropdown-item" href="/team/previous">Previous Contributors</a></li>
+            <li>
+              <a class="dropdown-item" href="/team/previous"
+                >Previous Contributors</a
+              >
+            </li>
             <li><a class="dropdown-item" href="/team/partners">Partners</a></li>
           </ul>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Join us</a>
+          <a
+            class="nav-link dropdown-toggle"
+            data-bs-toggle="dropdown"
+            href="#"
+            role="button"
+            aria-expanded="false">Join us</a
+          >
           <ul class="dropdown-menu">
             <li><a class="dropdown-item" href="/volunteer">Volunteer</a></li>
             <li><a class="dropdown-item" href="/donate">Donate</a></li>
@@ -68,15 +118,27 @@ const breadCrumbs = isEmpty(crumbs) && title != 'Home' ? [{ name: 'Home', href: 
           </li>
         </li>
       </ul>
-      <a class="btn btn-info display-65 mx-1 general-button" href="/donate" role="button">Donate</a>
+      <a
+        class="btn btn-info display-65 mx-1 general-button"
+        href="/donate"
+        role="button">Donate</a
+      >
     </nav>
   </div>
   <nav id="breadcrumbs-nav" aria-label="Breadcrumb" class="position-absolute">
     <ol class="breadcrumb lh-sm">
-      { breadCrumbs.map(({name, href}) =>
-        <li class="breadcrumb-item"><a href={href} class="text-primary">{name}</a></li>
-      )}
-      <li class="breadcrumb-item active" aria-current="page">{ title }</li>
+      {
+        breadCrumbs.map(({ name, href }) => (
+          <li class="breadcrumb-item">
+            <a href={href} class="text-primary">
+              {name}
+            </a>
+          </li>
+        ))
+      }
+      <li class="breadcrumb-item active" aria-current="page">
+        <span class="text-truncate" set:text={title} />
+      </li>
     </ol>
   </nav>
 </header>
@@ -88,14 +150,14 @@ const breadCrumbs = isEmpty(crumbs) && title != 'Home' ? [{ name: 'Home', href: 
     outline: 1px solid black;
   } */
 
-  @import '../styles/dark-mode.scss';
+  @import "../styles/dark-mode.scss";
 
   .skip-link:focus,
   .skip-link:focus-within {
     position: absolute;
     font-size: 1.25rem;
     padding: 0.25rem 2.5rem;
-    top:  1rem;
+    top: 1rem;
     left: 0.8rem;
     z-index: 999;
   }
@@ -104,13 +166,14 @@ const breadCrumbs = isEmpty(crumbs) && title != 'Home' ? [{ name: 'Home', href: 
     height: 2.5rem;
   }
   #brand-nav {
-    height: 3.5rem
+    height: 3.5rem;
   }
   #breadcrumbs-nav {
-    top:  2.333rem;
+    top: 2.333rem;
     left: 4rem;
   }
-  @media (max-width: 576px) {  // TODO: Use BS sizing later.
+  @media (max-width: 576px) {
+    // TODO: Use BS sizing later.
     #breadcrumbs-nav {
       left: 1rem;
     }
@@ -124,6 +187,11 @@ const breadCrumbs = isEmpty(crumbs) && title != 'Home' ? [{ name: 'Home', href: 
     font-size: 1.1rem;
   }
 
+  .breadcrumb-item > .text-truncate {
+    display: inline-block;
+    max-width: 10em;
+  }
+
   @include color-mode(dark) {
     .skip-link {
       color: var(--bs-primary);
@@ -131,21 +199,23 @@ const breadCrumbs = isEmpty(crumbs) && title != 'Home' ? [{ name: 'Home', href: 
     }
 
     .brand-logo {
-      color: #FFFFFF;
+      color: #ffffff;
     }
 
     .navbar-toggler {
-      color: #FFFFFF !important;
+      color: #ffffff !important;
       background-color: var(--bs-primary);
     }
   }
 </style>
 
 <script>
-  import { Collapse, Dropdown } from '~bootstrap-es'
+  import { Collapse, Dropdown } from "~bootstrap-es";
 
-  Array.from(document.querySelectorAll('.dropdown'))
-    .forEach(node => new Dropdown(node));
-  Array.from(document.querySelectorAll('.collapse'))
-    .forEach(node => new Collapse(node, { toggle: false }));
+  Array.from(document.querySelectorAll(".dropdown")).forEach(
+    (node) => new Dropdown(node),
+  );
+  Array.from(document.querySelectorAll(".collapse")).forEach(
+    (node) => new Collapse(node, { toggle: false }),
+  );
 </script>
