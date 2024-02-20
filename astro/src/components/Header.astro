@@ -18,7 +18,7 @@ const breadCrumbs =
 ---
 
 <header class="sticky-top">
-  <div class="navbar navbar-expand-lg align-items-top">
+  <div id="header-navbar" class="navbar navbar-expand-lg align-items-top">
     <a
       class="visually-hidden-focusable btn btn-primary skip-link"
       href="#main-content"
@@ -26,16 +26,8 @@ const breadCrumbs =
       Skip to Main Content
     </a>
     <div id="brand-nav" class="container-fluid px-3">
-      <div class="d-none d-sm-block navbar-brand me-2">
-        <Icon name="ac-logo" class="brand-logo" role="img" aria-hidden="true" />
-      </div>
-      <div class="my-1 flex-fill align-self-start">
-        <a class="navbar-brand" href="/"
-          >Accessible <strong>Community</strong></a
-        >
-      </div>
       <button
-        class="navbar-toggler px-1"
+        class="navbar-toggler px-1 me-2"
         type="button"
         data-bs-toggle="collapse"
         data-bs-target="#site-nav"
@@ -43,8 +35,16 @@ const breadCrumbs =
         aria-expanded="false"
         aria-label="Toggle site navigation"
       >
-        <Icon name="bi:list" class="bi" height="1.4em" width="1.4em" />
+        <Icon name="bi:list" class="bi" />
       </button>
+      <div class="d-none d-lg-block navbar-brand me-2">
+        <Icon name="ac-logo" class="brand-logo" role="img" aria-hidden="true" />
+      </div>
+      <div class="my-1 flex-fill align-self-start">
+        <a class="navbar-brand" href="/"
+          >Accessible <strong>Community</strong></a
+        >
+      </div>
     </div>
     <nav id="site-nav" class="collapse navbar-collapse mx-3" aria-label="Site">
       <ul class="navbar-nav my-1 mx-4">
@@ -130,7 +130,7 @@ const breadCrumbs =
       {
         breadCrumbs.map(({ name, href }) => (
           <li class="breadcrumb-item">
-            <a href={href} class="text-primary">
+            <a href={href} class="link-primary text-truncate">
               {name}
             </a>
           </li>
@@ -151,6 +151,14 @@ const breadCrumbs =
   } */
 
   @import "../styles/dark-mode.scss";
+  @import "../styles/responsive-sizing.scss";
+
+  #header-navbar {
+    min-width: 320px;
+  }
+  #breadcrumbs-nav {
+    min-width: 250px;
+  }
 
   .skip-link:focus,
   .skip-link:focus-within {
@@ -165,6 +173,9 @@ const breadCrumbs =
   [astro-icon="ac-logo"] {
     height: 2.5rem;
   }
+  [astro-icon="bi:list"] {
+    height: 1.25rem;
+  }
   #brand-nav {
     height: 3.5rem;
   }
@@ -172,10 +183,9 @@ const breadCrumbs =
     top: 2.333rem;
     left: 4rem;
   }
-  @media (max-width: 576px) {
-    // TODO: Use BS sizing later.
+  @include media-breakpoint-down(lg) {
     #breadcrumbs-nav {
-      left: 1rem;
+      left: 3.333rem;
     }
   }
 
@@ -190,6 +200,43 @@ const breadCrumbs =
   .breadcrumb-item > .text-truncate {
     display: inline-block;
     max-width: 10em;
+  }
+  @include media-breakpoint-down(md) {
+    .navbar-brand {
+      --bs-navbar-brand-font-size: 1.1rem;
+      vertical-align: sub;
+    }
+  }
+  @include media-breakpoint-down(sm) {
+    .navbar-brand {
+      --bs-navbar-brand-font-size: 1rem;
+      vertical-align: sub;
+    }
+  }
+
+  @include media-breakpoint-down(md) {
+    #breadcrumbs-nav .breadcrumb-item {
+      --bs-breadcrumb-item-padding-x: 0.4rem;
+      font-size: 0.9em;
+      line-height: 1.1em;
+    }
+  }
+  @include media-breakpoint-down(sm) {
+    #breadcrumbs-nav .breadcrumb-item {
+      --bs-breadcrumb-item-padding-x: 0.3rem;
+      font-size: 0.9em;
+    }
+    .breadcrumb-item > .text-truncate {
+      max-width: 8em;
+    }
+  }
+  @include media-breakpoint-down(xs) {
+    #breadcrumbs-nav .breadcrumb-item {
+      --bs-breadcrumb-item-padding-x: 0.25rem;
+    }
+    .breadcrumb-item > .text-truncate {
+      max-width: 6em;
+    }
   }
 
   @include color-mode(dark) {
