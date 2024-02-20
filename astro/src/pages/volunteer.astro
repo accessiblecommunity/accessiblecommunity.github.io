@@ -489,7 +489,7 @@ import heroBg from "../images/colored-hero/hands-together.png";
   const form = document.querySelector("#volunteerFormEl");
   const submitButton = document.querySelector("#volunteerSubmit");
   const scriptURL =
-    "https://script.google.com/macros/s/AKfycbzmihK0h2VZTdtNk3V2ONzdGKz6rwbyEbZrReuKIgwWoyDKzklQ3LcRbq-Po93qdXlqoQ/exec";
+    "https://script.google.com/macros/s/AKfycbxTIdQJmkqH6iU0wil7F9CIhLuYRwysMKRgInwBnvURWGkvE2zUIBtIV3XqA8F2ZQXfWg/exec";
 
   form.addEventListener("submit", (e) => {
     submitButton.disabled = true;
@@ -500,7 +500,11 @@ import heroBg from "../images/colored-hero/hands-together.png";
     requestBody.delete("Teams");
     requestBody.set("Teams", teams.join(", "));
 
-    fetch(scriptURL, { method: "POST", body: requestBody })
+    fetch(scriptURL, {
+      method: "POST",
+      body: requestBody,
+      mode: "no-cors",
+    })
       .then((response) => {
         form.classList.add("d-none");
         const successMessage = document.querySelector("#volunteerSuccess");

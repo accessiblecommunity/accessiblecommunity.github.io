@@ -9,17 +9,25 @@ interface Props {
   caption?: string;
 }
 
-const { class: extraClasses, src, alt, imageClass = undefined, caption = undefined } = Astro.props;
+const {
+  class: extraClasses,
+  src,
+  alt,
+  imageClass = undefined,
+  caption = undefined,
+} = Astro.props;
 ---
 
 <figure class:list={["figure", extraClasses]}>
-  <Image {src} class:list={["figure-img img-fluid rounded", imageClass]} alt={alt} />
+  <Image
+    {src}
+    class:list={["figure-img img-fluid rounded", imageClass]}
+    alt={alt}
+  />
   {
-    (caption || Astro.slots.has('caption')) && (
+    (caption || Astro.slots.has("caption")) && (
       <figcaption class="figure-caption">
-        <slot name="caption">
-          { caption }
-        </slot>
+        <slot name="caption">{caption}</slot>
       </figcaption>
     )
   }
