@@ -1,0 +1,403 @@
+---
+import ExternalLink from "../../components/ExternalLink.astro";
+import ImageHeading from "../../components/ImageHeading.astro";
+import Layout from "../../layouts/Layout.astro";
+import ThemedSection from "../../components/ThemedSection.astro";
+
+const crumbs = [
+  {
+    name: "Home",
+    href: "/",
+  },
+  {
+    name: "Join Us",
+    href: "/join-us",
+  },
+];
+---
+
+<Layout crumbs={crumbs} title="Volunteer Commitment Form">
+  <ImageHeading image="team" slot="header">
+    Volunteer <strong>Commitment</strong> Form
+  </ImageHeading>
+  <ThemedSection style="secondary">
+    <form id="commitmentForm" class="col p-4 border-info commitment-form">
+      <p class="lead">
+        Thank you for your interest in committing to volunteer with <span
+          class="text-brand text-primary"
+          >Accessible <strong>Community</strong></span
+        >.
+      </p>
+      <p class="col-lg-9">
+        We are a growing <strong class="text-primary"
+          >international community</strong
+        > of volunteers working together to improve our communities for people with
+        disabilities.
+      </p>
+      <p class="col-lg-9">
+        Please fill out the form below to commit to becoming a volunteer with
+        <span class="text-brand text-primary"
+          >Accessible <strong>Community</strong></span
+        >. As a volunteer, everyone is asked to read and agree to follow our
+        <a href="/code-of-conduct" target="_blank">Code of Conduct</a>.
+      </p>
+      <p>
+        Required fields have an asterisk (<span class="asterisk">*</span>).
+      </p>
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <label for="firstNameField" class="form-label mb-1 required-field"
+            >First Name</label
+          ><span class="asterisk"></span>
+          <input
+            type="text"
+            name="FirstName"
+            class="form-control w-100 form-field"
+            id="firstNameField"
+            autocomplete="given-name"
+            required
+          />
+        </div>
+        <div class="col-md-6 mb-3">
+          <label for="lastNameField" class="form-label mb-1 required-field"
+            >Last Name</label
+          ><span class="asterisk"></span>
+          <input
+            type="text"
+            name="LastName"
+            class="form-control w-100 form-field"
+            id="lastNameField"
+            autocomplete="family-name"
+            required
+          />
+        </div>
+        <div class="col-md-6 mb-3">
+          <label for="citedNameField" class="form-label mb-1 required-field"
+            >Cited Name</label
+          ><span class="asterisk"></span>
+          <input
+            type="text"
+            name="CitedName"
+            class="form-control w-100 form-field"
+            id="citedNameField"
+            aria-describedby="citedNameHelp"
+            required
+          />
+          <div id="citedNameHelp" class="form-text small">
+            How you would like your name credit on our website to appear.
+          </div>
+        </div>
+        <div class="col-md-6 mb-3">
+          <label for="emailField" class="form-label mb-1 required-field"
+            >Email Address</label
+          ><span class="asterisk"></span>
+          <input
+            type="text"
+            name="Email"
+            class="form-control w-100 form-field"
+            id="emailField"
+            aria-describedby="emailHelp"
+            required
+          />
+          <div id="emailHelp" class="form-text small">
+            The email address we will use for all communications with you.
+          </div>
+        </div>
+        <div class="mb-3">
+          <fieldset>
+            <legend class="mb-2 fs-5 required-field">
+              Please read the <a href="/code-of-conduct" target="_blank"
+                >Code of Conduct</a
+              > and indicate your agreement.
+              <span class="asterisk" aria-hidden="true"></span>
+            </legend>
+            <div class="form-check d-flex mb-2 align-items-center">
+              <input
+                class="form-check-input check"
+                type="checkbox"
+                name="CodeOfConduct"
+                value="Yes"
+                id="readAgree"
+                aria-checked="false"
+                required
+              />
+              <label class="form-check-label ps-2" for="readAgree">
+                I have read and agree to follow the Code of Conduct.
+              </label>
+            </div>
+          </fieldset>
+        </div>
+        <div class="w-100"> </div>
+        <div class="col-md-6 mb-3">
+          <label for="linkedInProfileField" class="form-label mb-1"
+            >LinkedIn Profile</label
+          >
+          <input
+            type="text"
+            name="LinkedInProfile"
+            class="form-control w-100 form-field"
+            id="linkedInProfileField"
+          />
+        </div>
+        <div class="col-md-6 mb-3">
+          <label for="mastodonHandleField" class="form-label mb-1"
+            >Mastodon Handle</label
+          >
+          <input
+            type="text"
+            name="MastodonHandle"
+            class="form-control w-100 form-field"
+            id="mastodonHandleField"
+          />
+        </div>
+        <div class="col-md-6 mb-3">
+          <label for="twitterXField" class="form-label mb-1"
+            >Twitter/X Handle</label
+          >
+          <input
+            type="text"
+            name="TwitterXHandle"
+            class="form-control w-100 form-field"
+            id="twitterXField"
+          />
+        </div>
+        <div class="col-md-6 mb-3">
+          <label for="instagramProfileField" class="form-label mb-1"
+            >Instagram Profile</label
+          >
+          <input
+            type="text"
+            name="InstagramProfile"
+            class="form-control w-100 form-field"
+            id="instagramProfileField"
+          />
+        </div>
+        <div class="col-md-6 mb-3">
+          <fieldset>
+            <legend class="mb-2 fs-5">
+              If you would like an <span class="text-brand text-primary"
+                >Accessible <strong>Community</strong></span
+              > t-shirt, you may <ExternalLink
+                href="https://docs.google.com/spreadsheets/d/1tlTeDW1qNVGoIBlO3XuNFuf_x4twcZJr_4SlxKWSbHE/edit?usp=sharing"
+                >read our t-shirt sizing chart</ExternalLink
+              > and then select your size.
+            </legend>
+            <div class="form-check d-flex mb-2 align-items-center">
+              <input
+                class="form-check-input check"
+                type="radio"
+                name="TShirtSize"
+                value=""
+                id="sizeNone"
+                aria-checked="true"
+                checked
+              />
+              <label class="form-check-label ps-2" for="sizeNone">
+                No T-Shirt, Please
+              </label>
+            </div>
+            <div class="form-check d-flex mb-2 align-items-center">
+              <input
+                class="form-check-input check"
+                type="radio"
+                name="TShirtSize"
+                value="XS"
+                id="sizeXS"
+                aria-checked="false"
+              />
+              <label class="form-check-label ps-2" for="sizeXS">
+                Extra Small (XS)
+              </label>
+            </div>
+            <div class="form-check d-flex mb-2 align-items-center">
+              <input
+                class="form-check-input check"
+                type="radio"
+                name="TShirtSize"
+                value="S"
+                id="sizeS"
+                aria-checked="false"
+              />
+              <label class="form-check-label ps-2" for="sizeS">
+                Small (S)
+              </label>
+            </div>
+            <div class="form-check d-flex mb-2 align-items-center">
+              <input
+                class="form-check-input check"
+                type="radio"
+                name="TShirtSize"
+                value="M"
+                id="sizeM"
+                aria-checked="false"
+              />
+              <label class="form-check-label ps-2" for="sizeM">
+                Medium (M)
+              </label>
+            </div>
+            <div class="form-check d-flex mb-2 align-items-center">
+              <input
+                class="form-check-input check"
+                type="radio"
+                name="TShirtSize"
+                value="L"
+                id="sizeL"
+                aria-checked="false"
+              />
+              <label class="form-check-label ps-2" for="sizeL">
+                Large (L)
+              </label>
+            </div>
+            <div class="form-check d-flex mb-2 align-items-center">
+              <input
+                class="form-check-input check"
+                type="radio"
+                name="TShirtSize"
+                value="XL"
+                id="sizeXL"
+                aria-checked="false"
+              />
+              <label class="form-check-label ps-2" for="sizeXL">
+                Extra Large (XL)
+              </label>
+            </div>
+            <div class="form-check d-flex mb-2 align-items-center">
+              <input
+                class="form-check-input check"
+                type="radio"
+                name="TShirtSize"
+                value="XXL"
+                id="sizeXXL"
+                aria-checked="false"
+              />
+              <label class="form-check-label ps-2" for="sizeXXL">
+                Double XL (XXL)
+              </label>
+            </div>
+            <div class="form-check d-flex mb-2 align-items-center">
+              <input
+                class="form-check-input check"
+                type="radio"
+                name="TShirtSize"
+                value="XXXL"
+                id="sizeXXXL"
+                aria-checked="false"
+              />
+              <label class="form-check-label ps-2" for="sizeXXXL">
+                Triple XL (XXXL)
+              </label>
+            </div>
+          </fieldset>
+        </div>
+        <div class="col-md-6 mb-3">
+          <fieldset>
+            <legend class="mb-2 fs-5">
+              We have a Team Spotlight where team members can be highlighted on
+              our social media. Would you be open to being a part our Team
+              Spotlight in the future?
+            </legend>
+            <div class="form-check d-flex mb-2 align-items-center">
+              <input
+                class="form-check-input check"
+                type="radio"
+                name="TeamSpotlight"
+                value="No"
+                id="teamSpotlightNone"
+                aria-checked="true"
+                checked
+              />
+              <label class="form-check-label ps-2" for="teamSpotlightNone">
+                No, I would not like to be featured in the Team Spotlight.
+              </label>
+            </div>
+            <div class="form-check d-flex mb-2 align-items-center">
+              <input
+                class="form-check-input check"
+                type="radio"
+                name="TeamSpotlight"
+                value="Yes"
+                id="teamSpotlightYes"
+                aria-checked="false"
+              />
+              <label class="form-check-label ps-2" for="teamSpotlightYes">
+                Yes, I am open to being featured in the Team Spotlight.
+              </label>
+            </div>
+          </fieldset>
+        </div>
+        <div class="col-md-6 mx-auto">
+          <button
+            id="commitmentSubmit"
+            type="submit"
+            class="btn btn-info w-100 general-button">Submit</button
+          >
+        </div>
+      </div>
+    </form>
+    <div
+      class="d-none col p-4 border-info commitment-form"
+      id="commitmentSuccess"
+    >
+      <div class="lead">
+        Thank you for committing to volunteer with <span
+          class="text-brand text-primary"
+          >Accessible <strong>Community</strong></span
+        >. We'll be in touch shortly.
+      </div>
+    </div>
+  </ThemedSection>
+
+  <script is:inline>
+    const form = document.querySelector("#commitmentForm");
+    const submitButton = document.querySelector("#commitmentSubmit");
+    const scriptURL =
+      "https://script.google.com/macros/s/AKfycbwoyy1tGaNv7-r8HJkA8SoWlKF7tCIynkbUOxQAM4adtK3eKHqwUcksLD-Fj1fRPw/exec";
+
+    form.addEventListener("submit", (e) => {
+      submitButton.disabled = true;
+      e.preventDefault();
+
+      let requestBody = new FormData(form);
+
+      fetch(scriptURL, {
+        method: "POST",
+        body: requestBody,
+        mode: "no-cors",
+      })
+        .then((response) => {
+          form.classList.add("d-none");
+          const successMessage = document.querySelector("#commitmentSuccess");
+          successMessage.classList.remove("d-none");
+        })
+        .catch((error) => {
+          alert("Error!", error.message);
+          submitButton.disabled = false;
+        });
+    });
+  </script>
+
+  <style>
+    /* first declaration that is commented out below is for debugging purposes. */
+    /* * {
+   outline: 1px solid black;
+ } */
+
+    .commitment-form {
+      border: 3.5px solid;
+      border-radius: 0.5rem;
+    }
+
+    .check {
+      width: 30px;
+      height: 30px;
+    }
+
+    fieldset label {
+      cursor: pointer;
+    }
+
+    .form-text-area {
+      height: 6em;
+    }
+  </style></Layout
+>
