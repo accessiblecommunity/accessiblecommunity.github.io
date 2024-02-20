@@ -30,5 +30,9 @@ export default defineConfig({
       noExternal: ["bootstrap"],
     },
   },
-  integrations: [styleGuide(), mdx(), sitemap()],
+  integrations: [styleGuide(), mdx(), sitemap({
+    filter: (page) =>
+      !page.endsWith('/commitment-form/'),
+  }),
+],
 });
