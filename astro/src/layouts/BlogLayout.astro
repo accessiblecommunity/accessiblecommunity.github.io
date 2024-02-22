@@ -108,8 +108,8 @@ import ThemedSection from "../components/ThemedSection.astro";
               <h2 class="text-info-emphasis display-6">Blog Posts</h2>
               <ul>
                 {blogs.map((b) => (
-                  <li>
-                    <a href={`/blog/${b.slug}`}>{b.data.title}</a>
+                  <li class="mb-1">
+                    <a href={`/blog/${b.slug}`} class="py-1 px-10">{b.data.title}</a>
                   </li>
                 ))}
               </ul>
@@ -122,8 +122,8 @@ import ThemedSection from "../components/ThemedSection.astro";
               <h2 class="text-info-emphasis display-6">Topics</h2>
               <ul>
                 {topics.map((cat) => (
-                  <li>
-                    <a href={`/blog/topics/${cat}`}>{startCase(cat)}</a>
+                  <li class="mb-1">
+                    <a href={`/blog/topics/${cat}`} class="py-1 px-10">{startCase(cat)}</a>
                   </li>
                 ))}
               </ul>
@@ -136,8 +136,8 @@ import ThemedSection from "../components/ThemedSection.astro";
               <h2 class="text-info-emphasis display-6">Authors</h2>
               <ul>
                 {authors.map((author) => (
-                  <li>
-                    <a href={`/blog/authors/${author.slug}`}>
+                  <li class="mb-1">
+                    <a href={`/blog/authors/${author.slug}`} class="py-1 px-10">
                       {author.data.name}
                     </a>
                   </li>
@@ -152,8 +152,8 @@ import ThemedSection from "../components/ThemedSection.astro";
               <h2 class="text-info-emphasis display-6">Dates</h2>
               <ul>
                 {dates.map((month) => (
-                  <li>
-                    <a href={`/blog/dates/${kebabCase(month)}`}>{month}</a>
+                  <li class="mb-1">
+                    <a href={`/blog/dates/${kebabCase(month)}`} class="py-1 px-10">{month}</a>
                   </li>
                 ))}
               </ul>

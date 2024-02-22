@@ -114,6 +114,18 @@ $code-color:                  #590455;
 
 $container-padding-x:  3rem;
 
+$spacer: 1rem;
+$spacers: (
+  0: 0,
+  1: $spacer * .25,
+  2: $spacer * .5,
+  3: $spacer,
+  4: $spacer * 1.5,
+  5: $spacer * 3,
+  10: $spacer * .12,
+);
+
+
 //********
 // Shadows - Tweaked from https://codyhouse.co/nuggets/beautiful-css-shadows
 //********
@@ -264,7 +276,7 @@ $theme-colors-border-subtle-dark: map-merge($theme-colors-border-subtle-dark, $c
   outline: 3px dashed $primary;
   outline-offset: 0.025em;
   box-shadow: none;
-  border-radius: 2%;
+  border-radius: 0.375rem;
 }
 
 .hero-link:focus-visible, .link-light:focus-visible {
@@ -275,7 +287,7 @@ $theme-colors-border-subtle-dark: map-merge($theme-colors-border-subtle-dark, $c
   outline-offset: -0.15em;
 }
 
-.btn:focus-visible {
+.btn:focus-visible, .form-control:focus-visible, .form-check-input:focus-visible {
   outline: 3px dashed $primary;
   outline-offset: 0.25rem;
   box-shadow: none;
@@ -305,6 +317,7 @@ $theme-colors-border-subtle-dark: map-merge($theme-colors-border-subtle-dark, $c
 textarea, input {
   border-width: 1.5px 1.5px;
   border-color: #000000;
+  border-radius: 0.375rem;
 }
 
 input[type=checkbox], input[type=radio] {
