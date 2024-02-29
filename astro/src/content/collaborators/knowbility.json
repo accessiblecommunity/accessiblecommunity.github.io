@@ -2,9 +2,5 @@
   "name": "Knowbility",
   "href": "https://knowbility.org/",
   "logo": "../../images/collaborator-logos/knowbility-logo-large.png",
-  "tags": [
-    "mentoring-contributor",
-    "partner"
-  ]
+  "tags": ["mentoring-contributor", "partner"]
 }
-

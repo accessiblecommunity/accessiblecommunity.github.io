@@ -6,8 +6,8 @@ import ThemedSection from "../../components/ThemedSection.astro";
 
 import { getCollection } from "astro:content";
 
-const partners = await getCollection(
-  "collaborators", ({data}) => data.tags.includes("partner")
+const partners = await getCollection("collaborators", ({ data }) =>
+  data.tags.includes("partner"),
 );
 const crumbs = [
   {

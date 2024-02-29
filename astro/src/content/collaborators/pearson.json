@@ -2,8 +2,5 @@
   "name": "Pearson",
   "href": "https://www.pearson.com/en-us.html",
   "logo": "../../images/collaborator-logos/pearson logo.png",
-  "tags": [
-    "mentoring-partner",
-    "partner"
-  ]
+  "tags": ["mentoring-partner", "partner"]
 }
