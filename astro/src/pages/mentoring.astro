@@ -114,11 +114,11 @@ const contributors = await getCollection('collaborators', ({ data }) => {
     </Fragment>
   </Hero>
 
-  <ThemedSection style="secondary">
+  <ThemedSection theme="secondary" style="subtle">
     <div
-      class="container d-flex flex-column flex-xl-row gap-4 justify-content-xl-between align-items-xl-center"
+      class="d-flex flex-column flex-xl-row gap-4 justify-content-xl-between align-items-xl-center"
     >
-      <div class="col col-xl-7">
+      <div class="col col-xl-6">
         <h2 class="display-3">The <strong>first step</strong> is hard.</h2>
         <p class="lead">
           When you are first getting started in any industry, it's difficult to get your foot
@@ -126,7 +126,31 @@ const contributors = await getCollection('collaborators', ({ data }) => {
             ><span class="text-brand fw-bold">mutu<span class="fw-lighter">a11y</span> mentoring</span
           ></ExternalLink>, we have established a program that matches senior accessibility experts
           with those just getting started in their accessibility journey. In addition, our program
-          provides guidance in achieving your certifications and job applications.
+          provides guidance in achieving your certifications and finding a job.
+        </p>
+      </div>
+      <ThemedBox
+        theme="primary"
+        style="subtle"
+        border={1}
+        class="col col-xl-5 text-start p-4 pb-0 shadow rounded"
+      >
+        <Testimonial slug="eve/short" />
+      </ThemedBox>
+    </div>
+  </ThemedSection>
+
+  <ThemedSection style="tertiary">
+    <div
+      class="d-flex flex-column flex-xl-row-reverse gap-4 justify-content-xl-between align-items-xl-center"
+    >
+      <div class="col col-xl-7">
+        <h2 class="display-3">Help the <strong>next generation</strong>.</h2>
+        <p class="lead">
+          For our mentors, all we ask is that you have a series of guided conversations
+          for an hour or two a month. There is a lot to becoming a digitial accessibility
+          engineer. Convey your experience and pass on your knowedlge to the next generation
+          of accessibility professionals.
         </p>
       </div>
       <ThemedBox
@@ -139,40 +163,17 @@ const contributors = await getCollection('collaborators', ({ data }) => {
     </div>
   </ThemedSection>
 
-  <ThemedSection style="tertiary">
-    <div
-      class="container d-flex flex-column flex-xl-row-reverse gap-4 justify-content-xl-between align-items-xl-center"
-    >
-      <div class="col col-xl-6">
-        <h2 class="display-3">Help out the <strong>next generation</strong>.</h2>
-        <p class="lead">
-          For our mentors, all we ask is that you have a series of guided conversations
-          for an hour or two a month. There is a lot to becoming a digitial accessibility
-          engineer. Convey your experience and pass on your knowedlge to the next generation
-          of accessibility professionals.
-        </p>
-      </div>
-      <ThemedBox
-        theme="primary"
-        border={1}
-        class="col col-xl-5 text-start p-4 pb-0 shadow rounded"
-      >
-        <Testimonial slug="eve/short" text="white" />
-      </ThemedBox>
-    </div>
-  </ThemedSection>
-
-  <ThemedSection theme="secondary" style="subtle">
+  <ThemedSection style="secondary">
     <h2 class="display-3">How can I <strong>be involved</strong>?</h2>
     <div
-      class="d-flex flex-column flex-xl-row gap-4 py-3 justify-content-lg-evenly text-primary"
+      class="d-flex flex-column flex-lg-row gap-4 py-3 justify-content-lg-evenly text-primary"
     >
       <ThemedBox
         text={true}
         border={1}
         class="border-primary col col-xl-3 shadow rounded"
       >
-        <h3 class="display-5">
+        <h3 class="display-5 mb-3">
           Be a <strong>protegé</strong>.
         </h3>
         <p class="text-center">
@@ -190,7 +191,7 @@ const contributors = await getCollection('collaborators', ({ data }) => {
         border={1}
         class="border-primary col col-xl-3 shadow rounded"
       >
-        <h3 class="display-5">
+        <h3 class="display-5 mb-3">
           Be a <strong>mentor</strong>.
         </h3>
         <p class="text-center">
@@ -208,7 +209,7 @@ const contributors = await getCollection('collaborators', ({ data }) => {
         border={1}
         class="border-primary col col-xl-3 shadow rounded"
       >
-        <h3 class="display-5">
+        <h3 class="display-5 mb-3">
           Ask <strong>questions</strong>.
         </h3>
         <p class="text-center">
@@ -217,7 +218,7 @@ const contributors = await getCollection('collaborators', ({ data }) => {
         </p>
         <div class="text-center">
           <ExternalLink href={mentoringEmail} inline={true}
-          >Email us</ExternalLink> with any questions.
+          >Email your questions</ExternalLink>
         </div>
       </ThemedBox>
     </div>
@@ -233,7 +234,7 @@ const contributors = await getCollection('collaborators', ({ data }) => {
     <h2 class="display-3">Thanks to our <strong>partners</strong>.</h2>
     <CollaboratorList items={partners} />
 
-    <h2 class="display-3 mt-4">And our <strong>contributors</strong>.</h2>
+    <h3 class="display-3 mt-4">And our <strong>contributors</strong>.</h3>
     <CollaboratorList items={contributors} />
   </ThemedSection>
 </Layout>
