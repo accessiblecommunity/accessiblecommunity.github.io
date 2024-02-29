@@ -30,11 +30,17 @@ const memberObj =
 const { name, title, picture } = memberObj.data;
 
 function getDisplayName(name: string) {
-  const nameArray = name.split(" ");
-  if (highlightName) nameArray[0] = `<strong>${nameArray[0]}</strong>`;
-  if (firstNameOnly) return nameArray[0];
-
-  return nameArray.join(" ");
+  if (name === "The Ta11y Cat") {
+    if (highlightName) name = `<strong>${name}</strong>`;
+    if (firstNameOnly) return name;
+    return name;
+  } else {
+    const nameArray = name.split(" ");
+    if (highlightName) nameArray[0] = `<strong>${nameArray[0]}</strong>`;
+    if (firstNameOnly) return nameArray[0];
+  
+    return nameArray.join(" ");
+  }
 }
 const displayName = getDisplayName(name);
 const NameTag = element;
