@@ -1,7 +1,9 @@
 ---
+import CollaboratorList from "../components/CollaboratorList.astro";
 import ExternalLink from "../components/ExternalLink.astro";
 import Hero from "../components/Hero.astro";
 import { Icon } from "astro-icon";
+import { Image } from "astro:assets";
 import Layout from "../layouts/Layout.astro";
 import Testimonial from "../components/Testimonial.astro";
 import ThemedBox from "../components/ThemedBox.astro";
@@ -24,6 +26,16 @@ const crumbs = [
     href: "/services",
   },
 ];
+
+import { getCollection } from 'astro:content';
+
+const partners = await getCollection('collaborators', ({ data }) => {
+  return data.tags.includes('mentoring-partner');
+});
+
+const contributors = await getCollection('collaborators', ({ data }) => {
+  return data.tags.includes('mentoring-contributor');
+});
 ---
 
 <Layout title="Mentoring" crumbs={crumbs}>
@@ -33,11 +45,11 @@ const crumbs = [
       <blockquote class="display-2 text-white">
         <div>
           <sup aria-hidden="true"><Icon name="quote-left" height="0.5em" /></sup
-          >&nbsp;<span class="small">Tell me, and I forget, teach me, and I may&nbsp;remember,</span>
+          >&nbsp;<span class="small">Tell me and I forget, teach me and I may&nbsp;remember,</span>
         </div>
         <div>
           <span class="fw-bold"
-            >involve me, and I learn.&nbsp;<sup aria-hidden="true"
+            >involve me and I learn.&nbsp;<sup aria-hidden="true"
               ><Icon name="quote-right" height="0.5em" /></sup
             >
           </span>
@@ -217,4 +229,11 @@ const crumbs = [
     </p>
   </ThemedSection>
 
+  <ThemedSection>
+    <h2 class="display-3">Thanks to our <strong>partners</strong>.</h2>
+    <CollaboratorList items={partners} />
+
+    <h2 class="display-3 mt-4">And our <strong>contributors</strong>.</h2>
+    <CollaboratorList items={contributors} />
+  </ThemedSection>
 </Layout>

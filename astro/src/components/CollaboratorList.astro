@@ -1,0 +1,39 @@
+---
+interface Props {
+  items?: Array<object>
+}
+
+const { items = [] } = Astro.props;
+
+import { Image } from "astro:assets";
+import { getCollection } from 'astro:content';
+import { isEmpty } from "lodash-es";
+
+const collaborators = !isEmpty(items) ? items : await getCollection('collaborators');
+---
+
+<ul class="list-inline list-unstyled text-center collab-list rounded-2">
+  {
+    collaborators.map(({data}) => (
+      <li class="list-inline-item col col-md-3 col-lg-2 m-4">
+        <a
+          href={data.href}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <Image src={data.logo} width="150" alt={data.name} />
+        </a>
+      </li>
+    ))
+  }
+</ul>
+
+<style lang="scss">
+  @import "../styles/dark-mode";
+
+  @include color-mode(dark) {
+    .collab-list {
+      background-color: var(--bs-secondary-text-emphasis);
+    }
+  }
+</style>
