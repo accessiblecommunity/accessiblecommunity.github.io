@@ -44,6 +44,7 @@ const crumbs = [
       <p>
         Required fields have an asterisk (<span class="asterisk">*</span>).
       </p>
+      <h3 class="mt-3">Name and Email</h3>
       <div class="row">
         <div class="col-md-6 mb-3">
           <label for="firstNameField" class="form-label mb-1 required-field"
@@ -72,22 +73,6 @@ const crumbs = [
           />
         </div>
         <div class="col-md-6 mb-3">
-          <label for="citedNameField" class="form-label mb-1 required-field"
-            >Cited Name</label
-          ><span class="asterisk"></span>
-          <input
-            type="text"
-            name="CitedName"
-            class="form-control w-100 form-field"
-            id="citedNameField"
-            aria-describedby="citedNameHelp"
-            required
-          />
-          <div id="citedNameHelp" class="form-text small">
-            How you would like your name credit on our website to appear.
-          </div>
-        </div>
-        <div class="col-md-6 mb-3">
           <label for="emailField" class="form-label mb-1 required-field"
             >Email Address</label
           ><span class="asterisk"></span>
@@ -103,6 +88,10 @@ const crumbs = [
             The email address we will use for all communications with you.
           </div>
         </div>
+      </div>
+
+      <h3 class="mt-3">Code of Conduct</h3>
+      <div class="row">
         <div class="mb-3">
           <fieldset>
             <legend class="mb-2 fs-5 required-field">
@@ -127,8 +116,32 @@ const crumbs = [
             </div>
           </fieldset>
         </div>
-        <div class="w-100"> </div>
-        <div class="col-md-6 mb-3">
+      </div>
+
+      <h3 class="mt-3">Acknowledgement and Social Media</h3>
+      <p>
+        We proudly display our staff, their roles and reference their social
+        media. Please let us know how you would like to be acknowledged and what
+        social media (if any) you want us to link to.
+      </p>
+      <div class="row">
+        <div class="col-lg-6 mb-3">
+          <label for="citedNameField" class="form-label mb-1 required-field"
+            >Cited Name</label
+          ><span class="asterisk"></span>
+          <input
+            type="text"
+            name="CitedName"
+            class="form-control w-100 form-field"
+            id="citedNameField"
+            aria-describedby="citedNameHelp"
+            required
+          />
+          <div id="citedNameHelp" class="form-text small">
+            How you would like your name credit on our website to appear.
+          </div>
+        </div>
+        <div class="col-lg-6 mb-3">
           <label for="linkedInProfileField" class="form-label mb-1"
             >LinkedIn Profile</label
           >
@@ -136,43 +149,236 @@ const crumbs = [
             type="text"
             name="LinkedInProfile"
             class="form-control w-100 form-field"
+            aria-describedby="linkedInProfileHelp"
             id="linkedInProfileField"
           />
+          <div id="linkedInProfileHelp" class="form-text small">
+            The URL of your LinkedIn profile (if you want us to link it).
+          </div>
+        </div>
+      </div>
+      <div class="row flex-lg-row-reverse">
+        <div class="col-lg-6 mb-3">
+          <div class="mb-3">
+            <label for="mastodonHandleField" class="form-label mb-1"
+              >Mastodon Handle</label
+            >
+            <input
+              type="text"
+              name="MastodonHandle"
+              class="form-control w-100 form-field"
+              aria-describedby="mastodonHandleHelp"
+              id="mastodonHandleField"
+            />
+            <div id="mastodonHandleHelp" class="form-text small">
+              The URL of your Mastodon account (if you want us to link it).
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="twitterXField" class="form-label mb-1"
+              >X/Twitter Handle</label
+            >
+            <input
+              type="text"
+              name="TwitterXHandle"
+              class="form-control w-100 form-field"
+              aria-describedby="twitterXHelp"
+              id="twitterXField"
+            />
+            <div id="twitterXHelp" class="form-text small">
+              The URL of your X (formerly Twitter) account (if you want us to
+              link it).
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="instagramProfileField" class="form-label mb-1"
+              >Instagram Profile</label
+            >
+            <input
+              type="text"
+              name="InstagramProfile"
+              class="form-control w-100 form-field"
+              aria-describedby="instagramProfileHelp"
+              id="instagramProfileField"
+            />
+            <div id="instagramProfileHelp" class="form-text small">
+              The URL of your Instagram profile (if you want us to link it).
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6 mb-3">
+          <fieldset class="border-3 border-top border-info">
+            <legend class="my-3 fs-5">
+              We have a Team Spotlight where team members can be highlighted on
+              our social media. Would you be open to being a part our Team
+              Spotlight in the future?
+            </legend>
+            <div class="form-check d-flex mb-2 align-items-center">
+              <input
+                class="form-check-input check"
+                type="radio"
+                name="TeamSpotlight"
+                value="No"
+                id="teamSpotlightNone"
+                aria-checked="true"
+                checked
+              />
+              <label class="form-check-label ps-2" for="teamSpotlightNone">
+                No, I would not like to be featured in the Team Spotlight.
+              </label>
+            </div>
+            <div class="form-check d-flex mb-2 align-items-center">
+              <input
+                class="form-check-input check"
+                type="radio"
+                name="TeamSpotlight"
+                value="Yes"
+                id="teamSpotlightYes"
+                aria-checked="false"
+              />
+              <label class="form-check-label ps-2" for="teamSpotlightYes">
+                Yes, I am open to being featured in the Team Spotlight.
+              </label>
+            </div>
+          </fieldset>
+        </div>
+      </div>
+
+      <div class="row mt-3">
+        <div class="col-md-6 mb-3">
+          <h3>Teams</h3>
+          <fieldset class="mb-3">
+            <legend class="mb-2 fs-5 required-field">
+              Which team(s) are you interested in assisting?
+              <span class="asterisk" aria-hidden="true"></span>
+            </legend>
+            <div class="form-check d-flex mb-2 align-items-center">
+              <input
+                class="form-check-input check"
+                type="checkbox"
+                name="Teams"
+                value="Content"
+                id="interestWrite"
+                aria-checked="false"
+              />
+              <label class="form-check-label ps-2" for="interestWrite">
+                Content Team
+              </label>
+            </div>
+            <div class="form-check d-flex mb-2 align-items-center">
+              <input
+                class="form-check-input check"
+                type="checkbox"
+                name="Teams"
+                value="Development"
+                id="interestDev"
+                aria-checked="false"
+              />
+              <label class="form-check-label ps-2" for="interestDev">
+                Development Team
+              </label>
+            </div>
+            <div class="form-check d-flex mb-2 align-items-center">
+              <input
+                class="form-check-input check"
+                type="checkbox"
+                name="Teams"
+                value="Evaluation"
+                id="interestEval"
+                aria-checked="false"
+              />
+              <label class="form-check-label ps-2" for="interestEval">
+                Evaluation Team
+              </label>
+            </div>
+            <div class="form-check d-flex mb-2 align-items-center">
+              <input
+                class="form-check-input check"
+                type="checkbox"
+                name="Teams"
+                value="Leadership"
+                id="interestRun"
+                aria-checked="false"
+              />
+              <label class="form-check-label ps-2" for="interestRun">
+                Leadership Team
+              </label>
+            </div>
+            <div class="form-check d-flex mb-2 align-items-center">
+              <input
+                class="form-check-input check"
+                type="checkbox"
+                name="Teams"
+                value="UI/UX"
+                id="interestUX"
+                aria-checked="false"
+              />
+              <label class="form-check-label ps-2" for="interestUX">
+                UX Team
+              </label>
+            </div>
+            <div class="form-check d-flex mb-2 align-items-center">
+              <input
+                class="form-check-input check"
+                type="checkbox"
+                name="Teams"
+                value="Other"
+                id="interestOther"
+                aria-checked="false"
+              />
+              <label class="form-check-label ps-2" for="interestOther">
+                Other
+              </label>
+            </div>
+          </fieldset>
+          <fieldset>
+            <legend class="mb-2 fs-5 required-field">
+              How many hours per week can you contribute?
+              <span class="asterisk" aria-hidden="true"></span>
+            </legend>
+            <div class="form-check d-flex mb-2 align-items-center">
+              <input
+                class="form-check-input check"
+                type="radio"
+                name="Hours"
+                value="Less than 4 hours"
+                id="hoursLess"
+                aria-checked="false"
+              />
+              <label class="form-check-label ps-2" for="hoursLess">
+                Less than 4 hours a week
+              </label>
+            </div>
+            <div class="form-check d-flex mb-2 align-items-center">
+              <input
+                class="form-check-input check"
+                type="radio"
+                name="Hours"
+                value="About 4 hours"
+                id="hoursAround"
+                aria-checked="false"
+              />
+              <label class="form-check-label ps-2" for="hoursAround">
+                Around 4 hours a week
+              </label>
+            </div>
+            <div class="form-check d-flex mb-2 align-items-center">
+              <input
+                class="form-check-input check"
+                type="radio"
+                name="Hours"
+                value="More than 4 hours"
+                id="hoursMore"
+                aria-checked="false"
+              />
+              <label class="form-check-label ps-2" for="hoursMore">
+                More than 4 hours a week
+              </label>
+            </div>
+          </fieldset>
         </div>
         <div class="col-md-6 mb-3">
-          <label for="mastodonHandleField" class="form-label mb-1"
-            >Mastodon Handle</label
-          >
-          <input
-            type="text"
-            name="MastodonHandle"
-            class="form-control w-100 form-field"
-            id="mastodonHandleField"
-          />
-        </div>
-        <div class="col-md-6 mb-3">
-          <label for="twitterXField" class="form-label mb-1"
-            >Twitter/X Handle</label
-          >
-          <input
-            type="text"
-            name="TwitterXHandle"
-            class="form-control w-100 form-field"
-            id="twitterXField"
-          />
-        </div>
-        <div class="col-md-6 mb-3">
-          <label for="instagramProfileField" class="form-label mb-1"
-            >Instagram Profile</label
-          >
-          <input
-            type="text"
-            name="InstagramProfile"
-            class="form-control w-100 form-field"
-            id="instagramProfileField"
-          />
-        </div>
-        <div class="col-md-6 mb-3">
+          <h3>T-shirt</h3>
           <fieldset>
             <legend class="mb-2 fs-5">
               If you would like an <span class="text-brand text-primary"
@@ -289,43 +495,10 @@ const crumbs = [
             </div>
           </fieldset>
         </div>
-        <div class="col-md-6 mb-3">
-          <fieldset>
-            <legend class="mb-2 fs-5">
-              We have a Team Spotlight where team members can be highlighted on
-              our social media. Would you be open to being a part our Team
-              Spotlight in the future?
-            </legend>
-            <div class="form-check d-flex mb-2 align-items-center">
-              <input
-                class="form-check-input check"
-                type="radio"
-                name="TeamSpotlight"
-                value="No"
-                id="teamSpotlightNone"
-                aria-checked="true"
-                checked
-              />
-              <label class="form-check-label ps-2" for="teamSpotlightNone">
-                No, I would not like to be featured in the Team Spotlight.
-              </label>
-            </div>
-            <div class="form-check d-flex mb-2 align-items-center">
-              <input
-                class="form-check-input check"
-                type="radio"
-                name="TeamSpotlight"
-                value="Yes"
-                id="teamSpotlightYes"
-                aria-checked="false"
-              />
-              <label class="form-check-label ps-2" for="teamSpotlightYes">
-                Yes, I am open to being featured in the Team Spotlight.
-              </label>
-            </div>
-          </fieldset>
-        </div>
-        <div class="col-md-6 mx-auto">
+      </div>
+
+      <div class="row">
+        <div class="col-md-6 my-3 mx-auto">
           <button
             id="commitmentSubmit"
             type="submit"
@@ -358,6 +531,9 @@ const crumbs = [
       e.preventDefault();
 
       let requestBody = new FormData(form);
+      const teams = requestBody.getAll("Teams");
+      requestBody.delete("Teams");
+      requestBody.set("Teams", teams.join(", "));
 
       fetch(scriptURL, {
         method: "POST",
