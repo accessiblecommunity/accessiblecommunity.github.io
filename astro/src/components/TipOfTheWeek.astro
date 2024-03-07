@@ -6,20 +6,20 @@ const tip = await getEntry("atotw", slug);
 const { Content = "p" } = await tip?.render();
 ---
 
-<div class:list={["atotw", extraClasses]}>
-  <h3 class="display-4" set:html={tip.data.title} />
+<article class={extraClasses}>
+  <h1 set:html={tip.data.title} />
   <div class="mb-3 py-3 border-top border-bottom">
       <strong class="text-brand">Summary: </strong><span>{ tip.data.summary }</span><br />
       <strong class="text-brand">Who it helps: </strong><span>{ tip.data.who }</span><br />
       <strong class="text-brand">Additional benefits: </strong><span>{ tip.data.benefits }</span><br />
   </div>
   <Content />
-</div>
+</article>
 
 <style>
-  .atotw :global(h2), 
-  .atotw :global(h3), 
-  .atotw :global(h4) {
+  article :global(h1),
+  article :global(h2),
+  article :global(h3) {
     font-weight: 600 !important;
   } 
 </style>

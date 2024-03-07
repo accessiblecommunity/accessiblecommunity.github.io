@@ -24,7 +24,7 @@ const innerBgClass = getBackgroundAndText(undefined, style);
 <section id={id} class:list={[outerBgAndTextClass, `p-${py - 1} p-sm-${py}`]}>
   {
     Astro.slots.has('lead') && (
-      <div class={`pb-${py - 1}`}>
+      <div class={`pb-sm-${py - 1}`}>
         <slot name="lead" />
       </div>
     )
@@ -32,7 +32,7 @@ const innerBgClass = getBackgroundAndText(undefined, style);
   <div class:list={[innerBgClass, "shadow-lg rounded" ]}>
     <div
       class:list={[
-        `container${fluid ? "-fluid" : ""}`,
+        `container-sm${fluid ? "-fluid" : ""}`,
         `py-${py - 1} mx-sm-auto`,
       ]}
     >
