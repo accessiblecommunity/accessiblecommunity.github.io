@@ -1,0 +1,71 @@
+---
+import { Icon } from "astro-icon";
+
+import ExternalLink from "../../components/ExternalLink.astro";
+import Hero from "../../components/Hero.astro";
+import ImageHeading from "../../components/ImageHeading.astro"
+import Layout from "../../layouts/Layout.astro";
+import ShadowBoxSection from "../../components/ShadowBoxSection.astro";
+import ThemedSection from "../../components/ThemedSection.astro";
+import ThemedBox from "../../components/ThemedBox.astro";
+import TipRegistration from "../../components/TipRegistration.astro";
+import TipOfTheWeek from "../../components/TipOfTheWeek.astro";
+import Testimonial from "../../components/Testimonial.astro";
+
+const crumbs = [
+  {
+    name: "Home",
+    href: "/",
+  },
+  {
+    name: "Services",
+    href: "/services",
+  },
+];
+---
+
+<Layout title="Tip of the Week" crumbs={crumbs}>
+  <ImageHeading image="notes" slot="header">
+    Accessibility <strong>Tip</strong> of the <strong>Week</strong>
+  </ImageHeading>
+
+  <ThemedSection style="tertiary">
+    <h2 class="display-3">Making accessibility <strong>simpler</strong>.</h2>
+    <div class="d-flex flex-column flex-lg-row gap-4 justify-content-lg-evenly align-items-lg-center py-2">
+      <div>
+        <p class="lead">
+          It takes five minutes.
+        </p>
+        <p class="lead">
+          Once a week, in your inbox, you'll get a simple but effective accessibility tip.
+          It's simple enough that you can start implementing it within your organization during the week.
+          We even include a helpful summary at the top, in case your schedule doesn't have five minutes.
+        </p>
+        <p class="lead">
+          Check out a previous tip of the week below. Fill out the simple registration form to sign up.
+          It's completely free and we will not <a href="/privacy-policy">sell or share your data</a>.
+        </p>
+      </div>
+  
+      <TipRegistration>
+        <h3 class="display-6 text-primary-emphasis mb-0">
+          <strong>Tip of the Week</strong> Registration
+        </h3>
+        <p class="small">
+          <span class="text-primary-emphasis fw-bold">Note:</span> Required fields have
+          an asterisk (<span class="asterisk">*</span>).
+        </p>
+      </TipRegistration>
+    </div>
+  </ThemedSection>
+
+  <ShadowBoxSection theme="info" fluid={false}>
+    <h2 slot="lead" class="display-3 text-light text-center mb-4">
+      An <strong>example</strong> tip.
+    </h2>
+    <div class="p-4 rounded-3">
+      <TipOfTheWeek slug="fragrances" />
+    </div>
+  </ShadowBoxSection>
+</Layout>
+
