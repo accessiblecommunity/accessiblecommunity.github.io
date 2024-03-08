@@ -9,7 +9,7 @@ export default {
         const styleGuide = document.createElement("div");
         styleGuide.setAttribute("class", "p-2 bg-body");
         styleGuide.setAttribute("id", "style-guide");
-        styleGuide.innerHTML = html`
+        styleGuide.innerHTML = `
 <ul class="nav nav-tabs" id="style-guide-tabs" role="tablist">
   <li class="nav-item" role="presentation">
     <button class="nav-link active" id="style-guide-description" data-bs-toggle="tab" data-bs-target="#style-guide-description-pane" type="button" role="tab" aria-controls="style-guide-description-pane" aria-selected="true">
