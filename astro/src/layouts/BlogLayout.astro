@@ -30,7 +30,6 @@ const {
   sidebar = false,
 } = Astro.props;
 const { title = blog.data.title, heading = undefined } = Astro.props;
-const isCustomHeading = !isNil(heading);
 const { blogs = [], authors = [], topics = [], dates = [] } = catalog;
 
 const blogAuthor = await getEntry(blog.data.author);
@@ -62,26 +61,13 @@ import ThemedSection from "../components/ThemedSection.astro";
   </Fragment>
   <ImageHeading image="blog" slot="header">
     <slot name="header">
-      {
-        isCustomHeading ?
-          <strong set:text={heading} />
-        : <Fragment>
-            <strong>Blog</strong> - {blog.data.title}
-          </Fragment>
-      }
+      <strong>Blog</strong>
     </slot>
   </ImageHeading>
   <ThemedSection style="tertiary" py={0}>
     <div class="d-flex gap-4">
-      <div class:list={[sidebar ? "d-none d-lg-block" : "col", "col-lg-9"]}>
-        {
-          isCustomHeading ?
-            <h2
-              class="display-4 border-bottom mb-3"
-              set:text={blog.data.title}
-            />
-          : ""
-        }
+      <article class:list={[sidebar ? "d-none d-lg-block" : "col", "col-lg-9"]}>
+        <h1 class="display-4 border-bottom mb-3" set:text={blog.data.title} />
         <div
           class="d-flex flex-column flex-md-row justify-content-between mb-4"
         >
@@ -93,74 +79,79 @@ import ThemedSection from "../components/ThemedSection.astro";
             </div>
           </div>
           <div
-            class="text-brand text-secondary-emphasis me-3"
+            class="text-brand text-primary-emphasis me-3"
             set:text={published}
           />
         </div>
-        <article class="py-4 mb-4">
+        <div class="py-4 mb-4">
           <Content />
-        </article>
-      </div>
-      <div class:list={[sidebar ? "col" : "d-none d-lg-block", "col-lg-3"]}>
-        {
-          isEmpty(blogs) ? "" : (
-            <>
-              <h2 class="text-info-emphasis display-6">Blog Posts</h2>
-              <ul>
-                {blogs.map((b) => (
-                  <li>
-                    <a href={`/blog/${b.slug}`}>{b.data.title}</a>
-                  </li>
-                ))}
-              </ul>
-            </>
-          )
-        }
-        {
-          isEmpty(topics) ? "" : (
-            <>
-              <h2 class="text-info-emphasis display-6">Topics</h2>
-              <ul>
-                {topics.map((cat) => (
-                  <li>
-                    <a href={`/blog/topics/${cat}`}>{startCase(cat)}</a>
-                  </li>
-                ))}
-              </ul>
-            </>
-          )
-        }
-        {
-          isEmpty(authors) ? "" : (
-            <>
-              <h2 class="text-info-emphasis display-6">Authors</h2>
-              <ul>
-                {authors.map((author) => (
-                  <li>
-                    <a href={`/blog/authors/${author.slug}`}>
-                      {author.data.name}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </>
-          )
-        }
-        {
-          isEmpty(dates) ? "" : (
-            <>
-              <h2 class="text-info-emphasis display-6">Dates</h2>
-              <ul>
-                {dates.map((month) => (
-                  <li>
-                    <a href={`/blog/dates/${kebabCase(month)}`}>{month}</a>
-                  </li>
-                ))}
-              </ul>
-            </>
-          )
-        }
-      </div>
+        </div>
+      </article>
+      <nav
+        class:list={[sidebar ? "col" : "d-none d-lg-block", "col-lg-3"]}
+        aria-label="Blog"
+      >
+        <ul class="list-unstyled">
+          {
+            isEmpty(blogs) ? "" : (
+              <li class="text-info-emphasis">
+                <span class="display-6">Blog Posts</span>
+                <ul class="mt-1 mb-3 list-disc">
+                  {blogs.map((b) => (
+                    <li>
+                      <a href={`/blog/${b.slug}`}>{b.data.title}</a>
+                    </li>
+                  ))}
+                </ul>
+              </li>
+            )
+          }
+          {
+            isEmpty(topics) ? "" : (
+              <li class="text-info-emphasis">
+                <span class="display-6">Topics</span>
+                <ul class="mt-1 mb-3 list-disc">
+                  {topics.map((cat) => (
+                    <li class="list-item">
+                      <a href={`/blog/topics/${cat}`}>{startCase(cat)}</a>
+                    </li>
+                  ))}
+                </ul>
+              </li>
+            )
+          }
+          {
+            isEmpty(authors) ? "" : (
+              <li class="text-info-emphasis">
+                <span class="display-6">Authors</span>
+                <ul class="mt-1 mb-3 list-disc">
+                  {authors.map((author) => (
+                    <li>
+                      <a href={`/blog/authors/${author.slug}`}>
+                        {author.data.name}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </li>
+            )
+          }
+          {
+            isEmpty(dates) ? "" : (
+              <li class="text-info-emphasis">
+                <span class="display-6">Dates</span>
+                <ul class="mt-1 mb-3 list-disc">
+                  {dates.map((month) => (
+                    <li>
+                      <a href={`/blog/dates/${kebabCase(month)}`}>{month}</a>
+                    </li>
+                  ))}
+                </ul>
+              </li>
+            )
+          }
+        </ul>
+      </nav>
     </div>
   </ThemedSection>
 </Layout>
@@ -168,5 +159,13 @@ import ThemedSection from "../components/ThemedSection.astro";
 <style>
   div.fs-6 {
     line-height: 0.9em;
+  }
+
+  .vignette-name {
+    color: var(--bs-primary-text-emphasis);
+  }
+
+  .list-disc {
+    list-style-type: disc;
   }
 </style>
