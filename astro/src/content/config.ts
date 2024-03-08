@@ -1,5 +1,17 @@
 import { defineCollection, reference, z } from "astro:content";
 
+const atotw = defineCollection({
+  type: "content",
+  schema: z.object({
+    title: z.string(),
+    published: z.date(),
+    summary: z.string(),
+    who: z.string(),
+    benefits: z.string(),
+    tags: z.array(z.string()).optional(),
+  }),
+});
+
 const blogs = defineCollection({
   type: "content",
   schema: z.object({
@@ -65,6 +77,7 @@ const testimonials = defineCollection({
 });
 
 export const collections = {
+  atotw,
   blogs,
   collaborators,
   team,

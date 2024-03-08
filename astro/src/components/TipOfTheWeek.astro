@@ -1,0 +1,25 @@
+---
+import { getEntry } from "astro:content";
+
+const { slug, class: extraClasses } = Astro.props;
+const tip = await getEntry("atotw", slug);
+const { Content = "p" } = await tip?.render();
+---
+
+<article class={extraClasses}>
+  <h1 set:html={tip.data.title} />
+  <div class="mb-3 py-3 border-top border-bottom">
+      <strong class="text-brand">Summary: </strong><span>{ tip.data.summary }</span><br />
+      <strong class="text-brand">Who it helps: </strong><span>{ tip.data.who }</span><br />
+      <strong class="text-brand">Additional benefits: </strong><span>{ tip.data.benefits }</span><br />
+  </div>
+  <Content />
+</article>
+
+<style>
+  article :global(h1),
+  article :global(h2),
+  article :global(h3) {
+    font-weight: 600 !important;
+  } 
+</style>

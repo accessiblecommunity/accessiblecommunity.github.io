@@ -11,6 +11,9 @@ const optimizedBlog = await getImage({ src: blogImage, format: "avif" });
 import policyImage from "../images/colored-hero/policy.png";
 const optimizedPolicy = await getImage({ src: policyImage, format: "avif" });
 
+import notesImage from "../images/colored-hero/post-it-notes.png";
+const optimizedNotes = await getImage({ src: notesImage, format: "avif" });
+
 import teamImage from "../images/colored-hero/team.png";
 const optimizedTeam = await getImage({ src: teamImage, format: "avif" });
 
@@ -38,6 +41,12 @@ const cssRules = {
     "background-position": "center 30%",
     "background-size": "cover",
   },
+  notes: {
+    height: "10rem",
+    background: `no-repeat url(${optimizedNotes.src})`,
+    "background-position": "center 60%",
+    "background-size": "cover",
+  },
 };
 
 interface Props {
@@ -48,7 +57,8 @@ interface Props {
 
 const { image, element: Element = "h1", fluid = false } = Astro.props;
 
-const darkenSlightly = image === "blog";
+const darkenSlightly = ["blog", "notes"].includes(image);
+const darkenLots = false;
 const styleRules = flatMap(Object.entries(cssRules[image]), ([key, value]) => {
   return `${key}: ${value};`;
 }).join(" ");
@@ -59,6 +69,7 @@ const styleRules = flatMap(Object.entries(cssRules[image]), ([key, value]) => {
     class:list={[
       "h-100 d-flex align-items-end",
       darkenSlightly && "bg-primary bg-opacity-25",
+      darkenLots && "bg-primary bg-opacity-75",
     ]}
   >
     <div class={`container${fluid ? "-fluid px-4" : ""}`}>
