@@ -66,92 +66,88 @@ import ThemedSection from "../components/ThemedSection.astro";
   </ImageHeading>
   <ThemedSection style="tertiary" py={0}>
     <div class="d-flex gap-4">
-        <article class:list={[sidebar ? "d-none d-lg-block" : "col", "col-lg-9"]}>
-          <h1
-                class="display-4 border-bottom mb-3"
-                set:text={blog.data.title}
-          />
-          <div
-            class="d-flex flex-column flex-md-row justify-content-between mb-4"
-          >
-            <div>
-              <div class="d-block d-md-none display-6">{blogAuthor.data.name}</div
-              >
-              <div class="d-none d-md-block display-6">
-                <TeamVignette member={blogAuthor} />
-              </div>
+      <article class:list={[sidebar ? "d-none d-lg-block" : "col", "col-lg-9"]}>
+        <h1 class="display-4 border-bottom mb-3" set:text={blog.data.title} />
+        <div
+          class="d-flex flex-column flex-md-row justify-content-between mb-4"
+        >
+          <div>
+            <div class="d-block d-md-none display-6">{blogAuthor.data.name}</div
+            >
+            <div class="d-none d-md-block display-6">
+              <TeamVignette member={blogAuthor} />
             </div>
-            <div
-              class="text-brand text-primary-emphasis me-3"
-              set:text={published}
-            />
           </div>
-          <div class="py-4 mb-4">
-            <Content />
-          </div>
-        </article>
-      <nav class:list={[sidebar ? "col" : "d-none d-lg-block", "col-lg-3"]} aria-label="Blog">
+          <div
+            class="text-brand text-primary-emphasis me-3"
+            set:text={published}
+          />
+        </div>
+        <div class="py-4 mb-4">
+          <Content />
+        </div>
+      </article>
+      <nav
+        class:list={[sidebar ? "col" : "d-none d-lg-block", "col-lg-3"]}
+        aria-label="Blog"
+      >
         <ul class="list-unstyled">
           {
             isEmpty(blogs) ? "" : (
-              <>
-                <li class="text-info-emphasis"><span class="display-6">Blog Posts</span>
-                  <ul class="mt-1 mb-3 ps-4 list-disc">
-                    {blogs.map((b) => (
-                      <li>
-                        <a href={`/blog/${b.slug}`}>{b.data.title}</a>
-                      </li>
-                    ))}
-                  </ul>
-                <li/>
-              </>
+              <li class="text-info-emphasis">
+                <span class="display-6">Blog Posts</span>
+                <ul class="mt-1 mb-3 list-disc">
+                  {blogs.map((b) => (
+                    <li>
+                      <a href={`/blog/${b.slug}`}>{b.data.title}</a>
+                    </li>
+                  ))}
+                </ul>
+              </li>
             )
           }
           {
             isEmpty(topics) ? "" : (
-              <>
-                <li class="text-info-emphasis"><span class="display-6">Topics</span>
-                  <ul class="mt-1 mb-3 list-disc">
-                    {topics.map((cat) => (
-                      <li class="list-item">
-                        <a href={`/blog/topics/${cat}`}>{startCase(cat)}</a>
-                      </li>
-                    ))}
-                  </ul>
-                </li>
-              </>
+              <li class="text-info-emphasis">
+                <span class="display-6">Topics</span>
+                <ul class="mt-1 mb-3 list-disc">
+                  {topics.map((cat) => (
+                    <li class="list-item">
+                      <a href={`/blog/topics/${cat}`}>{startCase(cat)}</a>
+                    </li>
+                  ))}
+                </ul>
+              </li>
             )
           }
           {
             isEmpty(authors) ? "" : (
-              <>
-                <li class="text-info-emphasis"><span class="display-6">Authors</span>
-                  <ul class="mt-1 mb-3 list-disc">
-                    {authors.map((author) => (
-                      <li>
-                        <a href={`/blog/authors/${author.slug}`}>
-                          {author.data.name}
-                        </a>
-                      </li>
-                    ))}
-                  </ul>
-                </li>
-              </>
+              <li class="text-info-emphasis">
+                <span class="display-6">Authors</span>
+                <ul class="mt-1 mb-3 list-disc">
+                  {authors.map((author) => (
+                    <li>
+                      <a href={`/blog/authors/${author.slug}`}>
+                        {author.data.name}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </li>
             )
           }
           {
             isEmpty(dates) ? "" : (
-              <>
-                <li class="text-info-emphasis"><span class="display-6">Dates</span>
-                  <ul class="mt-1 mb-3 list-disc">
-                    {dates.map((month) => (
-                      <li>
-                        <a href={`/blog/dates/${kebabCase(month)}`}>{month}</a>
-                      </li>
-                    ))}
-                  </ul>
-                </li>
-              </>
+              <li class="text-info-emphasis">
+                <span class="display-6">Dates</span>
+                <ul class="mt-1 mb-3 list-disc">
+                  {dates.map((month) => (
+                    <li>
+                      <a href={`/blog/dates/${kebabCase(month)}`}>{month}</a>
+                    </li>
+                  ))}
+                </ul>
+              </li>
             )
           }
         </ul>
