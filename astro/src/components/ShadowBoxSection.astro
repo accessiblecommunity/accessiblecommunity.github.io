@@ -23,13 +23,13 @@ const innerBgClass = getBackgroundAndText(undefined, style);
 
 <section id={id} class:list={[outerBgAndTextClass, `p-${py - 1} p-sm-${py}`]}>
   {
-    Astro.slots.has('lead') && (
+    Astro.slots.has("lead") && (
       <div class={`pb-sm-${py - 1}`}>
         <slot name="lead" />
       </div>
     )
   }
-  <div class:list={[innerBgClass, "shadow-lg rounded" ]}>
+  <div class:list={[innerBgClass, "shadow-lg rounded"]}>
     <div
       class:list={[
         `container-sm${fluid ? "-fluid" : ""}`,

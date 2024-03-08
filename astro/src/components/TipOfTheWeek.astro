@@ -8,11 +8,20 @@ const { Content = "p" } = await tip?.render();
 
 <article class={extraClasses}>
   <h1 set:html={tip.data.title} />
-  <div class="mb-3 py-3 border-top border-bottom">
-      <strong class="text-brand">Summary: </strong><span>{ tip.data.summary }</span><br />
-      <strong class="text-brand">Who it helps: </strong><span>{ tip.data.who }</span><br />
-      <strong class="text-brand">Additional benefits: </strong><span>{ tip.data.benefits }</span><br />
-  </div>
+  <ul class="list-unstyled p-3 border-top border-bottom border-primary-subtle">
+    <li>
+      <strong class="text-brand">Summary: </strong>
+      <span>{tip.data.summary}</span>
+    </li>
+    <li>
+      <strong class="text-brand">Who it helps: </strong>
+      <span>{tip.data.who}</span>
+    </li>
+    <li>
+      <strong class="text-brand">Additional benefits: </strong>
+      <span>{tip.data.benefits}</span>
+    </li>
+  </ul>
   <Content />
 </article>
 
@@ -21,5 +30,5 @@ const { Content = "p" } = await tip?.render();
   article :global(h2),
   article :global(h3) {
     font-weight: 600 !important;
-  } 
+  }
 </style>
