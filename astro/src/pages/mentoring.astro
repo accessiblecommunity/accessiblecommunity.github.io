@@ -2,7 +2,7 @@
 import CollaboratorList from "../components/CollaboratorList.astro";
 import ExternalLink from "../components/ExternalLink.astro";
 import Hero from "../components/Hero.astro";
-import { Icon } from "astro-icon";
+import { Icon } from "astro-icon/components";
 import Layout from "../layouts/Layout.astro";
 import Testimonial from "../components/Testimonial.astro";
 import ThemedBox from "../components/ThemedBox.astro";
@@ -80,12 +80,7 @@ const contributors = await getCollection("collaborators", ({ data }) => {
         <span> Learn more about the program </span>
       </ExternalLink>
       <ExternalLink class="link-light hero-link" href={protegeUrl} gaps={true}>
-        <Icon
-          name="dashicons:welcome-learn-more"
-          class="bi"
-          alt=""
-          aria-hidden="true"
-        />
+        <Icon name="bi:person-fill" class="bi" alt="" aria-hidden="true" />
         <span> Apply to be a protegé </span>
       </ExternalLink>
       <ExternalLink class="link-light hero-link" href={mentorUrl} gaps={true}>
