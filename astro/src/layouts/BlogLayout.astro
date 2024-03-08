@@ -30,7 +30,6 @@ const {
   sidebar = false,
 } = Astro.props;
 const { title = blog.data.title, heading = undefined } = Astro.props;
-const isCustomHeading = !isNil(heading);
 const { blogs = [], authors = [], topics = [], dates = [] } = catalog;
 
 const blogAuthor = await getEntry(blog.data.author);
@@ -62,45 +61,35 @@ import ThemedSection from "../components/ThemedSection.astro";
   </Fragment>
   <ImageHeading image="blog" slot="header">
     <slot name="header">
-      {
-        isCustomHeading ?
-          <strong set:text={heading} />
-        : <Fragment>
-            <strong>Blog</strong> - {blog.data.title}
-          </Fragment>
-      }
+      <strong>Blog</strong>
     </slot>
   </ImageHeading>
   <ThemedSection style="tertiary" py={0}>
     <div class="d-flex gap-4">
-      <div class:list={[sidebar ? "d-none d-lg-block" : "col", "col-lg-9"]}>
-        {
-          isCustomHeading ?
-            <h2
-              class="display-4 border-bottom mb-3"
-              set:text={blog.data.title}
-            />
-          : ""
-        }
-        <div
-          class="d-flex flex-column flex-md-row justify-content-between mb-4"
-        >
-          <div>
-            <div class="d-block d-md-none display-6">{blogAuthor.data.name}</div
-            >
-            <div class="d-none d-md-block display-6">
-              <TeamVignette member={blogAuthor} />
-            </div>
-          </div>
-          <div
-            class="text-brand text-secondary-emphasis me-3"
-            set:text={published}
+        <article class:list={[sidebar ? "d-none d-lg-block" : "col", "col-lg-9"]}>
+          <h1
+                class="display-4 border-bottom mb-3"
+                set:text={blog.data.title}
           />
-        </div>
-        <article class="py-4 mb-4">
-          <Content />
+          <div
+            class="d-flex flex-column flex-md-row justify-content-between mb-4"
+          >
+            <div>
+              <div class="d-block d-md-none display-6">{blogAuthor.data.name}</div
+              >
+              <div class="d-none d-md-block display-6">
+                <TeamVignette member={blogAuthor} />
+              </div>
+            </div>
+            <div
+              class="text-brand text-primary-emphasis me-3"
+              set:text={published}
+            />
+          </div>
+          <div class="py-4 mb-4">
+            <Content />
+          </div>
         </article>
-      </div>
       <nav class:list={[sidebar ? "col" : "d-none d-lg-block", "col-lg-3"]} aria-label="Blog">
         <ul class="list-unstyled">
           {
@@ -176,11 +165,11 @@ import ThemedSection from "../components/ThemedSection.astro";
     line-height: 0.9em;
   }
 
-  .list-disc {
-    list-style-type: disc;
+  .vignette-name {
+    color: var(--bs-primary-text-emphasis);
   }
 
-  .list-disc li::marker {
-    color: #FFFFFF;
+  .list-disc {
+    list-style-type: disc;
   }
 </style>

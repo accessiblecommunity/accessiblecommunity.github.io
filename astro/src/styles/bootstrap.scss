@@ -301,6 +301,10 @@ $theme-colors-border-subtle-dark: map-merge($theme-colors-border-subtle-dark, $c
   font-family: $headings-font-family;
 }
 
+.list-disc li::marker {
+  color: $body-color;
+}
+
 textarea, input {
   border-width: 1.5px 1.5px;
   border-color: #000000;
@@ -377,6 +381,10 @@ img.profile-pic {
 
   .nav-link:hover {
     color: $body-tertiary-bg;
+  }
+
+  .list-disc li::marker {
+    color: #FFFFFF;
   }
 
   textarea, input {
