@@ -101,66 +101,72 @@ import ThemedSection from "../components/ThemedSection.astro";
           <Content />
         </article>
       </div>
-      <div class:list={[sidebar ? "col" : "d-none d-lg-block", "col-lg-3"]}>
-        {
-          isEmpty(blogs) ? "" : (
-            <>
-              <h2 class="text-info-emphasis display-6">Blog Posts</h2>
-              <ul>
-                {blogs.map((b) => (
-                  <li>
-                    <a href={`/blog/${b.slug}`}>{b.data.title}</a>
-                  </li>
-                ))}
-              </ul>
-            </>
-          )
-        }
-        {
-          isEmpty(topics) ? "" : (
-            <>
-              <h2 class="text-info-emphasis display-6">Topics</h2>
-              <ul>
-                {topics.map((cat) => (
-                  <li>
-                    <a href={`/blog/topics/${cat}`}>{startCase(cat)}</a>
-                  </li>
-                ))}
-              </ul>
-            </>
-          )
-        }
-        {
-          isEmpty(authors) ? "" : (
-            <>
-              <h2 class="text-info-emphasis display-6">Authors</h2>
-              <ul>
-                {authors.map((author) => (
-                  <li>
-                    <a href={`/blog/authors/${author.slug}`}>
-                      {author.data.name}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </>
-          )
-        }
-        {
-          isEmpty(dates) ? "" : (
-            <>
-              <h2 class="text-info-emphasis display-6">Dates</h2>
-              <ul>
-                {dates.map((month) => (
-                  <li>
-                    <a href={`/blog/dates/${kebabCase(month)}`}>{month}</a>
-                  </li>
-                ))}
-              </ul>
-            </>
-          )
-        }
-      </div>
+      <nav class:list={[sidebar ? "col" : "d-none d-lg-block", "col-lg-3"]} aria-label="Blog">
+        <ul class="list-unstyled">
+          {
+            isEmpty(blogs) ? "" : (
+              <>
+                <li class="text-info-emphasis"><span class="display-6">Blog Posts</span>
+                  <ul class="mt-1 mb-3 ps-4 list-disc">
+                    {blogs.map((b) => (
+                      <li>
+                        <a href={`/blog/${b.slug}`}>{b.data.title}</a>
+                      </li>
+                    ))}
+                  </ul>
+                <li/>
+              </>
+            )
+          }
+          {
+            isEmpty(topics) ? "" : (
+              <>
+                <li class="text-info-emphasis"><span class="display-6">Topics</span>
+                  <ul class="mt-1 mb-3 list-disc">
+                    {topics.map((cat) => (
+                      <li class="list-item">
+                        <a href={`/blog/topics/${cat}`}>{startCase(cat)}</a>
+                      </li>
+                    ))}
+                  </ul>
+                </li>
+              </>
+            )
+          }
+          {
+            isEmpty(authors) ? "" : (
+              <>
+                <li class="text-info-emphasis"><span class="display-6">Authors</span>
+                  <ul class="mt-1 mb-3 list-disc">
+                    {authors.map((author) => (
+                      <li>
+                        <a href={`/blog/authors/${author.slug}`}>
+                          {author.data.name}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </li>
+              </>
+            )
+          }
+          {
+            isEmpty(dates) ? "" : (
+              <>
+                <li class="text-info-emphasis"><span class="display-6">Dates</span>
+                  <ul class="mt-1 mb-3 list-disc">
+                    {dates.map((month) => (
+                      <li>
+                        <a href={`/blog/dates/${kebabCase(month)}`}>{month}</a>
+                      </li>
+                    ))}
+                  </ul>
+                </li>
+              </>
+            )
+          }
+        </ul>
+      </nav>
     </div>
   </ThemedSection>
 </Layout>
@@ -168,5 +174,13 @@ import ThemedSection from "../components/ThemedSection.astro";
 <style>
   div.fs-6 {
     line-height: 0.9em;
+  }
+
+  .list-disc {
+    list-style-type: disc;
+  }
+
+  .list-disc li::marker {
+    color: #FFFFFF;
   }
 </style>
