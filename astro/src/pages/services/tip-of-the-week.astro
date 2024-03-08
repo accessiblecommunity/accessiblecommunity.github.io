@@ -3,7 +3,7 @@ import { Icon } from "astro-icon";
 
 import ExternalLink from "../../components/ExternalLink.astro";
 import Hero from "../../components/Hero.astro";
-import ImageHeading from "../../components/ImageHeading.astro"
+import ImageHeading from "../../components/ImageHeading.astro";
 import Layout from "../../layouts/Layout.astro";
 import ShadowBoxSection from "../../components/ShadowBoxSection.astro";
 import ThemedSection from "../../components/ThemedSection.astro";
@@ -31,29 +31,32 @@ const crumbs = [
 
   <ThemedSection style="tertiary">
     <h2 class="display-3">Making accessibility <strong>simpler</strong>.</h2>
-    <div class="d-flex flex-column flex-lg-row gap-4 justify-content-lg-evenly align-items-lg-center py-2">
+    <div
+      class="d-flex flex-column flex-lg-row gap-4 justify-content-lg-evenly align-items-lg-center py-2"
+    >
       <div>
+        <p class="lead"> It takes five minutes. </p>
         <p class="lead">
-          It takes five minutes.
+          Once a week, in your inbox, you'll get a simple but effective
+          accessibility tip. It's simple enough that you can start implementing
+          it within your organization during the week. And there's an overview
+          at the beginning to provide a quick summary.
         </p>
         <p class="lead">
-          Once a week, in your inbox, you'll get a simple but effective accessibility tip.
-          It's simple enough that you can start implementing it within your organization during the week.
-          And there's an overview at the beginning to provide a quick summary.
-        </p>
-        <p class="lead">
-          Check out a previous Tip of the Week below. Fill out the registration form to sign up.
-          It's completely free and we will not <a href="/privacy-policy">sell or share your data</a>.
+          Check out a previous Tip of the Week below. Fill out the registration
+          form to sign up. It's completely free and we will not <a
+            href="/privacy-policy">sell or share your data</a
+          >.
         </p>
       </div>
-  
+
       <TipRegistration>
         <h3 class="display-6 text-primary-emphasis mb-0">
           <strong>Tip of the Week</strong> Registration
         </h3>
         <p class="small">
-          <span class="text-primary-emphasis fw-bold">Note:</span> Required fields have
-          an asterisk (<span class="asterisk">*</span>).
+          <span class="text-primary-emphasis fw-bold">Note:</span> Required fields
+          have an asterisk (<span class="asterisk">*</span>).
         </p>
       </TipRegistration>
     </div>
@@ -64,8 +67,7 @@ const crumbs = [
       An <strong>example</strong> tip.
     </h2>
     <div class="p-2 p-sm-3 p-md-4 rounded-3">
-      <TipOfTheWeek slug="fragrances" />
+      <TipOfTheWeek slug="etiquette" />
     </div>
   </ShadowBoxSection>
 </Layout>
-
