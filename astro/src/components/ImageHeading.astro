@@ -11,7 +11,7 @@ const optimizedBlog = await getImage({ src: blogImage, format: "avif" });
 import policyImage from "../images/colored-hero/policy.png";
 const optimizedPolicy = await getImage({ src: policyImage, format: "avif" });
 
-import notesImage from "../images/colored-hero/post-it-notes.jpg";
+import notesImage from "../images/colored-hero/post-it-notes.png";
 const optimizedNotes = await getImage({ src: notesImage, format: "avif" });
 
 import teamImage from "../images/colored-hero/team.png";
@@ -42,7 +42,7 @@ const cssRules = {
     "background-size": "cover",
   },
   notes: {
-    height: "12rem",
+    height: "10rem",
     background: `no-repeat url(${optimizedNotes.src})`,
     "background-position": "center 60%",
     "background-size": "cover",
@@ -57,8 +57,8 @@ interface Props {
 
 const { image, element: Element = "h1", fluid = false } = Astro.props;
 
-const darkenSlightly = ["blog"].includes(image);
-const darkenLots = ["notes"].includes(image);
+const darkenSlightly = ["blog", "notes"].includes(image);
+const darkenLots = false;
 const styleRules = flatMap(Object.entries(cssRules[image]), ([key, value]) => {
   return `${key}: ${value};`;
 }).join(" ");
