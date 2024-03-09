@@ -32,7 +32,7 @@ jobs:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-    if: ${{ github.event_name == 'pull_request' }}
+    if: ${{ github.event_name != 'pull_request' }}
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
