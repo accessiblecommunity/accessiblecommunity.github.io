@@ -10,11 +10,12 @@ import styleGuide from "./style-guide/register.js";
 
 import icon from "astro-icon";
 import mdx from "@astrojs/mdx";
+import robotsTxt from "astro-robots-txt";
 import sitemap from "@astrojs/sitemap";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://www.accessiblecommunity.org",
+  site: "https://accessiblecommunity.org",
   server: {
     host: true,
   },
@@ -37,6 +38,7 @@ export default defineConfig({
     styleGuide(), 
     icon({
       include: {
+        // Bootstrap Icons
         bi: [
           // Navigation
           'arrow-down-square', 'arrow-up-right-square', 'list',
@@ -45,7 +47,11 @@ export default defineConfig({
           // Descriptive
           'gift-fill', 'pencil-fill', 'people-fill', 'person-fill',
         ],
+        // CoreUI Brands
         cib: [
+          // Social Media
+          'facebook', 'instagram', 'linkedin', 'mastodon', 'twitter',
+          // Payment
           "cc-paypal", "cc-stripe", "paypal", "stripe",
         ],
       }
@@ -53,5 +59,22 @@ export default defineConfig({
     sitemap({
       filter: (page) => !page.endsWith('/commitment-form/'),
     }),
+    robotsTxt({
+      sitemap: true,
+      policy: [
+        {
+          userAgent: 'GPTbot',
+          disallow: ['/'],
+        },
+        {
+          userAgent: 'Google-Extended',
+          disallow: ['/'],
+        },
+        {
+          userAgent: '*',
+          allow: ['/'],
+        },
+      ]
+    })
   ],
 });

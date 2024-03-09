@@ -28,6 +28,8 @@ const { title, crumbs, heading } = Astro.props;
     />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="generator" content={Astro.generator} />
+    {/* Keep the site out of Bing's Chatbot */}
+    <meta name="”robots”" content="”noarchive”" />
     {/* Opengraph Protocol support - https://ogp.me/ */}
     <meta property="og:url" content={Astro.url} />
     <meta
