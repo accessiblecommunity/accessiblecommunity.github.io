@@ -3,6 +3,8 @@ name: GitHub Pages
 on:
   pull_request:
     branches: [ main ]
+  push:
+    branches: [ main ]
   # Allows you to run this workflow manually from the Actions tab on GitHub.
   workflow_dispatch:
 
@@ -13,12 +15,7 @@ jobs:
       contents: write
     steps:
       - name: Checkout your repository using git
-        uses: actions/checkout@v3
-
-      - name: 📦 Install dependencies
-        working-directory: ./astro
-        run: npm install
-
+        uses: actions/checkout@v4
       - name: Install, build, and upload your site
         uses: withastro/action@v2
         with:
@@ -35,8 +32,9 @@ jobs:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-    if: ${{ github.event_name == 'workflow_dispatch' }}
+    if: ${{ github.event_name == 'pull_request' }}
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v1
+        uses: actions/deploy-pages@v4
+      
