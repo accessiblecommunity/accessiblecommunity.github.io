@@ -39,11 +39,15 @@ ifndef number
 endif
 	docker-compose exec $(CONTAINER) sh -c "npm version ${number}"
 
+update-dependencies: up
+	@echo Updating package.json.
+	@docker-compose exec ${CONTAINER} sh -c "npx npm-check-updates -u"
+
 build:
 	@docker-compose build
 
 $(SOURCE_DIR)/node_modules:
-	@echo Install JS dependencies. This will take awhile.
+	@echo Installing JS dependencies. This will take awhile.
 	docker-compose exec $(CONTAINER) sh -c "npm install"
 
 $(SOURCE_DIR)/dist: up

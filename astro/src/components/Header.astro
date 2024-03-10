@@ -10,7 +10,7 @@ interface Props {
 }
 
 import { isEmpty } from "lodash-es";
-import { Icon } from "astro-icon";
+import { Icon } from "astro-icon/components";
 
 const { title, crumbs = [] } = Astro.props;
 const breadCrumbs =
@@ -170,10 +170,12 @@ const breadCrumbs =
     z-index: 999;
   }
 
-  [astro-icon="ac-logo"] {
+  [data-icon="ac-logo"] {
+    width: 2.5rem;
     height: 2.5rem;
   }
-  [astro-icon="bi:list"] {
+  [data-icon="bi:list"] {
+    width: 1.25rem;
     height: 1.25rem;
   }
   #brand-nav {

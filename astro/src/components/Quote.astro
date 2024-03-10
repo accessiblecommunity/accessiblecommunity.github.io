@@ -1,5 +1,5 @@
 ---
-import { Icon } from "astro-icon";
+import { Icon } from "astro-icon/components";
 import { getEntry } from "astro:content";
 
 const { q, text = "primary", class: extraClasses } = Astro.props;
@@ -19,8 +19,8 @@ const { Content = "p" } = await quote?.render();
 </figure>
 
 <style>
-  [astro-icon="quote-left"],
-  [astro-icon="quote-right"] {
+  [data-icon="quote-left"],
+  [data-icon="quote-right"] {
     height: 0.7em;
   }
 

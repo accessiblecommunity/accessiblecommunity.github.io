@@ -1,5 +1,5 @@
 ---
-import { Icon } from "astro-icon";
+import { Icon } from "astro-icon/components";
 import { Image } from "astro:assets";
 
 import ExternalLink from "../../components/ExternalLink.astro";
@@ -69,13 +69,7 @@ const services = [
           <div class="feature col d-flex flex-column justify-content-between">
             <div class="d-flex align-items-center gap-2 mb-1">
               <div class="feature-icon d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient">
-                <Icon
-                  class="bi"
-                  name={icon}
-                  height="1.5em"
-                  role="img"
-                  aria-hidden="true"
-                />
+                <Icon class="bi" name={icon} role="img" aria-hidden="true" />
               </div>
               <h2 class="my-1 fs-1 text-primary" set:html={title} />
             </div>
@@ -250,7 +244,12 @@ const services = [
     border-radius: 0.75rem;
   }
 
-  [astro-icon="loca11y-logo"] {
+  .feature-icon .bi {
+    height: 1.5em;
+    width: auto;
+  }
+
+  [data-icon="loca11y-logo"] {
     margin-left: 0.2em;
   }
 

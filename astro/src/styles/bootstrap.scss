@@ -345,6 +345,12 @@ img.profile-pic {
   max-width: 3em;
 }
 
+// Until the loca11y SVG is squared up
+.icon-link svg[data-icon="loca11y-logo"],
+svg[data-icon="loca11y-logo"].unpad {
+  margin: 0 -0.3em;
+}
+
 @include color-mode(dark) {
   *:focus-visible, .form-field:focus, .toggle-menu:focus, .navbar-toggler:focus, .btn:focus-visible, .nav-link:focus-visible {
     outline-color: #FFFFFF;

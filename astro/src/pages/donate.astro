@@ -1,5 +1,5 @@
 ---
-import { Icon } from "astro-icon";
+import { Icon } from "astro-icon/components";
 
 import Layout from "../layouts/Layout.astro";
 import Hero from "../components/Hero.astro";
@@ -200,17 +200,20 @@ const crumbs = [
     margin-bottom: 0.4em;
   }
 
-  [astro-icon="cib:paypal"] {
+  [data-icon="cib:paypal"] {
+    width: 1.6em;
     height: 1.6em;
     filter: none;
   }
 
-  [astro-icon="cib:stripe"] {
+  [data-icon="cib:stripe"] {
+    width: 2.4em;
     height: 2.4em;
     filter: none;
   }
 
   .btn-sm .bi {
+    width: 2.2rem;
     height: 2.2rem;
     display: block;
     filter: none;
