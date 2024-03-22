@@ -1,0 +1,77 @@
+---
+import { Icon } from "astro-icon/components";
+
+import EscapeRoomLayout from "../../layouts/EscapeRoomLayout.astro";
+import ThemedSection from "../../components/ThemedSection.astro";
+---
+
+<EscapeRoomLayout title="Home" heading="Welcome to Accessible Escape Room">
+ <ThemedSection style="secondary">
+  <h2>Puzzling, Inclusive Fun</h2>
+  <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repellendus corrupti expedita quam laboriosam itaque ex officia labore, distinctio quas ipsam nam, quaerat iure iusto nostrum omnis recusandae amet temporibus! Culpa!</p>
+  <aside class="text-center mt-3 display-4 bg-lock text-white p-3 rounded">It may be called an escape room but we don't lock you in.  You can leave at any time and our themes are picked to be enjoyable.</aside>
+ </ThemedSection>
+ <ThemedSection style="tertiary">
+  <h2>Escape Room Kits</h2>
+  <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dignissimos impedit quis, fugiat aliquam, quam, libero alias nulla fugit consequuntur consectetur repudiandae explicabo inventore totam voluptates! Doloremque modi dignissimos assumenda beatae.</p>
+  <div class="row">
+   <div class="col-sm-6 mb-3 mb-sm-0">
+    <div id="espionage" class="card" style="width: 18rem;">
+     <div class="card-body border border-lock border-4 rounded">
+       <h3 class="card-title fw-bold">Corporate Espionage</h3>
+       <p class="card-text"><span class="fw-bold">Mission:</span> You are our best corporate espionage team. 
+        Our newest prototype went missing. We've 
+        located the person who took it but we need 
+        you to enter a room and find the technology.</p>
+       <a href="#" class="btn btn-puzzling">View Espionage Kit</a>
+     </div>
+    </div>
+   </div>
+   <div class="col-sm-6">
+    <div id="espionage" class="card" style="width: 18rem;">
+     <div class="card-body border border-lock border-4 rounded">
+       <h3 class="card-title fw-bold">Corporate Espionage</h3>
+       <p class="card-text"><span class="fw-bold">Mission:</span> You are our best corporate espionage team. 
+        Our newest prototype went missing. We've 
+        located the person who took it but we need 
+        you to enter a room and find the technology.</p>
+       <a href="#" class="btn btn-puzzling">View Espionage Kit</a>
+     </div>
+    </div>
+ </div>
+  </div>
+ </ThemedSection>
+ <ThemedSection style="secondary">
+  <h2>Inclusion for Escape Rooms</h2>
+  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium praesentium similique perspiciatis iure architecto, necessitatibus tempore minima id voluptatibus quod facilis omnis veniam consequatur aliquam laboriosam autem eum? Eos, eveniet.</p>
+   <h3>Guidelines for collaborating with 
+    someone with a disability</h3>
+    <ol>
+     <li>If you don't know what to do, ask</li>
+     <li>Treat each other the way you would want to be 
+      treated</li>
+      <li>Focus on the person</li>
+      <li>Don't touch service animals or assistive devices 
+       without permission</li>
+      <li>Pay attention to how you interact to avoid 
+       excluding others</li>
+    </ol>
+   <h3>Accommodations</h3>
+   <span>Common accommodations include:</span>
+   <ul>
+    <li>Orientation to the room before (you) start</li>
+    <li>Sign Language Interpreting</li>
+    <li>Extra Time</li>
+   </ul>
+ </ThemedSection>
+ <ThemedSection style="tertiary">
+  <h2>Accessible Escape Room Brought to You By:</h2>
+  <ul class="list-unstyled">
+   <li><span class="text-brand">Accessible <strong>Community</strong></span></li>
+   <li>VISPERO</li>
+   <li>The MITRE Corporation</li>
+   <li>Escape Room Logo</li>
+   <li>With Special Thanks to Zak Staszkiewicz</li>
+  </ul>
+ </ThemedSection>
+</EscapeRoomLayout>

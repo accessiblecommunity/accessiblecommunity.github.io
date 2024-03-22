@@ -154,6 +154,8 @@ $custom-colors: (
   "stripe":    #625BF6, // Stripe Blurple
   "threads":   #000000,
   "twitter":   #1DA1F2,
+  "puzzling":  #597008, // Escape Room
+  "lock":      #1f595e, // Escape Room
 );
 $theme-colors: map-merge($theme-colors, $custom-colors);
 
