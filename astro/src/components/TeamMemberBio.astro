@@ -9,26 +9,31 @@ const { name, links } = member.data;
 const { Content } = await member.render();
 ---
 
-<div
-  class="team-bio py-2 pe-1 d-flex justify-content-between align-items-end border-bottom mb-3"
->
-  <TeamVignette
-    member={member}
-    highlightName={true}
-    branded={true}
-    element="h2"
-    valign="end"
-    responsive={true}
-  />
+<div class="border-bottom row justify-content-between">
+  <div
+    class="col-md-8 col-lg-6 team-bio py-2 pe-1 d-flex justify-content-between align-items-end mb-0 mb-3-md"
+  >
+    <TeamVignette
+      member={member}
+      firstNameOnly={true}
+      highlightName={true}
+      branded={true}
+      valign="center"
+      element = "h2"
+      size="lg"
+    />
+  </div>
+  <div class="col-md-4 py-2 pe-5 ps-4 text-center text-md-end align-self-center">
   {
     !isEmpty(links) && (
-      <div class="d-none d-md-block display-5">
-        <SocialLinks links={links} adjective={`${name}'s`} />
-      </div>
+      <SocialLinks links={links} adjective={`${name}'s`} />
     )
   }
+  </div>
 </div>
-<Content />
+<div class="p-2">
+  <Content />
+</div>
 
 <style is:global>
   .team-bio .vignette-name {
