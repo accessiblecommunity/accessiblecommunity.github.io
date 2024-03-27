@@ -46,6 +46,8 @@ export default defineConfig({
           'facebook', 'instagram', 'linkedin', 'tiktok',
           // Descriptive
           'gift-fill', 'pencil-fill', 'people-fill', 'person-fill',
+          // Escape Room
+          'puzzle-fill', 'briefcase-fill', 'door-open', 'door-open-fill',
         ],
         // CoreUI Brands
         cib: [

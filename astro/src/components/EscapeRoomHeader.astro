@@ -14,7 +14,7 @@ import { Icon } from "astro-icon/components";
 
 const { title, crumbs = [] } = Astro.props;
 const breadCrumbs =
-  isEmpty(crumbs) && title != "Home" ? [{ name: "Home", href: "/escape-room/" }] : crumbs;
+  isEmpty(crumbs) ? [{ name: "Accessible Community", href: "/index.html" }] : crumbs;
 ---
 
 <header class="sticky-top">
@@ -46,7 +46,7 @@ const breadCrumbs =
         >
       </div>
     </div>
-    <nav id="site-nav" class="collapse navbar-collapse mx-3" aria-label="Site">
+    <!-- <nav id="site-nav" class="collapse navbar-collapse mx-3" aria-label="Site"> -->
       <!-- <ul class="navbar-nav my-1 mx-4">
         <li class="nav-item dropdown">
           <a
@@ -116,8 +116,8 @@ const breadCrumbs =
           <li class="nav-item">
             <a class="nav-link" href="/blog">Blog</a>
           </li> -->
-        </li>
-      </ul>
+        <!-- </li> -->
+      <!-- </ul> -->
       <a
         class="btn btn-puzzling display-65 mx-1 general-button"
         href="/donate"
@@ -130,14 +130,14 @@ const breadCrumbs =
       {
         breadCrumbs.map(({ name, href }) => (
           <li class="breadcrumb-item">
-            <a href={href} class="link-offset-1 text-truncate">
+            <a href={href} class="link-offset-1">
               {name}
             </a>
           </li>
         ))
       }
       <li class="breadcrumb-item active" aria-current="page">
-        <span class="text-truncate" set:text={title} />
+        <span class="" set:text={title} />
       </li>
     </ol>
   </nav>
