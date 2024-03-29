@@ -11,7 +11,7 @@ const { Content } = await member.render();
 
 <div class="border-bottom row justify-content-between">
   <div
-    class="col-md-9 col-lg-10 py-2 pe-1 d-flex justify-content-between align-items-end mb-0 mb-3-md"
+    class="col-md-9 py-2 pe-1 d-flex justify-content-between align-items-end mb-0 mb-3-md"
   >
     <TeamVignette
       member={member}
@@ -23,7 +23,7 @@ const { Content } = await member.render();
       size="lg"
     />
   </div>
-  <div class="col-md-3 col-lg-2 py-2 pe-3 pe-lg-3 pe-xl-4 ps-md-2 text-center text-md-end align-self-center">
+  <div class="col-md-3 py-2 pe-3 pe-lg-3 pe-xl-4 ps-md-2 text-center text-md-end align-self-center">
   {
     !isEmpty(links) && (
       <SocialLinks links={links} adjective={`${name}'s`} />

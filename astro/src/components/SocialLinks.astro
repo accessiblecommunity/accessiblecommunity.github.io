@@ -50,11 +50,11 @@ const socialLinks: Array<LinkConfig> = toPairs(links).map(([type, url]) => {
 {
   !isEmpty(socialLinks) && (
     <ul
-      class="list-unstyled d-inline-block"
+      class="list-unstyled d-inline-block mb-3"
       aria-label={`${adjective} Communications and Social Media Links`}
     >
       {socialLinks.map((sl) => (
-        <li class="d-inline">
+        <li class="d-inline mx-3">
           <a
             href={sl.href}
             class:list={["align-text-top", `text-${sl.theme}`]}
@@ -64,8 +64,6 @@ const socialLinks: Array<LinkConfig> = toPairs(links).map(([type, url]) => {
             <Icon
               name={sl.icon}
               class="bi social-icon"
-              height="29"
-              width="29"
               role="img"
               aria-label={`${adjective} ${sl.service} ${sl.description}`}
             />
@@ -78,7 +76,9 @@ const socialLinks: Array<LinkConfig> = toPairs(links).map(([type, url]) => {
 
 <style>
   .social-icon {
-    margin-bottom: 14.5px;
-    margin-inline: 14.5px;
+    width: 2rem;
+    height: 2rem;
+    min-height: 29px;
+    min-width: 29px;
   }
 </style>
