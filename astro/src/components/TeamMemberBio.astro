@@ -19,16 +19,14 @@ const { Content } = await member.render();
       highlightName={true}
       branded={true}
       valign="center"
-      element = "h2"
+      element="h2"
       size="lg"
     />
   </div>
-  <div class="col-md-3 py-2 pe-3 pe-lg-3 pe-xl-4 ps-md-2 text-center text-md-end align-self-center">
-  {
-    !isEmpty(links) && (
-      <SocialLinks links={links} adjective={`${name}'s`} />
-    )
-  }
+  <div
+    class="col-md-3 py-2 pe-3 pe-lg-3 pe-xl-4 ps-md-2 text-center text-md-end align-self-center"
+  >
+    {!isEmpty(links) && <SocialLinks links={links} adjective={`${name}'s`} />}
   </div>
 </div>
 <div class="p-2">
