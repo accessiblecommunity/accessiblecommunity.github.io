@@ -19,10 +19,10 @@ jobs:
           # Make sure the actual branch is checked out when running on pull requests
           ref: ${{ github.head_ref }}
 
-      - name: Print working directory
+      - name: Add working directory to PATH
         env:
-          JOB_DIR: ${{ github.workspace }}/astro
-        run: echo "$JOB_DIR"
+          PATH: ${{ github.workspace }}/astro/node_modules/.bin:$PATH
+        run: echo "$PATH"
   
       # - name: Change directory  
       #   run: "cd ./astro"
