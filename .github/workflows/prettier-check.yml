@@ -5,9 +5,6 @@ on: [ push, pull_request ]
 jobs:
   check:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: astro
     env:
       NODE_ENV: "null"
       # PATH: "${{ github.workspace }}/astro/node_modules/.bin:${{ env.path }}"
@@ -23,9 +20,9 @@ jobs:
           # Make sure the value of GH_REPO_WRITE_TOKEN will not be persisted in repo's config
           persist-credentials: false
 
-      - name: Echo Path
+      - name: Export Path
         working-directory: ./astro
-        run: "echo $PATH"
+        run: "export PATH='${{ github.workspace }}/astro/node_modules/.bin:$PATH'"
 
       # - name: Install prettier
       #   working-directory: ./astro
