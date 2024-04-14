@@ -37,4 +37,5 @@ jobs:
           dry: true
           prettier_plugins: "prettier-plugin-astro"
           prettier_options: "--check **/*.{js,ts,astro}"
+          prettier_version: "3.2.5"
           working_directory: "${{ github.workspace }}/astro"
