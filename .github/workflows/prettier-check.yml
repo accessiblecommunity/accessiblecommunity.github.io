@@ -10,7 +10,7 @@ jobs:
         working-directory: astro
     env:
       NODE_ENV: "null"
-      PATH: "${{ github.workspace }}/astro/node_modules/.bin"
+      PATH: "${{ github.workspace }}/astro/node_modules/.bin:$PATH"
     permissions:
       contents: read
     steps:
