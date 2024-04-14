@@ -29,4 +29,4 @@ jobs:
           dry: true
           prettier_plugins: "prettier-plugin-astro"
           prettier_options: "--check **/*.{js,ts,astro}"
-          working_directory: "/astro"
+          working_directory: "astro"
