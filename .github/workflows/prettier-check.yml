@@ -19,6 +19,11 @@ jobs:
           # Make sure the actual branch is checked out when running on pull requests
           ref: ${{ github.head_ref }}
 
+      - name: Print working directory
+        env:
+          JOB_DIR: ${{ github.repository }}
+        run: echo "$JOB_DIR"
+  
       # - name: Change directory  
       #   run: "cd ./astro"
   
@@ -31,5 +36,5 @@ jobs:
         with:
           dry: true
           prettier_plugins: "prettier-plugin-astro"
-          prettier_options: "--check /home/runner/work/${{ GITHUB_REPOSITORY }}/astro/**/*.{js,ts,astro}"
-          # working_directory: "/home/runner/work/${{ GITHUB_REPOSITORY }}/astro"
+          prettier_options: "--check **/*.{js,ts,astro}"
+          working_directory: "/home/runner/work/${{ github.repository }}/astro"
