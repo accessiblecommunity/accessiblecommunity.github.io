@@ -10,7 +10,7 @@ jobs:
         working-directory: astro
     env:
       NODE_ENV: "null"
-      PATH: "${{ github.workspace }}/astro/node_modules/.bin:$PATH"
+      # PATH: "${{ github.workspace }}/astro/node_modules/.bin:${{ env.path }}"
     permissions:
       contents: read
     steps:
@@ -22,6 +22,10 @@ jobs:
           ref: ${{ github.head_ref }}
           # Make sure the value of GH_REPO_WRITE_TOKEN will not be persisted in repo's config
           persist-credentials: false
+
+      - name: Echo Path
+        working-directory: ./astro
+        run: "echo $PATH"
 
       # - name: Install prettier
       #   working-directory: ./astro
