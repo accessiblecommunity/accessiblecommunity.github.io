@@ -19,10 +19,10 @@ jobs:
           # Make sure the actual branch is checked out when running on pull requests
           ref: ${{ github.head_ref }}
 
-      - name: Add working directory to PATH
-        env:
-          PATH: ${{ github.workspace }}/astro/node_modules/.bin:$PATH
-        run: echo "$PATH"
+      # - name: Add working directory to PATH
+      #   env:
+      #     PATH: ${{ github.workspace }}/astro/node_modules/.bin:$PATH
+      #   run: echo "$PATH"
   
       # - name: Change directory  
       #   run: "cd ./astro"
@@ -36,6 +36,6 @@ jobs:
         with:
           dry: true
           prettier_plugins: "prettier-plugin-astro"
-          prettier_options: "--check **/*.{js,ts,astro}"
+          prettier_options: "--check ${{ github.workspace }}/astro/**/*.{js,ts,astro}"
           prettier_version: "3.2.5"
-          working_directory: "${{ github.workspace }}/astro"
+          # working_directory: "${{ github.workspace }}/astro"
