@@ -5,6 +5,9 @@ on: [ push, pull_request ]
 jobs:
   check:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: astro
     env:
       NODE_ENV: "null"
     permissions:
@@ -12,9 +15,9 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-        # with:
-        #   # Make sure the actual branch is checked out when running on pull requests
-        #   ref: ${{ github.head_ref }}
+        with:
+          # Make sure the actual branch is checked out when running on pull requests
+          ref: ${{ github.head_ref }}
 
       # - name: Change directory  
       #   run: "cd ./astro"
@@ -29,4 +32,3 @@ jobs:
           dry: true
           prettier_plugins: "prettier-plugin-astro"
           prettier_options: "--check **/*.{js,ts,astro}"
-          working_directory: "astro"
