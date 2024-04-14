@@ -17,19 +17,14 @@ jobs:
         uses: actions/checkout@v4
         with:
           # Make sure the actual branch is checked out when running on pull requests
+          fetch-depth: 0
           ref: ${{ github.head_ref }}
+          # Make sure the value of GH_REPO_WRITE_TOKEN will not be persisted in repo's config
+          persist-credentials: false
 
-      # - name: Add working directory to PATH
-      #   env:
-      #     PATH: ${{ github.workspace }}/astro/node_modules/.bin:$PATH
-      #   run: echo "$PATH"
-  
-      # - name: Change directory  
-      #   run: "cd ./astro"
-  
-      # - name: Install prettier
-      #   working-directory: ./astro
-      #   run: "npm i prettier"
+      - name: Install prettier
+        working-directory: ./astro
+        run: "npm i --save-dev prettier@3.2.5 prettier-plugin-astro"
 
       - name: Prettify code
         uses: creyD/prettier_action@v4.3
