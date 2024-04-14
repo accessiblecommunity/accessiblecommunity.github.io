@@ -10,6 +10,7 @@ jobs:
         working-directory: astro
     env:
       NODE_ENV: "null"
+      PATH: "${{ github.workspace }}/astro/node_modules/.bin"
     permissions:
       contents: read
     steps:
@@ -22,9 +23,13 @@ jobs:
           # Make sure the value of GH_REPO_WRITE_TOKEN will not be persisted in repo's config
           persist-credentials: false
 
-      - name: Install prettier
-        working-directory: ./astro
-        run: "npm i --save-dev prettier@3.2.5 prettier-plugin-astro"
+      # - name: Install prettier
+      #   working-directory: ./astro
+      #   run: "npm i --save-dev prettier@3.2.5 prettier-plugin-astro"
+
+      # - name: Run prettier
+      #   working-directory: ./astro
+      #   run: "prettier --check ${{ github.workspace }}/astro/**/*.{js,ts,astro}"
 
       - name: Prettify code
         uses: creyD/prettier_action@v4.3
