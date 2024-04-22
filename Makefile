@@ -1,4 +1,4 @@
-CONTAINER = astro
+CONTAINER = website-astro
 SOURCE_DIR = ${CURDIR}/astro
 
 # The OS environment variable is always defined by windows.
