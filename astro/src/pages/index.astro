@@ -1,5 +1,5 @@
 ---
-import { Icon } from "astro-icon";
+import { Icon } from "astro-icon/components";
 
 import ExternalLink from "../components/ExternalLink.astro";
 import Hero from "../components/Hero.astro";
@@ -153,7 +153,7 @@ import heroBg from "../images/colored-hero/wheelchair_hall.png";
       >
         <h3 class="display-5">
           <Icon
-            class="bi"
+            class="bi unpad"
             name="loca11y-logo"
             height="1.1em"
             role="img"
@@ -245,9 +245,10 @@ import heroBg from "../images/colored-hero/wheelchair_hall.png";
           > way to learn about accessibility?
         </p>
         <p>
-          Sign up for our weekly "Tip of the Week" email to receive quick
-          accessibility tips that can improve your website, social media,
-          events, and more.
+          Sign up for our <a class="link-light" href="/services/tip-of-the-week"
+            >Tip of the Week</a
+          > email to receive quick accessibility tips that can improve your website,
+          social media, events, and more.
         </p>
         <p>
           Fill out the short registration form to sign up. We will not <a
@@ -268,10 +269,3 @@ import heroBg from "../images/colored-hero/wheelchair_hall.png";
     </div>
   </ThemedSection>
 </Layout>
-
-<style>
-  [astro-icon="loca11y-logo"] {
-    /* Until the SVG is squared up */
-    margin: 0 -0.3em;
-  }
-</style>

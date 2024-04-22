@@ -36,7 +36,6 @@ $display-font-sizes: (
   6: 1.25rem,
   65: 1.1rem,
   7: 1rem,
-  8: 0.5rem,
 );
 $display-font-family: $headings-font-family;
 $display-font-weight: 400;
@@ -232,6 +231,7 @@ $theme-colors-border-subtle-dark: map-merge($theme-colors-border-subtle-dark, $c
 @import "bootstrap/scss/images";
 @import "bootstrap/scss/containers";
 @import "bootstrap/scss/grid";
+@import "bootstrap/scss/forms";
 @import "bootstrap/scss/buttons";
 @import "bootstrap/scss/transitions";
 @import "bootstrap/scss/dropdown";
@@ -302,6 +302,10 @@ $theme-colors-border-subtle-dark: map-merge($theme-colors-border-subtle-dark, $c
   font-family: $headings-font-family;
 }
 
+.list-disc li::marker {
+  color: $body-color;
+}
+
 textarea, input {
   border-width: 1.5px 1.5px;
   border-color: #000000;
@@ -342,6 +346,12 @@ img.profile-pic {
   max-width: 3em;
 }
 
+// Until the loca11y SVG is squared up
+.icon-link svg[data-icon="loca11y-logo"],
+svg[data-icon="loca11y-logo"].unpad {
+  margin: 0 -0.3em;
+}
+
 @include color-mode(dark) {
   *:focus-visible, .form-field:focus, .toggle-menu:focus, .navbar-toggler:focus, .btn:focus-visible, .nav-link:focus-visible {
     outline-color: #FFFFFF;
@@ -378,6 +388,10 @@ img.profile-pic {
 
   .nav-link:hover {
     color: $body-tertiary-bg;
+  }
+
+  .list-disc li::marker {
+    color: #FFFFFF;
   }
 
   textarea, input {

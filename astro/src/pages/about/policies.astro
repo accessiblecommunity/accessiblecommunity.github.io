@@ -4,7 +4,7 @@ import ImageHeading from "../../components/ImageHeading.astro";
 import Layout from "../../layouts/Layout.astro";
 import ThemedSection from "../../components/ThemedSection.astro";
 
-import { Icon } from "astro-icon";
+import { Icon } from "astro-icon/components";
 
 const crumbs = [
   {
@@ -135,7 +135,7 @@ const crumbs = [
   li {
     line-height: 1.75em;
   }
-  [astro-icon="googledocs"] {
+  [data-icon="googledocs"] {
     margin-right: -0.2em;
   }
 </style>

@@ -27,7 +27,6 @@ export async function getStaticPaths() {
 import ImageHeading from "../../components/ImageHeading.astro";
 import Layout from "../../layouts/Layout.astro";
 import TeamMemberBio from "../../components/TeamMemberBio.astro";
-import TeamHeading from "../../components/TeamHeading.astro";
 import ThemedSection from "../../components/ThemedSection.astro";
 
 import { sortBy } from "lodash-es";
@@ -58,11 +57,26 @@ const crumbs = [
     <ul class="list-group">
       {
         teamMembers.map((sm) => (
-          <li class="d-block mb-5">
-            <TeamMemberBio member={sm} />
+          <li class="list-inline-item my-2 w-100">
+            <div class="text-start p-1 p-lg-2 pt-2 fs-4">
+              <TeamMemberBio member={sm} />
+            </div>
           </li>
         ))
       }
     </ul>
   </ThemedSection>
 </Layout>
+
+<style is:global>
+  .staff-list-item {
+    max-width: 18rem;
+  }
+  .staff-list-item .vignette-name {
+    color: var(--bs-primary-text-emphasis);
+    margin-bottom: -0.1em;
+  }
+  .staff-list-item .vignette-title {
+    line-height: 1.1em;
+  }
+</style>

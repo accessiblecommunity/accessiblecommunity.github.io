@@ -1,6 +1,6 @@
 ---
 import { capitalize, isEmpty, toPairs } from "lodash-es";
-import { Icon } from "astro-icon";
+import { Icon } from "astro-icon/components";
 
 interface SocialLinkDictionary {
   [index: string]: URL;
@@ -20,7 +20,7 @@ interface Props {
   gap?: number;
 }
 
-const { links, adjective = "", gap = 2 } = Astro.props;
+const { links, adjective = "" } = Astro.props;
 const brandingThemes = {
   email: "primary",
 };
@@ -50,20 +50,20 @@ const socialLinks: Array<LinkConfig> = toPairs(links).map(([type, url]) => {
 {
   !isEmpty(socialLinks) && (
     <ul
-      class="list-inline hstack"
+      class="list-unstyled d-inline-block mb-3"
       aria-label={`${adjective} Communications and Social Media Links`}
     >
       {socialLinks.map((sl) => (
-        <li class="list-inline-item">
+        <li class="d-inline mx-3">
           <a
             href={sl.href}
-            class:list={["icon-link align-text-top", `text-${sl.theme}`]}
+            class:list={["align-text-top", `text-${sl.theme}`]}
             target="_blank"
             rel="noopener noreferrer"
           >
             <Icon
               name={sl.icon}
-              class={`bi m-${gap}`}
+              class="bi social-icon"
               role="img"
               aria-label={`${adjective} ${sl.service} ${sl.description}`}
             />
@@ -75,8 +75,10 @@ const socialLinks: Array<LinkConfig> = toPairs(links).map(([type, url]) => {
 }
 
 <style>
-  .icon-link > .bi {
-    height: 1.25em;
-    width: 1.25em;
+  .social-icon {
+    width: 2rem;
+    height: 2rem;
+    min-height: 29px;
+    min-width: 29px;
   }
 </style>

@@ -1,5 +1,5 @@
 ---
-import { Icon } from "astro-icon";
+import { Icon } from "astro-icon/components";
 import Layout from "../layouts/Layout.astro";
 import Hero from "../components/Hero.astro";
 import ThemedSection from "../components/ThemedSection.astro";
@@ -286,7 +286,7 @@ import heroBg from "../images/colored-hero/hands-together.png";
         </div>
         <div class="col-md-6 mb-3">
           <label for="emailField" class="form-label mb-1 required-field"
-            >Email address</label
+            >Email Address</label
           ><span class="asterisk"></span>
           <input
             type="email"
@@ -318,139 +318,6 @@ import heroBg from "../images/colored-hero/hands-together.png";
           <div id="countryHelp" class="form-text">
             The country where you spend the majority of your time.
           </div>
-        </div>
-        <div class="col-md-6 mb-3">
-          <fieldset>
-            <legend class="mb-2 fs-5 required-field">
-              Which team(s) are you interested in assisting?
-              <span class="asterisk" aria-hidden="true"></span>
-            </legend>
-            <div class="form-check d-flex mb-2 align-items-center">
-              <input
-                class="form-check-input check"
-                type="checkbox"
-                name="Teams"
-                value="Content"
-                id="interestWrite"
-                aria-checked="false"
-              />
-              <label class="form-check-label ps-2" for="interestWrite">
-                Content Team
-              </label>
-            </div>
-            <div class="form-check d-flex mb-2 align-items-center">
-              <input
-                class="form-check-input check"
-                type="checkbox"
-                name="Teams"
-                value="Development"
-                id="interestDev"
-                aria-checked="false"
-              />
-              <label class="form-check-label ps-2" for="interestDev">
-                Development Team
-              </label>
-            </div>
-            <div class="form-check d-flex mb-2 align-items-center">
-              <input
-                class="form-check-input check"
-                type="checkbox"
-                name="Teams"
-                value="Evaluation"
-                id="interestEval"
-                aria-checked="false"
-              />
-              <label class="form-check-label ps-2" for="interestEval">
-                Evaluation Team
-              </label>
-            </div>
-            <div class="form-check d-flex mb-2 align-items-center">
-              <input
-                class="form-check-input check"
-                type="checkbox"
-                name="Teams"
-                value="Leadership"
-                id="interestRun"
-                aria-checked="false"
-              />
-              <label class="form-check-label ps-2" for="interestRun">
-                Leadership Team
-              </label>
-            </div>
-            <div class="form-check d-flex mb-2 align-items-center">
-              <input
-                class="form-check-input check"
-                type="checkbox"
-                name="Teams"
-                value="UI/UX"
-                id="interestUX"
-                aria-checked="false"
-              />
-              <label class="form-check-label ps-2" for="interestUX">
-                UX Team
-              </label>
-            </div>
-            <div class="form-check d-flex mb-2 align-items-center">
-              <input
-                class="form-check-input check"
-                type="checkbox"
-                name="Teams"
-                value="Other"
-                id="interestOther"
-                aria-checked="false"
-              />
-              <label class="form-check-label ps-2" for="interestOther">
-                Other
-              </label>
-            </div>
-          </fieldset>
-        </div>
-        <div class="col-md-6 mb-3">
-          <fieldset>
-            <legend class="mb-2 fs-5 required-field">
-              How many hours per week can you contribute?
-              <span class="asterisk" aria-hidden="true"></span>
-            </legend>
-            <div class="form-check d-flex mb-2 align-items-center">
-              <input
-                class="form-check-input check"
-                type="radio"
-                name="Hours"
-                value="Less than 4 hours"
-                id="hoursLess"
-                aria-checked="false"
-              />
-              <label class="form-check-label ps-2" for="hoursLess">
-                Less than 4 hours a week
-              </label>
-            </div>
-            <div class="form-check d-flex mb-2 align-items-center">
-              <input
-                class="form-check-input check"
-                type="radio"
-                name="Hours"
-                value="About 4 hours"
-                id="hoursAround"
-                aria-checked="false"
-              />
-              <label class="form-check-label ps-2" for="hoursAround">
-                Around 4 hours a week
-              </label>
-            </div>
-            <div class="form-check d-flex mb-2 align-items-center">
-              <input
-                class="form-check-input check"
-                type="radio"
-                name="Hours"
-                value="More than 4 hours"
-                id="hoursMore"
-                aria-checked="false"
-              />
-              <label class="form-check-label ps-2" for="hoursMore">
-                More than 4 hours a week
-              </label>
-            </div>
-          </fieldset>
         </div>
         <div class="form-floating mb-3">
           <label for="accommodateTextarea" class="form-label mb-1"
@@ -496,9 +363,6 @@ import heroBg from "../images/colored-hero/hands-together.png";
     e.preventDefault();
 
     let requestBody = new FormData(form);
-    const teams = requestBody.getAll("Teams");
-    requestBody.delete("Teams");
-    requestBody.set("Teams", teams.join(", "));
 
     fetch(scriptURL, {
       method: "POST",
