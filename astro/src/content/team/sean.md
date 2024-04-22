@@ -1,6 +1,6 @@
 ---
-name: Rumana
-title: TBD
+name: Sean
+title: Content Team
 tags:
   - ta11y
 picture: ../../images/team/Ta11y-Cat.png

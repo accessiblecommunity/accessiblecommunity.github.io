@@ -1,6 +1,6 @@
 ---
-name: Rumana
-title: TBD
+name: Abdullah
+title: Development Team
 tags:
   - ta11y
 picture: ../../images/team/Ta11y-Cat.png
