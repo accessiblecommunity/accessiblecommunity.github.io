@@ -275,6 +275,10 @@ $theme-colors-border-subtle-dark: map-merge($theme-colors-border-subtle-dark, $c
   outline-offset: -0.15em;
 }
 
+.social-link:focus-visible {
+  outline-offset: 0.15em;
+}
+
 .btn:focus-visible {
   outline: 3px dashed $primary;
   outline-offset: 0.25rem;
