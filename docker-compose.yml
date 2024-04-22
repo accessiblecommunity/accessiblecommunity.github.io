@@ -1,8 +1,6 @@
-version: "3.7"
-
 services:
-  astro:
-    container_name: astro
+  website:
+    container_name: website-astro
     build:
       context: ./astro
       target: dev-test
