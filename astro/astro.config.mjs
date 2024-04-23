@@ -59,7 +59,7 @@ export default defineConfig({
       }
     }),
     sitemap({
-      filter: (page) => !page.endsWith('/commitment-form/'),
+      filter: (page) => !page.endsWith('/commitment-form/') && !page.endsWith('fixable/'),
     }),
     robotsTxt({
       sitemap: true,

@@ -234,6 +234,7 @@ $theme-colors-border-subtle-dark: map-merge($theme-colors-border-subtle-dark, $c
 @import "bootstrap/scss/images";
 @import "bootstrap/scss/containers";
 @import "bootstrap/scss/grid";
+@import "bootstrap/scss/forms";
 @import "bootstrap/scss/buttons";
 @import "bootstrap/scss/transitions";
 @import "bootstrap/scss/dropdown";
@@ -275,6 +276,10 @@ $theme-colors-border-subtle-dark: map-merge($theme-colors-border-subtle-dark, $c
 
 .dropdown-item:focus-visible {
   outline-offset: -0.15em;
+}
+
+.social-link:focus-visible {
+  outline-offset: 0.15em;
 }
 
 .btn:focus-visible {

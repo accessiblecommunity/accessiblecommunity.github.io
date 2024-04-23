@@ -51,7 +51,12 @@ const NameTag = element;
     `gap-${size == "lg" ? "2" : "1"}`,
   ]}
 >
-  <div class:list={["flex-fill text-start", branded && "text-brand"]}>
+  <div
+    class:list={[
+      "flex-fill text-start me-2 me-sm-1 me-md-0",
+      branded && "text-brand",
+    ]}
+  >
     <NameTag class="vignette-name" set:html={displayName} />
     <div class="vignette-title" set:html={title} />
   </div>
