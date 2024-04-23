@@ -101,9 +101,9 @@ const Socials = [
           <ul class="ps-0 mb-0">
             {
               Socials.map(({ icon, href, className, name }) => (
-                <li class="d-inline-block">
+                <li class="d-inline-block m-3">
                   <a
-                    class="d-inline-block link-light"
+                    class="d-inline-block link-light social-link"
                     href={href}
                     target="_blank"
                     rel="noopener noreferrer"
@@ -112,8 +112,8 @@ const Socials = [
                       name={icon}
                       class={className}
                       class="social-icon"
-                      height="29"
-                      width="29"
+                      height="2rem"
+                      width="2rem"
                       role="img"
                       aria-label={name}
                     />
@@ -153,7 +153,8 @@ const Socials = [
   }
 
   .social-icon {
-    margin: 14.5px;
+    min-height: 29px;
+    min-width: 29px;
   }
 
   .legal-footer {
