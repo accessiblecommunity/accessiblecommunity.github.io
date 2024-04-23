@@ -1,6 +1,6 @@
 ---
 name: Matt
-title: Graphic Designer
+title: Communications Team, Content Team
 tags:
   - ta11y
 picture: ../../images/team/Matt.png

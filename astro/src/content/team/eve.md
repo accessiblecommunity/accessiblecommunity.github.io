@@ -1,6 +1,6 @@
 ---
 name: Eve
-title: User Experience Team (past Content Team)
+title: User Experience Team (Ta11y)
 tags:
   - ta11y
 picture: ../../images/team/eve.png

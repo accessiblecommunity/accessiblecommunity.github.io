@@ -1,6 +1,6 @@
 ---
 name: Shay
-title: TBD
+title: Communications Team
 tags:
   - ta11y
 picture: ../../images/team/shay.png
