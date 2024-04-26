@@ -1,6 +1,6 @@
 ---
 name: Laura
-title: Content Team
+title: Content Team?
 tags:
   - ta11y
 picture: ../../images/team/LauraB.png
