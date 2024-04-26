@@ -2,6 +2,6 @@
 name: Shruthi
 title: Content Team
 tags:
-  - ta11y
+  - content
 picture: ../../images/team/Ta11yCat.png
 ---

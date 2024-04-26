@@ -1,7 +1,7 @@
 ---
 name: Rumana
-title: Evaluations Team?
+title: Evaluation Team?
 tags:
-  - ta11y
+  - evaluation
 picture: ../../images/team/Ta11yCat.png
 ---

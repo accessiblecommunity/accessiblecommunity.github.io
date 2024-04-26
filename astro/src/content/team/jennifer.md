@@ -2,6 +2,6 @@
 name: Jennifer
 title: User Experience Team (Loca11y)
 tags:
-  - ta11y
+  - loca11y
 picture: ../../images/team/Ta11yCat.png
 ---

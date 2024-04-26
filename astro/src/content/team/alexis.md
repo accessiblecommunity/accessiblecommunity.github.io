@@ -2,6 +2,6 @@
 name: Alexis
 title: Development Team, Website
 tags:
-  - ta11y
+  - development
 picture: ../../images/team/Alexis2.png
 ---

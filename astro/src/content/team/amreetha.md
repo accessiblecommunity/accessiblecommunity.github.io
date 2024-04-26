@@ -2,6 +2,6 @@
 name: Amreetha
 title: Content Team
 tags:
-  - ta11y
+  - content
 picture: ../../images/team/Amreetha.png
 ---

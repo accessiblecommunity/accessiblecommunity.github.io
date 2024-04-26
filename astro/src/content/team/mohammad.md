@@ -2,6 +2,6 @@
 name: Mohammad
 title: Communications Team
 tags:
-  - ta11y
+  - communications
 picture: ../../images/team/Ta11yCat.png
 ---

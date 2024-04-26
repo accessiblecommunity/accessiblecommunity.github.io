@@ -2,6 +2,6 @@
 name: Elaine
 title: User Experience Team (Ta11y)
 tags:
-  - ta11y
+  - ux
 picture: ../../images/team/Elaine.png
 ---

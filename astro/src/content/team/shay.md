@@ -2,6 +2,6 @@
 name: Shay
 title: Communications Team
 tags:
-  - ta11y
+  - communications
 picture: ../../images/team/Shay.png
 ---

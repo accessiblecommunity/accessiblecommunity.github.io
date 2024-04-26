@@ -2,6 +2,7 @@
 name: Matt
 title: Communications Team, Content Team (Graphics)
 tags:
-  - ta11y
+  - communications
+  - content
 picture: ../../images/team/Matt.png
 ---

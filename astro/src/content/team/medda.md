@@ -2,6 +2,6 @@
 name: Medda
 title: TBD?
 tags:
-  - ta11y
+  - content
 picture: ../../images/team/Ta11yCat.png
 ---

@@ -2,6 +2,6 @@
 name: Andrea
 title: Content Team
 tags:
-  - ta11y
+  - content
 picture: ../../images/team/Andrea.png
 ---

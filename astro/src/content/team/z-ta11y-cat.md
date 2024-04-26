@@ -2,6 +2,6 @@
 name: The Ta11y Cat
 title: Staff Support
 tags:
-  - ta11y
+  - support
 picture: ../../images/team/Ta11yCat.png
 ---

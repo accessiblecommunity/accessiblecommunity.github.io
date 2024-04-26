@@ -1,7 +1,8 @@
 ---
 name: Evan
-title: Content Team, Evaluations Team
+title: Content Team, Evaluation Team
 tags:
-  - ta11y
+  - content
+  - evaluation
 picture: ../../images/team/Evan.png
 ---
