@@ -1,7 +1,7 @@
 ---
-name: Siva
-title: User Experience Team?
+name: Sarthak
+title: Unknown
 tags:
-  - ux
+  - ta11y
 picture: ../../images/team/Ta11yCat.png
 ---

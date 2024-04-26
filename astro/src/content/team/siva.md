@@ -1,6 +1,6 @@
 ---
 name: Siva
-title: User Experience Team?
+title: UX Team?
 tags:
   - ux
 picture: ../../images/team/Ta11yCat.png

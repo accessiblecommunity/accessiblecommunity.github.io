@@ -1,7 +1,7 @@
 ---
 name: Anirban
-title: Content Team?
+title: Unknown
 tags:
-  - content
+  - ta11y
 picture: ../../images/team/Ta11yCat.png
 ---
