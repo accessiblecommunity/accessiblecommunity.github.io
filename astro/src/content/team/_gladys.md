@@ -3,7 +3,7 @@ name: Gladys Phan
 title: Mentoring Program Manager, mutua11y
 tags:
   - mutua11y
-picture: ../../images/team/gladys.png
+picture: ../../images/team/Gladys.png
 links:
   email: mentoring@accessiblecommunity.org
 ---
