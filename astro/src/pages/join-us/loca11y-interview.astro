@@ -1,0 +1,296 @@
+---
+import { Icon } from "astro-icon/components";
+import ImageHeading from "../../components/ImageHeading.astro";
+import Layout from "../../layouts/Layout.astro";
+import ThemedSection from "../../components/ThemedSection.astro";
+
+const crumbs = [
+  {
+    name: "Home",
+    href: "/",
+  },
+  {
+    name: "Join Us",
+    href: "/join-us",
+  },
+];
+---
+
+<Layout crumbs={crumbs} title="loca11y Interview">
+  <Fragment slot="metadata">
+    <meta name="robots" content="noindex" />
+    <meta name="googlebot" content="noindex" />
+    <meta name="googlebot-news" content="noindex" />
+  </Fragment>
+  <ImageHeading image="policy" slot="header">
+    <strong>loc</strong>a11y <strong>Interview</strong>
+  </ImageHeading>
+  <div class="bg-primary py-2 text-white">
+    <div
+      class="d-flex flex-column flex-md-row align-items-center justify-content-md-evenly gap-2"
+    >
+      <a href="#overview" class="icon-link link-light hero-link">
+        <Icon name="loca11y-logo" class="bi" alt="" aria-hidden="true" />
+        Learn more about the interview
+      </a>
+      <a href="#form" class="icon-link link-light hero-link">
+        <Icon name="bi:pencil-fill" class="bi" alt="" aria-hidden="true" />
+        Fill out the interview form
+      </a>
+    </div>
+  </div>
+
+  <ThemedSection id="overview" style="tertiary">
+    <h2 class="display-4">Overview</h2>
+    <p class="col lead">
+      Thank you for your assistance to help our local communities become more
+      <strong class="text-brand">disability-friendly</strong>.
+    </p>
+    <div class="col">
+      <p>
+        We are <span class="text-brand text-primary"
+          >Accessible <strong>Community</strong></span
+        >, a nonprofit organization dedicated to providing technical solutions
+        to help make local communities more accessible. We are currently
+        designing
+        <a class="text-brand" href="/services#loca11y"
+          ><strong>loc</strong>a11y</a
+        >, a website which will help connect people with disabilities to their
+        local organizations that are supporting them. We are hoping this website
+        will enable individuals with disabilities to:
+      </p>
+      <ul>
+        <li
+          >Engage actively in their their communities and improve their
+          experiences,</li
+        >
+        <li
+          >Provide insights about their interactions with their local
+          organizations,</li
+        >
+        <li
+          >Share experiences attending venues and events in their local area.</li
+        >
+      </ul>
+      <p>
+        We are looking for adults with a disability or caretakers of people with
+        disabilities to participate in a 30-45 minute interview. Your knowledge
+        and insight will help us to design this site and drive positive change.
+        The interview will be completely confidential. We do not have funding to
+        provide compensation for participating. Please complete the interest
+        form if you are willing to help us with this project. Thank you!
+      </p>
+    </div>
+  </ThemedSection>
+
+  <ThemedSection id="form" style="secondary">
+    <h2 class="display-4 text-info-emphasis">
+      Interview <strong>Form</strong>
+    </h2>
+    <p class="lead">
+      <strong>Note:</strong> Required fields have an asterisk (<span
+        class="asterisk">*</span
+      >).
+    </p>
+    <form id="surveyForm" class="col p-4 border-info interview-form">
+      <div class="row flex-lg-row">
+        <div class="col-lg-6">
+          <div class="mb-3">
+            <label for="nameField" class="form-label mb-1 required-field"
+              >Your name</label
+            ><span class="asterisk"></span>
+            <input
+              type="text"
+              name="Name"
+              class="form-control w-100 form-field"
+              id="nameField"
+              autocomplete="name"
+              required
+            />
+          </div>
+          <div class="mb-3">
+            <label for="emailField" class="form-label mb-1 required-field"
+              >Your email address</label
+            ><span class="asterisk"></span>
+            <input
+              type="text"
+              name="Email"
+              class="form-control w-100 form-field"
+              id="emailField"
+              aria-describedby="emailHelp"
+              required
+            />
+            <div id="emailHelp" class="form-text small">
+              We will only use this address to contact you regarding the
+              interview. We&nbsp;will not use your email address for other
+              purposes, nor will we share your email address with anyone, as
+              stated in our
+              <a href="/privacy-policy" target="_blank">privacy policy</a>.
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="regionField" class="form-label mb-1"
+              >Your time zone or region</label
+            ><span class="asterisk"></span>
+            <input
+              type="text"
+              name="Region"
+              class="form-control w-100 form-field"
+              id="regionField"
+              aria-describedby="regionHelp"
+              required
+            />
+            <div id="regionHelp" class="form-text small">
+              The time zone or geographic region where you live. This will allow
+              us to plan and more easily coordinate schedules to find a
+              convenient time to talk with you.
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <fieldset class="mb-3">
+            <legend class="fs-6 required-field">
+              How would you self-describe? <span class="asterisk"></span>
+            </legend>
+            <div class="form-check d-flex mb-2 align-items-center">
+              <input
+                class="form-check-input check"
+                type="checkbox"
+                name="SelfDescription"
+                value="Individual"
+                id="sdIndividual"
+                aria-checked="true"
+                checked
+              />
+              <label class="form-check-label ps-2" for="sdIndividual">
+                I am a person with disabilities.
+              </label>
+            </div>
+            <div class="form-check d-flex mb-2 align-items-center">
+              <input
+                class="form-check-input check"
+                type="checkbox"
+                name="SelfDescription"
+                value="Caretaker"
+                id="sdCaretaker"
+                aria-checked="false"
+              />
+              <label class="form-check-label ps-2" for="sdCaretaker">
+                I am a caretaker of a person with disabilities.
+              </label>
+            </div>
+            <div class="form-check d-flex mb-2 align-items-center">
+              <input
+                class="form-check-input check"
+                type="checkbox"
+                name="SelfDescription"
+                value="Organization"
+                id="sdOrganization"
+                aria-checked="false"
+              />
+              <label class="form-check-label ps-2" for="sdOrganization">
+                I represent an organization serving people with disabilities.
+              </label>
+            </div>
+          </fieldset>
+          <div class="mb-3">
+            <label for="summaryTextarea" class="form-label mb-1 required-field"
+              >Summary of disabilities</label
+            ><span class="asterisk"></span>
+            <textarea
+              name="Disabilities"
+              class="form-control w-100 form-text-area"
+              id="summaryTextarea"
+              required
+              aria-describedby="summaryHelp"></textarea>
+            <div id="summaryHelp" class="form-text small">
+              If you have a disability or take care of someone with a
+              disability, please briefly describe the disability in a way that
+              you are comfortable with. We&nbsp;will not share this information.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6 my-3 mx-auto">
+          <button
+            id="surveySubmit"
+            type="submit"
+            class="btn btn-info w-100 general-button">Submit</button
+          >
+        </div>
+      </div>
+    </form>
+    <div class="d-none col p-4 border-info interview-form" id="surveySuccess">
+      <div class="lead">
+        Thank you for being willing to participate in our research. Based on the
+        number of submissions we receive, we will email you about the next steps
+        for an interview.
+      </div>
+    </div>
+  </ThemedSection>
+
+  <script is:inline>
+    const form = document.querySelector("#surveyForm");
+    const submitButton = document.querySelector("#surveySubmit");
+    // TODO: Fix.
+    const scriptURL =
+      "https://script.google.com/macros/s/AKfycbxZ9sFi8Fp2M1LE8q-ZGHkPxn4uyhJIvHN8xYMXDVfKS4_xKI8SWsh3nFJRsuTMHIQ/exec";
+
+    form.addEventListener("submit", (e) => {
+      submitButton.disabled = true;
+      e.preventDefault();
+
+      let requestBody = new FormData(form);
+      const teams = requestBody.getAll("SelfDescription");
+      requestBody.delete("SelfDescription");
+      requestBody.set("SelfDescription", teams.join(", "));
+
+      fetch(scriptURL, {
+        method: "POST",
+        body: requestBody,
+        mode: "no-cors",
+      })
+        .then((response) => {
+          form.classList.add("d-none");
+          const successMessage = document.querySelector("#surveySuccess");
+          successMessage.classList.remove("d-none");
+        })
+        .catch((error) => {
+          alert("Error!", error.message);
+          submitButton.disabled = false;
+        });
+    });
+  </script>
+
+  <style>
+    /* first declaration that is commented out below is for debugging purposes. */
+    /* * {
+   outline: 1px solid black;
+ } */
+
+    [data-icon="loca11y-logo"] {
+      height: 1.25em;
+      width: 1.25em;
+    }
+
+    .interview-form {
+      border: 3.5px solid;
+      border-radius: 0.5rem;
+    }
+
+    .check {
+      width: 1.25em;
+      height: 1.25em;
+    }
+
+    fieldset label {
+      cursor: pointer;
+    }
+
+    .form-text-area {
+      height: 6.5em;
+    }
+  </style></Layout
+>
