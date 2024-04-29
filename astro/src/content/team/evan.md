@@ -5,4 +5,5 @@ tags:
   - content
   - evaluation
 picture: ../../images/team/Evan.png
+alt-text: African-American man. Short hair with fade. Wearing rectangle glasses. White shirt, with blue blazer, and black pants.
 ---

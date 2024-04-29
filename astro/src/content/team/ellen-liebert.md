@@ -5,6 +5,7 @@ tags:
   - leadership
   - ta11y
 picture: ../../images/team/Ellen_profile.png
+alt-text: Older woman with salt and pepper hair, blue eyes, snarky smile, and nerdy glasses.
 links:
   email: ellen@accessiblecommunity.org
 ---

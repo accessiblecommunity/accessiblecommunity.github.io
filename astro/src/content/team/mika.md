@@ -5,4 +5,5 @@ tags:
   - content
   - loca11y
 picture: ../../images/team/Mika.png
+alt-text: A 5'1" Filipina woman aged 25 with fair skin, brown eyes, thick black hair with bangs, and wearing glasses.
 ---
