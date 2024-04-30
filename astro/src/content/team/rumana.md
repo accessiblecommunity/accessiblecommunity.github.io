@@ -1,7 +1,7 @@
 ---
 name: Rumana
-title: Evaluation Team?
+title: Intern
 tags:
-  - evaluation
+  - intern
 picture: ../../images/team/Ta11yCat.png
 ---

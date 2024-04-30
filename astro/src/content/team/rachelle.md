@@ -1,7 +1,7 @@
 ---
-name: Medda
-title: Unknown
+name: Radoslav
+title: Consultant
 tags:
-  - ta11y
+  - consultant
 picture: ../../images/team/Ta11yCat.png
 ---

@@ -1,7 +1,7 @@
 ---
 name: Sarthak
-title: Unknown
+title: Evaluation Team
 tags:
-  - ta11y
+  - evaluation
 picture: ../../images/team/Ta11yCat.png
 ---
