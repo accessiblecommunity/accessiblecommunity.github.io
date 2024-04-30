@@ -10,11 +10,28 @@ import ThemedSection from "../../components/ThemedSection.astro";
 import { isEmpty, intersection, sortBy } from "lodash-es";
 
 const teamProfiles = await getCollection("team");
-const staff = sortBy(
-  teamProfiles.filter((p) =>
-    isEmpty(intersection(p.data.tags, ["board", "leadership"])),
-  ),
-  (p) => p.data.name.split(" ").slice(1).join(" "),
+
+function getTeamMembers(tag: string) {
+  return sortBy(
+    teamProfiles.filter((teamMember) =>  
+      teamMember.data.tags.includes(tag)
+    ),
+    // Alphabetize by first name
+    (teamMember) => teamMember.data.name.split(" ")[0],
+  );
+}
+
+const teamMapping = {
+  "Content Team": "content",
+  "Evaluation Team": "evaluation",
+  "loca11y Development": "loca11y",
+};
+
+const teams = Object.entries(teamMapping).map(
+  ([name, tag]) => ({
+    name,
+    members: getTeamMembers(tag),
+  })
 );
 
 const crumbs = [
@@ -34,24 +51,33 @@ const crumbs = [
     Our <strong>Staff</strong>
   </ImageHeading>
   <ThemedSection theme="secondary" style="subtle" fluid={true}>
-    <ul class="list-inline text-center">
-      {
-        staff.map((member) => (
-          <li class="list-inline-item staff-list-item my-2 m-md-2 w-100">
-            <div class="text-start bg-body shadow-sm rounded-1 p-2 pt-3 fs-4">
-              <TeamVignette
-                member={member}
-                firstNameOnly={true}
-                highlightName={true}
-                branded={true}
-                valign="start"
-                size="lg"
-              />
-            </div>
-          </li>
-        ))
+    {
+      teams.map(({name, members}) => {
+        return (
+          <h2> {name} </h2>
+          <ul class="list-inline text-center">
+          {
+            members.map((member) => {
+              return (
+                <li class="list-inline-item staff-list-item my-2 m-md-2 w-100">
+                  <div class="text-start bg-body shadow-sm rounded-1 p-2 pt-3 fs-4">
+                    <TeamVignette
+                      member={member}
+                      firstNameOnly={true}
+                      highlightName={true}
+                      branded={true}
+                      valign="start"
+                      size="lg"
+                    />
+                  </div>
+                </li>
+              )
+            })
+          }
+           </ul>
+        );
       }
-    </ul>
+)
   </ThemedSection>
 </Layout>
 
