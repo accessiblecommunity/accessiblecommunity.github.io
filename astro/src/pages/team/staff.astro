@@ -55,15 +55,15 @@ const crumbs = [
   </ThemedSection>
 </Layout>
 
-<style is:global>
+<style>
   .staff-list-item {
     max-width: 18rem;
   }
-  .staff-list-item .vignette-name {
+  .staff-list-item :global(.vignette-name) {
     color: var(--bs-primary-text-emphasis);
     margin-bottom: -0.1em;
   }
-  .staff-list-item .vignette-title {
+  .staff-list-item :global(.vignette-title) {
     line-height: 1.1em;
   }
 </style>
