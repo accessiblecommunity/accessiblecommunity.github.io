@@ -14,12 +14,11 @@ import greenOnRed from "../../images/fixable/green-on-red.png";
 import horizontalLogo from "../../images/fixable/ac-logo-horizontal.png";
 import chickenBg from "../../images/fixable/barred-rock-sm.jpg";
 
-const fixBgNoColor = await getImage({src: chickenBg, format: 'webp'});
+const fixBgNoColor = await getImage({ src: chickenBg, format: "webp" });
 
 const title = "fixable";
 const heading = "fixable: An example of bad accessibility";
-const crumbs = [
-];
+const crumbs = [];
 ---
 
 <Layout title={title} crumbs={crumbs} heading={heading}>
@@ -32,8 +31,8 @@ const crumbs = [
     </div>
     <p class="lead text-bg-hero text-brand mb-5">
       <strong>fix</strong>able provides a bad example of accessibility to show
-      how important it is to implement it correctly. It's not only about how your
-      site looks, but how your content is structured and labelled.
+      how important it is to implement it correctly. It's not only about how
+      your site looks, but how your content is structured and labelled.
     </p>
   </Hero>
 
@@ -44,20 +43,24 @@ const crumbs = [
     >
       <div class="col col-xl-8 col-xxl-9">
         <p>
-          Headings in a document exist to indicate structure. Your users will use headings to
-          scan through your content and find the relevant section.
+          Headings in a document exist to indicate structure. Your users will
+          use headings to scan through your content and find the relevant
+          section.
         </p>
         <h4>Subheadings</h4>
         <p>
-          Subheadings should be relevant to the previous heading and should always increment one
-          level. Never use a heading or subheading because it's sized correctly.
+          Subheadings should be relevant to the previous heading and should
+          always increment one level. Never use a heading or subheading because
+          it's sized correctly.
         </p>
       </div>
       <div class="col col-lg-9 col-xl-3 col-xxl-2">
         <h4
           class="display-5 text-center text-primary py-3 border-primary-subtle border-top border-bottom"
         >
-          Headings are for <strong>organization</strong>, not <strong>size</strong>.
+          Headings are for <strong>organization</strong>, not <strong
+            >size</strong
+          >.
         </h4>
       </div>
     </div>
@@ -70,22 +73,23 @@ const crumbs = [
     >
       <div class="p-4 col col-lg-3">
         <p class="text-center fs-3 bad-contrast">
-          This text is <strong>low contrast</strong> on this background.     
+          This text is <strong>low contrast</strong> on this background.
         </p>
       </div>
-      <ThemedBox
-        border={1}
-        class="col col-lg-3 p-3 shadow rounded"
-      >
+      <ThemedBox border={1} class="col col-lg-3 p-3 shadow rounded">
         <p class="text-center fs-5">
           <Image class="green-on-red" src={greenOnRed} alt />
           and <span class="red-on-green py-1 px-2">Red</span> is the
           <strong>most common</strong> combination of color blindness.
         </p>
       </ThemedBox>
-      <div class="col col-lg-3 p-3 shadow rounded no-bg-color" style={`background-image: url(${fixBgNoColor.src});`}>
+      <div
+        class="col col-lg-3 p-3 shadow rounded no-bg-color"
+        style={`background-image: url(${fixBgNoColor.src});`}
+      >
         <p class="text-center text-light fs-4">
-          Always specify a <code>background-color</code>, even when an image is used.
+          Always specify a <code>background-color</code>, even when an image is
+          used.
         </p>
       </div>
     </div>
@@ -93,18 +97,20 @@ const crumbs = [
 
   <ShadowBoxSection theme="info" style="secondary">
     <div class="p-3">
-      <h2 class="display-4 text-center">Forms require <strong>focus</strong>.</h2>
+      <h2 class="display-4 text-center"
+        >Forms require <strong>focus</strong>.</h2
+      >
       <p class="text-center px-5">
         And proper focus means that each field needs a <code>label</code> and a description.
-        These alements need to be linked, which means using the correct `id` and the correct
-        `for` attribute or ARIA description.
+        These alements need to be linked, which means using the correct `id` and
+        the correct `for` attribute or ARIA description.
       </p>
-      <div
-        class="d-flex flex-column flex-xl-row justify-content-xl-evenly p-4"
-      >
+      <div class="d-flex flex-column flex-xl-row justify-content-xl-evenly p-4">
         <div class="col col-xl-5 pb-4">
-          <h3 class="display-5"><strong>Associate</strong> the fields and text.</h3>
-  
+          <h3 class="display-5"
+            ><strong>Associate</strong> the fields and text.</h3
+          >
+
           <div class="form-group px-4 pb-3">
             <label class="form-label">Labels</label>
             <select class="form-select" name="label-dropdown">
@@ -113,92 +119,120 @@ const crumbs = [
               <option value="field">the form field.</option>
             </select>
           </div>
-  
+
           <div class="form-group px-4 pb-3">
-            <input type="search" class="form-control w-100" placeholder="Placeholders are not labels.">
+            <input
+              type="search"
+              class="form-control w-100"
+              placeholder="Placeholders are not labels."
+            />
           </div>
-  
+
           <div class="form-group px-4">
             <label class="form-label">Email address</label>
-            <input type="email" class="form-control" placeholder="name@example.com">
+            <input
+              type="email"
+              class="form-control"
+              placeholder="name@example.com"
+            />
             <p class="form-text px-2">
-              Labels and descriptions also need to be associated by the <code>id</code>
+              Labels and descriptions also need to be associated by the <code
+                >id</code
+              >
               or else they aren't correctly associated with the email address above.
             </p>
           </div>
-  
+
           <div class="form-group px-4">
             <label class="form-label">File Uploads</label>
-            <input class="form-control" type="file">
+            <input class="form-control" type="file" />
             <p class="form-text px-2">... also need descriptions and labels.</p>
           </div>
         </div>
-  
+
         <div class="col col-xl-5">
-          <h3 class="display-5">Choose the right <strong>field type</strong>.</h3>
-  
+          <h3 class="display-5"
+            >Choose the right <strong>field type</strong>.</h3
+          >
+
           <div class="px-4 pb-3">
             <div>What's your favorite color?</div>
             <div class="form-check">
-              <input name="colors" class="form-check-input" type="checkbox" value="blue">
-              <label class="form-check-label">
-                Blue!
-              </label>
+              <input
+                name="colors"
+                class="form-check-input"
+                type="checkbox"
+                value="blue"
+              />
+              <label class="form-check-label"> Blue! </label>
             </div>
             <div class="form-check">
-              <input name="colors" class="form-check-input" type="checkbox" value="yellow" checked>
-              <label class="form-check-label">
-                No, yellow!
-              </label>
+              <input
+                name="colors"
+                class="form-check-input"
+                type="checkbox"
+                value="yellow"
+                checked
+              />
+              <label class="form-check-label"> No, yellow! </label>
             </div>
             <div class="form-check">
-              <input name="colors" class="form-check-input" type="checkbox" value="green">
-              <label class="form-check-label">
-                Or is it green?
-              </label>
+              <input
+                name="colors"
+                class="form-check-input"
+                type="checkbox"
+                value="green"
+              />
+              <label class="form-check-label"> Or is it green? </label>
             </div>
             <div class="form-check">
-              <input name="colors" class="form-check-input" type="checkbox" value="orange">
-              <label class="form-check-label">
-                Definitely orange.
-              </label>
+              <input
+                name="colors"
+                class="form-check-input"
+                type="checkbox"
+                value="orange"
+              />
+              <label class="form-check-label"> Definitely orange. </label>
             </div>
           </div>
-  
+
           <div class="px-4 pb-3">
             <div>Are you sure you want a radio?</div>
             <div class="form-check">
-              <input class="form-check-input" type="radio" name="radio">
-              <label class="form-check-label">
-                I don't like this one.
-              </label>
+              <input class="form-check-input" type="radio" name="radio" />
+              <label class="form-check-label"> I don't like this one. </label>
             </div>
             <div class="form-check">
-              <input class="form-check-input" type="radio" name="radio">
+              <input class="form-check-input" type="radio" name="radio" />
               <label class="form-check-label">
                 Not real sure about this one either.
               </label>
             </div>
             <div class="form-check">
-              <input class="form-check-input" type="radio" name="radio" checked>
+              <input
+                class="form-check-input"
+                type="radio"
+                name="radio"
+                checked
+              />
               <label class="form-check-label">
                 These are my only options?
               </label>
             </div>
             <div class="form-check">
-              <input class="form-check-input" type="radio" name="radio">
+              <input class="form-check-input" type="radio" name="radio" />
               <label class="form-check-label">
                 I'm not sure what any of these mean.
               </label>
             </div>
           </div>
-  
+
           <div class="form-group px-4">
             <label class="form-label">Password</label>
-            <input type="text" class="form-control">
+            <input type="text" class="form-control" />
             <p class="form-text px-2">
-              Passwords should be marked as such, or else assistive technology will read
-              the password to anyone who can hear it.
+              Passwords should be marked as such, or else assistive technology
+              will read the password to anyone who can hear it.
             </p>
           </div>
         </div>
@@ -207,66 +241,71 @@ const crumbs = [
   </ShadowBoxSection>
 
   <ThemedSection style="secondary">
-    <h2 class="display-4 my-3">Links should be <strong>described</strong> and <strong>clickable</strong>.</h2>
+    <h2 class="display-4 my-3"
+      >Links should be <strong>described</strong> and <strong>clickable</strong
+      >.</h2
+    >
     <div
       class="d-flex flex-column flex-lg-row justify-content-lg-around align-items-center"
     >
       <div class="col col-lg-4 col-xxl-3">
-        <p
-          class="fs-5 text-center text-primary py-3"
-        >
-          Make sure you properly describe your link content. None of these do this well.
+        <p class="fs-5 text-center text-primary py-3">
+          Make sure you properly describe your link content. None of these do
+          this well.
         </p>
       </div>
 
       <div class="col col-xl-5 col-xxl-4">
         <ul style="--bs-gutter-x: 6rem;">
           <li>
-            Read more at <a href="https://accessiblecommunity.org"><Image src={horizontalLogo} class="d-inline" width="200px" alt /></a>
+            Read more at <a href="https://accessiblecommunity.org"
+              ><Image
+                src={horizontalLogo}
+                class="d-inline"
+                width="200px"
+                alt
+              /></a
+            >
           </li>
           <li>
             <a href="https://accessiblecommunity.org">Read more</a>
           </li>
           <li>
             Read more at Accessible Community
-            <ExternalLink href="https://accessiblecommunity.org"></ExternalLink>
+            <ExternalLink href="https://accessiblecommunity.org" />
           </li>
         </ul>
       </div>
     </div>
   </ThemedSection>
-
 </Layout>
 
 <style lang="scss">
+  @import "../../styles/dark-mode.scss";
 
-@import '../../styles/dark-mode.scss';
-
-.bad-contrast {
-  color: var(--bs-light);
-}
-
-.green-on-red {
-  width: 4em;
-  height: auto;
-}
-
-.red-on-green {
-  color: red;
-  background-color: green;
-
-}
-
-.no-bg-color {
-  background-size: 100% 100%;
-  background-repeat: no-repeat;
-  align-content: center;
-}
-
-@include color-mode(dark) {
   .bad-contrast {
-    color: var(--bs-dark);
+    color: var(--bs-light);
   }
-}
 
+  .green-on-red {
+    width: 4em;
+    height: auto;
+  }
+
+  .red-on-green {
+    color: red;
+    background-color: green;
+  }
+
+  .no-bg-color {
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    align-content: center;
+  }
+
+  @include color-mode(dark) {
+    .bad-contrast {
+      color: var(--bs-dark);
+    }
+  }
 </style>
