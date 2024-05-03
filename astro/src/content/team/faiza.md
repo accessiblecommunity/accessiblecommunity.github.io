@@ -1,7 +1,7 @@
 ---
 name: Faiza
-title: Communications Team (Social Media)
+title: Social Media Team
 tags:
-  - communications
+  - social
 picture: ../../images/team/Ta11yCat.png
 ---

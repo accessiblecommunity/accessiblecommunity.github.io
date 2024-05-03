@@ -1,7 +1,7 @@
 ---
 name: Nikhil
-title: Communications Team
+title: Social Media Team
 tags:
-  - communications
+  - social
 picture: ../../images/team/Ta11yCat.png
 ---

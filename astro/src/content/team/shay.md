@@ -1,7 +1,7 @@
 ---
 name: Shay
-title: Communications Team
+title: Social Media Team
 tags:
-  - communications
+  - social
 picture: ../../images/team/Shay.png
 ---
