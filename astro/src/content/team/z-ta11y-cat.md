@@ -4,5 +4,5 @@ title: Staff Support
 tags:
   - support
 picture: ../../images/team/Ta11yCat.png
-alt-text: A handsome shorthaired brown tabby with bright green eyes, pink nose, and an elegant tail.
+alt: A handsome shorthaired brown tabby with bright green eyes, pink nose, and an elegant tail.
 ---

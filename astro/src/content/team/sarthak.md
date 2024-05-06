@@ -4,5 +4,5 @@ title: Development Team (Loca11y)
 tags:
   - loca11y
 picture: ../../images/team/Sarthak.png
-alt-text: Person with tall stature, black hair, and glasses.
+alt: Person with tall stature, black hair, and glasses.
 ---

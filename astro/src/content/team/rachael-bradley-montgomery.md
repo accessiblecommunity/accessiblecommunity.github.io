@@ -5,7 +5,7 @@ tags:
   - board
   - leadership
 picture: ../../images/team/Rachael_profile.png
-alt-text: middle age woman with silver hair and blue eyes.
+alt: middle age woman with silver hair and blue eyes.
 links:
   email: rachael@accessiblecommunity.org
   linkedin: https://www.linkedin.com/in/rachael-bradley-montgomery-ph-d-6847144/
