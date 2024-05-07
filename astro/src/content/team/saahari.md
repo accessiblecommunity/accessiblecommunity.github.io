@@ -1,7 +1,7 @@
 ---
 name: Saahari
-title: Evaluation Team
+title: Evaluations Team
 tags:
-  - evaluation
+  - evaluations
 picture: ../../images/team/Ta11yCat.png
 ---
