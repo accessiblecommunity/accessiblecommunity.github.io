@@ -27,7 +27,7 @@ const {
 
 const memberObj =
   typeof member == "string" ? await getEntry("team", member) : member;
-const { name, title, picture } = memberObj.data;
+const { name, title, picture, alt } = memberObj.data;
 
 function getDisplayName(name: string) {
   if (name === "The Ta11y Cat") {
@@ -69,7 +69,10 @@ const NameTag = element;
   <img
     class:list={["vignette-pic rounded-circle", responsive && "d-none d-sm-block"]}
     src={picture.src}
-    alt={`Drawn representation of ${name}`}
+    alt={
+      alt ?
+      alt : ""
+    }
   />
 </div>
 

@@ -41,6 +41,7 @@ const team = defineCollection({
       name: z.string(),
       title: z.string(),
       picture: image(),
+      alt: z.string().optional(),
       tags: z.array(z.string()),
       links: z
         .object({
