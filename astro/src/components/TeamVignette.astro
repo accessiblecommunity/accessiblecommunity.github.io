@@ -63,8 +63,12 @@ const NameTag = element;
       branded && "text-brand",
     ]}
   >
-    <NameTag class="vignette-name" set:html={displayName} />
-    <div class="vignette-title" set:html={title} />
+    {
+      title ?
+      <NameTag class="vignette-name" set:html={displayName} />
+      <div class="vignette-title" set:html={title} />
+      : <NameTag class="vignette-name justify-content-center" set:html={displayName} />
+    }
   </div>
   <img
     class:list={["vignette-pic rounded-circle", responsive && "d-none d-sm-block"]}
