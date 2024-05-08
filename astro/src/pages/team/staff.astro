@@ -54,7 +54,7 @@ const crumbs = [
   <ImageHeading image="team" slot="header">
     Our <strong>Staff</strong>
   </ImageHeading>
-  <ThemedSection theme="secondary" style="subtle" fluid={true}>
+  <ThemedSection theme="secondary" style="subtle">
     <p class="lead container-fluid">
       The dedication and skill of our volunteer community makes
       <span class="text-brand text-primary">Accessible <strong>Community</strong>'s</span>
@@ -69,7 +69,7 @@ const crumbs = [
       teams.map(({name, team, members}) => {
         return (
           <h2 class="mt-5 ms-3"> {name} </h2>
-          <ul class="list-inline text-center">
+          <ul class="list-inline-block text-center">
           {
             members.map((member) => {
               return (
