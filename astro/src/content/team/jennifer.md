@@ -7,5 +7,5 @@ roles:
 teams:
   development: ["UI/UX Lead"]
 picture: ../../images/team/Ta11yCat.png
-alt: ta11y cat has claimed this spot.
+alt: tally cat has claimed this spot.
 ---
