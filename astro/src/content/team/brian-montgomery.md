@@ -5,7 +5,7 @@ roles:
   development: Full-Stack Developer
   leadership: Technical Director
   loca11y: Full-Stack Developer
-picture: ../../images/team/Brian2.png
+picture: ../../images/team/Brian.png
 alt: Middle-aged male with brown and gray hair, hazel eyes and glasses.
 links:
   email: brian@accessiblecommunity.org
