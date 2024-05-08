@@ -1,6 +1,6 @@
 ---
 name: Ellen Liebert
-title: ta11y Project Manager
+title: Team Lead, Learning Content
 tags:
   - leadership
   - ta11y

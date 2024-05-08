@@ -263,11 +263,15 @@ $theme-colors-border-subtle-dark: map-merge($theme-colors-border-subtle-dark, $c
   --bs-bg-opacity: 0.6;
 }
 
-*:focus-visible, .form-field:focus, .toggle-menu:focus, .navbar-toggler:focus, .nav-link:focus-visible {
+*:focus-visible, .form-field:focus, .navbar-toggler:focus, .nav-link:focus-visible {
   outline: 3px dashed $primary;
   outline-offset: 0.025em;
   box-shadow: none;
   border-radius: 2%;
+}
+
+.navbar-toggler:focus {
+  border-radius: 0.375rem !important;
 }
 
 .hero-link:focus-visible, .link-light:focus-visible {
@@ -360,7 +364,7 @@ svg[data-icon="loca11y-logo"].unpad {
 }
 
 @include color-mode(dark) {
-  *:focus-visible, .form-field:focus, .toggle-menu:focus, .navbar-toggler:focus, .btn:focus-visible, .nav-link:focus-visible {
+  *:focus-visible, .form-field:focus, .navbar-toggler:focus, .btn:focus-visible, .nav-link:focus-visible {
     outline-color: #FFFFFF;
   }
 
