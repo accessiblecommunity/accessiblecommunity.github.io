@@ -1,8 +1,8 @@
 ---
 name: Matt
-title: Communications Team, Content Team (Graphics)
-tags:
-  - communications
-  - content
+roles:
+  default: Communications Team, Content Team (Graphics)
+  content: Graphic Designer
+  social: Graphic Designer
 picture: ../../images/team/Matt.png
 ---

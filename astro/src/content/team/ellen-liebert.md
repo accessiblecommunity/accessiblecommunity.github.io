@@ -1,9 +1,9 @@
 ---
 name: Ellen Liebert
-title: Team Lead, Learning Content
-tags:
-  - leadership
-  - ta11y
+roles:
+  default: Team Lead, Learning Content
+  content: Team Lead
+  leadership: Team Lead, Learning Content
 picture: ../../images/team/Ellen_profile.png
 alt: Older woman with salt and pepper hair, blue eyes, snarky smile, and nerdy glasses.
 links:

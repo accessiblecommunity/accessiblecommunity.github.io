@@ -1,7 +1,8 @@
 ---
 name: Rida
-title: UI/UX Team (Loca11y)
-tags:
-  - loca11y
+roles:
+  default: UI/UX Team (loca11y)
+  loca11y: UI/UX Designer
+  ux: UX Designer (loca11y)
 picture: ../../images/team/Ta11yCat.png
 ---

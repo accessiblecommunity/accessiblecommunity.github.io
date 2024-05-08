@@ -1,7 +1,7 @@
 ---
 name: Linda
-title: Content Team
-tags:
-  - content
+roles:
+  default: Content Team
+  content: Editor
 picture: ../../images/team/Linda.png
 ---

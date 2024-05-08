@@ -1,8 +1,10 @@
 ---
+import { boolean } from "astro/zod";
 import { getEntry } from "astro:content";
 
 interface Props {
   member: string | object;
+  role?: string | boolean;
   element?: string;
   left?: boolean;
   highlightName?: boolean;
@@ -13,8 +15,14 @@ interface Props {
   responsive?: boolean;
 }
 
+interface Names {
+  name: string;
+  nickname?: string;
+}
+
 const {
   member,
+  role = true,
   highlightName = false,
   firstNameOnly = false,
   left = true,
@@ -27,13 +35,14 @@ const {
 
 const memberObj =
   typeof member == "string" ? await getEntry("team", member) : member;
-const { name, title, picture, alt } = memberObj.data;
+const { roles, picture, alt } = memberObj.data;
+const teamName = typeof role === "boolean" ? "default" : role;
+const title = role && roles[teamName];
 
-function getDisplayName(name: string) {
-  if (name === "The Ta11y Cat") {
-    if (highlightName) name = `<strong>${name}</strong>`;
-    if (firstNameOnly) return name;
-    return name;
+function getDisplayName({ name, nickname } : Names) {
+  if (nickname) {
+    if (highlightName) nickname = `<strong>${nickname}</strong>`;
+    return nickname;
   } else {
     const nameArray = name.split(" ");
     if (highlightName) nameArray[0] = `<strong>${nameArray[0]}</strong>`;
@@ -42,7 +51,7 @@ function getDisplayName(name: string) {
     return nameArray.join(" ");
   }
 }
-const displayName = getDisplayName(name);
+const displayName = getDisplayName(memberObj.data);
 const NameTag = element;
 ---
 

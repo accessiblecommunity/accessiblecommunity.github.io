@@ -1,9 +1,11 @@
 ---
 name: Rachael Bradley Montgomery
-title: Founder & Executive Director
-tags:
-  - board
-  - leadership
+roles:
+  default: Founder & Executive Director
+  board: Founder
+  content: Writer
+  evaluations: Evaluations Lead
+  leadership: Founder & Executive Director
 picture: ../../images/team/Rachael_profile.png
 alt: middle age woman with silver hair and blue eyes.
 links:

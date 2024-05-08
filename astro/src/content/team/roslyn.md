@@ -1,8 +1,8 @@
 ---
 name: Roslyn
-title: UX Team (Ta11y)
-tags:
-  - ux
-picture: ../../images/team/Roslyn.png
+roles:
+  default: UX Team (Ta11y)
+  ux: UX Designer (ta11y)
+picture: ../../images/team/roslyn.png
 alt: Woman with black hair and brown eyes.
 ---

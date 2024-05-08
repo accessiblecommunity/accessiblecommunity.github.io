@@ -1,8 +1,10 @@
 ---
 name: Brian Montgomery
-title: Technical Director
-tags:
-  - leadership
+roles:
+  default: Technical Director
+  development: Full-Stack Developer
+  leadership: Technical Director
+  loca11y: Full-Stack Developer
 picture: ../../images/team/Brian2.png
 alt: Middle-aged male with brown and gray hair, hazel eyes and glasses.
 links:

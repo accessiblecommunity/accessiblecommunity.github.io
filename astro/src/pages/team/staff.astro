@@ -4,20 +4,19 @@ import { getCollection } from "astro:content";
 import ImageHeading from "../../components/ImageHeading.astro";
 import Layout from "../../layouts/Layout.astro";
 import TeamVignette from "../../components/TeamVignette.astro";
-import TeamHeading from "../../components/TeamHeading.astro";
 import ThemedSection from "../../components/ThemedSection.astro";
 
-import { isEmpty, intersection, sortBy } from "lodash-es";
+import { sortBy } from "lodash-es";
 
 const teamProfiles = await getCollection("team");
 
 function getTeamMembers(tag: string) {
   return sortBy(
     teamProfiles.filter((teamMember) =>  
-      teamMember.data.tags.includes(tag)
+      teamMember.data.roles && Object.keys(teamMember.data.roles).includes(tag)
     ),
     // Alphabetize by first name
-    (teamMember) => teamMember.data.name.split(" ")[0],
+    (teamMember) => teamMember.data.nickname || teamMember.data.name.split(" ")[0],
   );
 }
 
@@ -34,6 +33,7 @@ const teamMapping = {
 const teams = Object.entries(teamMapping).map(
   ([name, tag]) => ({
     name,
+    team: tag,
     members: getTeamMembers(tag),
   })
 );
@@ -55,10 +55,20 @@ const crumbs = [
     Our <strong>Staff</strong>
   </ImageHeading>
   <ThemedSection theme="secondary" style="subtle" fluid={true}>
+    <p class="lead text-center container-fluid">
+      The dedication and skill of our volunteer community makes
+      <span class="text-brand text-primary">Accessible <strong>Community</strong>'s</span>
+      mission to grow disability inclusive communities through technology possible.
+      Our impact on each other and the world grows as we do.
+    </p>
+    <p class="lead text-center container-fluid">
+      If you are passionate about creating a more inclusive world, consider
+      <a href="/volunteer" class="link-offset-2">volunteering with us</a>.
+    </p>
     {
-      teams.map(({name, members}) => {
+      teams.map(({name, team, members}) => {
         return (
-          <h2> {name} </h2>
+          <h2 class="mt-5 ms-3"> {name} </h2>
           <ul class="list-inline text-center">
           {
             members.map((member) => {
@@ -67,6 +77,7 @@ const crumbs = [
                   <div class="text-start bg-body shadow-sm rounded-1 p-2 pt-3 fs-4">
                     <TeamVignette
                       member={member}
+                      role={team}
                       firstNameOnly={true}
                       highlightName={true}
                       branded={true}

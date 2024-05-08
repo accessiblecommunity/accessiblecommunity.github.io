@@ -1,7 +1,7 @@
 ---
 name: Melissa
-title: UX Team (Design System)
-tags:
-  - ux
+roles:
+  default: UX Team (Design System)
+  ux: Design Lead (Design System)
 picture: ../../images/team/Ta11yCat.png
 ---

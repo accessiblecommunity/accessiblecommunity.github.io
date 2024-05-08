@@ -1,7 +1,7 @@
 ---
 name: Saahari
-title: Evaluations Team
-tags:
-  - evaluations
+roles:
+  default: Evaluations Team
+  evaluations: Digital Evaluator
 picture: ../../images/team/Ta11yCat.png
 ---

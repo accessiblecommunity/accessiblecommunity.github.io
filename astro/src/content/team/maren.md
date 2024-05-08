@@ -1,7 +1,7 @@
 ---
 name: Maren
-title: UX Team (Design System)
-tags:
-  - ux
+roles:
+  default: UX Team (Design System)
+  ux: UX Designer (Design System)
 picture: ../../images/team/Ta11yCat.png
 ---

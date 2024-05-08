@@ -1,7 +1,6 @@
 ---
 name: Rumana
-title: Intern
-tags:
-  - intern
+roles:
+  default: Intern
 picture: ../../images/team/Ta11yCat.png
 ---

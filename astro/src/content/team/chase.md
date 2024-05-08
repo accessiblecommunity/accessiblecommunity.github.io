@@ -1,7 +1,7 @@
 ---
 name: Chase
-title: Development Team (Loca11y)
-tags:
-  - loca11y
+roles:
+  default: Development Team (Loca11y)
+  loca11y: Frontend Developer
 picture: ../../images/team/Ta11yCat.png
 ---

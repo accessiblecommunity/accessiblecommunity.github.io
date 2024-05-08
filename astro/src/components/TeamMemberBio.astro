@@ -4,7 +4,12 @@ import { isEmpty } from "lodash-es";
 import SocialLinks from "./SocialLinks.astro";
 import TeamVignette from "./TeamVignette.astro";
 
-const { member } = Astro.props;
+interface Props {
+  member: object; // TODO: Define this
+  role: string | boolean;
+}
+
+const { member, role = "default" } = Astro.props;
 const { name, links } = member.data;
 const { Content } = await member.render();
 ---
@@ -15,6 +20,7 @@ const { Content } = await member.render();
   >
     <TeamVignette
       member={member}
+      role={role}
       firstNameOnly={false}
       highlightName={true}
       branded={true}

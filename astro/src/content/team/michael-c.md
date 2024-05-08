@@ -1,6 +1,7 @@
 ---
 name: Michael
-title: TBD
+roles:
+  default: Developer, Digital Accessibility Framework
 tags:
   - ta11y
 picture: ../../images/team/MichaelC.png

@@ -1,7 +1,7 @@
 ---
 name: Shay
-title: Social Media Team
-tags:
-  - social
-picture: ../../images/team/Shay.png
+roles:
+  default: Social Media Team
+  social: Content Creator
+picture: ../../images/team/shay.png
 ---

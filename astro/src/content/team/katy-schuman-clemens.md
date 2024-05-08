@@ -1,8 +1,8 @@
 ---
 name: Katy Schuman Clemens, Esq.
-title: Board Secretary
-tags:
-  - board
+roles:
+  default: Board Secretary
+  board: Board Secretary
 picture: ../../images/team/KatyC.png
 ---
 

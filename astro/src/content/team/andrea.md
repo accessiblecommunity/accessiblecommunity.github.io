@@ -1,8 +1,8 @@
 ---
 name: Andrea
-title: Content Team
-tags:
-  - content
+roles:
+  default: Content Team
+  content: Writer
 picture: ../../images/team/Andrea.png
 alt: Woman with medium wavy hair.
 ---
