@@ -1,0 +1,47 @@
+---
+import { getCollection } from "astro:content";
+
+export async function getStaticPaths() {
+  const tips = await getCollection("atotw");
+
+  return tips.map(({ data, slug }) => ({
+    params: { slug },
+    props: { 
+      title: data.title,
+    }
+  }));
+}
+
+import ImageHeading from "../../../components/ImageHeading.astro";
+import Layout from "../../../layouts/Layout.astro";
+import ThemedSection from "../../../components/ThemedSection.astro";
+import TipOfTheWeek from "../../../components/TipOfTheWeek.astro";
+
+const { slug } = Astro.params;
+const { title } = Astro.props;
+
+const crumbs = [
+  {
+    name: "Home",
+    href: "/",
+  },
+  {
+    name: "Services",
+    href: "/services",
+  },
+  {
+    name: "Tip of the Week",
+    href: "/services/tip-of-the-week/",
+  },
+];
+---
+
+<Layout title={title} crumbs={crumbs}>
+  <ImageHeading image="notes" slot="header">
+    Accessibility <strong>Tip</strong>&nbsp;of the <strong>Week</strong>
+  </ImageHeading>
+
+  <ThemedSection style="tertiary">
+    <TipOfTheWeek slug={slug} />
+  </ThemedSection>
+</Layout>
