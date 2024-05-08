@@ -4,7 +4,7 @@ roles:
   default: Director, User Experience
   leadership: Director, User Experience
   ux: Director
-picture: ../../images/team/michael.png
+picture: ../../images/team/Michael.png
 links:
   email: michael@accessiblecommunity.org
 ---
