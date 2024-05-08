@@ -319,15 +319,19 @@ import heroBg from "../images/colored-hero/hands-together.png";
             The country where you spend the majority of your time.
           </div>
         </div>
-        <div class="form-floating mb-3">
-          <label for="accommodateTextarea" class="form-label mb-1"
-            >Please list any accomodations needed for remote meetings and work.</label
+        <div class="mb-3">
+          <label for="accommodationTextarea" class="form-label mb-1"
+            >Any accomodations?</label
           >
           <span class="asterisk"></span>
           <textarea
             name="Accommodations"
             class="form-control w-100 form-text-area"
-            id="accommodateTextarea"></textarea>
+            id="accommodationTextarea"
+            aria-describedby="accommodationHelp"></textarea>
+          <div id="accommodationHelp" class="form-text">
+            Please list any accomodations that you need for remote meetings and/or work.</label
+          ></div>
         </div>
         <div class="col-md-6 mx-auto">
           <button
