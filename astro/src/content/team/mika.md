@@ -6,5 +6,5 @@ roles:
   loca11y: UI/UX Designer
   ux: UX Designer (loca11y)
 picture: ../../images/team/Mika.png
-alt: A 5'1" Filipina woman aged 25 with fair skin, brown eyes, thick black hair with bangs, and wearing glasses.
+alt: Filipina woman aged 25 with fair skin, brown eyes, thick black hair with bangs, and wearing glasses.
 ---

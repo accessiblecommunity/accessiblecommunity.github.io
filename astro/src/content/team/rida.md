@@ -1,5 +1,6 @@
 ---
 name: Rida
+nickname: Rida (Danli)
 roles:
   default: UI/UX Team (loca11y)
   loca11y: UI/UX Designer
