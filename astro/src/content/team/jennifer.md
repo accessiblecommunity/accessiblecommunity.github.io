@@ -2,7 +2,6 @@
 name: Jennifer
 roles:
   default: UX Team (Loca11y)
-  loca11y: Design Lead
   ux: Design Lead (loca11y)
 teams:
   development: ["UI/UX Lead"]
