@@ -4,5 +4,5 @@ roles:
   default: Development Team (loca11y)
   loca11y: Frontend Developer
 picture: ../../images/team/Ta11yCat.png
-alt: tally cat has claimed this spot.
+alt: The Tally Cat has claimed this spot.
 ---
