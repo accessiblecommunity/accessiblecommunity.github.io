@@ -25,7 +25,7 @@ const { Content = "p" } = await tip?.render();
   <Content />
 </article>
 
-<style>
+<style lang="scss">
   article :global(h1),
   article :global(h2),
   article :global(h3) {
@@ -33,6 +33,19 @@ const { Content = "p" } = await tip?.render();
   }
   article :global(h2),
   article :global(h3) {
-    margin-top: 2em;
+    margin-top: 1.5em;
+  }
+
+  article :global(th),
+  article :global(td), {
+    // TODO: Get bootstrap colors in here.
+    border: 1px solid;
+    padding: 0.5em;
+  }
+
+  article :global(blockquote) {
+    margin: 1rem;
+    padding: 0 1rem;
+    border-left: 1px dotted lightgray;
   }
 </style>

@@ -1,0 +1,30 @@
+---
+title: Facebook images 👍 Like alternative text.
+published: 2023-07-10
+summary: Add alternative text to posted images in Facebook.
+who: Members of your audience that use screen readers and or have cognitive and/or learning disabilities. 
+benefits: Your image content becomes searchable and the alternative text shows if your images do not load.
+---
+
+import ExternalLink from "../../components/ExternalLink.astro";
+import ImageFigure from "../../components/ImageFigure.astro";
+
+import uploadedImg from "../../images/atotw/fb-images/uploaded.png";
+import altTextImg from "../../images/atotw/fb-images/alt-text.png";
+
+Most of you are familiar with the phrase “A picture is worth 1,000 words”. An image will often communicate in a way that a paragraph of text cannot. However, for people who use screen readers or other assistive technology, the inverse is true: __A picture's worth is determined by its alternative text__. This is true both for websites and your social media posts. To fully reach your audience and to make your images searchable, add alternative text to the images you post.
+
+<ImageFigure src={uploadedImg} class="my-3 text-center w-100" imageClass="mx-auto bg-white" alt="A screenshot of editing a post in Facebook, with the ability to edit the image." caption="Edit an uploaded image to add alternate text."/>
+
+## What can I do?
+
+Adding alternate text to Facebook images isn't difficult. Follow these steps:
+
+1. When uploading the photo, hover over the photo and select "Edit Photo".
+2. Select "Alternate text" from the menu on the left.
+3. Type new alternative text in the text box at the bottom. When you add the alternative text, the radio button switches from "Use the generated text for the photo" to "Custom alt text".
+4. Save the image.
+
+<ImageFigure src={altTextImg} class="my-3 text-center w-100" imageClass="mx-auto bg-white" alt="The Facebook image editor, showing the alternate text fields." caption="Editing the alternate text takes just a few extra clicks."/>
+
+<ExternalLink inline href="https://www.ta11y.org/learning/topic?key=design.writealt">Learn more about writing alternative text</ExternalLink> at <span class="text-brand text-primary fw-bold">t<span class="fw-lighter">a11y</span>.org</span>.

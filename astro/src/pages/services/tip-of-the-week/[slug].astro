@@ -7,6 +7,7 @@ export async function getStaticPaths() {
   return tips.map(({ data, slug }) => ({
     params: { slug },
     props: { 
+      tips,
       title: data.title,
     }
   }));
@@ -16,18 +17,28 @@ import ImageHeading from "../../../components/ImageHeading.astro";
 import Layout from "../../../layouts/Layout.astro";
 import ThemedSection from "../../../components/ThemedSection.astro";
 import TipOfTheWeek from "../../../components/TipOfTheWeek.astro";
+import { isEmpty, kebabCase, reverse, sortBy } from "lodash-es";
 
 const { slug } = Astro.params;
-const { title } = Astro.props;
+const { tips, title } = Astro.props;
 
+async function orderByRecent() {
+  if (isEmpty(tips)) return [];
+
+  const sortedTips = sortBy(tips, [
+    (b) => b.data.published.getTime(),
+    (b) => b.data.title,
+  ]);
+  reverse(sortedTips);
+  return sortedTips;
+}
+
+const sortedTips = await orderByRecent();
+const dates = [];
 const crumbs = [
   {
     name: "Home",
     href: "/",
-  },
-  {
-    name: "Services",
-    href: "/services",
   },
   {
     name: "Tip of the Week",
@@ -41,7 +52,48 @@ const crumbs = [
     Accessibility <strong>Tip</strong>&nbsp;of the <strong>Week</strong>
   </ImageHeading>
 
-  <ThemedSection style="tertiary">
-    <TipOfTheWeek slug={slug} />
+  <ThemedSection style="tertiary" py={4}>
+    <div class="d-flex justify-content-between gap-3">
+      <div class="col col-lg-7">
+        <TipOfTheWeek slug={slug} />
+      </div>
+      <nav
+        class="d-none d-lg-block col-lg-4"
+        aria-label="Tips"
+      >
+        <div class="mx-auto">
+          <ul class="list-unstyled">
+            {
+              isEmpty(sortedTips) ? "" : (
+                <li class="text-info-emphasis">
+                  <span class="display-6">Recent Tips</span>
+                  <ul class="mt-1 mb-3 list-disc">
+                    {sortedTips.map((b) => (
+                      <li>
+                        <a href={`./${b.slug}`}>{b.data.title}</a>
+                      </li>
+                    ))}
+                  </ul>
+                </li>
+              )
+            }
+            {
+              isEmpty(dates) ? "" : (
+                <li class="text-info-emphasis">
+                  <span class="display-6">Dates</span>
+                  <ul class="mt-1 mb-3 list-disc">
+                    {dates.map((month) => (
+                      <li>
+                        <a href={`/blog/dates/${kebabCase(month)}`}>{month}</a>
+                      </li>
+                    ))}
+                  </ul>
+                </li>
+              )
+            }
+          </ul>
+        </div>
+      </nav>
+    </div>
   </ThemedSection>
 </Layout>
