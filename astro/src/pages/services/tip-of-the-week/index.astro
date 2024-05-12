@@ -19,6 +19,14 @@ const crumbs = [
 ---
 
 <Layout title="Tip of the Week" crumbs={crumbs}>
+  <Fragment slot="head">
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      title="Accessible Community's Tip of the Week"
+      href={`${Astro.site}/services/tip-of-the-week/rss.xml`}
+    />
+  </Fragment>
   <ImageHeading image="notes" slot="header">
     Accessibility <strong>Tip</strong>&nbsp;of the <strong>Week</strong>
   </ImageHeading>

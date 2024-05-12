@@ -15,6 +15,7 @@ export async function getStaticPaths() {
 
 import ImageHeading from "../../../components/ImageHeading.astro";
 import Layout from "../../../layouts/Layout.astro";
+import License from "../../../components/License.astro";
 import ThemedSection from "../../../components/ThemedSection.astro";
 import TipOfTheWeek from "../../../components/TipOfTheWeek.astro";
 import { isEmpty, kebabCase, reverse, sortBy } from "lodash-es";
@@ -48,6 +49,14 @@ const crumbs = [
 ---
 
 <Layout title={title} crumbs={crumbs}>
+  <Fragment slot="head">
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      title="Accessible Community's Tip of the Week"
+      href={`${Astro.site}/services/tip-of-the-week/rss.xml`}
+    />
+  </Fragment>
   <ImageHeading image="notes" slot="header">
     Accessibility <strong>Tip</strong>&nbsp;of the <strong>Week</strong>
   </ImageHeading>
@@ -56,6 +65,7 @@ const crumbs = [
     <div class="d-flex justify-content-between gap-3">
       <div class="col col-lg-7">
         <TipOfTheWeek slug={slug} />
+        <License />
       </div>
       <nav
         class="d-none d-lg-block col-lg-4"
@@ -67,13 +77,13 @@ const crumbs = [
               isEmpty(sortedTips) ? "" : (
                 <li class="text-info-emphasis">
                   <span class="display-6">Recent Tips</span>
-                  <ul class="mt-1 mb-3 list-disc">
+                  <ol class="mt-1 mb-3 list-disc">
                     {sortedTips.map((b) => (
                       <li>
                         <a href={`./${b.slug}`}>{b.data.title}</a>
                       </li>
                     ))}
-                  </ul>
+                  </ol>
                 </li>
               )
             }
