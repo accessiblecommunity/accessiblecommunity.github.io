@@ -21,12 +21,12 @@ function getTeamMembers(tag: string) {
 }
 
 const teamMapping = {
-  "Staff Support": "support",
   "Content Team": "content",
   "Development Team": "development",
   "Evaluations Team": "evaluations",
   "Social Media Team": "social",
   "User Experience (UX) Team": "ux",
+  "Staff Support": "support",
 };
 
 const teams = Object.entries(teamMapping).map(
@@ -63,6 +63,10 @@ const crumbs = [
     <p class="lead container-fluid">
       If you are passionate about creating a more inclusive world, consider
       <a href="/volunteer" class="link-offset-2">volunteering with us</a>.
+    </p>
+    <p class="lead container-fluid">
+      <strong>Note:</strong>
+      In lieu of a picture, some of our staff are represented by the "Tally Cat" instead.
     </p>
     {
       teams.map(({name, team, members}) => {

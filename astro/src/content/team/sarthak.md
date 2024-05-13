@@ -5,4 +5,7 @@ roles:
   development: Backend Developer (loca11y)
 picture: ../../images/team/Sarthak.png
 alt: Person with tall stature, black hair, and glasses.
+links:
+  linkedin: https://www.linkedin.com/in/sarthakgoel97/
+  website: https://www.sarthakgoel.net/
 ---

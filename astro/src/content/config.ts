@@ -63,6 +63,7 @@ const team = defineCollection({
           mastodon: z.string().url().optional(),
           threads: z.string().url().optional(),
           twitter: z.string().url().optional(),
+          website: z.string().url().optional(),
         })
         .optional(),
     }),
