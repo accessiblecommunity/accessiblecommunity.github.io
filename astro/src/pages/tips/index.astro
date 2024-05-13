@@ -1,0 +1,20 @@
+---
+import { getTipCatalog } from "../../lib/tips";
+
+const catalog = await getTipCatalog();
+const crumbs = [
+  {
+    name: "Home",
+    href: "/",
+  },
+];
+
+import TipLayout from "../../layouts/TipLayout.astro";
+---
+
+<TipLayout
+  tip={catalog.recent}
+  catalog={catalog}
+  crumbs={crumbs}
+  sidebar={true}
+/>

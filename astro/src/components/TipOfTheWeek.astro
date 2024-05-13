@@ -1,9 +1,16 @@
 ---
-import { getEntry } from "astro:content";
+import { getMostRecent } from '../lib/tips';
 
-const { slug, class: extraClasses } = Astro.props;
-const tip = await getEntry("atotw", slug);
-const { Content = "p" } = await tip?.render();
+interface Props {
+  tip: object | undefined;
+  class: string;
+}
+
+const {
+  tip = await getMostRecent(),
+  class: extraClasses
+} = Astro.props;
+const { Content = "p" } = await tip.render();
 ---
 
 <article class={extraClasses}>

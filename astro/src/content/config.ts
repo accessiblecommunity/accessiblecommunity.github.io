@@ -8,7 +8,7 @@ const atotw = defineCollection({
     summary: z.string(),
     who: z.string(),
     benefits: z.string(),
-    tags: z.array(z.string()).optional(),
+    tags: z.array(z.string()),
   }),
 });
 

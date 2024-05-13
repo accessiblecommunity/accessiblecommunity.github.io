@@ -1,10 +1,12 @@
 import { getCollection, getEntries } from "astro:content";
-import { isEmpty, isNil, reverse, sortBy, uniqBy } from "lodash-es";
+import { compact, isEmpty, isNil, kebabCase, reverse, sortBy, uniqBy } from "lodash-es";
 
-export async function getTipTopics(tips?) {
+export async function getTipCategories(tips?) {
   tips = isNil(tips) ? await getCollection("atotw") : tips;
   if (isEmpty(tips)) return [];
-  const topics = [...new Set(tips.map((blog) => blog.data.tags).flat())];
+  const topics = compact([...new Set(
+    tips.map((blog) => blog.data.tags).flat()
+  )]);
   topics.sort();
   return topics;
 }
@@ -49,16 +51,15 @@ export async function getMostRecent(tips?) {
   return sortedBlogs[0];
 }
 
+
 export async function getTipCatalog(tips?) {
   tips = isNil(tips) ? await orderByRecent(tips) : tips;
-  const topics = await getTipTopics(tips);
-  const dates = await getTipDates(tips);
+  const categories = await getTipCategories(tips);
   const recent = await getMostRecent(tips);
 
   return {
     tips,
-    topics,
-    dates,
+    categories,
     recent,
   };
 }

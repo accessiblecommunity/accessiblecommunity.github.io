@@ -1,4 +1,5 @@
 ---
+import { Icon } from "astro-icon/components";
 import ImageHeading from "../../../components/ImageHeading.astro";
 import Layout from "../../../layouts/Layout.astro";
 import ShadowBoxSection from "../../../components/ShadowBoxSection.astro";
@@ -45,10 +46,15 @@ const crumbs = [
           at the beginning to provide a quick summary.
         </p>
         <p class="lead">
-          Check out a previous Tip of the Week below. Fill out the registration
-          form to sign up. It's completely free and we will not <a
+          Check out our most recent <span class="text-brand fw-bold">Tip of the Week</span>
+          below. Fill out the registration form to sign up. It's completely free and
+          we will not <a
             href="/privacy-policy">sell or share your data</a
-          >.
+          >. If you prefer, you can also
+          <a
+            class="icon-link" href="/tips/rss.xml"
+          >subscribe via RSS<Icon class="bi" name="bi:rss-fill"
+          /></a>.
         </p>
       </div>
 
@@ -66,7 +72,7 @@ const crumbs = [
 
   <ShadowBoxSection theme="info" fluid={false}>
     <h2 slot="lead" class="display-3 text-light text-center mb-4">
-      An <strong>example</strong> tip.
+      Our <strong>most recent</strong> tip.
     </h2>
     <div class="p-2 p-sm-3 p-md-4 rounded-3">
       <TipOfTheWeek slug="etiquette" />

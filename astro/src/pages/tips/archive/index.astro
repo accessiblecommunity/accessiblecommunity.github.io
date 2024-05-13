@@ -1,0 +1,57 @@
+---
+import { getTipCatalog } from "../../../lib/tips";
+import { isEmpty, startCase } from "lodash-es";
+
+const { categories, tips } = await getTipCatalog();
+const crumbs = [
+  {
+    name: "Home",
+    href: "/",
+  },
+  {
+    name: "Tips",
+    href: "/tips",
+  },
+];
+
+import ImageHeading from "../../../components/ImageHeading.astro";
+import Layout from "../../../layouts/Layout.astro";
+import TipLicense from "../../../components/TipLicense.astro";
+import ThemedSection from "../../../components/ThemedSection.astro";
+---
+
+<Layout crumbs={crumbs} title="Tip Archive">
+  <ImageHeading image="notes" slot="header">
+    Accessibility <strong>Tip</strong> of the <strong>Week</strong> Archive
+  </ImageHeading>
+
+  <ThemedSection style="secondary" py={0}>
+    <TipLicense />
+  </ThemedSection>
+  <ThemedSection style="tertiary" py={0}>
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3">
+      <div class="col">
+        <h2 class="text-primary-emphasis">Most Recent</h2>
+        <ul class="mt-1 mb-3 list-disc">
+          {tips.slice(0, 7).map((tip) => (
+            <li>
+              <a href={`/tips/${tip.slug}`}>{tip.data.title}</a>
+            </li>
+          ))}
+        </ul>
+      </div>
+      {categories.map((cat) => (
+        <div class="col">
+          <h2 class="text-primary-emphasis">{ startCase(cat) }</h2>
+          <ul class="mt-1 mb-4 list-disc">
+            {tips.map((tip) => tip.data.tags.includes(cat) && (
+              <li class="list-item">
+                <a href={`/tips/${tip.slug}`}>{tip.data.title}</a>
+              </li>
+            ))}
+          </ul>
+        </div>        
+      ))}         
+    </div>
+  </ThemedSection>
+</Layout>

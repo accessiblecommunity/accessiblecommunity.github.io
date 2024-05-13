@@ -1,0 +1,54 @@
+---
+import { getCollection } from "astro:content";
+import { getTipCategories, orderByRecent } from "../../../lib/tips";
+import { startCase } from "lodash-es";
+
+export async function getStaticPaths() {
+  const topics = await getTipCategories();
+  const crumbs = [
+    {
+      name: "Home",
+      href: "/",
+    },
+    {
+      name: "Tips",
+      href: "/tips",
+    },
+    {
+      name: "Categories",
+      href: "/tips/categories",
+    },
+  ];
+
+  return topics.map((category) => ({
+    params: { tag: category },
+    props: { crumbs, category },
+  }));
+}
+
+interface Props {
+  category: string;
+  crumbs: Array<object>;
+}
+
+const { crumbs, category } = Astro.props;
+const categoryTips = await getCollection("atotw", ({ data }) => {
+  return data.tags?.includes(category);
+});
+const orderedTips: Array<object> = await orderByRecent(categoryTips);
+
+import TipLayout from "../../../layouts/TipLayout.astro";
+---
+
+<TipLayout
+  title={startCase(category)}
+  heading={startCase(category)}
+  crumbs={crumbs}
+  tip={orderedTips[0]}
+  catalog={{ tips: orderedTips }}
+  sidebar={true}
+>
+  <Fragment slot="header">
+    Accessibility Tips: <strong set:text={startCase(category)} />
+  </Fragment>
+</TipLayout>
