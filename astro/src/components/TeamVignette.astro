@@ -1,8 +1,10 @@
 ---
+import { boolean } from "astro/zod";
 import { getEntry } from "astro:content";
 
 interface Props {
   member: string | object;
+  role?: string | boolean;
   element?: string;
   left?: boolean;
   highlightName?: boolean;
@@ -13,8 +15,14 @@ interface Props {
   responsive?: boolean;
 }
 
+interface Names {
+  name: string;
+  nickname?: string;
+}
+
 const {
   member,
+  role = true,
   highlightName = false,
   firstNameOnly = false,
   left = true,
@@ -27,16 +35,23 @@ const {
 
 const memberObj =
   typeof member == "string" ? await getEntry("team", member) : member;
-const { name, title, picture } = memberObj.data;
+const { roles, picture, alt } = memberObj.data;
+const teamName = typeof role === "boolean" ? "default" : role;
+const title = role && roles[teamName];
 
-function getDisplayName(name: string) {
-  const nameArray = name.split(" ");
-  if (highlightName) nameArray[0] = `<strong>${nameArray[0]}</strong>`;
-  if (firstNameOnly) return nameArray[0];
-
-  return nameArray.join(" ");
+function getDisplayName({ name, nickname } : Names) {
+  if (nickname) {
+    if (highlightName) nickname = `<strong>${nickname}</strong>`;
+    return nickname;
+  } else {
+    const nameArray = name.split(" ");
+    if (highlightName) nameArray[0] = `<strong>${nameArray[0]}</strong>`;
+    if (firstNameOnly) return nameArray[0];
+  
+    return nameArray.join(" ");
+  }
 }
-const displayName = getDisplayName(name);
+const displayName = getDisplayName(memberObj.data);
 const NameTag = element;
 ---
 
@@ -57,13 +72,20 @@ const NameTag = element;
       branded && "text-brand",
     ]}
   >
-    <NameTag class="vignette-name" set:html={displayName} />
-    <div class="vignette-title" set:html={title} />
+    {
+      title ?
+      <NameTag class="vignette-name" set:html={displayName} />
+      <div class="vignette-title" set:html={title} />
+      : <NameTag class="vignette-name justify-content-center" set:html={displayName} />
+    }
   </div>
   <img
-    class:list={["vignette-pic", responsive && "d-none d-sm-block"]}
+    class:list={["vignette-pic rounded-circle rounded-top-0", responsive && "d-none d-sm-block"]}
     src={picture.src}
-    alt={`Drawn representation of ${name}`}
+    alt={
+      alt ?
+      alt : ""
+    }
   />
 </div>
 

@@ -39,9 +39,21 @@ const team = defineCollection({
   schema: ({ image }) =>
     z.object({
       name: z.string(),
-      title: z.string(),
+      nickname: z.string().optional(),
+      roles: z.object({
+        "default": z.string(),
+        "board": z.string(),
+        "content": z.string(),
+        "development": z.string(),
+        "evaluations": z.string(),
+        "leadership": z.string(),
+        "loca11y": z.string(),
+        "social": z.string(),
+        "support": z.string(),
+        "ux": z.string(),
+      }).partial().optional(),
       picture: image(),
-      tags: z.array(z.string()),
+      alt: z.string().optional(),
       links: z
         .object({
           email: z.string().email().optional(),
@@ -51,6 +63,7 @@ const team = defineCollection({
           mastodon: z.string().url().optional(),
           threads: z.string().url().optional(),
           twitter: z.string().url().optional(),
+          website: z.string().url().optional(),
         })
         .optional(),
     }),

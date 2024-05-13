@@ -1,7 +1,8 @@
 ---
 name: Roslyn
-title: Evaluation Team
-tags:
-  - ta11y
-picture: ../../images/team/roslyn.png
+roles:
+  default: UX Team (Ta11y)
+  ux: UX Designer (ta11y)
+picture: ../../images/team/Roslyn.png
+alt: Woman with black hair and brown eyes.
 ---
