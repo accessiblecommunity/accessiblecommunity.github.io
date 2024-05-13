@@ -1,15 +1,12 @@
 ---
-import { getMostRecent } from '../lib/tips';
+import { getMostRecent } from "../lib/tips";
 
 interface Props {
   tip: object | undefined;
   class: string;
 }
 
-const {
-  tip = await getMostRecent(),
-  class: extraClasses
-} = Astro.props;
+const { tip = await getMostRecent(), class: extraClasses } = Astro.props;
 const { Content = "p" } = await tip.render();
 ---
 
@@ -44,7 +41,7 @@ const { Content = "p" } = await tip.render();
   }
 
   article :global(th),
-  article :global(td), {
+  article :global(td) {
     // TODO: Get bootstrap colors in here.
     border: 1px solid;
     padding: 0.5em;

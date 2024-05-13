@@ -48,15 +48,15 @@ const crumbs = [
           at the beginning to provide a quick summary.
         </p>
         <p class="lead">
-          Check out our most recent <span class="text-brand fw-bold">Tip of the Week</span>
-          below. Fill out the registration form to sign up. It's completely free and
-          we will not <a
-            href="/privacy-policy">sell or share your data</a
-          >. If you prefer, you can also
-          <a
-            class="icon-link" href="/tips/rss.xml"
-          >subscribe via RSS<Icon class="bi" name="bi:rss-fill"
-          /></a>.
+          Check out our most recent <span class="text-brand fw-bold"
+            >Tip of the Week</span
+          >
+          below. Fill out the registration form to sign up. It's completely free
+          and we will not <a href="/privacy-policy">sell or share your data</a>.
+          If you prefer, you can also
+          <a class="icon-link" href="/tips/rss.xml"
+            >subscribe via RSS<Icon class="bi" name="bi:rss-fill" /></a
+          >.
         </p>
       </div>
 
@@ -90,25 +90,32 @@ const crumbs = [
       <div class="col">
         <h3>Most Recent</h3>
         <ul class="mt-1 mb-3 list-disc">
-          {tips.slice(0, 7).map((tip) => (
-            <li>
-              <a href={`/tips/${tip.slug}`}>{tip.data.title}</a>
-            </li>
-          ))}
-        </ul>
-      </div>
-      {categories.map((cat) => (
-        <div class="col">
-          <h3>{ startCase(cat) }</h3>
-          <ul class="mt-1 mb-4 list-disc">
-            {tips.map((tip) => tip.data.tags.includes(cat) && (
-              <li class="list-item">
+          {
+            tips.slice(0, 7).map((tip) => (
+              <li>
                 <a href={`/tips/${tip.slug}`}>{tip.data.title}</a>
               </li>
-            ))}
-          </ul>
-        </div>
-      ))}
+            ))
+          }
+        </ul>
+      </div>
+      {
+        categories.map((cat) => (
+          <div class="col">
+            <h3>{startCase(cat)}</h3>
+            <ul class="mt-1 mb-4 list-disc">
+              {tips.map(
+                (tip) =>
+                  tip.data.tags.includes(cat) && (
+                    <li class="list-item">
+                      <a href={`/tips/${tip.slug}`}>{tip.data.title}</a>
+                    </li>
+                  ),
+              )}
+            </ul>
+          </div>
+        ))
+      }
     </div>
   </ThemedSection>
 

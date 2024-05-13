@@ -30,16 +30,12 @@ const {
   crumbs = defaultCrumbs,
   sidebar = false,
 } = Astro.props;
-const {
-  tip = slug && await getEntry("atotw", slug)
-} = Astro.props;
-const {
-  title = tip?.data.title,
-} = Astro.props;
+const { tip = slug && (await getEntry("atotw", slug)) } = Astro.props;
+const { title = tip?.data.title } = Astro.props;
 const { tips = [], categories = [] } = catalog;
 const related = await getRelatedTips(tip);
 
-import { Icon } from 'astro-icon/components';
+import { Icon } from "astro-icon/components";
 import ImageHeading from "../components/ImageHeading.astro";
 import Layout from "../layouts/Layout.astro";
 import ThemedSection from "../components/ThemedSection.astro";
@@ -47,9 +43,10 @@ import TipLicense from "../components/TipLicense.astro";
 import TipOfTheWeek from "../components/TipOfTheWeek.astro";
 import TipRegistration from "../components/TipRegistration.astro";
 
-const header = Astro.slots.has('header') ?
-  await Astro.slots.render('header') :
-  "Accessibility <strong>Tip</strong>&nbsp;of the <strong>Week</strong>";
+const header =
+  Astro.slots.has("header") ?
+    await Astro.slots.render("header")
+  : "Accessibility <strong>Tip</strong>&nbsp;of the <strong>Week</strong>";
 ---
 
 <Layout title={title} crumbs={crumbs}>
@@ -62,8 +59,12 @@ const header = Astro.slots.has('header') ?
       content={tip?.data.published.toISOString()}
     />
     <meta property="article:section" content="Accessibility" />
-    {tip?.data.tags?.map((tag) => <meta property="article:tag" content={tag} />)}
-  </Fragment>  
+    {
+      tip?.data.tags?.map((tag) => (
+        <meta property="article:tag" content={tag} />
+      ))
+    }
+  </Fragment>
   <Fragment slot="head">
     <link
       rel="alternate"
@@ -75,7 +76,9 @@ const header = Astro.slots.has('header') ?
   <ImageHeading image="notes" slot="header" set:html={header} />
 
   <ThemedSection style="tertiary">
-    <div class="d-flex flex-column flex-lg-row justify-content-lg-between gap-3">
+    <div
+      class="d-flex flex-column flex-lg-row justify-content-lg-between gap-3"
+    >
       <div class="col col-lg-7">
         <TipOfTheWeek tip={tip} />
       </div>
@@ -87,7 +90,9 @@ const header = Astro.slots.has('header') ?
           {
             isEmpty(tips) ? "" : (
               <li class="text-primary-emphasis">
-                <span class="display-6"><span class="fw-bold">Related</span> Tips</span>
+                <span class="display-6">
+                  <span class="fw-bold">Related</span> Tips
+                </span>
                 <ul class="mt-1 mb-3 list-disc">
                   {related.map((b) => (
                     <li>
@@ -102,9 +107,9 @@ const header = Astro.slots.has('header') ?
         <div class="col col-md-6 col-lg-12">
           <TipRegistration defaultWidth border={2}>
             <p>
-              Would you like to receive these tips automatically? 
+              Would you like to receive these tips automatically?
               <a class="icon-link" href="/tips/rss.xml">
-                Subscribe by RSS <Icon class="bi" name="bi:rss-fill"></Icon> 
+                Subscribe by RSS <Icon class="bi" name="bi:rss-fill" />
               </a>
               or register below to get them in your inbox.
             </p>
