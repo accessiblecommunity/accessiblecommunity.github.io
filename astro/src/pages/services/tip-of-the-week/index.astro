@@ -4,8 +4,14 @@ import ImageHeading from "../../../components/ImageHeading.astro";
 import Layout from "../../../layouts/Layout.astro";
 import ShadowBoxSection from "../../../components/ShadowBoxSection.astro";
 import ThemedSection from "../../../components/ThemedSection.astro";
-import TipRegistration from "../../../components/TipRegistration.astro";
+import TipLicense from "../../../components/TipLicense.astro";
 import TipOfTheWeek from "../../../components/TipOfTheWeek.astro";
+import TipRegistration from "../../../components/TipRegistration.astro";
+
+import { getTipCatalog } from "../../../lib/tips";
+import { startCase } from "lodash-es";
+
+const { categories, tips } = await getTipCatalog();
 
 const crumbs = [
   {
@@ -78,4 +84,39 @@ const crumbs = [
       <TipOfTheWeek slug="etiquette" />
     </div>
   </ShadowBoxSection>
+
+  <ThemedSection theme="tertiary">
+    <h2 class="display-4 text-primary mb-4">
+      Tip of the Week <strong>Archive</strong>
+    </h2>
+    <hr />
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 mt-5">
+      <div class="col">
+        <h3>Most Recent</h3>
+        <ul class="mt-1 mb-3 list-disc">
+          {tips.slice(0, 7).map((tip) => (
+            <li>
+              <a href={`/tips/${tip.slug}`}>{tip.data.title}</a>
+            </li>
+          ))}
+        </ul>
+      </div>
+      {categories.map((cat) => (
+        <div class="col">
+          <h3>{ startCase(cat) }</h3>
+          <ul class="mt-1 mb-4 list-disc">
+            {tips.map((tip) => tip.data.tags.includes(cat) && (
+              <li class="list-item">
+                <a href={`/tips/${tip.slug}`}>{tip.data.title}</a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}         
+    </div>
+  </ThemedSection>
+
+  <ThemedSection style="secondary">
+    <TipLicense />
+  </ThemedSection>
 </Layout>

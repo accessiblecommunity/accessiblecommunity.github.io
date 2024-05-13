@@ -4,19 +4,18 @@ import { getTipCatalog } from "../../lib/tips";
 export async function getStaticPaths() {
   const catalog = await getTipCatalog();
 
-  return catalog.tips.map(({ data, slug }) => ({
-    params: { slug },
+  return catalog.tips.map((tip) => ({
+    params: { slug: tip.slug },
     props: { 
       catalog,
-      title: data.title,
+      tip
     }
   }));
 }
 
 import TipLayout from "../../layouts/TipLayout.astro";
 
-const { slug } = Astro.params;
-const { catalog } = Astro.props;
+const { tip, catalog } = Astro.props;
 ---
 
-<TipLayout slug={slug} catalog={catalog} />
+<TipLayout tip={tip} catalog={catalog} />

@@ -1,6 +1,6 @@
 ---
 import { getEntry } from "astro:content";
-import { getTipCatalog } from "../lib/tips";
+import { getTipCatalog, getRelatedTips } from "../lib/tips";
 import { isEmpty, startCase } from "lodash-es";
 
 const defaultCrumbs = [
@@ -37,6 +37,7 @@ const {
   title = tip?.data.title,
 } = Astro.props;
 const { tips = [], categories = [] } = catalog;
+const related = await getRelatedTips(tip);
 
 import { Icon } from 'astro-icon/components';
 import ImageHeading from "../components/ImageHeading.astro";
@@ -73,7 +74,7 @@ const header = Astro.slots.has('header') ?
   </Fragment>
   <ImageHeading image="notes" slot="header" set:html={header} />
 
-  <ThemedSection style="tertiary" py={4}>
+  <ThemedSection style="tertiary">
     <div class="d-flex flex-column flex-lg-row justify-content-lg-between gap-3">
       <div class="col col-lg-7">
         <TipOfTheWeek tip={tip} />
@@ -82,7 +83,23 @@ const header = Astro.slots.has('header') ?
         class="d-flex flex-column flex-md-row d-lg-block gap-4 col-lg-4"
         aria-label="Tips"
       >
-        <div class="col col-md-6 col-lg-12 mb-4">
+        <ul class="list-unstyled mb-4">
+          {
+            isEmpty(tips) ? "" : (
+              <li class="text-primary-emphasis">
+                <span class="display-6"><span class="fw-bold">Related</span> Tips</span>
+                <ul class="mt-1 mb-3 list-disc">
+                  {related.map((b) => (
+                    <li>
+                      <a href={`/tips/${b.slug}`}>{b.data.title}</a>
+                    </li>
+                  ))}
+                </ul>
+              </li>
+            )
+          }
+        </ul>
+        <div class="col col-md-6 col-lg-12">
           <TipRegistration defaultWidth border={2}>
             <p>
               Would you like to receive these tips automatically? 
@@ -97,44 +114,11 @@ const header = Astro.slots.has('header') ?
             </p>
           </TipRegistration>
         </div>
-        <ul class="list-unstyled">
-          {
-            isEmpty(tips) ? "" : (
-              <li class="text-primary-emphasis">
-                <span class="display-6">Recent Tips</span>
-                <ul class="mt-1 mb-3 list-disc">
-                  {tips.slice(0, 10).map((b) => (
-                    <li>
-                      <a href={`/tips/${b.slug}`}>{b.data.title}</a>
-                    </li>
-                  ))}
-                </ul>
-              </li>
-            )
-          }
-          {
-            isEmpty(categories) ? "" : (
-              <li class="text-primary-emphasis">
-                <span class="display-6">Categories</span>
-                <ul class="mt-1 mb-3 list-disc">
-                  <li class="list-item">
-                    <a href="/tips/archive">Full Archive</a>
-                  </li>
-                  {categories.map((cat) => (
-                    <li class="list-item">
-                      <a href={`/tips/archive/${cat}`}>{startCase(cat)}</a>
-                    </li>
-                  ))}
-                </ul>
-              </li>
-            )
-          }
-        </ul>
       </nav>
     </div>
   </ThemedSection>
 
-  <ThemedSection style="secondary" py={0}>
+  <ThemedSection style="secondary" py={3}>
     <TipLicense />
   </ThemedSection>
 </Layout>

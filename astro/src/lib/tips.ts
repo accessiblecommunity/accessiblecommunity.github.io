@@ -1,5 +1,5 @@
-import { getCollection, getEntries } from "astro:content";
-import { compact, isEmpty, isNil, kebabCase, reverse, sortBy, uniqBy } from "lodash-es";
+import { getCollection, } from "astro:content";
+import { compact, intersection, isEmpty, isNil, reverse, sortBy } from "lodash-es";
 
 export async function getTipCategories(tips?) {
   tips = isNil(tips) ? await getCollection("atotw") : tips;
@@ -11,27 +11,12 @@ export async function getTipCategories(tips?) {
   return topics;
 }
 
-export async function getTipDates(tips?) {
-  tips = isNil(tips) ? await getCollection("atotw") : tips;
-  if (isEmpty(tips)) return [];
-
-  const dates = tips.map((blog) => ({
-    date: blog.data.published,
-    sort: parseFloat(
-      `${blog.data.published.getYear()}.${blog.data.published.getMonth()}`,
-    ),
-  }));
-
-  const sortedDates = sortBy(dates, ["sort"]);
-  const uniqueDates = uniqBy(sortedDates, "sort");
-  reverse(uniqueDates);
-
-  return uniqueDates.map(({ date }) =>
-    date.toLocaleDateString("en-us", {
-      year: "numeric",
-      month: "long",
-    }),
-  );
+export async function getRelatedTips(tip) {
+  const relatedTips = await getCollection("atotw", ({ slug, data }) => {
+    return slug != tip.slug && !isEmpty(intersection(tip.data.tags, data.tags));
+  });
+  const orderedTips = await orderByRecent(relatedTips);
+  return orderedTips;
 }
 
 export async function orderByRecent(tips?) {

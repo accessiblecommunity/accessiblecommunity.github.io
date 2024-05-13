@@ -1,5 +1,5 @@
 import rss from '@astrojs/rss';
-import { orderByRecent } from '~lib/tips';
+import { orderByRecent } from '@lib/tips';
 
 export async function GET(context) {
   const tips = await orderByRecent();
