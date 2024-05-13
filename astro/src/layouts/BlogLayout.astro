@@ -59,6 +59,14 @@ import ThemedSection from "../components/ThemedSection.astro";
     <meta property="article:section" content="Accessibility" />
     {blog.data.tags.map((tag) => <meta property="article:tag" content={tag} />)}
   </Fragment>
+  <Fragment slot="head">
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      title="Accessible Community's Blog"
+      href={`${Astro.site}/blog/rss.xml`}
+    />
+  </Fragment>
   <ImageHeading image="blog" slot="header">
     <slot name="header">
       <strong>Blog</strong>
