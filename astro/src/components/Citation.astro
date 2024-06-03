@@ -1,0 +1,151 @@
+---
+import { boolean } from "astro/zod";
+import { getEntry } from "astro:content";
+
+interface Props {
+  member: string | object;
+  role?: string | boolean;
+  element?: string;
+  left?: boolean;
+  dash?: boolean;
+  highlightName?: boolean;
+  firstNameOnly?: boolean;
+  branded?: boolean;
+  size?: string;
+  valign?: string;
+  responsive?: boolean;
+}
+
+interface Names {
+  name: string;
+  nickname?: string;
+}
+
+const {
+  member,
+  role = true,
+  highlightName = false,
+  firstNameOnly = false,
+  left = true,
+  dash = false,
+  branded = false,
+  valign = "start",
+  element = "div",
+  size = "",
+  responsive = false,
+} = Astro.props;
+
+const memberObj =
+  typeof member == "string" ? await getEntry("team", member) : member;
+const { roles, picture, alt } = memberObj.data;
+const teamName = typeof role === "boolean" ? "default" : role;
+const title = role && roles[teamName];
+
+function getDisplayName({ name, nickname } : Names) {
+  if (nickname) {
+    if (highlightName) nickname = `<strong>${nickname}</strong>`;
+    return nickname;
+  } else {
+    const nameArray = name.split(" ");
+    if (highlightName) nameArray[0] = `<strong>${nameArray[0]}</strong>`;
+    if (firstNameOnly) return nameArray[0];
+  
+    return nameArray.join(" ");
+  }
+}
+const displayName = getDisplayName(memberObj.data);
+const NameTag = element;
+---
+
+<div
+  class:list={[
+    "vignette",
+    size && `vignette-${size}`,
+    responsive && "vignette-resp",
+    "d-inline-flex",
+    left ? "flex-row-reverse" : "justify-content-end",
+    `align-items-${valign}`,
+    `gap-${size == "lg" ? "2" : "1"}`,
+  ]}
+>
+  <div
+    class:list={[
+      "flex-fill text-start me-2 me-sm-1 me-md-0",
+      branded && "text-brand",
+    ]}
+  >
+    {
+      title && dash ?
+      <figcaption
+        class:list={[
+          "fs-5",
+          "text-end",
+        ]}
+      >
+        <NameTag
+          class="vignette-name citation mb-1"
+          set:html={"&mdash; " + `${displayName}`}
+        />
+        <div class="vignette-title citation" set:html={title} />
+      </figcaption>
+      : <figcaption
+        class:list={[
+          "blockquote-footer fs-5 d-flex justify-content-end",
+          "text-end",
+        ]}
+      >
+        <NameTag class="vignette-name citation justify-content-center" set:html={displayName} />
+      </figcaption>
+    }
+  </div>
+  <img
+    class:list={["vignette-pic rounded-circle rounded-top-0", responsive && "d-none d-sm-block"]}
+    src={picture.src}
+    alt={
+      alt ?
+      alt : ""
+    }
+  />
+</div>
+
+<style is:global lang="scss">
+  @import "bootstrap/scss/functions";
+  @import "bootstrap/scss/variables";
+  @import "bootstrap/scss/mixins/breakpoints";
+
+  .citation {
+    line-height: 1.2em;
+  }
+  .vignette-name {
+    margin-bottom: 0;
+  }
+  .vignette-title {
+    color: var(--bs-secondary-color);
+    font-size: 85%;
+    margin-bottom: 0.25rem;
+  }
+  .blockquote-footer .vignette-title {
+    font-size: 80%;
+  }
+  .blockquote-footer .vignette-name,
+  .blockquote-footer .vignette-title {
+    color: inherit;
+  }
+  .blockquote-footer .vignette-title,
+  .vignette-resp .vignette-title,
+  .vignette-lg .vignette-title {
+    line-height: 90%;
+    margin-bottom: 0.1em;
+  }
+  .vignette .vignette-pic {
+    height: 3.5rem;
+  }
+  .vignette-lg .vignette-pic {
+    height: 5rem;
+  }
+  @include media-breakpoint-up(md) {
+    .vignette-resp .vignette-pic {
+      height: 5rem;
+    }
+  }
+</style>
