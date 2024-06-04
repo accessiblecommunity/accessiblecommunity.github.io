@@ -68,8 +68,7 @@ $primary-border-subtle:             #9ECBF1; // blue-10
 
 $primary-text-emphasis-dark:        #9ECBF1; // blue-10
 $primary-bg-subtle-dark:            #020A32; // primary + 6 shade
-$primary-border-subtle-dark:        #030D45; // primary + 3 shade
-
+$primary-border-subtle-dark:        tint-color($primary, 30%);
 
 
 //*****************
