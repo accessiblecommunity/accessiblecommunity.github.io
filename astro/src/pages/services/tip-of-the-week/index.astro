@@ -1,4 +1,5 @@
 ---
+import Branding from "../../../components/Branding.astro";
 import { Icon } from "astro-icon/components";
 import ImageHeading from "../../../components/ImageHeading.astro";
 import Layout from "../../../layouts/Layout.astro";
@@ -52,8 +53,7 @@ const crumbs = [
           at the beginning to provide a quick summary.
         </p>
         <p class="lead">
-          Check out our most recent <span class="text-brand fw-bold"
-            >Tip of the Week</span
+          Check out our most recent <Branding>Tip of the Week</Branding
           >
           below. Fill out the registration form to sign up. It's completely free
           and we will not <a href="/privacy-policy">sell or share your data</a>.
@@ -66,7 +66,7 @@ const crumbs = [
 
       <TipRegistration>
         <h3 class="display-6 text-primary-emphasis mb-0">
-          <strong>Tip of the Week</strong> Registration
+          <Branding>Tip of the Week</Branding> Registration
         </h3>
         <p class="small">
           <span class="text-primary-emphasis fw-bold">Note:</span> Required fields

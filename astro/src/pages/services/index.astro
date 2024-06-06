@@ -2,6 +2,7 @@
 import { Icon } from "astro-icon/components";
 import { Image } from "astro:assets";
 
+import Branding from "../../components/Branding.astro";
 import ExternalLink from "../../components/ExternalLink.astro";
 import Hero from "../../components/Hero.astro";
 import Layout from "../../layouts/Layout.astro";
@@ -15,21 +16,21 @@ const services = [
   {
     icon: "ta11y-logo",
     name: "ta11y",
-    title: "<strong>t</strong>a11y.<strong>org</strong>",
+    title: "ta11y.org",
     text: "An online tool for learning about and evaluating the accessibility of social media, websites, facilities, events and procedures.",
     link: "https://www.ta11y.org",
   },
   {
     icon: "mutua11y-logo",
     name: "mutua11y",
-    title: "<strong>mutu</strong>a11y.<strong>org</strong>",
+    title: "mutua11y.org",
     text: "A platform for communities, local government, organizations and accessibility professionals to share information and ideas.",
     link: "https://www.mutua11y.org",
   },
   {
     icon: "loca11y-logo",
     name: "loca11y",
-    title: "<strong>loc</strong>a11y.<strong>org</strong>",
+    title: "loca11y.org",
     text: "A tool for people with disabilities to find and recommend organizations and events where they can participate and engage.",
     // link: 'https://www.loca11y.org',
   },
@@ -71,7 +72,7 @@ const services = [
               <div class="feature-icon d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient">
                 <Icon class="bi" name={icon} role="img" aria-hidden="true" />
               </div>
-              <h2 class="my-1 fs-1 text-primary" set:html={title} />
+              <h2 class="my-1 fs-1 text-primary"><Branding text={title} /></h2>
             </div>
             <p class="ms-5 me-3 flex-fill">
               <span set:html={text} />
@@ -90,8 +91,8 @@ const services = [
                 </a>
                 {link ?
                   <div class="text-primary text-nowrap">
-                    <ExternalLink href={link} class=" text-brand" gaps={true}>
-                      <span set:html={"Visit " + title} />
+                    <ExternalLink href={link} class="text-brand" gaps={true}>
+                      Visit <Branding text={title} />
                     </ExternalLink>
                   </div>
                 : <div class="text-brand fw-bold flex-fill">Coming soon.</div>}
@@ -120,7 +121,7 @@ const services = [
           accessibility.
         </p>
         <p>
-          <span class="text-brand"><strong>t</strong>a11y</span> provides a free,
+          <Branding>ta11y</Branding> provides a free,
           accessible way to use publicly available checklists without printing out
           hundreds of pages of paper. This one-stop online tool makes it easier to
           start and evaluate an accessibility program, evaluate web or facility accessibility,
@@ -155,24 +156,21 @@ const services = [
     <p class="text-bg-primary">
       An online community to connect and advance disability-related
       professionals.
-      <span class="text-brand"><strong>mutu</strong>a11y</span> provides a platform
+      <Branding>mutua11y</Branding> provides a platform
       for accessibility professionals and others interested to collaborate on projects
       and ideas; thus establishing "open-source accessibility."
     </p>
     <ul class="text-bg-primary">
       <li>
         The <a href="/mentoring" class="link-light link-offset-2"
-          ><span class="text-brand fw-bold"
-            >mutu<span class="fw-lighter">a11y</span> mentoring</span
+          ><Branding>mutua11y mentoring</Branding
           ></a
         >
         program matches senior accessibility experts with novice accessibility professionals
         to mentor and guide them in their career development.
       </li>
       <li>
-        <span class="text-brand fw-bold"
-          >mutu<span class="fw-lighter">a11y</span> pathways</span
-        >
+        <Branding>mutua11y pathways</Branding>
         advertises and promotes apprenticeships, internships and fellowships in various
         accessibility and disability-inclusion industries.
       </li>
@@ -196,11 +194,10 @@ const services = [
       About loc<span class="fw-lighter">a11y</span>.org
     </h2>
     <p>
-      <span class="text-brand"><strong>loc</strong>a11y</span> provides an online
+      <Branding>loca11y</Branding> provides an online
       tool for people with disabilities to find and recommend local organizations
-      and events where they can successfully engage and participate. <span
-        class="text-brand"><strong>loc</strong>a11y</span
-      >
+      and events where they can successfully engage and participate.
+      <Branding>loca11y</Branding>
       is designed by people with disabilities for people with disabilities. It is
       also designed to celebrate and recognize local organizations. A user can recommend
       organizations by disability where they are successful, share comments about
@@ -209,7 +206,7 @@ const services = [
       and review feedback before it becomes public.
     </p>
     <p>
-      <span class="text-brand"><strong>loc</strong>a11y</span> also includes a calendar
+      <Branding>loca11y</Branding> also includes a calendar
       of events that can be filtered by organization or by disability. This allows
       people with disabilities and their caretakers to find events where they can
       participate. It also allows organizations to work together to coordinate, deconflict
@@ -221,7 +218,7 @@ const services = [
     </p>
     <p>
       <span class="text-brand fw-bold">What it is not:</span> Google Maps or Yelp.
-      <span class="text-brand"><strong>loc</strong>a11y</span> reports positive feedback
+      <Branding>loca11y</Branding> reports positive feedback
       only and centers on accessibility, rather than quality of services.
     </p>
   </ThemedSection>

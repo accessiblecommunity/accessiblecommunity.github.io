@@ -10,7 +10,7 @@ if (Astro.slots.has("default"))
   text = await Astro.slots.render('default');
 
 text = text.replace(
-  "Accessible", ' <span class="fw-lighter">Accessible</span>'
+  "Accessible", '<span class="fw-lighter">Accessible</span>'
 ).replace(
   "loca11y", '<span aria-hidden="true">loc<span class="fw-lighter">a11y</span></span><span class="visually-hidden">locally</span>'
 ).replace(
