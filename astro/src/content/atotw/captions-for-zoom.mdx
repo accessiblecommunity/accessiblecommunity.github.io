@@ -8,8 +8,8 @@ tags:
     - multimedia
 ---
 
-import ExternalLink from "../../components/ExternalLink.astro";
-import ImageFigure from "../../components/ImageFigure.astro";
+import { components, ImageFigure } from '../../lib/mdx';
+export { components }; 
 
 import settingsImg from "../../images/atotw/captions-for-zoom/settings.png";
 import moreImg from "../../images/atotw/captions-for-zoom/more.png";
@@ -36,4 +36,4 @@ At the beginning of your meetings and events, remind your attendees that they ca
 
 Most teleconferencing tools provide automatic captions. Some are always available and some need to be turned on.
 
-<ExternalLink inline href="https://www.ta11y.org/learning/topic?key=media.captioning">Learn more about captioning</ExternalLink> at <span class="text-brand text-primary fw-bold">t<span class="fw-lighter">a11y</span>.org</span>.
+[Learn more about captioning](https://www.ta11y.org/learning/topic?key=media.captioning) at **ta11y.org**.

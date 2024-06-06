@@ -8,11 +8,12 @@ tags:
     - digital-accessibility
 ---
 
-import ExternalLink from "../../components/ExternalLink.astro";
+import { components } from '../../lib/mdx';
+export { components }; 
 
 Here's an eye-opening activity that will only take five minutes. Open your web browser on your computer and try navigating a website with just your keyboard. That's right, not a mouse or trackpad, just your keyboard. If you don't know how, follow along.
 
-Let's try it out at one of our websites: <ExternalLink inline href="https://www.ta11y.org" class="text-brand fw-bold">t<span class="fw-lighter">a11y</span>.org</ExternalLink>.
+Let's try it out at one of our websites: [**ta11y.org**](https://www.ta11y.org).
 
 - Use your mouse to place the focus in the browser search bar at the top by clicking in it. You'll see either a highlight or a blinking cursor. If you see a highlight, hit the right arrow key on your keyboard to move to the blinking cursor. 
 - Use the __Tab key__ on your keyboard to move forward. This will go through the browser controls and then enter the web page.

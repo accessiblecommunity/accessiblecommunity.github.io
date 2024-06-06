@@ -8,8 +8,8 @@ tags:
     - content
 ---
 
-import ExternalLink from "../../components/ExternalLink.astro";
-import ImageFigure from "../../components/ImageFigure.astro";
+import { components, ImageFigure } from '../../lib/mdx';
+export { components };
 
 import signImage from "../../images/atotw/sign-contrast.png"
 
@@ -28,4 +28,4 @@ When picking colors for a sign, brochure or poster, we recommend using a color w
 - Select colors that are not directly opposite each other on a color wheel (complementary). 
     - Red and Green are an example of this. These colors can cause visual vibrations, particularly when they are a similar hue.
 
-<ExternalLink inline href="https://www.ta11y.org/learning/topic?key=contrast.a_intro">Learn more about color contrast</ExternalLink> at <span class="text-brand text-primary fw-bold">t<span class="fw-lighter">a11y</span>.org</span>.
+[Learn more about color contrast](https://www.ta11y.org/learning/topic?key=contrast.a_intro) at **ta11y.org**.

@@ -1,0 +1,27 @@
+---
+interface Props {
+  text?: String;
+  class?: String;
+}
+
+let { text = "", class: extraClasses = "" } = Astro.props;
+
+if (Astro.slots.has("default"))
+  text = await Astro.slots.render('default');
+
+text = text.replace(
+  "Accessible", ' <span class="fw-lighter">Accessible</span>'
+).replace(
+  "loca11y", '<span aria-hidden="true">loc<span class="fw-lighter">a11y</span></span><span class="visually-hidden">locally</span>'
+).replace(
+  "ta11y", '<span aria-hidden="true">t<span class="fw-lighter">a11y</span></span><span class="visually-hidden">tally</span>'
+).replace(
+  "mutua11y", '<span aria-hidden="true">mutu<span class="fw-lighter">a11y</span></span><span class="visually-hidden">mutually</span>'
+).replace(
+  "useable", '<span aria-hidden="true">use<span class="fw-lighter">able</span></span><span class="visually-hidden">usable</span>'
+).replace(
+  "fixable", '<span aria-hidden="true">fix<span class="fw-lighter">able</span></span><span class="visually-hidden">fixable</span>'
+);
+---
+
+<span class:list={["text-brand fw-bold", extraClasses]} set:html={text} />

@@ -8,8 +8,8 @@ tags:
     - content
 ---
 
-import ExternalLink from "../../components/ExternalLink.astro";
-import ImageFigure from "../../components/ImageFigure.astro";
+import { components, ImageFigure } from '../../lib/mdx';
+export { components }; 
 
 import flashingImg from "../../images/atotw/flashing.png";
 
@@ -27,4 +27,4 @@ Try to avoid hosting events that use flashing lights for a presentation, perform
 
 <ImageFigure src={flashingImg} class="my-3 text-center" imageClass="w-100 bg-white" alt="A receipt for a musical theatre performance containing a warning about the flashing strobe lights that are used during the show." caption="Warn about any usage of flashing lights or effects."/>
 
-<ExternalLink inline href="https://www.ta11y.org/learning/topic?key=change.flash">Learn more about flashing</ExternalLink> at <span class="text-brand text-primary fw-bold">t<span class="fw-lighter">a11y</span>.org</span>.
+[Learn more about flashing](https://www.ta11y.org/learning/topic?key=change.flash) at **ta11y.org**.

@@ -8,12 +8,12 @@ tags:
     - disability-inclusion
 ---
 
-import ExternalLink from "../../components/ExternalLink.astro";
-import ImageFigure from "../../components/ImageFigure.astro";
+import { components, ImageFigure } from '../../lib/mdx';
+export { components };
 
 import inclusion from "../../images/atotw/visualize-inclusion.jpg";
 
-<ExternalLink inline href="https://www.cdc.gov/ncbddd/disabilityandhealth/infographic-disability-impacts-all.html">One in four people have a disability</ExternalLink>, but images that we see around us rarely represent these individuals. This unintentional habit of excluding people with disability from our visual awareness makes it seem like disabilities are far less common than they are.  Many cultures are changing this and you are more likely in the past year to see people with disabilities in fashion magazines and on popular TV shows. Similarly, new repositories of images with disabilities are available for use. 
+[One in four people have a disability](https://www.cdc.gov/ncbddd/disabilityandhealth/infographic-disability-impacts-all.html), but images that we see around us rarely represent these individuals. This unintentional habit of excluding people with disability from our visual awareness makes it seem like disabilities are far less common than they are.  Many cultures are changing this and you are more likely in the past year to see people with disabilities in fashion magazines and on popular TV shows. Similarly, new repositories of images with disabilities are available for use. 
 
 <ImageFigure src={inclusion} class="my-3 text-center" imageClass="w-100 bg-white" alt="A man in a motorized chair and a woman with a cane walking down a sidewalk." caption="Include images of people with disabilities in your organization’s content."/>
 
@@ -25,7 +25,7 @@ Not everyone has a visible disability and not every image needs to have a person
 
 Review your web page, social media posts, and other visual content. How many of your organization's images include people with disabilities?
 
-- If there are only a couple, consider replacing some images with alternatives that include people with disabilities. You can find <ExternalLink inline href="https://www.ta11y.org/learning/topic?key=inclusive_img">sources for images for disability inclusion</ExternalLink> on our tool, <span class="text-brand text-primary fw-bold">t<span class="fw-lighter">a11y</span>.org</span>.
+- If there are only a couple, consider replacing some images with alternatives that include people with disabilities. You can find [sources for images for disability inclusion](https://www.ta11y.org/learning/topic?key=inclusive_img) on our tool, **ta11y.org**.
 - There is no perfect number. But, consider having about 10-20% of your images include people with disabilities. That percentage is similar to the overall percent of the population with visible disabilities.
 
-And remember to include <ExternalLink inline href="https://www.ta11y.org/learning/topic?key=create_design.write_alt">alternative text</ExternalLink> on your images!
+And remember to include [alternative text](https://www.ta11y.org/learning/topic?key=create_design.write_alt) on your images!
