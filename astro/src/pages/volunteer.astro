@@ -1,7 +1,8 @@
 ---
+import Branding from "../components/Branding.astro";
+import Hero from "../components/Hero.astro";
 import { Icon } from "astro-icon/components";
 import Layout from "../layouts/Layout.astro";
-import Hero from "../components/Hero.astro";
 import ThemedSection from "../components/ThemedSection.astro";
 
 const crumbs = [
@@ -40,9 +41,9 @@ import heroBg from "../images/colored-hero/hands-together.png";
       </div>
     </div>
     <p class="lead text-bg-hero">
-      <span class="text-brand">Accessible <strong>Community</strong></span> is a
-      volunteer-led and staffed 501(c)3 organization. We welcome any contributions
-      to help make our communities more accessible and disability-inclusive.
+      <Branding>Accessible Community</Branding> is a volunteer-led and staffed 501(c)3
+      organization. We welcome any contributions to help make our communities more
+      accessible and disability-inclusive.
     </p>
     <Fragment slot="action-bar">
       <a href="#teams" class="icon-link link-light hero-link">
@@ -60,12 +61,11 @@ import heroBg from "../images/colored-hero/hands-together.png";
     <h2 class="display-3">Volunteer <span class="fw-bold">Teams</span></h2>
     <div>
       <p>
-        Thank you for wanting to learn about our volunteer opportunities at <span
-          class="text-brand text-primary"
-          >Accessible <strong>Community</strong></span
-        >. We have different teams to choose from, and we have provided
-        decriptions of each team to help you choose one (or more) to join.
-        Everyone, including our staff, is a volunteer.
+        Thank you for wanting to learn about our volunteer opportunities at
+        <Branding class="text-primary">Accessible Community</Branding>. We have
+        different teams to choose from, and we have provided decriptions of
+        each team to help you choose one (or more) to join. Everyone, including
+        our staff, is a volunteer.
       </p>
       <p>
         All our teams meet virtually. This allows us to have an international
@@ -223,10 +223,8 @@ import heroBg from "../images/colored-hero/hands-together.png";
     </h2>
     <form id="volunteerFormEl" class="col p-4 border-info volunteer-form">
       <p class="lead">
-        Thank you for your interest in volunteering with <span
-          class="text-brand text-primary"
-          >Accessible <strong>Community</strong></span
-        >.
+        Thank you for your interest in volunteering with
+        <Branding>Accessible Community</Branding>.
       </p>
       <p class="col-lg-9">
         We are a growing <strong class="text-primary"
@@ -338,10 +336,9 @@ import heroBg from "../images/colored-hero/hands-together.png";
     id="volunteerSuccess"
   >
     <div class="lead">
-      Thank you for your interest in volunteering with <span
-        class="text-brand text-primary"
-        >Accessible <strong>Community</strong></span
-      >. We'll be in touch shortly.
+      Thank you for your interest in volunteering with
+      <Branding class="text-primary">Accessible Community</Branding>. We'll be
+      in touch shortly.
     </div>
   </div>
 </Layout>

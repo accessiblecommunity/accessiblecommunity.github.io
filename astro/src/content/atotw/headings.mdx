@@ -8,8 +8,8 @@ tags:
     - digital-accessibility
 ---
 
-import ExternalLink from "../../components/ExternalLink.astro";
-import ImageFigure from "../../components/ImageFigure.astro";
+import { components, ImageFigure } from '../../lib/mdx';
+export { components }; 
 
 import googleDocs from "../../images/atotw/headings/google-docs.png";
 import microsoftWord from "../../images/atotw/headings/microsoft-word.png";
@@ -54,4 +54,4 @@ Use the following strategy when to establish headings and structure in your cont
 
 <ImageFigure src={wordpress} class="my-3 text-center" imageClass="w-100 bg-white" alt="A screenshot of adding a heading to a Wordpress page."/>
 
-<ExternalLink inline href="https://www.ta11y.org/learning/topic?key=design.page_structure">Learn more about headings</ExternalLink> at <span class="text-brand text-primary fw-bold">t<span class="fw-lighter">a11y</span>.org</span>.
+[Learn more about headings at *ta11y.org*](https://www.ta11y.org/learning/topic?key=structure.headings).

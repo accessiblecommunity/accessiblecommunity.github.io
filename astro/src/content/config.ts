@@ -40,18 +40,21 @@ const team = defineCollection({
     z.object({
       name: z.string(),
       nickname: z.string().optional(),
-      roles: z.object({
-        "default": z.string(),
-        "board": z.string(),
-        "content": z.string(),
-        "development": z.string(),
-        "evaluations": z.string(),
-        "leadership": z.string(),
-        "loca11y": z.string(),
-        "social": z.string(),
-        "support": z.string(),
-        "ux": z.string(),
-      }).partial().optional(),
+      roles: z
+        .object({
+          default: z.string(),
+          board: z.string(),
+          content: z.string(),
+          development: z.string(),
+          evaluations: z.string(),
+          leadership: z.string(),
+          loca11y: z.string(),
+          social: z.string(),
+          support: z.string(),
+          ux: z.string(),
+        })
+        .partial()
+        .optional(),
       picture: image(),
       alt: z.string().optional(),
       links: z

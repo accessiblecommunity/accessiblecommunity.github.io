@@ -1,10 +1,10 @@
 ---
 import { Icon } from "astro-icon/components";
 
+import Branding from "../components/Branding.astro";
 import ExternalLink from "../components/ExternalLink.astro";
 import Hero from "../components/Hero.astro";
 import Layout from "../layouts/Layout.astro";
-import TeamVignette from "../components/TeamVignette.astro";
 import ThemedSection from "../components/ThemedSection.astro";
 import ThemedBox from "../components/ThemedBox.astro";
 import TipRegistration from "../components/TipRegistration.astro";
@@ -27,9 +27,8 @@ import heroBg from "../images/colored-hero/wheelchair_hall.png";
       </div>
     </Fragment>
     <div class="lead text-bg-hero">
-      At <span class="text-brand">Accessible <strong>Community</strong></span>,
-      we build ethical technology solutions to nurture disability-inclusive
-      communities.
+      At <Branding>Accessible Community</Branding>, we build ethical technology
+      solutions to nurture disability-inclusive communities.
     </div>
     <Fragment slot="action-bar">
       <a href="#journey" class="icon-link link-light hero-link">
@@ -53,9 +52,7 @@ import heroBg from "../images/colored-hero/wheelchair_hall.png";
           aria-hidden="true"
         />
         <span>
-          Help us launch <span class="text-brand"
-            ><strong>loc</strong>a11y.<strong>org</strong></span
-          >
+          Help us launch <Branding>loca11y.org</Branding>
         </span>
       </ExternalLink>
     </Fragment>
@@ -87,9 +84,8 @@ import heroBg from "../images/colored-hero/wheelchair_hall.png";
           >.
         </p>
         <p>
-          <span class="text-brand text-primary"
-            >Accessible <strong>Community</strong></span
-          > exemplifies “Nothing about us without us.” Our non-profit is led by people
+          <Branding class="text-primary">Accessible Community</Branding>
+          exemplifies “Nothing about us without us.” Our non-profit is led by people
           with disabilities and caretakers who want to break down these barriers
           and create more accessible communities. Read our <a
             href="/about/story"
@@ -159,9 +155,7 @@ import heroBg from "../images/colored-hero/wheelchair_hall.png";
             role="img"
             aria-hidden="true"
           />
-          <span class="text-brand">
-            <strong>loc</strong>a11y.<strong>org</strong>
-          </span>
+          <Branding>loca11y.org</Branding>
         </h3>
         <p class="text-center">
           Find and recommend local organizations and events that provide
@@ -184,9 +178,7 @@ import heroBg from "../images/colored-hero/wheelchair_hall.png";
             role="img"
             aria-hidden="true"
           />
-          <span class="text-brand">
-            <strong>t</strong>a11y.<strong>org</strong>
-          </span>
+          <Branding>ta11y.org</Branding>
         </h3>
         <p class="text-center">
           Use publicly available accessibility checklists with helpful guides
@@ -195,7 +187,7 @@ import heroBg from "../images/colored-hero/wheelchair_hall.png";
         </p>
         <div class="text-center">
           <ExternalLink class="text-brand" href="https://www.ta11y.org">
-            Visit <strong>t</strong>a11y.<strong>org</strong>
+            Visit <Branding>ta11y.org</Branding>
           </ExternalLink>
         </div>
       </ThemedBox>
@@ -212,9 +204,7 @@ import heroBg from "../images/colored-hero/wheelchair_hall.png";
             role="img"
             aria-hidden="true"
           />
-          <span class="text-brand">
-            <strong>mutu</strong>a11y.<strong>org</strong>
-          </span>
+          <Branding>mutua11y.org</Branding>
         </h3>
         <p class="text-center">
           Connect with other disability-related professionals through mentoring,
@@ -222,7 +212,7 @@ import heroBg from "../images/colored-hero/wheelchair_hall.png";
         </p>
         <div class="text-center">
           <ExternalLink href="https://www.mutua11y.org" class="text-brand">
-            Visit <strong>mutu</strong>a11y.<strong>org</strong>
+            Visit <Branding>mutua11y.org</Branding>
           </ExternalLink>
         </div>
       </ThemedBox>
