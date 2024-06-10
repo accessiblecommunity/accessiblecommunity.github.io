@@ -33,3 +33,10 @@ text = text
 ---
 
 <span class:list={["text-brand fw-bold", extraClasses]} set:html={text} />
+<style>
+  /* Safari renders this weirdly... force to be a standard line height */
+  span.text-brand,
+  span.text-brand span.fw.lighter {
+    line-height: normal;
+  }
+</style>
