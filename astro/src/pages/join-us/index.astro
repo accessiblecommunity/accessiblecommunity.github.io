@@ -1,4 +1,5 @@
 ---
+import Branding from "../../components/Branding.astro";
 import ExternalLink from "../../components/ExternalLink.astro";
 import Hero from "../../components/Hero.astro";
 import { Icon } from "astro-icon/components";
@@ -39,9 +40,9 @@ const crumbs = [
       </div>
     </div>
     <p class="lead text-bg-hero">
-      <span class="text-brand">Accessible <strong>Community</strong></span> is a
-      volunteer-led and staffed 501(c)3 organization. We welcome any contributions
-      to help make our communities more accessible and disability-inclusive.
+      <Branding>Accessible Community</Branding> is a volunteer-led and staffed 501(c)3
+      organization. We welcome any contributions to help make our communities more
+      accessible and disability-inclusive.
     </p>
     <Fragment slot="action-bar">
       <a href="/donate" class="icon-link link-light hero-link">
@@ -65,9 +66,7 @@ const crumbs = [
           aria-hidden="true"
         />
         <span>
-          Help us launch <span class="text-brand"
-            ><strong>loc</strong>a11y.<strong>org</strong></span
-          >
+          Help us launch <Branding>loca11y.org</Branding>
         </span>
       </ExternalLink>
     </Fragment>

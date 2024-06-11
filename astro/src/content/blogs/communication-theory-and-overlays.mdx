@@ -6,48 +6,37 @@ tags:
 author: rachael-bradley-montgomery
 ---
 
-import ExternalLink from "../../components/ExternalLink.astro";
-import ImageFigure from "../../components/ImageFigure.astro";
+import { components, ImageFigure } from '../../lib/mdx';
+export { components };
 
 import swModel from "../../images/blogs/Shannon-Weaver_model_of_communication.svg";
 import overlayModel from "../../images/blogs/shannon-weaver-model-overlays.png";
 
 
-When I was studying for the comprehensive exams for my PhD, I studied
-<ExternalLink href="https://en.wikipedia.org/wiki/Models_of_communication" inline={true}>communication
-theory</ExternalLink>. It has become a running joke in my house that my daughter’s early
+When I was studying for the comprehensive exams for my PhD, I studied [communication theory](https://en.wikipedia.org/wiki/Models_of_communication). It has become a running joke in my house that my daughter's early
 bedtime stories were often research papers instead of fairy tales. \[Reading in a
 gentle voice\] "Once upon a time there was a communication model called the
 Shannon-Weaver model and this model says..."
 
-As the executive director of Accessible Community and the Co-chair of the
-<ExternalLink href="https://www.w3.org/WAI/standards-guidelines/wcag/wcag3-intro/" inline={true}>Accessibility
-Guidelines Working Group</ExternalLink>, I spend a lot of time considering solutions to
+As the executive director of *Accessible Community* and the Co-chair of the
+[Accessibility
+Guidelines Working Group](https://www.w3.org/WAI/standards-guidelines/wcag/wcag3-intro/), I spend a lot of time considering solutions to
 accessibility and where digital accessibility standards are going. Part of that is
 thinking about how solutions fit into the infrastructure we build in the world.
-I thought I’d share an “aha” moment I had about overlays and why I believe they
+I thought I'd share an "aha" moment I had about overlays and why I believe they
 ultimately fail to solve the accessibility problem.
 
-As background, “Overlays are a broad term for technologies that aim to improve the
-accessibility of a website. They apply third-party source code (typically JavaScript)
-to make improvements to the front-end code of the website” (quoted from the
-<ExternalLink href="https://overlayfactsheet.com/" inline={true}>Overlay Fact
-Sheet</ExternalLink>). These technologies are added to (overlayed) website code.
-Often they include a widget for the user to interact with to customize the website.
+As background, "Overlays are a broad term for technologies that aim to improve the
+accessibility of a website. They apply third-party source code (typically JavaScript) to make improvements to the front-end code of the website" (quoted from the [Overlay Fact Sheet](https://overlayfactsheet.com/)). These technologies are added to (overlayed) website code. Often they include a widget for the user to interact with to customize the website.
 
-I should note that this article isn’t about the moral failure of overlay marketing
-strategies – plenty has been written about that. It’s the result of stepping back and
+I should note that this article isn't about the moral failure of overlay marketing
+strategies – plenty has been written about that. It's the result of stepping back and
 asking the question: "If overlays worked well, where would they fit in the accessibility
 ecosystem?" And my answer, leaning on communication theory, is not where they sit
 right now. I will add that this is my opinion and does not reflect the various places
 I work.
 
-The <ExternalLink href="https://en.wikipedia.org/wiki/Models_of_communication#Shannon_and_Weaver" inline={true}>Shannon-Weaver
-Model</ExternalLink> of communication theory is an older model (1948) and academics
-would rightly argue that a newer model might be a better basis for discussion.
-However, the beauty of the Shannon-Weaver Model is that it's easy to understand.
-Since this is a blog and not a research paper, let’s agree to use the simpler model
-and move on.
+The [Shannon-Weaver Model](https://en.wikipedia.org/wiki/Models_of_communication#Shannon_and_Weaver) of communication theory is an older model (1948) and academics would rightly argue that a newer model might be a better basis for discussion. However, the beauty of the Shannon-Weaver Model is that it's easy to understand. Since this is a blog and not a research paper, let's agree to use the simpler model and move on.
 
 In summary, the Shannon-Weaver Model states that a message is communicated using a
 **Signal** that goes from an **Information Source** through a **Transmitter** to a
@@ -57,17 +46,15 @@ changed into a signal or back again. **Noise** can be introduced in between the
 
 <ImageFigure src={swModel} class="my-2" imageClass="w-100 bg-white p-3" alt="Information moves from left to right. The Information Source sends a message through a Transmitter. The resulting Signal  goes to a central point and becomes a Received Signal. A Receiver changes the received signal into a message for the Destination. Noise can be introduced between the Signal and the Received Signal.">
   <Fragment slot="caption">
-    Shannon-Weaver model of communication. Image taken from
-    <ExternalLink href="https://commons.wikimedia.org/w/index.php?curid=125086847">Wikipedia</ExternalLink>.
-    Created by <ExternalLink href="https://en.wikipedia.org/wiki/User:aPhlsph7">aPhlsph7</ExternalLink>,
+    Shannon-Weaver model of communication. Image taken from [Wikipedia](https://commons.wikimedia.org/w/index.php?curid=125086847).
+    Created by [aPhlsph7](https://en.wikipedia.org/wiki/User:aPhlsph7),
     based on: Shannon communication system.svg by
-    <ExternalLink href="https://en.wikipedia.org/wiki/User:Wanderingstan">Wanderingstan</ExternalLink>
-    and <ExternalLink href="https://commons.wikimedia.org/wiki/User:Stannered">Stannered</ExternalLink>, CC0.
+    [Wanderingstan](https://en.wikipedia.org/wiki/User:Wanderingstan)
+    and [Stannered](https://commons.wikimedia.org/wiki/User:Stannered), CC0.
   </Fragment>
 </ImageFigure>
 
-Communication issues occur when the message is sent from the **Information Source**
-in a form the **Destination** can’t perceive or understand.
+Communication issues occur when the message is sent from the **Information Source** in a form the **Destination** can't perceive or understand.
 
 From a web accessibility ecosystem perspective we can think of this model as follows:
 * The author (**Information Source**) is the person sending the message,

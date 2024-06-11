@@ -8,7 +8,8 @@ tags:
     - content
 ---
 
-import ExternalLink from "../../components/ExternalLink.astro";
+import { components } from '../../lib/mdx';
+export { components }; 
 
 Whether you are creating a letter, brochure, website or sign, making the right font and font-formatting choices improves readability. The wrong choices can negatively affect reading and comprehension, especially for people with disabilities impacted by reading or language processing skills. While there isn't a perfect font, choosing the correct one can increase the appeal of your content and improve your brand and message.
 
@@ -27,6 +28,5 @@ Use common fonts such as Times New Roman, Calibri, Arial, and Helvetica when pos
 | Have adequate letter spacing. | Letter combinations such as 'ol', 'lo', or 'vv' can appear joined when the letter spacing is too tight, even for people with mild visual impairments. |
 | Have a visible difference between capital height and ascenders. | Letters such as capital "i" and lowercase "L" should be easily recognizable by their height differences. |
 
-<p class="my-3">
-    <ExternalLink inline href="https://www.ta11y.org/learning/topic?key=create_design.font_choices">Learn more about fonts</ExternalLink> at <span class="text-brand text-primary fw-bold">t<span class="fw-lighter">a11y</span>.org</span>.
-</p>
+\
+[Learn more about fonts at *ta11y.org*](https://www.ta11y.org/learning/topic?key=create_design.font_choices).

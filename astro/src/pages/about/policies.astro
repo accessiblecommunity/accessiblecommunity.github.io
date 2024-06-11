@@ -1,4 +1,5 @@
 ---
+import Branding from "../../components/Branding.astro";
 import ExternalLink from "../../components/ExternalLink.astro";
 import ImageHeading from "../../components/ImageHeading.astro";
 import Layout from "../../layouts/Layout.astro";
@@ -30,10 +31,8 @@ const crumbs = [
   <ThemedSection style="secondary">
     <h2 id="user" class="display-4"><strong>User</strong> Policies</h2>
     <p>
-      These are policies for users of the tools that <span
-        class="text-brand text-primary"
-        >Accessible <strong>Community</strong></span
-      >
+      These are policies for users of the tools that
+      <Branding class="text-primary">Accessible Community</Branding>
       develops. Our users should know that these policies exist and where to find
       them.
     </p>
@@ -61,8 +60,8 @@ const crumbs = [
 
     <h2 id="staff" class="display-4 mt-5"><strong>Staff</strong> Policies</h2>
     <p>
-      All contributors to <span class="text-brand text-primary"
-        >Accessible <strong>Community</strong></span
+      All contributors to <Branding class="text-primary"
+        >Accessible Community</Branding
       >
       must read and agree to the following policies. This includes our board of directors,
       our leadership and staff. If you are interested in volunteering on any team,
