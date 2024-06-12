@@ -1,0 +1,11 @@
+---
+name: Louise Clark
+roles:
+  default: Team Lead, Learning Content
+  content: Team Lead
+  leadership: Team Lead, Learning Content
+picture: ../../images/team/Ta11yCat.png
+alt: The Tally Cat has claimed this spot.
+links:
+  linkedin: https://www.linkedin.com/in/louise-clark070607
+---

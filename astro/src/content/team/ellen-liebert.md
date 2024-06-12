@@ -1,9 +1,9 @@
 ---
 name: Ellen Liebert
 roles:
-  default: Team Lead, Learning Content
+  default: Director, Education
   content: Team Lead
-  leadership: Team Lead, Learning Content
+  leadership: Director, Education
 picture: ../../images/team/Ellen_profile.png
 alt: Older woman with salt and pepper hair, blue eyes, snarky smile, and nerdy glasses.
 links:
