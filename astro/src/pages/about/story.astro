@@ -3,6 +3,7 @@ import ExternalLink from "../../components/ExternalLink.astro";
 import ImageHeading from "../../components/ImageHeading.astro";
 import Layout from "../../layouts/Layout.astro";
 import TeamVignette from "../../components/TeamVignette.astro";
+import Citation from "../../components/Citation.astro";
 import ThemedBox from "../../components/ThemedBox.astro";
 import ThemedSection from "../../components/ThemedSection.astro";
 import { Icon } from "astro-icon/components";
@@ -117,7 +118,7 @@ const crumbs = [
       help organizations understand what they need to do to be accessible - so
       we are building one.
     </p>
-    <div class="blockquote-footer text-primary-emphasis text-end fs-4 my-4">
+    <div class="text-primary-emphasis text-end fs-4 my-4 founder-cited">
       <TeamVignette
         member="rachael-bradley-montgomery"
         left={false}
@@ -126,3 +127,9 @@ const crumbs = [
     </div>
   </ThemedSection>
 </Layout>
+
+<style>
+  .founder-cited {
+    line-height: 1.2em;
+  }
+</style>
