@@ -1,10 +1,10 @@
 ---
-name: Kate
+name: Kiara
 roles:
   default: Evaluatons Team
   evaluations: Digital Evaluator
 picture: ../../images/team/Ta11yCat.png
 alt: The Tally Cat has claimed this spot.
 links:
-  linkedin: https://www.linkedin.com/in/katyachuprina/
+  linkedin: http://www.linkedin.com/in/kiarastohlman
 ---
