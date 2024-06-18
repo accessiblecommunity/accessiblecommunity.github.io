@@ -1,21 +1,43 @@
 ---
 import { getCollection } from "astro:content";
 
+import Branding from "../../components/Branding.astro";
 import ImageHeading from "../../components/ImageHeading.astro";
 import Layout from "../../layouts/Layout.astro";
 import TeamVignette from "../../components/TeamVignette.astro";
-import TeamHeading from "../../components/TeamHeading.astro";
 import ThemedSection from "../../components/ThemedSection.astro";
 
-import { isEmpty, intersection, sortBy } from "lodash-es";
+import { sortBy } from "lodash-es";
 
 const teamProfiles = await getCollection("team");
-const staff = sortBy(
-  teamProfiles.filter((p) =>
-    isEmpty(intersection(p.data.tags, ["board", "leadership"])),
-  ),
-  (p) => p.data.name.split(" ").slice(1).join(" "),
-);
+
+function getTeamMembers(tag: string) {
+  return sortBy(
+    teamProfiles.filter(
+      (teamMember) =>
+        teamMember.data.roles &&
+        Object.keys(teamMember.data.roles).includes(tag),
+    ),
+    // Alphabetize by first name
+    (teamMember) =>
+      teamMember.data.nickname || teamMember.data.name.split(" ")[0],
+  );
+}
+
+const teamMapping = {
+  "Content Team": "content",
+  "Development Team": "development",
+  "Evaluations Team": "evaluations",
+  "Social Media Team": "social",
+  "User Experience (UX) Team": "ux",
+  "Staff Support": "support",
+};
+
+const teams = Object.entries(teamMapping).map(([name, tag]) => ({
+  name,
+  team: tag,
+  members: getTeamMembers(tag),
+}));
 
 const crumbs = [
   {
@@ -33,37 +55,62 @@ const crumbs = [
   <ImageHeading image="team" slot="header">
     Our <strong>Staff</strong>
   </ImageHeading>
-  <ThemedSection theme="secondary" style="subtle" fluid={true}>
-    <ul class="list-inline text-center">
-      {
-        staff.map((member) => (
-          <li class="list-inline-item staff-list-item my-2 m-md-2 w-100">
-            <div class="text-start bg-body shadow-sm rounded-1 p-2 pt-3 fs-4">
-              <TeamVignette
-                member={member}
-                firstNameOnly={true}
-                highlightName={true}
-                branded={true}
-                valign="center"
-                size="lg"
-              />
-            </div>
-          </li>
-        ))
-      }
-    </ul>
+  <ThemedSection theme="secondary" style="subtle">
+    <p class="lead container-fluid">
+      The dedication and skill of our volunteer community makes
+      <Branding>Accessible Community's</Branding>
+      mission to grow disability inclusive communities through technology possible.
+      Our impact on each other and the world grows as we do.
+    </p>
+    <p class="lead container-fluid">
+      If you are passionate about creating a more inclusive world, consider
+      <a href="/volunteer" class="link-offset-2">volunteering with us</a>.
+    </p>
+    <p class="lead container-fluid">
+      <strong>Note:</strong>
+      In lieu of a picture, some of our staff are represented by the "Tally Cat"
+      instead.
+    </p>
+    {
+      teams.map(({ name, team, members }) => {
+        return (
+          <>
+            <h2 class="mt-5 ms-3"> {name} </h2>
+            <ul class="list-inline-block text-center px-2 px-md-4">
+              {members.map((member) => {
+                return (
+                  <li class="list-inline-item staff-list-item my-2 m-md-2 w-100">
+                    <div class="text-start bg-body shadow-sm rounded-1 p-2 pt-3 fs-4">
+                      <TeamVignette
+                        member={member}
+                        role={team}
+                        firstNameOnly={true}
+                        highlightName={true}
+                        branded={true}
+                        valign="start"
+                        size="lg"
+                      />
+                    </div>
+                  </li>
+                );
+              })}
+            </ul>
+          </>
+        );
+      })
+    }
   </ThemedSection>
-</Layout>
 
-<style>
-  .staff-list-item {
-    max-width: 18rem;
-  }
-  .staff-list-item :global(.vignette-name) {
-    color: var(--bs-primary-text-emphasis);
-    margin-bottom: -0.1em;
-  }
-  .staff-list-item :global(.vignette-title) {
-    line-height: 1.1em;
-  }
-</style>
+  <style>
+    .staff-list-item {
+      max-width: 18rem;
+    }
+    .staff-list-item :global(.vignette-name) {
+      color: var(--bs-primary-text-emphasis);
+      margin-bottom: -0.1em;
+    }
+    .staff-list-item :global(.vignette-title) {
+      line-height: 1.1em;
+    }
+  </style>
+</Layout>

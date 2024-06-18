@@ -1,4 +1,5 @@
 ---
+import Branding from "../../components/Branding.astro";
 import { Icon } from "astro-icon/components";
 import ImageHeading from "../../components/ImageHeading.astro";
 import Layout from "../../layouts/Layout.astro";
@@ -48,16 +49,13 @@ const crumbs = [
     </p>
     <div class="col">
       <p>
-        We are <span class="text-brand text-primary"
-          >Accessible <strong>Community</strong></span
-        >, a nonprofit organization dedicated to providing technical solutions
-        to help make local communities more accessible. We are currently
-        designing
-        <a class="text-brand" href="/services#loca11y"
-          ><strong>loc</strong>a11y</a
-        >, a website which will help connect people with disabilities to their
-        local organizations that are supporting them. We are hoping this website
-        will enable individuals with disabilities to:
+        We are <Branding>Accessible Community</Branding>, a nonprofit
+        organization dedicated to providing technical solutions to help make
+        local communities more accessible. We are currently designing
+        <a href="/services#loca11y"><Branding>loca11y</Branding></a>, a website
+        which will help connect people with disabilities to their local
+        organizations that are supporting them. We are hoping this website will
+        enable individuals with disabilities to:
       </p>
       <ul>
         <li

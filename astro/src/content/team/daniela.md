@@ -1,7 +1,8 @@
 ---
 name: Daniela
-title: Content Team
-tags:
-  - ta11y
+roles:
+  default: Content Team
+  content: Writer
 picture: ../../images/team/Daniela.png
+alt: Adult woman with dark brown hair, black eyes and a cheerful smile.
 ---

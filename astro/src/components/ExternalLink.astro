@@ -1,6 +1,7 @@
 ---
 interface Props {
   href: URL | string;
+  title?: string;
   // Any additional HTML classes to apply to the link.
   class?: string;
   // Whether to wrap the slot in a span to avoid gaps between child elements. Defaults to false.
@@ -12,6 +13,7 @@ interface Props {
 const {
   href,
   class: className = "",
+  title = undefined,
   gaps = false,
   inline = false,
 } = Astro.props;
@@ -40,6 +42,7 @@ import { Icon } from "astro-icon/components";
 </style>
 <a
   href={href}
+  title={title}
   class:list={["icon-link", className, inline && "d-inline"]}
   target="_blank"
   rel="noopener noreferrer"

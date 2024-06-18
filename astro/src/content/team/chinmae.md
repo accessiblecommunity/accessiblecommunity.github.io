@@ -1,10 +1,10 @@
 ---
 name: Chinmae Deshmukkh
-title: Mentoring Program Manager, mutua11y
-tags:
-  - leadership
-  - mutua11y
+roles:
+  default: Mentoring Program Manager, mutua11y
+  leadership: Mentoring Program Manager, mutua11y
 picture: ../../images/team/Chinmae.png
+alt: Woman in her mid twenties with long black hair with brown tint at the end  and brown eyes.
 links:
   email: chinmae@accessiblecommunity.org
   linkedin: https://www.linkedin.com/in/chinmaedeshmukkh/

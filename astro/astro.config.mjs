@@ -27,6 +27,7 @@ export default defineConfig({
           __dirname,
           "node_modules/bootstrap/dist/js/bootstrap.esm.min.js",
         ),
+        "~lib": path.resolve(__dirname, "src/lib"),
       },
     },
     ssr: {
@@ -43,7 +44,7 @@ export default defineConfig({
           // Navigation
           'arrow-down-square', 'arrow-up-right-square', 'list',
           // Social Media
-          'facebook', 'instagram', 'linkedin', 'tiktok',
+          'facebook', 'instagram', 'linkedin', 'rss-fill', 'tiktok',
           // Descriptive
           'gift-fill', 'pencil-fill', 'people-fill', 'person-fill',
           // Escape Room

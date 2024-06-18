@@ -1,7 +1,7 @@
 ---
 name: Winnie
-title: Content Team
-tags:
-  - ta11y
+roles:
+  default: Content Team
+  content: Writer
 picture: ../../images/team/Winnie.png
 ---

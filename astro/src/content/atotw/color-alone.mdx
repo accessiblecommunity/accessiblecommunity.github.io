@@ -1,0 +1,40 @@
+---
+title: Colors get lonely.
+published: 2023-05-01
+summary: When color conveys information, you should add at least one other visual indicator.
+who: People who are color blind or have low vision.
+benefits: Your audience can better understand your content when printed in grayscale or viewed on a mobile device.
+tags:
+    - content
+---
+
+import { components, ImageFigure } from '../../lib/mdx';
+export { components }; 
+
+import originalImg from "../../images/atotw/color-alone/original.png";
+import simulatedImg from "../../images/atotw/color-alone/simulated.png";
+import texturedImg from "../../images/atotw/color-alone/textured.png";
+
+
+Color can call attention to your content, help sighted individuals quickly perceive and process information, create a mood, and brand a product. However, not everyone in your audience may be able to distinguish between colors:
+- Color-blind individuals are not always able to distinguish between colors and generally do not benefit when color is used to convey information.   
+- Individuals who have low or limited vision or who use a screen reader may also not be able to quickly distinguish between colors.   
+
+<ImageFigure src={originalImg} class="my-3 text-center" imageClass="w-100 bg-white" alt="Line graph using red for sales and green for donations. Lines and markers are the same." caption="Graph using color as information."/>
+
+<ImageFigure src={simulatedImg} class="my-3 text-center" imageClass="w-100 bg-white" alt="Lines and markers are the same color brown. There is no way to tell the lines apart." caption="Simulated view of red green color blindness when color is the only indicator."/>
+
+## What can I do?
+
+To fix this, add at least one other indicator when the color has meaning to ensure that everyone can understand the information being communicated.
+
+Some examples of additional visual indicators are:
+- Adding text or text labels   
+- Changing contrast, size or shape
+- Including icons or symbols   
+- Modifying the texture or pattern   
+- Altering the presence, absence or location of information   
+
+<ImageFigure src={texturedImg} class="my-3 text-center" imageClass="w-100 bg-white" alt="Lines and markers are the same color brown but markes are different shapes, One line is solid and one is dashed." caption="Simulated view of red green color blindness when shape and texture are additional indicators."/>
+
+[Learn more about color at *ta11y.org*](https://www.ta11y.org/learning/topic?key=contrast.rely_color).

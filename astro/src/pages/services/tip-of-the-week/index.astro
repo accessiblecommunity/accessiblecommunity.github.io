@@ -1,0 +1,128 @@
+---
+import Branding from "../../../components/Branding.astro";
+import { Icon } from "astro-icon/components";
+import ImageHeading from "../../../components/ImageHeading.astro";
+import Layout from "../../../layouts/Layout.astro";
+import ShadowBoxSection from "../../../components/ShadowBoxSection.astro";
+import ThemedSection from "../../../components/ThemedSection.astro";
+import TipLicense from "../../../components/TipLicense.astro";
+import TipOfTheWeek from "../../../components/TipOfTheWeek.astro";
+import TipRegistration from "../../../components/TipRegistration.astro";
+
+import { getTipCatalog } from "../../../lib/tips";
+import { startCase } from "lodash-es";
+
+const { categories, tips } = await getTipCatalog();
+
+const crumbs = [
+  {
+    name: "Home",
+    href: "/",
+  },
+  {
+    name: "Services",
+    href: "/services",
+  },
+];
+---
+
+<Layout title="Tip of the Week" crumbs={crumbs}>
+  <Fragment slot="head">
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      title="Accessible Community's Tip of the Week"
+      href={`${Astro.site}/services/tip-of-the-week/rss.xml`}
+    />
+  </Fragment>
+  <ImageHeading image="notes" slot="header">
+    Accessibility <strong>Tip</strong>&nbsp;of the <strong>Week</strong>
+  </ImageHeading>
+
+  <ThemedSection style="tertiary">
+    <h2 class="display-3">Making accessibility <strong>simpler</strong>.</h2>
+    <div
+      class="d-flex flex-column flex-lg-row gap-4 justify-content-lg-evenly align-items-lg-center py-2"
+    >
+      <div>
+        <p class="lead"> It takes five minutes. </p>
+        <p class="lead">
+          Once a week, in your inbox, you'll get a simple but effective
+          accessibility tip. It's simple enough that you can start implementing
+          it within your organization during the week. And there's an overview
+          at the beginning to provide a quick summary.
+        </p>
+        <p class="lead">
+          Check out our most recent <Branding>Tip of the Week</Branding>
+          below. Fill out the registration form to sign up. It's completely free
+          and we will not <a href="/privacy-policy">sell or share your data</a>.
+          If you prefer, you can also
+          <a class="icon-link" href="/tips/rss.xml"
+            >subscribe via RSS<Icon class="bi" name="bi:rss-fill" /></a
+          >.
+        </p>
+      </div>
+
+      <TipRegistration>
+        <h3 class="display-6 text-primary-emphasis mb-0">
+          <Branding>Tip of the Week</Branding> Registration
+        </h3>
+        <p class="small">
+          <span class="text-primary-emphasis fw-bold">Note:</span> Required fields
+          have an asterisk (<span class="asterisk">*</span>).
+        </p>
+      </TipRegistration>
+    </div>
+  </ThemedSection>
+
+  <ShadowBoxSection theme="info" fluid={false}>
+    <h2 slot="lead" class="display-3 text-light text-center mb-4">
+      Our <strong>most recent</strong> tip.
+    </h2>
+    <div class="p-2 p-sm-3 p-md-4 rounded-3">
+      <TipOfTheWeek slug="etiquette" />
+    </div>
+  </ShadowBoxSection>
+
+  <ThemedSection theme="tertiary">
+    <h2 class="display-4 text-primary mb-4">
+      Tip of the Week <strong>Archive</strong>
+    </h2>
+    <hr />
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 mt-5">
+      <div class="col">
+        <h3>Most Recent</h3>
+        <ul class="mt-1 mb-3 list-disc">
+          {
+            tips.slice(0, 7).map((tip) => (
+              <li>
+                <a href={`/tips/${tip.slug}`}>{tip.data.title}</a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+      {
+        categories.map((cat) => (
+          <div class="col">
+            <h3>{startCase(cat)}</h3>
+            <ul class="mt-1 mb-4 list-disc">
+              {tips.map(
+                (tip) =>
+                  tip.data.tags.includes(cat) && (
+                    <li class="list-item">
+                      <a href={`/tips/${tip.slug}`}>{tip.data.title}</a>
+                    </li>
+                  ),
+              )}
+            </ul>
+          </div>
+        ))
+      }
+    </div>
+  </ThemedSection>
+
+  <ThemedSection style="secondary">
+    <TipLicense />
+  </ThemedSection>
+</Layout>

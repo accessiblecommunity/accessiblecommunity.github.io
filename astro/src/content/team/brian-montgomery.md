@@ -1,9 +1,11 @@
 ---
 name: Brian Montgomery
-title: Technical Director
-tags:
-  - leadership
-picture: ../../images/team/Brian2.png
+roles:
+  default: Technical Director
+  development: Full-Stack Developer
+  leadership: Technical Director
+picture: ../../images/team/Brian.png
+alt: Middle-aged male with brown and gray hair, hazel eyes and glasses.
 links:
   email: brian@accessiblecommunity.org
   linkedin: https://www.linkedin.com/in/brian-montgomery-139175172/

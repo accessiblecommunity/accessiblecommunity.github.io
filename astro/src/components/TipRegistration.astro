@@ -3,18 +3,27 @@ interface Props {
   theme?: string;
   newsletters?: boolean;
   announcements?: boolean;
+  border?: number;
+  defaultWidth?: boolean;
 }
 
 const {
   theme = "info",
   newsletters = false,
   announcements = false,
+  border = 3,
+  defaultWidth = false,
 } = Astro.props;
 ---
 
 <div
   id="mc_embed_signup"
-  class={`col-lg-5 p-4 bg-body border-${theme} tip-form validate`}
+  class:list={[
+    !defaultWidth && "col-lg-5",
+    "p-4 bg-body",
+    border && `border border-${border} border-${theme} rounded`,
+    "validate",
+  ]}
 >
   <form
     action="https://accessiblecommunity.us14.list-manage.com/subscribe/post?u=c9f6664d008774e9c5d591533&id=dbdbc147c8&f_id=0082fde0f0"
@@ -89,7 +98,7 @@ const {
       />
     </div>
     <div class="row">
-      <div class="col-xl-5 mb-3">
+      <div class:list={[!defaultWidth && "col-xl-5", "mb-3"]}>
         <label for="mce-FNAME" class="form-label mb-1 required-field"
           >First Name</label
         ><span class="asterisk"></span>
@@ -103,7 +112,7 @@ const {
           value=""
         />
       </div>
-      <div class="col-xl-7 mb-3">
+      <div class:list={[!defaultWidth && "col-xl-7", "mb-3"]}>
         <label for="mce-LNAME" class="form-label mb-1">Last Name</label><span
           class="asterisk"></span>
         <input
@@ -225,9 +234,4 @@ const {
   /* * {
     outline: 1px solid black;
   } */
-
-  .tip-form {
-    border: 3.5px solid;
-    border-radius: 0.5rem;
-  }
 </style>

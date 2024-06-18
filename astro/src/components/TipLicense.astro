@@ -1,0 +1,55 @@
+---
+import Branding from "./Branding.astro";
+import ExternalLink from "./ExternalLink.astro";
+
+interface Props {
+  class?: string;
+}
+
+const { class: extraClasses = "" } = Astro.props;
+---
+
+<div class={extraClasses}>
+  <p class="text-center" xmlns:cc="http://creativecommons.org/ns#">
+    This work is licensed under
+    <ExternalLink
+      inline
+      href="https://creativecommons.org/licenses/by-nc-sa/4.0/?ref=chooser-v1"
+      rel="license noopener noreferrer">CC BY-NC-SA 4.0</ExternalLink
+    >
+    <img
+      class="cc"
+      src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1"
+      alt=""
+    />&nbsp;<img
+      class="cc"
+      src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1"
+      alt=""
+    />&nbsp;<img
+      class="cc"
+      src="https://mirrors.creativecommons.org/presskit/icons/nc.svg?ref=chooser-v1"
+      alt=""
+    />&nbsp;<img
+      class="cc"
+      src="https://mirrors.creativecommons.org/presskit/icons/sa.svg?ref=chooser-v1"
+      alt=""
+    />.
+  </p>
+  <p class="mb-0">
+    If you are promoting accessibility within your organization or community,
+    sending out easy-to-understand tips can be a helpful addition to your
+    strategy. You are welcome to share the tips here under the mentioned
+    <ExternalLink inline href="https://creativecommons.org/"
+      >Creative Commons</ExternalLink
+    >
+    license, as long as you cite <Branding>Accessible Community</Branding> as your
+    source.
+  </p>
+</div>
+
+<style>
+  img.cc {
+    height: 1.25em;
+    vertical-align: text-bottom;
+  }
+</style>

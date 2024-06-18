@@ -109,7 +109,7 @@ $btn-hover-border-shade-amount:   30%;
 $btn-hover-border-tint-amount:    20%;
 
 $code-color:                  #590455;
-// $code-color-dark:             tint-color($code-color, 40%) !default;
+$code-color-dark:             #EAB3E8;
 
 $container-padding-x:  3rem;
 
@@ -245,7 +245,6 @@ $theme-colors-border-subtle-dark: map-merge($theme-colors-border-subtle-dark, $c
 @import "bootstrap/scss/breadcrumb";
 @import "bootstrap/scss/list-group";
 @import "bootstrap/scss/close";
-@import "bootstrap/scss/placeholders";
 
 // 7. Optionally include utilities API last to generate classes based on the Sass map in `_utilities.scss`
 @import "bootstrap/scss/helpers";
