@@ -322,6 +322,10 @@ input[type=checkbox], input[type=radio] {
   accent-color: #041058;
 }
 
+li + li {
+  margin-top: 0.5em;
+}
+
 .check {
   border-image-width: 2;
 }
