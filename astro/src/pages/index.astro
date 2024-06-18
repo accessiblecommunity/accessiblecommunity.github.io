@@ -1,10 +1,10 @@
 ---
 import { Icon } from "astro-icon/components";
 
+import Branding from "../components/Branding.astro";
 import ExternalLink from "../components/ExternalLink.astro";
 import Hero from "../components/Hero.astro";
 import Layout from "../layouts/Layout.astro";
-import TeamVignette from "../components/TeamVignette.astro";
 import ThemedSection from "../components/ThemedSection.astro";
 import ThemedBox from "../components/ThemedBox.astro";
 import TipRegistration from "../components/TipRegistration.astro";
@@ -27,9 +27,8 @@ import heroBg from "../images/colored-hero/wheelchair_hall.png";
       </div>
     </Fragment>
     <div class="lead text-bg-hero">
-      At <span class="text-brand">Accessible <strong>Community</strong></span>,
-      we build ethical technology solutions to nurture disability-inclusive
-      communities.
+      At <Branding>Accessible Community</Branding>, we build ethical technology
+      solutions to nurture disability-inclusive communities.
     </div>
     <Fragment slot="action-bar">
       <a href="#journey" class="icon-link link-light hero-link">
@@ -53,9 +52,7 @@ import heroBg from "../images/colored-hero/wheelchair_hall.png";
           aria-hidden="true"
         />
         <span>
-          Help us launch <span class="text-brand"
-            ><strong>loc</strong>a11y.<strong>org</strong></span
-          >
+          Help us launch <Branding>loca11y.org</Branding>
         </span>
       </ExternalLink>
     </Fragment>
@@ -80,16 +77,15 @@ import heroBg from "../images/colored-hero/wheelchair_hall.png";
           engage in community life.
         </p>
         <p
-          class="d-xl-none display-4 text-center text-primary py-3 mx-5 border-primary-subtle border-top border-bottom"
+          class="d-xl-none display-4 text-center text-primary py-3 mx-5 border-primary-subtle border-top border-bottom border-2"
         >
           <strong>1</strong> in every <strong>4 people</strong> has a <strong
             >disability</strong
           >.
         </p>
         <p>
-          <span class="text-brand text-primary"
-            >Accessible <strong>Community</strong></span
-          > exemplifies “Nothing about us without us.” Our non-profit is led by people
+          <Branding class="text-primary">Accessible Community</Branding>
+          exemplifies “Nothing about us without us.” Our non-profit is led by people
           with disabilities and caretakers who want to break down these barriers
           and create more accessible communities. Read our <a
             href="/about/story"
@@ -111,7 +107,7 @@ import heroBg from "../images/colored-hero/wheelchair_hall.png";
 
   <ThemedSection style="tertiary">
     <div
-      class="container d-flex flex-column flex-xl-row-reverse gap-4 justify-content-xl-between align-items-xl-center"
+      class="d-flex flex-column flex-xl-row-reverse gap-4 justify-content-xl-between align-items-xl-center"
     >
       <div class="col col-xl-7">
         <h2 class="display-3">What we <strong>do</strong>.</h2>
@@ -151,7 +147,7 @@ import heroBg from "../images/colored-hero/wheelchair_hall.png";
         border={1}
         class="border-primary col col-xl-3 shadow rounded"
       >
-        <h3 class="display-5">
+        <h3 class="display-5" aria-hidden="true">
           <Icon
             class="bi unpad"
             name="loca11y-logo"
@@ -159,10 +155,9 @@ import heroBg from "../images/colored-hero/wheelchair_hall.png";
             role="img"
             aria-hidden="true"
           />
-          <span class="text-brand">
-            <strong>loc</strong>a11y.<strong>org</strong>
-          </span>
+          <Branding no-aria>loca11y.org</Branding>
         </h3>
+        <h3 class="visually-hidden">locally.org</h3>
         <p class="text-center">
           Find and recommend local organizations and events that provide
           accommodations and remove barriers for people with disabilities.
@@ -176,7 +171,7 @@ import heroBg from "../images/colored-hero/wheelchair_hall.png";
         border={1}
         class="border-primary col col-xl-3 shadow rounded"
       >
-        <h3 class="display-5">
+        <h3 class="display-5" aria-hidden="true">
           <Icon
             class="bi"
             name="ta11y-logo"
@@ -184,10 +179,9 @@ import heroBg from "../images/colored-hero/wheelchair_hall.png";
             role="img"
             aria-hidden="true"
           />
-          <span class="text-brand">
-            <strong>t</strong>a11y.<strong>org</strong>
-          </span>
+          <Branding no-aria>ta11y.org</Branding>
         </h3>
+        <h3 class="visually-hidden">tally.org</h3>
         <p class="text-center">
           Use publicly available accessibility checklists with helpful guides
           without printing them out. Results are private and retained for your
@@ -195,7 +189,7 @@ import heroBg from "../images/colored-hero/wheelchair_hall.png";
         </p>
         <div class="text-center">
           <ExternalLink class="text-brand" href="https://www.ta11y.org">
-            Visit <strong>t</strong>a11y.<strong>org</strong>
+            Visit <Branding>ta11y.org</Branding>
           </ExternalLink>
         </div>
       </ThemedBox>
@@ -204,7 +198,7 @@ import heroBg from "../images/colored-hero/wheelchair_hall.png";
         border={1}
         class="border-primary col col-xl-3 shadow rounded"
       >
-        <h3 class="display-5">
+        <h3 class="display-5" aria-hidden="true">
           <Icon
             class="bi"
             name="mutua11y-logo"
@@ -212,17 +206,16 @@ import heroBg from "../images/colored-hero/wheelchair_hall.png";
             role="img"
             aria-hidden="true"
           />
-          <span class="text-brand">
-            <strong>mutu</strong>a11y.<strong>org</strong>
-          </span>
+          <Branding no-aria>mutua11y.org</Branding>
         </h3>
+        <h3 class="visually-hidden">mutually.org</h3>
         <p class="text-center">
           Connect with other disability-related professionals through mentoring,
           volunteering, internships, workshops and other activities.
         </p>
         <div class="text-center">
           <ExternalLink href="https://www.mutua11y.org" class="text-brand">
-            Visit <strong>mutu</strong>a11y.<strong>org</strong>
+            Visit <Branding>mutua11y.org</Branding>
           </ExternalLink>
         </div>
       </ThemedBox>

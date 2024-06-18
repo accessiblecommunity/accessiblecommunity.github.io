@@ -1,10 +1,11 @@
 ---
 name: Ellen Liebert
-title: Team Lead, Learning Content
-tags:
-  - leadership
-  - ta11y
+roles:
+  default: Director, Education
+  content: Team Lead
+  leadership: Director, Education
 picture: ../../images/team/Ellen_profile.png
+alt: Older woman with salt and pepper hair, blue eyes, snarky smile, and nerdy glasses.
 links:
   email: ellen@accessiblecommunity.org
 ---

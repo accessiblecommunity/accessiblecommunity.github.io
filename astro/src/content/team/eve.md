@@ -1,7 +1,9 @@
 ---
 name: Eve
-title: Content Team
-tags:
-  - ta11y
-picture: ../../images/team/eve.png
+roles:
+  default: UX Team (ta11y)
+  development: Developer
+  ux: Design Lead (ta11y)
+picture: ../../images/team/Eve.png
+alt: Person with dark brown hair using glasses.
 ---

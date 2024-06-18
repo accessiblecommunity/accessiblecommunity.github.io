@@ -1,0 +1,21 @@
+---
+import ExternalLink from "../ExternalLink.astro";
+
+interface Props {
+  href: string;
+  title?: string;
+}
+
+const { href, title = undefined } = Astro.props;
+const external = href.startsWith("http");
+---
+
+{
+  external ?
+    <ExternalLink href={href} inline title={title}>
+      <slot />
+    </ExternalLink>
+  : <a href={href} title={title} class="link-offset-1">
+      <slot />
+    </a>
+}

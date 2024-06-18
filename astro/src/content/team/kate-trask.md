@@ -1,8 +1,8 @@
 ---
 name: Kate Trask
-title: Board Member
-tags:
-  - board
+roles:
+  default: Board Member
+  board: Board Member
 picture: ../../images/team/KateT.png
 ---
 

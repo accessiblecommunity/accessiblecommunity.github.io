@@ -35,7 +35,9 @@ const { tag } = Astro.params;
 const { team, title, heading } = Astro.props;
 
 const teamMembers = sortBy(
-  team.filter(({ data }) => data.tags?.includes(tag)),
+  team.filter(
+    ({ data }) => data.roles && Object.keys(data.roles).includes(tag),
+  ),
   ({ data }) => data.name.split(" ").slice(1).join(" "),
 );
 
@@ -58,7 +60,7 @@ const crumbs = [
       {
         teamMembers.map((sm) => (
           <li class="list-inline-item my-2 w-100">
-            <div class="text-start p-1 p-lg-2 pt-2 fs-4">
+            <div class="text-start p-1 p-lg-2 pt-2">
               <TeamMemberBio member={sm} />
             </div>
           </li>

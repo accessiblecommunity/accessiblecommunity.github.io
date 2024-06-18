@@ -1,10 +1,13 @@
 ---
 name: Rachael Bradley Montgomery
-title: Founder & Executive Director
-tags:
-  - board
-  - leadership
+roles:
+  default: Founder & Executive Director
+  board: Founder
+  content: Writer
+  evaluations: Digital Evaluator
+  leadership: Founder & Executive Director
 picture: ../../images/team/Rachael_profile.png
+alt: middle age woman with silver hair and blue eyes.
 links:
   email: rachael@accessiblecommunity.org
   linkedin: https://www.linkedin.com/in/rachael-bradley-montgomery-ph-d-6847144/
