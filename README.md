@@ -17,7 +17,7 @@ The next step is to determine which development environment you would like to us
 
 1. Install [Docker Desktop](https://www.docker.com/products/docker-desktop) or another way to run a containerized environment.
   * If on Windows, we recommend installing the [Linux Subsystem](https://learn.microsoft.com/en-us/windows/wsl/install) to help performance, but it’s not required. See [configuring Docker Desktop to use WSL 2](https://docs.docker.com/desktop/wsl/).
-2. There are a series a `make` commands. Install a way to run `make`.
+2. There are a series a `make` commands to help you run the commands in Docker. To use those, you'll need a way to run `make`.
   * On Windows, use the Linux Subsystem or [chocolatey](https://chocolatey.org/).
   * On Mac, install the Xcode client tools or use [homebrew](https://brew.sh/).
   * If preferred, install some integration with the IDE you are using instead.
