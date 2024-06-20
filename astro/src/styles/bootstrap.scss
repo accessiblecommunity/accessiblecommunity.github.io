@@ -313,6 +313,10 @@ $theme-colors-border-subtle-dark: map-merge($theme-colors-border-subtle-dark, $c
   color: $body-color;
 }
 
+.list-spacing {
+  margin-top: 0.5em;
+}
+
 textarea, input {
   border-width: 1.5px 1.5px;
   border-color: #000000;
@@ -320,10 +324,6 @@ textarea, input {
 
 input[type=checkbox], input[type=radio] {
   accent-color: #041058;
-}
-
-li + li {
-  margin-top: 0.5em;
 }
 
 .check {

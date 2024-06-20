@@ -91,7 +91,7 @@ const crumbs = [
         <ul class="mt-1 mb-3 list-disc">
           {
             tips.slice(0, 7).map((tip) => (
-              <li>
+              <li class="list-spacing">
                 <a href={`/tips/${tip.slug}`}>{tip.data.title}</a>
               </li>
             ))
@@ -106,7 +106,7 @@ const crumbs = [
               {tips.map(
                 (tip) =>
                   tip.data.tags.includes(cat) && (
-                    <li class="list-item">
+                    <li class="list-item list-spacing">
                       <a href={`/tips/${tip.slug}`}>{tip.data.title}</a>
                     </li>
                   ),

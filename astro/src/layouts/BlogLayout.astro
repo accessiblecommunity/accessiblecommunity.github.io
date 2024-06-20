@@ -104,7 +104,7 @@ import ThemedSection from "../components/ThemedSection.astro";
                 <span class="display-6">Blog Posts</span>
                 <ul class="mt-1 mb-3 list-disc">
                   {blogs.map((b) => (
-                    <li>
+                    <li class="list-spacing">
                       <a href={`/blog/${b.slug}`}>{b.data.title}</a>
                     </li>
                   ))}
@@ -118,7 +118,7 @@ import ThemedSection from "../components/ThemedSection.astro";
                 <span class="display-6">Topics</span>
                 <ul class="mt-1 mb-3 list-disc">
                   {topics.map((cat) => (
-                    <li class="list-item">
+                    <li class="list-item list-spacing">
                       <a href={`/blog/topics/${cat}`}>{startCase(cat)}</a>
                     </li>
                   ))}
@@ -132,7 +132,7 @@ import ThemedSection from "../components/ThemedSection.astro";
                 <span class="display-6">Authors</span>
                 <ul class="mt-1 mb-3 list-disc">
                   {authors.map((author) => (
-                    <li>
+                    <li class="list-spacing">
                       <a href={`/blog/authors/${author.slug}`}>
                         {author.data.name}
                       </a>
@@ -148,7 +148,7 @@ import ThemedSection from "../components/ThemedSection.astro";
                 <span class="display-6">Dates</span>
                 <ul class="mt-1 mb-3 list-disc">
                   {dates.map((month) => (
-                    <li>
+                    <li class="list-spacing">
                       <a href={`/blog/dates/${kebabCase(month)}`}>{month}</a>
                     </li>
                   ))}
