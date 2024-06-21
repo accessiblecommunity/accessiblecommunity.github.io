@@ -260,10 +260,10 @@ $theme-colors-border-subtle-dark: map-merge($theme-colors-border-subtle-dark, $c
 }
 
 *:focus-visible, .navbar-toggler:focus, .nav-link:focus-visible {
-  outline: 3px solid $primary;
-  outline-offset: 0.10em;
+  outline: 2px solid $primary;
+  outline-offset: 0.15em;
   box-shadow: none;
-  border-radius: 2%;
+  border-radius: 0.13rem;
 }
 
 .navbar-toggler:focus {
@@ -283,7 +283,7 @@ $theme-colors-border-subtle-dark: map-merge($theme-colors-border-subtle-dark, $c
 }
 
 .btn:focus-visible {
-  outline: 3px solid $primary;
+  outline: 2px solid $primary;
   outline-offset: 0.25rem;
   box-shadow: none;
   border-radius: 0.375rem;
@@ -294,7 +294,7 @@ $theme-colors-border-subtle-dark: map-merge($theme-colors-border-subtle-dark, $c
 }
 
 .form-control:focus-visible {
-  outline: 3px solid $primary;
+  outline: 2px solid $primary;
   box-shadow: none;
   border-radius: 0.375rem;
 }
@@ -310,7 +310,7 @@ $theme-colors-border-subtle-dark: map-merge($theme-colors-border-subtle-dark, $c
 }
 
 .form-check-input:focus-visible {
-  outline: 3px solid $primary;
+  outline: 2px solid $primary;
   outline-offset: 0.10em;
   box-shadow: none;
 }
