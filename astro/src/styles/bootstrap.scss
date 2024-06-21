@@ -300,8 +300,13 @@ $theme-colors-border-subtle-dark: map-merge($theme-colors-border-subtle-dark, $c
 }
 
 .form-check-input {
-  width: 30px;
-  height: 30px;
+  width: 1.667rem;
+  height: 1.667rem;
+  min-width: 30px;
+}
+
+.form-check-input {
+  border-image-width: 2;
 }
 
 .form-check-input:focus-visible {
@@ -337,10 +342,6 @@ textarea, input {
 
 input[type=checkbox], input[type=radio] {
   accent-color: #041058;
-}
-
-.form-check-input {
-  border-image-width: 2;
 }
 
 // Form Label Utilities
