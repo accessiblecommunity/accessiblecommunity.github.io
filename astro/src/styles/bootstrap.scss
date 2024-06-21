@@ -260,8 +260,8 @@ $theme-colors-border-subtle-dark: map-merge($theme-colors-border-subtle-dark, $c
 }
 
 *:focus-visible, .form-field:focus, .navbar-toggler:focus, .nav-link:focus-visible {
-  outline: 3px dashed $primary;
-  outline-offset: 0.025em;
+  outline: 3px solid $primary;
+  outline-offset: 0.10em;
   box-shadow: none;
   border-radius: 2%;
 }
@@ -283,7 +283,7 @@ $theme-colors-border-subtle-dark: map-merge($theme-colors-border-subtle-dark, $c
 }
 
 .btn:focus-visible {
-  outline: 3px dashed $primary;
+  outline: 3px solid $primary;
   outline-offset: 0.25rem;
   box-shadow: none;
   border-radius: 0.375rem;
@@ -295,6 +295,12 @@ $theme-colors-border-subtle-dark: map-merge($theme-colors-border-subtle-dark, $c
 
 .form-field:focus {
   border-style: solid;
+}
+
+.form-control:focus-visible {
+  outline: 3px solid $primary;
+  box-shadow: none;
+  border-radius: 0.375rem;
 }
 
 .breadcrumb-item, .breadcrumb-item.active, .nav-link, .dropdown-item, .dropdown-item:hover {
@@ -364,7 +370,7 @@ svg[data-icon="loca11y-logo"].unpad {
 }
 
 @include color-mode(dark) {
-  *:focus-visible, .form-field:focus, .navbar-toggler:focus, .btn:focus-visible, .nav-link:focus-visible {
+  *:focus-visible, .form-field:focus, .navbar-toggler:focus, .btn:focus-visible, .nav-link:focus-visible, .form-control:focus-visible {
     outline-color: #FFFFFF;
   }
 
