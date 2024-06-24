@@ -261,7 +261,7 @@ $theme-colors-border-subtle-dark: map-merge($theme-colors-border-subtle-dark, $c
 
 *:focus-visible, .navbar-toggler:focus, .nav-link:focus-visible {
   outline: 2px solid $primary;
-  outline-offset: 0.15em;
+  // outline-offset: 0.15em;
   box-shadow: none;
   border-radius: 0.13rem;
 }
@@ -270,21 +270,21 @@ $theme-colors-border-subtle-dark: map-merge($theme-colors-border-subtle-dark, $c
   border-radius: 0.375rem !important;
 }
 
-.brand-name:focus-visible {
-  outline-offset: 0.10rem;
-}
+// .brand-name:focus-visible {
+//   outline-offset: 0.10rem;
+// }
 
 .hero-link:focus-visible, .link-light:focus-visible {
   outline-color: #FFFFFF;
 }
 
-.dropdown-item:focus-visible {
-  outline-offset: -0.15em;
-}
+// .dropdown-item:focus-visible {
+//   outline-offset: -0.15em;
+// }
 
-.social-link:focus-visible, .collaborator-link:focus-visible {
-  outline-offset: 0.35em;
-}
+// .social-link:focus-visible, .collaborator-link:focus-visible {
+//   outline-offset: 0.35em;
+// }
 
 .btn:focus-visible {
   outline: 2px solid $primary;
@@ -339,6 +339,10 @@ $theme-colors-border-subtle-dark: map-merge($theme-colors-border-subtle-dark, $c
   margin-top: 0.5em;
 }
 
+.social-link {
+  padding: 0.5rem;
+}
+
 textarea, input {
   border-width: 1.5px 1.5px;
   border-color: #000000;
@@ -359,12 +363,15 @@ input[type=checkbox], input[type=radio] {
   font-size: 125%;
   line-height: 100%;
 }
+
 .required-field + .asterisk {
   margin-left: 0.15em;
 }
+
 .required-field > .asterisk {
   margin-left: -0.15em;
 }
+
 .required-field + .asterisk::before,
 .required-field > .asterisk::before {
   content: "*";
