@@ -278,7 +278,7 @@ $theme-colors-border-subtle-dark: map-merge($theme-colors-border-subtle-dark, $c
   outline-offset: -0.15em;
 }
 
-.social-link:focus-visible {
+.social-link:focus-visible, .collaborator-link:focus-visible {
   outline-offset: 0.35em;
 }
 
