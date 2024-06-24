@@ -1,7 +1,7 @@
 ---
 import { getEntry } from "astro:content";
 import { getBlogCatalog } from "../lib/blog";
-import { isEmpty, isNil, kebabCase, startCase } from "lodash-es";
+import { isEmpty, kebabCase, startCase } from "lodash-es";
 
 const defaultCrumbs = [
   {
@@ -40,6 +40,8 @@ const published = blog.data.published.toLocaleDateString("en-us", {
 });
 
 const { Content } = await blog.render();
+
+import components from '../lib/mdx';
 import ImageHeading from "../components/ImageHeading.astro";
 import Layout from "../layouts/Layout.astro";
 import TeamVignette from "../components/TeamVignette.astro";
@@ -90,7 +92,7 @@ import ThemedSection from "../components/ThemedSection.astro";
           />
         </div>
         <div class="py-4 mb-4">
-          <Content />
+          <Content components={components} />
         </div>
       </article>
       <nav
