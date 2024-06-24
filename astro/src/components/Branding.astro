@@ -35,7 +35,7 @@ text = text
   );
 ---
 
-<span class:list={["text-brand fw-bold", extraClasses]} set:html={text} />
+{/* Style is up top to remove additional whitespace after the tag */}
 <style>
   /* Safari renders this weirdly... force to be a standard line height */
   span.text-brand,
@@ -43,3 +43,5 @@ text = text
     line-height: normal;
   }
 </style>
+<span class:list={["text-brand fw-bold", extraClasses]} set:html={text} />
+
