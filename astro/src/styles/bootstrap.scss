@@ -289,7 +289,7 @@ $theme-colors-border-subtle-dark: map-merge($theme-colors-border-subtle-dark, $c
   border-radius: 0.375rem;
 }
 
-.hero-link:focus-visible, .hero-button:focus-visible {
+.hero-link:focus-visible, .hero-button:focus-visible, .footer-social-link:focus-visible {
   outline-color: #FFFFFF;
 }
 
@@ -331,6 +331,10 @@ $theme-colors-border-subtle-dark: map-merge($theme-colors-border-subtle-dark, $c
 
 .form-check-input {
   border-image-width: 2;
+}
+
+.form-control {
+  border: 2px solid $info;
 }
 
 .breadcrumb-item, .breadcrumb-item.active, .nav-link, .dropdown-item, .dropdown-item:hover {
