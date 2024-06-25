@@ -305,7 +305,7 @@ $theme-colors-border-subtle-dark: map-merge($theme-colors-border-subtle-dark, $c
   box-shadow: none;
 }
 
-*a:hover, .nav-link:hover, .nav-link:active, .navbar-nav .nav-link.show, li > .dropdown-item:hover {
+*a:hover, .nav-link:hover, .nav-link:active, .navbar-nav .nav-link.show, li > .dropdown-item:hover, .brand-name:hover {
   color: #FFFFFF;
   background-color: #000000;
 }
@@ -316,6 +316,11 @@ $theme-colors-border-subtle-dark: map-merge($theme-colors-border-subtle-dark, $c
 
 .bio-social-link:hover {
   background-color: $body-tertiary-bg;
+}
+
+.hero-link:hover, .footer-link:hover, .link-light:hover {
+  color: #000000;
+  background-color: #FFFFFF;
 }
 
 .form-check-input {
@@ -402,7 +407,7 @@ svg[data-icon="loca11y-logo"].unpad {
     outline-color: #FFFFFF;
   }
 
-  *a:hover, .nav-link:hover, .nav-link:active, .navbar-nav .nav-link.show, li > .dropdown-item:hover, .link-light:hover {
+  *a:hover, .nav-link:hover, .nav-link:active, .navbar-nav .nav-link.show, li > .dropdown-item:hover, .link-light:hover, .brand-name:hover {
     color: #000000;
     background-color: #FFFFFF;
   }
