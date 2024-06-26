@@ -102,6 +102,10 @@ $info-text-emphasis-dark:           #11BABA; // cyan-20
 $info-bg-subtle-dark:               #003D3D; // cyan-90 
 $info-border-subtle-dark:           #11BABA; // cyan-20
 
+// Danger Subtle Theme
+$danger-border-subtle:              #c84553;
+$danger-border-subtle-dark:         #fa5567;
+
 // Headings
 $headings-color:                    $primary;
 $headings-color-dark:               #7EB0E4; // blue-20
@@ -116,3 +120,4 @@ $link-shade-percentage:             40%;
 // Code
 $code-color:                        #590455;
 $code-color-dark:                   #EAB3E8;
+

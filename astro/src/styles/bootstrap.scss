@@ -323,6 +323,10 @@ $theme-colors-border-subtle-dark: map-merge($theme-colors-border-subtle-dark, $c
   color: $body-color;
 }
 
+#mc_embed_signup input.mce_inline_error {
+  border-color: $danger-border-subtle !important;
+}
+
 textarea, input {
   border-width: 1.5px 1.5px;
   border-color: #000000;
