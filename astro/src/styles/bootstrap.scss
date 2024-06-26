@@ -109,6 +109,8 @@ $btn-hover-border-shade-amount:   30%;
 $btn-hover-border-tint-amount:    20%;
 
 $input-border-width:              2px;
+$form-check-input-border:         2px solid;
+$form-check-input-border-radius:  0.375rem;
 
 $container-padding-x:  3rem;
 
@@ -293,8 +295,16 @@ $theme-colors-border-subtle-dark: map-merge($theme-colors-border-subtle-dark, $c
 }
 
 .form-field:focus {
+  border-color: $info-border-subtle;
   border-style: solid;
   border-radius: 0.375rem;
+  outline-offset: 2px;
+}
+
+.form-check-input:focus {
+  outline: 3px dashed $primary;
+  outline-offset: 2px;
+  box-shadow: none;
 }
 
 .breadcrumb-item, .breadcrumb-item.active, .nav-link, .dropdown-item, .dropdown-item:hover {
@@ -318,16 +328,19 @@ textarea, input {
   border-color: #000000;
 }
 
-input[type=checkbox], input[type=radio] {
-  accent-color: #041058;
-}
-
-.form-control {
+.form-control, .check, .check:focus {
   border-color: $info-border-subtle;
 }
 
 .check {
-  border-image-width: 2;
+  width: 1.667rem;
+  height: 1.667rem;
+  min-width: 30px;
+}
+
+.form-check-input:checked {
+  border-color: $primary;
+  background-color: $primary;
 }
 
 // Form Label Utilities
@@ -364,8 +377,12 @@ svg[data-icon="loca11y-logo"].unpad {
 }
 
 @include color-mode(dark) {
-  *:focus-visible, .form-field:focus, .navbar-toggler:focus, .btn:focus-visible, .nav-link:focus-visible {
+  *:focus-visible, .form-field:focus, .form-check-input:focus, .navbar-toggler:focus, .btn:focus-visible, .nav-link:focus-visible {
     outline-color: #FFFFFF;
+  }
+
+  .form-field:focus {
+    border-color: $info-border-subtle-dark;
   }
 
   // TODO: Fix this.
@@ -409,7 +426,11 @@ svg[data-icon="loca11y-logo"].unpad {
     border-color: #FFFFFF;
   }
 
-  .form-control {
+  .form-control, .check, .check:focus, .form-check-input:focus {
+    border-color: $info-border-subtle-dark;
+  }
+
+  .form-check-input:checked {
     border-color: $info-border-subtle-dark;
   }
 
