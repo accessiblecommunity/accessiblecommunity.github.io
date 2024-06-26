@@ -108,8 +108,7 @@ $btn-hover-bg-tint-amount:        25%;
 $btn-hover-border-shade-amount:   30%;
 $btn-hover-border-tint-amount:    20%;
 
-$code-color:                  #590455;
-$code-color-dark:             #EAB3E8;
+$input-border-width:              2px;
 
 $container-padding-x:  3rem;
 
@@ -322,6 +321,10 @@ input[type=checkbox], input[type=radio] {
   accent-color: #041058;
 }
 
+.form-control, .form-border {
+  border-color: $info-border-subtle;
+}
+
 .check {
   border-image-width: 2;
 }
@@ -403,6 +406,10 @@ svg[data-icon="loca11y-logo"].unpad {
 
   textarea, input {
     border-color: #FFFFFF;
+  }
+
+  .form-control, .form-border {
+    border-color: $info-border-subtle-dark;
   }
 
   .bi {  // blue-30

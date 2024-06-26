@@ -8,7 +8,7 @@ interface Props {
 }
 
 const {
-  theme = "info",
+  theme = "info-subtle",
   newsletters = false,
   announcements = false,
   border = 3,
@@ -184,7 +184,7 @@ const {
         <button
           id="mc-embedded-subscribe"
           type="submit"
-          class={`btn btn-${theme} w-100 general-button`}>Sign Up</button
+          class={`btn btn-info w-100 general-button`}>Sign Up</button
         >
       </div>
     </div>
@@ -229,9 +229,3 @@ const {
   var $mcj = jQuery.noConflict(true);
 </script>
 
-<style>
-  /* first declaration that is commented out below is for debugging purposes. */
-  /* * {
-    outline: 1px solid black;
-  } */
-</style>

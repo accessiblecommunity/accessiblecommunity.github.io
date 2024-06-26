@@ -96,11 +96,11 @@ $info:                              #066F80; // branded cyan
 // Secondary Subtle Theme
 $info-text-emphasis:                #004F4F; // cyan-80
 $info-bg-subtle:                    #67DCE0; // cyan-00  
-$info-border-subtle:                #33CCCC; // cyan-10
+$info-border-subtle:                #004F4F; // cyan-80
 
 $info-text-emphasis-dark:           #11BABA; // cyan-20
-$info-bg-subtle-dark:               #003D3D; // cyan-90
-$info-border-subtle-dark:           #006161; // cyan-70
+$info-bg-subtle-dark:               #003D3D; // cyan-90 
+$info-border-subtle-dark:           #11BABA; // cyan-20
 
 // Headings
 $headings-color:                    $primary;
@@ -112,3 +112,7 @@ $link-color-dark:                   #7EB0E4; // blue-20
 $link-shade-percentage:             40%;
 // $link-hover-color:                  shift-color($link-color, $link-shade-percentage) !default;
 // $link-hover-color-dark:             shift-color($link-color-dark, -$link-shade-percentage) !default;
+
+// Code
+$code-color:                        #590455;
+$code-color-dark:                   #EAB3E8;
