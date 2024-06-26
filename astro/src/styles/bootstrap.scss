@@ -294,6 +294,7 @@ $theme-colors-border-subtle-dark: map-merge($theme-colors-border-subtle-dark, $c
 
 .form-field:focus {
   border-style: solid;
+  border-radius: 0.375rem;
 }
 
 .breadcrumb-item, .breadcrumb-item.active, .nav-link, .dropdown-item, .dropdown-item:hover {
@@ -321,7 +322,7 @@ input[type=checkbox], input[type=radio] {
   accent-color: #041058;
 }
 
-.form-control, .form-border {
+.form-control {
   border-color: $info-border-subtle;
 }
 
@@ -408,7 +409,7 @@ svg[data-icon="loca11y-logo"].unpad {
     border-color: #FFFFFF;
   }
 
-  .form-control, .form-border {
+  .form-control {
     border-color: $info-border-subtle-dark;
   }
 
