@@ -263,7 +263,7 @@ $theme-colors-border-subtle-dark: map-merge($theme-colors-border-subtle-dark, $c
   outline: 2px solid $primary;
   outline-offset: 2px;
   box-shadow: none;
-  border-radius: 0.13rem;
+  // border-radius: 0.13rem;
 }
 
 .navbar-toggler:focus {
@@ -293,6 +293,10 @@ $theme-colors-border-subtle-dark: map-merge($theme-colors-border-subtle-dark, $c
   outline-color: #FFFFFF;
 }
 
+a:hover {
+  text-decoration-color: $primary;
+}
+
 .form-control:focus-visible {
   outline: 2px solid $primary;
   box-shadow: none;
@@ -307,20 +311,22 @@ $theme-colors-border-subtle-dark: map-merge($theme-colors-border-subtle-dark, $c
 
 *a:hover, .nav-link:hover, .nav-link:active, .navbar-nav .nav-link.show, li > .dropdown-item:hover, .brand-name:hover {
   color: #FFFFFF;
-  background-color: #000000;
+  background-color: $primary;
 }
 
 .footer-social-link:hover {
+  color: #FFFFFF;
   background-color: $primary;
+}
+
+.footer-link:hover, .link-light:hover {
+  color: $primary !important;
+  background-color: #FFFFFF !important;
+  text-decoration-color: $primary !important;
 }
 
 .bio-social-link:hover {
   background-color: $body-tertiary-bg;
-}
-
-.hero-link:hover, .footer-link:hover, .link-light:hover {
-  color: #000000;
-  background-color: #FFFFFF;
 }
 
 .form-check-input {
@@ -338,7 +344,7 @@ $theme-colors-border-subtle-dark: map-merge($theme-colors-border-subtle-dark, $c
 }
 
 .breadcrumb-item, .breadcrumb-item.active, .nav-link, .dropdown-item, .dropdown-item:hover {
-  color: #000000;
+  color: $primary;
 }
 
 .footer-social-link {
@@ -412,10 +418,10 @@ svg[data-icon="loca11y-logo"].unpad {
   }
 
   *a:hover, .nav-link:hover, .nav-link:active, .navbar-nav .nav-link.show, li > .dropdown-item:hover, .link-light:hover, .brand-name:hover {
-    color: #000000;
+    color: $primary;
     background-color: #FFFFFF;
   }
-  
+
   .bio-social-link:hover {
     background-color: $body-tertiary-bg-dark;
   }
