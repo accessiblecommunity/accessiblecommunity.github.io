@@ -172,6 +172,7 @@ $custom-util-text-emphasis-colors: ();
 $custom-util-bg-subtle: ();
 $custom-util-border-subtle: ();
 
+// CSS Classes to CSS Variables
 @each $theme in $custom-subtle-themes {
   $custom-util-text-emphasis-colors: map.set(
     $custom-util-text-emphasis-colors, "#{$theme}-emphasis", "var(--#{$prefix}#{$theme}-text-emphasis)"
@@ -184,9 +185,21 @@ $custom-util-border-subtle: ();
   );
 }
 
+// New Contrast "style" for themes.
+$custom-contrast-themes: info,;
+$custom-util-border-contrast: ();
+
+@each $theme in $custom-contrast-themes {
+  $custom-util-border-contrast: map.set(
+    $custom-util-border-contrast, "#{$theme}-contrast", var(--#{$prefix}#{$theme}-border-contrast)
+  );
+}
+
 $utilities-text-emphasis-colors: map-merge($utilities-text-emphasis-colors, $custom-util-text-emphasis-colors);
 $utilities-bg-subtle: map-merge($utilities-bg-subtle, $custom-util-bg-subtle);
 $utilities-border-subtle: map-merge($utilities-border-subtle, $custom-util-border-subtle);
+// Not just subtle, this is the repsonsive border map...
+$utilities-border-subtle: map-merge($utilities-border-subtle, $custom-util-border-contrast);
 
 @import "bootstrap/scss/utilities";
 
@@ -204,6 +217,7 @@ $utilities: map-merge(
   )
 );
 
+// CSS Variables to SCSS Variables
 // Custom Themes: Light mode.
 $custom-colors-text: ();
 $custom-colors-bg-subtle: ();
@@ -225,6 +239,27 @@ $theme-colors-border-subtle-dark: map-merge($theme-colors-border-subtle-dark, $c
 // 5b. Include remainder of required parts
 @import "bootstrap/scss/root";
 @import "bootstrap/scss/reboot";
+
+// Additional contrast style on themes.
+$theme-colors-border-contrast: (
+  "info": $info-border-contrast,
+);
+$theme-colors-border-contrast-dark: (
+  "info": $info-border-contrast-dark,
+);
+
+:root {
+  @each $color, $value in $theme-colors-border-contrast {
+    --#{$prefix}#{$color}-border-contrast: #{$value};
+  }
+}
+@include color-mode(dark, true) {
+  color-scheme: dark;
+
+  @each $color, $value in $theme-colors-border-contrast-dark {
+    --#{$prefix}#{$color}-border-contrast: #{$value};
+  }
+}
 
 // 6. Optionally include any other parts as needed
 //    Match the order from bootstrap/scss/bootstrap.scss
