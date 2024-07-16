@@ -13,6 +13,8 @@ import mdx from "@astrojs/mdx";
 import robotsTxt from "astro-robots-txt";
 import sitemap from "@astrojs/sitemap";
 
+const polling = import.meta.env.POLLING && true;
+
 // https://astro.build/config
 export default defineConfig({
   site: "https://accessiblecommunity.org",
@@ -32,6 +34,10 @@ export default defineConfig({
     },
     ssr: {
       noExternal: ["bootstrap"],
+    },
+    // https://vitejs.dev/config/server-options#server-watch
+    watch: {
+      usePolling: polling,
     },
   },
   integrations: [
