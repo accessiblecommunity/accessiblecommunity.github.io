@@ -24,6 +24,17 @@ The next step is to determine which development environment you would like to us
     * For instance, [`Makefile` support for VS Code](https://devblogs.microsoft.com/cppblog/now-announcing-makefile-support-in-visual-studio-code/)
 3. Run `make serve` to launch the container, install the dependencies and run the development server.
 
+#### A few issues about developing on Windows
+
+When using Windows as a development environment, you may run into a couple of issues.
+1. Not all of the `make` commands may work. Please let us know what does and doesn't.
+2. The development reloading feature may not work, if you aren't [utilizing WSL2 as your filesystem for your local repository](https://github.com/microsoft/WSL/issues/4739#issuecomment-581075753). 
+  * If that is the case, add a `.env.development.local` file to the `astro` directory with the following content:
+  ```
+  # Add automated polling with windows
+  VITE_POLLING=true
+  ```
+
 ### Setting up a Development Environment using Node.
 
 1. Install the [LTS version of Node](https://nodejs.org/en/download/prebuilt-installer/current) on your development machine.
