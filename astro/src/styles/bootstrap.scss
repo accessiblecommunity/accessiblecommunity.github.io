@@ -337,9 +337,22 @@ $theme-colors-border-contrast-dark: (
 }
 
 .form-check-input:focus {
-  outline: 3px dashed $primary;
+  outline: 2px solid $primary;
   outline-offset: 2px;
   box-shadow: none;
+}
+
+.form-control:focus-visible {
+  outline: 2px solid $primary;
+  box-shadow: none;
+  border-radius: 0.375rem;
+}
+
+.form-check-input:focus-visible {
+  outline: 2px solid $primary;
+  outline-offset: 2px;
+  box-shadow: none;
+}
 
 a:hover {
   text-decoration-color: $primary;
@@ -369,9 +382,6 @@ a:hover {
 .icon-link {
   text-underline-offset: 0.1em;
   text-decoration-color: currentColor;
-}
-
-
 }
 
 .breadcrumb-item, .breadcrumb-item.active, .nav-link, .dropdown-item, .dropdown-item:hover {
@@ -459,7 +469,7 @@ svg[data-icon="loca11y-logo"].unpad {
 }
 
 @include color-mode(dark) {
-  *:focus-visible, .form-field:focus, .form-check-input:focus, .navbar-toggler:focus, .btn:focus-visible, .nav-link:focus-visible {
+  *:focus-visible, .form-field:focus, .form-check-input:focus, .form-check-input:focus-visible, .navbar-toggler:focus, .btn:focus-visible, .nav-link:focus-visible, .form-control:focus-visible {
     outline-color: #FFFFFF;
   }
 
