@@ -432,6 +432,12 @@ textarea, input {
   background-color: $primary;
 }
 
+.form-check-input {
+  width: 1.667rem;
+  height: 1.667rem;
+  min-width: 30px;
+}
+
 // Form Label Utilities
 // Place a <span class="asterisk" /> after a label or inside a legend.
 // When inside a legend, place a `aria-hidden="true"` attribute on it.
