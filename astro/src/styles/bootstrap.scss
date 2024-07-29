@@ -312,6 +312,7 @@ a:hover {
 *a:hover, .nav-link:hover, .nav-link:active, .navbar-nav .nav-link.show, li > .dropdown-item:hover, .brand-name:hover {
   color: #FFFFFF;
   background-color: $primary;
+  text-decoration-color: #FFFFFF;
 }
 
 .footer-social-link:hover {
@@ -420,6 +421,7 @@ svg[data-icon="loca11y-logo"].unpad {
   *a:hover, .nav-link:hover, .nav-link:active, .navbar-nav .nav-link.show, li > .dropdown-item:hover, .link-light:hover, .brand-name:hover {
     color: $primary;
     background-color: #FFFFFF;
+    text-decoration-color: $primary;
   }
 
   .bio-social-link:hover {
@@ -455,13 +457,17 @@ svg[data-icon="loca11y-logo"].unpad {
     color: #FFFFFF;
   }
 
+  .text-linkedin {
+    color: white !important;
+  }
+
   textarea, input {
     border-color: #FFFFFF;
   }
 
-  .bi {  // blue-30
-    filter: brightness(0) saturate(100%) invert(71%) sepia(19%) saturate(851%) hue-rotate(172deg) brightness(91%) contrast(95%);
-  }
+  // .bi {  // blue-30
+  //   filter: brightness(0) saturate(100%) invert(71%) sepia(19%) saturate(851%) hue-rotate(172deg) brightness(91%) contrast(95%);
+  // }
 }
 
 
