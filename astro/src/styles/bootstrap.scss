@@ -417,7 +417,7 @@ textarea, input {
   border-color: #000000;
 }
 
-.form-control, .form-select, .check, .check:focus {
+.form-control, .form-control:focus, .form-select, .check, .check:focus {
   border-color: $info-border-contrast;
 }
 
@@ -530,7 +530,7 @@ svg[data-icon="loca11y-logo"].unpad {
     border-color: #FFFFFF;
   }
 
-  .form-control, .check, .check:focus, .form-check-input:focus {
+  .form-control,.form-control:focus, .check, .check:focus, .form-check-input:focus {
     border-color: $info-border-contrast-dark;
   }
 
