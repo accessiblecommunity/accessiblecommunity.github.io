@@ -330,6 +330,11 @@ a:hover {
   background-color: $body-tertiary-bg;
 }
 
+.icon-link {
+  text-underline-offset: 0.1em;
+  text-decoration-color: currentColor;
+}
+
 .form-check-input {
   width: 1.667rem;
   height: 1.667rem;
