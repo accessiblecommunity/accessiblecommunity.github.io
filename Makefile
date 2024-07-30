@@ -16,43 +16,43 @@ else
 endif
 
 serve: up $(SOURCE_DIR)/node_modules
-	@docker-compose exec $(CONTAINER) sh -c "npm run dev"
+	@docker compose exec $(CONTAINER) sh -c "npm run dev"
 
 up:
-	@docker-compose up --detach
+	@docker compose up --detach
 
 down:
-	@docker-compose down
+	@docker compose down
 
 shell:
-	@docker-compose exec $(CONTAINER) bash
+	@docker compose exec $(CONTAINER) bash
 
 dist: clean-js-dist $(SOURCE_DIR)/dist
 
 prettier: up
 	@echo Verifying code formatting.
-	@docker-compose exec $(CONTAINER) sh -c "npx prettier ./src --write"
+	@docker compose exec $(CONTAINER) sh -c "npx prettier ./src --write"
 
 version: up
 ifndef number
 	$(error Please define a 'number' that represents the new version)
 endif
-	docker-compose exec $(CONTAINER) sh -c "npm version ${number}"
+	docker compose exec $(CONTAINER) sh -c "npm version ${number}"
 
 update-dependencies: up
 	@echo Updating package.json.
-	@docker-compose exec ${CONTAINER} sh -c "npx npm-check-updates -u"
+	@docker compose exec ${CONTAINER} sh -c "npx npm-check-updates -u"
 
 build:
-	@docker-compose build
+	@docker compose build
 
 $(SOURCE_DIR)/node_modules:
 	@echo Installing JS dependencies. This will take awhile.
-	docker-compose exec $(CONTAINER) sh -c "npm install"
+	@docker compose exec $(CONTAINER) sh -c "npm install"
 
 $(SOURCE_DIR)/dist: up
 	@echo Running a local build.
-	@docker-compose exec $(CONTAINER) sh -c "npm run build"
+	@docker compose exec $(CONTAINER) sh -c "npm run build"
 
 clean-js-dist:
 	@echo Removing the $(SOURCE_DIR)/dist directory.
