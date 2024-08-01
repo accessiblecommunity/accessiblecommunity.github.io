@@ -88,10 +88,10 @@ const crumbs = [
     <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 mt-5">
       <div class="col">
         <h3>Most Recent</h3>
-        <ul class="mt-1 mb-3 list-disc">
+        <ul class="mt-1 mb-3 list-disc list-spaced">
           {
             tips.slice(0, 7).map((tip) => (
-              <li class="list-spacing">
+              <li>
                 <a href={`/tips/${tip.slug}`}>{tip.data.title}</a>
               </li>
             ))
@@ -102,11 +102,11 @@ const crumbs = [
         categories.map((cat) => (
           <div class="col">
             <h3>{startCase(cat)}</h3>
-            <ul class="mt-1 mb-4 list-disc">
+            <ul class="mt-1 mb-4 list-disc list-spaced">
               {tips.map(
                 (tip) =>
                   tip.data.tags.includes(cat) && (
-                    <li class="list-item list-spacing">
+                    <li class="list-item">
                       <a href={`/tips/${tip.slug}`}>{tip.data.title}</a>
                     </li>
                   ),
