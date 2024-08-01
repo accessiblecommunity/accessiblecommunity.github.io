@@ -114,11 +114,11 @@ $btn-hover-border-tint-amount:    20%;
 // Form inputs
 //************
 
-$input-border-width:              1.5px;
+$input-border-width:              2px;
 $input-border-color:              $info-border-contrast;
 $input-focus-border-color:        $info-border-contrast;
 
-$form-check-input-border:         2px solid;
+$form-check-input-border:         2px solid $info-border-contrast;
 $form-check-input-border-radius:  0.375rem;
 
 $form-check-input-width:                  1.667em;
@@ -519,7 +519,7 @@ svg[data-icon="loca11y-logo"].unpad {
     border-color: #FFFFFF;
   }
 
-  .form-control,.form-control:focus, .check, .check:focus, .form-check-input:focus {
+  .form-control,.form-control:focus, .form-check-input, .form-check-input:focus {
     border-color: $info-border-contrast-dark;
   }
 
