@@ -114,11 +114,11 @@ $btn-hover-border-tint-amount:    20%;
 // Form inputs
 //************
 
-$input-border-width:              2px;
+$input-border-width:              1.8px;
 $input-border-color:              $info-border-contrast;
 $input-focus-border-color:        $info-border-contrast;
 
-$form-check-input-border:         2px solid $info-border-contrast;
+$form-check-input-border:         1.8px solid $info-border-contrast;
 $form-check-input-border-radius:  0.375rem;
 
 $form-check-input-width:                  1.667em;
@@ -319,17 +319,23 @@ $theme-colors-border-contrast-dark: (
   border-radius: 0.375rem !important;
 }
 
-.brand-name:focus-visible {
+.navbar-brand:focus-visible {
+  color: $primary;
   outline-offset: 2px;
+}
+
+.nav-link:focus-visible {
+  outline-offset: 0px;
 }
 
 .hero-link:focus-visible, .link-light:focus-visible {
   outline-color: #FFFFFF;
 }
 
-// .dropdown-item:focus-visible {
-//   outline-offset: -0.15em;
-// }
+.dropdown-item:focus-visible {
+  outline-offset: -0.15em;
+  background-color: #FFFFFF;
+}
 
 .btn:focus-visible {
   outline: 2px solid $primary;
@@ -372,11 +378,15 @@ a:hover {
   transition: all 0.1s ease-in;
 }
 
-*a:hover, .nav-link:hover, .nav-link:active, .navbar-nav .nav-link.show, li > .dropdown-item:hover, .brand-name:hover {
+*a:hover, .nav-link:hover, .nav-link:active, .navbar-nav .nav-link.show, .navbar-brand:hover, li > .dropdown-item:hover {
   color: #FFFFFF;
   background-color: $primary;
   text-decoration-color: #FFFFFF;
 }
+
+// .nav-link:focus {
+//   color: $primary;
+// }
 
 .footer-social-link:hover {
   color: #FFFFFF;
@@ -468,7 +478,12 @@ svg[data-icon="loca11y-logo"].unpad {
     outline-color: #FFFFFF;
   }
 
-  *a:hover, .nav-link:hover, .nav-link:active, .navbar-nav .nav-link.show, li > .dropdown-item:hover, .link-light:hover, .brand-name:hover {
+  .dropdown-item:focus-visible {
+    // outline-offset: -0.15em;
+    background-color: var(--bs-dropdown-bg);
+  }
+
+  *a:hover, .nav-link:hover, .nav-link:active, .navbar-nav .nav-link.show, li > .dropdown-item:hover, .link-light:hover, .navbar-brand:hover {
     color: $primary;
     background-color: #FFFFFF;
     text-decoration-color: $primary;
