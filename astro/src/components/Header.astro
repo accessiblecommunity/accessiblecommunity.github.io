@@ -56,7 +56,7 @@ const breadCrumbs =
             role="button"
             aria-expanded="false">About</a
           >
-          <ul class="dropdown-menu">
+          <ul class="dropdown-menu px-2">
             <li>
               <a class="dropdown-item" href="/about/mission"
                 >Mission &amp; Vision</a
@@ -81,7 +81,7 @@ const breadCrumbs =
             role="button"
             aria-expanded="false">Team</a
           >
-          <ul class="dropdown-menu">
+          <ul class="dropdown-menu px-2">
             <li>
               <a class="dropdown-item" href="/team/board">Board Members</a>
             </li>
@@ -107,7 +107,7 @@ const breadCrumbs =
             role="button"
             aria-expanded="false">Join us</a
           >
-          <ul class="dropdown-menu">
+          <ul class="dropdown-menu px-2">
             <li><a class="dropdown-item" href="/volunteer">Volunteer</a></li>
             <li><a class="dropdown-item" href="/donate">Donate</a></li>
             <!-- TODO: Hiding the sponsor page until it's done. -->
@@ -149,9 +149,9 @@ const breadCrumbs =
 
 <style is:global lang="scss">
   /* first declaration that is commented out below is for debugging purposes. */
-  /* * {
-    outline: 1px solid black;
-  } */
+  // * {
+  //    outline: 1px solid white;
+  // }
 
   @import "../styles/dark-mode.scss";
   @import "../styles/responsive-sizing.scss";
@@ -191,6 +191,20 @@ const breadCrumbs =
   #breadcrumbs-nav {
     top: 2.4rem;
     left: 4rem;
+  }
+
+  .nav-link {
+    margin-inline: 0.222em;
+    margin-top: 0.222em;
+    margin-bottom: 0.222em;
+  }
+
+  .dropdown-item {
+    margin-bottom: 0.444em;
+  }
+
+  .dropdown-menu > .dropdown-item:last-child {
+    margin-bottom: 0em;
   }
 
   @include media-breakpoint-down(lg) {

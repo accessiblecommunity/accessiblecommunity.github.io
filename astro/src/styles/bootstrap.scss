@@ -324,16 +324,11 @@ $theme-colors-border-contrast-dark: (
   outline-offset: 2px;
 }
 
-.nav-link:focus-visible {
-  outline-offset: 0px;
-}
-
 .hero-link:focus-visible, .link-light:focus-visible {
   outline-color: #FFFFFF;
 }
 
 .dropdown-item:focus-visible {
-  outline-offset: -0.15em;
   background-color: #FFFFFF;
 }
 
