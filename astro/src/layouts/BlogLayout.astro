@@ -41,7 +41,7 @@ const published = blog.data.published.toLocaleDateString("en-us", {
 
 const { Content } = await blog.render();
 
-import components from '../lib/mdx';
+import components from "../lib/mdx";
 import ImageHeading from "../components/ImageHeading.astro";
 import Layout from "../layouts/Layout.astro";
 import TeamVignette from "../components/TeamVignette.astro";
@@ -171,6 +171,13 @@ import ThemedSection from "../components/ThemedSection.astro";
 
   article :global(.vignette-name) {
     color: var(--bs-primary-text-emphasis);
+  }
+  article :global(h2:not(:first-child)) {
+    margin-top: 1em;
+  }
+  article :global(h3),
+  article :global(h4) {
+    margin-top: 0.75em;
   }
 
   .list-disc {
