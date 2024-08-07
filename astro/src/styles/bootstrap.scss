@@ -321,10 +321,6 @@ $theme-colors-border-contrast-dark: (
   border-radius: 0.375rem !important;
 }
 
-.navbar-nav .nav-link.show {
-  color: $primary;
-}
-
 .hero-link:focus-visible, .link-light:focus-visible {
   outline-color: #FFFFFF;
 }
@@ -468,6 +464,10 @@ svg[data-icon="loca11y-logo"].unpad {
 @include color-mode(dark) {
   *:focus-visible, .form-field:focus, .form-check-input:focus, .form-check-input:focus-visible, .navbar-toggler:focus, .btn:focus-visible, .nav-link:focus-visible, .form-control:focus-visible {
     outline-color: #FFFFFF;
+  }
+
+  .nav-link:focus {
+    color: #FFFFFF;
   }
 
   .dropdown-item:focus-visible {
