@@ -27,7 +27,7 @@ const crumbs = [
     Volunteer <strong>Commitment</strong> Form
   </ImageHeading>
   <ThemedSection style="secondary">
-    <form id="commitmentForm" class="col p-4 border-info commitment-form">
+    <form id="commitmentForm" class="col p-4 bg-body border border-2 border-info-contrast rounded">
       <p class="lead">
         Thank you for your interest in committing to volunteer with
         <Branding class="text-primary">Accessible Community</Branding>.
@@ -56,7 +56,7 @@ const crumbs = [
           <input
             type="text"
             name="FirstName"
-            class="form-control w-100 form-field"
+            class="form-control w-100"
             id="firstNameField"
             autocomplete="given-name"
             required
@@ -69,7 +69,7 @@ const crumbs = [
           <input
             type="text"
             name="LastName"
-            class="form-control w-100 form-field"
+            class="form-control w-100"
             id="lastNameField"
             autocomplete="family-name"
             required
@@ -82,7 +82,7 @@ const crumbs = [
           <input
             type="text"
             name="Email"
-            class="form-control w-100 form-field"
+            class="form-control w-100"
             id="emailField"
             aria-describedby="emailHelp"
             required
@@ -105,12 +105,11 @@ const crumbs = [
             </legend>
             <div class="form-check d-flex mb-2 align-items-center">
               <input
-                class="form-check-input check"
+                class="form-check-input"
                 type="checkbox"
                 name="CodeOfConduct"
                 value="Yes"
                 id="readAgree"
-                aria-checked="false"
                 required
               />
               <label class="form-check-label ps-2" for="readAgree">
@@ -135,7 +134,7 @@ const crumbs = [
           <input
             type="text"
             name="CitedName"
-            class="form-control w-100 form-field"
+            class="form-control w-100"
             id="citedNameField"
             aria-describedby="citedNameHelp"
             required
@@ -151,7 +150,7 @@ const crumbs = [
           <input
             type="text"
             name="LinkedInProfile"
-            class="form-control w-100 form-field"
+            class="form-control w-100"
             aria-describedby="linkedInProfileHelp"
             id="linkedInProfileField"
           />
@@ -169,7 +168,7 @@ const crumbs = [
             <input
               type="text"
               name="MastodonHandle"
-              class="form-control w-100 form-field"
+              class="form-control w-100"
               aria-describedby="mastodonHandleHelp"
               id="mastodonHandleField"
             />
@@ -184,7 +183,7 @@ const crumbs = [
             <input
               type="text"
               name="TwitterXHandle"
-              class="form-control w-100 form-field"
+              class="form-control w-100"
               aria-describedby="twitterXHelp"
               id="twitterXField"
             />
@@ -200,7 +199,7 @@ const crumbs = [
             <input
               type="text"
               name="InstagramProfile"
-              class="form-control w-100 form-field"
+              class="form-control w-100"
               aria-describedby="instagramProfileHelp"
               id="instagramProfileField"
             />
@@ -210,7 +209,7 @@ const crumbs = [
           </div>
         </div>
         <div class="col-lg-6 mb-3">
-          <fieldset class="border-3 border-top border-info">
+          <fieldset class="border-3 border-top form-border">
             <legend class="my-3 fs-5">
               We have a Team Spotlight where team members can be highlighted on
               our social media. Would you be open to being a part our Team
@@ -218,12 +217,11 @@ const crumbs = [
             </legend>
             <div class="form-check d-flex mb-2 align-items-center">
               <input
-                class="form-check-input check"
+                class="form-check-input"
                 type="radio"
                 name="TeamSpotlight"
                 value="No"
                 id="teamSpotlightNone"
-                aria-checked="true"
                 checked
               />
               <label class="form-check-label ps-2" for="teamSpotlightNone">
@@ -232,12 +230,11 @@ const crumbs = [
             </div>
             <div class="form-check d-flex mb-2 align-items-center">
               <input
-                class="form-check-input check"
+                class="form-check-input"
                 type="radio"
                 name="TeamSpotlight"
                 value="Yes"
                 id="teamSpotlightYes"
-                aria-checked="false"
               />
               <label class="form-check-label ps-2" for="teamSpotlightYes">
                 Yes, I am open to being featured in the Team Spotlight.
@@ -257,12 +254,11 @@ const crumbs = [
             </legend>
             <div class="form-check d-flex mb-2 align-items-center">
               <input
-                class="form-check-input check"
+                class="form-check-input"
                 type="checkbox"
                 name="Teams"
                 value="Administration"
                 id="interestAdmin"
-                aria-checked="false"
               />
               <label class="form-check-label ps-2" for="interestAdmin">
                 Administration Team
@@ -270,12 +266,11 @@ const crumbs = [
             </div>
             <div class="form-check d-flex mb-2 align-items-center">
               <input
-                class="form-check-input check"
+                class="form-check-input"
                 type="checkbox"
                 name="Teams"
                 value="Content"
                 id="interestWrite"
-                aria-checked="false"
               />
               <label class="form-check-label ps-2" for="interestWrite">
                 Content Team
@@ -283,12 +278,11 @@ const crumbs = [
             </div>
             <div class="form-check d-flex mb-2 align-items-center">
               <input
-                class="form-check-input check"
+                class="form-check-input"
                 type="checkbox"
                 name="Teams"
                 value="Development"
                 id="interestDev"
-                aria-checked="false"
               />
               <label class="form-check-label ps-2" for="interestDev">
                 Development Team
@@ -296,12 +290,11 @@ const crumbs = [
             </div>
             <div class="form-check d-flex mb-2 align-items-center">
               <input
-                class="form-check-input check"
+                class="form-check-input"
                 type="checkbox"
                 name="Teams"
                 value="Evaluations"
                 id="interestEval"
-                aria-checked="false"
               />
               <label class="form-check-label ps-2" for="interestEval">
                 Evaluations Team
@@ -309,12 +302,11 @@ const crumbs = [
             </div>
             <div class="form-check d-flex mb-2 align-items-center">
               <input
-                class="form-check-input check"
+                class="form-check-input"
                 type="checkbox"
                 name="Teams"
                 value="Leadership"
                 id="interestRun"
-                aria-checked="false"
               />
               <label class="form-check-label ps-2" for="interestRun">
                 Leadership Team
@@ -322,12 +314,11 @@ const crumbs = [
             </div>
             <div class="form-check d-flex mb-2 align-items-center">
               <input
-                class="form-check-input check"
+                class="form-check-input"
                 type="checkbox"
                 name="Teams"
                 value="Social"
                 id="interestSocial"
-                aria-checked="false"
               />
               <label class="form-check-label ps-2" for="interestSocial">
                 Social Media Team
@@ -335,12 +326,11 @@ const crumbs = [
             </div>
             <div class="form-check d-flex mb-2 align-items-center">
               <input
-                class="form-check-input check"
+                class="form-check-input"
                 type="checkbox"
                 name="Teams"
                 value="UI/UX"
                 id="interestUX"
-                aria-checked="false"
               />
               <label class="form-check-label ps-2" for="interestUX">
                 UX Team
@@ -348,12 +338,11 @@ const crumbs = [
             </div>
             <div class="form-check d-flex mb-2 align-items-center">
               <input
-                class="form-check-input check"
+                class="form-check-input"
                 type="checkbox"
                 name="Teams"
                 value="Other"
                 id="interestOther"
-                aria-checked="false"
               />
               <label class="form-check-label ps-2" for="interestOther">
                 Other
@@ -367,12 +356,11 @@ const crumbs = [
             </legend>
             <div class="form-check d-flex mb-2 align-items-center">
               <input
-                class="form-check-input check"
+                class="form-check-input"
                 type="radio"
                 name="Hours"
                 value="Less than 4 hours"
                 id="hoursLess"
-                aria-checked="false"
               />
               <label class="form-check-label ps-2" for="hoursLess">
                 Less than 4 hours a week
@@ -380,12 +368,11 @@ const crumbs = [
             </div>
             <div class="form-check d-flex mb-2 align-items-center">
               <input
-                class="form-check-input check"
+                class="form-check-input"
                 type="radio"
                 name="Hours"
                 value="About 4 hours"
                 id="hoursAround"
-                aria-checked="false"
               />
               <label class="form-check-label ps-2" for="hoursAround">
                 Around 4 hours a week
@@ -393,12 +380,11 @@ const crumbs = [
             </div>
             <div class="form-check d-flex mb-2 align-items-center">
               <input
-                class="form-check-input check"
+                class="form-check-input"
                 type="radio"
                 name="Hours"
                 value="More than 4 hours"
                 id="hoursMore"
-                aria-checked="false"
               />
               <label class="form-check-label ps-2" for="hoursMore">
                 More than 4 hours a week
@@ -419,12 +405,11 @@ const crumbs = [
             </legend>
             <div class="form-check d-flex mb-2 align-items-center">
               <input
-                class="form-check-input check"
+                class="form-check-input"
                 type="radio"
                 name="TShirtSize"
                 value=""
                 id="sizeNone"
-                aria-checked="true"
                 checked
               />
               <label class="form-check-label ps-2" for="sizeNone">
@@ -433,12 +418,11 @@ const crumbs = [
             </div>
             <div class="form-check d-flex mb-2 align-items-center">
               <input
-                class="form-check-input check"
+                class="form-check-input"
                 type="radio"
                 name="TShirtSize"
                 value="XS"
                 id="sizeXS"
-                aria-checked="false"
               />
               <label class="form-check-label ps-2" for="sizeXS">
                 Extra Small (XS)
@@ -446,12 +430,11 @@ const crumbs = [
             </div>
             <div class="form-check d-flex mb-2 align-items-center">
               <input
-                class="form-check-input check"
+                class="form-check-input"
                 type="radio"
                 name="TShirtSize"
                 value="S"
                 id="sizeS"
-                aria-checked="false"
               />
               <label class="form-check-label ps-2" for="sizeS">
                 Small (S)
@@ -459,12 +442,11 @@ const crumbs = [
             </div>
             <div class="form-check d-flex mb-2 align-items-center">
               <input
-                class="form-check-input check"
+                class="form-check-input"
                 type="radio"
                 name="TShirtSize"
                 value="M"
                 id="sizeM"
-                aria-checked="false"
               />
               <label class="form-check-label ps-2" for="sizeM">
                 Medium (M)
@@ -472,12 +454,11 @@ const crumbs = [
             </div>
             <div class="form-check d-flex mb-2 align-items-center">
               <input
-                class="form-check-input check"
+                class="form-check-input"
                 type="radio"
                 name="TShirtSize"
                 value="L"
                 id="sizeL"
-                aria-checked="false"
               />
               <label class="form-check-label ps-2" for="sizeL">
                 Large (L)
@@ -485,12 +466,11 @@ const crumbs = [
             </div>
             <div class="form-check d-flex mb-2 align-items-center">
               <input
-                class="form-check-input check"
+                class="form-check-input"
                 type="radio"
                 name="TShirtSize"
                 value="XL"
                 id="sizeXL"
-                aria-checked="false"
               />
               <label class="form-check-label ps-2" for="sizeXL">
                 Extra Large (XL)
@@ -498,12 +478,11 @@ const crumbs = [
             </div>
             <div class="form-check d-flex mb-2 align-items-center">
               <input
-                class="form-check-input check"
+                class="form-check-input"
                 type="radio"
                 name="TShirtSize"
                 value="XXL"
                 id="sizeXXL"
-                aria-checked="false"
               />
               <label class="form-check-label ps-2" for="sizeXXL">
                 Double XL (XXL)
@@ -511,12 +490,11 @@ const crumbs = [
             </div>
             <div class="form-check d-flex mb-2 align-items-center">
               <input
-                class="form-check-input check"
+                class="form-check-input"
                 type="radio"
                 name="TShirtSize"
                 value="XXXL"
                 id="sizeXXXL"
-                aria-checked="false"
               />
               <label class="form-check-label ps-2" for="sizeXXXL">
                 Triple XL (XXXL)
@@ -537,7 +515,7 @@ const crumbs = [
       </div>
     </form>
     <div
-      class="d-none col p-4 border-info commitment-form"
+      class="d-none col p-4 border border-3 border-info-contrast rounded"
       id="commitmentSuccess"
     >
       <div class="lead">
@@ -585,16 +563,6 @@ const crumbs = [
     /* * {
    outline: 1px solid black;
  } */
-
-    .commitment-form {
-      border: 3.5px solid;
-      border-radius: 0.5rem;
-    }
-
-    .check {
-      width: 30px;
-      height: 30px;
-    }
 
     fieldset label {
       cursor: pointer;

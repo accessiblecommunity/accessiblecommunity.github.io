@@ -93,7 +93,7 @@ const header =
                 <span class="display-6">
                   <span class="fw-bold">Related</span> Tips
                 </span>
-                <ul class="mt-1 mb-3 list-disc">
+                <ul class="mt-1 mb-3 list-disc list-spaced">
                   {related.map((b) => (
                     <li>
                       <a href={`/tips/${b.slug}`}>{b.data.title}</a>
@@ -113,7 +113,7 @@ const header =
               </a>
               or register below to get them in your inbox.
             </p>
-            <hr class="border border-1 border-info opacity-75" />
+            <hr class="border border-3 form-border opacity-75" />
             <p class="display-6 text-info-emphasis">
               Email the <strong>Tip of the Week</strong>.
             </p>

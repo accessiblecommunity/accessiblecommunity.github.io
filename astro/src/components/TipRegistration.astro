@@ -8,10 +8,10 @@ interface Props {
 }
 
 const {
-  theme = "info",
+  theme = "info-contrast",
   newsletters = false,
   announcements = false,
-  border = 3,
+  border = 2,
   defaultWidth = false,
 } = Astro.props;
 ---
@@ -91,7 +91,7 @@ const {
         id="mce-EMAIL"
         type="email"
         name="EMAIL"
-        class="form-control w-100 form-field"
+        class="form-control w-100"
         autocomplete="email"
         required
         value=""
@@ -106,7 +106,7 @@ const {
           id="mce-FNAME"
           type="text"
           name="FNAME"
-          class="form-control w-100 form-field"
+          class="form-control w-100"
           autocomplete="given-name"
           required
           value=""
@@ -119,7 +119,7 @@ const {
           id="mce-LNAME"
           type="text"
           name="LNAME"
-          class="form-control w-100 form-field"
+          class="form-control w-100"
           autocomplete="family-name"
           value=""
         />
@@ -184,7 +184,7 @@ const {
         <button
           id="mc-embedded-subscribe"
           type="submit"
-          class={`btn btn-${theme} w-100 general-button`}>Sign Up</button
+          class={`btn btn-info w-100 general-button`}>Sign Up</button
         >
       </div>
     </div>
@@ -229,9 +229,3 @@ const {
   var $mcj = jQuery.noConflict(true);
 </script>
 
-<style>
-  /* first declaration that is commented out below is for debugging purposes. */
-  /* * {
-    outline: 1px solid black;
-  } */
-</style>

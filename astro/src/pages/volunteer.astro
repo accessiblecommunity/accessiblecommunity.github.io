@@ -221,7 +221,7 @@ import heroBg from "../images/colored-hero/hands-together.png";
     <h2 class="display-3 mb-4 text-info-emphasis">
       Volunteer <strong>Form</strong>
     </h2>
-    <form id="volunteerFormEl" class="col p-4 border-info volunteer-form">
+    <form id="volunteerFormEl" class="col p-4 bg-body border border-2 border-info-contrast rounded">
       <p class="lead">
         Thank you for your interest in volunteering with
         <Branding>Accessible Community</Branding>.
@@ -252,7 +252,7 @@ import heroBg from "../images/colored-hero/hands-together.png";
           <input
             type="text"
             name="FirstName"
-            class="form-control w-100 form-field"
+            class="form-control w-100"
             id="firstNameField"
             autocomplete="given-name"
             required
@@ -265,7 +265,7 @@ import heroBg from "../images/colored-hero/hands-together.png";
           <input
             type="text"
             name="LastName"
-            class="form-control w-100 form-field"
+            class="form-control w-100"
             id="lastNameField"
             autocomplete="family-name"
             required
@@ -278,7 +278,7 @@ import heroBg from "../images/colored-hero/hands-together.png";
           <input
             type="email"
             name="Email"
-            class="form-control w-100 form-field"
+            class="form-control w-100"
             id="emailField"
             autocomplete="email"
             aria-describedby="emailHelp"
@@ -296,7 +296,7 @@ import heroBg from "../images/colored-hero/hands-together.png";
           <input
             type="text"
             name="Country"
-            class="form-control w-100 form-field"
+            class="form-control w-100"
             id="countryField"
             autocomplete="country-name"
             aria-describedby="countryHelp"
@@ -313,7 +313,7 @@ import heroBg from "../images/colored-hero/hands-together.png";
           <span class="asterisk"></span>
           <textarea
             name="Accommodations"
-            class="form-control w-100 form-text-area"
+            class="form-control w-100 form-text-area form-field"
             id="accommodationTextarea"
             aria-describedby="accommodationHelp"></textarea>
           <div id="accommodationHelp" class="form-text">
@@ -377,16 +377,6 @@ import heroBg from "../images/colored-hero/hands-together.png";
   /* * {
     outline: 1px solid black;
   } */
-
-  .volunteer-form {
-    border: 3.5px solid;
-    border-radius: 0.5rem;
-  }
-
-  .check {
-    width: 30px;
-    height: 30px;
-  }
 
   fieldset label {
     cursor: pointer;

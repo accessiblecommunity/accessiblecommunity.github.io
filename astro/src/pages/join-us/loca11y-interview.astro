@@ -90,7 +90,7 @@ const crumbs = [
         class="asterisk">*</span
       >).
     </p>
-    <form id="surveyForm" class="col p-4 border-info interview-form">
+    <form id="surveyForm" class="col p-4 bg-body form-border interview-form">
       <div class="row flex-lg-row">
         <div class="col-lg-6">
           <div class="mb-3">
@@ -100,7 +100,7 @@ const crumbs = [
             <input
               type="text"
               name="Name"
-              class="form-control w-100 form-field"
+              class="form-control w-100"
               id="nameField"
               autocomplete="name"
               required
@@ -113,7 +113,7 @@ const crumbs = [
             <input
               type="text"
               name="Email"
-              class="form-control w-100 form-field"
+              class="form-control w-100"
               id="emailField"
               aria-describedby="emailHelp"
               required
@@ -133,7 +133,7 @@ const crumbs = [
             <input
               type="text"
               name="Region"
-              class="form-control w-100 form-field"
+              class="form-control w-100"
               id="regionField"
               aria-describedby="regionHelp"
               required
@@ -152,12 +152,11 @@ const crumbs = [
             </legend>
             <div class="form-check d-flex mb-2 align-items-center">
               <input
-                class="form-check-input check"
+                class="form-check-input"
                 type="checkbox"
                 name="SelfDescription"
                 value="Individual"
                 id="sdIndividual"
-                aria-checked="true"
                 checked
               />
               <label class="form-check-label ps-2" for="sdIndividual">
@@ -166,12 +165,11 @@ const crumbs = [
             </div>
             <div class="form-check d-flex mb-2 align-items-center">
               <input
-                class="form-check-input check"
+                class="form-check-input"
                 type="checkbox"
                 name="SelfDescription"
                 value="Caretaker"
                 id="sdCaretaker"
-                aria-checked="false"
               />
               <label class="form-check-label ps-2" for="sdCaretaker">
                 I am a caretaker of a person with disabilities.
@@ -179,12 +177,11 @@ const crumbs = [
             </div>
             <div class="form-check d-flex mb-2 align-items-center">
               <input
-                class="form-check-input check"
+                class="form-check-input"
                 type="checkbox"
                 name="SelfDescription"
                 value="Organization"
                 id="sdOrganization"
-                aria-checked="false"
               />
               <label class="form-check-label ps-2" for="sdOrganization">
                 I represent an organization serving people with disabilities.
@@ -197,7 +194,7 @@ const crumbs = [
             ><span class="asterisk"></span>
             <textarea
               name="Disabilities"
-              class="form-control w-100 form-text-area"
+              class="form-control w-100 form-text-area form-field"
               id="summaryTextarea"
               required
               aria-describedby="summaryHelp"></textarea>
@@ -220,7 +217,7 @@ const crumbs = [
         </div>
       </div>
     </form>
-    <div class="d-none col p-4 border-info interview-form" id="surveySuccess">
+    <div class="d-none col p-4 border border-2 border-info-contrast rounded" id="surveySuccess">
       <div class="lead">
         Thank you for being willing to participate in our research. Based on the
         number of submissions we receive, we will email you about the next steps
@@ -271,16 +268,6 @@ const crumbs = [
     [data-icon="loca11y-logo"] {
       height: 1.25em;
       width: 1.25em;
-    }
-
-    .interview-form {
-      border: 3.5px solid;
-      border-radius: 0.5rem;
-    }
-
-    .check {
-      width: 1.25em;
-      height: 1.25em;
     }
 
     fieldset label {
