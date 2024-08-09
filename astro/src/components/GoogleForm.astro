@@ -1,0 +1,68 @@
+---
+interface Props {
+  id: string;
+  key: string;
+  arrayFields?: Array<string>;
+  class?: string;
+  messageText?: string;
+}
+
+const defaultMessage =
+  "Thank you for submitting your information. We'll be in touch shortly.";
+const {
+  id,
+  key,
+  arrayFields = [],
+  class: classes = null,
+  messageText = defaultMessage,
+} = Astro.props;
+---
+
+<form id={id} class={classes}>
+  <slot />
+  <slot name="buttons">
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </slot>
+</form>
+{
+  Astro.slots.has("message") ?
+    <div id={`${id}-message`} class="d-none">
+      <slot name="message" />
+    </div>
+  : <div id={`${id}-message`} class:list={["d-none", classes]}>
+      <p class="lead mb-0" set:text={messageText} />
+    </div>
+}
+
+<script is:inline define:vars={{ id, key, arrayFields }}>
+  const formEl = document.querySelector(`#${id}`);
+  const submitButton = form.querySelector("button[type='submit']");
+  const scriptURL = `https://script.google.com/macros/s/${key}/exec`;
+
+  formEl.addEventListener("submit", (e) => {
+    submitButton.disabled = true;
+    e.preventDefault();
+
+    let requestBody = new FormData(formEl);
+    arrayFields.forEach((fieldName) => {
+      const values = requestBody.getAll(fieldName);
+      requestBody.delete(fieldName);
+      requestBody.set(fieldName, values.join(", "));
+    });
+
+    fetch(scriptURL, {
+      method: "POST",
+      body: requestBody,
+      mode: "no-cors",
+    })
+      .then((response) => {
+        formEl.classList.add("d-none");
+        const messageEl = document.querySelector(`#${id}-message`);
+        messageEl.classList.remove("d-none");
+      })
+      .catch((error) => {
+        alert("Error!", error.message);
+        submitButton.disabled = false;
+      });
+  });
+</script>
