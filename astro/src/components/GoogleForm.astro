@@ -21,7 +21,9 @@ const {
 <form id={id} class={classes}>
   <slot />
   <slot name="buttons">
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <div class="col-md-6 mt-4 mx-auto">
+      <button type="submit" class="btn btn-info w-100">Submit</button>
+    </div>    
   </slot>
 </form>
 {

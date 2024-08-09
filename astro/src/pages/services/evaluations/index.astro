@@ -3,6 +3,7 @@ import { getCollection } from "astro:content";
 
 import Branding from "@components/Branding.astro";
 import CollaboratorList from "@components/CollaboratorList.astro";
+import GoogleForm from "@components/GoogleForm.astro";
 import Hero from "@components/Hero.astro";
 import Layout from "../../../layouts/Layout.astro";
 import ThemedBox from "@components/ThemedBox.astro";
@@ -164,6 +165,90 @@ const crumbs = [
     </p>
     <CollaboratorList items={partners} />
   </ThemedSection>
+
+  <ThemedSection
+    theme="secondary"
+    style="subtle"
+    text={true}
+    py={3}
+  >
+    <h2 class="display-5">Contact Us</h2>
+    <GoogleForm id="contact-form" key="foo">
+      <p>
+        If you have questions about our evaluation process, please complete the contact form
+        below or schedule an Accessibility Consultation with our evaluations lead.
+      </p>
+      <p>
+        Required fields have an asterisk (<span class="asterisk">*</span>).
+      </p>
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <label for="firstNameField" class="form-label mb-1 required-field"
+            >First Name</label
+          ><span class="asterisk"></span>
+          <input
+            type="text"
+            name="FirstName"
+            class="form-control w-100 form-field"
+            id="firstNameField"
+            autocomplete="given-name"
+            required
+          />
+        </div>
+        <div class="col-md-6 mb-3">
+          <label for="lastNameField" class="form-label mb-1 required-field"
+            >Last Name</label
+          ><span class="asterisk"></span>
+          <input
+            type="text"
+            name="LastName"
+            class="form-control w-100 form-field"
+            id="lastNameField"
+            autocomplete="family-name"
+            required
+          />
+        </div>
+        <div class="col-md-6 mb-3">
+          <label for="emailField" class="form-label mb-1 required-field"
+            >Email Address</label
+          ><span class="asterisk"></span>
+          <input
+            type="email"
+            name="Email"
+            class="form-control w-100 form-field"
+            id="emailField"
+            autocomplete="email"
+            required
+          />
+        </div>
+        <div class="col-md-6 mb-3">
+          <label for="phoneNumberField" class="form-label mb-1"
+            >Phone Number</label
+          >
+          <input
+            type="text"
+            name="PhoneNumber"
+            class="form-control w-100 form-field"
+            id="phoneNumberField"
+            autocomplete="tel"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="messageTextarea" class="form-label mb-1 required-field"
+            >Message</label
+          ><span class="asterisk"></span>
+          <textarea
+            name="Message"
+            class="form-control w-100 form-text-area"
+            id="messageTextarea"
+            rows="3"
+            required
+          ></textarea>
+        </div>
+      </div>
+    </GoogleForm>
+  </ThemedSection>
+
 </Layout>
 
 <style>
