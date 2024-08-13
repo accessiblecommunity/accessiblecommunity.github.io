@@ -180,7 +180,7 @@ const crumbs = [
     <p>
       <Branding>Accessible Community</Branding> is a nonprofit organization dedicated to growing accessible communities through socially responsible
       technology. We provide accessibility evaluations to smaller, community-based organizations to make digital accessibility affordable and achievable.
-      If you are unsure if you quality, please complete the “contact us” form below. 
+      If you are unsure if you quality, please complete the information form below.
     </p>
     <p>
       If you do not qualify, we recommend you reach out to one of our sponsor organizations:
@@ -198,10 +198,15 @@ const crumbs = [
     <GoogleForm
       id="info-form" key="AKfycbxQZFm7FIKQabNEmwXbKdUh3IdMUY8efL4e8bEmkK_9rPvH6cUPrdNdQrIN6eMK-vI"
     >
-      <p slot="prelude">
-        If you have questions about our evaluation process, please complete the contact form
-        below or schedule an Accessibility Consultation with our evaluations lead.
-      </p>
+      <div slot="prelude">
+        <p>
+          If you have questions about our evaluation process, please complete this information form
+          or
+          <!-- <ExternalLink href="">schedule an Accessibility Consultation</ExternalLink> -->
+          schedule an Accessibility Consultation with our evaluations lead.
+        </p>
+        <h3 class="visually-hidden">Information form</h3>
+      </div>
       <div class="row">
         <div class="col-md-6 mb-3">
           <label for="firstNameField" class="form-label mb-1 required-field"
