@@ -34,6 +34,7 @@ When using Windows as a development environment, you may run into a couple of is
   # Add automated polling with windows
   VITE_POLLING=true
   ```
+  Afterwards, restart your container and reloading should work in your development environment.
 
 ### Setting up a Development Environment using Node.
 
