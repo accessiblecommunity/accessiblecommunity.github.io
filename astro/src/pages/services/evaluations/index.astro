@@ -3,8 +3,10 @@ import { getCollection } from "astro:content";
 
 import Branding from "@components/Branding.astro";
 import CollaboratorList from "@components/CollaboratorList.astro";
+import ExternalLink from "@components/ExternalLink.astro";
 import GoogleForm from "@components/GoogleForm.astro";
 import Hero from "@components/Hero.astro";
+import { Icon } from "astro-icon/components";
 import Layout from "../../../layouts/Layout.astro";
 import ThemedBox from "@components/ThemedBox.astro";
 import ThemedSection from "@components/ThemedSection.astro";
@@ -43,6 +45,35 @@ const crumbs = [
     </div>
   </Hero>
 
+  <ThemedSection style="tertiary" py={4}>
+    <div
+      class="d-flex flex-column flex-lg-row-reverse gap-4 py-3 justify-content-lg-evenly align-items-lg-start text-primary"
+    >
+      <div class="col">
+        <h2 class="display-3 mb-2">
+          If <span class="visually-hidden">your website is</span> not<span class="visually-hidden"> accessible</span>,
+          <strong>we can help</strong>.
+        </h2>
+        <p>
+          <Branding>Accessible Community</Branding> provides flat fee evaluations for small
+          to medium websites and social media for community organizations. Community organizations
+          include:
+        </p>
+        <ul>
+          <li>small businesses,</li>
+          <li>local nonprofits,</li>
+          <li>local government,</li>
+          <li>religious organizations,</li>
+          <li>clubs, and</li>
+          <li>educational organizations.</li>
+        </ul>
+        <p>
+          We provide reports based on international standards and best practices to help you know how you can best increase your content's audience and reach as many people as possible with your message.
+        </p>
+      </div>
+    </div>
+  </ThemedSection>
+
   <ThemedSection
     theme="secondary"
     style="subtle"
@@ -62,33 +93,10 @@ const crumbs = [
   </ThemedSection>
 
   <ThemedSection style="tertiary" py={4}>
-    <div
-      class="d-flex flex-column flex-lg-row-reverse gap-4 py-3 justify-content-lg-evenly align-items-lg-start text-primary"
-    >
-      <div class="col">
-        <h2 class="display-4 mb-2">
-          If <span class="visually-hidden">your website is</span> not<span class="visually-hidden"> accessible</span>,
-          <strong>we can help</strong>.
-        </h2>
-        <p>
-          <Branding>Accessible Community</Branding> provides flat fee evaluations for small
-          to medium websites and social media for community organizations. Community organizations
-          include:
-        </p>
-        <ul>
-          <li>small businesses,</li>
-          <li>local nonprofits,</li>
-          <li>local government,</li>
-          <li>religious organizations,</li>
-          <li>clubs, and</li>
-          <li>educational organizations.</li>
-        </ul>
-        <p>
-          We provide reports based on international standards and best practices to help you know how you can best increase your content’s audience and reach as many people as possible with your message.
-        </p>
-      </div>
-    </div>
-
+    <h2 class="display-4">What we <strong>provide</strong>.</h2>
+    <p>
+      We provide various levels of evaluations to best meet the needs of your organization. This ranges from evaluation your website or assessing your organization's social media presence. We also provide the ability to appraise your digital messaging yourself, if you would like.
+    </p>
     <h3>Options</h3>
     <div
       class="d-flex flex-column flex-lg-row gap-4 py-3 justify-content-lg-center text-primary"
@@ -104,11 +112,15 @@ const crumbs = [
           Cost: <strong class="text-brand">$1,500</strong>. What's included:
         </p>
         <ul class="bullets small">
-          <li>Accessibility review of up to 5 web pages including the home page and global navigation</li>
-          <li>A detailed report with links to learning more about issues and how to fix them</li>
-          <li>Two hours of time with us to review findings and receive help fixing issues</li>
-          <li>Access to three additional hours of support and training to prepare for next steps</li>
-          <li>Additional hours of support are $100/hour</li>
+          <li>An accessibility review of up to 5 web pages, including the home page and global navigation</li>
+          <li>A detailed report with links to additional learning about the issues and how to fix them</li>
+          <li>Two hours of consultation to review findings and assist in fixing issues</li>
+          <li>
+            Access to three additional hours of support and training to prepare for next steps
+          </li>
+          <ul>
+            <li>Additional hours of support are $100/hour</li>
+          </ul>
         </ul>
       </ThemedBox>
       <ThemedBox
@@ -122,12 +134,13 @@ const crumbs = [
           Cost: <strong class="text-brand">$750</strong>. What's included:
         </p>
         <ul class="bullets small">
-          <li>Review of organization pages and content on up to 3 platforms</li>
-          <li>We will review a sampling of 10-20 posts </li>
-          <li>A detailed report with links to learning more about issues and how to fix them</li>
-          <li>One hour of time with us to review findings and receive help fixing issues</li>
-          <li>Access to one additional hour of support</li>
-          <li>Additional hours of support are $100/hour</li>
+          <li>A accessibility review of up to 3 social media platforms, including the organization pages, content and a sampling of 10-20 posts</li>
+          <li>A detailed report with links to additional learning about the issues and how to fix them</li>
+          <li>One hour of consultation to review findings and assist in fixing issues</li>
+          <li>Access to one additional hour of support and training</li>
+          <ul>
+            <li>Additional hours of support are $100/hour</li>
+          </ul>
         </ul>
       </ThemedBox>
     </div>
@@ -143,15 +156,26 @@ const crumbs = [
         <h4 class="text-white">Self-Evaluation</h4>
         <p>Cost: <strong class="text-brand">$0</strong>.</p> 
         <p>
-          If you would rather perform an evaluation yourself using our guided, step-by-step evaluation tool, ta11y. 
-          Read more about ta11y to see if this free solution is for you. 
+          If you would rather perform an evaluation yourself using our guided, step-by-step evaluation tool,
+          <ExternalLink href="https://www.ta11y.org" class="link-light link-offset-1">
+            <Icon name="ta11y-logo" role="img" aria-hidden="true" class="bi"
+            /><Branding text="ta11y.org"
+          /></ExternalLink>.
+          Read more about
+          <a href="/services#ta11y" class="link-light link-offset-1">
+            <Icon name="ta11y-logo" role="img" aria-hidden="true"
+            /><Branding text="ta11y.org"
+          /></a>
+          to see if this free solution is for you.
         </p>
       </ThemedBox>
     </div> 
     <h3>Scholarships</h3>
     <p>
-      We provide a limited number of free accessibility evaluations to organizations that are unable to afford our services. Please apply to be considered. 
-      If you are interested in sponsoring an evaluation for an organization that can't afford it, please go to [link to appropriate Stripe].
+      We provide a limited number of free accessibility evaluations to organizations that are unable to afford our services. Please apply to be considered. If you are interested in sponsoring an evaluation for an organization that can't afford it, please make a
+      <ExternalLink href="https://donate.stripe.com/eVadR0agM8ec1TW5kk">
+        donation via Stripe
+      </ExternalLink>.
     </p>
     
     <h3>The Fine Print</h3>
@@ -172,14 +196,13 @@ const crumbs = [
     text={true}
     py={3}
   >
-    <h2 class="display-5">Contact Us</h2>
-    <GoogleForm id="contact-form" key="foo">
-      <p>
+    <h2 class="display-4">How do I get more <strong>information</strong>?</h2>
+    <GoogleForm
+      id="info-form" key="AKfycbxQZFm7FIKQabNEmwXbKdUh3IdMUY8efL4e8bEmkK_9rPvH6cUPrdNdQrIN6eMK-vI"
+    >
+      <p slot="prelude">
         If you have questions about our evaluation process, please complete the contact form
         below or schedule an Accessibility Consultation with our evaluations lead.
-      </p>
-      <p>
-        Required fields have an asterisk (<span class="asterisk">*</span>).
       </p>
       <div class="row">
         <div class="col-md-6 mb-3">
@@ -235,24 +258,32 @@ const crumbs = [
         </div>
         <div class="mb-3">
           <label for="messageTextarea" class="form-label mb-1 required-field"
-            >Message</label
+            >Message or Questions</label
           ><span class="asterisk"></span>
           <textarea
             name="Message"
             class="form-control w-100 form-text-area"
             id="messageTextarea"
+            aria-describedby="messageHelp"
             rows="3"
             required
           ></textarea>
+          <div id="messageHelp" class="form-text">
+            Please indicate what level of service you are interested in, as well as any questions you have about the services we provide or the organization itself.
+          </div
+          >
         </div>
       </div>
     </GoogleForm>
   </ThemedSection>
-
 </Layout>
 
 <style>
   .bullets {
     padding-inline-start: 1.5em;
+  }
+
+  h4.text-white {
+    font-weight: 600;
   }
 </style>

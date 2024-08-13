@@ -16,9 +16,14 @@ const {
   class: classes = null,
   messageText = defaultMessage,
 } = Astro.props;
+const messageId = `${id}-message`;
 ---
 
 <form id={id} class={classes}>
+  <slot name="prelude" />
+  <p>
+    <strong>Note:</strong> Required fields have an asterisk (<span class="asterisk">*</span>).
+  </p>
   <slot />
   <slot name="buttons">
     <div class="col-md-6 mt-4 mx-auto">
@@ -28,17 +33,17 @@ const {
 </form>
 {
   Astro.slots.has("message") ?
-    <div id={`${id}-message`} class="d-none">
+    <div id={messageId} class="d-none">
       <slot name="message" />
     </div>
-  : <div id={`${id}-message`} class:list={["d-none", classes]}>
+  : <div id={messageId} class:list={["d-none", classes]}>
       <p class="lead mb-0" set:text={messageText} />
     </div>
 }
 
-<script is:inline define:vars={{ id, key, arrayFields }}>
+<script is:inline define:vars={{ id, key, messageId, arrayFields }}>
   const formEl = document.querySelector(`#${id}`);
-  const submitButton = form.querySelector("button[type='submit']");
+  const submitButton = formEl.querySelector("button[type='submit']");
   const scriptURL = `https://script.google.com/macros/s/${key}/exec`;
 
   formEl.addEventListener("submit", (e) => {
@@ -59,7 +64,7 @@ const {
     })
       .then((response) => {
         formEl.classList.add("d-none");
-        const messageEl = document.querySelector(`#${id}-message`);
+        const messageEl = document.querySelector(`#${messageId}`);
         messageEl.classList.remove("d-none");
       })
       .catch((error) => {
