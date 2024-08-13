@@ -14,6 +14,22 @@ import robotsTxt from "astro-robots-txt";
 import sitemap from "@astrojs/sitemap";
 
 const polling = (import.meta.env.VITE_POLLING && true) || false;
+const botsToDisallow = [
+  "anthropic-ai",
+  "Applebot-Extended",
+  "Bytespider",
+  "CCBot",
+  "ClaudeBot",
+  "Claude-Web",
+  "cohere-ai",
+  "Diffbot",
+  "FacebookBot",
+  "Google-Extended",
+  "GPTBot",
+  "Meta-ExternalAgent",
+  "omgili",
+  "Timpibot",
+];
 
 // https://astro.build/config
 export default defineConfig({
@@ -69,14 +85,10 @@ export default defineConfig({
     robotsTxt({
       sitemap: true,
       policy: [
-        {
-          userAgent: 'GPTbot',
+        ...botsToDisallow.map((userAgent) => ({
+          userAgent,
           disallow: ['/'],
-        },
-        {
-          userAgent: 'Google-Extended',
-          disallow: ['/'],
-        },
+        })),
         {
           userAgent: '*',
           allow: ['/'],

@@ -1,5 +1,5 @@
 ---
-name: Kylin
+name: Kylin Follenweider
 roles:
   default: Content Team
   content: Writer

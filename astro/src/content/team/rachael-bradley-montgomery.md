@@ -2,7 +2,7 @@
 name: Rachael Bradley Montgomery
 roles:
   default: Founder & Executive Director
-  board: Founder
+  board: Founder & Executive Director
   content: Writer
   evaluations: Digital Evaluator
   leadership: Founder & Executive Director
