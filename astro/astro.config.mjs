@@ -13,7 +13,7 @@ import mdx from "@astrojs/mdx";
 import robotsTxt from "astro-robots-txt";
 import sitemap from "@astrojs/sitemap";
 
-const polling = import.meta.env.VITE_POLLING && true;
+const polling = (import.meta.env.VITE_POLLING && true) || false;
 
 // https://astro.build/config
 export default defineConfig({
@@ -37,7 +37,7 @@ export default defineConfig({
     },
     // https://vitejs.dev/config/server-options#server-watch
     watch: {
-      usePolling: polling || false,
+      usePolling: polling,
     },
   },
   integrations: [

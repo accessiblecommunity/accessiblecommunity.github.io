@@ -39,6 +39,9 @@ ifndef number
 endif
 	docker-compose exec $(CONTAINER) sh -c "npm version ${number}"
 
+upgrade-astro: up
+	@docker-compose exec $(CONTAINER) sh -c "npx @astrojs/upgrade"
+
 update-dependencies: up
 	@echo Updating package.json.
 	@docker-compose exec ${CONTAINER} sh -c "npx npm-check-updates -u"
