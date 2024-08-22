@@ -65,6 +65,9 @@ const breadCrumbs =
               >
             </li>
             <li>
+              <a class="dropdown-item" href="/about/a11y">Why Accessibility?</a>
+            </li>
+            <li>
               <a class="dropdown-item" href="/about/story">Founder's Story</a>
             </li>
             <li>
@@ -98,19 +101,22 @@ const breadCrumbs =
                   height={16}
                   role="img"
                   aria-hidden="true"
-                /><Branding>ta11y.org</Branding>
-              </ExternalLink>
+                /><Branding text="ta11y.org"
+              /></ExternalLink>
             </li>
             <li>
-              <ExternalLink class="dropdown-item" gaps href="https://www.mutua11y.org/">
-                <Icon
-                  class="bi"
-                  name="mutua11y-logo"
-                  height={16}
-                  role="img"
-                  aria-hidden="true"
-                /><Branding>mutua11y.org</Branding>
-              </ExternalLink>
+              <ExternalLink
+                class="dropdown-item"
+                gaps
+                href="https://www.mutua11y.org/"
+              ><Icon
+                class="bi"
+                name="mutua11y-logo"
+                height={16}
+                role="img"
+                aria-hidden="true"
+              /><Branding text="mutua11y.org"
+              /></ExternalLink>
             </li>
           </ul>
         </li>
@@ -154,9 +160,6 @@ const breadCrumbs =
             <!-- TODO: Hiding the sponsor page until it's done. -->
             <!-- <li><a class="dropdown-item" href="/join-us/sponsor">Sponsor</a></li> -->
           </ul>
-          <li class="nav-item">
-            <a class="nav-link" href="/tips">Tips</a>
-          </li>
           <li class="nav-item">
             <a class="nav-link" href="/blog">Blog</a>
           </li>

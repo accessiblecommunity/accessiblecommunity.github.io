@@ -36,6 +36,7 @@ const crumbs = [
   >
     <div class="py-4" slot="heading">
       <h1 class="display-2 px-2">
+        <span class="visually-hidden">Evaluations:</span>
         Is your <strong>website</strong> accessible?
       </h1>
     </div>
@@ -132,38 +133,43 @@ const crumbs = [
         </p>
       </ThemedBox>
     </div>
-
-    <h3>Who is this service for?</h3>  
-    <p>
-      <Branding>Accessible Community</Branding> provides these accessibility evaluations for small
-      to medium websites and social media for community organizations. Community organizations
-      include:
-    </p>
-    <ul>
-      <li>small businesses,</li>
-      <li>local nonprofits,</li>
-      <li>local government,</li>
-      <li>religious organizations,</li>
-      <li>clubs, and</li>
-      <li>educational organizations.</li>
-    </ul>
-    <p>
-      <Branding>Accessible Community</Branding> is a nonprofit organization dedicated
-      to growing accessible communities through socially responsible technology.
-      We provide accessibility evaluations to smaller, community-based organizations to make digital accessibility affordable and achievable. If you are unsure if you quality, please complete the <a href="#info">information form</a> below.
-    </p>
-    <p>
-      If you do not qualify, we recommend you reach out to one of our partners:
-    </p>
-    <CollaboratorList items={partners} />
-
-    <h4>Scholarships</h4>
-    <p>
-      We provide a limited number of free accessibility evaluations to organizations that are unable to afford our services. Please apply to be considered. If you are interested in sponsoring an evaluation for an organization that can't afford it, please make a
-      <ExternalLink href="https://donate.stripe.com/eVadR0agM8ec1TW5kk">
-        donation via Stripe
-      </ExternalLink>.
-    </p>
+    <div class="pt-4">
+      <h3>Who is this service for?</h3>  
+      <p>
+        <Branding>Accessible Community</Branding> provides these accessibility evaluations for small
+        to medium websites and social media for community organizations. Community organizations
+        include:
+      </p>
+      <ul>
+        <li>small businesses,</li>
+        <li>local nonprofits,</li>
+        <li>local government,</li>
+        <li>religious organizations,</li>
+        <li>clubs, and</li>
+        <li>educational organizations.</li>
+      </ul>
+      <p>
+        <Branding>Accessible Community</Branding> is a nonprofit organization dedicated
+        to growing accessible communities through socially responsible technology.
+        We provide accessibility evaluations to smaller, community-based organizations to make digital accessibility affordable and achievable. If you are unsure if you quality, please complete the <a href="#info">information form</a> below.
+      </p>
+      {/*
+      Commenting this out until we have some discussions...
+      
+      <p>
+        If you do not qualify, we recommend you reach out to one of our partners:
+      </p>
+      <CollaboratorList items={partners} />
+      */}
+      
+      <h4>Scholarships</h4>
+      <p>
+        We provide a limited number of free accessibility evaluations to organizations that are unable to afford our services. Please apply to be considered. If you are interested in sponsoring an evaluation for an organization that can't afford it, please make a
+        <ExternalLink href="https://donate.stripe.com/eVadR0agM8ec1TW5kk">
+          donation via Stripe
+        </ExternalLink>.
+      </p>
+    </div>
   </ThemedSection>
 
   <ThemedSection
