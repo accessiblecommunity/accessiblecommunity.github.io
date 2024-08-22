@@ -13,6 +13,7 @@ import mdx from "@astrojs/mdx";
 import robotsTxt from "astro-robots-txt";
 import sitemap from "@astrojs/sitemap";
 
+const polling = (import.meta.env.VITE_POLLING && true) || false;
 const botsToDisallow = [
   "anthropic-ai",
   "Applebot-Extended",
@@ -49,6 +50,10 @@ export default defineConfig({
     },
     ssr: {
       noExternal: ["bootstrap"],
+    },
+    // https://vitejs.dev/config/server-options#server-watch
+    watch: {
+      usePolling: polling,
     },
   },
   integrations: [
