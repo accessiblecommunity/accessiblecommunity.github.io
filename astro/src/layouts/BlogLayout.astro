@@ -104,7 +104,7 @@ import ThemedSection from "../components/ThemedSection.astro";
             isEmpty(blogs) ? "" : (
               <li class="text-info-emphasis">
                 <span class="display-6">Blog Posts</span>
-                <ul class="mt-1 mb-3 list-disc">
+                <ul class="mt-1 mb-3 list-disc list-spaced">
                   {blogs.map((b) => (
                     <li>
                       <a href={`/blog/${b.slug}`}>{b.data.title}</a>
@@ -118,9 +118,9 @@ import ThemedSection from "../components/ThemedSection.astro";
             isEmpty(topics) ? "" : (
               <li class="text-info-emphasis">
                 <span class="display-6">Topics</span>
-                <ul class="mt-1 mb-3 list-disc">
+                <ul class="mt-1 mb-3 list-disc list-spaced">
                   {topics.map((cat) => (
-                    <li class="list-item">
+                    <li>
                       <a href={`/blog/topics/${cat}`}>{startCase(cat)}</a>
                     </li>
                   ))}
@@ -132,7 +132,7 @@ import ThemedSection from "../components/ThemedSection.astro";
             isEmpty(authors) ? "" : (
               <li class="text-info-emphasis">
                 <span class="display-6">Authors</span>
-                <ul class="mt-1 mb-3 list-disc">
+                <ul class="mt-1 mb-3 list-disc list-spaced">
                   {authors.map((author) => (
                     <li>
                       <a href={`/blog/authors/${author.slug}`}>
@@ -148,7 +148,7 @@ import ThemedSection from "../components/ThemedSection.astro";
             isEmpty(dates) ? "" : (
               <li class="text-info-emphasis">
                 <span class="display-6">Dates</span>
-                <ul class="mt-1 mb-3 list-disc">
+                <ul class="mt-1 mb-3 list-disc list-spaced">
                   {dates.map((month) => (
                     <li>
                       <a href={`/blog/dates/${kebabCase(month)}`}>{month}</a>

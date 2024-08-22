@@ -15,7 +15,7 @@ const external = href.startsWith("http");
     <ExternalLink href={href} inline title={title}>
       <slot />
     </ExternalLink>
-  : <a href={href} title={title} class="link-offset-1">
+  : <a href={href} title={title}>
       <slot />
     </a>
 }
