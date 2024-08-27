@@ -39,23 +39,16 @@ const services = [
 
 <Layout title="Services">
   <Hero
-    image={heroBg}
+    theme="secondary-subtle"
     columns="col-sm-12 col-md-9 col-lg-7 col-xl-6 col-xxl-5"
     slot="header"
   >
     <div class="py-4" slot="heading">
-      <h1 class="display-2 px-2">
-        <strong>Tools</strong> and <strong>services</strong> for equity.
+      <h1 class="display-2 px-2 text-primary">
+        Accessible <strong>Tools</strong> and <strong>Services</strong>
       </h1>
     </div>
-    <div class="text-bg-hero text-brand">
-      We create tools and services to <strong>teach accessibility</strong>
-      and <strong>promote accessible organizations</strong>. We practice what we
-      preach; the tools we develop are fully accessible, following the best
-      practices, guidelines and standards to ensure usability, not just
-      compliance.
-    </div>
-    <div slot="prologue">
+    <div slot="prologue" class=text-white>
       Getting started in accessibility? Learn more with our <a
         class="link-light"
         href="/services/tip-of-the-week">Tip of the Week</a
@@ -63,169 +56,144 @@ const services = [
     </div>
   </Hero>
 
-  <ThemedSection style="tertiary" py={4}>
-    <div class="row row-gap-4 row-cols-1 row-cols-lg-3 mb-3">
-      {
-        services.map(({ icon, name, title, text, link }) => (
-          <div class="feature col d-flex flex-column justify-content-between">
-            <div class="d-flex align-items-center gap-2 mb-1">
-              <div class="feature-icon d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient">
-                <Icon class="bi" name={icon} role="img" aria-hidden="true" />
-              </div>
-              <h2 class="my-1 fs-1 text-primary" aria-hidden="true">
-                <Branding text={title} no-aria />
-              </h2>
-              <h2 class="visually-hidden">{title.replace("a11y", "ally")}</h2>
-            </div>
-            <p class="ms-5 me-3 flex-fill">
-              <span set:html={text} />
-            </p>
-            <div class="ms-5 me-3">
-              <div class="d-flex flex-column-reverse flex-sm-row flex-lg-column-reverse flex-xl-row justify-content-start">
-                <a href={`#${name}`} class="icon-link text-nowrap me-4 mt-0 mt-lg-2 mt-xl-0">
-                  Learn more
-                  <span class="visually-hidden">about {name}.org</span>
-                  <Icon
-                    name="bi:arrow-down-square"
-                    class="bi"
-                    role="img"
-                    aria-hidden="true"
-                  />
-                </a>
-                {link ?
-                  <div class="text-primary text-nowrap">
-                    <ExternalLink href={link} class="text-brand">
-                      Visit <Branding text={title} />
-                    </ExternalLink>
-                  </div>
-                : <div class="text-brand fw-bold flex-fill">Coming soon.</div>}
-              </div>
-            </div>
+  <ThemedSection theme="secondary-subtle" py={4}>
+    <h2>Overview</h2>
+    <div class="text-bg-hero text-brand mb-3">
+      We create tools and services to <strong>teach accessibility</strong>
+      and <strong>promote accessible organizations</strong>. We practice what we
+      preach; the tools we develop are fully accessible, following the best
+      practices, guidelines and standards to ensure usability, not just
+      compliance.
+    </div>
+    <div class="row g-2">
+      <div class="col-md-6 mb-3 mb-sm-0">
+        <div class="card h-100">
+          <div class="card-body">
+            <h3 class="card-title">Accessibility Learning</h3>
+            <p class="card-text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laboriosam quisquam dolores, ullam corrupti perspiciatis eius.</p>
+            <a href=#education class="icon-link text-nowrap me-4 mt-0 mt-lg-2 mt-xl-0">
+              Learn More
+              <span class="visually-hidden">about Education</span>
+              <Icon
+                name="bi:arrow-down-square"
+                class="bi"
+                role="img"
+                aria-hidden="true"
+              />
+            </a>
           </div>
-        ))
-      }
-    </div>
-    <div
-      class="border-top border-bottom border-primary-subtle mt-5 py-2 text-primary text-center"
-    >
-      The &quot;<code class="d-inline">a11y</code>&quot; in our tool names
-      stands for accessibility (there are 11 letters between the 'a' and 'y').
+        </div>
+      </div>
+      <div class="col-md-6 mb-3 mb-sm-0">
+        <div class="card h-100">
+          <div class="card-body">
+            <h3 class="card-title">Evaluations Service</h3>
+            <p class="card-text">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Minima quasi necessitatibus aliquid eaque illum non!</p>
+            <a href=#education class="icon-link text-nowrap me-4 mt-0 mt-lg-2 mt-xl-0">
+              Learn More
+              <span class="visually-hidden">about Education</span>
+              <Icon
+                name="bi:arrow-down-square"
+                class="bi"
+                role="img"
+                aria-hidden="true"
+              />
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 mb-3 mb-sm-0">
+        <div class="card h-100">
+          <div class="card-body">
+            <h3 class="card-title">Career Growth and Mentorship</h3>
+            <p class="card-text">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolore sequi, eligendi eveniet soluta dolor dolores.</p>
+            <a href=#education class="icon-link text-nowrap me-4 mt-0 mt-lg-2 mt-xl-0">
+              Learn More
+              <span class="visually-hidden">about Education</span>
+              <Icon
+                name="bi:arrow-down-square"
+                class="bi"
+                role="img"
+                aria-hidden="true"
+              />
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 mb-3 mb-sm-0">
+        <div class="card h-100">
+          <div class="card-body">
+            <h3 class="card-title">Accessible Activities and Directory</h3>
+            <p class="card-text">Find accessible businesses, organizations, and events. Order an Accessible Escape Room kit. Coming later this year in 2024.</p>
+            <a href=#education class="icon-link text-nowrap me-4 mt-0 mt-lg-2 mt-xl-0">
+              Learn More
+              <span class="visually-hidden">about Education</span>
+              <Icon
+                name="bi:arrow-down-square"
+                class="bi"
+                role="img"
+                aria-hidden="true"
+              />
+            </a>
+          </div>
+        </div>
+      </div>
     </div>
   </ThemedSection>
 
-  <ShadowBoxSection id="ta11y" theme="info" fluid={false}>
-    <div class="row p-4 justify-content-evenly align-items-center rounded-3">
-      <div class="col-lg-7 py-lg-4">
-        <h2 class="display-3" aria-hidden="true">
-          <Branding no-aria>About ta11y.org</Branding>
-        </h2>
-        <h2 class="visually-hidden">About tally.org</h2>
-        <p>
-          Accessibility is in the details and checklists help evaluate and track
-          accessibility.
-        </p>
-        <p>
-          <Branding>ta11y</Branding> provides a free, accessible way to use publicly
-          available checklists without printing out hundreds of pages of paper. This
-          one-stop online tool makes it easier to start and evaluate an accessibility
-          program, evaluate web or facility accessibility, spot check social media
-          posts, or plan an accessible event. Results are retained for future use
-          and private.
-        </p>
-        <p>
-          <span class="text-brand fw-bold">Target Audience:</span> Anyone who wants
-          to learn more about disability inclusion and use checklists to manage their
-          progress.
-        </p>
-        <p>
-          <span class="text-brand fw-bold">What it is not:</span> A certification
-          or legal guarantee of accessibility.
-        </p>
-      </div>
-      <div class="col-lg-5 p-0 overflow-hidden">
-        <Image
-          src={tallyScreen}
-          class="ta11y-screen"
-          width="720"
-          alt="A screenshot of tally.org"
-        />
-      </div>
-    </div>
-  </ShadowBoxSection>
-
-  <ThemedSection id="mutua11y" theme="primary">
-    <h2 class="display-3 text-bg-primary" aria-hidden="true">
-      <Branding no-aria>About mutua11y.org</Branding>
+  <ThemedSection id="mutua11y" theme="tertiary">
+    <h2 class="display-3">
+      Accessibility Learning
     </h2>
-    <h2 class="visually-hidden">About mutually.org</h2>
-    <p class="text-bg-primary">
-      An online community to connect and advance disability-related
-      professionals.
-      <Branding>mutua11y</Branding> provides a platform for accessibility professionals
-      and others interested to collaborate on projects and ideas; thus establishing
-      "open-source accessibility."
+    <p>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta laboriosam molestiae dolorem maiores assumenda dolores, optio molestias hic est earum maxime nulla! Voluptates est non tempore natus ab quia repudiandae alias ipsum et! Tenetur deleniti expedita delectus consequuntur est recusandae debitis id quaerat quo et repellat consectetur, rerum officiis aliquid.
     </p>
-    <ul class="text-bg-primary">
-      <li>
-        The <a href="/mentoring" class="link-light"
-          ><Branding>mutua11y mentoring</Branding></a
-        >
-        program matches senior accessibility experts with novice accessibility professionals
-        to mentor and guide them in their career development.
-      </li>
-      <li>
-        <Branding>mutua11y pathways</Branding>
-        advertises and promotes apprenticeships, internships and fellowships in various
-        accessibility and disability-inclusion industries.
-      </li>
-      <li>
-        A combination of discussion threads and workshops focus on helping
-        advance accessibility by creating new resources and approaches.
-      </li>
+    <ul>
+      <li><a href="">Read our Tip of the Week newsletter</a></li>
+      <li><a href="">Learn from an inaccessible website on fixable</a></li>
+      <li><a href="">Take our online accessibility course</a></li>
+      <li><ExternalLink>Read our learning content articles on ta11y.org</ExternalLink></li>
+      <li><ExternalLink>Evaluate your web and social content at ta11y.org</ExternalLink></li>
     </ul>
-    <p class="text-bg-primary">
-      <span class="text-brand fw-bold">Target Audience:</span> Accessibility and
-      disability-inclusion professionals.
-    </p>
-    <p class="text-bg-primary">
-      <span class="text-brand fw-bold">What it is not:</span> A job board, digital
-      only though we are starting by focusing on the digital space.
-    </p>
   </ThemedSection>
 
-  <ThemedSection id="loca11y" style="secondary">
-    <h2 class="display-3" aria-hidden="true">
-      <Branding no-aria>About loca11y.org</Branding>
+  <ThemedSection id="loca11y" theme="secondary-subtle">
+    <h2 class="display-3">
+      Evaluations Service
     </h2>
-    <h2 class="visually-hidden">About locally.org</h2>
     <p>
-      <Branding>loca11y</Branding> provides an online tool for people with disabilities
-      to find and recommend local organizations and events where they can successfully
-      engage and participate.
-      <Branding>loca11y</Branding>
-      is designed by people with disabilities for people with disabilities. It is
-      also designed to celebrate and recognize local organizations. A user can recommend
-      organizations by disability where they are successful, share comments about
-      their experiences, and search against information relevant to their disability.
-      It also supports organizations by allowing them to promote their accessibility
-      and review feedback before it becomes public.
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta laboriosam molestiae dolorem maiores assumenda dolores, optio molestias hic est earum maxime nulla! Voluptates est non tempore natus ab quia repudiandae alias ipsum et! Tenetur deleniti expedita delectus consequuntur est recusandae debitis id quaerat quo et repellat consectetur, rerum officiis aliquid.
     </p>
+    <ul>
+      <li><a href="">Get accessibility guidance from our Evaluations Team</a></li>
+    </ul>
+  </ThemedSection>
+  <ThemedSection id="loca11y" theme="tertiary">
+    <h2 class="display-3">
+      Career Growth and Mentorship
+    </h2>
     <p>
-      <Branding>loca11y</Branding> also includes a calendar of events that can be
-      filtered by organization or by disability. This allows people with disabilities
-      and their caretakers to find events where they can participate. It also allows
-      organizations to work together to coordinate, deconflict and promote disability
-      related events.
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam quibusdam sapiente nobis sint rem provident dolores vel atque unde, sit quod nam cupiditate. Asperiores, neque ratione quas vitae officia earum fuga modi? Corrupti iusto distinctio ipsum optio, hic illum quod similique laborum at quam fugiat. Quos commodi molestias reiciendis expedita.
     </p>
+    <ul>
+      <li><a href="">Explore volunteer opportunities with Accessible Community</a></li>
+      <li><ExternalLink>Join an accessibility workshop at mutua11y.org</ExternalLink></li>
+      <li><ExternalLink>Find an accessibility internship at mutua11y.org</ExternalLink></li>
+      <li><ExternalLink>Become a mentor at mutua11y.org</ExternalLink></li>
+      <li><ExternalLink>Connect with a mentor at mutua11y.org</ExternalLink></li>
+    </ul>
+  </ThemedSection>
+  <ThemedSection id="loca11y" theme="secondary-subtle">
+    <h2 class="display-3">
+      Accessible Activities and Directory
+    </h2>
     <p>
-      <span class="text-brand fw-bold">Target Audience:</span> People with Disabilities.
-      Organizations that want to reach people with disabilities in their community.
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam quibusdam sapiente nobis sint rem provident dolores vel atque unde, sit quod nam cupiditate. Asperiores, neque ratione quas vitae officia earum fuga modi? Corrupti iusto distinctio ipsum optio, hic illum quod similique laborum at quam fugiat. Quos commodi molestias reiciendis expedita.
     </p>
-    <p>
-      <span class="text-brand fw-bold">What it is not:</span> Google Maps or Yelp.
-      <Branding>loca11y</Branding> reports positive feedback only and centers on
-      accessibility, rather than quality of services.
-    </p>
+    <ul>
+      <li><a href="">Order an Accessible Escape Room kit</a></li>
+      <li><ExternalLink>Find accessible businesses, organizations, and events on loca11y.org</ExternalLink></li>
+    </ul>
   </ThemedSection>
 </Layout>
 
