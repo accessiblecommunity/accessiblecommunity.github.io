@@ -11,6 +11,8 @@ interface Props {
 
 import { isEmpty } from "lodash-es";
 import { Icon } from "astro-icon/components";
+import Branding from "@components/Branding.astro";
+import ExternalLink from "@components/ExternalLink.astro";
 
 const { title, crumbs = [] } = Astro.props;
 const breadCrumbs =
@@ -62,6 +64,9 @@ const breadCrumbs =
                 >Mission &amp; Vision</a
               >
             </li>
+            {/* <li>
+              <a class="dropdown-item" href="/about/a11y">Why Accessibility?</a>
+            </li> */}
             <li>
               <a class="dropdown-item" href="/about/story">Founder's Story</a>
             </li>
@@ -70,8 +75,50 @@ const breadCrumbs =
             </li>
           </ul>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/services">Services</a>
+        <li class="nav-item dropdown">
+          <a
+            class="nav-link dropdown-toggle"
+            data-bs-toggle="dropdown"
+            href="#"
+            role="button"
+            aria-expanded="false">Services</a
+          >
+          <ul class="dropdown-menu px-15 pb-1 services-menu">
+            <li>
+              <a class="dropdown-item" href="/services/tip-of-the-week"
+                >Tip of the Week</a
+              >
+            </li>
+            <li>
+              <a class="dropdown-item" href="/services/evaluations">Evaluations</a>
+            </li>
+            <li><hr class="dropdown-divider"></li>
+            <li>
+              <ExternalLink class="dropdown-item py-2" gaps href="https://www.ta11y.org/">
+                <Icon
+                  class="bi"
+                  name="ta11y-logo"
+                  height={16}
+                  role="img"
+                  aria-hidden="true"
+                /><Branding text="ta11y.org"
+              /></ExternalLink>
+            </li>
+            <li>
+              <ExternalLink
+                class="dropdown-item py-2"
+                gaps
+                href="https://www.mutua11y.org/"
+              ><Icon
+                class="bi"
+                name="mutua11y-logo"
+                height={16}
+                role="img"
+                aria-hidden="true"
+              /><Branding text="mutua11y.org"
+              /></ExternalLink>
+            </li>
+          </ul>
         </li>
         <li class="nav-item dropdown">
           <a
@@ -113,9 +160,6 @@ const breadCrumbs =
             <!-- TODO: Hiding the sponsor page until it's done. -->
             <!-- <li><a class="dropdown-item" href="/join-us/sponsor">Sponsor</a></li> -->
           </ul>
-          <li class="nav-item">
-            <a class="nav-link" href="/tips">Tips</a>
-          </li>
           <li class="nav-item">
             <a class="nav-link" href="/blog">Blog</a>
           </li>
@@ -162,6 +206,10 @@ const breadCrumbs =
 
   #breadcrumbs-nav {
     min-width: 250px;
+  }
+
+  .services-menu .icon-link {
+    gap: 0.25rem;
   }
 
   .skip-link:focus,

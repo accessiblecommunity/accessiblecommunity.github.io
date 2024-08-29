@@ -1,5 +1,6 @@
 ---
 import Branding from "../../components/Branding.astro";
+import GoogleForm from "../../components/GoogleForm.astro";
 import { Icon } from "astro-icon/components";
 import ImageHeading from "../../components/ImageHeading.astro";
 import Layout from "../../layouts/Layout.astro";
@@ -85,12 +86,13 @@ const crumbs = [
     <h2 class="display-4 text-info-emphasis">
       Interview <strong>Form</strong>
     </h2>
-    <p class="lead">
-      <strong>Note:</strong> Required fields have an asterisk (<span
-        class="asterisk">*</span
-      >).
-    </p>
-    <form id="surveyForm" class="col p-4 bg-body form-border interview-form">
+    <GoogleForm
+      id="surveyForm"
+      class="col p-4 bg-body form-border interview-form"
+      key="AKfycbxZ9sFi8Fp2M1LE8q-ZGHkPxn4uyhJIvHN8xYMXDVfKS4_xKI8SWsh3nFJRsuTMHIQ"
+      arrayFields={["SelfDescription"]}
+      messageText="Thank you for being willing to participate in our research. Based on the number of submissions we receive, we will email you about the next steps for an interview."
+    >
       <div class="row flex-lg-row">
         <div class="col-lg-6">
           <div class="mb-3">
@@ -206,58 +208,15 @@ const crumbs = [
           </div>
         </div>
       </div>
-
-      <div class="row">
+      <div slot="buttons" class="row">
         <div class="col-md-6 my-3 mx-auto">
-          <button
-            id="surveySubmit"
-            type="submit"
-            class="btn btn-info w-100 general-button">Submit</button
+          <button type="submit" class="btn btn-info w-100 general-button"
+            >Submit</button
           >
         </div>
       </div>
-    </form>
-    <div class="d-none col p-4 border border-2 border-info-contrast rounded" id="surveySuccess">
-      <div class="lead">
-        Thank you for being willing to participate in our research. Based on the
-        number of submissions we receive, we will email you about the next steps
-        for an interview.
-      </div>
-    </div>
+    </GoogleForm>
   </ThemedSection>
-
-  <script is:inline>
-    const form = document.querySelector("#surveyForm");
-    const submitButton = document.querySelector("#surveySubmit");
-    // TODO: Fix.
-    const scriptURL =
-      "https://script.google.com/macros/s/AKfycbxZ9sFi8Fp2M1LE8q-ZGHkPxn4uyhJIvHN8xYMXDVfKS4_xKI8SWsh3nFJRsuTMHIQ/exec";
-
-    form.addEventListener("submit", (e) => {
-      submitButton.disabled = true;
-      e.preventDefault();
-
-      let requestBody = new FormData(form);
-      const teams = requestBody.getAll("SelfDescription");
-      requestBody.delete("SelfDescription");
-      requestBody.set("SelfDescription", teams.join(", "));
-
-      fetch(scriptURL, {
-        method: "POST",
-        body: requestBody,
-        mode: "no-cors",
-      })
-        .then((response) => {
-          form.classList.add("d-none");
-          const successMessage = document.querySelector("#surveySuccess");
-          successMessage.classList.remove("d-none");
-        })
-        .catch((error) => {
-          alert("Error!", error.message);
-          submitButton.disabled = false;
-        });
-    });
-  </script>
 
   <style>
     /* first declaration that is commented out below is for debugging purposes. */
@@ -270,6 +229,16 @@ const crumbs = [
       width: 1.25em;
     }
 
+    #form :global(.interview-form) {
+      border: 3.5px solid;
+      border-radius: 0.5rem;
+    }
+
+    .check {
+      width: 1.25em;
+      height: 1.25em;
+    }
+
     fieldset label {
       cursor: pointer;
     }
@@ -277,5 +246,5 @@ const crumbs = [
     .form-text-area {
       height: 6.5em;
     }
-  </style></Layout
->
+  </style>
+</Layout>
