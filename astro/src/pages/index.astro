@@ -138,61 +138,50 @@ import heroBg from "../images/colored-hero/wheelchair_hall.png";
 
   <ThemedSection theme="secondary" style="subtle">
     <h2 class="display-3">Our <strong>services</strong>.</h2>
+    <p class="lead">
+      <Branding>Accessible Community</Branding> provides a number of services designed
+      to encourage a holistic approach to communities becoming accessible. Below are a
+      couple of featured services that we are proud to offer.
+    </p>
     <div
       class="d-flex flex-column flex-xl-row gap-4 py-3 justify-content-lg-evenly text-primary"
     >
       <ThemedBox
         text={true}
         border={1}
-        class="border-primary col col-xl-3 shadow rounded"
+        class="border-primary col col-xl-5 shadow rounded"
       >
         <h3 class="display-5" aria-hidden="true">
-          <Icon
-            class="bi unpad"
-            name="loca11y-logo"
-            height="1.1em"
-            role="img"
-            aria-hidden="true"
-          />
-          <Branding no-aria>loca11y.org</Branding>
+          Learn about Accessibility
         </h3>
-        <h3 class="visually-hidden">locally.org</h3>
-        <p class="text-center">
-          Find and recommend local organizations and events that provide
-          accommodations and remove barriers for people with disabilities.
+        <p class="text-body">
+          Our learning content provides a staged approach to learning about accessibility. Each topic begins with a simple introduction and provides increasingly detailed information on the topic to help you learn as much, and as quickly as you would like.
         </p>
         <div class="text-center">
-          <span class="text-brand fw-bold">Coming soon.</span>
+          <ExternalLink href="https://www.ta11y.org/learning">
+            Learn about Accessibility at <Branding>ta11y.org</Branding>
+          </ExternalLink>
         </div>
       </ThemedBox>
       <ThemedBox
         text={true}
         border={1}
-        class="border-primary col col-xl-3 shadow rounded"
+        class="border-primary col col-xl-5 shadow rounded"
       >
         <h3 class="display-5" aria-hidden="true">
-          <Icon
-            class="bi"
-            name="ta11y-logo"
-            height="1em"
-            role="img"
-            aria-hidden="true"
-          />
-          <Branding no-aria>ta11y.org</Branding>
+          Evaluations Service
+          <span class="badge rounded-pill text-end bg-primary fs-6 align-top text-white">New!</span>
         </h3>
-        <h3 class="visually-hidden">tally.org</h3>
-        <p class="text-center">
-          Use publicly available accessibility checklists with helpful guides
-          without printing them out. Results are private and retained for your
-          future use.
+        <p class="text-body">
+          We provide flat fee evaluations for small-to-medium websites and social media for community organizations.
         </p>
         <div class="text-center">
-          <ExternalLink class="text-brand" href="https://www.ta11y.org">
-            Visit <Branding>ta11y.org</Branding>
-          </ExternalLink>
+          <a href="/services/evaluations">
+            Learn more about our Evaluations service.
+          </a>
         </div>
       </ThemedBox>
-      <ThemedBox
+      {/* <ThemedBox
         text={true}
         border={1}
         class="border-primary col col-xl-3 shadow rounded"
@@ -217,10 +206,10 @@ import heroBg from "../images/colored-hero/wheelchair_hall.png";
             Visit <Branding>mutua11y.org</Branding>
           </ExternalLink>
         </div>
-      </ThemedBox>
+      </ThemedBox> */}
     </div>
     <p class="lead pt-5">
-      Learn more about <a href="/services">our services</a
+      For a full list of the services we provide, <a href="/services">visit our Services page</a
       >.
     </p>
   </ThemedSection>
