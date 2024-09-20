@@ -86,6 +86,10 @@ export default defineConfig({
         })),
         {
           userAgent: '*',
+          disallow: ['/fixable/'],
+        },
+        {
+          userAgent: '*',
           allow: ['/'],
         },
       ]
