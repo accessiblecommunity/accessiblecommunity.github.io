@@ -1,6 +1,7 @@
 ---
 name: Zsuszanna Orban
 title: Workshops Coordinator
+current: false
 tags:
   - mutua11y
 picture: ../../images/team/Zsuszanna.png

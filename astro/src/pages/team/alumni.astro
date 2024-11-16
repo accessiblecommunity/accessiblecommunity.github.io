@@ -15,7 +15,7 @@ function getTeamMembers(tag: string) {
   return sortBy(
     teamProfiles.filter(
       (teamMember) =>
-        teamMember.data.current &&
+        teamMember.data.current == false &&
         teamMember.data.roles &&
         Object.keys(teamMember.data.roles).includes(tag),
     ),
@@ -52,25 +52,17 @@ const crumbs = [
 ];
 ---
 
-<Layout title="Staff" crumbs={crumbs}>
+<Layout title="Alumni" crumbs={crumbs}>
   <ImageHeading image="team" slot="header">
-    Our <strong>Staff</strong>
+    Our <strong>Alumni</strong>
   </ImageHeading>
   <ThemedSection theme="secondary" style="subtle">
     <p class="lead container-fluid">
       The dedication and skill of our volunteer community makes
       <Branding>Accessible Community's</Branding>
       mission to grow disability inclusive communities through technology possible.
-      Our impact on each other and the world grows as we do.
-    </p>
-    <p class="lead container-fluid">
-      If you are passionate about creating a more inclusive world, consider
-      <a href="/volunteer">volunteering with us</a>.
-    </p>
-    <p class="lead container-fluid">
-      <strong>Note:</strong>
-      In lieu of a picture, some of our staff are represented by the "Tally Cat"
-      instead.
+      We sincerely appreciate the time and energy that each person listed
+      below has contributed to our mission.
     </p>
     {
       teams.map(({ name, team, members }) => {

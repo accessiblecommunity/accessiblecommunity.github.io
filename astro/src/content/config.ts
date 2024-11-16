@@ -55,6 +55,7 @@ const team = defineCollection({
         })
         .partial()
         .optional(),
+      current: z.boolean().default(true),
       picture: image(),
       alt: z.string().optional(),
       links: z
@@ -71,6 +72,13 @@ const team = defineCollection({
         .optional(),
     }),
 });
+
+const teams = defineCollection ({
+  type: "content",
+  schema: z.object({
+    name: z.string(),
+  })
+})
 
 const quotes = defineCollection({
   type: "content",
