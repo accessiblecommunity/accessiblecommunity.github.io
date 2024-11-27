@@ -77,6 +77,7 @@ const teams = defineCollection ({
   type: "content",
   schema: z.object({
     name: z.string(),
+    order: z.number().default(99999),
   })
 })
 
@@ -104,7 +105,8 @@ export const collections = {
   atotw,
   blogs,
   collaborators,
-  team,
   quotes,
+  team,
+  teams,
   testimonials,
 };
