@@ -39,7 +39,7 @@ const { roles, picture, alt } = memberObj.data;
 const teamName = typeof role === "boolean" ? "default" : role;
 const title = role && roles[teamName];
 
-function getDisplayName({ name, nickname } : Names) {
+function getDisplayName({ name, nickname }: Names) {
   if (nickname) {
     if (highlightName) nickname = `<strong>${nickname}</strong>`;
     return nickname;
@@ -47,7 +47,7 @@ function getDisplayName({ name, nickname } : Names) {
     const nameArray = name.split(" ");
     if (highlightName) nameArray[0] = `<strong>${nameArray[0]}</strong>`;
     if (firstNameOnly) return nameArray[0];
-  
+
     return nameArray.join(" ");
   }
 }
@@ -74,18 +74,23 @@ const NameTag = element;
   >
     {
       title ?
-      <NameTag class="vignette-name" set:html={displayName} />
-      <div class="vignette-title" set:html={title} />
-      : <NameTag class="vignette-name justify-content-center" set:html={displayName} />
+        <>
+          <NameTag class="vignette-name" set:html={displayName} />
+          <div class="vignette-title" set:html={title} />
+        </>
+      : <NameTag
+          class="vignette-name justify-content-center"
+          set:html={displayName}
+        />
     }
   </div>
   <img
-    class:list={["vignette-pic rounded-circle rounded-top-0", responsive && "d-none d-sm-block"]}
+    class:list={[
+      "vignette-pic rounded-circle rounded-top-0",
+      responsive && "d-none d-sm-block",
+    ]}
     src={picture.src}
-    alt={
-      alt ?
-      alt : ""
-    }
+    alt={alt ? alt : ""}
   />
 </div>
 
@@ -103,7 +108,7 @@ const NameTag = element;
     margin-bottom: 0.25rem;
   }
   .blockquote-footer .vignette-title {
-    font-size: 80%;
+    font-size: 0.9rem;
   }
   .blockquote-footer .vignette-name,
   .blockquote-footer .vignette-title {

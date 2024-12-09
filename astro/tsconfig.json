@@ -4,8 +4,10 @@
   "exclude": ["dist"],
   "compilerOptions": {
     "strictNullChecks": true,
+    "baseUrl": ".",
+    "paths": {
+      "@components/*": ["src/components/*"],
+      "@lib/*": ["src/lib/*"],
+    }
   },
-  "paths": {
-    "@lib/*": ["src/lib/*"],
-  }
 }

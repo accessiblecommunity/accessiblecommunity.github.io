@@ -1,4 +1,5 @@
 ---
+import Branding from "../components/Branding.astro";
 import CollaboratorList from "../components/CollaboratorList.astro";
 import ExternalLink from "../components/ExternalLink.astro";
 import Hero from "../components/Hero.astro";
@@ -61,9 +62,7 @@ const contributors = await getCollection("collaborators", ({ data }) => {
       </div>
     </div>
     <p class="lead text-bg-hero">
-      <span class="text-brand fw-bold"
-        >mutu<span class="fw-lighter">a11y</span> mentoring</span
-      >
+      <Branding>mutua11y mentoring</Branding>
       is a program that pairs senior experts with years of experience with novice
       digital accessibility professionals to mentor and guide them in their career
       development.
@@ -74,17 +73,17 @@ const contributors = await getCollection("collaborators", ({ data }) => {
           name="mutua11y-logo"
           class="bi"
           style="height: 1.1em; width: inherit"
-          alt=""
+          role="img"
           aria-hidden="true"
         />
         <span> Learn more about the program </span>
       </ExternalLink>
       <ExternalLink class="link-light hero-link" href={protegeUrl} gaps={true}>
-        <Icon name="bi:person-fill" class="bi" alt="" aria-hidden="true" />
+        <Icon name="bi:person-fill" class="bi" role="img" aria-hidden="true" />
         <span> Apply to be a protegé </span>
       </ExternalLink>
       <ExternalLink class="link-light hero-link" href={mentorUrl} gaps={true}>
-        <Icon name="bi:people-fill" class="bi" alt="" aria-hidden="true" />
+        <Icon name="bi:people-fill" class="bi" role="img" aria-hidden="true" />
         <span> Apply to be a mentor </span>
       </ExternalLink>
     </Fragment>
@@ -101,10 +100,7 @@ const contributors = await getCollection("collaborators", ({ data }) => {
           get your foot in the door. With <ExternalLink
             href={programUrl}
             gaps={true}
-            inline={true}
-            ><span class="text-brand fw-bold"
-              >mutu<span class="fw-lighter">a11y</span> mentoring</span
-            ></ExternalLink
+            inline={true}><Branding>mutua11y mentoring</Branding></ExternalLink
           >, we have established a program that matches senior digital
           accessibility experts with those just getting started in their
           accessibility journey. In addition, our program provides guidance in
@@ -210,11 +206,7 @@ const contributors = await getCollection("collaborators", ({ data }) => {
       Learn more about the <ExternalLink
         href={programUrl}
         inline={true}
-        gaps={true}
-        ><span class="text-brand fw-bold"
-          >mutu<span class="fw-lighter">a11y</span>
-          mentoring</span
-        ></ExternalLink
+        gaps={true}><Branding>mutua11y mentoring</Branding></ExternalLink
       > program.
     </p>
   </ThemedSection>

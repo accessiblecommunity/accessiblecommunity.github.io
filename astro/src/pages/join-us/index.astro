@@ -1,4 +1,5 @@
 ---
+import Branding from "../../components/Branding.astro";
 import ExternalLink from "../../components/ExternalLink.astro";
 import Hero from "../../components/Hero.astro";
 import { Icon } from "astro-icon/components";
@@ -39,17 +40,17 @@ const crumbs = [
       </div>
     </div>
     <p class="lead text-bg-hero">
-      <span class="text-brand">Accessible <strong>Community</strong></span> is a
-      volunteer-led and staffed 501(c)3 organization. We welcome any contributions
-      to help make our communities more accessible and disability-inclusive.
+      <Branding>Accessible Community</Branding> is a volunteer-led and staffed 501(c)3
+      organization. We welcome any contributions to help make our communities more
+      accessible and disability-inclusive.
     </p>
     <Fragment slot="action-bar">
       <a href="/donate" class="icon-link link-light hero-link">
-        <Icon name="bi:gift-fill" class="bi" alt="" aria-hidden="true" />
+        <Icon name="bi:gift-fill" class="bi" role="img" aria-hidden="true" />
         Give a donation
       </a>
       <a href="/volunteer" class="icon-link link-light hero-link">
-        <Icon name="bi:people-fill" class="bi" alt="" aria-hidden="true" />
+        <Icon name="bi:people-fill" class="bi" role="img" aria-hidden="true" />
         Join our organization
       </a>
       <ExternalLink
@@ -61,13 +62,11 @@ const crumbs = [
           name="loca11y-logo"
           class="bi"
           style="height: 1.1em; width: inherit"
-          alt=""
+          role="img"
           aria-hidden="true"
         />
         <span>
-          Help us launch <span class="text-brand"
-            ><strong>loc</strong>a11y.<strong>org</strong></span
-          >
+          Help us launch <Branding>loca11y.org</Branding>
         </span>
       </ExternalLink>
     </Fragment>

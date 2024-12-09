@@ -1,6 +1,7 @@
 ---
 interface Props {
   href: URL | string;
+  title?: string;
   // Any additional HTML classes to apply to the link.
   class?: string;
   // Whether to wrap the slot in a span to avoid gaps between child elements. Defaults to false.
@@ -11,7 +12,8 @@ interface Props {
 
 const {
   href,
-  class: className = "",
+  class: extraClasses = "",
+  title = undefined,
   gaps = false,
   inline = false,
 } = Astro.props;
@@ -25,22 +27,25 @@ import { Icon } from "astro-icon/components";
 <style is:global>
   .icon-link > .bi.external {
     /* These make it act like a `sup` */
-    font-size: 0.8em;
-    position: relative;
-    top: -0.5em;
-    /* This counters most of the 0.375 gap in the default icon-link */
-    left: -0.2em;
+    font-size: 0.75em;
+    align-self: flex-start !important;
   }
   .icon-link.d-inline > .bi.external {
-    /* No gap, so move it back. */
-    left: 0em;
+    /* No gap, so move it back and up. */
     margin-left: 0.2em;
-    margin-right: 0.2em;
+    vertical-align: text-top;
+  }
+</style>
+<style>
+  .icon-link {
+    /* Use smaller gap size */
+    gap: 0.2em;
   }
 </style>
 <a
   href={href}
-  class:list={["icon-link", className, inline && "d-inline"]}
+  title={title}
+  class:list={["icon-link", extraClasses, inline && "d-inline"]}
   target="_blank"
   rel="noopener noreferrer"
   >{

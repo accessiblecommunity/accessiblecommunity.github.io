@@ -1,7 +1,7 @@
 ---
-import { Icon } from "astro-icon/components";
 import { getImage, Image } from "astro:assets";
 
+import Branding from "../../components/Branding.astro";
 import ExternalLink from "../../components/ExternalLink.astro";
 import Layout from "../../layouts/Layout.astro";
 import Hero from "../../components/Hero.astro";
@@ -26,13 +26,14 @@ const crumbs = [];
     <div slot="heading" class="mb-4">
       <h1 class="visually-hidden">fixable: An example of bad accessibility</h1>
       <span class="display-2">
-        <strong>Incorrect</strong> accessibility is <strong>fix</strong>able.
+        <strong>Incorrect</strong> accessibility is <Branding>fixable</Branding
+        >.
       </span>
     </div>
     <p class="lead text-bg-hero text-brand mb-5">
-      <strong>fix</strong>able provides a bad example of accessibility to show
-      how important it is to implement it correctly. It's not only about how
-      your site looks, but how your content is structured and labelled.
+      <Branding>fixable</Branding> provides a bad example of accessibility to show
+      how important it is to implement it correctly. It's not only about how your
+      site looks, but how your content is structured and labelled.
     </p>
   </Hero>
 
@@ -78,7 +79,7 @@ const crumbs = [];
       </div>
       <ThemedBox border={1} class="col col-lg-3 p-3 shadow rounded">
         <p class="text-center fs-5">
-          <Image class="green-on-red" src={greenOnRed} alt />
+          <Image class="green-on-red" src={greenOnRed} alt="" />
           and <span class="red-on-green py-1 px-2">Red</span> is the
           <strong>most common</strong> combination of color blindness.
         </p>

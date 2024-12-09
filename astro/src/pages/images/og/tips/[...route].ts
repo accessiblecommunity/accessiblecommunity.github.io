@@ -14,13 +14,17 @@ export const { getStaticPaths, GET } = OGImageRoute({
   getImageOptions: (path, page) => ({
     title: page.title,
     description: page.summary,
+    fonts: [
+      'https://api.fontsource.org/v1/fonts/archivo/latin-400-normal.ttf',
+      'https://api.fontsource.org/v1/fonts/archivo/latin-700-normal.ttf',
+    ],
     font: {
       title: {
         weight: "Bold",
-        families: ['Archivo Variable',],
+        families: ['Archivo',],
       },
       description: {
-        families: ['Archivo Variable',],
+        families: ['Archivo',],
       },
     },
     logo: {
