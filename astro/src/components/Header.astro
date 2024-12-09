@@ -1,19 +1,16 @@
 ---
-interface Crumbs {
-  name: String;
-  href: URL;
-}
+import { type Breadcrumbs } from "../lib/types";
 
 interface Props {
   title: String;
-  crumbs?: Array<Crumbs>;
+  crumbs?: Breadcrumbs;
 }
 
 import { isEmpty } from "lodash-es";
 import { Icon } from "astro-icon/components";
 
 const { title, crumbs = [] } = Astro.props;
-const breadCrumbs =
+const breadCrumbs: Breadcrumbs =
   isEmpty(crumbs) && title != "Home" ? [{ name: "Home", href: "/" }] : crumbs;
 ---
 

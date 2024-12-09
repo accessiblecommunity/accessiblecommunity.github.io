@@ -1,4 +1,5 @@
 ---
+import { type PageMetadata } from "../lib/types";
 import { Icon } from "astro-icon/components";
 
 import ExternalLink from "../components/ExternalLink.astro";
@@ -11,9 +12,14 @@ import TipRegistration from "../components/TipRegistration.astro";
 import Testimonial from "../components/Testimonial.astro";
 
 import heroBg from "../images/colored-hero/wheelchair_hall.png";
+
+const metadata: PageMetadata = {
+  title: "Home",
+  description: "Accessible Community is a 501(c)3 nonprofit that provides tools and resources to create a more inclusive world for people with disabilities",
+}
 ---
 
-<Layout title="Home">
+<Layout title="Home" {metadata}>
   <Hero
     image={heroBg}
     columns="col-sm-12 col-md-9 col-lg-8 col-xl-6 col-xxl-5"

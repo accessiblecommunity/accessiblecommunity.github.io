@@ -1,12 +1,13 @@
 ---
+import type { CollectionEntry } from "astro:content";
 import { getMostRecent } from "../lib/tips";
 
 interface Props {
-  tip: object | undefined;
-  class: string;
+  tip?: CollectionEntry<"atotw">;
+  class?: string;
 }
 
-const { tip = await getMostRecent(), class: extraClasses } = Astro.props;
+const { tip = await getMostRecent(), class: extraClasses = "" } = Astro.props;
 const { Content = "p" } = await tip.render();
 ---
 

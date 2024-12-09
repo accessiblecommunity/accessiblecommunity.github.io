@@ -1,11 +1,13 @@
 ---
+import type { ImageMetadata } from "astro";
+
 interface Props {
-  image: string;
+  image: ImageMetadata | string;
   header?: string;
   theme?: string;
   textColor?: string;
   columns: string;
-  actionBreakpoint: string;
+  actionBreakpoint?: string;
 }
 
 const {
