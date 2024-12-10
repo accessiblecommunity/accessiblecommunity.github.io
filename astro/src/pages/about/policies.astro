@@ -6,8 +6,14 @@ import Layout from "../../layouts/Layout.astro";
 import ThemedSection from "../../components/ThemedSection.astro";
 
 import { Icon } from "astro-icon/components";
+import type { Breadcrumbs, PageMetadata } from "@lib/types";
 
-const crumbs = [
+const title = "Our Policies";
+const metadata: PageMetadata = {
+  title,
+  description: "The organizational policies of Accessible Community",
+};
+const crumbs: Breadcrumbs = [
   {
     name: "Home",
     href: "/",
@@ -19,7 +25,7 @@ const crumbs = [
 ];
 ---
 
-<Layout title="Our Policies" crumbs={crumbs}>
+<Layout {title} {crumbs} {metadata}>
   <ImageHeading image="policy" slot="header">
     Our <strong>Policies</strong>
   </ImageHeading>

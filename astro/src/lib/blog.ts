@@ -1,6 +1,7 @@
 import { getCollection, getEntries, type CollectionEntry } from "astro:content";
 import { isEmpty, isNil, reverse, sortBy, uniqBy } from "lodash-es";
 
+
 export async function getBlogAuthors(blogs?): Promise<Array<CollectionEntry<"team">>> {
   blogs = isNil(blogs) ? await getCollection("blogs") : blogs;
   if (isEmpty(blogs)) return [];

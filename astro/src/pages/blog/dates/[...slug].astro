@@ -2,10 +2,12 @@
 import { getCollection } from "astro:content";
 import { getBlogDates, orderByRecent } from "../../../lib/blog";
 import { kebabCase } from "lodash-es";
+import type { Breadcrumbs } from "@lib/types";
+import type { CollectionEntry } from "astro:content";
 
 export async function getStaticPaths() {
   const dates = await getBlogDates();
-  const crumbs = [
+  const crumbs: Breadcrumbs = [
     {
       name: "Home",
       href: "/",
@@ -28,7 +30,7 @@ export async function getStaticPaths() {
 
 interface Props {
   month: string;
-  crumbs: Array<object>;
+  crumbs: Breadcrumbs;
 }
 
 const { crumbs, month } = Astro.props;
@@ -39,15 +41,14 @@ const monthBlogs = await getCollection("blogs", ({ data }) => {
   });
   return published === month;
 });
-const orderedBlogs: Array<object> = await orderByRecent(monthBlogs);
+const orderedBlogs: Array<CollectionEntry<"blogs">> = await orderByRecent(monthBlogs);
 
 import BlogLayout from "../../../layouts/BlogLayout.astro";
 ---
 
 <BlogLayout
-  title={month}
-  heading={`Blogs during ${month}`}
-  crumbs={crumbs}
+  title={`Blogs during ${month}`}
+  {crumbs}
   blog={orderedBlogs[0]}
   catalog={{ blogs: orderedBlogs }}
   sidebar={true}

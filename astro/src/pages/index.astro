@@ -13,13 +13,14 @@ import Testimonial from "../components/Testimonial.astro";
 
 import heroBg from "../images/colored-hero/wheelchair_hall.png";
 
+const title = "Home";
 const metadata: PageMetadata = {
-  title: "Home",
+  title,
   description: "Accessible Community is a 501(c)3 nonprofit that provides tools and resources to create a more inclusive world for people with disabilities",
-}
+};
 ---
 
-<Layout title="Home" {metadata}>
+<Layout {title} {metadata}>
   <Hero
     image={heroBg}
     columns="col-sm-12 col-md-9 col-lg-8 col-xl-6 col-xxl-5"

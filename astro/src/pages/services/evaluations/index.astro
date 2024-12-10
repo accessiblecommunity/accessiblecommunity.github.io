@@ -12,6 +12,8 @@ import Layout from "../../../layouts/Layout.astro";
 import ThemedBox from "@components/ThemedBox.astro";
 import ThemedSection from "@components/ThemedSection.astro";
 
+import type { Breadcrumbs, PageMetadata } from "@lib/types";
+
 import heroBg from "../../../images/colored-hero/woman-using-laptop.png";
 
 // const partners = await getCollection("collaborators", ({ data }) =>
@@ -19,7 +21,12 @@ import heroBg from "../../../images/colored-hero/woman-using-laptop.png";
 // );
 const calendlyLink = "https://calendly.com/evaluation-accessiblecommunity/30min";
 
-const crumbs = [
+const title = "Evaluations";
+const metadata: PageMetadata = {
+  title,
+  description: "Overview of the Evaluations Service that Accessible Community provides",
+};
+const crumbs: Breadcrumbs = [
   {
     name: "Home",
     href: "/",
@@ -31,10 +38,9 @@ const crumbs = [
 ];
 ---
 
-<Layout title="Evaluations" {crumbs}>
+<Layout {title} {crumbs} {metadata}>
   <Hero
     image={heroBg}
-    columns="col-sm-12 col-md-9 col-lg-7 col-xl-6 col-xxl-5"
     slot="header"
   >
     <div class="py-2 px-2" slot="heading">

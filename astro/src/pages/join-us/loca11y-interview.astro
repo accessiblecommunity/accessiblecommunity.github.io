@@ -6,7 +6,15 @@ import ImageHeading from "../../components/ImageHeading.astro";
 import Layout from "../../layouts/Layout.astro";
 import ThemedSection from "../../components/ThemedSection.astro";
 
-const crumbs = [
+import type { Breadcrumbs, PageMetadata } from "@lib/types";
+
+
+const title = "loca11y Interview";
+const metadata: PageMetadata = {
+  title,
+  description: title,
+};
+const crumbs: Breadcrumbs = [
   {
     name: "Home",
     href: "/",
@@ -18,7 +26,7 @@ const crumbs = [
 ];
 ---
 
-<Layout crumbs={crumbs} title="loca11y Interview">
+<Layout {title} {crumbs} {metadata}>
   <Fragment slot="metadata">
     <meta name="robots" content="noindex" />
     <meta name="googlebot" content="noindex" />

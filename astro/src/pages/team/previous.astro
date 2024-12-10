@@ -3,7 +3,14 @@ import Layout from "../../layouts/Layout.astro";
 import ImageHeading from "../../components/ImageHeading.astro";
 import ThemedSection from "../../components/ThemedSection.astro";
 
-const crumbs = [
+import type { Breadcrumbs, PageMetadata } from "@lib/types";
+
+const title = "Previous Contributors";
+const metadata: PageMetadata = {
+  title,
+  description: 'The previous contributors at Accessible Community',
+};
+const crumbs: Breadcrumbs = [
   {
     name: "Home",
     href: "/",
@@ -15,7 +22,7 @@ const crumbs = [
 ];
 ---
 
-<Layout title="Previous Contributors" crumbs={crumbs}>
+<Layout {title} {crumbs} {metadata}>
   <ImageHeading image="team" slot="header">
     Previous <strong>Contributors</strong>
   </ImageHeading>

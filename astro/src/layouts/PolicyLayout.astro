@@ -2,15 +2,21 @@
 import ImageHeading from "../components/ImageHeading.astro";
 import Layout from "../layouts/Layout.astro";
 import ThemedSection from "../components/ThemedSection.astro";
+import type { PageMetadata } from "@lib/types";
 
 interface Props {
-  title: String;
+  title: string;
+  description: string;
 }
 
-const { title } = Astro.props;
+const { title, description } = Astro.props;
+const metadata: PageMetadata = {
+  title, description,
+}
+
 ---
 
-<Layout title={title}>
+<Layout {title} {metadata}>
   <ImageHeading image="policy" slot="header">
     <slot name="heading">
       {title}

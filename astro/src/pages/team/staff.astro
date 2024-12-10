@@ -8,6 +8,8 @@ import TeamVignette from "../../components/TeamVignette.astro";
 import ThemedSection from "../../components/ThemedSection.astro";
 
 import { sortBy } from "lodash-es";
+import type { Breadcrumbs, PageMetadata } from "@lib/types";
+
 
 const teamProfiles = await getCollection("team");
 
@@ -39,7 +41,12 @@ const teams = Object.entries(teamMapping).map(([name, tag]) => ({
   members: getTeamMembers(tag),
 }));
 
-const crumbs = [
+const title = "Staff";
+const metadata: PageMetadata = {
+  title,
+  description: 'The staff at Accessible Community',
+};
+const crumbs: Breadcrumbs = [
   {
     name: "Home",
     href: "/",
@@ -51,7 +58,7 @@ const crumbs = [
 ];
 ---
 
-<Layout title="Staff" crumbs={crumbs}>
+<Layout {title} {crumbs} {metadata}>
   <ImageHeading image="team" slot="header">
     Our <strong>Staff</strong>
   </ImageHeading>

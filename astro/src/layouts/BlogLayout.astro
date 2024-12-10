@@ -1,7 +1,9 @@
 ---
 import { getEntry } from "astro:content";
-import { getBlogCatalog, type BlogCatalog } from "../lib/blog";
+import { getBlogCatalog, type BlogCatalog } from "@lib/blog";
+import { getOpenGraphImageData } from "@lib/og-image";
 import { isEmpty, kebabCase, startCase } from "lodash-es";
+
 import type { Breadcrumbs, PageMetadata } from "../lib/types";
 import type { CollectionEntry } from 'astro:content';
 
@@ -39,23 +41,19 @@ const published = blog.data.published.toLocaleDateString("en-us", {
   month: "long",
   day: "numeric",
 });
-
-const { Content } = await blog.render();
-
 const metadata: PageMetadata = {
   title: title,
   description: isEmpty(blog.data.description) ? title : blog.data.description,
   type: "article",
-  image: {
-    data: {
-      src: `${Astro.url.host}/images/og/blog/${blog.slug}.png`,
-      width: 1200,
-      height: 630,
-      format: 'png',
-    },
-    alt: isEmpty(blog.data.description) ? title : blog.data.description,
-  }
+  image: getOpenGraphImageData(
+    Astro.url.host,
+    'blog',
+    blog.slug,
+    isEmpty(blog.data.description) ? title : blog.data.description
+  ),
 }
+
+const { Content } = await blog.render();
 
 import components from "../lib/mdx";
 import ImageHeading from "../components/ImageHeading.astro";

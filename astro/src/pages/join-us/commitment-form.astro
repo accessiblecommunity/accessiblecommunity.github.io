@@ -5,7 +5,15 @@ import ImageHeading from "../../components/ImageHeading.astro";
 import Layout from "../../layouts/Layout.astro";
 import ThemedSection from "../../components/ThemedSection.astro";
 
-const crumbs = [
+import type { Breadcrumbs, PageMetadata } from "@lib/types";
+
+
+const title = "Volunteer Commitment Form";
+const metadata: PageMetadata = {
+  title,
+  description: title,
+};
+const crumbs: Breadcrumbs = [
   {
     name: "Home",
     href: "/",
@@ -17,7 +25,7 @@ const crumbs = [
 ];
 ---
 
-<Layout crumbs={crumbs} title="Volunteer Commitment Form">
+<Layout {title} {crumbs} {metadata}>
   <Fragment slot="metadata">
     <meta name="robots" content="noindex" />
     <meta name="googlebot" content="noindex" />
