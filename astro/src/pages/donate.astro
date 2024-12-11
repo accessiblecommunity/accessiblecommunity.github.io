@@ -1,14 +1,15 @@
 ---
-import { Icon } from "astro-icon/components";
+import type { PageMetadata } from "@lib/types";
+import { getOpenGraphImageData } from "@lib/og-image";
 
 import Branding from "../components/Branding.astro";
 import Hero from "../components/Hero.astro";
+import { Icon } from "astro-icon/components";
 import Layout from "../layouts/Layout.astro";
 import ShadowBoxSection from "../components/ShadowBoxSection.astro";
 import ThemedSection from "../components/ThemedSection.astro";
 
 import heroBg from "../images/colored-hero/donate.png";
-
 const directorEmail = "mailto:director@accessiblecommunity.org";
 const paypalUrl = "https://paypal.me/AccessibleCommunity";
 const stripeUrl = "https://donate.stripe.com/eVadR0agM8ec1TW5kk";
@@ -50,17 +51,14 @@ const donationLinks = [
 ];
 
 const title = "Donate";
-const heading = title;
-
-const crumbs = [
-  {
-    name: "Home",
-    href: "/",
-  },
-];
+const metadata: PageMetadata = {
+  title,
+  description: 'Come join us at Accessible Community',
+  image: getOpenGraphImageData(Astro.url.host, "pages", "donate")
+};
 ---
 
-<Layout title={title} crumbs={crumbs} heading={heading}>
+<Layout {title} {metadata}>
   <Hero image={heroBg} slot="header">
     <div slot="heading" class="mb-4">
       <h1 class="visually-hidden">Donate</h1>

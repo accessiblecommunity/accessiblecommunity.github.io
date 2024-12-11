@@ -1,18 +1,20 @@
 ---
+import type { Breadcrumbs, PageMetadata } from "@lib/types";
+import { getOpenGraphImageData } from "@lib/og-image";
+
 import Branding from "../components/Branding.astro";
 import Hero from "../components/Hero.astro";
 import { Icon } from "astro-icon/components";
 import Layout from "../layouts/Layout.astro";
 import ThemedSection from "../components/ThemedSection.astro";
 
-import type { Breadcrumbs, PageMetadata } from "@lib/types";
 import heroBg from "../images/colored-hero/hands-together.png";
-
 
 const title = "Volunteer";
 const metadata: PageMetadata = {
   title,
   description: 'Come join us at Accessible Community',
+  image: getOpenGraphImageData(Astro.url.host, "pages", "volunteer")
 };
 const crumbs: Breadcrumbs = [
   {

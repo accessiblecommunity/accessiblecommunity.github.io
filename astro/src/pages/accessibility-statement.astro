@@ -1,9 +1,11 @@
 ---
 import ExternalLink from "../components/ExternalLink.astro";
 import PolicyLayout from "../layouts/PolicyLayout.astro";
----
 
-<PolicyLayout title="Accessibility Statement">
+const title = "Accessibility Statement";
+const description = "Our statement and beliefs about accessibility."
+---
+<PolicyLayout {title} {description}>
   <h2>Accessibility And Accommodations</h2>
   <p>
     At Accessible Community, we believe that our commitment to creating
@@ -12,14 +14,13 @@ import PolicyLayout from "../layouts/PolicyLayout.astro";
   </p>
   <p>
     We test our websites and services against
-    <ExternalLink href="https://www.w3.org/TR/WCAG22/" target="blank">
+    <ExternalLink href="https://www.w3.org/TR/WCAG22/" inline>
       WCAG 2.2 A, AA, and AAA criteria
     </ExternalLink>
     and
     <ExternalLink
       href="https://www.w3.org/TR/coga-usable/"
-      target="_blank"
-      inline={true}
+      inline
       >Making Content Usable for People with Cognitive and Learning Disabilities</ExternalLink
     >.
   </p>

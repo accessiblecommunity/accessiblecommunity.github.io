@@ -5,7 +5,7 @@ interface Props {
   title: String;
   crumbs?: Breadcrumbs;
   heading?: String;
-  metadata: PageMetadata;
+  metadata?: PageMetadata;
 }
 
 import "../styles/bootstrap.scss";
@@ -20,14 +20,23 @@ const { title, crumbs, heading, metadata } = Astro.props;
 <!doctype html>
 <html lang="en">
   <head>
-    <Metadata {...metadata}><slot name="metadata" slot="metadata" /></Metadata>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+    
+    {/* Keep the site out of Bing's Chatbot */}
+    <meta name="robots" content="noarchive" />
+
+    { metadata && (
+      <Metadata {...metadata}><slot name="metadata" slot="metadata" /></Metadata>
+    )}
     <link rel="icon" type="image/png" href="/images/favicon.png" />
     <link rel="sitemap" href="/sitemap-index.xml" />
     <slot name="head" />
   </head>
 
   <body>
-    <Header title={title} crumbs={crumbs} />
+    <Header {title} {crumbs} />
     <main id="main-content">
       <slot name="header">
         <div slot="header" class="bg-primary" style="height: 8rem;">

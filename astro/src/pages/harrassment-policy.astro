@@ -1,8 +1,10 @@
 ---
 import PolicyLayout from "../layouts/PolicyLayout.astro";
----
 
-<PolicyLayout title="Harrassment Policy">
+const title = "Harrassment Policy";
+const description = "The harrassment policy for our staff and volunteers."
+---
+<PolicyLayout {title} {description}>
   <p>
     Accessible Community is committed to providing an environment that is free
     of discrimination and harassment. This policy outlines our commitment to

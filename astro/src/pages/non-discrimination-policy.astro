@@ -1,11 +1,10 @@
 ---
-import ImageHeading from "../components/ImageHeading.astro";
-import Layout from "../layouts/Layout.astro";
-import ThemedSection from "../components/ThemedSection.astro";
 import PolicyLayout from "../layouts/PolicyLayout.astro";
----
 
-<PolicyLayout title="Non-Discrimination Policy">
+const title = "Non-Discrimination Policy";
+const description = "The non-descriminiation policy for our staff and volunteers."
+---
+<PolicyLayout {title} {description}>
   <p>
     Accessible Community is committed to providing an environment that is free
     of discrimination and harassment for leadership, staff, board of directors,

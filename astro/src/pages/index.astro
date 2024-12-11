@@ -1,10 +1,10 @@
 ---
 import { type PageMetadata } from "../lib/types";
-import { Icon } from "astro-icon/components";
 
 import Branding from "../components/Branding.astro";
 import ExternalLink from "../components/ExternalLink.astro";
 import Hero from "../components/Hero.astro";
+import { Icon } from "astro-icon/components";
 import Layout from "../layouts/Layout.astro";
 import ThemedSection from "../components/ThemedSection.astro";
 import ThemedBox from "../components/ThemedBox.astro";
@@ -12,11 +12,16 @@ import TipRegistration from "../components/TipRegistration.astro";
 import Testimonial from "../components/Testimonial.astro";
 
 import heroBg from "../images/colored-hero/wheelchair_hall.png";
+import websiteImg from "../images/website.jpg"
 
 const title = "Home";
 const metadata: PageMetadata = {
   title,
   description: "Accessible Community is a 501(c)3 nonprofit that provides tools and resources to create a more inclusive world for people with disabilities",
+  image: {
+    data: websiteImg,
+    alt: "A screenshot of Accessible Community's website",
+  }
 };
 ---
 

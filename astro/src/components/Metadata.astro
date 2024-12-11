@@ -16,13 +16,6 @@ const fullTitle = `Accessible Community - ${title}`;
 const optimizedImage = image ? await getImage({src: image.data, format: 'avif'}) : undefined;
 ---
 
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta name="generator" content={Astro.generator} />
-
-{/* Keep the site out of Bing's Chatbot */}
-<meta name="”robots”" content="”noarchive”" />
-
 {/* Opengraph Protocol support - https://ogp.me/ */}
 {/* Twitter support - https://developer.x.com/en/docs/tweets/optimize-with-cards/overview/markup */}
 <meta property="og:type" content={type} />
