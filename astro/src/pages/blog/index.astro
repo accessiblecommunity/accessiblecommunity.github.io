@@ -1,7 +1,7 @@
 ---
-import { getBlogCatalog } from "../../lib/blog";
+import { getBlogCatalog, type BlogCatalog } from "../../lib/blog";
 
-const catalog = await getBlogCatalog();
+const catalog: BlogCatalog = await getBlogCatalog();
 const crumbs = [
   {
     name: "Home",
@@ -14,7 +14,6 @@ import BlogLayout from "../../layouts/BlogLayout.astro";
 
 <BlogLayout
   title="Blog"
-  heading="Blog"
   blog={catalog.recent}
   catalog={catalog}
   crumbs={crumbs}

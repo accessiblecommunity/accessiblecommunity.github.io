@@ -1,9 +1,12 @@
 ---
-import { getEntry } from "astro:content";
-import { getTipCatalog, getRelatedTips } from "../lib/tips";
-import { isEmpty, startCase } from "lodash-es";
+import { getEntry, type CollectionEntry } from "astro:content";
+import { getTipCatalog, getRelatedTips, type TipCatalog } from "../lib/tips";
+import { getOpenGraphImageData } from "@lib/og-image";
+import { isEmpty } from "lodash-es";
 
-const defaultCrumbs = [
+import type { Breadcrumbs, PageMetadata } from "../lib/types";
+
+const defaultCrumbs: Breadcrumbs = [
   {
     name: "Home",
     href: "/",
@@ -15,24 +18,24 @@ const defaultCrumbs = [
 ];
 
 interface Props {
-  slug: string | undefined; // TODO: Determine how to get type definition from content.
-  tip: object | undefined;
-  catalog: object; // TODO: Define catalog definition in blog library
-  crumbs?: object;
-  title?: string; // What to show in the breadcrumbs as the title. Defaults to blog post title.
-  heading?: string; // What to show in the header. Default to blog post title.
-  sidebar?: boolean; // Whether to prefer the sidebar when the display gets small.
+  slug?: CollectionEntry<"atotw">["slug"];
+  tip?: CollectionEntry<"atotw">;
+  catalog: TipCatalog;
+  crumbs?: Breadcrumbs;
+  title?: string;
 }
 
 const {
   slug = undefined,
   catalog = await getTipCatalog(),
   crumbs = defaultCrumbs,
-  sidebar = false,
 } = Astro.props;
+
 const { tip = slug && (await getEntry("atotw", slug)) } = Astro.props;
-const { title = tip?.data.title } = Astro.props;
-const { tips = [], categories = [] } = catalog;
+if (!tip) throw new Error("Tip is required");
+
+const { title = tip?.data.title || "Tip of the Week" } = Astro.props;
+const { tips = [] } = catalog;
 const related = await getRelatedTips(tip);
 
 import { Icon } from "astro-icon/components";
@@ -47,13 +50,17 @@ const header =
   Astro.slots.has("header") ?
     await Astro.slots.render("header")
   : "Accessibility <strong>Tip</strong>&nbsp;of the <strong>Week</strong>";
+
+const metadata: PageMetadata = {
+  title,
+  description: tip?.data.summary || "",
+  type: "article",
+  image: getOpenGraphImageData(Astro.site, "tips", tip.slug, tip.data.summary),
+};
 ---
 
-<Layout title={title} crumbs={crumbs}>
+<Layout {title} {crumbs} {metadata}>
   <Fragment slot="metadata">
-    <meta property="og:title" content={title} />
-    <meta name="twitter:title" content={title} />
-    <meta property="og:type" content="article" />
     <meta
       property="article:published_time"
       content={tip?.data.published.toISOString()}
@@ -73,14 +80,15 @@ const header =
       href={`${Astro.site}/services/tip-of-the-week/rss.xml`}
     />
   </Fragment>
-  <ImageHeading image="notes" slot="header" set:html={header} />
 
+  <ImageHeading image="notes" slot="header" set:html={header} />
   <ThemedSection style="tertiary">
     <div
       class="d-flex flex-column flex-lg-row justify-content-lg-between gap-3"
     >
       <div class="col col-lg-7">
-        <TipOfTheWeek tip={tip} />
+        {/* TypeScript being silly. Should always be present. */}
+        {tip && <TipOfTheWeek {tip} />}
       </div>
       <nav
         class="d-flex flex-column flex-md-row d-lg-block gap-4 col-lg-4"

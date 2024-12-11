@@ -10,19 +10,33 @@ import TipOfTheWeek from "../../components/TipOfTheWeek.astro";
 import TipRegistration from "../../components/TipRegistration.astro";
 
 import { getTipCatalog } from "../../lib/tips";
+import { getOpenGraphImageData } from "@lib/og-image";
 import { startCase } from "lodash-es";
+import type { Breadcrumbs, PageMetadata } from "@lib/types";
 
 const { categories, tips } = await getTipCatalog();
-
-const crumbs = [
+const title = "Tip of the Week";
+const description =
+  "Overview of the Accessibility Tip of the Week service that Accessible Community provides";
+const metadata: PageMetadata = {
+  title,
+  description:
+    "An overview and archive of Accessible Community's Tips of the Week",
+  image: getOpenGraphImageData(Astro.site, "pages", "tips", description),
+};
+const crumbs: Breadcrumbs = [
   {
     name: "Home",
     href: "/",
   },
+  {
+    name: "Services",
+    href: "/services",
+  },
 ];
 ---
 
-<Layout title="Tip of the Week" crumbs={crumbs}>
+<Layout {title} {crumbs} {metadata}>
   <Fragment slot="head">
     <link
       rel="alternate"

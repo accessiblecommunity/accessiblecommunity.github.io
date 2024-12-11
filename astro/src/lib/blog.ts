@@ -1,7 +1,9 @@
-import { getCollection, getEntries } from "astro:content";
+import { getCollection, getEntries, type CollectionEntry } from "astro:content";
 import { isEmpty, isNil, reverse, sortBy, uniqBy } from "lodash-es";
 
-export async function getBlogAuthors(blogs?) {
+export async function getBlogAuthors(
+  blogs?,
+): Promise<Array<CollectionEntry<"team">>> {
   blogs = isNil(blogs) ? await getCollection("blogs") : blogs;
   if (isEmpty(blogs)) return [];
   // Slug uniqueness is key.
@@ -10,7 +12,7 @@ export async function getBlogAuthors(blogs?) {
     slug,
     collection: "team",
   }));
-  const authors = await getEntries(authorRefs);
+  const authors: Array<CollectionEntry<"team">> = await getEntries(authorRefs);
   return authors;
 }
 
@@ -62,7 +64,15 @@ export async function getMostRecent(blogs?) {
   return sortedBlogs[0];
 }
 
-export async function getBlogCatalog(blogs?) {
+export interface BlogCatalog {
+  blogs: Array<CollectionEntry<"blogs">>;
+  authors: Array<CollectionEntry<"team">>;
+  topics: Array<string>;
+  dates: Array<string>;
+  recent: CollectionEntry<"blogs">;
+}
+
+export async function getBlogCatalog(blogs?): Promise<BlogCatalog> {
   blogs = isNil(blogs) ? await orderByRecent(blogs) : blogs;
   const topics = await getBlogTopics(blogs);
   const authors = await getBlogAuthors(blogs);

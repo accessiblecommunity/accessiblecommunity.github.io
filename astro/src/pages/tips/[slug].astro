@@ -1,8 +1,9 @@
 ---
-import { getTipCatalog } from "../../lib/tips";
+import { getTipCatalog, type TipCatalog } from "../../lib/tips";
+import type { CollectionEntry } from "astro:content";
 
 export async function getStaticPaths() {
-  const catalog = await getTipCatalog();
+  const catalog: TipCatalog = await getTipCatalog();
 
   return catalog.tips.map((tip) => ({
     params: { slug: tip.slug },
@@ -13,9 +14,14 @@ export async function getStaticPaths() {
   }));
 }
 
-import TipLayout from "../../layouts/TipLayout.astro";
+interface Props {
+  tip: CollectionEntry<"atotw">;
+  catalog: TipCatalog;
+}
 
 const { tip, catalog } = Astro.props;
+
+import TipLayout from "../../layouts/TipLayout.astro";
 ---
 
-<TipLayout tip={tip} catalog={catalog} />
+<TipLayout {tip} {catalog} />

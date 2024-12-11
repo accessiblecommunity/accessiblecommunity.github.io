@@ -16,6 +16,7 @@ const blogs = defineCollection({
   type: "content",
   schema: z.object({
     title: z.string(),
+    description: z.string(),
     tags: z.array(z.string()),
     published: z.date(),
     image: z.string().optional(),

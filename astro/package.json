@@ -19,6 +19,7 @@
     "@iconify-json/cib": "^1.1.8",
     "astro": "^4.10.2",
     "astro-icon": "^1.1.0",
+    "astro-og-canvas": "^0.5.0",
     "astro-robots-txt": "^1.0.0",
     "bootstrap": "^5.3.3",
     "lodash-es": "^4.17.21",

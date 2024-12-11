@@ -5,11 +5,14 @@ import CollaboratorList from "../../components/CollaboratorList.astro";
 import ThemedSection from "../../components/ThemedSection.astro";
 
 import { getCollection } from "astro:content";
+import type { Breadcrumbs, PageMetadata } from "@lib/types";
 
-const partners = await getCollection("collaborators", ({ data }) =>
-  data.tags.includes("partner"),
-);
-const crumbs = [
+const title = "Partners";
+const metadata: PageMetadata = {
+  title,
+  description: "Our partners at Accessible Community",
+};
+const crumbs: Breadcrumbs = [
   {
     name: "Home",
     href: "/",
@@ -19,9 +22,13 @@ const crumbs = [
     href: "/team",
   },
 ];
+
+const partners = await getCollection("collaborators", ({ data }) =>
+  data.tags.includes("partner"),
+);
 ---
 
-<Layout crumbs={crumbs} title="Partners">
+<Layout {title} {crumbs} {metadata}>
   <ImageHeading image="team" slot="header">
     <strong>Partners</strong>
   </ImageHeading>

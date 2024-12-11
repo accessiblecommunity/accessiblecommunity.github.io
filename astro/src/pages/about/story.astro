@@ -3,12 +3,19 @@ import ExternalLink from "../../components/ExternalLink.astro";
 import ImageHeading from "../../components/ImageHeading.astro";
 import Layout from "../../layouts/Layout.astro";
 import TeamVignette from "../../components/TeamVignette.astro";
-import Citation from "../../components/Citation.astro";
 import ThemedBox from "../../components/ThemedBox.astro";
 import ThemedSection from "../../components/ThemedSection.astro";
 import { Icon } from "astro-icon/components";
 
-const crumbs = [
+import type { Breadcrumbs, PageMetadata } from "@lib/types";
+
+const title = "Founder's Story";
+const metadata: PageMetadata = {
+  title,
+  description:
+    "The story and background of the Founder of Accessible Community",
+};
+const crumbs: Breadcrumbs = [
   {
     name: "Home",
     href: "/",
@@ -20,7 +27,7 @@ const crumbs = [
 ];
 ---
 
-<Layout crumbs={crumbs} title="Founder's Story">
+<Layout {crumbs} {title} {metadata}>
   <ImageHeading image="blog" slot="header">
     Our Founder's <strong>Story</strong>
   </ImageHeading>
