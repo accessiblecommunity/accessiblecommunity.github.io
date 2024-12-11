@@ -13,8 +13,8 @@ import heroBg from "../images/colored-hero/hands-together.png";
 const title = "Volunteer";
 const metadata: PageMetadata = {
   title,
-  description: 'Come join us at Accessible Community',
-  image: getOpenGraphImageData(Astro.url.host, "pages", "volunteer")
+  description: "Come join us at Accessible Community",
+  image: getOpenGraphImageData(Astro.url.host, "pages", "volunteer"),
 };
 const crumbs: Breadcrumbs = [
   {
@@ -230,7 +230,10 @@ const crumbs: Breadcrumbs = [
     <h2 class="display-3 mb-4 text-info-emphasis">
       Volunteer <strong>Form</strong>
     </h2>
-    <form id="volunteerFormEl" class="col p-4 bg-body border border-2 border-info-contrast rounded">
+    <form
+      id="volunteerFormEl"
+      class="col p-4 bg-body border border-2 border-info-contrast rounded"
+    >
       <p class="lead">
         Thank you for your interest in volunteering with
         <Branding>Accessible Community</Branding>.

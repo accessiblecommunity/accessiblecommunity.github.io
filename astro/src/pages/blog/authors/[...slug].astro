@@ -36,7 +36,8 @@ const { crumbs, author } = Astro.props;
 const authoredBlogs = await getCollection("blogs", ({ data }) => {
   return data.author.slug === author.slug;
 });
-const orderedBlogs: Array<CollectionEntry<"blogs">> = await orderByRecent(authoredBlogs);
+const orderedBlogs: Array<CollectionEntry<"blogs">> =
+  await orderByRecent(authoredBlogs);
 
 import BlogLayout from "../../../layouts/BlogLayout.astro";
 ---

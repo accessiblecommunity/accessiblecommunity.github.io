@@ -11,9 +11,9 @@ interface Props {
 
 const { title, description } = Astro.props;
 const metadata: PageMetadata = {
-  title, description,
-}
-
+  title,
+  description,
+};
 ---
 
 <Layout {title} {metadata}>

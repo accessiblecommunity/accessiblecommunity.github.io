@@ -5,7 +5,6 @@ import { startCase } from "lodash-es";
 import type { Breadcrumbs } from "@lib/types";
 import type { CollectionEntry } from "astro:content";
 
-
 export async function getStaticPaths() {
   const topics = await getBlogTopics();
   const crumbs: Breadcrumbs = [
@@ -38,7 +37,8 @@ const { crumbs, category } = Astro.props;
 const categoryBlogs = await getCollection("blogs", ({ data }) => {
   return data.tags.includes(category);
 });
-const orderedBlogs: Array<CollectionEntry<"blogs">> = await orderByRecent(categoryBlogs);
+const orderedBlogs: Array<CollectionEntry<"blogs">> =
+  await orderByRecent(categoryBlogs);
 
 import BlogLayout from "../../../layouts/BlogLayout.astro";
 ---

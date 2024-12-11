@@ -10,7 +10,6 @@ import ThemedSection from "../../components/ThemedSection.astro";
 import { sortBy } from "lodash-es";
 import type { Breadcrumbs, PageMetadata } from "@lib/types";
 
-
 const teamProfiles = await getCollection("team");
 
 function getTeamMembers(tag: string) {
@@ -44,7 +43,7 @@ const teams = Object.entries(teamMapping).map(([name, tag]) => ({
 const title = "Staff";
 const metadata: PageMetadata = {
   title,
-  description: 'The staff at Accessible Community',
+  description: "The staff at Accessible Community",
 };
 const crumbs: Breadcrumbs = [
   {

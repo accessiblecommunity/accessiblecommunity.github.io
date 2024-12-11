@@ -5,7 +5,7 @@ import { getOpenGraphImageData } from "@lib/og-image";
 import { isEmpty, kebabCase, startCase } from "lodash-es";
 
 import type { Breadcrumbs, PageMetadata } from "../lib/types";
-import type { CollectionEntry } from 'astro:content';
+import type { CollectionEntry } from "astro:content";
 
 const defaultCrumbs: Breadcrumbs = [
   {
@@ -19,7 +19,7 @@ const defaultCrumbs: Breadcrumbs = [
 ];
 
 interface Props {
-  blog: CollectionEntry<'blogs'>;
+  blog: CollectionEntry<"blogs">;
   catalog: BlogCatalog;
   crumbs?: Breadcrumbs;
   title?: string;
@@ -32,8 +32,8 @@ const {
   crumbs = defaultCrumbs,
   sidebar = false,
 } = Astro.props;
-const { title = blog.data.title, } = Astro.props;
-const { blogs = [], authors = [], topics = [], dates = [], } = catalog;
+const { title = blog.data.title } = Astro.props;
+const { blogs = [], authors = [], topics = [], dates = [] } = catalog;
 
 const blogAuthor = await getEntry(blog.data.author);
 const published = blog.data.published.toLocaleDateString("en-us", {
@@ -47,11 +47,11 @@ const metadata: PageMetadata = {
   type: "article",
   image: getOpenGraphImageData(
     Astro.url.host,
-    'blog',
+    "blog",
     blog.slug,
-    isEmpty(blog.data.description) ? title : blog.data.description
+    isEmpty(blog.data.description) ? title : blog.data.description,
   ),
-}
+};
 
 const { Content } = await blog.render();
 

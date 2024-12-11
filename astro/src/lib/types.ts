@@ -7,7 +7,6 @@ export interface Breadcrumb {
 }
 export type Breadcrumbs = Array<Breadcrumb>;
 
-
 // PageMetadata
 export interface PageMetadata {
   title: string;

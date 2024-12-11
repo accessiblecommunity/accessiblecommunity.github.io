@@ -1,30 +1,30 @@
-import { getCollection } from 'astro:content';
-import { OGImageRoute } from 'astro-og-canvas';
+import { getCollection } from "astro:content";
+import { OGImageRoute } from "astro-og-canvas";
 
-const collectionEntries = await getCollection('atotw');
+const collectionEntries = await getCollection("atotw");
 
 const pages = Object.fromEntries(
-  collectionEntries.map(({ slug, data }) => [slug, data])
+  collectionEntries.map(({ slug, data }) => [slug, data]),
 );
 
 export const { getStaticPaths, GET } = OGImageRoute({
-  param: 'id',
+  param: "id",
   pages: pages,
 
   getImageOptions: (path, page) => ({
     title: page.title,
     description: page.summary,
     fonts: [
-      'https://api.fontsource.org/v1/fonts/archivo/latin-400-normal.ttf',
-      'https://api.fontsource.org/v1/fonts/archivo/latin-700-normal.ttf',
+      "https://api.fontsource.org/v1/fonts/archivo/latin-400-normal.ttf",
+      "https://api.fontsource.org/v1/fonts/archivo/latin-700-normal.ttf",
     ],
     font: {
       title: {
         weight: "Bold",
-        families: ['Archivo',],
+        families: ["Archivo"],
       },
       description: {
-        families: ['Archivo',],
+        families: ["Archivo"],
       },
     },
     logo: {
@@ -33,8 +33,8 @@ export const { getStaticPaths, GET } = OGImageRoute({
     },
     bgImage: {
       path: "./src/images/colored-hero/post-it-notes.png",
-      fit: 'fill',
-      position: ['center', 'start'],
+      fit: "fill",
+      position: ["center", "start"],
     },
     padding: 72,
   }),

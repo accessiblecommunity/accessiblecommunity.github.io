@@ -44,9 +44,9 @@ export async function getMostRecent(tips?): Promise<CollectionEntry<"atotw">> {
 }
 
 export interface TipCatalog {
-  tips: Array<CollectionEntry<'atotw'>>,
-  categories: Array<string>,
-  recent: CollectionEntry<'atotw'>,
+  tips: Array<CollectionEntry<"atotw">>;
+  categories: Array<string>;
+  recent: CollectionEntry<"atotw">;
 }
 
 export async function getTipCatalog(tips?): Promise<TipCatalog> {

@@ -16,11 +16,13 @@ import type { Breadcrumbs, PageMetadata } from "@lib/types";
 
 const { categories, tips } = await getTipCatalog();
 const title = "Tip of the Week";
-const description = "Overview of the Accessibility Tip of the Week service that Accessible Community provides";
+const description =
+  "Overview of the Accessibility Tip of the Week service that Accessible Community provides";
 const metadata: PageMetadata = {
   title,
-  description: "An overview and archive of Accessible Community's Tips of the Week",
-  image: getOpenGraphImageData(Astro.url.host, 'pages', 'tips', description)
+  description:
+    "An overview and archive of Accessible Community's Tips of the Week",
+  image: getOpenGraphImageData(Astro.url.host, "pages", "tips", description),
 };
 const crumbs: Breadcrumbs = [
   {
@@ -31,7 +33,8 @@ const crumbs: Breadcrumbs = [
     name: "Services",
     href: "/services",
   },
-];---
+];
+---
 
 <Layout {title} {crumbs} {metadata}>
   <Fragment slot="head">

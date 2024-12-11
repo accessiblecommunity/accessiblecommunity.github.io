@@ -41,7 +41,8 @@ const monthBlogs = await getCollection("blogs", ({ data }) => {
   });
   return published === month;
 });
-const orderedBlogs: Array<CollectionEntry<"blogs">> = await orderByRecent(monthBlogs);
+const orderedBlogs: Array<CollectionEntry<"blogs">> =
+  await orderByRecent(monthBlogs);
 
 import BlogLayout from "../../../layouts/BlogLayout.astro";
 ---

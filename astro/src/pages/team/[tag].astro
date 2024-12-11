@@ -5,7 +5,6 @@ import { sortBy } from "lodash-es";
 
 import type { Breadcrumbs, PageMetadata } from "@lib/types";
 
-
 export async function getStaticPaths() {
   const team = await getCollection("team");
 

@@ -2,24 +2,21 @@
 import { type PageMetadata } from "../lib/types";
 import { getImage } from "astro:assets";
 
-interface Props extends PageMetadata {
-}
+interface Props extends PageMetadata {}
 
-const {
-  title,
-  description,
-  image = undefined,
-  type = "website",
-} = Astro.props;
+const { title, description, image = undefined, type = "website" } = Astro.props;
 
 const fullTitle = `Accessible Community - ${title}`;
-const optimizedImage = image ? await getImage({src: image.data, format: 'avif'}) : undefined;
+const optimizedImage =
+  image ? await getImage({ src: image.data, format: "avif" }) : undefined;
 ---
 
 {/* Opengraph Protocol support - https://ogp.me/ */}
-{/* Twitter support - https://developer.x.com/en/docs/tweets/optimize-with-cards/overview/markup */}
+{
+  /* Twitter support - https://developer.x.com/en/docs/tweets/optimize-with-cards/overview/markup */
+}
 <meta property="og:type" content={type} />
-<meta name="twitter:card" content={image ? "summary_large_image" : "summary" } />
+<meta name="twitter:card" content={image ? "summary_large_image" : "summary"} />
 
 {/* URL */}
 <meta property="og:url" content={Astro.url} />
@@ -28,8 +25,8 @@ const optimizedImage = image ? await getImage({src: image.data, format: 'avif'})
 
 {/* Title */}
 <title>{title} - Accessible Community</title>
-<meta property="og:title" content={fullTitle}>
-<meta name="twitter:title" content={fullTitle}>
+<meta property="og:title" content={fullTitle} />
+<meta name="twitter:title" content={fullTitle} />
 
 {/* Description */}
 <meta name="description" content={description} />
@@ -37,13 +34,23 @@ const optimizedImage = image ? await getImage({src: image.data, format: 'avif'})
 <meta name="twitter:description" content={description} />
 
 {/* Summary / Image */}
-{ optimizedImage && (
-  <meta property="og:image" content={optimizedImage?.src} />
-  <meta name="twitter:image" content={optimizedImage?.src} />
-  <meta property="og:image:height" content={optimizedImage.attributes.height} />
-  <meta property="og:image:width" content={optimizedImage.attributes.width} />
-  <meta property="og:image:alt" content={image?.alt} />
-  <meta name="twitter:image:alt" content={image?.alt} />
-)}
+{
+  optimizedImage && (
+    <>
+      <meta property="og:image" content={optimizedImage?.src} />
+      <meta name="twitter:image" content={optimizedImage?.src} />
+      <meta
+        property="og:image:height"
+        content={optimizedImage.attributes.height}
+      />
+      <meta
+        property="og:image:width"
+        content={optimizedImage.attributes.width}
+      />
+      <meta property="og:image:alt" content={image?.alt} />
+      <meta name="twitter:image:alt" content={image?.alt} />
+    </>
+  )
+}
 
 <slot name="metadata" />

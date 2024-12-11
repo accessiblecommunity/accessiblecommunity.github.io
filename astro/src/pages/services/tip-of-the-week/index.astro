@@ -17,11 +17,12 @@ import type { Breadcrumbs, PageMetadata } from "@lib/types";
 const { categories, tips } = await getTipCatalog();
 
 const title = "Tip of the Week";
-const description = "Overview of the Accessibility Tip of the Week service that Accessible Community provides";
+const description =
+  "Overview of the Accessibility Tip of the Week service that Accessible Community provides";
 const metadata: PageMetadata = {
   title,
   description,
-  image: getOpenGraphImageData(Astro.url.host, 'pages', 'tips', description)
+  image: getOpenGraphImageData(Astro.url.host, "pages", "tips", description),
 };
 const crumbs: Breadcrumbs = [
   {

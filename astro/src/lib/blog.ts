@@ -1,8 +1,9 @@
 import { getCollection, getEntries, type CollectionEntry } from "astro:content";
 import { isEmpty, isNil, reverse, sortBy, uniqBy } from "lodash-es";
 
-
-export async function getBlogAuthors(blogs?): Promise<Array<CollectionEntry<"team">>> {
+export async function getBlogAuthors(
+  blogs?,
+): Promise<Array<CollectionEntry<"team">>> {
   blogs = isNil(blogs) ? await getCollection("blogs") : blogs;
   if (isEmpty(blogs)) return [];
   // Slug uniqueness is key.
@@ -64,11 +65,11 @@ export async function getMostRecent(blogs?) {
 }
 
 export interface BlogCatalog {
-  blogs: Array<CollectionEntry<'blogs'>>,
-  authors: Array<CollectionEntry<'team'>>,
-  topics: Array<string>,
-  dates: Array<string>,
-  recent: CollectionEntry<'blogs'>,
+  blogs: Array<CollectionEntry<"blogs">>;
+  authors: Array<CollectionEntry<"team">>;
+  topics: Array<string>;
+  dates: Array<string>;
+  recent: CollectionEntry<"blogs">;
 }
 
 export async function getBlogCatalog(blogs?): Promise<BlogCatalog> {
