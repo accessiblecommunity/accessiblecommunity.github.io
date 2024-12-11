@@ -22,7 +22,7 @@ const description =
 const metadata: PageMetadata = {
   title,
   description,
-  image: getOpenGraphImageData(Astro.url.host, "pages", "tips", description),
+  image: getOpenGraphImageData(Astro.site, "pages", "tips", description),
 };
 const crumbs: Breadcrumbs = [
   {

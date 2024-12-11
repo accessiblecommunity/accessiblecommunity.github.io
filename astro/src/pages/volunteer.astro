@@ -14,7 +14,7 @@ const title = "Volunteer";
 const metadata: PageMetadata = {
   title,
   description: "Come join us at Accessible Community",
-  image: getOpenGraphImageData(Astro.url.host, "pages", "volunteer"),
+  image: getOpenGraphImageData(Astro.site, "pages", "volunteer"),
 };
 const crumbs: Breadcrumbs = [
   {

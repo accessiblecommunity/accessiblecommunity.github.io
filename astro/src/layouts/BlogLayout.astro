@@ -46,7 +46,7 @@ const metadata: PageMetadata = {
   description: isEmpty(blog.data.description) ? title : blog.data.description,
   type: "article",
   image: getOpenGraphImageData(
-    Astro.url.host,
+    Astro.site,
     "blog",
     blog.slug,
     isEmpty(blog.data.description) ? title : blog.data.description,

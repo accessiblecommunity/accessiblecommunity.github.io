@@ -22,7 +22,7 @@ const metadata: PageMetadata = {
   title,
   description:
     "An overview and archive of Accessible Community's Tips of the Week",
-  image: getOpenGraphImageData(Astro.url.host, "pages", "tips", description),
+  image: getOpenGraphImageData(Astro.site, "pages", "tips", description),
 };
 const crumbs: Breadcrumbs = [
   {

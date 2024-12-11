@@ -56,11 +56,11 @@ $(SOURCE_DIR)/dist: up
 
 clean-js-dist:
 	@echo Removing the $(SOURCE_DIR)/dist directory.
-	$(RemoveDirCmd) $(call FixPath,$(SOURCE_DIR)/dist)
+	@$(RemoveDirCmd) $(call FixPath,$(SOURCE_DIR)/dist)
 
 clean-js-modules:
 	@echo Removing the $(SOURCE_DIR)/node_modules directory.
-	$(RemoveDirCmd) $(call FixPath,$(SOURCE_DIR)/node_modules)
+	@$(RemoveDirCmd) $(call FixPath,$(SOURCE_DIR)/node_modules)
 
 clean: clean-js-dist clean-js-modules
 

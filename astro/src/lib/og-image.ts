@@ -1,14 +1,15 @@
 import type { ImageData } from "./types";
 
 export function getOpenGraphImageData(
-  host: string,
+  baseUrl: URL | undefined,
   folder: string,
   filename: string,
   alt: string = "",
 ): ImageData {
+  const url = new URL(`/images/og/${folder}/${filename}.png`, baseUrl);
   return {
     data: {
-      src: `${host}/images/og/${folder}/${filename}.png`,
+      src: url.href,
       width: 1200,
       height: 630,
       format: "png",

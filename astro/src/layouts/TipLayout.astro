@@ -55,12 +55,7 @@ const metadata: PageMetadata = {
   title,
   description: tip?.data.summary || "",
   type: "article",
-  image: getOpenGraphImageData(
-    Astro.url.host,
-    "tips",
-    tip.slug,
-    tip.data.summary,
-  ),
+  image: getOpenGraphImageData(Astro.site, "tips", tip.slug, tip.data.summary),
 };
 ---
 
