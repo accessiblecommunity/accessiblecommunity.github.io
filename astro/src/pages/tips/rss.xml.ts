@@ -1,8 +1,9 @@
 import rss from "@astrojs/rss";
 import sanitizeHtml from "sanitize-html";
 
+// https://docs.astro.build/en/reference/container-reference/#adding-a-renderer-through-the-container-api
+import { loadRenderers } from "astro:container";
 import { experimental_AstroContainer as AstroContainer } from "astro/container";
-import { loadRenderers } from "../../lib/renderer"; // "astro/container"
 import { getContainerRenderer as mdxRenderer } from "@astrojs/mdx";
 
 import type { CollectionEntry } from "astro:content";
