@@ -1,56 +1,11 @@
 ---
-import { getImage } from "astro:assets";
 import { flatMap } from "lodash-es";
 
-// import handsImage from "../images/colored-hero/hands-together.png";
-// const optimizedHands = await getImage({src: handsImage, format: 'avif'})
+import { getHeroThemeCssRules, HeroTheme } from "@lib/hero-image";
 
-import blogImage from "../images/colored-hero/pen-paper.png";
-const optimizedBlog = await getImage({ src: blogImage, format: "avif" });
-
-import policyImage from "../images/colored-hero/policy.png";
-const optimizedPolicy = await getImage({ src: policyImage, format: "avif" });
-
-import notesImage from "../images/colored-hero/post-it-notes.png";
-const optimizedNotes = await getImage({ src: notesImage, format: "avif" });
-
-import teamImage from "../images/colored-hero/team.png";
-const optimizedTeam = await getImage({ src: teamImage, format: "avif" });
-
-const cssRules = {
-  blog: {
-    height: "12rem",
-    background: `no-repeat url(${optimizedBlog.src})`,
-    "background-position": "center bottom",
-    "background-size": "cover",
-  },
-  // hands: {
-  //   'height': '10rem',
-  //   'background': `url(${optimizedHands.src})`,
-  //   'background-position': 'left center',
-  // },
-  policy: {
-    height: "8.5rem",
-    background: `url(${optimizedPolicy.src})`,
-    "background-position": "center 60%",
-    "background-size": "cover",
-  },
-  team: {
-    height: "9rem",
-    background: `no-repeat url(${optimizedTeam.src})`,
-    "background-position": "center 30%",
-    "background-size": "cover",
-  },
-  notes: {
-    height: "10rem",
-    background: `no-repeat url(${optimizedNotes.src})`,
-    "background-position": "center 45%",
-    "background-size": "cover",
-  },
-};
 
 interface Props {
-  image: string;
+  image: HeroTheme;
   element?: string;
   fluid?: boolean;
 }
@@ -59,7 +14,8 @@ const { image, element: Element = "h1", fluid = false } = Astro.props;
 
 const darkenSlightly = ["blog", "notes"].includes(image);
 const darkenLots = false;
-const styleRules = flatMap(Object.entries(cssRules[image]), ([key, value]) => {
+const cssRules = await getHeroThemeCssRules(image);
+const styleRules = flatMap(Object.entries(cssRules), ([key, value]) => {
   return `${key}: ${value};`;
 }).join(" ");
 ---

@@ -1,9 +1,15 @@
-import { getCollection } from "astro:content";
+import { getCollection, type CollectionEntry } from "astro:content";
 import { OGImageRoute } from "astro-og-canvas";
 
-const collectionEntries = await getCollection("atotw");
+import { getHeroThemeImagePath } from "@lib/hero-image";
 
-const pages = Object.fromEntries(
+const collectionEntries: Array<CollectionEntry<"atotw">> = await getCollection("atotw");
+
+type TipMapping = {
+  [s: string]: CollectionEntry<"atotw">["data"],
+}
+
+const pages: TipMapping = Object.fromEntries(
   collectionEntries.map(({ slug, data }) => [slug, data]),
 );
 
@@ -32,7 +38,7 @@ export const { getStaticPaths, GET } = OGImageRoute({
       size: [72],
     },
     bgImage: {
-      path: "./src/images/colored-hero/post-it-notes.png",
+      path: getHeroThemeImagePath(page.theme),
       fit: "fill",
       position: ["center", "start"],
     },
