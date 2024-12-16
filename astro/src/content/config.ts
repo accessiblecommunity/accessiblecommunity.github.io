@@ -1,7 +1,6 @@
 import { defineCollection, reference, z } from "astro:content";
 import { HeroTheme } from "@lib/hero-image";
 
-
 const atotw = defineCollection({
   type: "content",
   schema: z.object({

@@ -20,11 +20,11 @@ export enum HeroTheme {
   party = "party",
   policy = "policy",
   team = "team",
-};
+}
 
 export type HeroThemeMapping<T> = {
   [h in HeroTheme]: T;
-}
+};
 type HeroThemeFunction<T> = (label: HeroTheme) => T;
 
 const heroImagePaths: HeroThemeMapping<string> = {
@@ -34,7 +34,7 @@ const heroImagePaths: HeroThemeMapping<string> = {
   party: "./src/images/colored-hero/balloons.png",
   policy: "./src/images/colored-hero/policy.png",
   team: "./src/images/colored-hero/team.png",
-}
+};
 const heroImages: HeroThemeMapping<ImageMetadata> = {
   blog: blogImage,
   hands: handsImage,
@@ -42,7 +42,7 @@ const heroImages: HeroThemeMapping<ImageMetadata> = {
   party: balloonsImage,
   policy: policyImage,
   team: teamImage,
-}
+};
 const heroBackgroundCss: HeroThemeMapping<object> = {
   blog: {
     height: "12rem",
@@ -50,8 +50,8 @@ const heroBackgroundCss: HeroThemeMapping<object> = {
     "background-size": "cover",
   },
   hands: {
-    'height': '10rem',
-    'background-position': 'left center',
+    height: "10rem",
+    "background-position": "left center",
   },
   party: {
     height: "12rem",
@@ -73,20 +73,26 @@ const heroBackgroundCss: HeroThemeMapping<object> = {
     "background-position": "center 45%",
     "background-size": "cover",
   },
-}
+};
 
-export const getHeroThemeImagePath: HeroThemeFunction<string> = (label: HeroTheme) => {
+export const getHeroThemeImagePath: HeroThemeFunction<string> = (
+  label: HeroTheme,
+) => {
   return heroImagePaths[label];
-}
+};
 
-export const getHeroThemeImage: HeroThemeFunction<Promise<GetImageResult>> = async (label: HeroTheme) => {
+export const getHeroThemeImage: HeroThemeFunction<
+  Promise<GetImageResult>
+> = async (label: HeroTheme) => {
   return await getImage({ src: heroImages[label], format: "avif" });
-}
+};
 
-export const getHeroThemeCssRules: HeroThemeFunction<Promise<object>> = async (label: HeroTheme) => {
+export const getHeroThemeCssRules: HeroThemeFunction<Promise<object>> = async (
+  label: HeroTheme,
+) => {
   const bgImage: GetImageResult = await getHeroThemeImage(label);
   return {
     background: `no-repeat url(${bgImage.src})`,
     ...heroBackgroundCss[label],
   };
-}
+};

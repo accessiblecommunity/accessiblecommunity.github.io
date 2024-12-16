@@ -32,7 +32,8 @@ const {
 } = Astro.props;
 
 const { tip = slug && (await getEntry("atotw", slug)) } = Astro.props;
-if (tip === undefined || isEmpty(tip)) throw new Error("Either the 'tip' or the 'slug' is required");
+if (tip === undefined || isEmpty(tip))
+  throw new Error("Either the 'tip' or the 'slug' is required");
 
 const { title = tip?.data.title || "Tip of the Week" } = Astro.props;
 const { tips = [] } = catalog;

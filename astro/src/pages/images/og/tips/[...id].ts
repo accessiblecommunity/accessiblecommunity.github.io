@@ -3,11 +3,12 @@ import { OGImageRoute } from "astro-og-canvas";
 
 import { getHeroThemeImagePath } from "@lib/hero-image";
 
-const collectionEntries: Array<CollectionEntry<"atotw">> = await getCollection("atotw");
+const collectionEntries: Array<CollectionEntry<"atotw">> =
+  await getCollection("atotw");
 
 type TipMapping = {
-  [s: string]: CollectionEntry<"atotw">["data"],
-}
+  [s: string]: CollectionEntry<"atotw">["data"];
+};
 
 const pages: TipMapping = Object.fromEntries(
   collectionEntries.map(({ slug, data }) => [slug, data]),
