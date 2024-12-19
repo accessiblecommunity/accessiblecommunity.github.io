@@ -32,7 +32,8 @@ const {
 } = Astro.props;
 
 const { tip = slug && (await getEntry("atotw", slug)) } = Astro.props;
-if (!tip) throw new Error("Tip is required");
+if (tip === undefined || isEmpty(tip))
+  throw new Error("Either the 'tip' or the 'slug' is required");
 
 const { title = tip?.data.title || "Tip of the Week" } = Astro.props;
 const { tips = [] } = catalog;
@@ -81,13 +82,12 @@ const metadata: PageMetadata = {
     />
   </Fragment>
 
-  <ImageHeading image="notes" slot="header" set:html={header} />
+  <ImageHeading image={tip?.data.theme} slot="header" set:html={header} />
   <ThemedSection style="tertiary">
     <div
       class="d-flex flex-column flex-lg-row justify-content-lg-between gap-3"
     >
       <div class="col col-lg-7">
-        {/* TypeScript being silly. Should always be present. */}
         {tip && <TipOfTheWeek {tip} />}
       </div>
       <nav
