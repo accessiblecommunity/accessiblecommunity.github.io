@@ -44,8 +44,9 @@ export default defineConfig({
           __dirname,
           "node_modules/bootstrap/dist/js/bootstrap.esm.min.js",
         ),
-        "~lib": path.resolve(__dirname, "src/lib"),
+        '@': './src',
       },
+      extensions: ['.js', '.ts', '.mjs'],
     },
     ssr: {
       noExternal: ["bootstrap"],

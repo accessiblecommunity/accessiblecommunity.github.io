@@ -1,9 +1,17 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 import ImageHeading from "../../components/ImageHeading.astro";
+
+import type { PageMetadata } from "@lib/types";
+
+const title = "Team";
+const metadata: PageMetadata = {
+  title,
+  description: "The team at Accessible Community",
+};
 ---
 
-<Layout title="Team">
+<Layout {title} {metadata}>
   <ImageHeading image="team" slot="header">Team</ImageHeading>
   <section class="container-fluid">
     <ul class="py-5 display-5 list-spaced">

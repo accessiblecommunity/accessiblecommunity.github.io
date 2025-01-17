@@ -9,6 +9,8 @@ import Layout from "../../layouts/Layout.astro";
 import ShadowBoxSection from "../../components/ShadowBoxSection.astro";
 import ThemedSection from "../../components/ThemedSection.astro";
 
+import type { PageMetadata } from "@lib/types";
+
 import heroBg from "../../images/colored-hero/woman-using-laptop.png";
 import tallyScreen from "../../images/tally-screenshot.png";
 
@@ -35,9 +37,15 @@ const services = [
     // link: 'https://www.loca11y.org',
   },
 ];
+
+const title = "Services";
+const metadata: PageMetadata = {
+  title,
+  description: "Overview of the Services that Accessible Community provides",
+};
 ---
 
-<Layout title="Services">
+<Layout {title} {metadata}>
   <Hero
     image={heroBg}
     columns="col-sm-12 col-md-9 col-lg-7 col-xl-6 col-xxl-5"
@@ -82,7 +90,10 @@ const services = [
             </p>
             <div class="ms-5 me-3">
               <div class="d-flex flex-column-reverse flex-sm-row flex-lg-column-reverse flex-xl-row justify-content-start">
-                <a href={`#${name}`} class="icon-link text-nowrap me-4 mt-0 mt-lg-2 mt-xl-0">
+                <a
+                  href={`#${name}`}
+                  class="icon-link text-nowrap me-4 mt-0 mt-lg-2 mt-xl-0"
+                >
                   Learn more
                   <span class="visually-hidden">about {name}.org</span>
                   <Icon

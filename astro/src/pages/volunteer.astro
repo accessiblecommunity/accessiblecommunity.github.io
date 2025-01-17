@@ -1,11 +1,22 @@
 ---
+import type { Breadcrumbs, PageMetadata } from "@lib/types";
+import { getOpenGraphImageData } from "@lib/og-image";
+
 import Branding from "../components/Branding.astro";
 import Hero from "../components/Hero.astro";
 import { Icon } from "astro-icon/components";
 import Layout from "../layouts/Layout.astro";
 import ThemedSection from "../components/ThemedSection.astro";
 
-const crumbs = [
+import heroBg from "../images/colored-hero/hands-together.png";
+
+const title = "Volunteer";
+const metadata: PageMetadata = {
+  title,
+  description: "Come join us at Accessible Community",
+  image: getOpenGraphImageData(Astro.site, "pages", "volunteer"),
+};
+const crumbs: Breadcrumbs = [
   {
     name: "Home",
     href: "/",
@@ -15,11 +26,9 @@ const crumbs = [
     href: "/join-us",
   },
 ];
-
-import heroBg from "../images/colored-hero/hands-together.png";
 ---
 
-<Layout title="Volunteer" crumbs={crumbs}>
+<Layout {title} {crumbs} {metadata}>
   <Hero image={heroBg} slot="header" actionBreakpoint="md">
     <div slot="heading" class="mb-4">
       <h1 class="visually-hidden">Volunteer</h1>
@@ -221,7 +230,10 @@ import heroBg from "../images/colored-hero/hands-together.png";
     <h2 class="display-3 mb-4 text-info-emphasis">
       Volunteer <strong>Form</strong>
     </h2>
-    <form id="volunteerFormEl" class="col p-4 bg-body border border-2 border-info-contrast rounded">
+    <form
+      id="volunteerFormEl"
+      class="col p-4 bg-body border border-2 border-info-contrast rounded"
+    >
       <p class="lead">
         Thank you for your interest in volunteering with
         <Branding>Accessible Community</Branding>.

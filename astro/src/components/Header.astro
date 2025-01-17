@@ -1,12 +1,9 @@
 ---
-interface Crumbs {
-  name: String;
-  href: URL;
-}
+import { type Breadcrumbs } from "../lib/types";
 
 interface Props {
   title: String;
-  crumbs?: Array<Crumbs>;
+  crumbs?: Breadcrumbs;
 }
 
 import { isEmpty } from "lodash-es";
@@ -15,7 +12,7 @@ import Branding from "@components/Branding.astro";
 import ExternalLink from "@components/ExternalLink.astro";
 
 const { title, crumbs = [] } = Astro.props;
-const breadCrumbs =
+const breadCrumbs: Breadcrumbs =
   isEmpty(crumbs) && title != "Home" ? [{ name: "Home", href: "/" }] : crumbs;
 ---
 
@@ -64,9 +61,11 @@ const breadCrumbs =
                 >Mission &amp; Vision</a
               >
             </li>
-            {/* <li>
+            {
+              /* <li>
               <a class="dropdown-item" href="/about/a11y">Why Accessibility?</a>
-            </li> */}
+            </li> */
+            }
             <li>
               <a class="dropdown-item" href="/about/story">Founder's Story</a>
             </li>
@@ -90,33 +89,39 @@ const breadCrumbs =
               >
             </li>
             <li>
-              <a class="dropdown-item" href="/services/evaluations">Evaluations</a>
+              <a class="dropdown-item" href="/services/evaluations"
+                >Evaluations</a
+              >
             </li>
-            <li><hr class="dropdown-divider"></li>
+            <li><hr class="dropdown-divider" /></li>
             <li>
-              <ExternalLink class="dropdown-item py-2" gaps href="https://www.ta11y.org/">
+              <ExternalLink
+                class="dropdown-item py-2"
+                gaps
+                href="https://www.ta11y.org/"
+              >
                 <Icon
                   class="bi"
                   name="ta11y-logo"
                   height={16}
                   role="img"
                   aria-hidden="true"
-                /><Branding text="ta11y.org"
-              /></ExternalLink>
+                /><Branding text="ta11y.org" /></ExternalLink
+              >
             </li>
             <li>
               <ExternalLink
                 class="dropdown-item py-2"
                 gaps
                 href="https://www.mutua11y.org/"
-              ><Icon
-                class="bi"
-                name="mutua11y-logo"
-                height={16}
-                role="img"
-                aria-hidden="true"
-              /><Branding text="mutua11y.org"
-              /></ExternalLink>
+                ><Icon
+                  class="bi"
+                  name="mutua11y-logo"
+                  height={16}
+                  role="img"
+                  aria-hidden="true"
+                /><Branding text="mutua11y.org" /></ExternalLink
+              >
             </li>
           </ul>
         </li>
@@ -287,7 +292,7 @@ const breadCrumbs =
       vertical-align: sub;
     }
   }
-  
+
   @include media-breakpoint-down(sm) {
     .navbar-brand {
       --bs-navbar-brand-font-size: 1rem;
