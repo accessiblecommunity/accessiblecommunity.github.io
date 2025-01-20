@@ -1,8 +1,9 @@
 ---
-name: Maren
+name: Mattheus Batista
 roles:
-  default: UX Team, Design System
-  ux: UX Designer, Design System
+  default: Web Developer
+  development: Developer, ta11y
+current: false
 picture: ../../images/team/Ta11yCat.png
 alt: The Tally Cat has claimed this spot.
 ---

@@ -1,8 +1,9 @@
 ---
 name: Kylin Follenweider
 roles:
-  default: Content Team
+  default: User Experience
   content: Writer
+  ux: UX Researcher
 picture: ../../images/team/Kylin.png
 alt: Middle-aged fair-skinned woman with lavender hair, lime glasses, and teal lipstick. Wearing a cheerful smile and skeleton sweater. Waving.
 ---

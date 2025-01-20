@@ -1,8 +1,8 @@
 ---
-name: Mohammad
+name: Abdullah S.
 roles:
-  default: Social Media Team
-  communications: Content Creator
+  default: Director, Donor Relations
+  leadership: Director, Donor Relations
 current: false
 picture: ../../images/team/Ta11yCat.png
 alt: The Tally Cat has claimed this spot.

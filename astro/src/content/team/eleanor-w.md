@@ -1,8 +1,9 @@
 ---
-name: Maren
+name: Eleanor W.
 roles:
-  default: UX Team, Design System
-  ux: UX Designer, Design System
+  default: Social Media Team
+  communications: Video Editor
+current: false
 picture: ../../images/team/Ta11yCat.png
 alt: The Tally Cat has claimed this spot.
 ---

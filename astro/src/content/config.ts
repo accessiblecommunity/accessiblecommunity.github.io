@@ -47,17 +47,16 @@ const team = defineCollection({
         .object({
           default: z.string(),
           board: z.string(),
+          communications: z.string(),
           content: z.string(),
           development: z.string(),
           evaluations: z.string(),
           leadership: z.string(),
           loca11y: z.string(),
-          social: z.string(),
           support: z.string(),
           ux: z.string(),
         })
-        .partial()
-        .optional(),
+        .partial(),
       current: z.boolean().default(true),
       picture: image(),
       alt: z.string().optional(),

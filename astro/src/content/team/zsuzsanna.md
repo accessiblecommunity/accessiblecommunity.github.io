@@ -1,6 +1,9 @@
 ---
 name: Zsuszanna Orban
-title: Workshops Coordinator
+title: 
+roles:
+  default: Project Manager, mutua11y workshops
+  leadership: Project Manager, mutua11y workshops
 current: false
 tags:
   - mutua11y

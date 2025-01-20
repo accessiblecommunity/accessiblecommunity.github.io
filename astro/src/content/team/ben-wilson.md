@@ -1,8 +1,9 @@
 ---
-name: Maren
+name: Ben Wilson
 roles:
-  default: UX Team, Design System
-  ux: UX Designer, Design System
+  default: Board President
+  board: Board President, 2017-19
+current: false
 picture: ../../images/team/Ta11yCat.png
 alt: The Tally Cat has claimed this spot.
 ---
