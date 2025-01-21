@@ -1,6 +1,6 @@
 ---
 name: Gladys Phan
-roles: 
+roles:
   default: Project Manager, mutua11y mentoring
   leadership: Project Manager, mutua11y mentoring
 current: false

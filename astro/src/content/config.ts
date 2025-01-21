@@ -75,13 +75,13 @@ const team = defineCollection({
     }),
 });
 
-const teams = defineCollection ({
+const teams = defineCollection({
   type: "content",
   schema: z.object({
     name: z.string(),
     order: z.number().default(99999),
-  })
-})
+  }),
+});
 
 const quotes = defineCollection({
   type: "content",

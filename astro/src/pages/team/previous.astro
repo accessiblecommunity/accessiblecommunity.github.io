@@ -5,18 +5,32 @@ import ThemedSection from "../../components/ThemedSection.astro";
 
 import type { Breadcrumbs, PageMetadata } from "@lib/types";
 import { getCollection, type CollectionEntry } from "astro:content";
-import { isEmpty } from 'lodash-es'
+import { isEmpty } from "lodash-es";
 
-const leadership: CollectionEntry<"team">[] = await getCollection("team", ({data}) => {
-  return data.current == false && data.roles?.leadership
-});
-const board: CollectionEntry<"team">[] = await getCollection("team", ({data}) => {
-  return data.current == false && data.roles?.board
-});
-const staff: CollectionEntry<"team">[] = await getCollection("team", ({data}) => {
-  return data.current == false && !(data.roles?.leadership || data.roles?.board)
-});
-const teams = (await getCollection("teams", ({slug}) => ['board', 'default', 'leadership'].indexOf(slug) == -1))
+const leadership: CollectionEntry<"team">[] = await getCollection(
+  "team",
+  ({ data }) => {
+    return data.current == false && data.roles?.leadership;
+  },
+);
+const board: CollectionEntry<"team">[] = await getCollection(
+  "team",
+  ({ data }) => {
+    return data.current == false && data.roles?.board;
+  },
+);
+const staff: CollectionEntry<"team">[] = await getCollection(
+  "team",
+  ({ data }) => {
+    return (
+      data.current == false && !(data.roles?.leadership || data.roles?.board)
+    );
+  },
+);
+const teams = await getCollection(
+  "teams",
+  ({ slug }) => ["board", "default", "leadership"].indexOf(slug) == -1,
+);
 
 type Roles = CollectionEntry<"team">["data"]["roles"];
 type RoleKey = keyof Roles;
@@ -26,7 +40,7 @@ interface TeamMembers {
 }
 interface TeamOverview {
   name: string;
-  members: string[];  
+  members: string[];
 }
 
 const teamMembers: TeamMembers = teams.reduce(
@@ -39,23 +53,21 @@ const teamMembers: TeamMembers = teams.reduce(
     accum[slug] = overview;
     return accum;
   },
-  {}
+  {},
 );
-staff.reduce(
-  (members: TeamMembers, current: CollectionEntry<"team">) => {
-    const roles: Roles = current.data.roles || {};
-    for (const [teamName, position] of Object.entries(roles)) {
-      if (['board', 'default', 'leadership'].indexOf(teamName) == -1) {
-        const teamKey = teamName as RoleKey;
-        const overview: TeamOverview = members[teamKey];
-        overview.members.push(`<strong>${current.data.name}</strong> - ${position}`);
-      }
+staff.reduce((members: TeamMembers, current: CollectionEntry<"team">) => {
+  const roles: Roles = current.data.roles || {};
+  for (const [teamName, position] of Object.entries(roles)) {
+    if (["board", "default", "leadership"].indexOf(teamName) == -1) {
+      const teamKey = teamName as RoleKey;
+      const overview: TeamOverview = members[teamKey];
+      overview.members.push(
+        `<strong>${current.data.name}</strong> - ${position}`,
+      );
     }
-    return members;
-  },
-  teamMembers,
-);
-
+  }
+  return members;
+}, teamMembers);
 
 const title = "Previous Contributors";
 const metadata: PageMetadata = {
@@ -92,9 +104,11 @@ const crumbs: Breadcrumbs = [
       <div class="card-body">
         <ul>
           {
-            board.map(({data}) =>
-              <li class="text-brand"><strong>{ data.name }</strong> - {data.roles.board}</li>
-            )
+            board.map(({ data }) => (
+              <li class="text-brand">
+                <strong>{data.name}</strong> - {data.roles.board}
+              </li>
+            ))
           }
         </ul>
       </div>
@@ -106,14 +120,17 @@ const crumbs: Breadcrumbs = [
       <div class="card-body">
         <ul>
           {
-            leadership.map(({data}) =>
-              <li class="text-brand"><strong>{ data.name }</strong> - {data.roles.leadership}</li>
-            )
+            leadership.map(({ data }) => (
+              <li class="text-brand">
+                <strong>{data.name}</strong> - {data.roles.leadership}
+              </li>
+            ))
           }
         </ul>
       </div>
     </div>
-    { /*
+    {
+      /*
     <div class="card mb-5 shadow team-card">
       <h2 class="card-header text-primary-emphasis">Contributors</h2>
       <div class="card-body">
@@ -126,21 +143,30 @@ const crumbs: Breadcrumbs = [
         </ul>
       </div>
     </div>
-    */ }
+    */
+    }
     <div class="card mb-5 shadow team-card">
       <h2 class="card-header text-primary-emphasis">Staff</h2>
       <div class="card-body">
         {
-          Object.values(teamMembers).map((value) => !isEmpty(value.members) && (
-            <h3 class="display-6">{value.name} <strong>Team</strong></h3>
-            <ul class="list-inline mx-3">
-              {
-                value.members.map((member) => (
-                  <li class="list-inline-item text-brand" set:html={member} />
-                ))
-              }
-            </ul>
-          ))
+          Object.values(teamMembers).map(
+            (value) =>
+              !isEmpty(value.members) && (
+                <>
+                  <h3 class="display-6">
+                    {value.name} <strong>Team</strong>
+                  </h3>
+                  <ul class="list-inline mx-3">
+                    {value.members.map((member) => (
+                      <li
+                        class="list-inline-item text-brand"
+                        set:html={member}
+                      />
+                    ))}
+                  </ul>
+                </>
+              ),
+          )
         }
       </div>
     </div>

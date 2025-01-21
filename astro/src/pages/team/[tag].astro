@@ -35,7 +35,8 @@ const { team, title, heading, description } = Astro.props;
 
 const teamMembers = sortBy(
   team.filter(
-    ({ data }) => data.current && data.roles && Object.keys(data.roles).includes(tag),
+    ({ data }) =>
+      data.current && data.roles && Object.keys(data.roles).includes(tag),
   ),
   ({ data }) => data.name.split(" ").slice(1).join(" "),
 );
