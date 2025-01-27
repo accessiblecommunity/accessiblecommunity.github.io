@@ -1,9 +1,8 @@
 ---
-name: Karen Joyce
+name: Jaunita George
 roles:
-  default: Director, Communications
-  leadership: Director, Communications
-  communications: Director
+  default: Director, globa11y
+  leadership: Director, globa11y
 picture: ../../images/team/Ta11yCat.png
 alt: The Tally Cat has claimed this spot.
 links:

@@ -1,9 +1,9 @@
 ---
 name: Brian Montgomery
 roles:
-  default: Technical Director
+  default: Director, Engineering
   development: Full-Stack Developer
-  leadership: Technical Director
+  leadership: Director, Engineering
 picture: ../../images/team/Brian.png
 alt: Middle-aged male with brown and gray hair, hazel eyes and glasses.
 links:
