@@ -1,5 +1,0 @@
----
-name: Staff Support
----
-
-We have a number of great volunteers here at Accessible Community. Our support team helps coordinate and find opportunities for them to gain skills and help us out.
