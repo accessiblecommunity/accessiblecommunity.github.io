@@ -1,9 +1,10 @@
 ---
-name: Maren
+name: Matt Ater
 roles:
-  default: UX Team, Design System
-  ux: UX Designer, Design System
-current: false
+  default: Board Member
+  board: Board Member
 picture: ../../images/team/Ta11yCat.png
 alt: The Tally Cat has claimed this spot.
 ---
+
+Biography coming soon.

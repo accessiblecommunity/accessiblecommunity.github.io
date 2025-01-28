@@ -79,6 +79,7 @@ const teams = defineCollection({
   type: "content",
   schema: z.object({
     name: z.string(),
+    needs: z.string().optional(),
     order: z.number().default(99999),
   }),
 });

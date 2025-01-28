@@ -9,6 +9,8 @@ import ThemedSection from "../../components/ThemedSection.astro";
 
 import { sortBy } from "lodash-es";
 import type { Breadcrumbs, PageMetadata } from "@lib/types";
+import { getEntry } from "astro:content";
+import { components } from "@lib/mdx";
 
 const teamProfiles = await getCollection("team");
 
@@ -35,11 +37,19 @@ const teamMapping = {
   "Staff Support": "support",
 };
 
-const teams = Object.entries(teamMapping).map(([name, tag]) => ({
-  name,
-  team: tag,
-  members: getTeamMembers(tag),
-}));
+const teams = await Promise.all(
+  Object.entries(teamMapping).map(async ([name, tag]) => {
+    const entry = await getEntry("teams", tag);
+    const { Content } = (await entry?.render()) || { Content: "<div />" };
+
+    return {
+      name,
+      team: tag,
+      members: getTeamMembers(tag),
+      Content,
+    };
+  }),
+);
 
 const title = "Staff";
 const metadata: PageMetadata = {
@@ -62,7 +72,7 @@ const crumbs: Breadcrumbs = [
   <ImageHeading image="team" slot="header">
     Our <strong>Staff</strong>
   </ImageHeading>
-  <ThemedSection theme="secondary" style="subtle">
+  <ThemedSection style="secondary">
     <p class="lead container-fluid">
       The dedication and skill of our volunteer community makes
       <Branding>Accessible Community's</Branding>
@@ -79,10 +89,13 @@ const crumbs: Breadcrumbs = [
       instead.
     </p>
     {
-      teams.map(({ name, team, members }) => {
+      teams.map(({ name, team, members, Content }) => {
         return (
           <>
-            <h2 class="mt-5 ms-3"> {name} </h2>
+            <h2 class="mt-5"> {name} </h2>
+            <div class="mx-3">
+              <Content {components} />
+            </div>
             <ul class="list-inline-block text-center px-2 px-md-4">
               {members.map((member) => {
                 return (
