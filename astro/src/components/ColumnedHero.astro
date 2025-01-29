@@ -6,9 +6,10 @@ interface Props {
   image: string | ImageMetadata;
   theme?: string;
   actionBreakpoint?: string;
+  reverse?: boolean;
 }
 
-const { image, theme = "primary", actionBreakpoint = "lg" } = Astro.props;
+const { image, theme = "primary", actionBreakpoint = "lg", reverse = false } = Astro.props;
 
 let heroBgUrl;
 
@@ -22,9 +23,9 @@ if (image) {
 // <div class="col col-md-7 col-xl-6 col-xxl-5">
 ---
 
-<section class="d-flex justify-content-end">
+<section class={`d-flex justify-content-${reverse ? "start" : "end"}`}>
   <div class="col">
-    <div class="d-flex flex-column flex-md-row align-items-stretch">
+    <div class={`d-flex flex-column flex-md-row${reverse ? "-reverse" : ""} align-items-stretch`}>
       <div class="hero-text container-fluid py-5">
         <slot name="heading" />
         <div class="text-primary-emphasis mx-2">
@@ -43,7 +44,7 @@ if (image) {
         }
       </div>
       <div
-        class={`d-none d-md-block col-md-5 col-lg-6 col-xl-6 col-xxl-7 bg-${theme} hero-img`}
+        class={`d-none d-md-block col-md-5 col-lg-6 col-xl-6 col-xxl-7 bg-${theme} hero-img${reverse ? "-reverse" : ""}`}
         style={`background: no-repeat center ${heroBgUrl}; background-size: cover; background-position: 22% center`}
       >
       </div>
@@ -67,6 +68,10 @@ if (image) {
     border-top-left-radius: 8rem 16rem;
     border-bottom-left-radius: 8em 16rem;
   }
+  .hero-img-reverse {
+    border-top-right-radius: 8rem 16rem;
+    border-bottom-right-radius: 8em 16rem;
+  }
   @include media-breakpoint-up(sm) {
     section {
       margin-left: 2em;
@@ -74,12 +79,24 @@ if (image) {
     }
   }
   @include media-breakpoint-up(md) {
-    section {
+    section.justify-content-end {
       margin-right: 0;
     }
+    section.justify-content-start {
+      margin-left: 0;
+    }
+
     .hero-img {
       mask-image: linear-gradient(
         to right,
+        rgb(04 10 58 / 100%) 45%,
+        85%,
+        transparent
+      );
+    }
+    .hero-img-reverse {
+      mask-image: linear-gradient(
+        to left,
         rgb(04 10 58 / 100%) 45%,
         85%,
         transparent
@@ -96,12 +113,34 @@ if (image) {
         transparent
       );
     }
+    .hero-img-reverse {
+      mask-image: linear-gradient(
+        to left,
+        rgb(04 10 58 / 100%) 40%,
+        60%,
+        80%,
+        transparent
+      );
+    }
   }
   @include media-breakpoint-up(xl) {
-    section {
+    section.justify-content-end {
       margin-left: 3rem;
     }
+    section.justify-content-start {
+      margin-right: 3rem;
+    }
+
     .hero-img {
+      mask-image: linear-gradient(
+        to right,
+        rgb(04 10 58 / 100%) 30%,
+        50%,
+        70%,
+        transparent
+      );
+    }
+    .hero-img-reverse {
       mask-image: linear-gradient(
         to right,
         rgb(04 10 58 / 100%) 30%,
@@ -112,8 +151,11 @@ if (image) {
     }
   }
   @include media-breakpoint-up(xxl) {
-    section {
+    section.justify-content-end {
       margin-left: 4rem;
+    }
+    section.justify-content-start {
+      margin-right: 4rem;
     }
   }
 
