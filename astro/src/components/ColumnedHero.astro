@@ -9,7 +9,12 @@ interface Props {
   reverse?: boolean;
 }
 
-const { image, theme = "primary", actionBreakpoint = "lg", reverse = false } = Astro.props;
+const {
+  image,
+  theme = "primary",
+  actionBreakpoint = "lg",
+  reverse = false,
+} = Astro.props;
 
 let heroBgUrl;
 
@@ -25,7 +30,9 @@ if (image) {
 
 <section class={`d-flex justify-content-${reverse ? "start" : "end"}`}>
   <div class="col">
-    <div class={`d-flex flex-column flex-md-row${reverse ? "-reverse" : ""} align-items-stretch`}>
+    <div
+      class={`d-flex flex-column flex-md-row${reverse ? "-reverse" : ""} align-items-stretch`}
+    >
       <div class="hero-text container-fluid py-5">
         <slot name="heading" />
         <div class="text-primary-emphasis mx-2">

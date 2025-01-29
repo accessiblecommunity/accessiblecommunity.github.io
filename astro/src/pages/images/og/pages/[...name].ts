@@ -37,7 +37,6 @@ Your donation goes towards supporting our programs and technology to build disab
         size: [96],
       },
       padding: 67,
-      cacheDir: false,
     },
     mentoring: {
       title: "mutua11y mentoring",
@@ -60,6 +59,22 @@ Your donation goes towards supporting our programs and technology to build disab
         fit: "fill",
         position: ["center", "start"],
       },
+    },
+    voices: {
+      title: "Including disabled voices.",
+      description:
+        "Accessible Community provides flat fee digital accessibility evaluations for inclusion-centered nonprofits.",
+      bgImage: {
+        path: "./src/images/colored-hero/hands-together.png",
+        fit: "fill",
+        position: ["center", "start"],
+      },
+      logo: {
+        // path: "./public/images/favicon.png",
+        size: [96],
+      },
+      padding: 67,
+      cacheDir: false,
     },
     volunteer: {
       title: "Volunteer at Accessible Community",
