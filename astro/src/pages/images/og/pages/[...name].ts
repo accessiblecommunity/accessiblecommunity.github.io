@@ -70,7 +70,6 @@ Your donation goes towards supporting our programs and technology to build disab
         position: ["center", "start"],
       },
       logo: {
-        // path: "./public/images/favicon.png",
         size: [96],
       },
       padding: 67,
