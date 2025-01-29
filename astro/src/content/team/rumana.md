@@ -1,7 +1,8 @@
 ---
 name: Rumana
 roles:
-  default: Intern
-picture: ../../images/team/Ta11yCat.png
+  default: Intern, Content Team
+  content: Intern
+picture: ../../images/team/Rumana.png
 alt: The Tally Cat has claimed this spot.
 ---
