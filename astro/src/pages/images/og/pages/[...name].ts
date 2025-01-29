@@ -65,7 +65,7 @@ Your donation goes towards supporting our programs and technology to build disab
       description:
         "Accessible Community provides flat fee digital accessibility evaluations for inclusion-centered nonprofits.",
       bgImage: {
-        path: "./src/images/colored-hero/hands-together.png",
+        path: "./src/images/colored-hero/care-giver.png",
         fit: "fill",
         position: ["center", "start"],
       },
