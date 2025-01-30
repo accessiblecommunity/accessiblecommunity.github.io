@@ -62,15 +62,16 @@ const staff = defineCollection({
       alt: z.string().optional(),
       links: z
         .object({
-          email: z.string().email().optional(),
-          facebook: z.string().url().optional(),
-          instagram: z.string().url().optional(),
-          linkedin: z.string().url().optional(),
-          mastodon: z.string().url().optional(),
-          threads: z.string().url().optional(),
-          twitter: z.string().url().optional(),
-          website: z.string().url().optional(),
+          email: z.string().email(),
+          facebook: z.string().url(),
+          instagram: z.string().url(),
+          linkedin: z.string().url(),
+          mastodon: z.string().url(),
+          threads: z.string().url(),
+          twitter: z.string().url(),
+          website: z.string().url(),
         })
+        .partial()
         .optional(),
     }),
 });

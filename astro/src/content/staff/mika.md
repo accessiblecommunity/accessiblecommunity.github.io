@@ -5,6 +5,6 @@ roles:
   content: Writer
   ux: UX Designer, loca11y
   evaluations: Digital Evaluator
-picture: ../../images/team/Mika.png
+picture: ../../images/staff/Mika.png
 alt: Filipina woman aged 25 with fair skin, brown eyes, thick black hair with bangs, and wearing glasses.
 ---

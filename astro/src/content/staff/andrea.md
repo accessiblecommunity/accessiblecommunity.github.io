@@ -3,6 +3,6 @@ name: Andrea
 roles:
   default: Content Team
   content: Writer
-picture: ../../images/team/Andrea.png
+picture: ../../images/staff/Andrea.png
 alt: Woman with medium wavy hair.
 ---

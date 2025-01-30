@@ -4,7 +4,7 @@ roles:
   default: Director, Engineering
   development: Full-Stack Developer
   leadership: Director, Engineering
-picture: ../../images/team/Brian.png
+picture: ../../images/staff/Brian.png
 alt: Middle-aged male with brown and gray hair, hazel eyes and glasses.
 links:
   email: brian@accessiblecommunity.org

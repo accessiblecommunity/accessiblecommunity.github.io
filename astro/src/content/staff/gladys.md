@@ -4,7 +4,7 @@ roles:
   default: Project Manager, mutua11y mentoring
   leadership: Project Manager, mutua11y mentoring
 current: false
-picture: ../../images/team/gladys.png
+picture: ../../images/staff/gladys.png
 links:
   email: mentoring@accessiblecommunity.org
 ---

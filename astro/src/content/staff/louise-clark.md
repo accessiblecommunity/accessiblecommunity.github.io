@@ -5,7 +5,7 @@ roles:
   content: Team Lead
   # Uncomment when we get a bio
   # leadership: Team Lead, Learning Content
-picture: ../../images/team/Ta11yCat.png
+picture: ../../images/staff/Ta11yCat.png
 alt: The Tally Cat has claimed this spot.
 links:
   linkedin: https://www.linkedin.com/in/louise-clark070607

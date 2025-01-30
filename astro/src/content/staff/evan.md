@@ -5,7 +5,7 @@ roles:
   content: Writer
   evaluations: Project Manager
   leadership: Project Manager, Evaluations
-picture: ../../images/team/Evan.png
+picture: ../../images/staff/Evan.png
 alt: African-American man. Short hair with fade. Wearing rectangle glasses. White shirt, with blue blazer.
 links:
   email: evan@accessiblecommunity.org

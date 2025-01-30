@@ -20,7 +20,7 @@ const defaultCrumbs: Breadcrumbs = [
 
 interface Props {
   blog: CollectionEntry<"blogs">;
-  catalog: BlogCatalog;
+  catalog: Partial<BlogCatalog>;
   crumbs?: Breadcrumbs;
   title?: string;
   sidebar?: boolean; // Whether to prefer the sidebar when the display gets small.
