@@ -1,9 +1,12 @@
 ---
-import { boolean } from "astro/zod";
+import type { CollectionEntry } from "astro:content";
 import { getEntry } from "astro:content";
 
+type MemberProp = string | NonNullable<CollectionEntry<"staff">>;
+type TeamMemberData = CollectionEntry<"staff">["data"];
+
 interface Props {
-  member: string | object;
+  member: MemberProp;
   role?: string | boolean;
   element?: string;
   left?: boolean;
@@ -33,9 +36,18 @@ const {
   responsive = false,
 } = Astro.props;
 
-const memberObj =
-  typeof member == "string" ? await getEntry("team", member) : member;
-const { roles, picture, alt } = memberObj.data;
+async function getTeamMemberData(member: MemberProp): Promise<TeamMemberData> {
+  if (typeof member === "string") {
+    const memberEntry = await getEntry("staff", member);
+    if (typeof memberEntry === "undefined")
+      throw new Error("`member` is undefined");
+    return memberEntry.data;
+  }
+  return member.data;
+}
+
+const memberData: TeamMemberData = await getTeamMemberData(member);
+const { roles, picture, alt } = memberData;
 const teamName = typeof role === "boolean" ? "default" : role;
 const title = role && roles[teamName];
 
@@ -51,7 +63,7 @@ function getDisplayName({ name, nickname }: Names) {
     return nameArray.join(" ");
   }
 }
-const displayName = getDisplayName(memberObj.data);
+const displayName = getDisplayName(memberData);
 const NameTag = element;
 ---
 

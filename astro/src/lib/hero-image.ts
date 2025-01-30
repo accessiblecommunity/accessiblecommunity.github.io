@@ -21,11 +21,12 @@ export enum HeroTheme {
   policy = "policy",
   team = "team",
 }
-
+export type HeroThemeType = `${HeroTheme}`;
 export type HeroThemeMapping<T> = {
   [h in HeroTheme]: T;
 };
-type HeroThemeFunction<T> = (label: HeroTheme) => T;
+
+type HeroThemeFunction<T> = (label: HeroThemeType) => T;
 
 const heroImagePaths: HeroThemeMapping<string> = {
   blog: "./src/images/colored-hero/pen-paper.png",
@@ -76,19 +77,19 @@ const heroBackgroundCss: HeroThemeMapping<object> = {
 };
 
 export const getHeroThemeImagePath: HeroThemeFunction<string> = (
-  label: HeroTheme,
+  label: HeroThemeType,
 ) => {
   return heroImagePaths[label];
 };
 
 export const getHeroThemeImage: HeroThemeFunction<
   Promise<GetImageResult>
-> = async (label: HeroTheme) => {
+> = async (label: HeroThemeType) => {
   return await getImage({ src: heroImages[label], format: "avif" });
 };
 
 export const getHeroThemeCssRules: HeroThemeFunction<Promise<object>> = async (
-  label: HeroTheme,
+  label: HeroThemeType,
 ) => {
   const bgImage: GetImageResult = await getHeroThemeImage(label);
   return {

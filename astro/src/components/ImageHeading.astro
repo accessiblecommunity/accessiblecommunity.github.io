@@ -1,10 +1,10 @@
 ---
 import { flatMap } from "lodash-es";
 
-import { getHeroThemeCssRules, HeroTheme } from "@lib/hero-image";
+import { getHeroThemeCssRules, type HeroThemeType } from "@lib/hero-image";
 
 interface Props {
-  image: HeroTheme;
+  image: HeroThemeType;
   element?: string;
   fluid?: boolean;
 }
