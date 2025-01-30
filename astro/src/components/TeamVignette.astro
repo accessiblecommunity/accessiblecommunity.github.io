@@ -2,8 +2,8 @@
 import type { CollectionEntry } from "astro:content";
 import { getEntry } from "astro:content";
 
-type MemberProp = string | NonNullable<CollectionEntry<"team">>;
-type TeamMemberData = CollectionEntry<"team">["data"];
+type MemberProp = string | NonNullable<CollectionEntry<"staff">>;
+type TeamMemberData = CollectionEntry<"staff">["data"];
 
 interface Props {
   member: MemberProp;
@@ -38,7 +38,7 @@ const {
 
 async function getTeamMemberData(member: MemberProp): Promise<TeamMemberData> {
   if (typeof member === "string") {
-    const memberEntry = await getEntry("team", member);
+    const memberEntry = await getEntry("staff", member);
     if (typeof memberEntry === "undefined")
       throw new Error("`member` is undefined");
     return memberEntry.data;

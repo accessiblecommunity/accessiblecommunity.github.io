@@ -11,12 +11,13 @@ import { sortBy } from "lodash-es";
 import type { Breadcrumbs, PageMetadata } from "@lib/types";
 import { getEntry } from "astro:content";
 import { components } from "@lib/mdx";
+import type { CollectionEntry } from "astro:content";
 
-const teamProfiles = await getCollection("team");
+const staff = await getCollection("staff");
 
 function getTeamMembers(tag: string) {
   return sortBy(
-    teamProfiles.filter(
+    staff.filter(
       (teamMember) =>
         teamMember.data.current &&
         teamMember.data.roles &&
@@ -28,24 +29,15 @@ function getTeamMembers(tag: string) {
   );
 }
 
-const teamMapping = {
-  "Communications Team": "communications",
-  "Content Team": "content",
-  "Development Team": "development",
-  "Evaluations Team": "evaluations",
-  "User Experience (UX) Team": "ux",
-  "Staff Support": "support",
-};
-
+const teamEntries: CollectionEntry<"teams">[] = await getCollection("teams", ({ data }) => !data.management);
 const teams = await Promise.all(
-  Object.entries(teamMapping).map(async ([name, tag]) => {
-    const entry = await getEntry("teams", tag);
-    const { Content } = (await entry?.render()) || { Content: "<div />" };
+  teamEntries.map(async (entry) => {
+    const { Content } = await entry.render();
 
     return {
-      name,
-      team: tag,
-      members: getTeamMembers(tag),
+      name: entry.data.name,
+      team: entry.slug,
+      members: getTeamMembers(entry.slug),
       Content,
     };
   }),

@@ -1,5 +1,5 @@
 ---
-import { getCollection } from "astro:content";
+import { getCollection, type CollectionEntry } from "astro:content";
 
 import Branding from "../../components/Branding.astro";
 import ImageHeading from "../../components/ImageHeading.astro";
@@ -9,13 +9,12 @@ import ThemedSection from "../../components/ThemedSection.astro";
 
 import { isEmpty, sortBy } from "lodash-es";
 
-const teamProfiles = await getCollection("team");
+const alumni = await getCollection("staff", ({data}) => !data.current);
 
 function getTeamMembers(tag: string) {
   return sortBy(
-    teamProfiles.filter(
+    alumni.filter(
       (teamMember) =>
-        teamMember.data.current == false &&
         teamMember.data.roles &&
         Object.keys(teamMember.data.roles).includes(tag),
     ),
@@ -25,19 +24,11 @@ function getTeamMembers(tag: string) {
   );
 }
 
-const teamMapping = {
-  "Communications Team": "communications",
-  "Content Team": "content",
-  "Development Team": "development",
-  "Evaluations Team": "evaluations",
-  "User Experience (UX) Team": "ux",
-  "Staff Support": "support",
-};
-
-const teams = Object.entries(teamMapping).map(([name, tag]) => ({
-  name,
-  team: tag,
-  members: getTeamMembers(tag),
+const teamEntries = await getCollection("teams", ({ data }) => !data.management);
+const teams = teamEntries.map((entry) => ({
+    name: entry.data.name,
+    team: entry.slug,
+    members: getTeamMembers(entry.slug),
 }));
 
 const crumbs = [

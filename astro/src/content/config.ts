@@ -22,7 +22,7 @@ const blogs = defineCollection({
     tags: z.array(z.string()),
     published: z.date(),
     image: z.string().optional(),
-    author: reference("team"),
+    author: reference("staff"),
   }),
 });
 
@@ -37,7 +37,7 @@ const collaborators = defineCollection({
     }),
 });
 
-const team = defineCollection({
+const staff = defineCollection({
   type: "content",
   schema: ({ image }) =>
     z.object({
@@ -81,6 +81,7 @@ const teams = defineCollection({
     name: z.string(),
     needs: z.string().optional(),
     order: z.number().default(99999),
+    management: z.boolean().default(false),
   }),
 });
 
@@ -94,7 +95,7 @@ const quotes = defineCollection({
 const testimonials = defineCollection({
   type: "content",
   schema: z.object({
-    teamMember: reference("team").optional(),
+    staff: reference("staff").optional(),
     person: z
       .object({
         name: z.string(),
@@ -109,7 +110,7 @@ export const collections = {
   blogs,
   collaborators,
   quotes,
-  team,
+  staff,
   teams,
   testimonials,
 };

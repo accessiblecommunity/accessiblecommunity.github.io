@@ -7,20 +7,20 @@ import type { Breadcrumbs, PageMetadata } from "@lib/types";
 import { getCollection, type CollectionEntry } from "astro:content";
 import { isEmpty } from "lodash-es";
 
-const leadership: CollectionEntry<"team">[] = await getCollection(
-  "team",
+const leadership: CollectionEntry<"staff">[] = await getCollection(
+  "staff",
   ({ data }) => {
     return data.current == false && data.roles?.leadership;
   },
 );
-const board: CollectionEntry<"team">[] = await getCollection(
-  "team",
+const board: CollectionEntry<"staff">[] = await getCollection(
+  "staff",
   ({ data }) => {
     return data.current == false && data.roles?.board;
   },
 );
-const staff: CollectionEntry<"team">[] = await getCollection(
-  "team",
+const staff: CollectionEntry<"staff">[] = await getCollection(
+  "staff",
   ({ data }) => {
     return (
       data.current == false && !(data.roles?.leadership || data.roles?.board)
@@ -32,7 +32,7 @@ const teams = await getCollection(
   ({ slug }) => ["board", "default", "leadership"].indexOf(slug) == -1,
 );
 
-type Roles = CollectionEntry<"team">["data"]["roles"];
+type Roles = CollectionEntry<"staff">["data"]["roles"];
 type RoleKey = keyof Roles;
 
 interface TeamMembers {
@@ -55,7 +55,7 @@ const teamMembers: TeamMembers = teams.reduce(
   },
   {},
 );
-staff.reduce((members: TeamMembers, current: CollectionEntry<"team">) => {
+staff.reduce((members: TeamMembers, current: CollectionEntry<"staff">) => {
   const roles: Roles = current.data.roles || {};
   for (const [teamName, position] of Object.entries(roles)) {
     if (["board", "default", "leadership"].indexOf(teamName) == -1) {
