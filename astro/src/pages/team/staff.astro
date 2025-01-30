@@ -1,6 +1,4 @@
 ---
-import { getCollection } from "astro:content";
-
 import Branding from "../../components/Branding.astro";
 import ImageHeading from "../../components/ImageHeading.astro";
 import Layout from "../../layouts/Layout.astro";
@@ -9,9 +7,8 @@ import ThemedSection from "../../components/ThemedSection.astro";
 
 import { sortBy } from "lodash-es";
 import type { Breadcrumbs, PageMetadata } from "@lib/types";
-import { getEntry } from "astro:content";
+import { getCollection } from "astro:content";
 import { components } from "@lib/mdx";
-import type { CollectionEntry } from "astro:content";
 
 const staff = await getCollection("staff");
 
@@ -29,7 +26,10 @@ function getTeamMembers(tag: string) {
   );
 }
 
-const teamEntries: CollectionEntry<"teams">[] = await getCollection("teams", ({ data }) => !data.management);
+const teamEntries = await getCollection(
+  "teams",
+  ({ data }) => !data.management,
+);
 const teams = await Promise.all(
   teamEntries.map(async (entry) => {
     const { Content } = await entry.render();

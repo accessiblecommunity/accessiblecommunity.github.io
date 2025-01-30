@@ -9,7 +9,7 @@ import ThemedSection from "../../components/ThemedSection.astro";
 
 import { isEmpty, sortBy } from "lodash-es";
 
-const alumni = await getCollection("staff", ({data}) => !data.current);
+const alumni = await getCollection("staff", ({ data }) => !data.current);
 
 function getTeamMembers(tag: string) {
   return sortBy(
@@ -24,11 +24,14 @@ function getTeamMembers(tag: string) {
   );
 }
 
-const teamEntries = await getCollection("teams", ({ data }) => !data.management);
+const teamEntries = await getCollection(
+  "teams",
+  ({ data }) => !data.management,
+);
 const teams = teamEntries.map((entry) => ({
-    name: entry.data.name,
-    team: entry.slug,
-    members: getTeamMembers(entry.slug),
+  name: entry.data.name,
+  team: entry.slug,
+  members: getTeamMembers(entry.slug),
 }));
 
 const crumbs = [
