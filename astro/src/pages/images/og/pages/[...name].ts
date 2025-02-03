@@ -60,21 +60,6 @@ Your donation goes towards supporting our programs and technology to build disab
         position: ["center", "start"],
       },
     },
-    voices: {
-      title: "Including disabled voices.",
-      description:
-        "Accessible Community provides flat fee digital accessibility evaluations for inclusion-centered nonprofits.",
-      bgImage: {
-        path: "./src/images/colored-hero/care-giver.png",
-        fit: "fill",
-        position: ["center", "start"],
-      },
-      logo: {
-        size: [96],
-      },
-      padding: 67,
-      cacheDir: false,
-    },
     volunteer: {
       title: "Volunteer at Accessible Community",
       description:
