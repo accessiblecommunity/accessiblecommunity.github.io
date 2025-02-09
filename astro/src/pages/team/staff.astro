@@ -1,6 +1,4 @@
 ---
-import { getCollection } from "astro:content";
-
 import Branding from "../../components/Branding.astro";
 import ImageHeading from "../../components/ImageHeading.astro";
 import Layout from "../../layouts/Layout.astro";
@@ -9,13 +7,16 @@ import ThemedSection from "../../components/ThemedSection.astro";
 
 import { sortBy } from "lodash-es";
 import type { Breadcrumbs, PageMetadata } from "@lib/types";
+import { getCollection } from "astro:content";
+import { components } from "@lib/mdx";
 
-const teamProfiles = await getCollection("team");
+const staff = await getCollection("staff");
 
 function getTeamMembers(tag: string) {
   return sortBy(
-    teamProfiles.filter(
+    staff.filter(
       (teamMember) =>
+        teamMember.data.current &&
         teamMember.data.roles &&
         Object.keys(teamMember.data.roles).includes(tag),
     ),
@@ -25,20 +26,22 @@ function getTeamMembers(tag: string) {
   );
 }
 
-const teamMapping = {
-  "Content Team": "content",
-  "Development Team": "development",
-  "Evaluations Team": "evaluations",
-  "Social Media Team": "social",
-  "User Experience (UX) Team": "ux",
-  "Staff Support": "support",
-};
+const teamEntries = await getCollection(
+  "teams",
+  ({ data }) => !data.management,
+);
+const teams = await Promise.all(
+  teamEntries.map(async (entry) => {
+    const { Content } = await entry.render();
 
-const teams = Object.entries(teamMapping).map(([name, tag]) => ({
-  name,
-  team: tag,
-  members: getTeamMembers(tag),
-}));
+    return {
+      name: entry.data.name,
+      team: entry.slug,
+      members: getTeamMembers(entry.slug),
+      Content,
+    };
+  }),
+);
 
 const title = "Staff";
 const metadata: PageMetadata = {
@@ -61,7 +64,7 @@ const crumbs: Breadcrumbs = [
   <ImageHeading image="team" slot="header">
     Our <strong>Staff</strong>
   </ImageHeading>
-  <ThemedSection theme="secondary" style="subtle">
+  <ThemedSection style="secondary">
     <p class="lead container-fluid">
       The dedication and skill of our volunteer community makes
       <Branding>Accessible Community's</Branding>
@@ -78,10 +81,13 @@ const crumbs: Breadcrumbs = [
       instead.
     </p>
     {
-      teams.map(({ name, team, members }) => {
+      teams.map(({ name, team, members, Content }) => {
         return (
           <>
-            <h2 class="mt-5 ms-3"> {name} </h2>
+            <h2 class="mt-5"> {name} </h2>
+            <div class="mx-3">
+              <Content {components} />
+            </div>
             <ul class="list-inline-block text-center px-2 px-md-4">
               {members.map((member) => {
                 return (

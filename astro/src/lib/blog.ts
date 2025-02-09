@@ -3,16 +3,16 @@ import { isEmpty, isNil, reverse, sortBy, uniqBy } from "lodash-es";
 
 export async function getBlogAuthors(
   blogs?,
-): Promise<Array<CollectionEntry<"team">>> {
+): Promise<Array<CollectionEntry<"staff">>> {
   blogs = isNil(blogs) ? await getCollection("blogs") : blogs;
   if (isEmpty(blogs)) return [];
   // Slug uniqueness is key.
   const authorSlugs = [...new Set(blogs.map((b) => b.data.author.slug).flat())];
   const authorRefs = authorSlugs.map((slug) => ({
     slug,
-    collection: "team",
+    collection: "staff",
   }));
-  const authors: Array<CollectionEntry<"team">> = await getEntries(authorRefs);
+  const authors: Array<CollectionEntry<"staff">> = await getEntries(authorRefs);
   return authors;
 }
 
@@ -66,7 +66,7 @@ export async function getMostRecent(blogs?) {
 
 export interface BlogCatalog {
   blogs: Array<CollectionEntry<"blogs">>;
-  authors: Array<CollectionEntry<"team">>;
+  authors: Array<CollectionEntry<"staff">>;
   topics: Array<string>;
   dates: Array<string>;
   recent: CollectionEntry<"blogs">;

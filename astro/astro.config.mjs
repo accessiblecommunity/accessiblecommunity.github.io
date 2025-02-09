@@ -76,7 +76,7 @@ export default defineConfig({
       }
     }),
     sitemap({
-      filter: (page) => !page.endsWith('/commitment-form/') && !page.endsWith('fixable/') && !page.endsWith('/voices/'),
+      filter: (page) => !page.endsWith('/commitment-form/') && !page.endsWith('fixable/'),
     }),
     robotsTxt({
       sitemap: true,
@@ -87,7 +87,7 @@ export default defineConfig({
         })),
         {
           userAgent: '*',
-          disallow: ['/fixable/', '/services/evaluations/voices/'],
+          disallow: ['/fixable/'],
         },
         {
           userAgent: '*',

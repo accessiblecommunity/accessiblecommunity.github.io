@@ -17,7 +17,12 @@ const collaborators =
   {
     collaborators.map(({ data }) => (
       <li class="list-inline-item col col-md-3 col-lg-2 m-4">
-        <a href={data.href} target="_blank" rel="noopener noreferrer">
+        <a
+          href={data.href}
+          class="d-block p-2"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           <Image src={data.logo} width="150" alt={data.name} />
         </a>
       </li>
@@ -27,6 +32,10 @@ const collaborators =
 
 <style lang="scss">
   @import "../styles/dark-mode";
+
+  .collab-list a:hover {
+    background-color: white;
+  }
 
   @include color-mode(dark) {
     .collab-list {

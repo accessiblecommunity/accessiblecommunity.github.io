@@ -22,7 +22,7 @@ const blogs = defineCollection({
     tags: z.array(z.string()),
     published: z.date(),
     image: z.string().optional(),
-    author: reference("team"),
+    author: reference("staff"),
   }),
 });
 
@@ -37,7 +37,7 @@ const collaborators = defineCollection({
     }),
 });
 
-const team = defineCollection({
+const staff = defineCollection({
   type: "content",
   schema: ({ image }) =>
     z.object({
@@ -47,32 +47,43 @@ const team = defineCollection({
         .object({
           default: z.string(),
           board: z.string(),
+          communications: z.string(),
           content: z.string(),
           development: z.string(),
           evaluations: z.string(),
           leadership: z.string(),
           loca11y: z.string(),
-          social: z.string(),
           support: z.string(),
           ux: z.string(),
         })
-        .partial()
-        .optional(),
+        .partial(),
+      current: z.boolean().default(true),
       picture: image(),
       alt: z.string().optional(),
       links: z
         .object({
-          email: z.string().email().optional(),
-          facebook: z.string().url().optional(),
-          instagram: z.string().url().optional(),
-          linkedin: z.string().url().optional(),
-          mastodon: z.string().url().optional(),
-          threads: z.string().url().optional(),
-          twitter: z.string().url().optional(),
-          website: z.string().url().optional(),
+          email: z.string().email(),
+          facebook: z.string().url(),
+          instagram: z.string().url(),
+          linkedin: z.string().url(),
+          mastodon: z.string().url(),
+          threads: z.string().url(),
+          twitter: z.string().url(),
+          website: z.string().url(),
         })
+        .partial()
         .optional(),
     }),
+});
+
+const teams = defineCollection({
+  type: "content",
+  schema: z.object({
+    name: z.string(),
+    needs: z.string().optional(),
+    order: z.number().default(99999),
+    management: z.boolean().default(false),
+  }),
 });
 
 const quotes = defineCollection({
@@ -85,7 +96,7 @@ const quotes = defineCollection({
 const testimonials = defineCollection({
   type: "content",
   schema: z.object({
-    teamMember: reference("team").optional(),
+    staff: reference("staff").optional(),
     person: z
       .object({
         name: z.string(),
@@ -99,7 +110,8 @@ export const collections = {
   atotw,
   blogs,
   collaborators,
-  team,
   quotes,
+  staff,
+  teams,
   testimonials,
 };

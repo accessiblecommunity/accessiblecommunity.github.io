@@ -1,12 +1,11 @@
 ---
 import { getCollection } from "astro:content";
-import { getOpenGraphImageData } from "@lib/og-image";
 import { sortBy } from "lodash-es";
 
 import type { Breadcrumbs, PageMetadata } from "@lib/types";
 
 export async function getStaticPaths() {
-  const team = await getCollection("team");
+  const team = await getCollection("staff");
 
   return [
     {
@@ -35,7 +34,8 @@ const { team, title, heading, description } = Astro.props;
 
 const teamMembers = sortBy(
   team.filter(
-    ({ data }) => data.roles && Object.keys(data.roles).includes(tag),
+    ({ data }) =>
+      data.current && data.roles && Object.keys(data.roles).includes(tag),
   ),
   ({ data }) => data.name.split(" ").slice(1).join(" "),
 );
