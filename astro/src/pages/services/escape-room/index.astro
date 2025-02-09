@@ -1,0 +1,95 @@
+---
+import { getOpenGraphImageData } from "@lib/og-image";
+import type { Breadcrumbs, PageMetadata } from "@lib/types";
+
+const title = "Accessible Escape Room";
+const metadata: PageMetadata = {
+  title,
+  description: "Overview of the Accessible Escape Room",
+  image: getOpenGraphImageData(Astro.site, "pages", "escape-room"),
+};
+const crumbs: Breadcrumbs = [
+  {
+    name: "Home",
+    href: "/",
+  },
+  {
+    name: "Services",
+    href: "/services",
+  },
+];
+
+import Branding from "@components/Branding.astro";
+// import CollaboratorList from "@components/CollaboratorList.astro";
+import ExternalLink from "@components/ExternalLink.astro";
+import GoogleForm from "@components/GoogleForm.astro";
+import Hero from "@components/ColumnedHero.astro";
+import { Icon } from "astro-icon/components";
+import Layout from "../../../layouts/Layout.astro";
+import ThemedBox from "@components/ThemedBox.astro";
+import ThemedSection from "@components/ThemedSection.astro";
+
+import heroBg from "../../../images/jonathan-kemper-9tamF4J0vLk-unsplash.jpg";
+---
+
+<Layout {title} {crumbs} {metadata}>
+  <Hero image={heroBg} slot="header" reverse vertical-position="22%">
+    <div class="py-2 px-2" slot="heading">
+      <h1 class="display-2">
+        <Branding>The Accessible Escape&nbsp;Room</Branding>.
+      </h1>
+    </div>
+    <div class="py-3">
+      <p class="text-bg-hero">
+        <Branding>The Accessible Escape Room</Branding> is a fun, accessible team-building
+        activity that allows teams of 3-7 people, with or without disabilities, to
+        solve puzzles to reach an objective while learning about accessibility.
+      </p>
+    </div>
+  </Hero>
+
+  <ThemedSection style="tertiary">
+    <p class="lead">
+      It may be called an escape room but we don’t lock you in. You can leave at
+      any time and our themes are picked to be enjoyable.
+    </p>
+    <p>
+      In order to reach the most people, the escape room is portable and
+      designed for easy setup in hotel and conference rooms. <Branding
+        >The Accessible Escape Room</Branding
+      > will be traveling to conferences and other venues starting in 2022. Space
+      is limited so check back regularly to sign up. Sign up below to get updates
+      when they become available.
+    </p>
+  </ThemedSection>
+
+  <ThemedSection theme="dark">
+    <p class="lead">
+      It may be called an escape room but we don’t lock you in. You can leave at
+      any time and our themes are picked to be enjoyable.
+    </p>
+    <p>
+      In order to reach the most people, the escape room is portable and
+      designed for easy setup in hotel and conference rooms. <Branding
+        >The Accessible Escape Room</Branding
+      > will be traveling to conferences and other venues starting in 2022. Space
+      is limited so check back regularly to sign up. Sign up below to get updates
+      when they become available.
+    </p>
+  </ThemedSection>
+
+  <ThemedSection theme="secondary" style="subtle">
+    <p class="lead">
+      It may be called an escape room but we don’t lock you in. You can leave at
+      any time and our themes are picked to be enjoyable.
+    </p>
+    <p>
+      In order to reach the most people, the escape room is portable and
+      designed for easy setup in hotel and conference rooms. <Branding
+        >The Accessible Escape Room</Branding
+      > will be traveling to conferences and other venues starting in 2022. Space
+      is limited so check back regularly to sign up. Sign up below to get updates
+      when they become available.
+    </p>
+  </ThemedSection>
+</Layout>
