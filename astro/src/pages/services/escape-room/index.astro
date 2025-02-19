@@ -50,7 +50,7 @@ import heroBg from "../../../images/jonathan-kemper-9tamF4J0vLk-unsplash.jpg";
 
   <ThemedSection style="tertiary">
     <p class="lead">
-      It may be called an escape room but we don’t lock you in. You can leave at
+      It may be called an escape room but we don't lock you in. You can leave at
       any time and our themes are picked to be enjoyable.
     </p>
     <p>
@@ -63,33 +63,63 @@ import heroBg from "../../../images/jonathan-kemper-9tamF4J0vLk-unsplash.jpg";
     </p>
   </ThemedSection>
 
-  <ThemedSection theme="dark">
-    <p class="lead">
-      It may be called an escape room but we don’t lock you in. You can leave at
-      any time and our themes are picked to be enjoyable.
-    </p>
-    <p>
-      In order to reach the most people, the escape room is portable and
-      designed for easy setup in hotel and conference rooms. <Branding
-        >The Accessible Escape Room</Branding
-      > will be traveling to conferences and other venues starting in 2022. Space
-      is limited so check back regularly to sign up. Sign up below to get updates
-      when they become available.
-    </p>
+  <ThemedSection>
+    <h2>I like <strong>puzzles</strong>. I would like to <strong>play</strong>.</h2>
+    <div
+      class="d-flex flex-column flex-lg-row gap-4 py-3 justify-content-lg-center text-primary"
+    >
+      <ThemedBox
+        theme="primary"
+        text={true}
+        border={1}
+        class="col col-lg-6 col-xl-5 shadow rounded"
+      >
+        <h3 class="text-white">Standard Kit</h3>
+        <p>
+          Cost: <strong class="text-brand">$3000</strong>. What's included:
+        </p>
+        <ul class="bullets">
+          <li
+            >One instance of the escape room, built and sent directly to you.</li
+          >
+          <li
+            >A guide with how to run the escape room and how to accommodate people with various disabilties and conditions.</li
+          >
+          <li
+            >Access to the digital content with appropriate captions and audio descriptions.</li
+          >
+        </ul>
+      </ThemedBox>
+      <ThemedBox
+        theme="info"
+        text={true}
+        border={1}
+        class="col col-lg-6 col-xl-5 shadow rounded"
+      >
+        <h3 class="text-white">"Build-your-own" Kit</h3>
+        <p>
+          Cost: <strong class="text-brand">$500</strong>. What's included:
+        </p>
+        <ul class="bullets">
+          <li
+            >Step-by-step instructions on how to assemble the escape room yourself</li
+          >
+          <li
+            >A guide with how to run the escape room and how to accommodate people with various disabilties and conditions.</li
+          >
+          <li
+            >Access to the digital content with appropriate captions and audio descriptions.</li
+          >
+        </ul>
+      </ThemedBox>
+    </div>
   </ThemedSection>
 
   <ThemedSection theme="secondary" style="subtle">
-    <p class="lead">
-      It may be called an escape room but we don’t lock you in. You can leave at
-      any time and our themes are picked to be enjoyable.
-    </p>
+    <h2>History</h2>
     <p>
-      In order to reach the most people, the escape room is portable and
-      designed for easy setup in hotel and conference rooms. <Branding
-        >The Accessible Escape Room</Branding
-      > will be traveling to conferences and other venues starting in 2022. Space
-      is limited so check back regularly to sign up. Sign up below to get updates
-      when they become available.
+      A few years ago, over lunch, Matt Ater and Rachael Bradley Montgomery joked about creating an accessible escape room. Why? Because Matt, who is blind, had attended his daughter's birthday party at an escape room and wasn't able to participate – at all! Fast forward a year and we were still talking about it. We realized how few individuals with disabilities were able to enjoy this fun activity and so decided to go ahead and build one. We met with Escape Room Loco in Leesburg, VA to learn more. Then along with a team of volunteers from Accessible Community, MITRE, and Vispero we built our first escape room. It had an espionage theme and while it wasn't perfect everyone could participate in at least one puzzle, usually more. A team of all blind individuals who helped pilot test it had the best score of everyone!
     </p>
   </ThemedSection>
+
 </Layout>
