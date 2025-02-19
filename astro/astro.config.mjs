@@ -61,6 +61,8 @@ export default defineConfig({
         bi: [
           // Navigation
           'arrow-down-square', 'arrow-up-right-square', 'list',
+          // Contact Info
+          'envelope-at-fill', 'telephone-fill', 'geo-alt-fill',
           // Social Media
           'facebook', 'instagram', 'linkedin', 'rss-fill', 'tiktok',
           // Descriptive
