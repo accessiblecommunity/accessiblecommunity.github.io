@@ -20,16 +20,14 @@ const crumbs: Breadcrumbs = [
 ];
 
 import Branding from "@components/Branding.astro";
-// import CollaboratorList from "@components/CollaboratorList.astro";
-import ExternalLink from "@components/ExternalLink.astro";
-import GoogleForm from "@components/GoogleForm.astro";
 import Hero from "@components/ColumnedHero.astro";
-import { Icon } from "astro-icon/components";
+import Image from "astro/components/Image.astro";
 import Layout from "../../../layouts/Layout.astro";
 import ThemedBox from "@components/ThemedBox.astro";
 import ThemedSection from "@components/ThemedSection.astro";
 
 import heroBg from "../../../images/jonathan-kemper-9tamF4J0vLk-unsplash.jpg";
+import escapeRoomLogo from "src/images/escaperoomlogo-768x768.png";
 ---
 
 <Layout {title} {crumbs} {metadata}>
@@ -48,7 +46,7 @@ import heroBg from "../../../images/jonathan-kemper-9tamF4J0vLk-unsplash.jpg";
     </div>
   </Hero>
 
-  <ThemedSection style="tertiary">
+  <ThemedSection theme="secondary" style="subtle">
     <p class="lead">
       It may be called an escape room but we don't lock you in. You can leave at
       any time and our themes are picked to be enjoyable.
@@ -64,7 +62,10 @@ import heroBg from "../../../images/jonathan-kemper-9tamF4J0vLk-unsplash.jpg";
   </ThemedSection>
 
   <ThemedSection>
-    <h2>I like <strong>puzzles</strong>. I would like to <strong>play</strong>.</h2>
+    <h2
+      >I like <strong>puzzles</strong>. I would like to <strong>play</strong
+      >.</h2
+    >
     <div
       class="d-flex flex-column flex-lg-row gap-4 py-3 justify-content-lg-center text-primary"
     >
@@ -83,10 +84,12 @@ import heroBg from "../../../images/jonathan-kemper-9tamF4J0vLk-unsplash.jpg";
             >One instance of the escape room, built and sent directly to you.</li
           >
           <li
-            >A guide with how to run the escape room and how to accommodate people with various disabilties and conditions.</li
+            >A guide with how to run the escape room and how to accommodate
+            people with various disabilties and conditions.</li
           >
           <li
-            >Access to the digital content with appropriate captions and audio descriptions.</li
+            >Access to the digital content with appropriate captions and audio
+            descriptions.</li
           >
         </ul>
       </ThemedBox>
@@ -102,24 +105,51 @@ import heroBg from "../../../images/jonathan-kemper-9tamF4J0vLk-unsplash.jpg";
         </p>
         <ul class="bullets">
           <li
-            >Step-by-step instructions on how to assemble the escape room yourself</li
+            >Step-by-step instructions on how to assemble the escape room
+            yourself</li
           >
           <li
-            >A guide with how to run the escape room and how to accommodate people with various disabilties and conditions.</li
+            >A guide with how to run the escape room and how to accommodate
+            people with various disabilties and conditions.</li
           >
           <li
-            >Access to the digital content with appropriate captions and audio descriptions.</li
+            >Access to the digital content with appropriate captions and audio
+            descriptions.</li
           >
         </ul>
       </ThemedBox>
     </div>
   </ThemedSection>
 
-  <ThemedSection theme="secondary" style="subtle">
+  <ThemedSection style="tertiary">
     <h2>History</h2>
-    <p>
-      A few years ago, over lunch, Matt Ater and Rachael Bradley Montgomery joked about creating an accessible escape room. Why? Because Matt, who is blind, had attended his daughter's birthday party at an escape room and wasn't able to participate – at all! Fast forward a year and we were still talking about it. We realized how few individuals with disabilities were able to enjoy this fun activity and so decided to go ahead and build one. We met with Escape Room Loco in Leesburg, VA to learn more. Then along with a team of volunteers from Accessible Community, MITRE, and Vispero we built our first escape room. It had an espionage theme and while it wasn't perfect everyone could participate in at least one puzzle, usually more. A team of all blind individuals who helped pilot test it had the best score of everyone!
-    </p>
+    <div
+      class="d-flex flex-column flex-lg-row-reverse gap-4 justify-content-lg-between align-items-center"
+    >
+      <div class="col-3">
+        <Image src={escapeRoomLogo} alt="" class="logo" aria-hidden="true" />
+      </div>
+      <p class="col col-lg-8">
+        A few years ago, over lunch, Matt Ater and Rachael Bradley Montgomery
+        joked about creating an accessible escape room. Why? Because Matt, who
+        is blind, had attended his daughter's birthday party at an escape room
+        and wasn't able to participate – at all! Fast forward a year and we were
+        still talking about it. We realized how few individuals with
+        disabilities were able to enjoy this fun activity and so decided to go
+        ahead and build one. We met with Escape Room Loco in Leesburg, VA to
+        learn more. Then along with a team of volunteers from Accessible
+        Community, MITRE, and Vispero we built our first escape room. It had an
+        espionage theme and while it wasn't perfect everyone could participate
+        in at least one puzzle, usually more. A team of all blind individuals
+        who helped pilot test it had the best score of everyone!
+      </p>
+    </div>
   </ThemedSection>
-
 </Layout>
+
+<style scoped>
+  .logo {
+    height: auto;
+    width: 100%;
+  }
+</style>
