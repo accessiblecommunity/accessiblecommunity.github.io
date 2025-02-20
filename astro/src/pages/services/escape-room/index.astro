@@ -20,14 +20,18 @@ const crumbs: Breadcrumbs = [
 ];
 
 import Branding from "@components/Branding.astro";
+import ExternalLink from "@components/ExternalLink.astro";
 import Hero from "@components/ColumnedHero.astro";
-import Image from "astro/components/Image.astro";
+import { Icon } from "astro-icon/components";
+import { Image } from "astro:assets";
 import Layout from "../../../layouts/Layout.astro";
 import ThemedBox from "@components/ThemedBox.astro";
 import ThemedSection from "@components/ThemedSection.astro";
 
 import heroBg from "../../../images/jonathan-kemper-9tamF4J0vLk-unsplash.jpg";
 import escapeRoomLogo from "src/images/escaperoomlogo-768x768.png";
+import picnicBg from "src/images/evangelina-silina-BzLUmuRDMWE-unsplash.jpg";
+import casinoBg from "src/images/ben-iwara-gbSHdpJr1HE-unsplash.jpg";
 ---
 
 <Layout {title} {crumbs} {metadata}>
@@ -46,12 +50,16 @@ import escapeRoomLogo from "src/images/escaperoomlogo-768x768.png";
     </div>
   </Hero>
 
-  <ThemedSection theme="secondary" style="subtle">
+  <p class="text-bg-primary text-center mb-0 py-3">
+    We will be at <ExternalLink class="link-light" href="https://web.cvent.com/event/2c5d8c51-6441-44c0-b361-131ff9544dd5/summary">CSUN</ExternalLink> and <ExternalLink href="https://knowbility.org/programs/john-slatin-accessu-2025" class="link-light">AccessU</ExternalLink> in Spring 2025 with our newest Escape Room!
+  </p>
+
+  <ThemedSection style="tertiary">
     <p class="lead">
       It may be called an escape room but we don't lock you in. You can leave at
       any time. We design around fun themes rather than stressful ones. That is just part of what makes our escape room accessible!  The puzzles vary in difficulty and everyone, regardless of disability, can participate. 
     </p>
-    <p>
+    <p class="lead">
       In order to reach the most people, our escape rooms are portable and
       designed for easy setup in hotel and conference rooms. <Branding
         >The Accessible Escape Room</Branding
@@ -64,7 +72,7 @@ import escapeRoomLogo from "src/images/escaperoomlogo-768x768.png";
       >I like <strong>puzzles</strong>. I would like to <strong>play</strong
       >.</h2>
 
-      <p>We will be at CSUN and AccessU in Spring 2025 with our newest escape room. If you would like to bring an accessible escape room to your business or venue, we now offer two options for purchase. </p>
+    <p class="lead"> If you would like to bring an accessible escape room to your business or venue, we now offer two options for purchase:</p>
 
     <div
       class="d-flex flex-column flex-lg-row gap-4 py-3 justify-content-lg-center text-primary"
@@ -118,22 +126,46 @@ import escapeRoomLogo from "src/images/escaperoomlogo-768x768.png";
           >
         </ul>
       </ThemedBox>
-     <ul><li>A picnic themed escape room is available in starting in April 2025.</li>
-     <li>A casino themed escape room is available starting in August 2025.</p>
-     
-      <p>If you are interested in purchasing, please contact <a href="mailto:escaperoom@accessiblecommunity.org">escaperoom@accessiblecommunity.org</a>.</p>
     </div>
+    <p class="lead pt-4">
+      If you are interested in purchasing, please contact <a href="mailto:escaperoom@accessiblecommunity.org">escaperoom@accessiblecommunity.org</a>.
+    </p>
   </ThemedSection>
 
-  <ThemedSection style="tertiary">
-    <h2>History</h2>
+  <ThemedSection theme="secondary" style="subtle">
+    <h2>Our <strong>themes</strong>.</h2>
     <div
-      class="d-flex flex-column flex-lg-row-reverse gap-4 justify-content-lg-between align-items-center"
+      class="d-flex flex-column flex-lg-row gap-4 py-3 justify-content-lg-evenly text-primary"
     >
-      <div class="col-3">
+      <div class="card col col-lg-5 border border-primary shadow">
+        <Image src={picnicBg} class="card-img-top" alt="A small picnic on a blanket" />
+        <div class="card-body">
+          <h3 class="card-title">A <strong>puzzling</strong> picnic.</h3>
+          <p class="card-text">Your friend has invited you for a picnic, but it's strangely challenging to setup. Can you figure out the clues before your friend arrives?</p>
+          <p class="fw-bold">Coming soon in April 2025!</p>
+        </div>
+      </div>
+
+      <div class="card col col-lg-5 border border-primary shadow">
+        <Image src={casinoBg} class="card-img-top" alt="A roulette table with piles of chips" />
+        <div class="card-body">
+          <h3 class="card-title">A <strong>cryptic</strong> casino.</h3>
+          <p class="card-text">You have arrived for an enjoyable evening out at the local casino. Play games and collect chips to gain access the high roller vault.</p>
+          <p class="fw-bold">Coming soon in August 2025!</p>
+        </div>
+      </div>
+    </div>
+  </ThemedSection>
+  
+  <ThemedSection style="tertiary">
+    <h2 class="mb-4">The <strong>History</strong> of our Escape Rooms.</h2>
+    <div
+      class="d-flex flex-column flex-lg-row-reverse gap-4 justify-content-lg-between align-items-center align-items-lg-start"
+    >
+      <div class="col-3 col-lg-2">
         <Image src={escapeRoomLogo} alt="" class="logo" aria-hidden="true" />
       </div>
-      <p class="col col-lg-8">
+      <p class="col col-lg-9">
         A few years ago, over lunch, Matt Ater and Rachael Bradley Montgomery
         joked about creating an accessible escape room. Why? Because Matt, who
         is blind, had attended his daughter's birthday party at an escape room
@@ -152,6 +184,10 @@ import escapeRoomLogo from "src/images/escaperoomlogo-768x768.png";
 </Layout>
 
 <style scoped>
+  .card-img-top {
+    height: auto;
+  }
+  
   .logo {
     height: auto;
     width: 100%;
