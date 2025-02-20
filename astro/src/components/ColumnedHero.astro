@@ -7,6 +7,7 @@ interface Props {
   theme?: string;
   actionBreakpoint?: string;
   reverse?: boolean;
+  "vertical-position"?: string;
 }
 
 const {
@@ -14,6 +15,7 @@ const {
   theme = "primary",
   actionBreakpoint = "lg",
   reverse = false,
+  "vertical-position": verticalPosition = "center",
 } = Astro.props;
 
 let heroBgUrl;
@@ -33,7 +35,7 @@ if (image) {
     <div
       class={`d-flex flex-column flex-md-row${reverse ? "-reverse" : ""} align-items-stretch`}
     >
-      <div class="hero-text container-fluid py-5">
+      <div class="hero-text mx-5 py-5">
         <slot name="heading" />
         <div class="text-primary-emphasis mx-2">
           <slot />
@@ -52,7 +54,7 @@ if (image) {
       </div>
       <div
         class={`d-none d-md-block col-md-5 col-lg-6 col-xl-6 col-xxl-7 bg-${theme} hero-img${reverse ? "-reverse" : ""}`}
-        style={`background: no-repeat center ${heroBgUrl}; background-size: cover; background-position: 22% center`}
+        style={`background: no-repeat center ${heroBgUrl}; background-size: cover; background-position: 22% ${verticalPosition}`}
       >
       </div>
     </div>
