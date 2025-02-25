@@ -80,8 +80,8 @@ const recruiting = defineCollection({
   type: "content",
   schema: z.object({
     name: z.string(),
-  })
-})
+  }),
+});
 
 const teams = defineCollection({
   type: "content",

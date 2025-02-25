@@ -62,6 +62,10 @@ const teams = await getCollection("recruiting");
       accessible and disability-inclusive.
     </p>
     <Fragment slot="action-bar">
+      <a href="#orientation" class="icon-link link-light hero-link">
+        <Icon name="bi:youtube" class="bi" role="img" aria-hidden="true" />
+        Watch the orientation video
+      </a>
       <a href="#teams" class="icon-link link-light hero-link">
         <Icon name="bi:people-fill" class="bi" role="img" aria-hidden="true" />
         Learn more about our teams
@@ -81,21 +85,29 @@ const teams = await getCollection("recruiting");
         <h2 class="display-4 mb-4">
           Are you interested in <strong>volunteering</strong>?
         </h2>
-        <p>Preparing to join our organization can be done in three easy steps:</p>
+        <p
+          >Preparing to join our organization can be done in three easy steps:</p
+        >
         <ol>
-          <li>Watch the Orientation Video.</li>
-          <li>Learn about our Volunteer opportunities.</li>
-          <li>Fill our the Volunteer Form.</li>
+          <li>Watch the orientation video.</li>
+          <li>Learn about our volunteer opportunities.</li>
+          <li>Fill our the volunteer interest form.</li>
         </ol>
         <p>
-          After you fill out the form, we will be in touch with regarding talking to one of our leadership team.
+          After you fill out the form, we will be in touch with regarding
+          talking to one of our leadership team.
         </p>
       </div>
-      <Image class="col-10 col-lg-5 rounded" src={teamPic} style="height: auto" alt="A group of people gathered around a laptop" />
+      <Image
+        class="col-10 col-lg-5 rounded shadow border border-primary"
+        src={teamPic}
+        style="height: auto"
+        alt="A group of people gathered around a laptop"
+      />
     </div>
   </ThemedSection>
 
-  <ThemedSection theme="primary">
+  <ThemedSection id="orientation" theme="primary">
     <div
       class="d-flex flex-column flex-lg-row-reverse gap-5 justify-content-lg-between align-items-center"
     >
@@ -103,9 +115,22 @@ const teams = await getCollection("recruiting");
         <h2 class="display-3 text-light mb-4">
           Our Volunteer <strong>Orientation</strong>
         </h2>
-        <p class="text-light">Please watch the orientation video to learn about volunteering at <Branding>Accessible Community</Branding>. This will go over the benefits of volunteering, our expectations and how you can join our organization.</p>
+        <p class="text-light"
+          >Please watch the orientation video to learn about volunteering at <Branding
+            >Accessible Community</Branding
+          >. This will go over the benefits of volunteering, our expectations
+          and how you can join our organization.</p
+        >
       </div>
-      <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/ytD-B97X0NQ?si=iObRC-aeuvZvCuv8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <iframe
+        width="560"
+        height="315"
+        src="https://www.youtube-nocookie.com/embed/ytD-B97X0NQ?si=iObRC-aeuvZvCuv8"
+        title="YouTube video player"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        referrerpolicy="strict-origin-when-cross-origin"
+        allowfullscreen></iframe>
     </div>
   </ThemedSection>
 
@@ -133,20 +158,20 @@ const teams = await getCollection("recruiting");
     <div class="row justify-content-center gap-5 py-4">
       {
         teams.map((team) => (
-          <div class="col-lg-9">
-          <div class="card mb-3 shadow team-card">
-            <div class="card-header">
-              <h3 class="card-title mb-0" set:text={team.data.name} />
-            </div>
-            <div class="card-body">
-              <div class="card-text">
-                {team.render().then(({ Content }) => (
-                  <Content {components}  />
-                ))}
+          <div class="col-lg-8">
+            <div class="card mb-3 shadow team-card">
+              <div class="card-header">
+                <h3 class="card-title mb-0" set:text={team.data.name} />
+              </div>
+              <div class="card-body">
+                <div class="card-text">
+                  {team.render().then(({ Content }) => (
+                    <Content {components} />
+                  ))}
+                </div>
               </div>
             </div>
           </div>
-        </div>
         ))
       }
     </div>
@@ -168,11 +193,10 @@ const teams = await getCollection("recruiting");
         We are a growing <strong class="text-primary"
           >international community</strong
         > of volunteers working together to improve our communities for people with
-        disabilities. We are looking for individuals with passion and dedication who are
-        willing to spend about 4&nbsp;hours a week volunteering their talents.
-        To succeed, we need a wide variety of skills. If you are interested in
-        volunteering your time and talents, then please
-        complete the form below.
+        disabilities. We are looking for individuals with passion and dedication
+        who are willing to spend about 4&nbsp;hours a week volunteering their talents.
+        To succeed, we need a wide variety of skills. If you are interested in volunteering
+        your time and talents, then please complete the form below.
       </p>
       <p>
         Required fields have an asterisk (<span class="asterisk">*</span>).
@@ -251,7 +275,7 @@ const teams = await getCollection("recruiting");
             required
           >
             {
-              teams.map(({data}) => (
+              teams.map(({ data }) => (
                 <option value={data.name} set:text={data.name} />
               ))
             }
@@ -280,7 +304,7 @@ const teams = await getCollection("recruiting");
               </label>
             </div>
           </fieldset>
-        </div>        
+        </div>
         <div class="mb-3">
           <label for="accommodationTextarea" class="form-label mb-1"
             >Do you need any accomodations to be successful?</label
