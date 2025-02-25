@@ -76,11 +76,18 @@ const staff = defineCollection({
     }),
 });
 
+const recruiting = defineCollection({
+  type: "content",
+  schema: z.object({
+    name: z.string(),
+  }),
+});
+
 const teams = defineCollection({
   type: "content",
   schema: z.object({
     name: z.string(),
-    needs: z.string().optional(),
+    recruiting: reference("recruiting").optional(),
     order: z.number().default(99999),
     management: z.boolean().default(false),
   }),
@@ -111,6 +118,7 @@ export const collections = {
   blogs,
   collaborators,
   quotes,
+  recruiting,
   staff,
   teams,
   testimonials,
