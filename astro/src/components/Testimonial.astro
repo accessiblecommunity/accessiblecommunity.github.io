@@ -14,7 +14,7 @@ const testimonial = await getEntry("testimonials", slug);
 const { Content } = await testimonial?.render();
 
 const person = testimonial?.data.person;
-const teamMemberSlug = testimonial?.data.teamMember?.slug;
+const teamMemberSlug = testimonial?.data.staff?.slug;
 
 const NameTag = element;
 ---

@@ -64,7 +64,7 @@ export default defineConfig({
           // Contact Info
           'envelope-at-fill', 'telephone-fill', 'geo-alt-fill',
           // Social Media
-          'facebook', 'instagram', 'linkedin', 'rss-fill', 'tiktok',
+          'facebook', 'instagram', 'linkedin', 'rss-fill', 'tiktok', 'youtube',
           // Descriptive
           'gift-fill', 'pencil-fill', 'people-fill', 'person-fill',
         ],
