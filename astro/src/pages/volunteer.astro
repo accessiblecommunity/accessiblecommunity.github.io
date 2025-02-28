@@ -6,6 +6,7 @@ import { getCollection } from "astro:content";
 import { components } from "@lib/mdx";
 
 import Branding from "../components/Branding.astro";
+import GoogleForm from "@components/GoogleForm.astro";
 import Hero from "../components/Hero.astro";
 import { Icon } from "astro-icon/components";
 import Layout from "../layouts/Layout.astro";
@@ -181,8 +182,9 @@ const teams = await getCollection("recruiting");
     <h2 class="display-3 mb-4 text-info-emphasis">
       Volunteer <strong>Interest Form</strong>
     </h2>
-    <form
+    <GoogleForm
       id="volunteerFormEl"
+      key="AKfycby93TSXTaBkGOnHjgTOJuHngR7n9UjCC5u6O5onP-JRwOaEMD9m8VmIgvUgCInWIiH_wA"
       class="col p-4 bg-body border border-2 border-info-contrast rounded"
     >
       <p class="lead">
@@ -295,7 +297,7 @@ const teams = await getCollection("recruiting");
                 class="form-check-input"
                 type="checkbox"
                 name="Hours"
-                value="Yes"
+                value="4+ hours"
                 id="hoursAgree"
                 required
               />
@@ -321,55 +323,18 @@ const teams = await getCollection("recruiting");
           ></div
         >
       </div>
-      <div class="col-md-6 mx-auto">
-        <button
-          id="volunteerSubmit"
-          type="submit"
-          class="btn btn-info w-100 general-button">Submit</button
-        >
+      <div slot="message">
+        <div class="col p-4 border border-2 border-info-contrast rounded">
+          <p class="lead mb-0">
+            Thank you for your interest in volunteering with
+            <Branding class="text-primary">Accessible Community</Branding>.
+            We'll be in touch shortly.
+          </p>
+        </div>
       </div>
-    </form>
+    </GoogleForm>
   </ThemedSection>
-  <div
-    class="d-none col p-4 border-primary volunteer-form"
-    id="volunteerSuccess"
-  >
-    <div class="lead">
-      Thank you for your interest in volunteering with
-      <Branding class="text-primary">Accessible Community</Branding>. We'll be
-      in touch shortly.
-    </div>
-  </div>
 </Layout>
-
-<script is:inline>
-  const form = document.querySelector("#volunteerFormEl");
-  const submitButton = document.querySelector("#volunteerSubmit");
-  const scriptURL =
-    "https://script.google.com/macros/s/AKfycbxTIdQJmkqH6iU0wil7F9CIhLuYRwysMKRgInwBnvURWGkvE2zUIBtIV3XqA8F2ZQXfWg/exec";
-
-  form.addEventListener("submit", (e) => {
-    submitButton.disabled = true;
-    e.preventDefault();
-
-    let requestBody = new FormData(form);
-
-    fetch(scriptURL, {
-      method: "POST",
-      body: requestBody,
-      mode: "no-cors",
-    })
-      .then((response) => {
-        form.classList.add("d-none");
-        const successMessage = document.querySelector("#volunteerSuccess");
-        successMessage.classList.remove("d-none");
-      })
-      .catch((error) => {
-        alert("Error!", error.message);
-        submitButton.disabled = false;
-      });
-  });
-</script>
 
 <style>
   /* first declaration that is commented out below is for debugging purposes. */
