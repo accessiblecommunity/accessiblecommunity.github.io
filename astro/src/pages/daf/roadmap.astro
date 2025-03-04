@@ -1,0 +1,28 @@
+---
+
+import ContentBlock from "@components/ContentBlock.astro";
+import DAFLayout from "src/layouts/DAFLayout.astro";
+import ThemedSection from "@components/ThemedSection.astro";
+
+import { type PageMetadata } from "@lib/types";
+
+const metadata: PageMetadata = {
+  title: "Planned Work",
+  description: "The Roadmap of the Digitial Accessibility Framework",
+}
+---
+
+<DAFLayout {metadata} >
+  <ThemedSection theme="secondary" style="subtle" py={4}>
+    <div class="roadmap">
+      <ContentBlock collection="daf" id="roadmap" />
+    </div> 
+  </ThemedSection>
+</DAFLayout>
+
+<style scoped>
+  .roadmap :global(h2) {
+    font-size: 1.5rem;
+  }
+</style>
+

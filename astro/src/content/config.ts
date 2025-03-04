@@ -37,6 +37,14 @@ const collaborators = defineCollection({
     }),
 });
 
+const daf = defineCollection({
+  type: "content",
+  schema: z.object({
+    title: z.string(),
+    description: z.string().optional(),
+  }),
+});
+
 const staff = defineCollection({
   type: "content",
   schema: ({ image }) =>
@@ -117,6 +125,7 @@ export const collections = {
   atotw,
   blogs,
   collaborators,
+  daf,
   quotes,
   recruiting,
   staff,

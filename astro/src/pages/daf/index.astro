@@ -1,0 +1,27 @@
+---
+
+import ContentBlock from "@components/ContentBlock.astro";
+import DAFLayout from "src/layouts/DAFLayout.astro";
+import ThemedSection from "@components/ThemedSection.astro";
+
+import { type PageMetadata } from "@lib/types";
+
+const metadata: PageMetadata = {
+  title: "Overview",
+  description: "An overview of the Digitial Accessibility Framework",
+}
+---
+
+<DAFLayout {metadata} >
+  <ThemedSection theme="secondary" style="subtle" py={4}>
+    <ContentBlock collection="daf" id="goal" />
+  </ThemedSection>
+  
+  <ThemedSection style="primary" py={4}>
+    <ContentBlock collection="daf" id="rationale" />
+  </ThemedSection>
+  
+  <ThemedSection theme="secondary" style="subtle" py={4}>
+    <ContentBlock collection="daf" id="assumptions" />
+  </ThemedSection>
+</DAFLayout>

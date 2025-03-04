@@ -14,7 +14,7 @@ let {
 if (Astro.slots.has("default")) text = await Astro.slots.render("default");
 
 text = text
-  .replace("Accessible", '<span class="fw-lighter">Accessible</span>')
+  .replace(/Accessib(le|ility)/, '<span class="fw-lighter">Accessib$1</span>')
   .replace(
     /(loc|t|mutu)a11y/i,
     noAria ?

@@ -11,6 +11,7 @@ export type Breadcrumbs = Array<Breadcrumb>;
 export interface PageMetadata {
   title: string;
   description: string;
+  site?: string;
   image?: ImageData;
   type?: string;
 }

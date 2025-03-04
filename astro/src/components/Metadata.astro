@@ -3,12 +3,12 @@ import { type PageMetadata } from "../lib/types";
 
 interface Props extends PageMetadata {}
 
-const { title, description, image = undefined, type = "website" } = Astro.props;
-const fullTitle = `Accessible Community - ${title}`;
+const { title, description, image = undefined, type = "website", site = "Accessible Community" } = Astro.props;
+const fullTitle = `${site} - ${title}`;
 ---
 
-{/* Opengraph Protocol support - https://ogp.me/ */}
 {
+  /* Opengraph Protocol support - https://ogp.me/ */
   /* Twitter support - https://developer.x.com/en/docs/tweets/optimize-with-cards/overview/markup */
 }
 <meta property="og:type" content={type} />
@@ -20,7 +20,7 @@ const fullTitle = `Accessible Community - ${title}`;
 <meta property="twitter:domain" content={Astro.url.host} />
 
 {/* Title */}
-<title>{title} - Accessible Community</title>
+<title>{title} - {site}</title>
 <meta property="og:title" content={fullTitle} />
 <meta name="twitter:title" content={fullTitle} />
 
@@ -33,15 +33,15 @@ const fullTitle = `Accessible Community - ${title}`;
 {
   image && (
     <>
-      <meta property="og:image" content={image?.data.src} />
-      <meta name="twitter:image" content={image?.data.src} />
+      <meta property="og:image" content={image.data.src} />
+      <meta name="twitter:image" content={image.data.src} />
       <meta
         property="og:image:height"
-        content={image?.data.height?.toString()}
+        content={image.data.height?.toString()}
       />
-      <meta property="og:image:width" content={image?.data.width?.toString()} />
-      <meta property="og:image:alt" content={image?.alt} />
-      <meta name="twitter:image:alt" content={image?.alt} />
+      <meta property="og:image:width" content={image.data.width?.toString()} />
+      <meta property="og:image:alt" content={image.alt} />
+      <meta name="twitter:image:alt" content={image.alt} />
     </>
   )
 }

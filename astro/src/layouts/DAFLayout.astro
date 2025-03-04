@@ -1,0 +1,124 @@
+---
+import { type PageMetadata } from "@lib/types";
+
+interface Props {
+  title?: String;
+  metadata: PageMetadata;
+}
+
+import "src/styles/bootstrap.scss";
+
+import Metadata from "@components/Metadata.astro";
+import { Icon } from "astro-icon/components";
+
+const { metadata, title } = Astro.props;
+if (!metadata.site)
+  metadata.site = "Digital Accessibility Framework";
+
+const navLinks = {
+  "Overview": "/daf",
+  "Roadmap": "/daf/roadmap",
+}
+
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+
+    {/* Keep the site out of Bing's Chatbot */}
+    <meta name="robots" content="noarchive" />
+
+    {
+      metadata && (
+        <Metadata {...metadata}>
+          <slot name="metadata" slot="metadata" />
+        </Metadata>
+      )
+    }
+    <link rel="icon" type="image/png" href="/images/favicon.png" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <slot name="head" />
+  </head>
+
+  <body>
+    <header class="w-100">
+      <nav class="navbar navbar-expand-lg bg-primary align-items-center" data-bs-theme="dark">
+        <div class="container-fluid">
+          <div class="py-2 me-3">
+            <p class="navbar-brand mb-0 lh-1 text-light">DAF 1.0</p>
+            <p class="navbar-text mb-0 py-0 lh-1 small">
+              Digital Accessibility <br />Framework
+            </p>
+          </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarText">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0" data-bs-theme="dark">
+              {
+                Object.entries(navLinks).map(([name, href]) => {
+                  return Astro.url.pathname === href ? (
+                    <li class="nav-item">
+                      <a class="nav-link active" aria-current="page" {href} set:text={name} />
+                    </li>
+                  ) : (
+                    <li class="nav-item">
+                      <a class="nav-link" {href} set:text={name} />
+                    </li>
+                  )
+                })
+              }
+            </ul>
+            <a href="/">
+              <Icon name="ac-logo" class="text-light" aria-label="Accessible Community Home Page" />
+            </a>
+          </div>            
+        </div>
+      </nav>
+    </header>
+
+    <main class=" bg-secondary-subtle">
+      <div class="container pt-5 my-0">
+        <h1 set:text={title || metadata?.title} />
+      </div>
+      <slot />
+    </main>
+  </body>
+
+  <style lang="scss">
+    header {
+      min-width: 320px;
+    }
+    [data-icon="ac-logo"] {
+      height: 2.5rem;
+      width: 2.5rem;
+    }
+    .navbar-text.small {
+      font-size: 75%;
+    }
+    .nav-link:not(.active) {
+      text-decoration: underline;
+      text-underline-offset: 0.2em;
+    }
+    .nav-link, .dropdown-item, .dropdown-item:hover {
+      color: #CCC;
+    }
+
+  </style>
+
+  <script src="src/scripts/headings.js"></script>
+  {
+    import.meta.env.PROD && (
+      <script
+        is:inline
+        defer
+        data-domain="accessiblecommunity.org"
+        src="https://plausible.io/js/script.js"
+      />
+    )
+  }
+</html>
