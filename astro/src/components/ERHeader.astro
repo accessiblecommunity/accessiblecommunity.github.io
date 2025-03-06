@@ -7,9 +7,12 @@ interface Props {
 }
 
 import { isEmpty } from "lodash-es";
+import { Image } from "astro:assets";
 import { Icon } from "astro-icon/components";
 import Branding from "@components/Branding.astro";
 import ExternalLink from "@components/ExternalLink.astro";
+
+import escapeRoomLogo from "src/images/escaperoomlogo-768x768.png";
 
 const { title, crumbs = [] } = Astro.props;
 const breadCrumbs: Breadcrumbs =
@@ -17,14 +20,199 @@ const breadCrumbs: Breadcrumbs =
 ---
 
 <header class="sticky-top">
-  <div id="header-navbar" class="navbar navbar-expand-lg align-items-top">
+  <div id="header-navbar">
+    {/* class="navbar navbar-expand-lg align-items-top"> */}
     <a
       class="visually-hidden-focusable btn btn-primary skip-link"
       href="#main-content"
     >
       Skip to Main Content
     </a>
-    <div id="brand-nav" class="container-fluid px-3">
+    <nav class="navbar bg-body-tertiary">
+      <div class="container-fluid">
+        <div class="d-none d-lg-block navbar-brand me-2">
+          <Image
+            src={escapeRoomLogo}
+            class="brand-logo"
+            alt=""
+            aria-hidden="true"
+          />
+        </div>
+        <a class="navbar-brand" href="#"
+          ><Branding>Accessible Escape Room</Branding></a
+        >
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="offcanvas"
+          data-bs-target="#offcanvasNavbar"
+          aria-controls="offcanvasNavbar"
+          aria-label="Toggle navigation"
+        >
+          <Icon name="bi:list" class="bi" />
+        </button>
+        <div
+          class="offcanvas offcanvas-end"
+          tabindex="-1"
+          id="offcanvasNavbar"
+          aria-labelledby="offcanvasNavbarLabel"
+        >
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Offcanvas</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="offcanvas"
+              aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <ul class="navbar-nav my-1">
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle"
+                  data-bs-toggle="dropdown"
+                  href="#"
+                  role="button"
+                  aria-expanded="false">About</a
+                >
+                <ul class="dropdown-menu px-15 pb-1">
+                  <li>
+                    <a class="dropdown-item" href="/about/mission"
+                      >Mission &amp; Vision</a
+                    >
+                  </li>
+                  {
+                    /* <li>
+                    <a class="dropdown-item" href="/about/a11y">Why Accessibility?</a>
+                  </li> */
+                  }
+                  <li>
+                    <a class="dropdown-item" href="/about/story"
+                      >Founder's Story</a
+                    >
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="/about/policies"
+                      >Our Policies</a
+                    >
+                  </li>
+                </ul>
+              </li>
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle"
+                  data-bs-toggle="dropdown"
+                  href="#"
+                  role="button"
+                  aria-expanded="false">Services</a
+                >
+                <ul class="dropdown-menu px-15 pb-1 services-menu">
+                  <li>
+                    <a class="dropdown-item" href="/services/tip-of-the-week"
+                      >Tip of the Week</a
+                    >
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="/services/evaluations"
+                      >Evaluations</a
+                    >
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="/services/escape-room"
+                      >Accessible Escape Room</a
+                    >
+                  </li>
+                  <li><hr class="dropdown-divider" /></li>
+                  <li>
+                    <ExternalLink
+                      class="dropdown-item py-2"
+                      gaps
+                      href="https://www.ta11y.org/"
+                    >
+                      <Icon
+                        class="bi"
+                        name="ta11y-logo"
+                        height={16}
+                        role="img"
+                        aria-hidden="true"
+                      /><Branding text="ta11y.org" /></ExternalLink
+                    >
+                  </li>
+                  <li>
+                    <ExternalLink
+                      class="dropdown-item py-2"
+                      gaps
+                      href="https://www.mutua11y.org/"
+                      ><Icon
+                        class="bi"
+                        name="mutua11y-logo"
+                        height={16}
+                        role="img"
+                        aria-hidden="true"
+                      /><Branding text="mutua11y.org" /></ExternalLink
+                    >
+                  </li>
+                </ul>
+              </li>
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle"
+                  data-bs-toggle="dropdown"
+                  href="#"
+                  role="button"
+                  aria-expanded="false">Team</a
+                >
+                <ul class="dropdown-menu px-15 pb-1">
+                  <li>
+                    <a class="dropdown-item" href="/team/board">Board Members</a
+                    >
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="/team/leadership"
+                      >Leadership Team</a
+                    >
+                  </li>
+                  <li><a class="dropdown-item" href="/team/staff">Staff</a></li>
+                  <li>
+                    <a class="dropdown-item" href="/team/previous"
+                      >Previous Contributors</a
+                    >
+                  </li>
+                  <li
+                    ><a class="dropdown-item" href="/team/partners">Partners</a
+                    ></li
+                  >
+                </ul>
+              </li>
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle"
+                  data-bs-toggle="dropdown"
+                  href="#"
+                  role="button"
+                  aria-expanded="false">Join us</a
+                >
+                <ul class="dropdown-menu px-15 pb-1">
+                  <li
+                    ><a class="dropdown-item" href="/volunteer">Volunteer</a
+                    ></li
+                  >
+                  <li><a class="dropdown-item" href="/donate">Donate</a></li>
+                  <!-- TODO: Hiding the sponsor page until it's done. -->
+                  <!-- <li><a class="dropdown-item" href="/join-us/sponsor">Sponsor</a></li> -->
+                </ul>
+                <li class="nav-item">
+                  <a class="nav-link" href="/blog">Blog</a>
+                </li>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    {
+      /* <div id="brand-nav" class="container-fluid px-3">
       <button
         class="navbar-toggler px-1 me-2"
         type="button"
@@ -37,11 +225,11 @@ const breadCrumbs: Breadcrumbs =
         <Icon name="bi:list" class="bi" />
       </button>
       <div class="d-none d-lg-block navbar-brand me-2">
-        <Icon name="ac-logo" class="brand-logo" role="img" aria-hidden="true" />
+        <Image src={escapeRoomLogo} class="brand-logo" alt="" aria-hidden="true" />
       </div>
       <div class="my-1 flex-fill align-self-start">
         <a class="navbar-brand" href="/"
-          >Accessible <strong>Community</strong></a
+          ><Branding>Accessible Escape Room</Branding></a
         >
       </div>
     </div>
@@ -64,7 +252,7 @@ const breadCrumbs: Breadcrumbs =
             {
               /* <li>
               <a class="dropdown-item" href="/about/a11y">Why Accessibility?</a>
-            </li> */
+            </li> *
             }
             <li>
               <a class="dropdown-item" href="/about/story">Founder's Story</a>
@@ -98,11 +286,6 @@ const breadCrumbs: Breadcrumbs =
                 >Accessible Escape Room</a
               >
             </li>
-            <li>
-              <a class="dropdown-item" href="/blog"
-                >Our Blog</a
-              >
-            </li>
             <li><hr class="dropdown-divider" /></li>
             <li>
               <ExternalLink
@@ -131,30 +314,6 @@ const breadCrumbs: Breadcrumbs =
                   role="img"
                   aria-hidden="true"
                 /><Branding text="mutua11y.org" /></ExternalLink
-              >
-            </li>
-          </ul>
-        </li>
-        <li class="nav-item dropdown">
-          <a
-            class="nav-link dropdown-toggle"
-            data-bs-toggle="dropdown"
-            href="#"
-            role="button"
-            aria-expanded="false">Research</a
-          >
-          <ul class="dropdown-menu px-15 pb-1">
-            <li>
-              <a class="dropdown-item text-break py-2" href="/daf"
-                >Digital Accessibility Framework</a
-              >
-            </li>
-            <li>
-              <ExternalLink
-                class="dropdown-item py-2"
-                href="https://accessiblecommunity.org/useable"
-              >
-                <Branding text="useable" /></ExternalLink
               >
             </li>
           </ul>
@@ -199,6 +358,9 @@ const breadCrumbs: Breadcrumbs =
             <!-- TODO: Hiding the sponsor page until it's done. -->
             <!-- <li><a class="dropdown-item" href="/join-us/sponsor">Sponsor</a></li> -->
           </ul>
+          <li class="nav-item">
+            <a class="nav-link" href="/blog">Blog</a>
+          </li>
         </li>
       </ul>
       <a
@@ -206,8 +368,11 @@ const breadCrumbs: Breadcrumbs =
         href="/donate"
         role="button">Donate</a
       >
-    </nav>
+    </nav> */
+    }
   </div>
+  {
+    /*
   <nav id="breadcrumbs-nav" aria-label="Breadcrumb" class="position-absolute">
     <ol class="breadcrumb lh-sm">
       {
@@ -224,6 +389,8 @@ const breadCrumbs: Breadcrumbs =
       </li>
     </ol>
   </nav>
+  */
+  }
 </header>
 <slot />
 
@@ -265,7 +432,8 @@ const breadCrumbs: Breadcrumbs =
     color: var(--bs-navbar-brand-hover-color);
   }
 
-  [data-icon="ac-logo"] {
+  [data-icon="ac-logo"],
+  .brand-logo {
     width: 2.5rem;
     height: 2.5rem;
   }
@@ -374,12 +542,15 @@ const breadCrumbs: Breadcrumbs =
 </style>
 
 <script>
-  import { Collapse, Dropdown } from "~bootstrap-es";
+  import { Collapse, Dropdown, Offcanvas } from "~bootstrap-es";
 
   Array.from(document.querySelectorAll(".dropdown")).forEach(
     (node) => new Dropdown(node),
   );
   Array.from(document.querySelectorAll(".collapse")).forEach(
     (node) => new Collapse(node, { toggle: false }),
+  );
+  Array.from(document.querySelectorAll(".offcanvas")).forEach(
+    (node) => new Offcanvas(node),
   );
 </script>

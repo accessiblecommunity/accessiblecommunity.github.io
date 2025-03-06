@@ -1,0 +1,96 @@
+---
+export async function getStaticPaths() {
+  return [
+    {
+      params: { name: "overview" },
+      props: {
+        prefix: "overview/",
+        metadata: {
+          title: "Overview",
+          description: "An overview of the Digitial Accessibility Framework",
+        },
+      },
+    },
+    {
+      params: { name: "framework" },
+      props: {
+        prefix: "framework/",
+        metadata: {
+          title: "Framework",
+          description:
+            "The high-level breakdown of the Digitial Accessibility Framework",
+        },
+      },
+    },
+    {
+      params: { name: "matrix" },
+      props: {
+        prefix: "matrix/",
+        metadata: {
+          title: "Matrix",
+          description: "The Matrix of the Digitial Accessibility Framework",
+        },
+      },
+    },
+    {
+      params: { name: "roadmap" },
+      props: {
+        prefix: "roadmap/",
+        metadata: {
+          title: "Planned Work",
+          description: "The Roadmap of the Digitial Accessibility Framework",
+        },
+      },
+    },
+  ];
+}
+
+import { components } from "src/lib/mdx";
+import { getCollection } from "astro:content";
+import { type PageMetadata } from "@lib/types";
+
+interface Props {
+  prefix: string;
+  metadata: PageMetadata;
+}
+const { prefix, metadata } = Astro.props;
+
+const entries = await getCollection("daf", (entry) =>
+  entry.slug.startsWith(prefix),
+);
+entries.sort((a, b) => a.data.order - b.data.order);
+// console.log("entries", entries.map((e) => e.slug))
+const renderedEntries = await Promise.all(
+  entries.map(async (entry) => await entry.render()),
+);
+
+import DAFLayout from "src/layouts/DAFLayout.astro";
+import ThemedSection from "@components/ThemedSection.astro";
+---
+
+<DAFLayout {metadata}>
+  <div class="daf">
+    {
+      renderedEntries.map(({ Content }, index) => (
+        <ThemedSection
+          theme={index % 2 === 0 ? undefined : "secondary"}
+          style={index % 2 === 0 ? "primary" : "subtle"}
+          py={4}
+        >
+          <Content {components} />
+        </ThemedSection>
+      ))
+    }
+  </div>
+</DAFLayout>
+
+<style scoped>
+  .daf :global(h2) {
+    font-size: 1.5rem;
+    margin-bottom: 1em;
+  }
+  .daf :global(h3) {
+    font-size: 1.2rem;
+    margin-bottom: 1em;
+  }
+</style>
