@@ -10,16 +10,18 @@ import "src/styles/bootstrap.scss";
 
 import Metadata from "@components/Metadata.astro";
 import { Icon } from "astro-icon/components";
+import ExternalLink from "@components/ExternalLink.astro";
+import Branding from "@components/Branding.astro";
 
 const { metadata, title } = Astro.props;
-if (!metadata.site)
-  metadata.site = "Digital Accessibility Framework";
+if (!metadata.site) metadata.site = "Digital Accessibility Framework";
 
 const navLinks = {
-  "Overview": "/daf",
-  "Roadmap": "/daf/roadmap",
-}
-
+  Overview: "/daf/overview",
+  Framework: "/daf/framework",
+  Matrix: "/daf/matrix",
+  Roadmap: "/daf/roadmap",
+};
 ---
 
 <!doctype html>
@@ -45,8 +47,11 @@ const navLinks = {
   </head>
 
   <body>
-    <header class="w-100">
-      <nav class="navbar navbar-expand-lg bg-primary align-items-center" data-bs-theme="dark">
+    <header class="w-100 d-print-none">
+      <nav
+        class="navbar navbar-expand-lg bg-primary align-items-center"
+        data-bs-theme="dark"
+      >
         <div class="container-fluid">
           <div class="py-2 me-3">
             <p class="navbar-brand mb-0 lh-1 text-light">DAF 1.0</p>
@@ -54,46 +59,130 @@ const navLinks = {
               Digital Accessibility <br />Framework
             </p>
           </div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarText"
+            aria-controls="navbarText"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarText">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0" data-bs-theme="dark">
               {
                 Object.entries(navLinks).map(([name, href]) => {
-                  return Astro.url.pathname === href ? (
-                    <li class="nav-item">
-                      <a class="nav-link active" aria-current="page" {href} set:text={name} />
-                    </li>
-                  ) : (
-                    <li class="nav-item">
-                      <a class="nav-link" {href} set:text={name} />
-                    </li>
-                  )
+                  return Astro.url.pathname === href ?
+                      <li class="nav-item">
+                        <a
+                          class="nav-link active"
+                          aria-current="page"
+                          {href}
+                          set:text={name}
+                        />
+                      </li>
+                    : <li class="nav-item">
+                        <a class="nav-link" {href} set:text={name} />
+                      </li>;
                 })
               }
             </ul>
             <a href="/">
-              <Icon name="ac-logo" class="text-light" aria-label="Accessible Community Home Page" />
+              <Icon
+                name="ac-logo"
+                class="text-light"
+                aria-label="Accessible Community Home Page"
+              />
             </a>
-          </div>            
+          </div>
         </div>
       </nav>
     </header>
 
-    <main class=" bg-secondary-subtle">
-      <div class="container pt-5 my-0">
-        <h1 set:text={title || metadata?.title} />
-      </div>
+    <main>
       <slot />
     </main>
+
+    <footer class="bg-primary text-light py-5 px-5 d-print-none">
+      <div class="py-2">
+        <div
+          class="d-flex flex-column flex-lg-row justify-content-around gap-0 column-gap-5"
+        >
+          <div class="foundation-stmt">
+            <p>
+              The <Branding>Digital Accessibility Framework</Branding> is built on
+              work by
+            </p>
+            <ul class="list-spaced">
+              <li>
+                <ExternalLink
+                  href="https://www.w3.org/"
+                  inline
+                  class="link-light"
+                  >World Wide Web Consortium (W3C)</ExternalLink
+                >
+              </li>
+              <li>
+                <ExternalLink
+                  href="https://www.iso.org/"
+                  inline
+                  class="link-light"
+                  >International Standards Organization (ISO)</ExternalLink
+                >
+              </li>
+              <li>
+                <ExternalLink
+                  href="https://trace.umd.edu/"
+                  inline
+                  class="link-light"
+                  >University of Maryland Trace Research and Development Center</ExternalLink
+                >
+              </li>
+              <li>
+                <a class="icon-link link-light" href="/">
+                  <Icon
+                    name="ac-logo"
+                    class="bi"
+                    aria-label="Accessible Community Home Page"
+                  /><Branding>Accessible Community</Branding></a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h2 class="text-white fw-bold">Editors</h2>
+            <ul class="list-unstyled">
+              <li class="text-light"> Michael Cooper </li>
+              <li class="text-light"> Bern Jordan </li>
+              <li class="text-light"> Rachael Montgomery </li>
+            </ul>
+          </div>
+          <div>
+            <h2 class="text-white fw-bold">Contributors</h2>
+            <ul class="list-unstyled">
+              <li class="text-light"> Alastair Campbell </li>
+              <li class="text-light"> Scott Hollier </li>
+              <li class="text-light"> Joshue O'Connor </li>
+              <li class="text-light"> Jeanne Spellman </li>
+              <li class="text-light"> Jutta Treviranus </li>
+              <li class="text-light"> Gregg Vanderheiden </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </footer>
   </body>
 
-  <style lang="scss">
+  <style scoped lang="scss">
+    @import "../styles/responsive-sizing.scss";
+
     header {
       min-width: 320px;
     }
-    [data-icon="ac-logo"] {
+    header [data-icon="ac-logo"] {
       height: 2.5rem;
       width: 2.5rem;
     }
@@ -104,10 +193,27 @@ const navLinks = {
       text-decoration: underline;
       text-underline-offset: 0.2em;
     }
-    .nav-link, .dropdown-item, .dropdown-item:hover {
-      color: #CCC;
+    .nav-link,
+    .dropdown-item,
+    .dropdown-item:hover {
+      color: #ccc;
     }
 
+    footer h2 {
+      font-size: 1.1rem;
+      margin-bottom: 1rem;
+    }
+    footer ul.list-unstyled {
+      margin-left: 0.75rem;
+    }
+    footer .icon-link {
+      gap: 0.25rem;
+    }
+    @include media-breakpoint-up(lg) {
+      .foundation-stmt {
+        max-width: 50%;
+      }
+    }
   </style>
 
   <script src="src/scripts/headings.js"></script>

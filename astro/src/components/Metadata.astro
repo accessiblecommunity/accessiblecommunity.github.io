@@ -3,7 +3,13 @@ import { type PageMetadata } from "../lib/types";
 
 interface Props extends PageMetadata {}
 
-const { title, description, image = undefined, type = "website", site = "Accessible Community" } = Astro.props;
+const {
+  title,
+  description,
+  image = undefined,
+  type = "website",
+  site = "Accessible Community",
+} = Astro.props;
 const fullTitle = `${site} - ${title}`;
 ---
 

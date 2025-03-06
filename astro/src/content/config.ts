@@ -40,8 +40,7 @@ const collaborators = defineCollection({
 const daf = defineCollection({
   type: "content",
   schema: z.object({
-    title: z.string(),
-    description: z.string().optional(),
+    order: z.number().default(99999),
   }),
 });
 
