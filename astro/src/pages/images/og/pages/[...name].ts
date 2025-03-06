@@ -8,7 +8,8 @@ export const { getStaticPaths, GET } = OGImageRoute({
   pages: {
     daf: {
       title: "The Digital Accessibility Framework",
-      description: "A top-down look at the needs of people with disabilities within digital environments.",
+      description:
+        "A top-down look at the needs of people with disabilities within digital environments.",
       bgImage: {
         path: "./src/images/colored-hero/policy.png",
         fit: "cover",
