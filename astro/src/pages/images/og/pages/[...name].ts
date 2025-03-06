@@ -6,6 +6,24 @@ import { merge } from "lodash-es";
 export const { getStaticPaths, GET } = OGImageRoute({
   param: "name",
   pages: {
+    daf: {
+      title: "The Digital Accessibility Framework",
+      description:
+        "A top-down look at the needs of people with disabilities within digital environments.",
+      bgImage: {
+        path: "./src/images/colored-hero/policy.png",
+        fit: "cover",
+      },
+      font: {
+        title: {
+          size: 56,
+        },
+        description: {
+          size: 36,
+        },
+      },
+      padding: 70,
+    },
     donate: {
       title: "Support disability-inclusive communities.",
       description: `Accessible Community is a 501(c)3 organization.
