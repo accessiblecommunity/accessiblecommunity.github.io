@@ -71,6 +71,35 @@ Your donation goes towards supporting our programs and technology to build disab
       padding: 67,
       cacheDir: false,
     },
+    "escape-room-csun-2025": {
+      title: "The Accessible Escape Room is at CSUN 2025.",
+      description:
+        'We are prototyping our newest room - "The Puzzling Picnic".\nIf you are attending the conference, we would love your feedback.',
+      bgImage: {
+        path: "./src/images/colored-hero/puzzles.jpg",
+        fit: "cover",
+        position: ["center", "center"],
+      },
+      border: {
+        color: [4, 10, 58],
+        width: 25,
+        /** Side of the image to draw the border on. Inline start/end respects writing direction. */
+        side: "block-start",
+      },
+      font: {
+        title: {
+          size: 64,
+        },
+        description: {
+          size: 36,
+        },
+      },
+      logo: {
+        size: [80],
+      },
+      padding: 67,
+      cacheDir: false,
+    },
     evaluations: {
       title: "Is your website accessible?",
       description:
