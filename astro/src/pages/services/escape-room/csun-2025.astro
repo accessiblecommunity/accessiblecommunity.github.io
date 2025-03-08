@@ -30,6 +30,7 @@ import Layout from "../../../layouts/Layout.astro";
 import ThemedSection from "@components/ThemedSection.astro";
 
 import picnicBg from "src/images/evangelina-silina-BzLUmuRDMWE-unsplash.jpg";
+import ExternalLink from "@components/ExternalLink.astro";
 
 const timeSlots = ["7:20", "7:50", "8:20", "8:50", "9:20"];
 ---
@@ -48,18 +49,22 @@ const timeSlots = ["7:20", "7:50", "8:20", "8:50", "9:20"];
       </h1>
     </div>
     <div class="py-3">
-      <p class="text-bg-hero lead">
-        We will be play testing our newest Escape Room, "<strong class="text-brand"
+      <p class="text-bg-hero text-brand lead">
+        We will be playtesting our newest Escape Room, "<strong
           >The&nbsp;Puzzling Picnic</strong
-        >", at CSUN on Tuesday, March 11th from 7-10 pm. If you are attending the conference and would
-        like to participate, please sign up using the form below.
+        >", at CSUN on Tuesday, March 11th from 7-10 pm. If you are attending
+        the conference and would like to participate, please sign up using the
+        <a href="#form">form</a> below.
       </p>
-      <p>Thank you to <a href="https://vispero.com/">Vispero</a> for use of their room for the event!</p>
+      <p
+        >Thank you to <ExternalLink inline href="https://vispero.com/"
+          >Vispero</ExternalLink
+        > for use of their room for the event!</p
+      >
     </div>
   </Hero>
-">
-  <img src="/images/wave.svg" class="wave" />
 
+  <img src="/images/wave.svg" class="wave" />
   <ThemedSection id="form" theme="secondary" style="subtle" py={2}>
     <h2 class="display-3 mb-4">
       CSUN <strong>Escape Room</strong> Registration
@@ -99,7 +104,8 @@ const timeSlots = ["7:20", "7:50", "8:20", "8:50", "9:20"];
             required
           />
           <div id="emailHelp" class="form-text">
-            The email you would like us to use for confirmation, scheduling updates, or cancellations.
+            The email you would like us to use for confirmation, scheduling
+            updates, or cancellations.
           </div>
         </div>
         <div class="col-md-6 mb-3">
@@ -117,14 +123,14 @@ const timeSlots = ["7:20", "7:50", "8:20", "8:50", "9:20"];
           />
           <div id="phoneHelp" class="form-text">
             The phone number (or WhatsApp number) you would like us to use for
-            scheduling updates or cancellations.
+            confirmation, scheduling updates, or cancellations.
           </div>
         </div>
 
         <div class="col-12 mb-3">
           <fieldset>
-            <legend class="mb-2 fs-5 required-field">
-              Which times on Tuesday evening can you attend?
+            <legend class="mb-2 fs-5 requiredfield">
+              Which times on Tuesday evening (March 11th, 2025) can you attend?
               <span class="asterisk" aria-hidden="true"></span>
             </legend>
             <div class="row row-cols-auto g-1 mb-2">
@@ -184,8 +190,7 @@ const timeSlots = ["7:20", "7:50", "8:20", "8:50", "9:20"];
         <div class="mb-3">
           <fieldset>
             <legend class="mb-2 fs-5">
-              Would you like email updates about the Accessible Escape
-              Room?
+              Would you like email updates about the Accessible Escape Room?
             </legend>
             <div class="form-check d-flex mb-2 align-items-center">
               <input
@@ -206,15 +211,8 @@ const timeSlots = ["7:20", "7:50", "8:20", "8:50", "9:20"];
   </ThemedSection>
 </Layout>
 
-<style scoped>
-  .card-img-top {
-    height: auto;
-  }
-
-  .logo {
-    height: auto;
-    width: 100%;
-  }
+<style scoped lang="scss">
+  @import "../../../styles/dark-mode.scss";
 
   #form {
     margin-top: 0;
@@ -228,5 +226,12 @@ const timeSlots = ["7:20", "7:50", "8:20", "8:50", "9:20"];
     background-color: transparent;
     filter: invert(100%) sepia(1%) saturate(2169%) hue-rotate(180deg)
       brightness(97%) contrast(87%);
+  }
+
+  @include color-mode(dark) {
+    .wave {
+      filter: invert(18%) sepia(19%) saturate(396%) hue-rotate(153deg)
+        brightness(94%) contrast(92%);
+    }
   }
 </style>
