@@ -23,12 +23,14 @@ import Branding from "@components/Branding.astro";
 import ExternalLink from "@components/ExternalLink.astro";
 import Hero from "@components/ColumnedHero.astro";
 import { Image } from "astro:assets";
+import ImageFigure from "@components/ImageFigure.astro";
 import Layout from "../../../layouts/Layout.astro";
 import ThemedBox from "@components/ThemedBox.astro";
 import ThemedSection from "@components/ThemedSection.astro";
 
 import heroBg from "../../../images/jonathan-kemper-9tamF4J0vLk-unsplash.jpg";
 import escapeRoomLogo from "src/images/escaperoomlogo-768x768.png";
+import brailleBlocks from "src/images/escape-room/braille-blocks.png";
 import picnicBg from "src/images/evangelina-silina-BzLUmuRDMWE-unsplash.jpg";
 import casinoBg from "src/images/ben-iwara-gbSHdpJr1HE-unsplash.jpg";
 import { Icon } from "astro-icon/components";
@@ -224,6 +226,31 @@ import { Icon } from "astro-icon/components";
         who helped pilot test it had the best score of everyone!
       </p>
     </div>
+  </ThemedSection>
+
+  <ThemedSection>
+    
+    <div
+    class="d-flex flex-column flex-lg-row-reverse gap-4 justify-content-lg-between align-items-center"
+    >
+    <div>
+        <h2 class="mb-4"><strong>Making</strong> an accessible escape room.</h2>
+        <p>
+          If you would like to create an accessible escape room for your business or organization, here are some tips to get started.</p
+        >
+        <ul>
+          <li>Pick a theme that doesn't cause anxiety. Don't lock people in or create panic intentionally. Instead, create challenging puzzles in a fun atmosphere.</li>
+          <li>Don't design puzzles to rely on a single sense. Provide hints using both sound and sight, preferably sound, sight and touch.</li>
+          <li>Offer an untimed option to participants who are higher anxiety.</li>
+          <li>Provide accommodations when requested.</li>
+          <li>Create a set of puzzles so that everyone can engage with at least one. This means at least one puzzle should take voice input.</li>
+        </ul>
+      </div>
+
+      <ImageFigure class="col-8 col-lg-4" src={brailleBlocks} imageClass="logo" alt="Alphabet blocks with braille">
+        <span slot="caption">We have used these <ExternalLink inline href="https://www.plantoys.com/products/braille-alphabet-a-z">braille alphabet blocks from Plan Toys</ExternalLink> to successfully engage participants with visual impairment.</span>
+      </ImageFigure>
+
   </ThemedSection>
 </Layout>
 
