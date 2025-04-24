@@ -18,18 +18,15 @@ import ImageFigure from "@components/ImageFigure.astro";
 import ThemedSection from "@components/ThemedSection.astro";
 
 import overviewImg from "src/images/daf/overview.png";
+import Branding from "@components/Branding.astro";
+import ExternalLink from "@components/ExternalLink.astro";
 ---
 
 <DAFLayout {metadata}>
   <div class="daf">
     <ThemedSection style="primary" py={4}>
       <h1>The Digital Accessibility Framework</h1>
-      <ImageFigure
-        src={overviewImg}
-        alt="An overview of the Digital Accessibility Framework"
-        class="text-center"
-        caption="An overview of the Digital Accessibility Framework"
-      />
+      <p>Welcome to the <Branding>Digital Accessibility Framework</Branding>. The project is designed to forecast new accessibility requirements in emerging technologies and to help to discover accessibility requirements for user groups with which we are less familiar (e.g., hyperacusis, agraphia, aphantasia, etc.). Our findings could help develop digital accessibility guidance that arrives in time to be meaningful on new types of devices, and that addresses parts of the population that have not yet been able to contribute to accessibility guidelines development. </p>
     </ThemedSection>
     <ThemedSection theme="secondary" style="subtle" py={4}>
       <h2>Site Overview</h2>
@@ -40,5 +37,38 @@ import overviewImg from "src/images/daf/overview.png";
         <li><a href="roadmap/">Roadmap</a></li>
       </ul>
     </ThemedSection>
+    <ThemedSection style="primary" py={4}>
+      <h2>Synopsis</h2>
+      <p>The <Branding text="Digital Accessibility Framework" /> models the interaction between an individual's ability the characteristics of the object they are interacting with. When a disconnect occurs, then one of several accommodation types needs to be provided. By exploring the intersection of the person and the digital content, the model allows us to identify and predict potential issues.</p>
+      <ImageFigure
+        src={overviewImg}
+        alt="An overview of the Digital Accessibility Framework"
+        class="text-center"
+        caption="An overview of the Digital Accessibility Framework"
+      />
+    </ThemedSection>
+    <ThemedSection theme="secondary" style="subtle" py={4}>
+      <h2>Funding &amp; Feedback</h2>
+      <p>The incubation phase of the <Branding>Digital Accessibility Framework</Branding> was partially supported by a NIDLRR grant but much of the design, content development, and tool development was unfunded. This is a project that promises to help advance the digital accessibility field, which will require greater participation and better tooling. If you are associated with an organization whose mission might interest it in funding parts of this work, please get in touch!</p>
+      <p>Feedback can be provided on the <ExternalLink inline href="https://docs.google.com/forms/d/e/1FAIpQLSe1VjhbdUUnh2BIBTfdVlU0AayQi-cM8Ors3ALU8OYohj8bOQ/viewform?usp=header">comment form</ExternalLink>, in which you can provide thoughts about the framework, suggest specific content, or ask questions. In the data part of the site, there are also options to provide more specific feedback. As we get more engagement, we will expand the ways people can participate and contribute. Do reach out if you are interested in participating in or using this work in any way. The <Branding>Digital Accessibility Framework</Branding> is a great opportunity to advance our state of the art!</p>
+    </ThemedSection>
   </div>
 </DAFLayout>
+
+<style scoped>
+  h1 {
+    margin-bottom: 1em;
+  }
+  h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1em;
+  }
+  h3 {
+    font-size: 1.3rem;
+    margin-bottom: 1em;
+  }
+  h4 {
+    font-size: 1.15rem;
+    margin-bottom: 1em;
+  }
+</style>
