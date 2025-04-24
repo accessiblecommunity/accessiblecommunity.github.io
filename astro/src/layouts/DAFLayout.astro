@@ -45,19 +45,17 @@ const navLinks = {
     <link rel="icon" type="image/png" href="/images/favicon.png" />
     <link rel="sitemap" href="/sitemap-index.xml" />
     <slot name="head" />
-  </head>
+    <script>
+      import { Collapse, Dropdown } from "~bootstrap-es";
 
-  <script>
-    import { Collapse, Dropdown } from "~bootstrap-es";
-  
-    Array.from(document.querySelectorAll(".dropdown")).forEach(
-      (node) => new Dropdown(node),
-    );
-    Array.from(document.querySelectorAll(".collapse")).forEach(
-      (node) => new Collapse(node, { toggle: false }),
-    );
-  </script>
-  
+      Array.from(document.querySelectorAll(".dropdown")).forEach(
+        (node) => new Dropdown(node),
+      );
+      Array.from(document.querySelectorAll(".collapse")).forEach(
+        (node) => new Collapse(node, { toggle: false }),
+      );
+    </script></head
+  >
 
   <body>
     <header class="w-100 d-print-none">
@@ -67,8 +65,7 @@ const navLinks = {
       >
         <div class="container-fluid">
           <div class="py-2 me-3">
-            <p class="navbar-brand mb-0 lh-1 text-light">DAF 1.0</p
-            >
+            <p class="navbar-brand mb-0 lh-1 text-light">DAF 1.0</p>
             <p class="navbar-text mb-0 py-0 lh-1 small">
               Digital Accessibility <br />Framework
             </p>
