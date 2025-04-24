@@ -17,22 +17,21 @@ import DAFLayout from "src/layouts/DAFLayout.astro";
 import ImageFigure from "@components/ImageFigure.astro";
 import ThemedSection from "@components/ThemedSection.astro";
 
-import frameworkImg from "src/images/daf/framework.jpg";
+import overviewImg from "src/images/daf/overview.png";
 ---
 
 <DAFLayout {metadata}>
   <div class="daf">
-    <ThemedSection
-      style="primary"
-      py={4}
-    >
+    <ThemedSection style="primary" py={4}>
       <h1>The Digital Accessibility Framework</h1>
+      <ImageFigure
+        src={overviewImg}
+        alt="An overview of the Digital Accessibility Framework"
+        class="text-center"
+        caption="An overview of the Digital Accessibility Framework"
+      />
     </ThemedSection>
-    <ThemedSection
-      theme="secondary"
-      style="subtle"
-      py={4}
-    >
+    <ThemedSection theme="secondary" style="subtle" py={4}>
       <h2>Site Overview</h2>
       <ul>
         <li><a href="overview/">Overview</a></li>
@@ -40,17 +39,6 @@ import frameworkImg from "src/images/daf/framework.jpg";
         <li><a href="matrix/">Matrix</a></li>
         <li><a href="roadmap/">Roadmap</a></li>
       </ul>
-  </ThemedSection>
-  <ThemedSection
-    style="primary"
-    py={4}
-    >
-      <ImageFigure
-        src={frameworkImg}
-        alt="An overview of the Digital Accessibility Framework"
-        class="text-center"
-        caption="An overview of the Digital Accessibility Framework"
-      />
     </ThemedSection>
   </div>
 </DAFLayout>
