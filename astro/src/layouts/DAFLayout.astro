@@ -17,7 +17,8 @@ const { metadata, title } = Astro.props;
 if (!metadata.site) metadata.site = "Digital Accessibility Framework";
 
 const navLinks = {
-  Overview: "/daf/overview/",
+  Overview: "/daf/",
+  Background: "/daf/background/",
   Framework: "/daf/framework/",
   Matrix: "/daf/matrix/",
   Roadmap: "/daf/roadmap/",
@@ -46,6 +47,18 @@ const navLinks = {
     <slot name="head" />
   </head>
 
+  <script>
+    import { Collapse, Dropdown } from "~bootstrap-es";
+  
+    Array.from(document.querySelectorAll(".dropdown")).forEach(
+      (node) => new Dropdown(node),
+    );
+    Array.from(document.querySelectorAll(".collapse")).forEach(
+      (node) => new Collapse(node, { toggle: false }),
+    );
+  </script>
+  
+
   <body>
     <header class="w-100 d-print-none">
       <nav
@@ -54,7 +67,8 @@ const navLinks = {
       >
         <div class="container-fluid">
           <div class="py-2 me-3">
-            <a class="navbar-brand mb-0 lh-1 link-light" href="/daf/">DAF 1.0</a>
+            <p class="navbar-brand mb-0 lh-1 text-light">DAF 1.0</p
+            >
             <p class="navbar-text mb-0 py-0 lh-1 small">
               Digital Accessibility <br />Framework
             </p>
@@ -63,14 +77,14 @@ const navLinks = {
             class="navbar-toggler"
             type="button"
             data-bs-toggle="collapse"
-            data-bs-target="#navbarText"
-            aria-controls="navbarText"
+            data-bs-target="#dafNavbar"
+            aria-controls="dafNavbar"
             aria-expanded="false"
             aria-label="Toggle navigation"
           >
             <span class="navbar-toggler-icon"></span>
           </button>
-          <div class="collapse navbar-collapse" id="navbarText">
+          <div class="collapse navbar-collapse" id="dafNavbar">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0" data-bs-theme="dark">
               {
                 Object.entries(navLinks).map(([name, href]) => {
@@ -191,6 +205,10 @@ const navLinks = {
     .navbar-text.small {
       font-size: 75%;
     }
+
+    .nav-item {
+      margin-right: 0.5em;
+    }
     .nav-link:not(.active) {
       text-decoration: underline;
       text-underline-offset: 0.2em;
@@ -198,7 +216,11 @@ const navLinks = {
     .nav-link,
     .dropdown-item,
     .dropdown-item:hover {
-      color: #ccc;
+      color: #d5d5d5;
+      font-size: 1.25em;
+    }
+    header a:focus {
+      outline-color: #fff;
     }
 
     footer h2 {

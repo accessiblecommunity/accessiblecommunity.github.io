@@ -1,0 +1,57 @@
+---
+import { components } from "src/lib/mdx";
+import { getCollection } from "astro:content";
+import { type PageMetadata } from "@lib/types";
+
+
+interface Props {
+  prefix: string;
+  metadata: PageMetadata;
+}
+const { prefix, metadata } = Astro.props;
+
+const entries = await getCollection("daf", (entry) =>
+  entry.slug.startsWith(prefix),
+);
+entries.sort((a, b) => a.data.order - b.data.order);
+const renderedEntries = await Promise.all(
+  entries.map(async (entry) => await entry.render()),
+);
+
+import DAFLayout from "src/layouts/DAFLayout.astro";
+import ThemedSection from "@components/ThemedSection.astro";
+---
+
+<DAFLayout {metadata}>
+  <div class="daf-sl">
+    {
+      renderedEntries.map(({ Content }, index) => (
+        <ThemedSection
+          theme={index % 2 === 0 ? undefined : "secondary"}
+          style={index % 2 === 0 ? "primary" : "subtle"}
+          py={4}
+        >
+          <Content {components} />
+        </ThemedSection>
+      ))
+    }
+  </div>
+</DAFLayout>
+
+<style scoped>
+  .daf-sl :global(h1) {
+    margin-bottom: 1em;
+  }
+  .daf-sl :global(h2) {
+    font-size: 1.5rem;
+    margin-bottom: 1em;
+  }
+  .daf-sl :global(h3) {
+    font-size: 1.3rem;
+    margin-bottom: 1em;
+  }
+  .daf-sl :global(h4) {
+    font-size: 1.15rem;
+    margin-bottom: 1em;
+  }
+</style>
