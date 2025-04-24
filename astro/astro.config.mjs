@@ -36,9 +36,9 @@ export default defineConfig({
   server: {
     host: true,
   },
-  redirects: {
-    '/daf': '/daf/overview/',
-  },
+  // redirects: {
+  //   '/daf': '/daf/overview/',
+  // },
   vite: {
     resolve: {
       alias: {

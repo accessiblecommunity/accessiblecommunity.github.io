@@ -1,0 +1,56 @@
+---
+import type { PageMetadata } from "@lib/types";
+import { getOpenGraphImageData } from "@lib/og-image";
+
+const metadata: PageMetadata = {
+  title: "Digital Accessibility Framework",
+  description: "The introduction of the Digital Accessibility Framework",
+  image: getOpenGraphImageData(
+    Astro.site,
+    "pages",
+    "daf",
+    "The introduction of the Digital Accessibility Framework",
+  ),
+};
+
+import DAFLayout from "src/layouts/DAFLayout.astro";
+import ImageFigure from "@components/ImageFigure.astro";
+import ThemedSection from "@components/ThemedSection.astro";
+
+import frameworkImg from "src/images/daf/framework.jpg";
+---
+
+<DAFLayout {metadata}>
+  <div class="daf">
+    <ThemedSection
+      style="primary"
+      py={4}
+    >
+      <h1>The Digital Accessibility Framework</h1>
+    </ThemedSection>
+    <ThemedSection
+      theme="secondary"
+      style="subtle"
+      py={4}
+    >
+      <h2>Site Overview</h2>
+      <ul>
+        <li><a href="overview/">Overview</a></li>
+        <li><a href="framework/">Framework</a></li>
+        <li><a href="matrix/">Matrix</a></li>
+        <li><a href="roadmap/">Roadmap</a></li>
+      </ul>
+  </ThemedSection>
+  <ThemedSection
+    style="primary"
+    py={4}
+    >
+      <ImageFigure
+        src={frameworkImg}
+        alt="An overview of the Digital Accessibility Framework"
+        class="text-center"
+        caption="An overview of the Digital Accessibility Framework"
+      />
+    </ThemedSection>
+  </div>
+</DAFLayout>
