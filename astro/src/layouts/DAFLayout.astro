@@ -58,7 +58,7 @@ const navLinks = {
   >
 
   <body>
-    <header class="w-100 d-print-none">
+    <header class="sticky-top w-100 d-print-none">
       <nav
         class="navbar navbar-expand-lg bg-primary align-items-center"
         data-bs-theme="dark"
@@ -99,6 +99,11 @@ const navLinks = {
                       </li>;
                 })
               }
+              <li class="nav-item">
+                <ExternalLink class="nav-link" href="https://docs.google.com/forms/d/e/1FAIpQLSe1VjhbdUUnh2BIBTfdVlU0AayQi-cM8Ors3ALU8OYohj8bOQ/viewform">
+                  Feedback
+                </ExternalLink>
+              </li>              
             </ul>
             <a href="/">
               <Icon
@@ -137,7 +142,7 @@ const navLinks = {
               </li>
               <li>
                 <ExternalLink
-                  href="https://www.iso.org/"
+                  href="https://www.iso.org/sectors/diversity-inclusion/accessibility"
                   inline
                   class="link-light"
                   >International Standards Organization (ISO)</ExternalLink
@@ -165,15 +170,15 @@ const navLinks = {
 
           <div>
             <h2 class="text-white fw-bold">Editors</h2>
-            <ul class="list-unstyled">
+            <ul class="list-unstyled contributors">
               <li class="text-light"> Michael Cooper </li>
               <li class="text-light"> Bern Jordan </li>
-              <li class="text-light"> Rachael Montgomery </li>
+              <li class="text-light"> Rachael Bradley Montgomery </li>
             </ul>
           </div>
           <div>
             <h2 class="text-white fw-bold">Contributors</h2>
-            <ul class="list-unstyled">
+            <ul class="list-unstyled contributors">
               <li class="text-light"> Alastair Campbell </li>
               <li class="text-light"> Scott Hollier </li>
               <li class="text-light"> Joshue O'Connor </li>
@@ -206,17 +211,17 @@ const navLinks = {
     .nav-item {
       margin-right: 0.5em;
     }
-    .nav-link:not(.active) {
+    header :global(.nav-link):not(.active) {
       text-decoration: underline;
       text-underline-offset: 0.2em;
     }
-    .nav-link,
+    header :global(.nav-link),
     .dropdown-item,
     .dropdown-item:hover {
       color: #d5d5d5;
       font-size: 1.25em;
     }
-    header a:focus {
+    header :global(a:focus) {
       outline-color: #fff;
     }
 
@@ -230,6 +235,17 @@ const navLinks = {
     footer .icon-link {
       gap: 0.25rem;
     }
+    // Possible solution to handling the spaced list on longer names
+    // footer .contributors li {
+    //   // Doesn't work in Chrome
+    //   // text-indent: 5% hanging;
+    //   margin-left: 5%;
+    // }
+    // footer .contributors li::first-letter {
+    //   // Doesn't work in Chrome
+    //   // text-indent: 5% hanging;
+    //   margin-left: -5%;
+    // }
     @include media-breakpoint-up(lg) {
       .foundation-stmt {
         max-width: 50%;
