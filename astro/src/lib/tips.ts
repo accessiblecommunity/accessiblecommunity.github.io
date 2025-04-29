@@ -19,8 +19,8 @@ export async function getTipCategories(tips?) {
 }
 
 export async function getRelatedTips(tip) {
-  const relatedTips = await getCollection("atotw", ({ slug, data }) => {
-    return slug != tip.slug && !isEmpty(intersection(tip.data.tags, data.tags));
+  const relatedTips = await getCollection("atotw", ({ id, data }) => {
+    return id != tip.id && !isEmpty(intersection(tip.data.tags, data.tags));
   });
   const orderedTips = await orderByRecent(relatedTips);
   return orderedTips;

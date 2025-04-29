@@ -5,6 +5,7 @@ import SocialLinks from "./SocialLinks.astro";
 import TeamVignette from "./TeamVignette.astro";
 import type { CollectionEntry } from "astro:content";
 import { components } from "../lib/mdx";
+import { render } from "astro:content";
 
 interface Props {
   member: CollectionEntry<"staff">;
@@ -13,7 +14,7 @@ interface Props {
 
 const { member, role = "default" } = Astro.props;
 const { name, links } = member.data;
-const { Content } = await member.render();
+const { Content } = await render(member);
 ---
 
 <div class="border-bottom row justify-content-between team-bio">

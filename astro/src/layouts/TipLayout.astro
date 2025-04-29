@@ -18,7 +18,7 @@ const defaultCrumbs: Breadcrumbs = [
 ];
 
 interface Props {
-  slug?: CollectionEntry<"atotw">["slug"];
+  id?: CollectionEntry<"atotw">["id"];
   tip?: CollectionEntry<"atotw">;
   catalog: TipCatalog;
   crumbs?: Breadcrumbs;
@@ -26,14 +26,14 @@ interface Props {
 }
 
 const {
-  slug = undefined,
+  id = undefined,
   catalog = await getTipCatalog(),
   crumbs = defaultCrumbs,
 } = Astro.props;
 
-const { tip = slug && (await getEntry("atotw", slug)) } = Astro.props;
+const { tip = id && (await getEntry("atotw", id)) } = Astro.props;
 if (tip === undefined || isEmpty(tip))
-  throw new Error("Either the 'tip' or the 'slug' is required");
+  throw new Error("Either the 'tip' or the 'id' is required");
 
 const { title = tip?.data.title || "Tip of the Week" } = Astro.props;
 const { tips = [] } = catalog;
@@ -56,7 +56,7 @@ const metadata: PageMetadata = {
   title,
   description: tip?.data.summary || "",
   type: "article",
-  image: getOpenGraphImageData(Astro.site, "tips", tip.slug, tip.data.summary),
+  image: getOpenGraphImageData(Astro.site, "tips", tip.id, tip.data.summary),
 };
 ---
 
@@ -104,7 +104,7 @@ const metadata: PageMetadata = {
                 <ul class="mt-1 mb-3 list-disc list-spaced">
                   {related.map((b) => (
                     <li>
-                      <a href={`/tips/${b.slug}`}>{b.data.title}</a>
+                      <a href={`/tips/${b.id}`}>{b.data.title}</a>
                     </li>
                   ))}
                 </ul>

@@ -2,7 +2,7 @@
 import type { Breadcrumbs, PageMetadata } from "@lib/types";
 import { getOpenGraphImageData } from "@lib/og-image";
 
-import { getCollection } from "astro:content";
+import { getCollection, render } from "astro:content";
 import { components } from "@lib/mdx";
 
 import Branding from "../components/Branding.astro";
@@ -166,7 +166,7 @@ const teams = await getCollection("recruiting");
               </div>
               <div class="card-body">
                 <div class="card-text">
-                  {team.render().then(({ Content }) => (
+                  {render(team).then(({ Content }) => (
                     <Content {components} />
                   ))}
                 </div>

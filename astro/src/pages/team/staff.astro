@@ -7,7 +7,7 @@ import ThemedSection from "../../components/ThemedSection.astro";
 
 import { sortBy } from "lodash-es";
 import type { Breadcrumbs, PageMetadata } from "@lib/types";
-import { getCollection } from "astro:content";
+import { getCollection, render } from "astro:content";
 import { components } from "@lib/mdx";
 
 const staff = await getCollection("staff");
@@ -32,12 +32,12 @@ const teamEntries = await getCollection(
 );
 const teams = await Promise.all(
   teamEntries.map(async (entry) => {
-    const { Content } = await entry.render();
+    const { Content } = await render(entry);
 
     return {
       name: entry.data.name,
-      team: entry.slug,
-      members: getTeamMembers(entry.slug),
+      team: entry.id,
+      members: getTeamMembers(entry.id),
       Content,
     };
   }),

@@ -7,6 +7,7 @@ import { experimental_AstroContainer as AstroContainer } from "astro/container";
 import { getContainerRenderer as mdxRenderer } from "@astrojs/mdx";
 
 import type { CollectionEntry } from "astro:content";
+import { render } from "astro:content";
 import { orderByRecent } from "../../lib/tips";
 import { components, sanitizeOptions } from "../../lib/mdx";
 
@@ -23,7 +24,7 @@ export async function GET(context) {
     site: `${context.site}/services/tip-of-the-week/`,
     items: await Promise.all(
       tips.map(async (tip) => {
-        const { Content } = await tip.render();
+        const { Content } = await render(tip);
         // TODO: Currently no way to embed our CSS into the RSS feed, making these pointless.
         // const postHtml = await container.renderToString(Content, { props: { components }});
         const tipHtml = await container.renderToString(Content);
@@ -32,7 +33,7 @@ export async function GET(context) {
           title: tip.data.title,
           pubDate: tip.data.published,
           description: tip.data.summary,
-          link: `/tips/${tip.slug}/`,
+          link: `/tips/${tip.id}/`,
           content: sanitizeHtml(tipHtml, sanitizeOptions),
         };
       }),

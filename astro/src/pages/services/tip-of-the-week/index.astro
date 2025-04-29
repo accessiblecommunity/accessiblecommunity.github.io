@@ -106,7 +106,7 @@ const crumbs: Breadcrumbs = [
           {
             tips.slice(0, 7).map((tip) => (
               <li>
-                <a href={`/tips/${tip.slug}`}>{tip.data.title}</a>
+                <a href={`/tips/${tip.id}`}>{tip.data.title}</a>
               </li>
             ))
           }
@@ -121,7 +121,7 @@ const crumbs: Breadcrumbs = [
                 (tip) =>
                   tip.data.tags.includes(cat) && (
                     <li class="list-item">
-                      <a href={`/tips/${tip.slug}`}>{tip.data.title}</a>
+                      <a href={`/tips/${tip.id}`}>{tip.data.title}</a>
                     </li>
                   ),
               )}

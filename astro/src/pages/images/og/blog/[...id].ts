@@ -5,7 +5,7 @@ import { isEmpty } from "lodash-es";
 const collectionEntries = await getCollection("blogs");
 
 const pages = Object.fromEntries(
-  collectionEntries.map(({ slug, data }) => [slug, data]),
+  collectionEntries.map(({ id, data }) => [id, data]),
 );
 
 export const { getStaticPaths, GET } = OGImageRoute({

@@ -6,10 +6,10 @@ export async function getBlogAuthors(
 ): Promise<Array<CollectionEntry<"staff">>> {
   blogs = isNil(blogs) ? await getCollection("blogs") : blogs;
   if (isEmpty(blogs)) return [];
-  // Slug uniqueness is key.
-  const authorSlugs = [...new Set(blogs.map((b) => b.data.author.slug).flat())];
-  const authorRefs = authorSlugs.map((slug) => ({
-    slug,
+  // Id uniqueness is key.
+  const authorIDs = [...new Set(blogs.map((b) => b.data.author.id).flat())];
+  const authorRefs = authorIDs.map((id) => ({
+    id,
     collection: "staff",
   }));
   const authors: Array<CollectionEntry<"staff">> = await getEntries(authorRefs);

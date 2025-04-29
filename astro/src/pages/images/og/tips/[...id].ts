@@ -11,7 +11,7 @@ type TipMapping = {
 };
 
 const pages: TipMapping = Object.fromEntries(
-  collectionEntries.map(({ slug, data }) => [slug, data]),
+  collectionEntries.map(({ id, data }) => [id, data]),
 );
 
 export const { getStaticPaths, GET } = OGImageRoute({

@@ -1,10 +1,10 @@
 ---
 import { Icon } from "astro-icon/components";
-import { getEntry } from "astro:content";
+import { getEntry, render } from "astro:content";
 
 const { q, text = "primary", class: extraClasses } = Astro.props;
 const quote = await getEntry("quotes", q);
-const { Content = "p" } = await quote?.render();
+const { Content = "p" } = quote && await render(quote) || {};
 ---
 
 <figure class={extraClasses}>
