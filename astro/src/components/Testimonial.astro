@@ -11,7 +11,7 @@ interface Props {
 const { id, element = "div", text = undefined } = Astro.props;
 
 const testimonial = await getEntry("testimonials", id);
-const { Content = 'p' } = testimonial && await render(testimonial) || {};
+const { Content = "p" } = (testimonial && (await render(testimonial))) || {};
 
 const person = testimonial?.data.person;
 const teamMemberId = testimonial?.data.staff?.id;
