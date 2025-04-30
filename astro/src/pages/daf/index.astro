@@ -1,0 +1,19 @@
+---
+import type { PageMetadata } from "@lib/types";
+import { getOpenGraphImageData } from "@lib/og-image";
+
+const metadata: PageMetadata = {
+  title: "Digital Accessibility Framework",
+  description: "An overview of the Digital Accessibility Framework",
+  image: getOpenGraphImageData(
+    Astro.site,
+    "pages",
+    "daf",
+    "An overview of the Digital Accessibility Framework",
+  ),
+};
+
+import DAFStripedLayout from "src/layouts/DAFStripedLayout.astro";
+---
+
+<DAFStripedLayout prefix="overview/" {metadata} />

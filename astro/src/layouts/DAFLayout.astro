@@ -17,7 +17,8 @@ const { metadata, title } = Astro.props;
 if (!metadata.site) metadata.site = "Digital Accessibility Framework";
 
 const navLinks = {
-  Overview: "/daf/overview/",
+  Overview: "/daf/",
+  Background: "/daf/background/",
   Framework: "/daf/framework/",
   Matrix: "/daf/matrix/",
   Roadmap: "/daf/roadmap/",
@@ -44,10 +45,20 @@ const navLinks = {
     <link rel="icon" type="image/png" href="/images/favicon.png" />
     <link rel="sitemap" href="/sitemap-index.xml" />
     <slot name="head" />
-  </head>
+    <script>
+      import { Collapse, Dropdown } from "~bootstrap-es";
+
+      Array.from(document.querySelectorAll(".dropdown")).forEach(
+        (node) => new Dropdown(node),
+      );
+      Array.from(document.querySelectorAll(".collapse")).forEach(
+        (node) => new Collapse(node, { toggle: false }),
+      );
+    </script></head
+  >
 
   <body>
-    <header class="w-100 d-print-none">
+    <header class="sticky-top w-100 d-print-none">
       <nav
         class="navbar navbar-expand-lg bg-primary align-items-center"
         data-bs-theme="dark"
@@ -63,14 +74,14 @@ const navLinks = {
             class="navbar-toggler"
             type="button"
             data-bs-toggle="collapse"
-            data-bs-target="#navbarText"
-            aria-controls="navbarText"
+            data-bs-target="#dafNavbar"
+            aria-controls="dafNavbar"
             aria-expanded="false"
             aria-label="Toggle navigation"
           >
             <span class="navbar-toggler-icon"></span>
           </button>
-          <div class="collapse navbar-collapse" id="navbarText">
+          <div class="collapse navbar-collapse" id="dafNavbar">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0" data-bs-theme="dark">
               {
                 Object.entries(navLinks).map(([name, href]) => {
@@ -88,6 +99,14 @@ const navLinks = {
                       </li>;
                 })
               }
+              <li class="nav-item">
+                <ExternalLink
+                  class="nav-link"
+                  href="https://docs.google.com/forms/d/e/1FAIpQLSe1VjhbdUUnh2BIBTfdVlU0AayQi-cM8Ors3ALU8OYohj8bOQ/viewform"
+                >
+                  Feedback
+                </ExternalLink>
+              </li>
             </ul>
             <a href="/">
               <Icon
@@ -126,7 +145,7 @@ const navLinks = {
               </li>
               <li>
                 <ExternalLink
-                  href="https://www.iso.org/"
+                  href="https://www.iso.org/sectors/diversity-inclusion/accessibility"
                   inline
                   class="link-light"
                   >International Standards Organization (ISO)</ExternalLink
@@ -141,7 +160,7 @@ const navLinks = {
                 >
               </li>
               <li>
-                <a class="icon-link link-light" href="/">
+                <a class="icon-link link-light align-middle" href="/">
                   <Icon
                     name="ac-logo"
                     class="bi"
@@ -154,19 +173,20 @@ const navLinks = {
 
           <div>
             <h2 class="text-white fw-bold">Editors</h2>
-            <ul class="list-unstyled">
+            <ul class="list-unstyled contributors">
               <li class="text-light"> Michael Cooper </li>
               <li class="text-light"> Bern Jordan </li>
-              <li class="text-light"> Rachael Montgomery </li>
+              <li class="text-light"> Rachael Bradley Montgomery </li>
             </ul>
           </div>
           <div>
             <h2 class="text-white fw-bold">Contributors</h2>
-            <ul class="list-unstyled">
+            <ul class="list-unstyled contributors">
               <li class="text-light"> Alastair Campbell </li>
               <li class="text-light"> Scott Hollier </li>
               <li class="text-light"> Joshue O'Connor </li>
               <li class="text-light"> Lisa Seeman </li>
+              <li class="text-light"> Glenda Sims </li>
               <li class="text-light"> Jeanne Spellman </li>
               <li class="text-light"> Jutta Treviranus </li>
               <li class="text-light"> Gregg Vanderheiden </li>
@@ -190,14 +210,22 @@ const navLinks = {
     .navbar-text.small {
       font-size: 75%;
     }
-    .nav-link:not(.active) {
+
+    .nav-item {
+      margin-right: 0.5em;
+    }
+    header :global(.nav-link):not(.active) {
       text-decoration: underline;
       text-underline-offset: 0.2em;
     }
-    .nav-link,
+    header :global(.nav-link),
     .dropdown-item,
     .dropdown-item:hover {
-      color: #ccc;
+      color: #d5d5d5;
+      font-size: 1.25em;
+    }
+    header :global(a:focus) {
+      outline-color: #fff;
     }
 
     footer h2 {
@@ -210,6 +238,17 @@ const navLinks = {
     footer .icon-link {
       gap: 0.25rem;
     }
+    // Possible solution to handling the spaced list on longer names
+    // footer .contributors li {
+    //   // Doesn't work in Chrome
+    //   // text-indent: 5% hanging;
+    //   margin-left: 5%;
+    // }
+    // footer .contributors li::first-letter {
+    //   // Doesn't work in Chrome
+    //   // text-indent: 5% hanging;
+    //   margin-left: -5%;
+    // }
     @include media-breakpoint-up(lg) {
       .foundation-stmt {
         max-width: 50%;

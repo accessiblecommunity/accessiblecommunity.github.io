@@ -74,7 +74,7 @@ Your donation goes towards supporting our programs and technology to build disab
     "escape-room-csun-2025": {
       title: "The Accessible Escape Room is at CSUN 2025.",
       description:
-        'We are prototyping our newest room - "The Puzzling Picnic".\nIf you are attending the conference, we would love your feedback.',
+        'We are playtesting our newest room - "The Puzzling Picnic".\nIf you are attending the conference, we would love your feedback.',
       bgImage: {
         path: "./src/images/colored-hero/puzzles.jpg",
         fit: "cover",

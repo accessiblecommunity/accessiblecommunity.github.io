@@ -1,23 +1,37 @@
 ---
-import { components } from "src/lib/mdx";
-import { getCollection, render } from "astro:content";
 import { type PageMetadata } from "@lib/types";
 import { getOpenGraphImageData } from "@lib/og-image";
 
 export async function getStaticPaths() {
   return [
     {
-      params: { name: "overview" },
+      params: { name: "index" },
       props: {
         prefix: "overview/",
         metadata: {
           title: "Overview",
-          description: "An overview of the Digitial Accessibility Framework",
+          description: "The overview of the Digital Accessibility Framework",
           image: getOpenGraphImageData(
             Astro.site,
             "pages",
             "daf",
-            "An overview of the Digitial Accessibility Framework",
+            "The overview of the Digital Accessibility Framework",
+          ),
+        },
+      },
+    },
+    {
+      params: { name: "background" },
+      props: {
+        prefix: "background/",
+        metadata: {
+          title: "Background",
+          description: "The background of the Digital Accessibility Framework",
+          image: getOpenGraphImageData(
+            Astro.site,
+            "pages",
+            "daf",
+            "The background of the Digital Accessibility Framework",
           ),
         },
       },
@@ -29,12 +43,12 @@ export async function getStaticPaths() {
         metadata: {
           title: "Framework",
           description:
-            "The high-level breakdown of the Digitial Accessibility Framework",
+            "The high-level breakdown of the Digital Accessibility Framework",
           image: getOpenGraphImageData(
             Astro.site,
             "pages",
             "daf",
-            "The high-level breakdown of the Digitial Accessibility Framework",
+            "The high-level breakdown of the Digital Accessibility Framework",
           ),
         },
       },
@@ -45,12 +59,12 @@ export async function getStaticPaths() {
         prefix: "matrix/",
         metadata: {
           title: "Matrix",
-          description: "The matrix of the Digitial Accessibility Framework",
+          description: "The matrix of the Digital Accessibility Framework",
           image: getOpenGraphImageData(
             Astro.site,
             "pages",
             "daf",
-            "The matrix of the Digitial Accessibility Framework",
+            "The matrix of the Digital Accessibility Framework",
           ),
         },
       },
@@ -61,12 +75,12 @@ export async function getStaticPaths() {
         prefix: "roadmap/",
         metadata: {
           title: "Roadmap",
-          description: "The roadmap of the Digitial Accessibility Framework",
+          description: "The roadmap of the Digital Accessibility Framework",
           image: getOpenGraphImageData(
             Astro.site,
             "pages",
             "daf",
-            "The roadmap of the Digitial Accessibility Framework",
+            "The roadmap of the Digital Accessibility Framework",
           ),
         },
       },
@@ -80,48 +94,7 @@ interface Props {
 }
 const { prefix, metadata } = Astro.props;
 
-const entries = await getCollection("daf", (entry) =>
-  entry.id.startsWith(prefix),
-);
-entries.sort((a, b) => a.data.order - b.data.order);
-const renderedEntries = await Promise.all(
-  entries.map(async (entry) => await render(entry)),
-);
-
-import DAFLayout from "src/layouts/DAFLayout.astro";
-import ThemedSection from "@components/ThemedSection.astro";
+import DAFStripedLayout from "src/layouts/DAFStripedLayout.astro";
 ---
 
-<DAFLayout {metadata}>
-  <div class="daf">
-    {
-      renderedEntries.map(({ Content }, index) => (
-        <ThemedSection
-          theme={index % 2 === 0 ? undefined : "secondary"}
-          style={index % 2 === 0 ? "primary" : "subtle"}
-          py={4}
-        >
-          <Content {components} />
-        </ThemedSection>
-      ))
-    }
-  </div>
-</DAFLayout>
-
-<style scoped>
-  .daf :global(h1) {
-    margin-bottom: 1em;
-  }
-  .daf :global(h2) {
-    font-size: 1.5rem;
-    margin-bottom: 1em;
-  }
-  .daf :global(h3) {
-    font-size: 1.3rem;
-    margin-bottom: 1em;
-  }
-  .daf :global(h4) {
-    font-size: 1.15rem;
-    margin-bottom: 1em;
-  }
-</style>
+<DAFStripedLayout {prefix} {metadata} />
