@@ -15,7 +15,7 @@ export async function getStaticPaths() {
   ];
 
   return catalog.blogs.map((blog) => ({
-    params: { slug: blog.slug },
+    params: { slug: blog.id },
     props: { blog, catalog, crumbs },
   }));
 }

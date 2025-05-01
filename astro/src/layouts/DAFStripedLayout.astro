@@ -1,6 +1,6 @@
 ---
 import { components } from "src/lib/mdx";
-import { getCollection } from "astro:content";
+import { getCollection, render } from "astro:content";
 import { type PageMetadata } from "@lib/types";
 
 interface Props {
@@ -10,11 +10,11 @@ interface Props {
 const { prefix, metadata } = Astro.props;
 
 const entries = await getCollection("daf", (entry) =>
-  entry.slug.startsWith(prefix),
+  entry.id.startsWith(prefix),
 );
 entries.sort((a, b) => a.data.order - b.data.order);
 const renderedEntries = await Promise.all(
-  entries.map(async (entry) => await entry.render()),
+  entries.map(async (entry) => await render(entry)),
 );
 
 import DAFLayout from "src/layouts/DAFLayout.astro";

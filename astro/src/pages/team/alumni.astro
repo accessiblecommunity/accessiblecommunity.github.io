@@ -30,8 +30,8 @@ const teamEntries = await getCollection(
 );
 const teams = teamEntries.map((entry) => ({
   name: entry.data.name,
-  team: entry.slug,
-  members: getTeamMembers(entry.slug),
+  team: entry.id,
+  members: getTeamMembers(entry.id),
 }));
 
 const crumbs = [

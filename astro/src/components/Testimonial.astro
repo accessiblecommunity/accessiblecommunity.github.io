@@ -1,20 +1,20 @@
 ---
-import { getEntry } from "astro:content";
+import { getEntry, render } from "astro:content";
 import TeamVignette from "./TeamVignette.astro";
 
 interface Props {
-  slug: string;
+  id: string;
   text?: string;
   element?: string;
 }
 
-const { slug, element = "div", text = undefined } = Astro.props;
+const { id, element = "div", text = undefined } = Astro.props;
 
-const testimonial = await getEntry("testimonials", slug);
-const { Content } = await testimonial?.render();
+const testimonial = await getEntry("testimonials", id);
+const { Content = "p" } = (testimonial && (await render(testimonial))) || {};
 
 const person = testimonial?.data.person;
-const teamMemberSlug = testimonial?.data.staff?.slug;
+const teamMemberId = testimonial?.data.staff?.id;
 
 const NameTag = element;
 ---
@@ -24,7 +24,7 @@ const NameTag = element;
     <Content />
   </blockquote>
   {
-    teamMemberSlug ?
+    teamMemberId ?
       <figcaption
         class:list={[
           "blockquote-footer fs-6",
@@ -33,7 +33,7 @@ const NameTag = element;
         ]}
       >
         <TeamVignette
-          member={teamMemberSlug}
+          member={teamMemberId}
           left={false}
           firstNameOnly={true}
           valign="center"

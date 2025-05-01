@@ -90,7 +90,7 @@ const crumbs: Breadcrumbs = [
       Our <strong>most recent</strong> tip.
     </h2>
     <div class="p-2 p-sm-3 p-md-4 rounded-3">
-      <TipOfTheWeek slug="etiquette" />
+      <TipOfTheWeek id="etiquette" />
     </div>
   </ShadowBoxSection>
 
@@ -106,7 +106,7 @@ const crumbs: Breadcrumbs = [
           {
             tips.slice(0, 7).map((tip) => (
               <li>
-                <a href={`/tips/${tip.slug}`}>{tip.data.title}</a>
+                <a href={`/tips/${tip.id}`}>{tip.data.title}</a>
               </li>
             ))
           }
@@ -121,7 +121,7 @@ const crumbs: Breadcrumbs = [
                 (tip) =>
                   tip.data.tags.includes(cat) && (
                     <li class="list-item">
-                      <a href={`/tips/${tip.slug}`}>{tip.data.title}</a>
+                      <a href={`/tips/${tip.id}`}>{tip.data.title}</a>
                     </li>
                   ),
               )}

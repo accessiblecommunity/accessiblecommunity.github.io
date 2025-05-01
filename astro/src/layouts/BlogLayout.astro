@@ -1,5 +1,5 @@
 ---
-import { getEntry } from "astro:content";
+import { getEntry, render } from "astro:content";
 import { getBlogCatalog, type BlogCatalog } from "@lib/blog";
 import { getOpenGraphImageData } from "@lib/og-image";
 import { isEmpty, kebabCase, startCase } from "lodash-es";
@@ -48,12 +48,12 @@ const metadata: PageMetadata = {
   image: getOpenGraphImageData(
     Astro.site,
     "blog",
-    blog.slug,
+    blog.id,
     isEmpty(blog.data.description) ? title : blog.data.description,
   ),
 };
 
-const { Content } = await blog.render();
+const { Content } = await render(blog);
 
 import components from "../lib/mdx";
 import ImageHeading from "../components/ImageHeading.astro";
@@ -118,7 +118,7 @@ import ThemedSection from "../components/ThemedSection.astro";
                 <ul class="mt-1 mb-3 list-disc list-spaced">
                   {blogs.map((b) => (
                     <li>
-                      <a href={`/blog/${b.slug}`}>{b.data.title}</a>
+                      <a href={`/blog/${b.id}`}>{b.data.title}</a>
                     </li>
                   ))}
                 </ul>
@@ -146,7 +146,7 @@ import ThemedSection from "../components/ThemedSection.astro";
                 <ul class="mt-1 mb-3 list-disc list-spaced">
                   {authors.map((author) => (
                     <li>
-                      <a href={`/blog/authors/${author.slug}`}>
+                      <a href={`/blog/authors/${author.id}`}>
                         {author.data.name}
                       </a>
                     </li>

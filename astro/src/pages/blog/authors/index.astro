@@ -29,7 +29,7 @@ import ThemedSection from "../../../components/ThemedSection.astro";
       {
         authors.map((author) => (
           <li>
-            <a href={`/blog/authors/${author.slug}`}>{author.data.name}</a>
+            <a href={`/blog/authors/${author.id}`}>{author.data.name}</a>
           </li>
         ))
       }
