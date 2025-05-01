@@ -428,6 +428,10 @@ a:hover {
   font-family: $headings-font-family;
 }
 
+.card-title {
+  color: $card-title-color-dark;
+}
+
 .list-disc li::marker {
   color: $body-color;
 }

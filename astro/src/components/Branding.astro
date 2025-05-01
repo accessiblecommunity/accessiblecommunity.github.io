@@ -16,7 +16,7 @@ if (Astro.slots.has("default")) text = await Astro.slots.render("default");
 text = text
   .replace(/Accessib(le)/, '<span class="fw-lighter">Accessib$1</span>')
   .replace(
-    /(loc|t|mutu)a11y/i,
+    /(glob|mutu|loc|t)a11y/i,
     noAria ?
       '<span class="text-lowercase">$1<span class="fw-lighter">a11y</span></span>'
     : '<span class="text-lowercase" aria-hidden="true">$1<span class="fw-lighter">a11y</span></span><span class="visually-hidden">$1ally</span>',

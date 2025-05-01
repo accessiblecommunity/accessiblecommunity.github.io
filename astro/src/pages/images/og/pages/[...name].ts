@@ -114,6 +114,18 @@ Your donation goes towards supporting our programs and technology to build disab
       },
       padding: 67,
     },
+    globa11y: {
+      title: "globa11y",
+      description:
+        "globa11y is a pilot social enterprise initiative of Accessible Community, a 501©(3) nonprofit dedicated to fostering disability-inclusive communities.",
+      bgImage: {
+        path: "./src/images/colored-hero/policy.png",
+        fit: "fill",
+        position: ["center", "start"],
+      },
+      padding: 72,
+      cacheDir: false,
+    },
     mentoring: {
       title: "mutua11y mentoring",
       description:

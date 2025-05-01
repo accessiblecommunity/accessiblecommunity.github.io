@@ -1,0 +1,87 @@
+---
+import { getOpenGraphImageData } from "@lib/og-image";
+import type { Breadcrumbs, PageMetadata } from "@lib/types";
+
+const title = "globa11y";
+const metadata: PageMetadata = {
+  title,
+  description: "Overview of the globa11y Initiative",
+  image: getOpenGraphImageData(Astro.site, "pages", "globa11y"),
+};
+const crumbs: Breadcrumbs = [
+  {
+    name: "Home",
+    href: "/",
+  },
+  {
+    name: "Services",
+    href: "/services",
+  },
+];
+
+import Branding from "@components/Branding.astro";
+import Hero from "@components/ColumnedHero.astro";
+import Layout from "../../../layouts/Layout.astro";
+import ThemedSection from "@components/ThemedSection.astro";
+
+import heroBg from "src/images/np_Business-partners-discussing-work-arranging-business-papers-and-charts-on-floor_bYWo15_large.jpg";
+import globa11yIcon from "src/images/globa11y-logo.png"
+import { Image } from "astro:assets";
+---
+
+<Layout {title} {crumbs} {metadata}>
+  <Hero image={heroBg} slot="header" reverse vertical-position="22%" horizontal-position="78%">
+    <div class="py-2 px-2" slot="heading">
+      <h1 class="display-3">
+        <span class="me-1">Introducing</span>
+        <span class="text-nowrap">
+          <Image class="logo d-inline-block me-1" src={globa11yIcon} alt="" aria-hidden
+          /><Branding>globa11y</Branding>
+        </span>
+      </h1>
+    </div>
+    <div class="py-3">
+      <p class="text-bg-hero">
+        A pilot social enterprise initiative to help bridge the gap between digital accessibility
+        skills development, employment opportunities and small-to-medium business needs.
+      </p>
+    </div>
+  </Hero>
+
+  <ThemedSection theme="secondary" style="subtle">
+    <h2>Our Mission</h2>
+
+    <p class="lead">
+      At <Branding>globa11y</Branding>, we empower low-income people with disabilities by providing the technical skills they need to build sustainable careers in technology and digital accessibility. Through hands-on training, mentorship, and direct industry engagement, we create meaningful pathways to employment while addressing the global demand for accessibility expertise.
+    </p>
+  </ThemedSection>
+
+  <ThemedSection>
+    <h2>Lorem ipsum</h2>
+
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    </p>
+
+    <p>
+      Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?
+    </p>
+  </ThemedSection>
+
+  <ThemedSection theme="secondary" style="subtle">
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    </p>
+
+    <p>
+      Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?
+    </p>
+  </ThemedSection>
+
+  <style scoped>
+    .logo {
+      height: 1em;
+      width: auto;
+    }
+  </style>
+</Layout>
