@@ -3,7 +3,78 @@ import Layout from "../../layouts/Layout.astro";
 import ImageHeading from "../../components/ImageHeading.astro";
 import ThemedSection from "../../components/ThemedSection.astro";
 
-const crumbs = [
+import type { Breadcrumbs, PageMetadata } from "@lib/types";
+import { getCollection, type CollectionEntry } from "astro:content";
+import { isEmpty } from "lodash-es";
+
+const leadership: CollectionEntry<"staff">[] = await getCollection(
+  "staff",
+  ({ data }) => {
+    return data.current == false && data.roles?.leadership;
+  },
+);
+const board: CollectionEntry<"staff">[] = await getCollection(
+  "staff",
+  ({ data }) => {
+    return data.current == false && data.roles?.board;
+  },
+);
+const staff: CollectionEntry<"staff">[] = await getCollection(
+  "staff",
+  ({ data }) => {
+    return (
+      data.current == false && !(data.roles?.leadership || data.roles?.board)
+    );
+  },
+);
+const teams = await getCollection(
+  "teams",
+  ({ id }) => ["board", "default", "leadership"].indexOf(id) == -1,
+);
+
+type Roles = CollectionEntry<"staff">["data"]["roles"];
+type RoleKey = keyof Roles;
+
+interface TeamMembers {
+  [index: RoleKey]: TeamOverview;
+}
+interface TeamOverview {
+  name: string;
+  members: string[];
+}
+
+const teamMembers: TeamMembers = teams.reduce(
+  (accum: TeamMembers, current: CollectionEntry<"teams">) => {
+    const id = current.id as RoleKey;
+    const overview: TeamOverview = {
+      name: current.data.name,
+      members: [],
+    };
+    accum[id] = overview;
+    return accum;
+  },
+  {},
+);
+staff.reduce((members: TeamMembers, current: CollectionEntry<"staff">) => {
+  const roles: Roles = current.data.roles || {};
+  for (const [teamName, position] of Object.entries(roles)) {
+    if (["board", "default", "leadership"].indexOf(teamName) == -1) {
+      const teamKey = teamName as RoleKey;
+      const overview: TeamOverview = members[teamKey];
+      overview.members.push(
+        `<strong>${current.data.name}</strong> - ${position}`,
+      );
+    }
+  }
+  return members;
+}, teamMembers);
+
+const title = "Previous Contributors";
+const metadata: PageMetadata = {
+  title,
+  description: "The previous contributors at Accessible Community",
+};
+const crumbs: Breadcrumbs = [
   {
     name: "Home",
     href: "/",
@@ -15,7 +86,7 @@ const crumbs = [
 ];
 ---
 
-<Layout title="Previous Contributors" crumbs={crumbs}>
+<Layout {title} {crumbs} {metadata}>
   <ImageHeading image="team" slot="header">
     Previous <strong>Contributors</strong>
   </ImageHeading>
@@ -32,9 +103,13 @@ const crumbs = [
       </h2>
       <div class="card-body">
         <ul>
-          <li>Cham L. (Board Member, 2021-23)</li>
-          <li>Tammi Smith (Board Secretary, 2019-21)</li>
-          <li>Ben Wilson (Board President, 2017-19)</li>
+          {
+            board.map(({ data }) => (
+              <li class="text-brand">
+                <strong>{data.name}</strong> - {data.roles.board}
+              </li>
+            ))
+          }
         </ul>
       </div>
     </div>
@@ -44,13 +119,18 @@ const crumbs = [
       </h2>
       <div class="card-body">
         <ul>
-          <li>Marjana C. (loca11y Project Manager, 2022)</li>
-          <li>Zsuzsanna Orban (mutua11y Workshops Project Manager, 2022-23)</li>
-          <li>Gladys Phan (mutua11y Mentoring Program Managerm 2022-23)</li>
-          <li>Abdullah S. (Director of Donor Relations, 2020-21)</li>
+          {
+            leadership.map(({ data }) => (
+              <li class="text-brand">
+                <strong>{data.name}</strong> - {data.roles.leadership}
+              </li>
+            ))
+          }
         </ul>
       </div>
     </div>
+    {
+      /*
     <div class="card mb-5 shadow team-card">
       <h2 class="card-header text-primary-emphasis">Contributors</h2>
       <div class="card-body">
@@ -61,6 +141,33 @@ const crumbs = [
           <li class="list-inline-item">Albert Kim</li>
           <li class="list-inline-item">Eleanor Waldschuetz</li>
         </ul>
+      </div>
+    </div>
+    */
+    }
+    <div class="card mb-5 shadow team-card">
+      <h2 class="card-header text-primary-emphasis">Staff</h2>
+      <div class="card-body">
+        {
+          Object.values(teamMembers).map(
+            (value) =>
+              !isEmpty(value.members) && (
+                <>
+                  <h3 class="display-6">
+                    {value.name} <strong>Team</strong>
+                  </h3>
+                  <ul class="list-inline mx-3">
+                    {value.members.map((member) => (
+                      <li
+                        class="list-inline-item text-brand"
+                        set:html={member}
+                      />
+                    ))}
+                  </ul>
+                </>
+              ),
+          )
+        }
       </div>
     </div>
     <div class="card mb-5 shadow team-card">
@@ -142,5 +249,9 @@ const crumbs = [
 
   .list-inline-item:not(:last-child) {
     margin-right: 1.5em;
+  }
+
+  .text-brand :global(strong) {
+    font-weight: 600;
   }
 </style>

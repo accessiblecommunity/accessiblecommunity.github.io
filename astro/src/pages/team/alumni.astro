@@ -1,0 +1,105 @@
+---
+import { getCollection, type CollectionEntry } from "astro:content";
+
+import Branding from "../../components/Branding.astro";
+import ImageHeading from "../../components/ImageHeading.astro";
+import Layout from "../../layouts/Layout.astro";
+import TeamVignette from "../../components/TeamVignette.astro";
+import ThemedSection from "../../components/ThemedSection.astro";
+
+import { isEmpty, sortBy } from "lodash-es";
+
+const alumni = await getCollection("staff", ({ data }) => !data.current);
+
+function getTeamMembers(tag: string) {
+  return sortBy(
+    alumni.filter(
+      (teamMember) =>
+        teamMember.data.roles &&
+        Object.keys(teamMember.data.roles).includes(tag),
+    ),
+    // Alphabetize by first name
+    (teamMember) =>
+      teamMember.data.nickname || teamMember.data.name.split(" ")[0],
+  );
+}
+
+const teamEntries = await getCollection(
+  "teams",
+  ({ data }) => !data.management,
+);
+const teams = teamEntries.map((entry) => ({
+  name: entry.data.name,
+  team: entry.id,
+  members: getTeamMembers(entry.id),
+}));
+
+const crumbs = [
+  {
+    name: "Home",
+    href: "/",
+  },
+  {
+    name: "Team",
+    href: "/team",
+  },
+];
+---
+
+<Layout title="Alumni" crumbs={crumbs}>
+  <ImageHeading image="team" slot="header">
+    Our <strong>Alumni</strong>
+  </ImageHeading>
+  <ThemedSection theme="secondary" style="subtle">
+    <p class="lead container-fluid">
+      The dedication and skill of our volunteer community makes
+      <Branding>Accessible Community's</Branding>
+      mission to grow disability inclusive communities through technology possible.
+      We sincerely appreciate the time and energy that each person listed below has
+      contributed to our mission.
+    </p>
+    {
+      teams.map(({ name, team, members }) => {
+        return (
+          !isEmpty(members) && (
+            <>
+              <h2 class="mt-5 ms-3"> {name} </h2>
+              <ul class="list-inline-block text-center px-2 px-md-4">
+                {members.map((member) => {
+                  return (
+                    <li class="list-inline-item staff-list-item my-2 m-md-2 w-100">
+                      <div class="text-start bg-body shadow-sm rounded-1 p-2 pt-3 fs-4">
+                        <TeamVignette
+                          member={member}
+                          role={team}
+                          firstNameOnly={true}
+                          highlightName={true}
+                          branded={true}
+                          valign="start"
+                          size="lg"
+                        />
+                      </div>
+                    </li>
+                  );
+                })}
+              </ul>
+            </>
+          )
+        );
+      })
+    }
+  </ThemedSection>
+
+  <style>
+    .staff-list-item {
+      max-width: 18rem;
+    }
+    .staff-list-item :global(.vignette-name) {
+      color: var(--bs-primary-text-emphasis);
+      margin-bottom: -0.1em;
+    }
+    .staff-list-item :global(.vignette-title) {
+      line-height: 1.1em;
+    }
+  </style>
+</Layout>

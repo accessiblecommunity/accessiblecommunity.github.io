@@ -1,11 +1,12 @@
 ---
+import { getImage } from "astro:assets";
+import type { ImageMetadata } from "astro";
+
 interface Props {
-  image: string;
-  header?: string;
+  image: ImageMetadata | string;
   theme?: string;
-  textColor?: string;
-  columns: string;
-  actionBreakpoint: string;
+  columns?: string;
+  actionBreakpoint?: string;
 }
 
 const {
@@ -14,8 +15,6 @@ const {
   columns = "col-lg-6",
   actionBreakpoint = "lg",
 } = Astro.props;
-
-import { getImage } from "astro:assets";
 
 let heroBgUrl;
 

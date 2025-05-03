@@ -1,9 +1,13 @@
 ---
-import { getEntry } from "astro:content";
-import { getBlogCatalog } from "../lib/blog";
+import { getEntry, render } from "astro:content";
+import { getBlogCatalog, type BlogCatalog } from "@lib/blog";
+import { getOpenGraphImageData } from "@lib/og-image";
 import { isEmpty, kebabCase, startCase } from "lodash-es";
 
-const defaultCrumbs = [
+import type { Breadcrumbs, PageMetadata } from "../lib/types";
+import type { CollectionEntry } from "astro:content";
+
+const defaultCrumbs: Breadcrumbs = [
   {
     name: "Home",
     href: "/",
@@ -15,11 +19,10 @@ const defaultCrumbs = [
 ];
 
 interface Props {
-  blog: object; // TODO: Determine how to get type definition from content.
-  catalog: object; // TODO: Define catalog definition in blog library
-  crumbs?: object;
-  title?: string; // What to show in the breadcrumbs as the title. Defaults to blog post title.
-  heading?: string; // What to show in the header. Default to blog post title.
+  blog: CollectionEntry<"blogs">;
+  catalog: Partial<BlogCatalog>;
+  crumbs?: Breadcrumbs;
+  title?: string;
   sidebar?: boolean; // Whether to prefer the sidebar when the display gets small.
 }
 
@@ -29,7 +32,7 @@ const {
   crumbs = defaultCrumbs,
   sidebar = false,
 } = Astro.props;
-const { title = blog.data.title, heading = undefined } = Astro.props;
+const { title = blog.data.title } = Astro.props;
 const { blogs = [], authors = [], topics = [], dates = [] } = catalog;
 
 const blogAuthor = await getEntry(blog.data.author);
@@ -38,8 +41,19 @@ const published = blog.data.published.toLocaleDateString("en-us", {
   month: "long",
   day: "numeric",
 });
+const metadata: PageMetadata = {
+  title: title,
+  description: isEmpty(blog.data.description) ? title : blog.data.description,
+  type: "article",
+  image: getOpenGraphImageData(
+    Astro.site,
+    "blog",
+    blog.id,
+    isEmpty(blog.data.description) ? title : blog.data.description,
+  ),
+};
 
-const { Content } = await blog.render();
+const { Content } = await render(blog);
 
 import components from "../lib/mdx";
 import ImageHeading from "../components/ImageHeading.astro";
@@ -48,11 +62,8 @@ import TeamVignette from "../components/TeamVignette.astro";
 import ThemedSection from "../components/ThemedSection.astro";
 ---
 
-<Layout crumbs={crumbs} title={title}>
+<Layout {crumbs} {title} {metadata}>
   <Fragment slot="metadata">
-    <meta property="og:title" content={title} />
-    <meta name="twitter:title" content={title} />
-    <meta property="og:type" content="article" />
     <meta
       property="article:published_time"
       content={blog.data.published.toISOString()}
@@ -92,7 +103,7 @@ import ThemedSection from "../components/ThemedSection.astro";
           />
         </div>
         <div class="py-4 mb-4">
-          <Content components={components} />
+          <Content {components} />
         </div>
       </article>
       <nav
@@ -104,10 +115,10 @@ import ThemedSection from "../components/ThemedSection.astro";
             isEmpty(blogs) ? "" : (
               <li class="text-info-emphasis">
                 <span class="display-6">Blog Posts</span>
-                <ul class="mt-1 mb-3 list-disc">
+                <ul class="mt-1 mb-3 list-disc list-spaced">
                   {blogs.map((b) => (
                     <li>
-                      <a href={`/blog/${b.slug}`}>{b.data.title}</a>
+                      <a href={`/blog/${b.id}`}>{b.data.title}</a>
                     </li>
                   ))}
                 </ul>
@@ -118,9 +129,9 @@ import ThemedSection from "../components/ThemedSection.astro";
             isEmpty(topics) ? "" : (
               <li class="text-info-emphasis">
                 <span class="display-6">Topics</span>
-                <ul class="mt-1 mb-3 list-disc">
+                <ul class="mt-1 mb-3 list-disc list-spaced">
                   {topics.map((cat) => (
-                    <li class="list-item">
+                    <li>
                       <a href={`/blog/topics/${cat}`}>{startCase(cat)}</a>
                     </li>
                   ))}
@@ -132,10 +143,10 @@ import ThemedSection from "../components/ThemedSection.astro";
             isEmpty(authors) ? "" : (
               <li class="text-info-emphasis">
                 <span class="display-6">Authors</span>
-                <ul class="mt-1 mb-3 list-disc">
+                <ul class="mt-1 mb-3 list-disc list-spaced">
                   {authors.map((author) => (
                     <li>
-                      <a href={`/blog/authors/${author.slug}`}>
+                      <a href={`/blog/authors/${author.id}`}>
                         {author.data.name}
                       </a>
                     </li>
@@ -148,7 +159,7 @@ import ThemedSection from "../components/ThemedSection.astro";
             isEmpty(dates) ? "" : (
               <li class="text-info-emphasis">
                 <span class="display-6">Dates</span>
-                <ul class="mt-1 mb-3 list-disc">
+                <ul class="mt-1 mb-3 list-disc list-spaced">
                   {dates.map((month) => (
                     <li>
                       <a href={`/blog/dates/${kebabCase(month)}`}>{month}</a>

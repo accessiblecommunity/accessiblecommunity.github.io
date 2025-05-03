@@ -5,7 +5,14 @@ import ImageHeading from "../../components/ImageHeading.astro";
 import Layout from "../../layouts/Layout.astro";
 import ThemedSection from "../../components/ThemedSection.astro";
 
-const crumbs = [
+import type { Breadcrumbs, PageMetadata } from "@lib/types";
+
+const title = "Volunteer Commitment Form";
+const metadata: PageMetadata = {
+  title,
+  description: title,
+};
+const crumbs: Breadcrumbs = [
   {
     name: "Home",
     href: "/",
@@ -17,7 +24,7 @@ const crumbs = [
 ];
 ---
 
-<Layout crumbs={crumbs} title="Volunteer Commitment Form">
+<Layout {title} {crumbs} {metadata}>
   <Fragment slot="metadata">
     <meta name="robots" content="noindex" />
     <meta name="googlebot" content="noindex" />
@@ -27,7 +34,10 @@ const crumbs = [
     Volunteer <strong>Commitment</strong> Form
   </ImageHeading>
   <ThemedSection style="secondary">
-    <form id="commitmentForm" class="col p-4 border-info commitment-form">
+    <form
+      id="commitmentForm"
+      class="col p-4 bg-body border border-2 border-info-contrast rounded"
+    >
       <p class="lead">
         Thank you for your interest in committing to volunteer with
         <Branding class="text-primary">Accessible Community</Branding>.
@@ -56,7 +66,7 @@ const crumbs = [
           <input
             type="text"
             name="FirstName"
-            class="form-control w-100 form-field"
+            class="form-control w-100"
             id="firstNameField"
             autocomplete="given-name"
             required
@@ -69,7 +79,7 @@ const crumbs = [
           <input
             type="text"
             name="LastName"
-            class="form-control w-100 form-field"
+            class="form-control w-100"
             id="lastNameField"
             autocomplete="family-name"
             required
@@ -82,7 +92,7 @@ const crumbs = [
           <input
             type="text"
             name="Email"
-            class="form-control w-100 form-field"
+            class="form-control w-100"
             id="emailField"
             aria-describedby="emailHelp"
             required
@@ -105,12 +115,11 @@ const crumbs = [
             </legend>
             <div class="form-check d-flex mb-2 align-items-center">
               <input
-                class="form-check-input check"
+                class="form-check-input"
                 type="checkbox"
                 name="CodeOfConduct"
                 value="Yes"
                 id="readAgree"
-                aria-checked="false"
                 required
               />
               <label class="form-check-label ps-2" for="readAgree">
@@ -135,7 +144,7 @@ const crumbs = [
           <input
             type="text"
             name="CitedName"
-            class="form-control w-100 form-field"
+            class="form-control w-100"
             id="citedNameField"
             aria-describedby="citedNameHelp"
             required
@@ -151,7 +160,7 @@ const crumbs = [
           <input
             type="text"
             name="LinkedInProfile"
-            class="form-control w-100 form-field"
+            class="form-control w-100"
             aria-describedby="linkedInProfileHelp"
             id="linkedInProfileField"
           />
@@ -163,44 +172,13 @@ const crumbs = [
       <div class="row flex-lg-row-reverse">
         <div class="col-lg-6 mb-3">
           <div class="mb-3">
-            <label for="mastodonHandleField" class="form-label mb-1"
-              >Mastodon Handle</label
-            >
-            <input
-              type="text"
-              name="MastodonHandle"
-              class="form-control w-100 form-field"
-              aria-describedby="mastodonHandleHelp"
-              id="mastodonHandleField"
-            />
-            <div id="mastodonHandleHelp" class="form-text small">
-              The URL of your Mastodon account (if you want us to link it).
-            </div>
-          </div>
-          <div class="mb-3">
-            <label for="twitterXField" class="form-label mb-1"
-              >X/Twitter Handle</label
-            >
-            <input
-              type="text"
-              name="TwitterXHandle"
-              class="form-control w-100 form-field"
-              aria-describedby="twitterXHelp"
-              id="twitterXField"
-            />
-            <div id="twitterXHelp" class="form-text small">
-              The URL of your X (formerly Twitter) account (if you want us to
-              link it).
-            </div>
-          </div>
-          <div class="mb-3">
             <label for="instagramProfileField" class="form-label mb-1"
               >Instagram Profile</label
             >
             <input
               type="text"
               name="InstagramProfile"
-              class="form-control w-100 form-field"
+              class="form-control w-100"
               aria-describedby="instagramProfileHelp"
               id="instagramProfileField"
             />
@@ -208,9 +186,25 @@ const crumbs = [
               The URL of your Instagram profile (if you want us to link it).
             </div>
           </div>
+          <div class="mb-3">
+            <label for="personalPageField" class="form-label mb-1"
+              >Personal Page or other Social Media</label
+            >
+            <input
+              type="text"
+              name="OtherPageOrAccount"
+              class="form-control w-100"
+              aria-describedby="personalPageHelp"
+              id="personalPageField"
+            />
+            <div id="personalPageHelp" class="form-text small">
+              The URL of any other pages or accounts (if you want us to link
+              it).
+            </div>
+          </div>
         </div>
         <div class="col-lg-6 mb-3">
-          <fieldset class="border-3 border-top border-info">
+          <fieldset class="border-3 border-top form-border">
             <legend class="my-3 fs-5">
               We have a Team Spotlight where team members can be highlighted on
               our social media. Would you be open to being a part our Team
@@ -218,12 +212,11 @@ const crumbs = [
             </legend>
             <div class="form-check d-flex mb-2 align-items-center">
               <input
-                class="form-check-input check"
+                class="form-check-input"
                 type="radio"
                 name="TeamSpotlight"
                 value="No"
                 id="teamSpotlightNone"
-                aria-checked="true"
                 checked
               />
               <label class="form-check-label ps-2" for="teamSpotlightNone">
@@ -232,12 +225,11 @@ const crumbs = [
             </div>
             <div class="form-check d-flex mb-2 align-items-center">
               <input
-                class="form-check-input check"
+                class="form-check-input"
                 type="radio"
                 name="TeamSpotlight"
                 value="Yes"
                 id="teamSpotlightYes"
-                aria-checked="false"
               />
               <label class="form-check-label ps-2" for="teamSpotlightYes">
                 Yes, I am open to being featured in the Team Spotlight.
@@ -248,280 +240,30 @@ const crumbs = [
       </div>
 
       <div class="row mt-3">
-        <div class="col-md-6 mb-3">
-          <h3>Teams</h3>
-          <fieldset class="mb-3">
-            <legend class="mb-2 fs-5 required-field">
-              Which team(s) are you interested in assisting?
-              <span class="asterisk" aria-hidden="true"></span>
-            </legend>
-            <div class="form-check d-flex mb-2 align-items-center">
-              <input
-                class="form-check-input check"
-                type="checkbox"
-                name="Teams"
-                value="Administration"
-                id="interestAdmin"
-                aria-checked="false"
-              />
-              <label class="form-check-label ps-2" for="interestAdmin">
-                Administration Team
-              </label>
-            </div>
-            <div class="form-check d-flex mb-2 align-items-center">
-              <input
-                class="form-check-input check"
-                type="checkbox"
-                name="Teams"
-                value="Content"
-                id="interestWrite"
-                aria-checked="false"
-              />
-              <label class="form-check-label ps-2" for="interestWrite">
-                Content Team
-              </label>
-            </div>
-            <div class="form-check d-flex mb-2 align-items-center">
-              <input
-                class="form-check-input check"
-                type="checkbox"
-                name="Teams"
-                value="Development"
-                id="interestDev"
-                aria-checked="false"
-              />
-              <label class="form-check-label ps-2" for="interestDev">
-                Development Team
-              </label>
-            </div>
-            <div class="form-check d-flex mb-2 align-items-center">
-              <input
-                class="form-check-input check"
-                type="checkbox"
-                name="Teams"
-                value="Evaluations"
-                id="interestEval"
-                aria-checked="false"
-              />
-              <label class="form-check-label ps-2" for="interestEval">
-                Evaluations Team
-              </label>
-            </div>
-            <div class="form-check d-flex mb-2 align-items-center">
-              <input
-                class="form-check-input check"
-                type="checkbox"
-                name="Teams"
-                value="Leadership"
-                id="interestRun"
-                aria-checked="false"
-              />
-              <label class="form-check-label ps-2" for="interestRun">
-                Leadership Team
-              </label>
-            </div>
-            <div class="form-check d-flex mb-2 align-items-center">
-              <input
-                class="form-check-input check"
-                type="checkbox"
-                name="Teams"
-                value="Social"
-                id="interestSocial"
-                aria-checked="false"
-              />
-              <label class="form-check-label ps-2" for="interestSocial">
-                Social Media Team
-              </label>
-            </div>
-            <div class="form-check d-flex mb-2 align-items-center">
-              <input
-                class="form-check-input check"
-                type="checkbox"
-                name="Teams"
-                value="UI/UX"
-                id="interestUX"
-                aria-checked="false"
-              />
-              <label class="form-check-label ps-2" for="interestUX">
-                UX Team
-              </label>
-            </div>
-            <div class="form-check d-flex mb-2 align-items-center">
-              <input
-                class="form-check-input check"
-                type="checkbox"
-                name="Teams"
-                value="Other"
-                id="interestOther"
-                aria-checked="false"
-              />
-              <label class="form-check-label ps-2" for="interestOther">
-                Other
-              </label>
-            </div>
-          </fieldset>
-          <fieldset>
-            <legend class="mb-2 fs-5 required-field">
-              How many hours per week can you contribute?
-              <span class="asterisk" aria-hidden="true"></span>
-            </legend>
-            <div class="form-check d-flex mb-2 align-items-center">
-              <input
-                class="form-check-input check"
-                type="radio"
-                name="Hours"
-                value="Less than 4 hours"
-                id="hoursLess"
-                aria-checked="false"
-              />
-              <label class="form-check-label ps-2" for="hoursLess">
-                Less than 4 hours a week
-              </label>
-            </div>
-            <div class="form-check d-flex mb-2 align-items-center">
-              <input
-                class="form-check-input check"
-                type="radio"
-                name="Hours"
-                value="About 4 hours"
-                id="hoursAround"
-                aria-checked="false"
-              />
-              <label class="form-check-label ps-2" for="hoursAround">
-                Around 4 hours a week
-              </label>
-            </div>
-            <div class="form-check d-flex mb-2 align-items-center">
-              <input
-                class="form-check-input check"
-                type="radio"
-                name="Hours"
-                value="More than 4 hours"
-                id="hoursMore"
-                aria-checked="false"
-              />
-              <label class="form-check-label ps-2" for="hoursMore">
-                More than 4 hours a week
-              </label>
-            </div>
-          </fieldset>
-        </div>
-        <div class="col-md-6 mb-3">
+        <div class="col mb-3">
           <h3>T-shirt</h3>
           <fieldset>
             <legend class="mb-2 fs-5">
               If you would like an
               <Branding class="text-primary">Accessible Community</Branding>
-              t-shirt, you may <ExternalLink
+              t-shirt, please <ExternalLink
                 href="https://docs.google.com/spreadsheets/d/1tlTeDW1qNVGoIBlO3XuNFuf_x4twcZJr_4SlxKWSbHE/edit?usp=sharing"
                 >read our t-shirt sizing chart</ExternalLink
-              > and then select your size.
+              > and select your size.
             </legend>
-            <div class="form-check d-flex mb-2 align-items-center">
-              <input
-                class="form-check-input check"
-                type="radio"
-                name="TShirtSize"
-                value=""
-                id="sizeNone"
-                aria-checked="true"
-                checked
-              />
-              <label class="form-check-label ps-2" for="sizeNone">
-                No T-Shirt, Please
-              </label>
-            </div>
-            <div class="form-check d-flex mb-2 align-items-center">
-              <input
-                class="form-check-input check"
-                type="radio"
-                name="TShirtSize"
-                value="XS"
-                id="sizeXS"
-                aria-checked="false"
-              />
-              <label class="form-check-label ps-2" for="sizeXS">
-                Extra Small (XS)
-              </label>
-            </div>
-            <div class="form-check d-flex mb-2 align-items-center">
-              <input
-                class="form-check-input check"
-                type="radio"
-                name="TShirtSize"
-                value="S"
-                id="sizeS"
-                aria-checked="false"
-              />
-              <label class="form-check-label ps-2" for="sizeS">
-                Small (S)
-              </label>
-            </div>
-            <div class="form-check d-flex mb-2 align-items-center">
-              <input
-                class="form-check-input check"
-                type="radio"
-                name="TShirtSize"
-                value="M"
-                id="sizeM"
-                aria-checked="false"
-              />
-              <label class="form-check-label ps-2" for="sizeM">
-                Medium (M)
-              </label>
-            </div>
-            <div class="form-check d-flex mb-2 align-items-center">
-              <input
-                class="form-check-input check"
-                type="radio"
-                name="TShirtSize"
-                value="L"
-                id="sizeL"
-                aria-checked="false"
-              />
-              <label class="form-check-label ps-2" for="sizeL">
-                Large (L)
-              </label>
-            </div>
-            <div class="form-check d-flex mb-2 align-items-center">
-              <input
-                class="form-check-input check"
-                type="radio"
-                name="TShirtSize"
-                value="XL"
-                id="sizeXL"
-                aria-checked="false"
-              />
-              <label class="form-check-label ps-2" for="sizeXL">
-                Extra Large (XL)
-              </label>
-            </div>
-            <div class="form-check d-flex mb-2 align-items-center">
-              <input
-                class="form-check-input check"
-                type="radio"
-                name="TShirtSize"
-                value="XXL"
-                id="sizeXXL"
-                aria-checked="false"
-              />
-              <label class="form-check-label ps-2" for="sizeXXL">
-                Double XL (XXL)
-              </label>
-            </div>
-            <div class="form-check d-flex mb-2 align-items-center">
-              <input
-                class="form-check-input check"
-                type="radio"
-                name="TShirtSize"
-                value="XXXL"
-                id="sizeXXXL"
-                aria-checked="false"
-              />
-              <label class="form-check-label ps-2" for="sizeXXXL">
-                Triple XL (XXXL)
-              </label>
-            </div>
+            <select
+              class="form-select mb-2"
+              aria-label="T-shirt size selection"
+            >
+              <option selected value="">No T-Shirt, Please</option>
+              <option value="XS">Extra Small (XS)</option>
+              <option value="S">Small (S)</option>
+              <option value="M">Medium (M)</option>
+              <option value="L">Large (L)</option>
+              <option value="XL">Extra Large (XL)</option>
+              <option value="XXL">Double XL (XXL)</option>
+              <option value="XXXL">Triple XL (XXXL)</option>
+            </select>
           </fieldset>
         </div>
       </div>
@@ -537,7 +279,7 @@ const crumbs = [
       </div>
     </form>
     <div
-      class="d-none col p-4 border-info commitment-form"
+      class="d-none col p-4 border border-3 border-info-contrast rounded"
       id="commitmentSuccess"
     >
       <div class="lead">
@@ -585,16 +327,6 @@ const crumbs = [
     /* * {
    outline: 1px solid black;
  } */
-
-    .commitment-form {
-      border: 3.5px solid;
-      border-radius: 0.5rem;
-    }
-
-    .check {
-      width: 30px;
-      height: 30px;
-    }
 
     fieldset label {
       cursor: pointer;

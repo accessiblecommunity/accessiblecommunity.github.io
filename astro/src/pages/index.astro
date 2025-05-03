@@ -1,9 +1,10 @@
 ---
-import { Icon } from "astro-icon/components";
+import { type PageMetadata } from "../lib/types";
 
 import Branding from "../components/Branding.astro";
 import ExternalLink from "../components/ExternalLink.astro";
 import Hero from "../components/Hero.astro";
+import { Icon } from "astro-icon/components";
 import Layout from "../layouts/Layout.astro";
 import ThemedSection from "../components/ThemedSection.astro";
 import ThemedBox from "../components/ThemedBox.astro";
@@ -11,9 +12,21 @@ import TipRegistration from "../components/TipRegistration.astro";
 import Testimonial from "../components/Testimonial.astro";
 
 import heroBg from "../images/colored-hero/wheelchair_hall.png";
+import websiteImg from "../images/website.jpg";
+
+const title = "Home";
+const metadata: PageMetadata = {
+  title,
+  description:
+    "Accessible Community is a 501(c)3 nonprofit that provides tools and resources to create a more inclusive world for people with disabilities",
+  image: {
+    data: websiteImg,
+    alt: "A screenshot of Accessible Community's website",
+  },
+};
 ---
 
-<Layout title="Home">
+<Layout {title} {metadata}>
   <Hero
     image={heroBg}
     columns="col-sm-12 col-md-9 col-lg-8 col-xl-6 col-xxl-5"
@@ -88,8 +101,7 @@ import heroBg from "../images/colored-hero/wheelchair_hall.png";
           exemplifies “Nothing about us without us.” Our non-profit is led by people
           with disabilities and caretakers who want to break down these barriers
           and create more accessible communities. Read our <a
-            href="/about/story"
-            class="link-offset-2">founder's story</a
+            href="/about/story">founder's story</a
           > to learn more.
         </p>
       </div>
@@ -111,11 +123,14 @@ import heroBg from "../images/colored-hero/wheelchair_hall.png";
     >
       <div class="col col-xl-7">
         <h2 class="display-3">What we <strong>do</strong>.</h2>
-        <ul class="lead ms-2">
+        <ul class="ms-2">
+          <li>
+            Provide educational opportunities centered on digital accessibility.
+          </li>
           <li>
             Empower people with disabilities to be part of the conversation
-            about inclusion and accessibility in their communities by creating a
-            safe platform to share positive experiences.
+            about inclusion and accessibility in their communities by creating
+            safe and accessible platforms and programs.
           </li>
           <li>
             Motivate organizations to include people with disabilities by making
@@ -123,7 +138,7 @@ import heroBg from "../images/colored-hero/wheelchair_hall.png";
           </li>
           <li>
             Provide tools and an online community that connects and advances
-            disability-related professions.
+            disability-related professions and disabled professionals.
           </li>
         </ul>
       </div>
@@ -132,7 +147,7 @@ import heroBg from "../images/colored-hero/wheelchair_hall.png";
         border={1}
         class="col col-xl-4 text-start p-4 pb-0 shadow rounded"
       >
-        <Testimonial slug="daniela/short" text="light" />
+        <Testimonial id="daniela/short" text="light" />
       </ThemedBox>
     </div>
   </ThemedSection>
@@ -221,8 +236,7 @@ import heroBg from "../images/colored-hero/wheelchair_hall.png";
       </ThemedBox>
     </div>
     <p class="lead pt-5">
-      Learn more about <a href="/services" class="link-offset-2">our services</a
-      >.
+      Learn more about <a href="/services">our services</a>.
     </p>
   </ThemedSection>
 

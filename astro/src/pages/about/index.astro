@@ -1,12 +1,19 @@
 ---
 // TODO: Make a table of contents like page for the about section.
 
+import type { PageMetadata } from "@lib/types";
 import Layout from "../../layouts/Layout.astro";
+
+const title = "About";
+const metadata: PageMetadata = {
+  title,
+  description: "About the purpose and mission of Accessible Community",
+};
 ---
 
-<Layout title="About">
+<Layout {title} {metadata}>
   <div class="container-fluid">
-    <ul class="py-5 display-5">
+    <ul class="py-5 display-5 list-spaced">
       <li>
         <a href="/about/mission">Mission &amp; Vision</a>
       </li>

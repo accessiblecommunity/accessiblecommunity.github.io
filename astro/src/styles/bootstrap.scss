@@ -56,20 +56,40 @@ $grid-breakpoints: (
   xxl: 1400px
 );
 
+$container-padding-x:  3rem;
+
+//***********************
+//* Spacers
+//**********************/
+$spacer: 1rem;
+$spacers: (
+  0: 0,
+  1: $spacer * .25,
+ 15: $spacer * .375,
+  2: $spacer * .5,
+  3: $spacer,
+  4: $spacer * 1.5,
+  5: $spacer * 3,
+);
+
+$enable-smooth-scroll:  false;
+
 //***********************
 //* Navbar & Breadcrumbs
 //**********************/
 // $navbar-light-color:                rgba(var(--#{$prefix}emphasis-color-rgb), .65) !default;
-$navbar-light-hover-color:          #0821AD;  // TODO: Fix
+$navbar-light-hover-color:          $ac-navy;
 $navbar-light-active-color:         $ac-navy;
 // $navbar-light-disabled-color:       rgba(var(--#{$prefix}emphasis-color-rgb), .3) !default;
 $navbar-light-icon-color:           $ac-navy;
 
 $navbar-light-brand-color:          $ac-navy;
-$navbar-light-brand-hover-color:    #0821AD;  // TODO: Fix
-// $navbar-dark-brand-color:           $navbar-dark-active-color !default;
-// $navbar-dark-brand-hover-color:     $navbar-dark-active-color !default;
-$navbar-dark-icon-color:            white;
+$navbar-light-brand-hover-color:    #FFFFFF;
+
+$navbar-dark-brand-color:           #FFFFFF;
+$navbar-dark-brand-hover-color:     $ac-navy;
+
+$navbar-dark-icon-color:            #FFFFFF;
 
 $navbar-brand-font-size:            1.2rem;
 $navbar-brand-margin-end:           0.5rem;
@@ -108,10 +128,22 @@ $btn-hover-bg-tint-amount:        25%;
 $btn-hover-border-shade-amount:   30%;
 $btn-hover-border-tint-amount:    20%;
 
-$code-color:                  #590455;
-$code-color-dark:             #EAB3E8;
+//************
+// Form inputs
+//************
 
-$container-padding-x:  3rem;
+$input-border-width:              1.8px;
+$input-border-color:              $info-border-contrast;
+$input-focus-border-color:        $info-border-contrast;
+
+$form-check-input-border:         1.8px solid $info-border-contrast;
+$form-check-input-border-radius:  0.375rem;
+
+$form-check-input-width:                  1.667em;
+$form-check-min-height:                   30px;
+$form-check-input-checked-bg-color:       $primary;
+$form-check-input-checked-border-color:   $primary;
+
 
 //********
 // Shadows - Tweaked from https://codyhouse.co/nuggets/beautiful-css-shadows
@@ -171,6 +203,7 @@ $custom-util-text-emphasis-colors: ();
 $custom-util-bg-subtle: ();
 $custom-util-border-subtle: ();
 
+// CSS Classes to CSS Variables
 @each $theme in $custom-subtle-themes {
   $custom-util-text-emphasis-colors: map.set(
     $custom-util-text-emphasis-colors, "#{$theme}-emphasis", "var(--#{$prefix}#{$theme}-text-emphasis)"
@@ -183,9 +216,21 @@ $custom-util-border-subtle: ();
   );
 }
 
+// New Contrast "style" for themes.
+$custom-contrast-themes: info,;
+$custom-util-border-contrast: ();
+
+@each $theme in $custom-contrast-themes {
+  $custom-util-border-contrast: map.set(
+    $custom-util-border-contrast, "#{$theme}-contrast", var(--#{$prefix}#{$theme}-border-contrast)
+  );
+}
+
 $utilities-text-emphasis-colors: map-merge($utilities-text-emphasis-colors, $custom-util-text-emphasis-colors);
 $utilities-bg-subtle: map-merge($utilities-bg-subtle, $custom-util-bg-subtle);
 $utilities-border-subtle: map-merge($utilities-border-subtle, $custom-util-border-subtle);
+// Not just subtle, this is the repsonsive border map...
+$utilities-border-subtle: map-merge($utilities-border-subtle, $custom-util-border-contrast);
 
 @import "bootstrap/scss/utilities";
 
@@ -203,6 +248,7 @@ $utilities: map-merge(
   )
 );
 
+// CSS Variables to SCSS Variables
 // Custom Themes: Light mode.
 $custom-colors-text: ();
 $custom-colors-bg-subtle: ();
@@ -224,6 +270,27 @@ $theme-colors-border-subtle-dark: map-merge($theme-colors-border-subtle-dark, $c
 // 5b. Include remainder of required parts
 @import "bootstrap/scss/root";
 @import "bootstrap/scss/reboot";
+
+// Additional contrast style on themes.
+$theme-colors-border-contrast: (
+  "info": $info-border-contrast,
+);
+$theme-colors-border-contrast-dark: (
+  "info": $info-border-contrast-dark,
+);
+
+:root {
+  @each $color, $value in $theme-colors-border-contrast {
+    --#{$prefix}#{$color}-border-contrast: #{$value};
+  }
+}
+@include color-mode(dark, true) {
+  color-scheme: dark;
+
+  @each $color, $value in $theme-colors-border-contrast-dark {
+    --#{$prefix}#{$color}-border-contrast: #{$value};
+  }
+}
 
 // 6. Optionally include any other parts as needed
 //    Match the order from bootstrap/scss/bootstrap.scss
@@ -259,11 +326,11 @@ $theme-colors-border-subtle-dark: map-merge($theme-colors-border-subtle-dark, $c
   --bs-bg-opacity: 0.6;
 }
 
-*:focus-visible, .form-field:focus, .navbar-toggler:focus, .nav-link:focus-visible {
-  outline: 3px dashed $primary;
-  outline-offset: 0.025em;
+*:focus-visible, .navbar-toggler:focus, .nav-link:focus-visible {
+  outline: 2px solid $primary;
+  outline-offset: 2px;
   box-shadow: none;
-  border-radius: 2%;
+  // border-radius: 0.13rem;
 }
 
 .navbar-toggler:focus {
@@ -275,30 +342,82 @@ $theme-colors-border-subtle-dark: map-merge($theme-colors-border-subtle-dark, $c
 }
 
 .dropdown-item:focus-visible {
-  outline-offset: -0.15em;
-}
-
-.social-link:focus-visible {
-  outline-offset: 0.15em;
+  background-color: #FFFFFF;
 }
 
 .btn:focus-visible {
-  outline: 3px dashed $primary;
-  outline-offset: 0.25rem;
+  outline: 2px solid $primary;
+  outline-offset: 2px;
   box-shadow: none;
   border-radius: 0.375rem;
 }
 
-.hero-link:focus-visible, .hero-button:focus-visible {
+.hero-link:focus-visible, .hero-button:focus-visible, .footer-social-link:focus-visible {
   outline-color: #FFFFFF;
 }
 
 .form-field:focus {
+  border-color: $info-border-contrast;
   border-style: solid;
+  border-radius: 0.375rem;
+  outline-offset: 2px;
+}
+
+.form-check-input:focus {
+  outline: 2px solid $primary;
+  outline-offset: 2px;
+  box-shadow: none;
+}
+
+.form-control:focus-visible {
+  outline: 2px solid $primary;
+  box-shadow: none;
+  border-radius: 0.375rem;
+}
+
+.form-check-input:focus-visible {
+  outline: 2px solid $primary;
+  outline-offset: 2px;
+  box-shadow: none;
+}
+
+a:hover {
+  text-decoration-color: $primary;
+  transition: all 0.1s ease-in;
+}
+
+*a:hover, .navbar-nav .nav-link:hover, li > .dropdown-item:hover {
+  color: #FFFFFF;
+  background-color: $primary;
+  text-decoration-color: #FFFFFF;
+}
+
+.footer-social-link:hover {
+  color: #FFFFFF;
+  background-color: $primary;
+}
+
+.footer-link:hover, .link-light:hover {
+  color: $primary !important;
+  background-color: #FFFFFF !important;
+  text-decoration-color: $primary !important;
+}
+
+.bio-social-link:hover {
+  background-color: $body-tertiary-bg;
+}
+
+.icon-link {
+  text-underline-offset: 0.1em;
+  text-decoration-color: currentColor;
 }
 
 .breadcrumb-item, .breadcrumb-item.active, .nav-link, .dropdown-item, .dropdown-item:hover {
-  color: #000000;
+  color: $primary;
+}
+
+.footer-social-link {
+  color: #FFFFFF;
 }
 
 .dropdown-item:hover {
@@ -313,17 +432,13 @@ $theme-colors-border-subtle-dark: map-merge($theme-colors-border-subtle-dark, $c
   color: $body-color;
 }
 
-textarea, input {
-  border-width: 1.5px 1.5px;
-  border-color: #000000;
+// Establish a more vertically-spaced list.
+.list-spaced li + li {
+  margin-top: 0.5em;
 }
 
-input[type=checkbox], input[type=radio] {
-  accent-color: #041058;
-}
-
-.check {
-  border-image-width: 2;
+#mc_embed_signup input.mce_inline_error {
+  border-color: $danger-border-subtle !important;
 }
 
 // Form Label Utilities
@@ -337,12 +452,15 @@ input[type=checkbox], input[type=radio] {
   font-size: 125%;
   line-height: 100%;
 }
+
 .required-field + .asterisk {
   margin-left: 0.15em;
 }
+
 .required-field > .asterisk {
   margin-left: -0.15em;
 }
+
 .required-field + .asterisk::before,
 .required-field > .asterisk::before {
   content: "*";
@@ -360,8 +478,31 @@ svg[data-icon="loca11y-logo"].unpad {
 }
 
 @include color-mode(dark) {
-  *:focus-visible, .form-field:focus, .navbar-toggler:focus, .btn:focus-visible, .nav-link:focus-visible {
+  *:focus-visible, .form-field:focus, .form-check-input:focus, .form-check-input:focus-visible, .navbar-toggler:focus, .btn:focus-visible, .nav-link:focus-visible, .form-control:focus-visible {
     outline-color: #FFFFFF;
+  }
+
+  .nav-link:focus {
+    color: #FFFFFF;
+  }
+
+  .dropdown-item:focus-visible {
+    // outline-offset: -0.15em;
+    background-color: var(--bs-dropdown-bg);
+  }
+
+  *a:hover, .navbar-nav .nav-link:hover, li > .dropdown-item:hover, .link-light:hover {
+    color: $primary;
+    background-color: #FFFFFF;
+    text-decoration-color: $primary;
+  }
+
+  .bio-social-link:hover {
+    background-color: $body-tertiary-bg-dark;
+  }
+
+  .form-field:focus {
+    border-color: $info-border-contrast-dark;
   }
 
   // TODO: Fix this.
@@ -372,10 +513,6 @@ svg[data-icon="loca11y-logo"].unpad {
   // TODO: Move breadcrumb and dropdowns to use Bootstrap SASS Variables
   .breadcrumb-item, .breadcrumb-item.active, .nav-link, .dropdown-item, .dropdown-item:hover {
     color: #FFFFFF;
-  }
-
-  .dropdown-item:hover {
-    background-color: $body-tertiary-bg-dark;
   }
 
   .general-button {
@@ -393,21 +530,29 @@ svg[data-icon="loca11y-logo"].unpad {
     background-color: $body-tertiary-bg;
   }
 
-  .nav-link:hover {
-    color: $body-tertiary-bg;
-  }
-
   .list-disc li::marker {
     color: #FFFFFF;
+  }
+
+  .text-linkedin {
+    color: white !important;
   }
 
   textarea, input {
     border-color: #FFFFFF;
   }
 
-  .bi {  // blue-30
-    filter: brightness(0) saturate(100%) invert(71%) sepia(19%) saturate(851%) hue-rotate(172deg) brightness(91%) contrast(95%);
+  .form-control,.form-control:focus, .form-check-input, .form-check-input:focus {
+    border-color: $info-border-contrast-dark;
   }
+
+  .form-check-input:checked {
+    border-color: $info-border-contrast-dark;
+  }
+
+  // .bi {  // blue-30
+  //   filter: brightness(0) saturate(100%) invert(71%) sepia(19%) saturate(851%) hue-rotate(172deg) brightness(91%) contrast(95%);
+  // }
 }
 
 

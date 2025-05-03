@@ -9,8 +9,14 @@ import ThemedBox from "../../components/ThemedBox.astro";
 import ThemedSection from "../../components/ThemedSection.astro";
 
 import heroBg from "../../images/colored-hero/hands-together.png";
+import type { Breadcrumbs, PageMetadata } from "@lib/types";
 
-const crumbs = [
+const title = "Join Us";
+const metadata: PageMetadata = {
+  title,
+  description: "Overview of ways to join Accessible Community",
+};
+const crumbs: Breadcrumbs = [
   {
     name: "Home",
     href: "/",
@@ -18,7 +24,7 @@ const crumbs = [
 ];
 ---
 
-<Layout title="Join Us" crumbs={crumbs}>
+<Layout {title} {crumbs} {metadata}>
   <Hero image={heroBg} slot="header" actionBreakpoint="md">
     <div slot="heading" class="mb-4">
       <h1 class="visually-hidden">Join Us</h1>

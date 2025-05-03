@@ -1,10 +1,12 @@
 ---
 import { getCollection } from "astro:content";
 import { getBlogAuthors, orderByRecent } from "../../../lib/blog";
+import type { Breadcrumbs } from "@lib/types";
+import type { CollectionEntry } from "astro:content";
 
 export async function getStaticPaths() {
   const authors = await getBlogAuthors();
-  const crumbs = [
+  const crumbs: Breadcrumbs = [
     {
       name: "Home",
       href: "/",
@@ -20,29 +22,29 @@ export async function getStaticPaths() {
   ];
 
   return authors.map((author) => ({
-    params: { slug: author.slug },
+    params: { slug: author.id },
     props: { crumbs, author },
   }));
 }
 
 interface Props {
-  author: object; // TODO: Determine how to get type definition from content.
-  crumbs: Array<object>;
+  author: CollectionEntry<"staff">;
+  crumbs: Breadcrumbs;
 }
 
 const { crumbs, author } = Astro.props;
 const authoredBlogs = await getCollection("blogs", ({ data }) => {
-  return data.author.slug === author.slug;
+  return data.author.id === author.id;
 });
-const orderedBlogs: Array<object> = await orderByRecent(authoredBlogs);
+const orderedBlogs: Array<CollectionEntry<"blogs">> =
+  await orderByRecent(authoredBlogs);
 
 import BlogLayout from "../../../layouts/BlogLayout.astro";
 ---
 
 <BlogLayout
-  title={author.data.name}
-  heading={`Blogs by ${author.data.name}`}
-  crumbs={crumbs}
+  title={`Blogs by ${author.data.name}`}
+  {crumbs}
   blog={orderedBlogs[0]}
   catalog={{ blogs: orderedBlogs }}
   sidebar={true}

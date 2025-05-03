@@ -1,4 +1,4 @@
-import { getCollection } from "astro:content";
+import { getCollection, type CollectionEntry } from "astro:content";
 import {
   compact,
   intersection,
@@ -19,8 +19,8 @@ export async function getTipCategories(tips?) {
 }
 
 export async function getRelatedTips(tip) {
-  const relatedTips = await getCollection("atotw", ({ slug, data }) => {
-    return slug != tip.slug && !isEmpty(intersection(tip.data.tags, data.tags));
+  const relatedTips = await getCollection("atotw", ({ id, data }) => {
+    return id != tip.id && !isEmpty(intersection(tip.data.tags, data.tags));
   });
   const orderedTips = await orderByRecent(relatedTips);
   return orderedTips;
@@ -38,12 +38,18 @@ export async function orderByRecent(tips?) {
   return sortedBlogs;
 }
 
-export async function getMostRecent(tips?) {
+export async function getMostRecent(tips?): Promise<CollectionEntry<"atotw">> {
   const sortedBlogs = await orderByRecent(tips);
   return sortedBlogs[0];
 }
 
-export async function getTipCatalog(tips?) {
+export interface TipCatalog {
+  tips: Array<CollectionEntry<"atotw">>;
+  categories: Array<string>;
+  recent: CollectionEntry<"atotw">;
+}
+
+export async function getTipCatalog(tips?): Promise<TipCatalog> {
   tips = isNil(tips) ? await orderByRecent(tips) : tips;
   const categories = await getTipCategories(tips);
   const recent = await getMostRecent(tips);

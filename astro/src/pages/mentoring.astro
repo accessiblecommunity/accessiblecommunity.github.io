@@ -1,4 +1,8 @@
 ---
+import type { Breadcrumbs, PageMetadata } from "@lib/types";
+import { getCollection } from "astro:content";
+import { getOpenGraphImageData } from "@lib/og-image";
+
 import Branding from "../components/Branding.astro";
 import CollaboratorList from "../components/CollaboratorList.astro";
 import ExternalLink from "../components/ExternalLink.astro";
@@ -16,7 +20,15 @@ const protegeUrl = "https://www.mutua11y.org/protege-registration/";
 const mentorUrl = "https://www.mutua11y.org/mentor-registration/";
 const mentoringEmail = "mailto:mentoring@accessiblecommunity.org";
 
-const crumbs = [
+const title = "Mentoring";
+const metadata: PageMetadata = {
+  title,
+  description:
+    "About the accessibility mentoring program at Accessible Community",
+  image: getOpenGraphImageData(Astro.site, "pages", "donate"),
+};
+
+const crumbs: Breadcrumbs = [
   {
     name: "Home",
     href: "/",
@@ -27,8 +39,6 @@ const crumbs = [
   },
 ];
 
-import { getCollection } from "astro:content";
-
 const partners = await getCollection("collaborators", ({ data }) => {
   return data.tags.includes("mentoring-partner");
 });
@@ -38,7 +48,7 @@ const contributors = await getCollection("collaborators", ({ data }) => {
 });
 ---
 
-<Layout title="Mentoring" crumbs={crumbs}>
+<Layout {title} {crumbs} {metadata}>
   <Hero image={heroBg} slot="header" actionBreakpoint="md">
     <div slot="heading" class="mb-4">
       <h1 class="visually-hidden">Mentoring</h1>
@@ -113,7 +123,7 @@ const contributors = await getCollection("collaborators", ({ data }) => {
         border={1}
         class="col col-xl-5 text-start p-4 pb-0 shadow rounded"
       >
-        <Testimonial slug="eve/short" />
+        <Testimonial id="eve/short" />
       </ThemedBox>
     </div>
   </ThemedSection>
@@ -137,7 +147,7 @@ const contributors = await getCollection("collaborators", ({ data }) => {
         border={1}
         class="col col-xl-4 text-start p-4 pb-0 shadow rounded"
       >
-        <Testimonial slug="rashimi/full" text="white" />
+        <Testimonial id="rashimi/full" text="white" />
       </ThemedBox>
     </div>
   </ThemedSection>

@@ -37,6 +37,9 @@ export default defineConfig({
   server: {
     host: true,
   },
+  redirects: {
+    "/daf/overview/": "/daf/",
+  },
   vite: {
     resolve: {
       alias: {
@@ -45,8 +48,9 @@ export default defineConfig({
           __dirname,
           "node_modules/bootstrap/dist/js/bootstrap.esm.min.js",
         ),
-        "~lib": path.resolve(__dirname, "src/lib"),
+        '@': './src',
       },
+      extensions: ['.js', '.ts', '.mjs'],
     },
     ssr: {
       noExternal: ["bootstrap"],
@@ -65,8 +69,10 @@ export default defineConfig({
         bi: [
           // Navigation
           'arrow-down-square', 'arrow-up-right-square', 'list',
+          // Contact Info
+          'envelope-at-fill', 'telephone-fill', 'geo-alt-fill',
           // Social Media
-          'facebook', 'instagram', 'linkedin', 'rss-fill', 'tiktok',
+          'facebook', 'instagram', 'linkedin', 'rss-fill', 'tiktok', 'youtube',
           // Descriptive
           'gift-fill', 'pencil-fill', 'people-fill', 'person-fill',
         ],
@@ -89,6 +95,10 @@ export default defineConfig({
           userAgent,
           disallow: ['/'],
         })),
+        {
+          userAgent: '*',
+          disallow: ['/fixable/'],
+        },
         {
           userAgent: '*',
           allow: ['/'],

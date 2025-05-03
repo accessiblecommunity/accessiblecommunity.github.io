@@ -37,7 +37,7 @@ $body-color-dark:                   white;
 //*     Captions (Table/Figure), Form text, Input placeholder, Disabled (Links/Pagination), 
 //*     Toast Headers, List groups, Breadcrumbs, Progress and Hover backgrounds
 //***************************
-$body-secondary-color:              #545B62; // gray-50
+$body-secondary-color:              #5C6672; // gray-50
 // $body-secondary-bg:                 $gray-200 !default;
 
 // $body-secondary-color-dark:         rgba($body-color-dark, .75) !default;
@@ -99,12 +99,23 @@ $info-bg-subtle:                    #67DCE0; // cyan-00
 $info-border-subtle:                #33CCCC; // cyan-10
 
 $info-text-emphasis-dark:           #11BABA; // cyan-20
-$info-bg-subtle-dark:               #003D3D; // cyan-90
+$info-bg-subtle-dark:               #003D3D; // cyan-90 
 $info-border-subtle-dark:           #006161; // cyan-70
+
+// New Responsive Contrast Theme.
+$info-border-contrast:              #004F4F; // cyan-80
+$info-border-contrast-dark:         #11BABA; // cyan-20
+
+// Danger Subtle Theme
+$danger-border-subtle:              #c84553;
+$danger-border-subtle-dark:         #fa5567;
 
 // Headings
 $headings-color:                    $primary;
 $headings-color-dark:               #7EB0E4; // blue-20
+
+// Cards
+$card-title-color:                  $primary;
 
 // Links
 $link-color:                        #253E92; // blue-80
@@ -112,3 +123,8 @@ $link-color-dark:                   #7EB0E4; // blue-20
 $link-shade-percentage:             40%;
 // $link-hover-color:                  shift-color($link-color, $link-shade-percentage) !default;
 // $link-hover-color-dark:             shift-color($link-color-dark, -$link-shade-percentage) !default;
+
+// Code
+$code-color:                        #590455;
+$code-color-dark:                   #EAB3E8;
+

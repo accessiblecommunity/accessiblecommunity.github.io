@@ -1,0 +1,554 @@
+---
+import { type Breadcrumbs } from "../lib/types";
+
+interface Props {
+  title: String;
+  crumbs?: Breadcrumbs;
+}
+
+import { isEmpty } from "lodash-es";
+import { Image } from "astro:assets";
+import { Icon } from "astro-icon/components";
+import Branding from "@components/Branding.astro";
+import ExternalLink from "@components/ExternalLink.astro";
+
+import escapeRoomLogo from "src/images/escaperoomlogo-768x768.png";
+
+const { title, crumbs = [] } = Astro.props;
+const breadCrumbs: Breadcrumbs =
+  isEmpty(crumbs) && title != "Home" ? [{ name: "Home", href: "/" }] : crumbs;
+---
+
+<header class="sticky-top">
+  <div id="header-navbar">
+    {/* class="navbar navbar-expand-lg align-items-top"> */}
+    <a
+      class="visually-hidden-focusable btn btn-primary skip-link"
+      href="#main-content"
+    >
+      Skip to Main Content
+    </a>
+    <nav class="navbar bg-body-tertiary">
+      <div class="container-fluid">
+        <div class="d-none d-lg-block navbar-brand me-2">
+          <Image
+            src={escapeRoomLogo}
+            class="brand-logo"
+            alt=""
+            aria-hidden="true"
+          />
+        </div>
+        <a class="navbar-brand" href="#"
+          ><Branding>Accessible Escape Room</Branding></a
+        >
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="offcanvas"
+          data-bs-target="#offcanvasNavbar"
+          aria-controls="offcanvasNavbar"
+          aria-label="Toggle navigation"
+        >
+          <Icon name="bi:list" class="bi" />
+        </button>
+        <div
+          class="offcanvas offcanvas-end"
+          tabindex="-1"
+          id="offcanvasNavbar"
+          aria-labelledby="offcanvasNavbarLabel"
+        >
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Offcanvas</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="offcanvas"
+              aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <ul class="navbar-nav my-1">
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle"
+                  data-bs-toggle="dropdown"
+                  href="#"
+                  role="button"
+                  aria-expanded="false">About</a
+                >
+                <ul class="dropdown-menu px-15 pb-1">
+                  <li>
+                    <a class="dropdown-item" href="/about/mission"
+                      >Mission &amp; Vision</a
+                    >
+                  </li>
+                  {
+                    /* <li>
+                    <a class="dropdown-item" href="/about/a11y">Why Accessibility?</a>
+                  </li> */
+                  }
+                  <li>
+                    <a class="dropdown-item" href="/about/story"
+                      >Founder's Story</a
+                    >
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="/about/policies"
+                      >Our Policies</a
+                    >
+                  </li>
+                </ul>
+              </li>
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle"
+                  data-bs-toggle="dropdown"
+                  href="#"
+                  role="button"
+                  aria-expanded="false">Services</a
+                >
+                <ul class="dropdown-menu px-15 pb-1 services-menu">
+                  <li>
+                    <a class="dropdown-item" href="/services/tip-of-the-week"
+                      >Tip of the Week</a
+                    >
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="/services/evaluations"
+                      >Evaluations</a
+                    >
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="/services/escape-room"
+                      >Accessible Escape Room</a
+                    >
+                  </li>
+                  <li><hr class="dropdown-divider" /></li>
+                  <li>
+                    <ExternalLink
+                      class="dropdown-item py-2"
+                      gaps
+                      href="https://www.ta11y.org/"
+                    >
+                      <Icon
+                        class="bi"
+                        name="ta11y-logo"
+                        height={16}
+                        role="img"
+                        aria-hidden="true"
+                      /><Branding text="ta11y.org" /></ExternalLink
+                    >
+                  </li>
+                  <li>
+                    <ExternalLink
+                      class="dropdown-item py-2"
+                      gaps
+                      href="https://www.mutua11y.org/"
+                      ><Icon
+                        class="bi"
+                        name="mutua11y-logo"
+                        height={16}
+                        role="img"
+                        aria-hidden="true"
+                      /><Branding text="mutua11y.org" /></ExternalLink
+                    >
+                  </li>
+                </ul>
+              </li>
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle"
+                  data-bs-toggle="dropdown"
+                  href="#"
+                  role="button"
+                  aria-expanded="false">Team</a
+                >
+                <ul class="dropdown-menu px-15 pb-1">
+                  <li>
+                    <a class="dropdown-item" href="/team/board">Board Members</a
+                    >
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="/team/leadership"
+                      >Leadership Team</a
+                    >
+                  </li>
+                  <li><a class="dropdown-item" href="/team/staff">Staff</a></li>
+                  <li>
+                    <a class="dropdown-item" href="/team/previous"
+                      >Previous Contributors</a
+                    >
+                  </li>
+                  <li
+                    ><a class="dropdown-item" href="/team/partners">Partners</a
+                    ></li
+                  >
+                </ul>
+              </li>
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle"
+                  data-bs-toggle="dropdown"
+                  href="#"
+                  role="button"
+                  aria-expanded="false">Join us</a
+                >
+                <ul class="dropdown-menu px-15 pb-1">
+                  <li
+                    ><a class="dropdown-item" href="/volunteer">Volunteer</a
+                    ></li
+                  >
+                  <!-- TODO: Hiding the sponsor page until it's done. -->
+                  <!-- <li><a class="dropdown-item" href="/join-us/sponsor">Sponsor</a></li> -->
+                </ul>
+                <li class="nav-item">
+                  <a class="nav-link" href="/blog">Blog</a>
+                </li>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    {
+      /* <div id="brand-nav" class="container-fluid px-3">
+      <button
+        class="navbar-toggler px-1 me-2"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#site-nav"
+        aria-controls="site-nav"
+        aria-expanded="false"
+        aria-label="Toggle site navigation"
+      >
+        <Icon name="bi:list" class="bi" />
+      </button>
+      <div class="d-none d-lg-block navbar-brand me-2">
+        <Image src={escapeRoomLogo} class="brand-logo" alt="" aria-hidden="true" />
+      </div>
+      <div class="my-1 flex-fill align-self-start">
+        <a class="navbar-brand" href="/"
+          ><Branding>Accessible Escape Room</Branding></a
+        >
+      </div>
+    </div>
+    <nav id="site-nav" class="collapse navbar-collapse mx-3" aria-label="Site">
+      <ul class="navbar-nav my-1 mx-4">
+        <li class="nav-item dropdown">
+          <a
+            class="nav-link dropdown-toggle"
+            data-bs-toggle="dropdown"
+            href="#"
+            role="button"
+            aria-expanded="false">About</a
+          >
+          <ul class="dropdown-menu px-15 pb-1">
+            <li>
+              <a class="dropdown-item" href="/about/mission"
+                >Mission &amp; Vision</a
+              >
+            </li>
+            {
+              /* <li>
+              <a class="dropdown-item" href="/about/a11y">Why Accessibility?</a>
+            </li> *
+            }
+            <li>
+              <a class="dropdown-item" href="/about/story">Founder's Story</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="/about/policies">Our Policies</a>
+            </li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a
+            class="nav-link dropdown-toggle"
+            data-bs-toggle="dropdown"
+            href="#"
+            role="button"
+            aria-expanded="false">Services</a
+          >
+          <ul class="dropdown-menu px-15 pb-1 services-menu">
+            <li>
+              <a class="dropdown-item" href="/services/tip-of-the-week"
+                >Tip of the Week</a
+              >
+            </li>
+            <li>
+              <a class="dropdown-item" href="/services/evaluations"
+                >Evaluations</a
+              >
+            </li>
+            <li>
+              <a class="dropdown-item" href="/services/escape-room"
+                >Accessible Escape Room</a
+              >
+            </li>
+            <li><hr class="dropdown-divider" /></li>
+            <li>
+              <ExternalLink
+                class="dropdown-item py-2"
+                gaps
+                href="https://www.ta11y.org/"
+              >
+                <Icon
+                  class="bi"
+                  name="ta11y-logo"
+                  height={16}
+                  role="img"
+                  aria-hidden="true"
+                /><Branding text="ta11y.org" /></ExternalLink
+              >
+            </li>
+            <li>
+              <ExternalLink
+                class="dropdown-item py-2"
+                gaps
+                href="https://www.mutua11y.org/"
+                ><Icon
+                  class="bi"
+                  name="mutua11y-logo"
+                  height={16}
+                  role="img"
+                  aria-hidden="true"
+                /><Branding text="mutua11y.org" /></ExternalLink
+              >
+            </li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a
+            class="nav-link dropdown-toggle"
+            data-bs-toggle="dropdown"
+            href="#"
+            role="button"
+            aria-expanded="false">Team</a
+          >
+          <ul class="dropdown-menu px-15 pb-1">
+            <li>
+              <a class="dropdown-item" href="/team/board">Board Members</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="/team/leadership"
+                >Leadership Team</a
+              >
+            </li>
+            <li><a class="dropdown-item" href="/team/staff">Staff</a></li>
+            <li>
+              <a class="dropdown-item" href="/team/previous"
+                >Previous Contributors</a
+              >
+            </li>
+            <li><a class="dropdown-item" href="/team/partners">Partners</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a
+            class="nav-link dropdown-toggle"
+            data-bs-toggle="dropdown"
+            href="#"
+            role="button"
+            aria-expanded="false">Join us</a
+          >
+          <ul class="dropdown-menu px-15 pb-1">
+            <li><a class="dropdown-item" href="/volunteer">Volunteer</a></li>
+            <!-- TODO: Hiding the sponsor page until it's done. -->
+            <!-- <li><a class="dropdown-item" href="/join-us/sponsor">Sponsor</a></li> -->
+          </ul>
+          <li class="nav-item">
+            <a class="nav-link" href="/blog">Blog</a>
+          </li>
+        </li>
+      </ul>
+      <a
+        class="btn btn-info display-65 mx-1 general-button"
+        href="/donate"
+        role="button">Donate</a
+      >
+    </nav> */
+    }
+  </div>
+  {
+    /*
+  <nav id="breadcrumbs-nav" aria-label="Breadcrumb" class="position-absolute">
+    <ol class="breadcrumb lh-sm">
+      {
+        breadCrumbs.map(({ name, href }) => (
+          <li class="breadcrumb-item">
+            <a href={href} class="link-offset-1 text-truncate">
+              {name}
+            </a>
+          </li>
+        ))
+      }
+      <li class="breadcrumb-item active" aria-current="page">
+        <span class="text-truncate" set:text={title} />
+      </li>
+    </ol>
+  </nav>
+  */
+  }
+</header>
+<slot />
+
+<style is:global lang="scss">
+  /* first declaration that is commented out below is for debugging purposes. */
+  // * {
+  //    outline: 1px solid white;
+  // }
+
+  @import "../styles/dark-mode.scss";
+  @import "../styles/responsive-sizing.scss";
+
+  #header-navbar {
+    min-width: 320px;
+  }
+
+  #breadcrumbs-nav {
+    min-width: 250px;
+  }
+
+  .services-menu .icon-link {
+    gap: 0.25rem;
+  }
+
+  .skip-link:focus,
+  .skip-link:focus-within {
+    position: absolute;
+    font-size: 1.25rem;
+    padding: 0.25rem 2.5rem;
+    top: 1rem;
+    left: 0.8rem;
+    z-index: 999;
+  }
+
+  .navbar-brand:focus {
+    color: inherit;
+  }
+  .navbar-brand:focus:hover {
+    color: var(--bs-navbar-brand-hover-color);
+  }
+
+  [data-icon="ac-logo"],
+  .brand-logo {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+
+  [data-icon="bi:list"] {
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+
+  #brand-nav {
+    height: 3.5rem;
+  }
+
+  #breadcrumbs-nav {
+    top: 2.4rem;
+    left: 4rem;
+  }
+
+  .nav-link {
+    margin-inline: 0.222em;
+    margin-top: 0.222em;
+    margin-bottom: 0.222em;
+  }
+
+  .dropdown-item {
+    margin-bottom: 0.4444em;
+  }
+
+  .dropdown-menu > .dropdown-item:last-child {
+    margin-bottom: 0em;
+  }
+
+  @include media-breakpoint-down(lg) {
+    #breadcrumbs-nav {
+      left: 3.333rem;
+    }
+  }
+
+  .navbar-toggler {
+    background-color: #dfe1ed;
+    border-color: var(--bs-primary-text-emphasis);
+    color: var(--bs-primary);
+    padding-inline: 3px;
+    font-size: 1.1rem;
+  }
+
+  .breadcrumb-item > .text-truncate {
+    display: inline-block;
+    max-width: 10em;
+  }
+
+  @include media-breakpoint-down(md) {
+    .navbar-brand {
+      --bs-navbar-brand-font-size: 1.1rem;
+      vertical-align: sub;
+    }
+  }
+
+  @include media-breakpoint-down(sm) {
+    .navbar-brand {
+      --bs-navbar-brand-font-size: 1rem;
+      vertical-align: sub;
+    }
+  }
+
+  @include media-breakpoint-down(md) {
+    #breadcrumbs-nav .breadcrumb-item {
+      --bs-breadcrumb-item-padding-x: 0.4rem;
+      font-size: 0.9em;
+      line-height: 1.1em;
+    }
+  }
+  @include media-breakpoint-down(sm) {
+    #breadcrumbs-nav .breadcrumb-item {
+      --bs-breadcrumb-item-padding-x: 0.3rem;
+      font-size: 0.9em;
+    }
+    .breadcrumb-item > .text-truncate {
+      max-width: 8em;
+    }
+  }
+  @include media-breakpoint-down(xs) {
+    #breadcrumbs-nav .breadcrumb-item {
+      --bs-breadcrumb-item-padding-x: 0.25rem;
+    }
+    .breadcrumb-item > .text-truncate {
+      max-width: 6em;
+    }
+  }
+
+  @include color-mode(dark) {
+    .skip-link {
+      color: var(--bs-primary);
+      background-color: white;
+    }
+
+    .brand-logo {
+      color: #ffffff;
+    }
+
+    .navbar-toggler {
+      color: #ffffff !important;
+      background-color: var(--bs-primary);
+    }
+  }
+</style>
+
+<script>
+  import { Collapse, Dropdown, Offcanvas } from "~bootstrap-es";
+
+  Array.from(document.querySelectorAll(".dropdown")).forEach(
+    (node) => new Dropdown(node),
+  );
+  Array.from(document.querySelectorAll(".collapse")).forEach(
+    (node) => new Collapse(node, { toggle: false }),
+  );
+  Array.from(document.querySelectorAll(".offcanvas")).forEach(
+    (node) => new Offcanvas(node),
+  );
+</script>

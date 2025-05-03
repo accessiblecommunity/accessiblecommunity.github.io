@@ -1,0 +1,330 @@
+---
+// TODO: Commented out "partner" imports and variables
+// import { getCollection } from "astro:content";
+import { getOpenGraphImageData } from "@lib/og-image";
+import type { Breadcrumbs, PageMetadata } from "@lib/types";
+
+// const partners = await getCollection("collaborators", ({ data }) =>
+//   data.tags.includes("evaluator"),
+// );
+const calendlyLink =
+  "https://calendly.com/evaluation-accessiblecommunity/30min";
+
+const title = "Evaluations";
+const metadata: PageMetadata = {
+  title,
+  description:
+    "Overview of the Evaluations Service that Accessible Community provides",
+  image: getOpenGraphImageData(Astro.site, "pages", "evaluations"),
+};
+const crumbs: Breadcrumbs = [
+  {
+    name: "Home",
+    href: "/",
+  },
+  {
+    name: "Services",
+    href: "/services",
+  },
+];
+
+import Branding from "@components/Branding.astro";
+// import CollaboratorList from "@components/CollaboratorList.astro";
+import ExternalLink from "@components/ExternalLink.astro";
+import GoogleForm from "@components/GoogleForm.astro";
+import Hero from "@components/ColumnedHero.astro";
+import { Icon } from "astro-icon/components";
+import Layout from "../../../layouts/Layout.astro";
+import ThemedBox from "@components/ThemedBox.astro";
+import ThemedSection from "@components/ThemedSection.astro";
+
+import heroBg from "../../../images/colored-hero/woman-using-laptop.png";
+---
+
+<Layout {title} {crumbs} {metadata}>
+  <Hero image={heroBg} slot="header">
+    <div class="py-2 px-2" slot="heading">
+      <h1 class="display-3">
+        Accessibility evaluations for <strong
+          >the&nbsp;rest&nbsp;of&nbsp;us</strong
+        >.
+      </h1>
+    </div>
+    <div class="py-3">
+      <p class="text-bg-hero">
+        <Branding>Accessible Community</Branding> provides flat fee evaluations for
+        small-to-medium websites and social media for community organizations.
+      </p>
+      <a class="btn btn-info" href={calendlyLink} target="_blank"
+        >Schedule an initial consultation</a
+      >
+    </div>
+  </Hero>
+
+  <ThemedSection style="tertiary">
+    <h2 class="display-3">
+      Is your <strong>digital content</strong> accessible?
+    </h2>
+    <p>
+      We provide various levels of accessibility evaluations to best meet the
+      needs of your organization. This ranges from evaluating your website or
+      assessing your organization's social media presence. We also provide the
+      ability to appraise your digital messaging yourself, if you would like.
+    </p>
+    <p>
+      After the evaluation, we provide reports based on international standards
+      and best practices to help you know how you can best increase your
+      content's audience and reach as many people as possible with your message.
+      We encourage you to make your digital content accessible to be equitable
+      and remove barriers for your audience.
+    </p>
+
+    <h3>What are the options?</h3>
+    <div
+      class="d-flex flex-column flex-lg-row gap-4 py-3 justify-content-lg-center text-primary"
+    >
+      <ThemedBox
+        theme="primary"
+        text={true}
+        border={1}
+        class="col col-lg-6 col-xl-5 shadow rounded"
+      >
+        <h4 class="text-white">Standard Website Evaluation</h4>
+        <p>
+          Cost: <strong class="text-brand">$1,500</strong>. What's included:
+        </p>
+        <ul class="bullets">
+          <li
+            >An accessibility review of up to 5 web pages, including the home
+            page and global navigation</li
+          >
+          <li
+            >A detailed report with links to additional learning about the
+            issues and how to fix them</li
+          >
+          <li
+            >Two hours of consulting to review findings and assist in fixing
+            issues</li
+          >
+          <li>
+            Access to three additional hours of support and training to prepare
+            for next steps
+            <ul class="small">
+              <li>Additional hours of support are $100/hour</li>
+            </ul>
+          </li>
+        </ul>
+      </ThemedBox>
+      <ThemedBox
+        theme="info"
+        text={true}
+        border={1}
+        class="col col-lg-6 col-xl-5 shadow rounded"
+      >
+        <h4 class="text-white">Social Media Evaluation</h4>
+        <p>
+          Cost: <strong class="text-brand">$750</strong>. What's included:
+        </p>
+        <ul class="bullets">
+          <li
+            >A accessibility review of up to 3 social media platforms, including
+            the organization pages, content and a sampling of 10-20 posts</li
+          >
+          <li
+            >A detailed report with links to additional learning about the
+            issues and how to fix them</li
+          >
+          <li
+            >One hour of consulting to review findings and assist in fixing
+            issues</li
+          >
+          <li>
+            Access to one additional hour of support and training
+            <ul class="small">
+              <li>Additional hours of support are $100/hour</li>
+            </ul>
+          </li>
+        </ul>
+      </ThemedBox>
+    </div>
+    <div
+      class="d-flex flex-row gap-4 pt-3 pb-4 justify-content-center text-primary"
+    >
+      <ThemedBox
+        theme="secondary"
+        text={true}
+        border={1}
+        class="col col-xl-9 shadow rounded"
+      >
+        <h4 class="text-white">Self-Evaluation</h4>
+        <p>Cost: <strong class="text-brand">$0</strong>.</p>
+        <p>
+          We also provide <ExternalLink
+            href="https://www.ta11y.org"
+            class="link-light link-offset-1"
+            inline
+            gaps
+            ><Icon
+              name="ta11y-logo"
+              role="img"
+              aria-hidden="true"
+              class="bi"
+            /><Branding text="ta11y.org" /></ExternalLink
+          >, a tool that will help you evaluate your digital content and learn
+          more about accessibility. This evaluation tool will guide you
+          step-by-step through an accessibility evaluation of your website,
+          social media and other online content. It is designed specifically for
+          those with little-to-no accessibility experience.
+        </p>
+        <p>
+          <a href="/services#ta11y" class="link-light link-offset-1">
+            Read more about <Branding text="ta11y.org" /></a
+          >
+          to see if this free solution is for you.
+        </p>
+      </ThemedBox>
+    </div>
+    <div class="pt-4">
+      <h3>Who is this service for?</h3>
+      <p>
+        <Branding>Accessible Community</Branding> provides these accessibility evaluations
+        for small-to-medium websites and social media for community organizations.
+        Community organizations include:
+      </p>
+      <ul>
+        <li>small businesses,</li>
+        <li>local nonprofits,</li>
+        <li>local government,</li>
+        <li>religious organizations,</li>
+        <li>clubs, and</li>
+        <li>educational organizations.</li>
+      </ul>
+      <p>
+        <Branding>Accessible Community</Branding> is a nonprofit organization dedicated
+        to growing accessible communities through socially responsible technology.
+        We provide accessibility evaluations to smaller, community-based organizations
+        to make digital accessibility affordable and achievable. If you are unsure
+        if you qualify, please complete the <a href="#info">information form</a>
+        below.
+      </p>
+      {
+        /*
+      Commenting this out until we have some discussions...
+      
+      <p>
+        If you do not qualify, we recommend you reach out to one of our partners:
+      </p>
+      <CollaboratorList items={partners} />
+      */
+      }
+
+      <h4>Scholarships</h4>
+      <p>
+        We provide a limited number of free accessibility evaluations to
+        organizations that are unable to afford our services. Please note your
+        desire to be considered for a scholarship when you
+        <ExternalLink href={calendlyLink}
+          >schedule an initial consultation</ExternalLink
+        >
+        or request more information.
+      </p>
+      <p>
+        If you are interested in sponsoring an evaluation for an organization
+        that can't afford it, please make a
+        <ExternalLink href="https://donate.stripe.com/eVadR0agM8ec1TW5kk"
+          >donation via Stripe</ExternalLink
+        >. Thank you for supporting other organizations who want to become
+        accessible.
+      </p>
+    </div>
+  </ThemedSection>
+
+  <ThemedSection id="info" theme="secondary" style="subtle" text={true}>
+    <h2 class="display-4">How do I get more <strong>information</strong>?</h2>
+    <GoogleForm
+      id="info-form"
+      key="AKfycbxQZFm7FIKQabNEmwXbKdUh3IdMUY8efL4e8bEmkK_9rPvH6cUPrdNdQrIN6eMK-vI"
+    >
+      <div slot="prelude">
+        <p>
+          You can <ExternalLink href={calendlyLink}
+            >schedule an Accessibility Consultation</ExternalLink
+          > with a member of our evaluations team. Alternatively, if you have questions
+          about our evaluation process, please complete this information form.
+        </p>
+        <h3 class="visually-hidden">Information form</h3>
+      </div>
+      <div class="row justify-content-lg-between">
+        <div class="col-lg-5">
+          <div class="mb-3">
+            <label for="nameField" class="form-label mb-1 required-field"
+              >Name</label
+            ><span class="asterisk"></span>
+            <input
+              type="text"
+              name="Name"
+              class="form-control w-100 form-field"
+              id="nameField"
+              autocomplete="name"
+              required
+            />
+          </div>
+          <div class="mb-3">
+            <label for="emailField" class="form-label mb-1 required-field"
+              >Email Address</label
+            ><span class="asterisk"></span>
+            <input
+              type="email"
+              name="Email"
+              class="form-control w-100 form-field"
+              id="emailField"
+              autocomplete="email"
+              required
+            />
+          </div>
+          <div class="mb-3">
+            <label for="phoneNumberField" class="form-label mb-1"
+              >Phone Number</label
+            >
+            <input
+              type="text"
+              name="PhoneNumber"
+              class="form-control w-100 form-field"
+              id="phoneNumberField"
+              autocomplete="tel"
+            />
+          </div>
+        </div>
+        <div class="col-lg-6 mb-3">
+          <label for="messageTextarea" class="form-label mb-1 required-field"
+            >Message or Questions</label
+          ><span class="asterisk"></span>
+          <textarea
+            name="Message"
+            class="form-control w-100 form-text-area"
+            id="messageTextarea"
+            aria-describedby="messageHelp"
+            rows="6"
+            required></textarea>
+          <div id="messageHelp" class="form-text">
+            Please indicate what level of service you are interested in, as well
+            as any questions you have about the services we provide or the
+            organization itself.
+          </div>
+        </div>
+      </div>
+    </GoogleForm>
+  </ThemedSection>
+</Layout>
+
+<style>
+  .bullets {
+    padding-inline-start: 1.5em;
+  }
+  .small {
+    font-size: 90%;
+  }
+  h4.text-white {
+    font-weight: 600;
+  }
+</style>

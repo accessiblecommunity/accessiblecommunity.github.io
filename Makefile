@@ -57,16 +57,21 @@ $(SOURCE_DIR)/dist: up
 	@echo Running a local build.
 	@docker compose exec $(CONTAINER) sh -c "npm run build"
 
+clean-astro-content:
+	@echo Removing the Astro content directories.
+	@$(RemoveDirCmd) $(call FixPath,$(SOURCE_DIR)/.astro)
+	@$(RemoveDirCmd) $(call FixPath,$(SOURCE_DIR)/node_modules/.astro-og-canvas)
+
 clean-js-dist:
 	@echo Removing the $(SOURCE_DIR)/dist directory.
-	$(RemoveDirCmd) $(call FixPath,$(SOURCE_DIR)/dist)
+	@$(RemoveDirCmd) $(call FixPath,$(SOURCE_DIR)/dist)
 
 clean-js-modules:
 	@echo Removing the $(SOURCE_DIR)/node_modules directory.
-	$(RemoveDirCmd) $(call FixPath,$(SOURCE_DIR)/node_modules)
+	@$(RemoveDirCmd) $(call FixPath,$(SOURCE_DIR)/node_modules)
 
 clean: clean-js-dist clean-js-modules
 
 .PHONY: serve up down build shell dist version \
-	clean clean-js-dist clean-js-modules \
+	clean clean-astro-content clean-js-dist clean-js-modules \
 	.FORCE

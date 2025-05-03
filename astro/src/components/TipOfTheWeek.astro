@@ -1,14 +1,15 @@
 ---
+import { render, type CollectionEntry } from "astro:content";
 import { getMostRecent } from "../lib/tips";
-import { components } from '../lib/mdx';
+import { components } from "../lib/mdx";
 
 interface Props {
-  tip: object | undefined;
-  class: string;
+  tip?: CollectionEntry<"atotw">;
+  class?: string;
 }
 
-const { tip = await getMostRecent(), class: extraClasses } = Astro.props;
-const { Content = "p" } = await tip.render();
+const { tip = await getMostRecent(), class: extraClasses = "" } = Astro.props;
+const { Content = "p" } = await render(tip);
 ---
 
 <article class={extraClasses}>

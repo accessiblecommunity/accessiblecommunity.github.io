@@ -1,11 +1,38 @@
 ---
 import { Icon } from "astro-icon/components";
 
+import Branding from "./Branding.astro";
+import ExternalLink from "./ExternalLink.astro";
+
 const currentYear = new Date().getFullYear();
 
 const facebookURL = "https://www.facebook.com/AccessibleCommunity";
 const linkedinURL = "https://in.linkedin.com/company/accessible-community";
 const instagramURL = "https://www.instagram.com/accessible_community/";
+
+const ContactUs = [
+  {
+    name: "Mailing Address",
+    icon: "bi:geo-alt-fill",
+    className: "bi bi-geo-alt-fill",
+    href: null,
+    html: "609 E. Main Street<br />Suite CC1002 <br/>Purcellville, VA&nbsp; 20132",
+  },
+  {
+    name: "Email Address",
+    icon: "bi:envelope-at-fill",
+    className: "bi bi-envelope-at-fill",
+    href: "mailto:info@accessiblecommunity.org",
+    html: "info@accessiblecommunity.org",
+  },
+  {
+    name: "Phone Number",
+    icon: "bi:telephone-fill",
+    className: "bi bi-telephone-fill",
+    href: "tel:+1703-651-6703",
+    html: "(703) 651-6703",
+  },
+];
 
 const Socials = [
   {
@@ -35,97 +62,231 @@ const Socials = [
       class="d-flex flex-column flex-lg-row justify-content-between gap-0 column-gap-3"
     >
       <div>
-        <h2 class="text-white fw-bold display-65">Contact Us</h2>
-        <dl class="mb-3 text-light">
-          <dt class="display-7">Mailing Address:</dt>
-          <dd>PO Box 46; Paeonian Springs, VA, 20129</dd>
-          <dt class="display-7">Email:</dt>
-          <dd>
-            <a class="link-light" href="mailto:info@accessiblecommunity.org"
-              >info@accessiblecommunity.org</a
-            >
-          </dd>
-          <dt class="display-7">Phone Number:</dt>
-          <dd>703-651-6703</dd>
-        </dl>
-      </div>
-      <div>
-        <h2 class="text-white fw-bold display-65">User Policies</h2>
-        <ul class="p-0 list-unstyled mb-3">
+        <h2 class="text-white fw-bold display-6">About Us</h2>
+        <ul class="list-unstyled list-spaced mb-3">
           <li>
-            <a class="link-light" href="/accessibility-statement"
-              >Accessibility&nbsp;Statement</a
+            <a class="link-light footer-link" href="/about/mission"
+              >Mission &amp; Vision</a
             >
           </li>
           <li>
-            <a class="link-light" href="/privacy-policy">Privacy Policy</a>
+            <a class="link-light footer-link" href="/about/story"
+              >Founder's Story</a
+            >
+          </li>
+          <li>
+            <a class="link-light footer-link" href="/about/policies"
+              >Our Policies</a
+            >
+          </li>
+        </ul>
+        <h2 class="text-white fw-bold display-6">Our Services</h2>
+        <ul class="list-unstyled list-spaced me-4 mb-4">
+          <li>
+            <a class="link-light footer-link" href="/services/tip-of-the-week"
+              >Tip of the Week</a
+            >
+          </li>
+          <li>
+            <a class="link-light footer-link" href="/services/evaluations"
+              >Evaluations</a
+            >
+          </li>
+          <li>
+            <a class="link-light footer-link" href="/services/escape-room"
+              >Accessible Escape Room</a
+            >
+          </li>
+          <li>
+            <a class="link-light footer-link" href="/blog">Our Blog</a>
+          </li>
+          <li><hr class="border-light" /></li>
+          <li>
+            <ExternalLink
+              class="link-light footer-link"
+              gaps
+              href="https://www.ta11y.org/"
+            >
+              <Icon
+                class="bi"
+                name="ta11y-logo"
+                height={16}
+                role="img"
+                aria-hidden="true"
+              /><Branding text="ta11y.org" /></ExternalLink
+            >
+          </li>
+          <li>
+            <ExternalLink
+              class="link-light footer-link"
+              gaps
+              href="https://www.mutua11y.org/"
+              ><Icon
+                class="bi"
+                name="mutua11y-logo"
+                height={16}
+                role="img"
+                aria-hidden="true"
+              /><Branding text="mutua11y.org" /></ExternalLink
+            >
           </li>
         </ul>
       </div>
       <div>
-        <h2 class="text-white fw-bold display-65">Staff Policies</h2>
-        <ul class="p-0 list-unstyled me-4 mb-4">
+        <h2 class="text-white fw-bold display-6">Research Projects</h2>
+        <ul class="list-unstyled list-spaced me-4 mb-4">
           <li>
-            <a class="link-light" href="/code-of-conduct"
+            <a class="link-light footer-link" href="/daf"
+              >Digital Accessibility Framework</a
+            >
+          </li>
+          <li>
+            <ExternalLink
+              class="link-light footer-link"
+              inline
+              href="https://accessiblecommunity.org/useable"
+              ><Branding text="useable" /></ExternalLink
+            >
+          </li>
+        </ul>
+
+        <h2 class="text-white fw-bold display-6">Our Team</h2>
+        <ul class="list-unstyled list-spaced mb-3">
+          <li>
+            <a class="link-light footer-link" href="/team/board"
+              >Board Members</a
+            >
+          </li>
+          <li>
+            <a class="link-light footer-link" href="/team/leadership"
+              >Leadership Team</a
+            >
+          </li>
+          <li>
+            <a class="link-light footer-link" href="/team/staff">Staff</a>
+          </li>
+          <li>
+            <a class="link-light footer-link" href="/team/previous"
+              >Previous Contributors</a
+            >
+          </li>
+          <li>
+            <a class="link-light footer-link" href="/team/partners">Partners</a>
+          </li>
+        </ul>
+      </div>
+
+      <div>
+        <h2 class="text-white fw-bold display-6">Join Us</h2>
+        <ul class="list-unstyled list-spaced mb-3">
+          <li
+            ><a class="link-light footer-link" href="/volunteer">Volunteer</a
+            ></li
+          >
+          <li><a class="link-light footer-link" href="/donate">Donate</a></li>
+        </ul>
+
+        <h2 class="text-white fw-bold display-6">User Policies</h2>
+        <ul class="list-unstyled list-spaced mb-3">
+          <li>
+            <a class="link-light footer-link" href="/accessibility-statement"
+              >Accessibility&nbsp;Statement</a
+            >
+          </li>
+          <li>
+            <a class="link-light footer-link" href="/privacy-policy"
+              >Privacy Policy</a
+            >
+          </li>
+        </ul>
+
+        <h2 class="text-white fw-bold display-6">Staff Policies</h2>
+        <ul class="list-unstyled list-spaced me-4 mb-4">
+          <li>
+            <a class="link-light footer-link" href="/code-of-conduct"
               >Code&nbsp;of&nbsp;Conduct</a
             >
           </li>
           <li>
-            <a class="link-light" href="/harrassment-policy"
+            <a class="link-light footer-link" href="/harrassment-policy"
               >Harrassment&nbsp;Policy</a
             >
           </li>
           <li>
-            <a class="link-light" href="/non-discrimination-policy"
+            <a class="link-light footer-link" href="/non-discrimination-policy"
               >Non-Discrimination Policy</a
             >
           </li>
           <li>
-            <a class="link-light" href="/technology-policy"
+            <a class="link-light footer-link" href="/technology-policy"
               >Technology&nbsp;Policy</a
             >
           </li>
         </ul>
       </div>
-      <div class="flex-column text-center">
-        <div>
-          <h2 class="text-white fw-bold display-65 mb-0"
-            >Find us on Social Media</h2
-          >
-          <ul class="ps-0 mb-0">
-            {
-              Socials.map(({ icon, href, className, name }) => (
-                <li class="d-inline-block m-3">
-                  <a
-                    class="d-inline-block link-light social-link"
-                    href={href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <Icon
-                      name={icon}
-                      class={className}
-                      class="social-icon"
-                      height="2rem"
-                      width="2rem"
-                      role="img"
-                      aria-label={name}
-                    />
-                  </a>
-                </li>
-              ))
-            }
-          </ul>
-        </div>
-        <div class="mt-2 legal-footer">
-          <p class="pt-2 text-center mb-0 link-light">
-            <small>Accessible Community is a 501(c)3&nbsp;organization.</small>
-          </p>
-          <p class="text-center mb-0 link-light">
-            <small
-              >© <time datetime="{currentYear}">{currentYear}</time> Accessible&nbsp;Community</small
-            >
-          </p>
+      <div>
+        <h2 class="text-white fw-bold display-6">Contact Us</h2>
+        <dl class="mb-3 text-light">
+          {
+            ContactUs.map(({ icon, href, html, className, name }) => (
+              <div class="row">
+                <dt class="contact-us">
+                  <Icon
+                    name={icon}
+                    class={className}
+                    height="1.5rem"
+                    width="1.5rem"
+                    role="img"
+                    aria-label={name}
+                  />
+                </dt>
+                {href ?
+                  <dd class="col">
+                    <a class="link-light footer-link" {href} set:html={html} />
+                  </dd>
+                : <dd class="col" set:html={html} />}
+              </div>
+            ))
+          }
+        </dl>
+        <h2 class="text-white fw-bold display-6 mb-0">Social Media</h2>
+        <div class="flex-column text-center">
+          <div>
+            <ul class="ps-0 mb-0">
+              {
+                Socials.map(({ icon, href, className, name }) => (
+                  <li class="d-inline-block m-3">
+                    <a
+                      class="d-inline-block footer-social-link"
+                      href={href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <Icon
+                        name={icon}
+                        class={className}
+                        height="2rem"
+                        width="2rem"
+                        role="img"
+                        aria-label={name}
+                      />
+                    </a>
+                  </li>
+                ))
+              }
+            </ul>
+          </div>
+          <div class="mt-2 legal-footer">
+            <p class="pt-2 text-center mb-0 text-light">
+              <small>Accessible Community is a 501(c)3&nbsp;organization.</small
+              >
+            </p>
+            <p class="text-center mb-0 text-light">
+              <small
+                >© <time datetime="{currentYear}">{currentYear}</time> Accessible&nbsp;Community</small
+              >
+            </p>
+          </div>
         </div>
       </div>
     </div>
@@ -146,12 +307,27 @@ const Socials = [
     min-height: 29px;
     min-width: 29px;
   }
+</style>
 
-  .legal-footer {
-    border-top: 1px solid #dfe1ed;
+<style scoped>
+  h2:not(:first-child) {
+    margin-top: 1.75em;
   }
 
+  ul.list-unstyled li,
+  dt.contact-us {
+    margin-left: 0.5em;
+  }
+  a.footer-link {
+    text-underline-offset: 0.175em !important;
+  }
   dd + dt {
     margin-top: 1.25em;
+  }
+  dt.contact-us {
+    width: 2rem;
+  }
+  .legal-footer {
+    border-top: 1px solid #dfe1ed;
   }
 </style>

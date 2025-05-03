@@ -1,8 +1,11 @@
 ---
 import { getCollection } from "astro:content";
+import { sortBy } from "lodash-es";
+
+import type { Breadcrumbs, PageMetadata } from "@lib/types";
 
 export async function getStaticPaths() {
-  const team = await getCollection("team");
+  const team = await getCollection("staff");
 
   return [
     {
@@ -11,6 +14,7 @@ export async function getStaticPaths() {
         team,
         title: "Board Members",
         heading: "Board <strong>Members</strong>",
+        description: "Bios of the board members of Accessible Community",
       },
     },
     {
@@ -19,29 +23,28 @@ export async function getStaticPaths() {
         team,
         title: "Leadership Team",
         heading: "Leadership <strong>Team</strong>",
+        description: "Bios of the leadership team of Accessible Community",
       },
     },
   ];
 }
 
-import ImageHeading from "../../components/ImageHeading.astro";
-import Layout from "../../layouts/Layout.astro";
-import TeamMemberBio from "../../components/TeamMemberBio.astro";
-import ThemedSection from "../../components/ThemedSection.astro";
-
-import { sortBy } from "lodash-es";
-
 const { tag } = Astro.params;
-const { team, title, heading } = Astro.props;
+const { team, title, heading, description } = Astro.props;
 
 const teamMembers = sortBy(
   team.filter(
-    ({ data }) => data.roles && Object.keys(data.roles).includes(tag),
+    ({ data }) =>
+      data.current && data.roles && Object.keys(data.roles).includes(tag),
   ),
   ({ data }) => data.name.split(" ").slice(1).join(" "),
 );
 
-const crumbs = [
+const metadata: PageMetadata = {
+  title,
+  description,
+};
+const crumbs: Breadcrumbs = [
   {
     name: "Home",
     href: "/",
@@ -51,9 +54,14 @@ const crumbs = [
     href: "/team",
   },
 ];
+
+import ImageHeading from "../../components/ImageHeading.astro";
+import Layout from "../../layouts/Layout.astro";
+import TeamMemberBio from "../../components/TeamMemberBio.astro";
+import ThemedSection from "../../components/ThemedSection.astro";
 ---
 
-<Layout title={title} crumbs={crumbs}>
+<Layout {title} {crumbs} {metadata}>
   <ImageHeading image="team" slot="header" set:html={heading} />
   <ThemedSection style="tertiary">
     <ul class="list-group">

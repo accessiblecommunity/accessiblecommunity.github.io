@@ -3,15 +3,18 @@ import { isEmpty } from "lodash-es";
 
 import SocialLinks from "./SocialLinks.astro";
 import TeamVignette from "./TeamVignette.astro";
+import type { CollectionEntry } from "astro:content";
+import { components } from "../lib/mdx";
+import { render } from "astro:content";
 
 interface Props {
-  member: object; // TODO: Define this
+  member: CollectionEntry<"staff">;
   role: string | boolean;
 }
 
 const { member, role = "default" } = Astro.props;
 const { name, links } = member.data;
-const { Content } = await member.render();
+const { Content } = await render(member);
 ---
 
 <div class="border-bottom row justify-content-between team-bio">
@@ -36,7 +39,7 @@ const { Content } = await member.render();
   </div>
 </div>
 <div class="p-2">
-  <Content />
+  <Content {components} />
 </div>
 
 <style>

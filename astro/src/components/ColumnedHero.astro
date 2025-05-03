@@ -1,0 +1,179 @@
+---
+import { getImage } from "astro:assets";
+import type { ImageMetadata } from "astro";
+
+interface Props {
+  image: string | ImageMetadata;
+  theme?: string;
+  actionBreakpoint?: string;
+  reverse?: boolean;
+  "horizontal-position"?: string;
+  "vertical-position"?: string;
+}
+
+const {
+  image,
+  theme = "primary",
+  actionBreakpoint = "lg",
+  reverse = false,
+  "horizontal-position": horizPosition = "22%",
+  "vertical-position": verticalPosition = "center",
+} = Astro.props;
+
+let heroBgUrl;
+
+if (image) {
+  const optimizedBg = await getImage({ src: image, format: "avif" });
+  heroBgUrl = `url(${optimizedBg.src})`;
+} else {
+  heroBgUrl = "";
+}
+
+// <div class="col col-md-7 col-xl-6 col-xxl-5">
+---
+
+<section class={`d-flex justify-content-${reverse ? "start" : "end"} mx-0`}>
+  <div class="col">
+    <div
+      class={`d-flex flex-column flex-md-row${reverse ? "-reverse" : ""} align-items-stretch`}
+    >
+      <div class="hero-text mx-5 py-5">
+        <slot name="heading" />
+        <div class="text-primary-emphasis mx-2">
+          <slot />
+        </div>
+        {
+          Astro.slots.has("action-bar") && (
+            <div class="bg-primary bg-opacity-50 py-3 text-white">
+              <div
+                class={`d-flex flex-column flex-${actionBreakpoint}-row align-items-center justify-content-${actionBreakpoint}-evenly gap-2`}
+              >
+                <slot name="action-bar" />
+              </div>
+            </div>
+          )
+        }
+      </div>
+      <div
+        class={`d-none d-md-block col-md-5 col-lg-6 col-xl-6 col-xxl-7 bg-${theme} hero-img${reverse ? "-reverse" : ""}`}
+        style={`background: no-repeat center ${heroBgUrl}; background-size: cover; background-position: ${horizPosition} ${verticalPosition}`}
+      >
+      </div>
+    </div>
+    {
+      Astro.slots.has("prologue") && (
+        <div class="bg-primary bg-opacity-50 py-2">
+          <div class="container-fluid mx-auto text-white text-center">
+            <slot name="prologue" />
+          </div>
+        </div>
+      )
+    }
+  </div>
+</section>
+
+<style lang="scss">
+  @import "../styles/responsive-sizing.scss";
+
+  .hero-img {
+    border-top-left-radius: 8rem 16rem;
+    border-bottom-left-radius: 8em 16rem;
+  }
+  .hero-img-reverse {
+    border-top-right-radius: 8rem 16rem;
+    border-bottom-right-radius: 8em 16rem;
+  }
+  @include media-breakpoint-up(sm) {
+    section {
+      margin-left: 2em;
+      margin-right: 2em;
+    }
+  }
+  @include media-breakpoint-up(md) {
+    section.justify-content-end {
+      margin-right: 0;
+    }
+    section.justify-content-start {
+      margin-left: 0;
+    }
+
+    .hero-img {
+      mask-image: linear-gradient(
+        to right,
+        rgb(04 10 58 / 100%) 45%,
+        85%,
+        transparent
+      );
+    }
+    .hero-img-reverse {
+      mask-image: linear-gradient(
+        to left,
+        rgb(04 10 58 / 100%) 45%,
+        85%,
+        transparent
+      );
+    }
+  }
+  @include media-breakpoint-up(lg) {
+    .hero-img {
+      mask-image: linear-gradient(
+        to right,
+        rgb(04 10 58 / 100%) 40%,
+        60%,
+        80%,
+        transparent
+      );
+    }
+    .hero-img-reverse {
+      mask-image: linear-gradient(
+        to left,
+        rgb(04 10 58 / 100%) 40%,
+        60%,
+        80%,
+        transparent
+      );
+    }
+  }
+  @include media-breakpoint-up(xl) {
+    section.justify-content-end {
+      margin-left: 3rem;
+    }
+    section.justify-content-start {
+      margin-right: 3rem;
+    }
+
+    .hero-img {
+      mask-image: linear-gradient(
+        to right,
+        rgb(04 10 58 / 100%) 30%,
+        50%,
+        70%,
+        transparent
+      );
+    }
+    .hero-img-reverse {
+      mask-image: linear-gradient(
+        to right,
+        rgb(04 10 58 / 100%) 30%,
+        50%,
+        70%,
+        transparent
+      );
+    }
+  }
+  @include media-breakpoint-up(xxl) {
+    section.justify-content-end {
+      margin-left: 4rem;
+    }
+    section.justify-content-start {
+      margin-right: 4rem;
+    }
+  }
+
+  .hero .text-bg-hero {
+    background-color: rgba(var(--bs-primary-rgb), var(--bs-bg-opacity));
+    border-radius: var(--bs-border-radius-sm);
+    --bs-bg-opacity: 0.25;
+    padding: 0.25rem 0.5rem; /* py-1 px-2 */
+  }
+</style>
