@@ -28,11 +28,11 @@ The next step is to determine which development environment you would like to us
 
 When using Windows as a development environment, you may run into a couple of issues.
 1. Not all of the `make` commands may work. Please let us know what does and doesn't.
-2. The development reloading feature may not work, if you aren't [utilizing WSL2 as your filesystem for your local repository](https://github.com/microsoft/WSL/issues/4739#issuecomment-581075753). 
+2. The development reloading feature may not work, if you aren't [utilizing WSL2 as your filesystem for your local repository](https://github.com/microsoft/WSL/issues/4739#issuecomment-581075753).
   * If that is the case, add a `.env.development.local` file to the `astro` directory with the following content:
   ```
   # Add automated polling with windows
-  VITE_POLLING=true
+  FS_POLLING=true
   ```
   * Afterwards, restart your container and reloading should work in your development environment.
 

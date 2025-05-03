@@ -6,6 +6,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 import { defineConfig } from "astro/config";
+import { loadEnv } from "vite";
 import styleGuide from "./style-guide/register.js";
 
 import icon from "astro-icon";
@@ -13,7 +14,8 @@ import mdx from "@astrojs/mdx";
 import robotsTxt from "astro-robots-txt";
 import sitemap from "@astrojs/sitemap";
 
-const polling = (import.meta.env.VITE_POLLING && true) || false;
+const localEnv = loadEnv(process.env.NODE_ENV, process.cwd(), "");
+const usePolling = (localEnv.FS_POLLING === 'true');
 const botsToDisallow = [
   "anthropic-ai",
   "Applebot-Extended",
@@ -57,7 +59,7 @@ export default defineConfig({
     },
     // https://vitejs.dev/config/server-options#server-watch
     watch: {
-      usePolling: polling,
+      usePolling,
     },
   },
   integrations: [
