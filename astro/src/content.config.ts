@@ -1,8 +1,10 @@
 import { defineCollection, reference, z } from "astro:content";
+import { glob } from "astro/loaders";
+
 import { HeroTheme } from "@lib/hero-image";
 
 const atotw = defineCollection({
-  type: "content",
+  loader: glob({ pattern: "**/[^_]*.{md,mdx}", base: "./src/content/atotw" }),
   schema: z.object({
     title: z.string(),
     published: z.date(),
@@ -15,7 +17,7 @@ const atotw = defineCollection({
 });
 
 const blogs = defineCollection({
-  type: "content",
+  loader: glob({ pattern: "**/[^_]*.{md,mdx}", base: "./src/content/blogs" }),
   schema: z.object({
     title: z.string(),
     description: z.string(),
@@ -27,7 +29,10 @@ const blogs = defineCollection({
 });
 
 const collaborators = defineCollection({
-  type: "data",
+  loader: glob({
+    pattern: "**/[^_]*.json",
+    base: "./src/content/collaborators",
+  }),
   schema: ({ image }) =>
     z.object({
       name: z.string(),
@@ -38,14 +43,14 @@ const collaborators = defineCollection({
 });
 
 const daf = defineCollection({
-  type: "content",
+  loader: glob({ pattern: "**/[^_]*.{md,mdx}", base: "./src/content/daf" }),
   schema: z.object({
     order: z.number().default(99999),
   }),
 });
 
 const staff = defineCollection({
-  type: "content",
+  loader: glob({ pattern: "**/[^_]*.{md,mdx}", base: "./src/content/staff" }),
   schema: ({ image }) =>
     z.object({
       name: z.string(),
@@ -84,14 +89,17 @@ const staff = defineCollection({
 });
 
 const recruiting = defineCollection({
-  type: "content",
+  loader: glob({
+    pattern: "**/[^_]*.{md,mdx}",
+    base: "./src/content/recruiting",
+  }),
   schema: z.object({
     name: z.string(),
   }),
 });
 
 const teams = defineCollection({
-  type: "content",
+  loader: glob({ pattern: "**/[^_]*.{md,mdx}", base: "./src/content/teams" }),
   schema: z.object({
     name: z.string(),
     recruiting: reference("recruiting").optional(),
@@ -101,14 +109,17 @@ const teams = defineCollection({
 });
 
 const quotes = defineCollection({
-  type: "content",
+  loader: glob({ pattern: "**/[^_]*.{md,mdx}", base: "./src/content/quotes" }),
   schema: z.object({
     quotee: z.string(),
   }),
 });
 
 const testimonials = defineCollection({
-  type: "content",
+  loader: glob({
+    pattern: "**/[^_]*.{md,mdx}",
+    base: "./src/content/testimonials",
+  }),
   schema: z.object({
     staff: reference("staff").optional(),
     person: z

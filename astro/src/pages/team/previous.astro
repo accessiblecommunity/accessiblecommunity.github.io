@@ -29,7 +29,7 @@ const staff: CollectionEntry<"staff">[] = await getCollection(
 );
 const teams = await getCollection(
   "teams",
-  ({ slug }) => ["board", "default", "leadership"].indexOf(slug) == -1,
+  ({ id }) => ["board", "default", "leadership"].indexOf(id) == -1,
 );
 
 type Roles = CollectionEntry<"staff">["data"]["roles"];
@@ -45,12 +45,12 @@ interface TeamOverview {
 
 const teamMembers: TeamMembers = teams.reduce(
   (accum: TeamMembers, current: CollectionEntry<"teams">) => {
-    const slug = current.slug as RoleKey;
+    const id = current.id as RoleKey;
     const overview: TeamOverview = {
       name: current.data.name,
       members: [],
     };
-    accum[slug] = overview;
+    accum[id] = overview;
     return accum;
   },
   {},

@@ -6,7 +6,7 @@ export async function getStaticPaths() {
   const catalog: TipCatalog = await getTipCatalog();
 
   return catalog.tips.map((tip) => ({
-    params: { slug: tip.slug },
+    params: { slug: tip.id },
     props: {
       catalog,
       tip,
