@@ -1,12 +1,20 @@
 ---
 import PolicyLayout from "../layouts/PolicyLayout.astro";
 
+import "../styles/print.scss";
+
+
 const title = "Privacy Policy";
 const description = "The privacy policy for our users, staff and volunteers.";
 ---
 
 <PolicyLayout {title} {description}>
   <p>Last updated: <time datetime="2024-01-15">15 January 2023</time></p>
+  <div class="d-print-none">
+    <button class="btn btn-primary" onclick="window.print()">
+      Print this page
+    </button>
+  </div>
   <h2 class="privacy-policy-heading">Plain Language Summary</h2>
   <p>
     This summary covers the key points but is not the legally binding agreement.
