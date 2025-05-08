@@ -2,7 +2,7 @@
 name: Ishita
 roles:
   default: Evaluatons Team
-  evaluations: Digital Evaluator
+  evaluations: Digital Evaluators
 picture: ../../images/staff/Ta11yCat.png
 alt: The Tally Cat has claimed this spot.
 links:
