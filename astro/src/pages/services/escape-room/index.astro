@@ -24,15 +24,17 @@ import ExternalLink from "@components/ExternalLink.astro";
 import Hero from "@components/ColumnedHero.astro";
 import { Image } from "astro:assets";
 import ImageFigure from "@components/ImageFigure.astro";
-import Layout from "../../../layouts/Layout.astro";
+import Layout from "src/layouts/Layout.astro";
 import ThemedBox from "@components/ThemedBox.astro";
 import ThemedSection from "@components/ThemedSection.astro";
 
-import heroBg from "../../../images/jonathan-kemper-9tamF4J0vLk-unsplash.jpg";
-import escapeRoomLogo from "src/images/escaperoomlogo-768x768.png";
+import heroBg from "src/images/escape-room/jonathan-kemper-9tamF4J0vLk-unsplash.jpg";
+import escapeRoomLogo from "src/images/escape-room/escaperoomlogo-768x768.png";
 import brailleBlocks from "src/images/escape-room/braille-blocks.png";
-import picnicBg from "src/images/evangelina-silina-BzLUmuRDMWE-unsplash.jpg";
-import casinoBg from "src/images/ben-iwara-gbSHdpJr1HE-unsplash.jpg";
+import bakingBg from "src/images/escape-room/priscilla-du-preez-SU5jSHu1pK8-unsplash.jpg";
+import casinoBg from "src/images/escape-room/ben-iwara-gbSHdpJr1HE-unsplash.jpg";
+import corporateBg from "src/images/escape-room/aleksandar-andreev-k2gRTJM9BPw-unsplash.jpg";
+import picnicBg from "src/images/escape-room/evangelina-silina-BzLUmuRDMWE-unsplash.jpg";
 import { Icon } from "astro-icon/components";
 ---
 
@@ -52,24 +54,14 @@ import { Icon } from "astro-icon/components";
     </div>
   </Hero>
 
+{ /* 
   <p class="text-bg-primary text-center mb-0 py-3">
     <a class="icon-link link-light" href="/services/escape-room/csun-2025">
       <Icon name="bi:pencil-fill" class="bi" role="img" aria-hidden="true" />
-      Register to prototype our newest Escape Room at CSUN 2025!
+      Register to prototype our newest Escape Room at AccessU 2025!
     </a>
-    {
-      /* 
-    We will be at <ExternalLink
-      class="link-light"
-      href="https://web.cvent.com/event/2c5d8c51-6441-44c0-b361-131ff9544dd5/summary"
-      >CSUN</ExternalLink
-    > and <ExternalLink
-      href="https://knowbility.org/programs/john-slatin-accessu-2025"
-      class="link-light">AccessU</ExternalLink
-    > in Spring 2025 with our newest Escape Room!
-    */
-    }
   </p>
+*/ }
 
   <ThemedSection style="tertiary">
     <p class="lead">
@@ -102,38 +94,15 @@ import { Icon } from "astro-icon/components";
       class="d-flex flex-column flex-lg-row gap-4 py-3 justify-content-lg-center text-primary"
     >
       <ThemedBox
-        theme="primary"
-        text={true}
-        border={1}
-        class="col col-lg-6 col-xl-5 shadow rounded"
-      >
-        <h3 class="text-white">Standard Kit</h3>
-        <p>
-          Cost: <strong class="text-brand">$3,500</strong>. What's included:
-        </p>
-        <ul class="bullets">
-          <li
-            >One instance of the escape room, built and sent directly to you.</li
-          >
-          <li
-            >A guide with how to run the escape room and how to accommodate
-            people with various disabilties.</li
-          >
-          <li
-            >Access to the digital content with appropriate captions and audio
-            descriptions.</li
-          >
-        </ul>
-      </ThemedBox>
-      <ThemedBox
         theme="info"
         text={true}
         border={1}
         class="col col-lg-6 col-xl-5 shadow rounded"
       >
-        <h3 class="text-white">"Build-your-own" Kit</h3>
+        <h3 class="text-white">Build-your-own Kit</h3>
+        <p>Cost: <strong class="text-brand">$500</strong>.</p>
         <p>
-          Cost: <strong class="text-brand">$500</strong>. What's included:
+          Our "do-it-yourself" escape rooms are lightweight and fun. What's included:
         </p>
         <ul class="bullets">
           <li
@@ -150,21 +119,79 @@ import { Icon } from "astro-icon/components";
           >
         </ul>
       </ThemedBox>
+      <ThemedBox
+        theme="primary"
+        text={true}
+        border={1}
+        class="col col-lg-6 col-xl-5 shadow rounded"
+      >
+        <h3 class="text-white">Ready-made Kit</h3>
+        <p>Cost: <strong class="text-brand">$3,500</strong>.</p>
+        <p>
+          Our premade escape rooms have a higher level of technology and automation. What's included:
+        </p>
+        <ul class="bullets">
+          <li
+            >One instance of the escape room, preassembled and sent directly to you.</li
+          >
+          <li
+            >A guide with how to run the escape room and how to accommodate
+            people with various disabilties.</li
+          >
+          <li
+            >Access to the digital content with appropriate captions and audio
+            descriptions.</li
+          >
+        </ul>
+      </ThemedBox>
     </div>
     <p class="lead pt-4">
       If you are interested in purchasing, please email us at <a
         href="mailto:escaperoom@accessiblecommunity.org"
         >escaperoom@accessiblecommunity.org</a
-      >. We should note that TPGi continues to offer a <ExternalLink
-        href="https://www.tpgi.com/accessibility-solutions/accessibility-escape-room/"
-        >virtual accessible escape room</ExternalLink
-      >, based on our original room. Reach out to them for an opportunity to
-      play online!
+      >.
     </p>
   </ThemedSection>
 
   <ThemedSection theme="secondary" style="subtle">
-    <h2>Our <strong>themes</strong>.</h2>
+    <h2>Our <strong>build-your-own</strong> themes.</h2>
+    <div
+      class="d-flex flex-column flex-lg-row gap-4 py-3 justify-content-lg-evenly text-primary"
+    >
+      <div class="card col col-lg-5 border border-primary shadow">
+        <Image
+          src={corporateBg}
+          class="card-img-top"
+          alt="A gentleman wearing dark clothes holding a briefcase"
+        />
+        <div class="card-body">
+          <h3 class="card-title">A corporate <strong>conundrum</strong>.</h3>
+          <p class="card-text"
+            >A piece of ground-breaking technology your company has developed
+            is missing. You've received a tip on how to retrieve it.</p
+          >
+        </div>
+      </div>
+
+      <div class="card col col-lg-5 border border-primary shadow">
+        <Image
+          src={bakingBg}
+          class="card-img-top"
+          alt="A freshly baked pie, next to a jar of flour and a rolling pin"
+        />
+        <div class="card-body">
+          <h3 class="card-title">A baking <strong>bonanza</strong>.</h3>
+          <p class="card-text"
+            >You are looking for classic recipes to submit to the local fair.
+            Will you find them in time to win the blue ribbon?</p
+          >
+        </div>
+      </div>
+    </div>
+  </ThemedSection>
+
+  <ThemedSection theme="secondary">
+    <h2 class="text-white">Our <strong>ready-made</strong> themes.</h2>
     <div
       class="d-flex flex-column flex-lg-row gap-4 py-3 justify-content-lg-evenly text-primary"
     >
@@ -181,7 +208,6 @@ import { Icon } from "astro-icon/components";
             challenging to setup. Can you figure out the clues before your
             friend arrives?</p
           >
-          <p class="fw-bold">Coming soon in April 2025!</p>
         </div>
       </div>
 
@@ -197,10 +223,13 @@ import { Icon } from "astro-icon/components";
             >You have arrived for an enjoyable evening out at the local casino.
             Play games and collect chips to gain access the high roller vault.</p
           >
-          <p class="fw-bold">Coming soon in August 2025!</p>
         </div>
       </div>
     </div>
+    <p class="pt-4 text-white">
+      Our prebuilt escape rooms will be available to order later this year.
+      Please email us at <a class="link-light" href="mailto:escaperoom@accessiblecommunity.org">escaperoom@accessiblecommunity.org</a> if you are interested in purchasing one.
+    </p>
   </ThemedSection>
 
   <ThemedSection style="tertiary">
@@ -282,6 +311,14 @@ import { Icon } from "astro-icon/components";
     .logo {
       height: auto;
       width: 100%;
+    }
+
+    p {
+      margin-bottom: 0.5em;
+    }
+
+    p.lead {
+      margin-bottom: 0.75em;
     }
   </style>
 </Layout>
