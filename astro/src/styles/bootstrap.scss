@@ -424,7 +424,7 @@ body.no-scroll {
 }
 
 .collapse.show {
-  max-height: calc(100dvh - 4rem); /* full screen on mobile minus 148px to account for default phone nav bar*/
+  max-height: calc(100dvh - 4rem); /* full screen on mobile minus 64px to account for some room on the bottom part of the screen*/
   overflow-y: auto;
 }
 
