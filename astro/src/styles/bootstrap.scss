@@ -424,12 +424,8 @@ body.no-scroll {
 }
 
 .collapse.show {
-  max-height: 100vh; /* full screen on mobile */
+  max-height: calc(100dvh - 4rem); /* full screen on mobile minus 148px to account for default phone nav bar*/
   overflow-y: auto;
-}
-
-.navbar-collapse {
-  flex-grow: 1;
 }
 
 .footer-social-link {
