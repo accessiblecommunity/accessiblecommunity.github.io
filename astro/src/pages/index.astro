@@ -155,7 +155,7 @@ const metadata: PageMetadata = {
   <ThemedSection theme="secondary" style="subtle">
     <h2 class="display-3">Our <strong>services</strong>.</h2>
     <div
-      class="d-flex flex-column flex-xl-row gap-4 py-3 justify-content-lg-evenly text-primary"
+      class="d-flex flex-column flex-xl-row gap-4 py-3 justify-content-lg-evenly justify-content-xl-center text-primary"
     >
       <ThemedBox
         text={true}
@@ -232,6 +232,28 @@ const metadata: PageMetadata = {
           <ExternalLink href="https://www.mutua11y.org" class="text-brand">
             Visit <Branding>mutua11y.org</Branding>
           </ExternalLink>
+        </div>
+      </ThemedBox>
+      <ThemedBox
+        text={true}
+        border={1}
+        class="border-primary col col-xl-3 shadow rounded"
+      >
+        <h3 class="display-5" aria-hidden="true">
+          <Icon
+            class="bi"
+            name="globa11y-logo"
+            height="1em"
+            aria-hidden="true"
+          />
+          <Branding no-aria>globa11y</Branding> <span class="fs-4">(pilot)</span>
+        </h3>
+        <h3 class="visually-hidden">globally (pilot)</h3>
+        <p class="text-center">
+          Train and employ people with disabilities in accessibility and tech careers. Partner to build inclusive teams and scale accessibility programs.
+        </p>
+        <div class="text-center">
+          <a class="text-brand" href="/services/globa11y/">Visit <Branding>globa11y</Branding></a>
         </div>
       </ThemedBox>
     </div>

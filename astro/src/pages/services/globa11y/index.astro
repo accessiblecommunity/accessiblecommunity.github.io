@@ -24,19 +24,18 @@ import Hero from "@components/ColumnedHero.astro";
 import Layout from "../../../layouts/Layout.astro";
 import ThemedSection from "@components/ThemedSection.astro";
 
-import heroBg from "src/images/np_Business-partners-discussing-work-arranging-business-papers-and-charts-on-floor_bYWo15_large.jpg";
-import globa11yIcon from "src/images/globa11y-logo.png"
-import { Image } from "astro:assets";
+import heroBg from "src/images/np_Man with prosthetic hand typing on a computer_4jzKz4_free.jpg";
+import { Icon } from "astro-icon/components";
 ---
 
 <Layout {title} {crumbs} {metadata}>
   <Hero image={heroBg} slot="header" reverse vertical-position="22%" horizontal-position="78%">
     <div class="py-2 px-2" slot="heading">
-      <h1 class="display-3">
+      <h1 class="display-4">
         <span class="me-1">Introducing</span>
         <span class="text-nowrap">
-          <Image class="logo d-inline-block me-1" src={globa11yIcon} alt="" aria-hidden
-          /><Branding>globa11y</Branding>
+        <Icon class="bi" name="globa11y-logo" aria-hidden="true" />
+        <Branding>globa11y</Branding> (Pilot)
         </span>
       </h1>
     </div>
@@ -47,37 +46,137 @@ import { Image } from "astro:assets";
       </p>
     </div>
   </Hero>
-
   <ThemedSection theme="secondary" style="subtle">
     <h2>Our Mission</h2>
-
-    <p class="lead">
+    <p>
       At <Branding>globa11y</Branding>, we empower low-income people with disabilities by providing the technical skills they need to build sustainable careers in technology and digital accessibility. Through hands-on training, mentorship, and direct industry engagement, we create meaningful pathways to employment while addressing the global demand for accessibility expertise.
     </p>
   </ThemedSection>
-
   <ThemedSection>
-    <h2>Lorem ipsum</h2>
-
+    <h2>Our Vision</h2>
     <p>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-    </p>
-
-    <p>
-      Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?
+      We envision a world where accessibility is a core component of technology and digital experiences. By equipping individuals with disabilities to lead the way in accessible design and development, we are breaking down barriers and building a future where inclusion drives innovation.
     </p>
   </ThemedSection>
-
   <ThemedSection theme="secondary" style="subtle">
+    <h2>Who We Are</h2>
     <p>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      <Branding>globa11y</Branding> is a social enterprise initiative of Accessible Community, a 501©(3) nonprofit dedicated to fostering disability-inclusive communities. Our work bridges the gap between skills development and employment opportunities by:
     </p>
-
+    <ul>
+      <li>
+        Training individuals in accessible engineering, web development, and digital inclusion strategies.
+      </li>
+      <li>
+        Partnering with coding bootcamps, employers, and government programs to create apprenticeship opportunities.
+      </li>
+      <li>
+        Delivering accessibility consulting services to companies, with profits reinvested into our training programs.
+      </li>
+    </ul>
+  </ThemedSection>
+  <ThemedSection>
+    <h2>Why We Focus on Accessibility and Employment</h2>
     <p>
-      Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?
+      People with disabilities represent one of the largest marginalized communities in the world and face disproportionately high unemployment rates. At <Branding>globa11y</Branding>, we address this challenge by:
+    </p>
+    <ul>
+      <li>
+        Providing in-demand digital and accessibility skills through a rigorous, accessible coding bootcamp.
+      </li>
+      <li>
+        Creating clear career pathways through apprenticeships, job placement support, and mentorship.
+      </li>
+      <li>
+        Fostering economic independence by helping participants access dignified, fair employment and entrepreneurial opportunities.
+      </li>
+    </ul>
+  </ThemedSection>
+  <ThemedSection theme="secondary" style="subtle">
+    <h2>Our Dual-Impact Model</h2>
+    <p>
+      Our social enterprise is built on a sustainable model that delivers both professional services and social impact. We provide accessibility consulting to organizations seeking to build inclusive digital products and services. The revenue from our consulting work directly funds our education programs, which train and empower people with disabilities to become accessibility professionals.
+    </p>
+    <p>
+      This dual approach creates a cycle of growth: organizations improve their accessibility, and graduates gain skills, experience, and access to career opportunities in a growing field.
     </p>
   </ThemedSection>
-
+  <ThemedSection theme="primary" style="subtle">
+    <h2>Join Us</h2>
+    <p>
+      At <Branding>globa11y</Branding>, we believe accessibility is a right, not a privilege. Whether you’re an aspiring technologist with a disability, an employer seeking to hire skilled accessibility professionals, or an organization looking for expert consulting, you have a place here.
+    </p>
+    <p>
+      We’re building a global community of changemakers, and we need passionate people like you to help us make it happen.
+    </p>
+    <hr class="border-light" />
+    <h3>Volunteer With Us</h3>
+    <p>
+      We’re currently seeking volunteers in the following roles:
+    </p>
+    <ul>
+      <li>
+        Project Managers – Keep us focused, aligned, and thriving.
+      </li>
+      <li>
+        Administrative Assistants – Help us stay organized and efficient.
+      </li>
+      <li>
+        Scrum Masters – Support our teams with structure and flow.
+      </li>
+      <li>
+        Researchers – Investigate local coding bootcamps and community resources.
+      </li>
+      <li>
+        Content Authors – Craft inclusive, engaging training materials.
+      </li>
+      <li>
+        Designers – Build beautiful, usable, and accessible learning experiences.
+      </li>
+      <li>
+        Translators – Help us reach more people in more languages.
+      </li>
+      <li>
+        Occupational Therapists – Ensure our program supports learners holistically.
+      </li>
+      <li>
+        Assistive Technologists – Shape tools and strategies for accessible learning.
+      </li>
+      <li>
+        Marketing Specialists – Help us share our story and amplify our impact.
+      </li>
+    </ul>
+    <p>
+      No matter your skill set, there’s a role for you.
+    </p>
+    <hr class="border-light" />
+    <h3>Partner With Us</h3>
+    <p>
+      We’re also looking to collaborate with organizations who share our values. <Branding>globa11y</Branding> welcomes:
+    </p>
+    <ul>
+      <li>
+        Corporate Donors – Invest in equity and digital inclusion.
+      </li>
+      <li>
+        Coding Bootcamps – Partner with us to support our mission by helping us provide accessible development education and receive support in making your curriculum accessible to everyone.
+      </li>
+      <li>
+        Instructors – Teach and mentor the next generation of accessibility professionals.
+      </li>
+    </ul>
+    <p>
+      Together, we can build a talent pipeline that works for everyone.
+    </p>
+    <hr class="border-light" />
+    <h3>Get Involved</h3>
+    <p>
+      Ready to be part of something bold, human, and hopeful? <a href="/volunteer#volunteerFormEl">Become a Volunteer</a>
+    </p>
+    <p>
+      Let’s partner to create a future that includes everyone and leaves no one behind. Contact us at <a href="mailto:globa11y@accessiblecommunity.org">globa11y@accessiblecommunity.org</a> 
+    </p>
+  </ThemedSection>
   <style scoped>
     .logo {
       height: 1em;

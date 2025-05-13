@@ -12,8 +12,6 @@ import { Icon } from "astro-icon/components";
 import Branding from "@components/Branding.astro";
 import ExternalLink from "@components/ExternalLink.astro";
 
-import globa11yIcon from "src/images/globa11y-logo.png";
-
 const { title, crumbs = [] } = Astro.props;
 const breadCrumbs: Breadcrumbs =
   isEmpty(crumbs) && title != "Home" ? [{ name: "Home", href: "/" }] : crumbs;
@@ -107,7 +105,12 @@ const breadCrumbs: Breadcrumbs =
             <li><hr class="dropdown-divider" /></li>
             <li>
               <a class="dropdown-item" href="/services/globa11y/"
-              ><Image src={globa11yIcon} class="bi gi" alt="" aria-hidden /><Branding>globa11y</Branding></a>
+              ><Icon
+                  class="bi gi"
+                  name="globa11y-logo"
+                  height={16}
+                  aria-hidden="true"
+                /><Branding>globa11y</Branding> (pilot)</a>
             </li>
             <li>
               <ExternalLink

@@ -3,9 +3,6 @@ import { Icon } from "astro-icon/components";
 
 import Branding from "./Branding.astro";
 import ExternalLink from "./ExternalLink.astro";
-import { Image } from "astro:assets";
-
-import globa11yIcon from "src/images/globa11y-logo.png";
 
 const currentYear = new Date().getFullYear();
 
@@ -150,8 +147,12 @@ const Socials = [
           <li><hr class="border-light" /></li>
           <li>
             <a class="link-light footer-link" href="/services/globa11y/"
-              ><Image src={globa11yIcon} class="bi gi" alt="" aria-hidden /><Branding>globa11y</Branding
-              ></a>
+              ><Icon
+                  class="bi gi"
+                  name="globa11y-logo"
+                  height={16}
+                  aria-hidden="true"
+                /><Branding>globa11y</Branding> (pilot)</a>
           </li>
           <li>
             <ExternalLink
