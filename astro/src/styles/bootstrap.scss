@@ -412,8 +412,20 @@ a:hover {
   text-decoration-color: currentColor;
 }
 
+body.no-scroll {
+  position: fixed;
+  overflow: hidden;
+  width: 100%;
+  height: 100vh;
+}
+
 .breadcrumb-item, .breadcrumb-item.active, .nav-link, .dropdown-item, .dropdown-item:hover {
   color: $primary;
+}
+
+.collapse.show {
+  max-height: calc(100dvh - 4rem); /* full screen on mobile minus 64px to account for some room on the bottom part of the screen*/
+  overflow-y: auto;
 }
 
 .footer-social-link {
