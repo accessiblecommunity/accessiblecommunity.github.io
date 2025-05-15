@@ -428,10 +428,6 @@ a:hover {
   font-family: $headings-font-family;
 }
 
-.card-title {
-  color: $card-title-color-dark;
-}
-
 .list-disc li::marker {
   color: $body-color;
 }
@@ -517,6 +513,10 @@ svg[data-icon="loca11y-logo"].unpad {
   // TODO: Move breadcrumb and dropdowns to use Bootstrap SASS Variables
   .breadcrumb-item, .breadcrumb-item.active, .nav-link, .dropdown-item, .dropdown-item:hover {
     color: #FFFFFF;
+  }
+
+  .card-title {
+    color: $card-title-color-dark;
   }
 
   .general-button {
