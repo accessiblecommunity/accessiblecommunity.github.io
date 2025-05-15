@@ -7,6 +7,7 @@ interface Props {
 }
 
 import { isEmpty } from "lodash-es";
+import { Image } from "astro:assets";
 import { Icon } from "astro-icon/components";
 import Branding from "@components/Branding.astro";
 import ExternalLink from "@components/ExternalLink.astro";
@@ -102,6 +103,16 @@ const breadCrumbs: Breadcrumbs =
               <a class="dropdown-item" href="/blog">Our Blog</a>
             </li>
             <li><hr class="dropdown-divider" /></li>
+            <li>
+              <a class="dropdown-item" href="/services/globa11y/"
+                ><Icon
+                  class="bi gi"
+                  name="globa11y-logo"
+                  height={16}
+                  aria-hidden="true"
+                /><Branding>globa11y</Branding></a
+              >
+            </li>
             <li>
               <ExternalLink
                 class="dropdown-item py-2"
@@ -367,6 +378,14 @@ const breadCrumbs: Breadcrumbs =
       color: #ffffff !important;
       background-color: var(--bs-primary);
     }
+  }
+</style>
+
+<style scoped>
+  .gi {
+    height: 1em;
+    width: auto;
+    margin-right: 0.2em;
   }
 </style>
 

@@ -57,7 +57,7 @@ const Socials = [
 ---
 
 <footer id="footer" class="bg-primary py-5">
-  <div class="py-5 px-4 pt-2 container-footer">
+  <div class="py-2 px-4 container-footer">
     <div
       class="d-flex flex-column flex-lg-row justify-content-between gap-0 column-gap-3"
     >
@@ -80,6 +80,50 @@ const Socials = [
             >
           </li>
         </ul>
+
+        <h2 class="text-white fw-bold display-6">Our Team</h2>
+        <ul class="list-unstyled list-spaced mb-3">
+          <li>
+            <a class="link-light footer-link" href="/team/board"
+              >Board Members</a
+            >
+          </li>
+          <li>
+            <a class="link-light footer-link" href="/team/leadership"
+              >Leadership Team</a
+            >
+          </li>
+          <li>
+            <a class="link-light footer-link" href="/team/staff">Staff</a>
+          </li>
+          <li>
+            <a class="link-light footer-link" href="/team/previous"
+              >Previous Contributors</a
+            >
+          </li>
+          <li>
+            <a class="link-light footer-link" href="/team/partners">Partners</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h2 class="text-white fw-bold display-6">Research Projects</h2>
+        <ul class="list-unstyled list-spaced me-4 mb-4">
+          <li>
+            <a class="link-light footer-link" href="/daf"
+              >Digital Accessibility Framework</a
+            >
+          </li>
+          <li>
+            <ExternalLink
+              class="link-light footer-link"
+              inline
+              href="https://accessiblecommunity.org/useable"
+              ><Branding text="useable" /></ExternalLink
+            >
+          </li>
+        </ul>
+
         <h2 class="text-white fw-bold display-6">Our Services</h2>
         <ul class="list-unstyled list-spaced me-4 mb-4">
           <li>
@@ -101,6 +145,18 @@ const Socials = [
             <a class="link-light footer-link" href="/blog">Our Blog</a>
           </li>
           <li><hr class="border-light" /></li>
+          <li>
+            <a
+              class="link-light footer-link align-text-bottom"
+              href="/services/globa11y/"
+              ><Icon
+                class="bi gi"
+                name="globa11y-logo"
+                height={16}
+                aria-hidden="true"
+              /><Branding>globa11y</Branding></a
+            >
+          </li>
           <li>
             <ExternalLink
               class="link-light footer-link"
@@ -129,49 +185,6 @@ const Socials = [
                 aria-hidden="true"
               /><Branding text="mutua11y.org" /></ExternalLink
             >
-          </li>
-        </ul>
-      </div>
-      <div>
-        <h2 class="text-white fw-bold display-6">Research Projects</h2>
-        <ul class="list-unstyled list-spaced me-4 mb-4">
-          <li>
-            <a class="link-light footer-link" href="/daf"
-              >Digital Accessibility Framework</a
-            >
-          </li>
-          <li>
-            <ExternalLink
-              class="link-light footer-link"
-              inline
-              href="https://accessiblecommunity.org/useable"
-              ><Branding text="useable" /></ExternalLink
-            >
-          </li>
-        </ul>
-
-        <h2 class="text-white fw-bold display-6">Our Team</h2>
-        <ul class="list-unstyled list-spaced mb-3">
-          <li>
-            <a class="link-light footer-link" href="/team/board"
-              >Board Members</a
-            >
-          </li>
-          <li>
-            <a class="link-light footer-link" href="/team/leadership"
-              >Leadership Team</a
-            >
-          </li>
-          <li>
-            <a class="link-light footer-link" href="/team/staff">Staff</a>
-          </li>
-          <li>
-            <a class="link-light footer-link" href="/team/previous"
-              >Previous Contributors</a
-            >
-          </li>
-          <li>
-            <a class="link-light footer-link" href="/team/partners">Partners</a>
           </li>
         </ul>
       </div>
@@ -320,6 +333,11 @@ const Socials = [
   }
   a.footer-link {
     text-underline-offset: 0.175em !important;
+  }
+  .gi {
+    height: 1em;
+    width: auto;
+    margin-right: 0.2em;
   }
   dd + dt {
     margin-top: 1.25em;
