@@ -8,6 +8,7 @@ const metadata: PageMetadata = {
   description: "Overview of the Accessible Escape Room",
   image: getOpenGraphImageData(Astro.site, "pages", "escape-room"),
 };
+
 const crumbs: Breadcrumbs = [
   {
     name: "Home",
@@ -24,7 +25,7 @@ import ExternalLink from "@components/ExternalLink.astro";
 import Hero from "@components/ColumnedHero.astro";
 import { Image } from "astro:assets";
 import ImageFigure from "@components/ImageFigure.astro";
-import Layout from "src/layouts/Layout.astro";
+import EscapeRoomLayout from "src/layouts/EscapeRoomLayout.astro";
 import ThemedBox from "@components/ThemedBox.astro";
 import ThemedSection from "@components/ThemedSection.astro";
 
@@ -38,7 +39,7 @@ import picnicBg from "src/images/escape-room/evangelina-silina-BzLUmuRDMWE-unspl
 import { Icon } from "astro-icon/components";
 ---
 
-<Layout {title} {crumbs} {metadata}>
+<EscapeRoomLayout {metadata}>
   <Hero image={heroBg} slot="header" reverse vertical-position="22%">
     <div class="py-2 px-2" slot="heading">
       <h1 class="display-2">
@@ -170,6 +171,8 @@ import { Icon } from "astro-icon/components";
           src={corporateBg}
           class="card-img-top"
           alt="A gentleman wearing dark clothes holding a briefcase"
+          width={400}
+          height={300}
         />
         <div class="card-body">
           <h3 class="card-title">A corporate <strong>conundrum</strong>.</h3>
@@ -185,6 +188,8 @@ import { Icon } from "astro-icon/components";
           src={bakingBg}
           class="card-img-top"
           alt="A freshly baked pie, next to a jar of flour and a rolling pin"
+          width={400}
+          height={300}
         />
         <div class="card-body">
           <h3 class="card-title">A baking <strong>bonanza</strong>.</h3>
@@ -207,6 +212,8 @@ import { Icon } from "astro-icon/components";
           src={picnicBg}
           class="card-img-top"
           alt="A small picnic on a blanket"
+          width={400}
+          height={300}
         />
         <div class="card-body">
           <h3 class="card-title">A <strong>puzzling</strong> picnic.</h3>
@@ -223,6 +230,8 @@ import { Icon } from "astro-icon/components";
           src={casinoBg}
           class="card-img-top"
           alt="A roulette table with piles of chips"
+          width={400}
+          height={300}
         />
         <div class="card-body">
           <h3 class="card-title">A <strong>cryptic</strong> casino.</h3>
@@ -248,88 +257,54 @@ import { Icon } from "astro-icon/components";
     <div
       class="d-flex flex-column flex-lg-row-reverse gap-4 justify-content-lg-between align-items-center align-items-lg-start"
     >
-      <div class="col-3 col-lg-2">
-        <Image src={escapeRoomLogo} alt="" class="logo" aria-hidden="true" />
+      <div class="col col-lg-4">
+        <ImageFigure
+          src={brailleBlocks}
+          alt="Alphabet blocks with braille"
+          caption="We have used these braille alphabet blocks from Plan Toys to successfully engage participants with visual impairment."
+        />
       </div>
-      <p class="col col-lg-9">
-        A few years ago, over lunch, Matt Ater and Rachael Bradley Montgomery
-        joked about creating an accessible escape room. Why? Because Matt, who
-        is blind, had attended his daughter's birthday party at an escape room
-        and wasn't able to participate – at all! Fast forward a year and we were
-        still talking about it. We realized how few individuals with
-        disabilities were able to enjoy this fun activity and so decided to go
-        ahead and build one. We met with Escape Room Loco in Leesburg, VA to
-        learn more. Then along with a team of volunteers from Accessible
-        Community, MITRE, and Vispero we built our first escape room. It had an
-        espionage theme and while it wasn't perfect, everyone could participate
-        in at least one puzzle, usually more. A team of all blind individuals
-        who helped pilot test it had the best score of everyone!
-      </p>
+      <div class="col col-lg-8">
+        <p class="lead">
+          A few years ago, over lunch, Matt Ater and Rachael Bradley Montgomery
+          joked about creating an accessible escape room. Why? Because Matt, who
+          is blind, had attended his daughter's birthday party at an escape room
+          and wasn't able to participate – at all! Fast forward a year and we
+          were still talking about it. We realized how few individuals with
+          disabilities were able to enjoy this fun activity and so decided to go
+          ahead and build one. We met with Escape Room Loco in Leesburg, VA to
+          learn more. Then along with a team of volunteers from Accessible
+          Community, MITRE, and Vispero we built our first escape room. It had an
+          espionage theme and while it wasn't perfect, everyone could participate
+          in at least one puzzle, usually more. A team of all blind individuals
+          who helped pilot test it had the best score of everyone!
+        </p>
+      </div>
     </div>
   </ThemedSection>
 
   <ThemedSection>
-    <div
-      class="d-flex flex-column flex-lg-row-reverse gap-4 justify-content-lg-between align-items-center"
-    >
-      <div>
-        <h2 class="mb-4"><strong>Making</strong> an accessible escape room.</h2>
-        <p>
-          If you would like to create an accessible escape room for your
-          business or organization, here are some tips to get started.</p
-        >
-        <ul>
-          <li
-            >Pick a theme that doesn't cause anxiety. Don't lock people in or
-            create panic intentionally. Instead, create challenging puzzles in a
-            fun atmosphere.</li
-          >
-          <li
-            >Don't design puzzles to rely on a single sense. Provide hints using
-            both sound and sight, preferably sound, sight and touch.</li
-          >
-          <li>Offer an untimed option to participants who need it.</li>
-          <li>Provide accommodations when requested.</li>
-          <li
-            >Create a set of puzzles so that everyone can engage with at least
-            one. This means at least one puzzle should take voice input.</li
-          >
-        </ul>
-      </div>
-
-      <ImageFigure
-        class="col-8 col-lg-4"
-        src={brailleBlocks}
-        imageClass="logo"
-        alt="Alphabet blocks with braille"
-      >
-        <span slot="caption"
-          >We have used these <ExternalLink
-            inline
-            href="https://www.plantoys.com/products/braille-alphabet-a-z"
-            >braille alphabet blocks from Plan Toys</ExternalLink
-          > to successfully engage participants with visual impairment.</span
-        >
-      </ImageFigure>
-    </div>
+    <h2 class="mb-4"><strong>Making</strong> an accessible escape room.</h2>
+    <p class="lead">
+      If you would like to create an accessible escape room for your business or
+      organization, here are some tips to get started.
+    </p>
+    <ul class="bullets">
+      <li>
+        Pick a theme that doesn't cause anxiety. Don't lock people in or create
+        panic intentionally. Instead, create challenging puzzles in a fun
+        atmosphere.
+      </li>
+      <li>
+        Don't design puzzles to rely on a single sense. Provide hints using both
+        sound and sight, preferably sound, sight and touch.
+      </li>
+      <li>Offer an untimed option to participants who need it.</li>
+      <li>Provide accommodations when requested.</li>
+      <li>
+        Create a set of puzzles so that everyone can engage with at least one.
+        This means at least one puzzle should take voice input.
+      </li>
+    </ul>
   </ThemedSection>
-
-  <style scoped>
-    .card-img-top {
-      height: auto;
-    }
-
-    .logo {
-      height: auto;
-      width: 100%;
-    }
-
-    p {
-      margin-bottom: 0.5em;
-    }
-
-    p.lead {
-      margin-bottom: 0.75em;
-    }
-  </style>
-</Layout>
+</EscapeRoomLayout>

@@ -1,0 +1,326 @@
+---
+import { type PageMetadata } from "../lib/types";
+
+interface Props {
+  metadata?: PageMetadata;
+}
+
+import "../styles/bootstrap.scss";
+
+import Metadata from "../components/Metadata.astro";
+import { Image } from "astro:assets";
+import Branding from "../components/Branding.astro";
+import escapeRoomLogo from "../images/escape-room/escaperoomlogo-768x768.png";
+
+const { metadata } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="robots" content="noarchive" />
+
+    {
+      metadata && (
+        <Metadata {...metadata}>
+          <slot name="metadata" slot="metadata" />
+        </Metadata>
+      )
+    }
+    <link rel="icon" type="image/png" href="/images/favicon.png" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <slot name="head" />
+  </head>
+
+  <body>
+    <!-- Custom Header -->
+    <header class="escape-room-header">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-transparent">
+        <div class="container">
+          <a class="navbar-brand" href="/services/escape-room/">
+            <div class="logo-container">
+              <Image
+                src={escapeRoomLogo}
+                alt=""
+                width="40"
+                height="40"
+                class="logo-image"
+                aria-hidden="true"
+              />
+            </div>
+            <Branding>The Accessible Escape Room</Branding>
+          </a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+              <li class="nav-item">
+                <a class="nav-link" href="/">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/services">Services</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/about">About</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/contact">Contact</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main id="main-content">
+      <div class="content-spacer"></div>
+      <slot name="header" />
+      <slot />
+    </main>
+
+    <!-- Custom Footer -->
+    <footer class="escape-room-footer">
+      <div class="container">
+        <div class="row g-4">
+          <div class="col-md-4">
+            <h3 class="h5">About Accessible Community</h3>
+            <p>
+              We help organizations make their digital content accessible to people with disabilities.
+            </p>
+          </div>
+          <div class="col-md-4">
+            <h3 class="h5">Quick Links</h3>
+            <ul class="list-unstyled">
+              <li><a href="/services">Services</a></li>
+              <li><a href="/about">About Us</a></li>
+              <li><a href="/contact">Contact</a></li>
+            </ul>
+          </div>
+          <div class="col-md-4">
+            <h3 class="h5">Contact Us</h3>
+            <p>
+              Have questions about our services?<br />
+              <a href="mailto:info@accessiblecommunity.org">info@accessiblecommunity.org</a>
+            </p>
+          </div>
+        </div>
+        <hr />
+        <div class="text-center">
+          <p class="mb-0">
+            &copy; {new Date().getFullYear()} <Branding>Accessible Community</Branding>. All rights reserved.
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="../scripts/headings.js"></script>
+    <script src="../scripts/body-no-scroll.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    {
+      import.meta.env.PROD && (
+        <script
+          is:inline
+          defer
+          data-domain="accessiblecommunity.org"
+          src="https://plausible.io/js/script.js"
+        />
+      )
+    }
+  </body>
+</html>
+
+<style>
+  /* Custom Header Styles */
+  .escape-room-header {
+    background: linear-gradient(135deg, var(--bs-primary) 0%, #2c3e50 100%);
+    padding: 1rem 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: relative;
+    z-index: 1000;
+  }
+
+  .escape-room-header .navbar {
+    padding: 0;
+    background: transparent !important;
+  }
+
+  .escape-room-header .navbar-brand {
+    color: white !important;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .logo-container {
+    background: white;
+    border-radius: 8px;
+    padding: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  }
+
+  .logo-image {
+    width: 40px !important;
+    height: 40px !important;
+    object-fit: contain;
+  }
+
+  .escape-room-header .navbar-brand:hover .logo-container {
+    transform: scale(1.05);
+    transition: transform 0.3s ease;
+  }
+
+  .escape-room-header .navbar-brand:hover {
+    color: white !important;
+    opacity: 0.9;
+  }
+
+  .escape-room-header .navbar-nav {
+    background: transparent !important;
+  }
+
+  .escape-room-header .nav-item {
+    background: transparent !important;
+  }
+
+  .escape-room-header .nav-link {
+    color: white !important;
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    transition: all 0.3s ease;
+    background: transparent !important;
+  }
+
+  .escape-room-header .nav-link:hover {
+    color: white !important;
+    opacity: 0.8;
+    transform: translateY(-1px);
+  }
+
+  .escape-room-header .navbar-toggler {
+    border-color: rgba(255, 255, 255, 0.5);
+    background: transparent !important;
+  }
+
+  .escape-room-header .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.75%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+  }
+
+  .escape-room-header .navbar-collapse {
+    background: transparent !important;
+  }
+
+  /* Content Spacing */
+  .content-spacer {
+    height: 2rem;
+  }
+
+  /* Custom Footer Styles */
+  .escape-room-footer {
+    background: linear-gradient(135deg, #2c3e50 0%, var(--bs-primary) 100%);
+    color: white;
+    padding: 4rem 0 2rem;
+    margin-top: 4rem;
+  }
+
+  .escape-room-footer h3 {
+    color: white;
+    margin-bottom: 1.5rem;
+  }
+
+  .escape-room-footer a {
+    color: white;
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+
+  .escape-room-footer a:hover {
+    color: white;
+    opacity: 0.8;
+    text-decoration: underline;
+  }
+
+  .escape-room-footer hr {
+    border-color: rgba(255, 255, 255, 0.1);
+    margin: 2rem 0;
+  }
+
+  /* Mobile Responsiveness */
+  @media (max-width: 991.98px) {
+    .escape-room-header .navbar-brand {
+      font-size: 1.25rem;
+    }
+
+    .logo-container {
+      padding: 3px;
+    }
+
+    .logo-image {
+      width: 32px !important;
+      height: 32px !important;
+    }
+
+    .escape-room-header .navbar-collapse {
+      background: rgba(0, 0, 0, 0.1) !important;
+      border-radius: 8px;
+      margin-top: 0.5rem;
+      padding: 0.5rem;
+    }
+
+    .escape-room-header .nav-link {
+      padding: 0.75rem 1rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .escape-room-header .nav-link:last-child {
+      border-bottom: none;
+    }
+
+    .escape-room-footer {
+      padding: 3rem 0 1.5rem;
+      margin-top: 3rem;
+    }
+
+    .escape-room-footer .col-md-4 {
+      margin-bottom: 2rem;
+    }
+
+    .escape-room-footer .col-md-4:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  @media (max-width: 575.98px) {
+    .escape-room-header .navbar-brand {
+      font-size: 1.1rem;
+    }
+
+    .logo-container {
+      padding: 2px;
+    }
+
+    .logo-image {
+      width: 28px !important;
+      height: 28px !important;
+    }
+
+    .content-spacer {
+      height: 1.5rem;
+    }
+  }
+</style> 
