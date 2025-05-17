@@ -51,7 +51,7 @@ const { metadata } = Astro.props;
                 aria-hidden="true"
               />
             </div>
-            <span class="brand-text">The Accessible Escape Room</span>
+            <span class="brand-text">The Accessible<br>Escape Room</span>
           </a>
           <button
             class="navbar-toggler"
@@ -195,13 +195,13 @@ const { metadata } = Astro.props;
     align-items: center;
     gap: 0.75rem;
     margin-right: 1rem;
-    flex-wrap: nowrap;
+    line-height: 1.2;
   }
 
   .brand-text {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    white-space: normal;
+    line-height: 1.2;
+    display: inline-block;
   }
 
   .logo-container {
