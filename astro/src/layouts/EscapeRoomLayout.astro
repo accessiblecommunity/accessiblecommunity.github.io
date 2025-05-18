@@ -51,7 +51,10 @@ const { metadata } = Astro.props;
                 aria-hidden="true"
               />
             </div>
-            <span class="brand-text">The Accessible<br>Escape Room</span>
+            <div class="brand-text">
+              <span class="accessible">The Accessible</span>
+              <span class="escape-room">Escape Room</span>
+            </div>
           </a>
           <button
             class="navbar-toggler"
@@ -195,13 +198,19 @@ const { metadata } = Astro.props;
     align-items: center;
     gap: 0.75rem;
     margin-right: 1rem;
-    line-height: 1.2;
   }
 
   .brand-text {
-    white-space: normal;
-    line-height: 1.2;
     display: inline-block;
+    line-height: 1.2;
+  }
+  
+  .brand-text span {
+    display: inline;
+  }
+  
+  .brand-text .accessible::after {
+    content: " ";
   }
 
   .logo-container {
@@ -406,6 +415,19 @@ const { metadata } = Astro.props;
 
     .brand-text {
       font-size: 0.9rem;
+      line-height: 1;
+    }
+    
+    .brand-text span {
+      display: block;
+    }
+    
+    .brand-text .accessible {
+      margin-bottom: -2px;
+    }
+    
+    .brand-text .accessible::after {
+      content: "";
     }
 
     .logo-container {
@@ -430,6 +452,10 @@ const { metadata } = Astro.props;
 
     .brand-text {
       font-size: 0.8rem;
+    }
+    
+    .brand-text .accessible {
+      margin-bottom: -3px;
     }
 
     .logo-container {
