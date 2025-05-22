@@ -10,9 +10,6 @@
 // 1. Include functions first (so you can manipulate colors, SVGs, calc, etc)
 @import "bootstrap/scss/functions";
 
-// 2. Include any default variable overrides here
-@import "./colors-and-themes";
-
 $font-size-root:              18px;
 $font-family-sans-serif:      'Atkinson Hyperlegible', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !default;
 $font-weight-bold:            700;
@@ -78,16 +75,16 @@ $enable-smooth-scroll:  false;
 //* Navbar & Breadcrumbs
 //**********************/
 // $navbar-light-color:                rgba(var(--#{$prefix}emphasis-color-rgb), .65) !default;
-$navbar-light-hover-color:          $ac-navy;
-$navbar-light-active-color:         $ac-navy;
+$navbar-light-hover-color:          var(--color-primary-vivid-50);
+$navbar-light-active-color:         var(--color-primary-vivid-50);
 // $navbar-light-disabled-color:       rgba(var(--#{$prefix}emphasis-color-rgb), .3) !default;
-$navbar-light-icon-color:           $ac-navy;
+$navbar-light-icon-color:           var(--color-primary-vivid-50);
 
-$navbar-light-brand-color:          $ac-navy;
+$navbar-light-brand-color:          var(--color-primary-vivid-50);
 $navbar-light-brand-hover-color:    #FFFFFF;
 
 $navbar-dark-brand-color:           #FFFFFF;
-$navbar-dark-brand-hover-color:     $ac-navy;
+$navbar-dark-brand-hover-color:     var(--color-primary-vivid-50);
 
 $navbar-dark-icon-color:            #FFFFFF;
 
@@ -121,28 +118,12 @@ $breadcrumb-margin-bottom:          0;
 // $dropdown-dark-link-disabled-color: $gray-500 !default;
 
 $blockquote-font-size:            1.25em;
-$blockquote-footer-color:         $secondary;  // No dark mode
+$blockquote-footer-color:         var(--color-secondary-vivid-50);  // No dark mode
 
 $btn-hover-bg-shade-amount:       25%;
 $btn-hover-bg-tint-amount:        25%;
 $btn-hover-border-shade-amount:   30%;
 $btn-hover-border-tint-amount:    20%;
-
-//************
-// Form inputs
-//************
-
-$input-border-width:              1.8px;
-$input-border-color:              $info-border-contrast;
-$input-focus-border-color:        $info-border-contrast;
-
-$form-check-input-border:         1.8px solid $info-border-contrast;
-$form-check-input-border-radius:  0.375rem;
-
-$form-check-input-width:                  1.667em;
-$form-check-min-height:                   30px;
-$form-check-input-checked-bg-color:       $primary;
-$form-check-input-checked-border-color:   $primary;
 
 
 //********
@@ -271,6 +252,26 @@ $theme-colors-border-subtle-dark: map-merge($theme-colors-border-subtle-dark, $c
 @import "bootstrap/scss/root";
 @import "bootstrap/scss/reboot";
 
+// 8. Add additional custom code here
+@import "./colors-and-themes";
+
+//************
+// Form inputs
+//************
+
+$input-border-width:              1.8px;
+$input-border-color:              $info-border-contrast;
+$input-focus-border-color:        $info-border-contrast;
+
+$form-check-input-border:         1.8px solid $info-border-contrast;
+$form-check-input-border-radius:  0.375rem;
+
+$form-check-input-width:                  1.667em;
+$form-check-min-height:                   30px;
+$form-check-input-checked-bg-color:       $primary;
+$form-check-input-checked-border-color:   $primary;
+
+
 // Additional contrast style on themes.
 $theme-colors-border-contrast: (
   "info": $info-border-contrast,
@@ -313,8 +314,6 @@ $theme-colors-border-contrast-dark: (
 // 7. Optionally include utilities API last to generate classes based on the Sass map in `_utilities.scss`
 @import "bootstrap/scss/helpers";
 @import "bootstrap/scss/utilities/api";
-
-// 8. Add additional custom code here
 
 .bg-primary-alpha-3 {
   @extend .bg-primary;
@@ -570,5 +569,3 @@ svg[data-icon="loca11y-logo"].unpad {
   //   filter: brightness(0) saturate(100%) invert(71%) sepia(19%) saturate(851%) hue-rotate(172deg) brightness(91%) contrast(95%);
   // }
 }
-
-
