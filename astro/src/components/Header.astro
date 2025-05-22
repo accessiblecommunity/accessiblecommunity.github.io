@@ -19,14 +19,14 @@ const breadCrumbs: Breadcrumbs =
 <header class="sticky-top">
   <div id="header-navbar" class="navbar navbar-expand-lg align-items-top">
     <a
-      class="visually-hidden-focusable btn btn-primary skip-link"
+      class="visually-hidden-focusable btn btn-primary skip-link d-print-none"
       href="#main-content"
     >
       Skip to Main Content
     </a>
     <div id="brand-nav" class="container-fluid px-3">
       <button
-        class="navbar-toggler px-1 me-2"
+        class="navbar-toggler px-1 me-2 d-print-none"
         type="button"
         data-bs-toggle="collapse"
         data-bs-target="#site-nav"
@@ -45,7 +45,7 @@ const breadCrumbs: Breadcrumbs =
         >
       </div>
     </div>
-    <nav id="site-nav" class="collapse navbar-collapse mx-3" aria-label="Site">
+    <nav id="site-nav" class="collapse navbar-collapse mx-3 d-print-none" aria-label="Site">
       <ul class="navbar-nav my-1 mx-4">
         <li class="nav-item dropdown">
           <a
@@ -205,7 +205,7 @@ const breadCrumbs: Breadcrumbs =
       >
     </nav>
   </div>
-  <nav id="breadcrumbs-nav" aria-label="Breadcrumb" class="position-absolute">
+  <nav id="breadcrumbs-nav" aria-label="Breadcrumb" class="position-absolute d-print-none">
     <ol class="breadcrumb lh-sm">
       {
         breadCrumbs.map(({ name, href }) => (
