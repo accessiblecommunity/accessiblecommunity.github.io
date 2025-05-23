@@ -151,10 +151,10 @@ import heroBg from "../../../images/colored-hero/woman-using-laptop.png";
       class="d-flex flex-row gap-4 pt-3 pb-4 justify-content-center text-primary"
     >
       <ThemedBox
-        theme="secondary"
+        theme="primary"
         text={true}
         border={1}
-        class="col col-xl-9 shadow rounded"
+        class="col col-lg-6 col-xl-5 shadow rounded"
       >
         <h4 class="text-white">Self-Evaluation</h4>
         <p>Cost: <strong class="text-brand">$0</strong>.</p>
@@ -177,7 +177,7 @@ import heroBg from "../../../images/colored-hero/woman-using-laptop.png";
           those with little-to-no accessibility experience.
         </p>
         <p>
-          <a href="/services#ta11y" class="link-light link-offset-1">
+          <a href="/services#ta11y" class="link-offset-1 link-light">
             Read more about <Branding text="ta11y.org" /></a
           >
           to see if this free solution is for you.
@@ -239,69 +239,71 @@ import heroBg from "../../../images/colored-hero/woman-using-laptop.png";
     </div>
   </ThemedSection>
 
-  <ThemedSection id="info" theme="secondary" style="subtle" text={true}>
-    <h2 class="display-4">How do I get more <strong>information</strong>?</h2>
+<ThemedSection id="info" style="tertiary" >
+    <h2 class="display-3 mb-4 text-info-emphasis">How do I get more <strong>information</strong>?</h2>
+    <p>
+      You can<ExternalLink href={calendlyLink}
+      >schedule an Accessibility Consultation</ExternalLink
+      >with a member of our evaluations team.
+    </p>
     <GoogleForm
       id="info-form"
       key="AKfycbxQZFm7FIKQabNEmwXbKdUh3IdMUY8efL4e8bEmkK_9rPvH6cUPrdNdQrIN6eMK-vI"
-    >
+      class="col p-4 bg-body border border-2 border-info-contrast rounded"
+      >
       <div slot="prelude">
         <p>
-          You can <ExternalLink href={calendlyLink}
-            >schedule an Accessibility Consultation</ExternalLink
-          > with a member of our evaluations team. Alternatively, if you have questions
+         Alternatively, if you have questions
           about our evaluation process, please complete this information form.
         </p>
         <h3 class="visually-hidden">Information form</h3>
       </div>
-      <div class="row justify-content-lg-between">
-        <div class="col-lg-5">
-          <div class="mb-3">
-            <label for="nameField" class="form-label mb-1 required-field"
-              >Name</label
-            ><span class="asterisk"></span>
-            <input
-              type="text"
-              name="Name"
-              class="form-control w-100 form-field"
-              id="nameField"
-              autocomplete="name"
-              required
-            />
-          </div>
-          <div class="mb-3">
-            <label for="emailField" class="form-label mb-1 required-field"
-              >Email Address</label
-            ><span class="asterisk"></span>
-            <input
-              type="email"
-              name="Email"
-              class="form-control w-100 form-field"
-              id="emailField"
-              autocomplete="email"
-              required
-            />
-          </div>
-          <div class="mb-3">
-            <label for="phoneNumberField" class="form-label mb-1"
-              >Phone Number</label
-            >
-            <input
-              type="text"
-              name="PhoneNumber"
-              class="form-control w-100 form-field"
-              id="phoneNumberField"
-              autocomplete="tel"
-            />
-          </div>
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <label for="nameField" class="form-label mb-1 required-field"
+            >Name</label
+          ><span class="asterisk"></span>
+          <input
+            type="text"
+            name="Name"
+            class="form-control w-100"
+            id="nameField"
+            autocomplete="name"
+            required
+          />
         </div>
-        <div class="col-lg-6 mb-3">
+        <div class="col-md-6 mb-3">
+          <label for="emailField" class="form-label mb-1 required-field"
+            >Email Address</label
+          ><span class="asterisk"></span>
+          <input
+            type="email"
+            name="Email"
+            class="form-control w-100"
+            id="emailField"
+            autocomplete="email"
+            required
+          />
+        </div>
+        <div class="col-md-6 mb-3">
+          <label for="phoneNumberField" class="form-label mb-1"
+            >Phone Number</label
+          >
+          <input
+            type="text"
+            name="PhoneNumber"
+            class="form-control w-100"
+            id="phoneNumberField"
+            autocomplete="tel"
+          />
+        </div>
+        <div class="col-md-6 mb-3">
           <label for="messageTextarea" class="form-label mb-1 required-field"
             >Message or Questions</label
           ><span class="asterisk"></span>
           <textarea
             name="Message"
-            class="form-control w-100 form-text-area"
+            class="form-control w-100 form-text-area form-field"
             id="messageTextarea"
             aria-describedby="messageHelp"
             rows="6"
@@ -311,6 +313,14 @@ import heroBg from "../../../images/colored-hero/woman-using-laptop.png";
             as any questions you have about the services we provide or the
             organization itself.
           </div>
+        </div>
+      </div>
+      <div slot="message">
+        <div class="col p-4 border border-2 border-info-contrast rounded">
+          <p class="lead mb-0">
+            Thank you for your interest in our evaluation services.
+            We'll be in touch shortly.
+          </p>
         </div>
       </div>
     </GoogleForm>
