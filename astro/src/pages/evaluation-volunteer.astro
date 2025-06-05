@@ -1,0 +1,306 @@
+---
+import type { Breadcrumbs, PageMetadata } from "@lib/types";
+import { getOpenGraphImageData } from "@lib/og-image";
+
+import { getCollection, render } from "astro:content";
+import { components } from "@lib/mdx";
+import { sortBy } from 'lodash-es';
+
+import Branding from "../components/Branding.astro";
+import GoogleForm from "@components/GoogleForm.astro";
+import Hero from "../components/Hero.astro";
+import { Icon } from "astro-icon/components";
+import Layout from "../layouts/Layout.astro";
+import ThemedSection from "../components/ThemedSection.astro";
+
+import heroBg from "../images/colored-hero/hands-together.png";
+import teamPic from "src/images/colored-hero/team.png";
+import { Image } from "astro:assets";
+
+const title = "Evaluations";
+const metadata: PageMetadata = {
+  title,
+  description: "Come join us at Accessible Community",
+  image: getOpenGraphImageData(Astro.site, "pages", "evaluation-volunteer"),
+};
+const crumbs: Breadcrumbs = [
+  {
+    name: "Home",
+    href: "/",
+  },
+  {
+    name: "Join Us",
+    href: "/join-us",
+  },
+];
+---
+
+<Layout {title} {crumbs} {metadata}>
+  <Hero image={heroBg} slot="header" actionBreakpoint="md">
+    <div slot="heading" class="mb-4">
+      <h1 class="visually-hidden">Volunteer</h1>
+      <blockquote class="display-2 text-white">
+        <div>
+          <sup aria-hidden="true"><Icon name="quote-left" height="0.5em" /></sup
+          >&nbsp;<span class="small">Alone we can do so little;</span>
+        </div>
+        <div>
+          <span class="fw-bold"
+            >Together we can do so much.&nbsp;<sup aria-hidden="true"
+              ><Icon name="quote-right" height="0.5em" /></sup
+            >
+          </span>
+        </div>
+      </blockquote>
+      <div class="blockquote-footer text-end text-white me-5 display-6">
+        <span class="display-7">Helen Keller</span>
+      </div>
+    </div>
+    <p class="lead text-bg-hero">
+      <Branding>Accessible Community</Branding> is a volunteer-led and staffed 501(c)3
+      organization. We welcome any contributions to help make our communities more
+      accessible and disability-inclusive.
+    </p>
+    <Fragment slot="action-bar">
+      <a href="/services/evaluations" class="icon-link link-light hero-link">
+        <Icon name="bi:youtube" class="bi" role="img" aria-hidden="true" />
+        Learn about our evaluation services
+      </a>
+      <a href="/volunteer#teams" class="icon-link link-light hero-link">
+        <Icon name="bi:people-fill" class="bi" role="img" aria-hidden="true" />
+        Learn more about our teams
+      </a>
+      <a href="#form" class="icon-link link-light hero-link">
+        <Icon name="bi:pencil-fill" class="bi" role="img" aria-hidden="true" />
+        Fill out the volunteer form
+      </a>
+    </Fragment>
+  </Hero>
+
+  <ThemedSection id="form" style="tertiary">
+  <h2 class="display-3 mb-4 text-info-emphasis">
+    Evaluator <strong>Application Form</strong>
+  </h2>
+  <GoogleForm
+    id="evaluatorFormEl"
+    key=""
+    class="col p-4 bg-body border border-2 border-info-contrast rounded"
+  >
+    <div slot="prelude">
+      <p class="lead">
+        Thank you for your interest in becoming an evaluator with
+        <Branding>Accessible Community</Branding>.
+      </p>
+      <p>
+        We are seeking qualified evaluators to join our evaluation service team.
+        As an evaluator, you will be conducting assessments under contract and
+        will be compensated for your work. We are looking for individuals with
+        relevant experience and expertise who can provide thorough, professional
+        evaluations. If you are interested in joining our team, please complete
+        the form below.
+      </p>
+    </div>
+    <div class="row">
+      <div class="col-md-6 mb-3">
+        <label for="firstNameField" class="form-label mb-1 required-field"
+          >First Name</label
+        ><span class="asterisk"></span>
+        <input
+          type="text"
+          name="FirstName"
+          class="form-control w-100"
+          id="firstNameField"
+          autocomplete="given-name"
+          required
+        />
+      </div>
+      <div class="col-md-6 mb-3">
+        <label for="lastNameField" class="form-label mb-1 required-field"
+          >Last Name</label
+        ><span class="asterisk"></span>
+        <input
+          type="text"
+          name="LastName"
+          class="form-control w-100"
+          id="lastNameField"
+          autocomplete="family-name"
+          required
+        />
+      </div>
+      <div class="col-md-6 mb-3">
+        <label for="emailField" class="form-label mb-1 required-field"
+          >Email</label
+        ><span class="asterisk"></span>
+        <input
+          type="email"
+          name="Email"
+          class="form-control w-100"
+          id="emailField"
+          autocomplete="email"
+          required
+        />
+      </div>
+      <div class="col-md-6 mb-3">
+        <label for="countryField" class="form-label mb-1 required-field"
+          >Country / Time Zone</label
+        ><span class="asterisk"></span>
+        <input
+          type="text"
+          name="CountryTimeZone"
+          class="form-control w-100"
+          id="countryField"
+          autocomplete="country-name"
+          required
+          placeholder="e.g., United States / Eastern Time"
+        />
+      </div>
+      <div class="col-md-6 mb-3">
+        <label for="experienceField" class="form-label mb-1 required-field"
+          >Experience Level</label
+        ><span class="asterisk"></span>
+        <select
+          name="ExperienceLevel"
+          class="form-control w-100"
+          id="experienceField"
+          aria-describedby="experienceHelp"
+          required
+        >
+          <option value="">Select your experience level</option>
+          <option value="Beginner">Beginner (0-2 years)</option>
+          <option value="Intermediate">Intermediate (3-5 years)</option>
+          <option value="Advanced">Advanced (6-10 years)</option>
+          <option value="Expert">Expert (10+ years)</option>
+        </select>
+        <div id="experienceHelp" class="form-text">
+          Your approximate experience level in conducting evaluations or related work.
+        </div>
+      </div>
+      <div class="col-md-6 mb-3">
+        <label for="availabilityField" class="form-label mb-1 required-field"
+          >Availability</label
+        ><span class="asterisk"></span>
+        <select
+            name="Availability"
+            class="form-select custom-select-toggle w-100"
+            id="availabilityField"
+            aria-describedby="availabilityHelp"
+            required
+        >
+            <option value="">Select your availability</option>
+            <option value="1-5 hours/week">1-5 hours per week</option>
+            <option value="6-10 hours/week">6-10 hours per week</option>
+            <option value="11-20 hours/week">11-20 hours per week</option>
+            <option value="20+ hours/week">20+ hours per week</option>
+        </select>
+        <div id="availabilityHelp" class="form-text">
+          How many hours per week are you available for evaluation work?
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="experienceTextarea" class="form-label mb-1 required-field"
+          >Relevant Experience</label
+        ><span class="asterisk"></span>
+        <textarea
+          name="RelevantExperience"
+          class="form-control w-100 form-text-area form-field"
+          id="experienceTextarea"
+          aria-describedby="experienceTextHelp"
+          required
+        ></textarea>
+        <div id="experienceTextHelp" class="form-text">
+          Describe your relevant experience, qualifications, and areas of
+          expertise that make you suitable for evaluation work.
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="attachmentField" class="form-label mb-1"
+          >Resume or CV</label
+        >
+        <input
+          type="file"
+          name="Resume"
+          class="form-control w-100"
+          id="attachmentField"
+          accept=".pdf,.doc,.docx,.txt"
+          aria-describedby="attachmentHelp"
+        />
+        <div id="attachmentHelp" class="form-text">
+          You can upload your resume or CV to provide additional information about
+          your qualifications.
+        </div>
+    </div>
+    <div class="mb-3">
+        <label for="linksTextarea" class="form-label mb-1"
+          >Portfolio or Work Samples</label
+        >
+        <textarea
+          name="PortfolioLinks"
+          class="form-control w-100 form-text-area form-field"
+          id="linksTextarea"
+        ></textarea>
+    </div>
+
+    <div class="mb-3">
+        <label for="accommodationTextarea" class="form-label mb-1"
+            >Do you need any accommodations to be successful?</label
+        >
+        <textarea
+            name="Accommodations"
+            class="form-control w-100 form-text-area form-field"
+            id="accommodationTextarea"
+            aria-describedby="accommodationHelp"
+        ></textarea>
+        <div id="accommodationHelp" class="form-text">
+            Please list any accommodations that you need for remote meetings
+            and/or evaluation work.
+        </div>
+    </div>
+    </div>
+    <div slot="message">
+      <div class="col p-4 border border-2 border-info-contrast rounded">
+        <p class="lead mb-0">
+          Thank you for your application to become an evaluator with
+          <Branding class="text-primary">Accessible Community</Branding>.
+          We'll review your application and be in touch shortly.
+        </p>
+      </div>
+    </div>
+  </GoogleForm>
+</ThemedSection>
+
+<style>
+  /* first declaration that is commented out below is for debugging purposes. */
+  /* * {
+    outline: 1px solid black;
+  } */
+
+  fieldset label {
+    cursor: pointer;
+  }
+
+  [data-icon="bi:youtube"] {
+    font-size: 125%;
+  }
+
+  .form-text-area {
+    height: 6em;
+  }
+
+.custom-select-toggle {
+  color: #ffffff;
+
+  border-radius: 0.375rem;
+  padding-right: 2.5rem;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='%23ffffff' stroke='%23ffffff' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m1 6 7 7 7-7'/%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  background-size: 18px 14px;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  font-weight: 500;
+}
+
+
+
+</style>
