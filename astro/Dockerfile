@@ -1,5 +1,5 @@
-# Node v18 is the current LTS version.
-FROM node:20-buster-slim AS base-node-image
+# Node v22 is the current LTS version.
+FROM node:22-bullseye-slim AS base-node-image
 
 ###############################
 FROM base-node-image AS dev-test
