@@ -1,7 +1,8 @@
 @charset "UTF-8";
+@import 'acid/src/styles/theme.css';
 
 $color-mode-type:                   media-query;
-$ac-navy:                           #041058;
+$ac-navy:                           var(--color-primary-vivid-50);
 
 //*******************
 // Coloring subtle themes.
@@ -68,7 +69,7 @@ $primary-border-subtle:             #9ECBF1; // blue-10
 
 $primary-text-emphasis-dark:        #9ECBF1; // blue-10
 $primary-bg-subtle-dark:            #020A32; // primary + 6 shade
-$primary-border-subtle-dark:        tint-color($primary, 30%);
+$primary-border-subtle-dark:        var(--color-primary-vivid-80);
 
 
 //*****************
@@ -122,8 +123,6 @@ $card-title-color-dark:             #7EB0E4; // blue-20
 $link-color:                        #253E92; // blue-80
 $link-color-dark:                   #7EB0E4; // blue-20
 $link-shade-percentage:             40%;
-// $link-hover-color:                  shift-color($link-color, $link-shade-percentage) !default;
-// $link-hover-color-dark:             shift-color($link-color-dark, -$link-shade-percentage) !default;
 
 // Code
 $code-color:                        #590455;
