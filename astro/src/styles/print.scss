@@ -1,0 +1,101 @@
+@media print {
+  @page {
+    size: auto;
+    margin: 0.75cm;
+  }
+
+  h1 {
+    margin-top: 0em !important;
+    padding-top: 0;
+  }
+
+  body {
+    margin: 0 !important;
+    padding: 0.5cm !important;
+    width: 100% !important;
+    font-size: 11pt;
+    line-height: 1.4;
+  }
+
+  /* Improved heading spacing */
+  h1, h2, h3, h4, h5, h6 {
+    page-break-after: avoid;
+    break-after: avoid;
+    margin-top: 0.75em;
+    margin-bottom: 0.5em;
+  }
+
+  /* Special treatment for privacy policy sections */
+  .privacy-policy-heading {
+    page-break-after: avoid;
+    margin-bottom: 0.35em;
+  }
+
+  /* Balanced paragraph spacing */
+  p {
+    margin: 0.4em 0 0.6em 0; 
+    text-align: left;
+  }
+
+  /* Comfortable list spacing */
+  ul, ol {
+    margin: 0.5em 0;
+    padding-left: 1.2em;
+  }
+
+  li {
+    page-break-inside: avoid;
+    margin: 0.3em 0;
+  }
+
+  /* Nested list adjustments */
+  li > ul,
+  li > ol {
+    margin: 0.4em 0;
+  }
+
+  /* Link handling */
+  a {
+    color: #000 !important;
+    text-decoration: underline !important;
+  }
+  a[href^="http"]:after {
+    content: " (" attr(href) ")";
+    font-size: 80%;
+  }
+
+  /* Responsive containers */
+  .container, .container-fluid {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+  /* Print utility classes */
+  .print-break-before {
+    page-break-before: always;
+  }
+  .print-break-avoid {
+    page-break-inside: avoid;
+  }
+
+  #breadcrumbs-nav {
+    display: none !important; /* Hide breadcrumbs in print */
+  }
+
+  .navbar-collapse {
+    display: none !important; /* Hide navbar in print */
+  }
+
+  .navbar-toggler {
+    display: none !important; /* Hide toggler in print */
+  }
+
+#footer {
+    display: none !important; /* Hide footer in print */
+  }
+
+  .brand-logo {
+    color:#000;
+  }
+}

@@ -34,7 +34,8 @@ const { title, crumbs, heading, metadata } = Astro.props;
         </Metadata>
       )
     }
-    <link rel="icon" type="image/png" href="/images/favicon.png" />
+    <link rel="icon" type="image/png" href="/images/favicon.png" media="(prefers-color-scheme: light"/>
+    <link rel="icon" type="image/png" href="/images/favicon-dark.png" media="(prefers-color-scheme: dark)" />
     <link rel="sitemap" href="/sitemap-index.xml" />
     <slot name="head" />
   </head>
@@ -63,6 +64,7 @@ const { title, crumbs, heading, metadata } = Astro.props;
   </body>
 
   <script src="../scripts/headings.js"></script>
+  <script src="../scripts/body-no-scroll.js"></script>
   {
     import.meta.env.PROD && (
       <script

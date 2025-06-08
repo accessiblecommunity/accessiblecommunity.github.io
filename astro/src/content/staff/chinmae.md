@@ -8,6 +8,7 @@ alt: Woman in her mid twenties with long black hair with brown tint at the end  
 links:
   email: chinmae@accessiblecommunity.org
   linkedin: https://www.linkedin.com/in/chinmaedeshmukkh/
+current: false
 ---
 
 Chinmae Deshmukkh is a Project Manager with a knack for bringing people and ideas together. Her background in both international business and engineering allows her to handle complex projects across different industries. Chinmae is passionate about creating a welcoming work environment, and she has led successful initiatives that promote diversity and inclusion.

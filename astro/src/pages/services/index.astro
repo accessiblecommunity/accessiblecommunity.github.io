@@ -36,6 +36,13 @@ const services = [
     text: "A tool for people with disabilities to find and recommend organizations and events where they can participate and engage.",
     // link: 'https://www.loca11y.org',
   },
+  {
+    icon: "globa11y-logo",
+    name: "globa11y",
+    title: "globa11y pilot",
+    text: "A platform for advancing digital inclusion and empowering people with disabilities through education and consulting.",
+    link: "/services/globa11y",
+  },
 ];
 
 const title = "Services";
@@ -72,13 +79,13 @@ const metadata: PageMetadata = {
   </Hero>
 
   <ThemedSection style="tertiary" py={4}>
-    <div class="row row-gap-4 row-cols-1 row-cols-lg-3 mb-3">
+    <div class="row row-gap-4 row-cols-1 row-cols-lg-2 mb-3">
       {
         services.map(({ icon, name, title, text, link }) => (
           <div class="feature col d-flex flex-column justify-content-between">
             <div class="d-flex align-items-center gap-2 mb-1">
               <div class="feature-icon d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient">
-                <Icon class="bi" name={icon} role="img" aria-hidden="true" />
+                <Icon class="bi" name={icon} aria-hidden="true" />
               </div>
               <h2 class="my-1 fs-1 text-primary" aria-hidden="true">
                 <Branding text={title} no-aria />
@@ -89,13 +96,14 @@ const metadata: PageMetadata = {
               <span set:html={text} />
             </p>
             <div class="ms-5 me-3">
-              <div class="d-flex flex-column-reverse flex-sm-row flex-lg-column-reverse flex-xl-row justify-content-start">
-                <a
-                  href={`#${name}`}
-                  class="icon-link text-nowrap me-4 mt-0 mt-lg-2 mt-xl-0"
-                >
+              <div class="d-flex flex-column-reverse flex-sm-row justify-content-start">
+                <a href={`#${name}`} class="icon-link text-nowrap me-4 mt-0">
                   Learn more
-                  <span class="visually-hidden">about {name}.org</span>
+                  <span class="visually-hidden">
+                    {name === "globa11y" ?
+                      `about ${name}`
+                    : `about ${name}.org`}
+                  </span>
                   <Icon
                     name="bi:arrow-down-square"
                     class="bi"
@@ -103,13 +111,18 @@ const metadata: PageMetadata = {
                     aria-hidden="true"
                   />
                 </a>
-                {link ?
-                  <div class="text-primary text-nowrap">
+                {!link ?
+                  <div class="text-brand fw-bold flex-fill">Coming soon.</div>
+                : name === "globa11y" ?
+                  <a href={link} class="text-brand">
+                    Visit <Branding text={name} />
+                  </a>
+                : <div class="text-primary text-nowrap">
                     <ExternalLink href={link} class="text-brand">
                       Visit <Branding text={title} />
                     </ExternalLink>
                   </div>
-                : <div class="text-brand fw-bold flex-fill">Coming soon.</div>}
+                }
               </div>
             </div>
           </div>
@@ -236,6 +249,36 @@ const metadata: PageMetadata = {
       <span class="text-brand fw-bold">What it is not:</span> Google Maps or Yelp.
       <Branding>loca11y</Branding> reports positive feedback only and centers on
       accessibility, rather than quality of services.
+    </p>
+  </ThemedSection>
+  <ThemedSection id="globa11y" theme="primary" style="subtle">
+    <h2 class="display-3" aria-hidden="true">
+      About the <Branding no-aria>globa11y pilot</Branding>
+    </h2>
+    <h2 class="visually-hidden">About the globally pilot</h2>
+    <p>
+      At <Branding>globa11y</Branding>, we envision a world where accessibility
+      is an integral part of all technology and digital experiences. Our pilot
+      social enterprise operates on a model that blends professional services
+      with meaningful social impact. We offer accessibility consulting to
+      organizations committed to creating inclusive digital products and
+      services. The revenue from our consulting directly supports our education
+      programs, which train and empower people with disabilities to become
+      accessibility professionals. By equipping these individuals to lead in
+      accessible design and development, we are breaking down barriers and
+      shaping a future where inclusion drives innovation.
+    </p>
+    <p>
+      <span class="text-brand fw-bold">Target Audience:</span> People with disabilities
+      seeking careers in tech and accessibility. Corporations building or scaling
+      accessibility programs. Governments aiming for more inclusive digital services.
+      Nonprofits looking to expand disability inclusion. Sponsors and volunteers
+      ready to invest in impact.
+    </p>
+    <p>
+      <span class="text-brand fw-bold">What it is not:</span> We are not a traditional
+      accessibility consulting firm. We do not provide audits or compliance checklists.
+      We are not here to rubber-stamp or retrofit.
     </p>
   </ThemedSection>
 </Layout>
