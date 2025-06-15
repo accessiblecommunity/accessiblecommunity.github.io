@@ -1,16 +1,14 @@
 ---
+import "../styles/bootstrap.scss";
+import Metadata from "../components/Metadata.astro";
+import { Image } from "astro:assets";
+import Branding from "../components/Branding.astro";
+import escapeRoomLogo from "../images/escape-room/escaperoomlogo-768x768.png";
 import { type PageMetadata } from "../lib/types";
 
 interface Props {
   metadata?: PageMetadata;
 }
-
-import "../styles/bootstrap.scss";
-
-import Metadata from "../components/Metadata.astro";
-import { Image } from "astro:assets";
-import Branding from "../components/Branding.astro";
-import escapeRoomLogo from "../images/escape-room/escaperoomlogo-768x768.png";
 
 const { metadata } = Astro.props;
 ---
@@ -38,7 +36,7 @@ const { metadata } = Astro.props;
   <body>
     <!-- Custom Header -->
     <header class="escape-room-header">
-      <nav class="navbar navbar-expand-lg navbar-dark bg-transparent">
+      <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container">
           <a class="navbar-brand" href="/services/escape-room/">
             <div class="logo-container">
