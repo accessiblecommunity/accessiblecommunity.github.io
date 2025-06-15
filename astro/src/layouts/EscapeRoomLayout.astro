@@ -181,18 +181,18 @@ const { metadata } = Astro.props;
   .escape-room-header {
     background: linear-gradient(135deg, var(--bs-primary) 0%, #2c3e50 100%);
     padding: 1rem 0;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.1);
     position: relative;
     z-index: 1000;
   }
 
   .escape-room-header .navbar {
     padding: 0;
-    background: transparent !important;
+    background: transparent;
   }
 
   .escape-room-header .navbar-brand {
-    color: white !important;
+    color: white;
     font-size: 1.5rem;
     display: flex;
     align-items: center;
@@ -215,18 +215,18 @@ const { metadata } = Astro.props;
 
   .logo-container {
     background: white;
-    border-radius: 8px;
-    padding: 4px;
+    border-radius: 0.5rem;
+    padding: 0.25rem;
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0.125rem 0.5rem rgba(0, 0, 0, 0.2);
     flex-shrink: 0;
   }
 
   .logo-image {
-    width: 40px !important;
-    height: 40px !important;
+    width: 2.5rem;
+    height: 2.5rem;
     object-fit: contain;
   }
 
@@ -236,35 +236,35 @@ const { metadata } = Astro.props;
   }
 
   .escape-room-header .navbar-brand:hover {
-    color: white !important;
+    color: white;
     opacity: 0.9;
   }
 
   .escape-room-header .navbar-nav {
-    background: transparent !important;
+    background: transparent;
   }
 
   .escape-room-header .nav-item {
-    background: transparent !important;
+    background: transparent;
   }
 
   .escape-room-header .nav-link {
-    color: white !important;
+    color: white;
     font-weight: 500;
     padding: 0.5rem 1rem;
     transition: all 0.3s ease;
-    background: transparent !important;
+    background: transparent;
   }
 
   .escape-room-header .nav-link:hover {
-    color: white !important;
+    color: white;
     opacity: 0.8;
     transform: translateY(-1px);
   }
 
   .escape-room-header .navbar-toggler {
     border-color: rgba(255, 255, 255, 0.5);
-    background: transparent !important;
+    background: transparent;
     padding: 0.4rem;
     font-size: 0.9rem;
     margin-left: 1rem;
@@ -282,7 +282,7 @@ const { metadata } = Astro.props;
   }
 
   .escape-room-header .navbar-collapse {
-    background: transparent !important;
+    background: transparent;
   }
 
   /* Content Spacing */
@@ -337,16 +337,16 @@ const { metadata } = Astro.props;
     }
 
     .escape-room-header .navbar-collapse {
-      background: rgba(0, 0, 0, 0.2) !important;
-      border-radius: 8px;
+      background: rgba(0, 0, 0, 0.2);
+      border-radius: 0.5rem;
       margin-top: 0.5rem;
       padding: 0.5rem;
-      backdrop-filter: blur(4px);
+      backdrop-filter: blur(0.25rem);
     }
 
     .escape-room-header .nav-link {
       padding: 0.75rem 1rem;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      border-bottom: 0.0625rem solid rgba(255, 255, 255, 0.1);
       margin: 0.25rem 0;
     }
 
@@ -367,13 +367,9 @@ const { metadata } = Astro.props;
       font-size: 1.25rem;
     }
 
-    .logo-container {
-      padding: 3px;
-    }
-
     .logo-image {
-      width: 32px !important;
-      height: 32px !important;
+      width: 2rem;
+      height: 2rem;
     }
 
     .escape-room-footer {
@@ -423,20 +419,16 @@ const { metadata } = Astro.props;
     }
     
     .brand-text .accessible {
-      margin-bottom: -2px;
+      margin-bottom: -0.125rem;
     }
     
     .brand-text .accessible::after {
       content: "";
     }
 
-    .logo-container {
-      padding: 2px;
-    }
-
     .logo-image {
-      width: 28px !important;
-      height: 28px !important;
+      width: 1.75rem;
+      height: 1.75rem;
     }
 
     .content-spacer {
@@ -455,16 +447,12 @@ const { metadata } = Astro.props;
     }
     
     .brand-text .accessible {
-      margin-bottom: -3px;
-    }
-
-    .logo-container {
-      padding: 2px;
+      margin-bottom: -0.1875rem;
     }
 
     .logo-image {
-      width: 30px !important;
-      height: 30px !important;
+      width: 1.875rem;
+      height: 1.875rem;
     }
   }
 </style> 
