@@ -1,0 +1,63 @@
+---
+import { getCollection, render, type CollectionEntry } from "astro:content";
+import { getOpenGraphImageData } from "src/lib/og-image";
+import type { Breadcrumbs, PageMetadata } from "src/lib/types";
+import components from "src/lib/mdx";
+
+export async function getStaticPaths() {
+  const crumbs: Breadcrumbs = [
+    {
+      name: "Home",
+      href: "/",
+    },
+    {
+      name: "Escape Room",
+      href: "/services/escape-room/",
+    },
+  ];
+
+  const rooms: Array<CollectionEntry<"escapeRoomThemes">> =  await getCollection("escapeRoomThemes");
+
+  return rooms.map((room) => {
+    const metadata: PageMetadata = {
+      title: room.data.title,
+      description: `Overview of the ${room.data.title} Accessible Escape Room`,
+      image: getOpenGraphImageData(Astro.site, "pages", "escape-room"), // Fix
+    };
+
+    return {
+      params: { id: room.id },
+      props: { room, crumbs, metadata },      
+    }
+  });
+}
+
+interface Props {
+  room: CollectionEntry<"escapeRoomThemes">;
+  crumbs: Breadcrumbs;
+  metadata: PageMetadata;
+}
+
+const { room, crumbs, metadata } = Astro.props;
+const { image, title } = room.data;
+const { Content } = await render(room);
+
+import Hero from "src/components/ColumnedHero.astro";
+import Layout from "src/layouts/Layout.astro";
+import ThemedSection from "@components/ThemedSection.astro";
+---
+
+<Layout {title} {crumbs} {metadata}>
+  <Hero {image} slot="header" reverse columns={["md-6", "lg-5", "xxl-6",]} vertical-position="22%">
+    <div class="py-2 px-2" slot="heading">
+      <h1 class="display-2" set:html={room.data.titleHtml} />
+    </div>
+    <div class="py-3">
+      <p class="text-bg-hero" set:text={room.data.tagline} />
+    </div>
+  </Hero>
+
+  <ThemedSection style="tertiary">
+    <Content {components} />
+  </ThemedSection>
+</Layout>

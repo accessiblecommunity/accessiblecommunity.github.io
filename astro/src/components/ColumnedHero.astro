@@ -7,6 +7,7 @@ interface Props {
   theme?: string;
   actionBreakpoint?: string;
   reverse?: boolean;
+  "columns"?: Array<string>;
   "horizontal-position"?: string;
   "vertical-position"?: string;
 }
@@ -16,9 +17,12 @@ const {
   theme = "primary",
   actionBreakpoint = "lg",
   reverse = false,
+  columns = ["md-5", "lg-6", "xl-6", "xxl-7",],
   "horizontal-position": horizPosition = "22%",
   "vertical-position": verticalPosition = "center",
 } = Astro.props;
+
+const columnClasses = columns.map(c => `col-${c}`);
 
 let heroBgUrl;
 
@@ -55,7 +59,7 @@ if (image) {
         }
       </div>
       <div
-        class={`d-none d-md-block col-md-5 col-lg-6 col-xl-6 col-xxl-7 bg-${theme} hero-img${reverse ? "-reverse" : ""}`}
+        class:list={["d-none d-md-block", `bg-${theme}`, `hero-img${reverse ? "-reverse" : ""}`, ...columnClasses]}
         style={`background: no-repeat center ${heroBgUrl}; background-size: cover; background-position: ${horizPosition} ${verticalPosition}`}
       >
       </div>

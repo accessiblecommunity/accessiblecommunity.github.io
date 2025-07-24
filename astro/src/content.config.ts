@@ -49,6 +49,25 @@ const daf = defineCollection({
   }),
 });
 
+const escapeRoomKits = defineCollection({
+  loader: glob({ pattern: "**/[^_]*.{md,mdx}", base: "./src/content/escape-room-kits" }),
+  schema: z.object({
+    title: z.string(),
+  }),
+});
+
+const escapeRoomThemes = defineCollection({
+  loader: glob({ pattern: "**/[^_]*.{md,mdx}", base: "./src/content/escape-room-themes" }),
+  schema: ({ image }) =>
+    z.object({
+      title: z.string(),
+      titleHtml: z.string(),
+      tagline: z.string(),
+      image: image(),
+      alt: z.string().optional(),
+  }),
+});
+
 const staff = defineCollection({
   loader: glob({ pattern: "**/[^_]*.{md,mdx}", base: "./src/content/staff" }),
   schema: ({ image }) =>
@@ -136,6 +155,8 @@ export const collections = {
   blogs,
   collaborators,
   daf,
+  escapeRoomKits,
+  escapeRoomThemes,
   quotes,
   recruiting,
   staff,
