@@ -1,0 +1,663 @@
+---
+import { getOpenGraphImageData } from "@lib/og-image";
+import type { Breadcrumbs, PageMetadata } from "@lib/types";
+
+
+const title = "Purchase Successful - The Accessible Escape Room";
+const metadata: PageMetadata = {
+  title,
+  description: "Your escape room kit purchase was successful",
+  image: getOpenGraphImageData(Astro.site, "pages", "purchase-success"),
+};
+const crumbs: Breadcrumbs = [
+  { name: "Home", href: "/" },
+  { name: "Services", href: "/services" },
+  { name: "Escape Room", href: "/services/escape-room" },
+  { name: "Purchase", href: "/services/escape-room/purchase" },
+];
+
+import Branding from "@components/Branding.astro";
+import Layout from "src/layouts/Layout.astro";
+import ThemedSection from "@components/ThemedSection.astro";
+
+---
+
+<Layout {title} {crumbs} {metadata}>
+  <div class="container-fluid bg-success text-white py-5 d-flex flex-column" slot="header">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-8 text-center">
+          <h1 class="display-3 mb-3">
+            Purchase Successful!
+          </h1>
+          <p class="lead">
+            Thank you for your purchase of the <Branding>Accessible Escape Room</Branding> kit.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Purchase Details Section -->
+  <ThemedSection style="primary">
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        <div class="text-center mb-5">
+          <h2 class="display-4 mb-3">Your Purchase Details</h2>
+          <p class="lead">
+            Save this information for your records and to access your kit materials.
+          </p>
+        </div>
+
+        <!-- Purchase Summary Card -->
+        <div class="card shadow-lg border-0 mb-5">
+          <div class="card-header bg-primary text-white">
+            <h4 class="mb-0">
+              Purchase Summary
+            </h4>
+          </div>
+          <div class="card-body">
+            <div id="loading-state" class="text-center py-4">
+              <div class="spinner-border text-primary" role="status">
+                <span class="visually-hidden">Loading purchase details...</span>
+              </div>
+              <p class="mt-2">Retrieving your purchase information...</p>
+            </div>
+
+            <div id="purchase-details" style="display: none;">
+              <div class="row mb-4">
+                <div class="col-md-6">
+                  <h5 class="text-primary">Order Information</h5>
+                  <p class="mb-1"><strong>Order ID:</strong> <span id="order-id"></span></p>
+                  <p class="mb-1"><strong>Purchase Date:</strong> <span id="purchase-date"></span></p>
+                  <p class="mb-1"><strong>Status:</strong> <span id="order-status" class="badge bg-success"></span></p>
+                </div>
+                <div class="col-md-6">
+                  <h5 class="text-primary">Customer Information</h5>
+                  <p class="mb-1"><strong>Organization:</strong> <span id="customer-org"></span></p>
+                  <p class="mb-1"><strong>Contact:</strong> <span id="customer-name"></span></p>
+                  <p class="mb-1"><strong>Email:</strong> <span id="customer-email"></span></p>
+                </div>
+              </div>
+
+              <div class="row mb-4">
+                <div class="col-12">
+                  <h5 class="text-primary">Kit Details</h5>
+                  <div class="table-responsive">
+                    <table class="table table-borderless">
+                      <tbody id="kit-details-body">
+                        <!-- Kit details populated by JavaScript -->
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+                <div class="alert alert-info border-0 mb-4">
+                <h5 class="alert-heading text-dark">
+                  Your Proof of Purchase
+                </h5>
+                <p class="mb-2 text-dark">Use this unique code to access your kit materials:</p>
+                <div class="d-flex align-items-center">
+                  <code id="proof-code" class="fs-4 text-dark bg-light p-2 rounded me-3"></code>
+                  <button id="copy-code" class="btn btn-outline-primary btn-sm">
+                  Copy Code
+                  </button>
+                </div>
+                <small class="text-dark mt-2 d-block">
+                  Keep this code safe - you'll need it to access your digital kit materials.
+                </small>
+                </div>
+
+              <div id="special-requirements-section" style="display: none;">
+                <h5 class="text-primary">Special Requirements</h5>
+                <div class="alert alert-light">
+                  <p id="special-requirements-text" class="mb-0"></p>
+                </div>
+              </div>
+            </div>
+
+            <div id="error-state" style="display: none;" class="alert alert-danger">
+              <h5 class="alert-heading">Error Loading Purchase Details</h5>
+              <p class="mb-0">
+                We're having trouble loading your purchase information. Please contact support with your session ID: 
+                <code id="session-id"></code>
+              </p>
+              <div id="error-details" class="mt-2"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Next Steps -->
+        <div class="row g-4 mb-5">
+          <div class="col-md-6">
+            <div class="card h-100 border-0 shadow">
+              <div class="card-body text-center">
+                <h4 class="card-title">Access Your Kit</h4>
+                <p class="card-text">
+                  Use your proof of purchase code to access digital materials and instructions.
+                </p>
+                <button id="access-kit-btn" class="btn btn-primary" disabled>
+                  Access Kit Materials
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="card h-100 border-0 shadow">
+              <div class="card-body text-center">
+                <h4 class="card-title">Customer Portal</h4>
+                <p class="card-text">
+                  View all your purchases and manage your account in one place.
+                </p>
+                <a href="/customer/portal" class="btn btn-outline-primary">
+                  View All Purchases
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Email Confirmation -->
+        <div class="card border-0 shadow-sm">
+          <div class="card-body text-center">
+            <h4 class="card-title">Email Confirmation</h4>
+            <p class="card-text">
+              A confirmation email with your purchase details and proof of purchase code 
+              has been sent to your email address.
+            </p>
+            <small class="text-muted">
+              Don't see it? Check your spam folder or contact support if you need assistance.
+            </small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ThemedSection>
+
+  <!-- Support Section -->
+  <ThemedSection theme="secondary">
+    <div class="text-center text-white">
+      <h2 class="display-4 mb-4">Need Help?</h2>
+      <p class="lead mb-4">
+        Our support team is here to help you get the most out of your escape room kit.
+      </p>
+      <div class="row justify-content-center">
+        <div class="col-lg-8">
+          <div class="row g-4">
+            <div class="col-md-4">
+              <h5>Email Support</h5>
+              <p class="small">escaperoom@accessiblecommunity.org</p>
+            </div>
+            <div class="col-md-4">
+              <h5>Documentation</h5>
+              <p class="small">Access setup guides and FAQs</p>
+            </div>
+            <div class="col-md-4">
+              <h5>Community</h5>
+              <p class="small">Connect with other kit owners</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ThemedSection>
+
+  <script src=""https://js.stripe.com/v3/"></script>
+
+  <script>
+  // Environment variables
+  const GET_SESSION_URL = import.meta.env.PUBLIC_AZURE_GET_CHECKOUT_URL;
+  const STRIPE_PUBLISHABLE_KEY = import.meta.env.PUBLIC_STRIPE_PUBLISHABLE_KEY;
+
+  // Function to wait for Stripe to load
+  function checkStripeLoaded() {
+    return new Promise((resolve, reject) => {
+      if (typeof Stripe !== 'undefined') return resolve();
+      
+      const timer = setInterval(() => {
+        if (typeof Stripe !== 'undefined') {
+          clearInterval(timer);
+          resolve();
+        }
+      }, 100);
+      
+      // Timeout after 5 seconds
+      setTimeout(() => {
+        clearInterval(timer);
+        reject(new Error('Stripe library failed to load'));
+      }, 5000);
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', async function() {
+    const loadingState = document.getElementById('loading-state');
+    const purchaseDetails = document.getElementById('purchase-details');
+    const errorState = document.getElementById('error-state');
+    const sessionIdElement = document.getElementById('session-id');
+    const copyCodeBtn = document.getElementById('copy-code');
+    const accessKitBtn = document.getElementById('access-kit-btn');
+    const errorDetails = document.getElementById('error-details');
+
+    // Get session ID from URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const sessionId = urlParams.get('session_id');
+    let proofCode = null;
+
+    // Early validation
+    if (!GET_SESSION_URL) {
+      showError('Backend configuration missing - GET_SESSION_URL not found');
+      return;
+    }
+
+    if (!STRIPE_PUBLISHABLE_KEY) {
+      showError('Stripe configuration missing - STRIPE_PUBLISHABLE_KEY not found');
+      return;
+    }
+
+    if (sessionIdElement) {
+      sessionIdElement.textContent = sessionId || 'Not available';
+    }
+
+    if (!sessionId) {
+      showError('No session ID found in URL');
+      return;
+    }
+
+    try {
+      console.log('Environment check:', {
+        hasStripeKey: !!STRIPE_PUBLISHABLE_KEY,
+        hasGetSessionUrl: !!GET_SESSION_URL
+      });
+
+      // Wait for Stripe to load
+      await checkStripeLoaded();
+      
+      if (typeof Stripe === 'undefined') {
+        throw new Error('Stripe library not loaded');
+      }
+
+      const stripe = Stripe(STRIPE_PUBLISHABLE_KEY);
+      
+      const response = await fetch(GET_SESSION_URL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ sessionId })
+      });
+
+      if (!response.ok) {
+        const statusText = response.statusText || 'Unknown error';
+        throw new Error(`Failed to fetch session details: ${response.status} ${statusText}`);
+      }
+
+      let session;
+      try {
+        const responseText = await response.text();
+        if (!responseText) {
+          throw new Error('Empty response from server');
+        }
+        session = JSON.parse(responseText);
+      } catch (parseError) {
+        throw new Error('Invalid JSON response from server');
+      }
+
+      if (!session) {
+        throw new Error('No session data received');
+      }
+
+      // Generate proof of purchase code
+      proofCode = await generateProofOfPurchaseCode(sessionId, session);
+      
+      // Store purchase data for future reference
+      await storePurchaseData(sessionId, session, proofCode);
+
+      // Display purchase details
+      displayPurchaseDetails(session, proofCode);
+
+      // Enable kit access
+      if (accessKitBtn) {
+        accessKitBtn.disabled = false;
+        accessKitBtn.addEventListener('click', () => {
+          window.location.href = `/kits/access?code=${proofCode}`;
+        });
+      }
+
+      // Setup copy button
+      if (copyCodeBtn && proofCode) {
+        copyCodeBtn.addEventListener('click', async () => {
+          try {
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+              await navigator.clipboard.writeText(proofCode);
+              copyCodeBtn.innerHTML = 'Copied!';
+              setTimeout(() => {
+                copyCodeBtn.innerHTML = 'Copy Code';
+              }, 2000);
+            } else {
+              // Fallback for older browsers
+              fallbackCopyToClipboard(proofCode, copyCodeBtn);
+            }
+          } catch (err) {
+            console.error('Clipboard error:', err);
+            // Fallback for clipboard API failure
+            fallbackCopyToClipboard(proofCode, copyCodeBtn);
+          }
+        });
+      }
+
+      // Hide loading and show details
+      if (loadingState) {
+        loadingState.style.display = 'none';
+      }
+      if (purchaseDetails) {
+        purchaseDetails.style.display = 'block';
+      }
+
+    } catch (error) {
+      console.error('Error loading purchase details:', error);
+      showError(error.message, proofCode);
+    }
+  });
+
+  function fallbackCopyToClipboard(text, button) {
+    try {
+      const textArea = document.createElement('textarea');
+      textArea.value = text;
+      textArea.style.position = 'fixed';
+      textArea.style.left = '-999999px';
+      textArea.style.top = '-999999px';
+      document.body.appendChild(textArea);
+      textArea.focus();
+      textArea.select();
+      
+      const successful = document.execCommand('copy');
+      document.body.removeChild(textArea);
+      
+      if (successful) {
+        button.innerHTML = 'Copied!';
+        setTimeout(() => {
+          button.innerHTML = 'Copy Code';
+        }, 2000);
+      } else {
+        button.innerHTML = 'Copy failed';
+        setTimeout(() => {
+          button.innerHTML = 'Copy Code';
+        }, 2000);
+      }
+    } catch (err) {
+      console.error('Fallback copy failed:', err);
+      button.innerHTML = 'Copy not supported';
+      setTimeout(() => {
+        button.innerHTML = 'Copy Code';
+      }, 2000);
+    }
+  }
+
+  async function generateProofOfPurchaseCode(sessionId, session) {
+    try {
+      // Call your server-side Azure function to generate secure proof code
+      const proofCodeResponse = await fetch('/api/generate-proof-code', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ 
+          sessionId, 
+          purchaseData: session 
+        })
+      });
+
+      if (!proofCodeResponse.ok) {
+        throw new Error(`Failed to generate proof code: ${proofCodeResponse.status}`);
+      }
+
+      const proofData = await proofCodeResponse.json();
+      
+      if (!proofData.proofCode) {
+        throw new Error('No proof code returned from server');
+      }
+
+      return proofData.proofCode;
+    } catch (error) {
+      console.error('Error generating proof code:', error);
+      // Fallback to client-side generation (less secure but functional)
+      const timestamp = new Date().getTime().toString(36);
+      const sessionHash = btoa(sessionId.slice(-8)).replace(/[^a-zA-Z0-9]/g, '').slice(0, 6);
+      const amount = session.amount_total || 0;
+      const checksum = (sessionId.length + amount).toString(36);
+      
+      return `AER-FALLBACK-${timestamp}-${sessionHash}-${checksum}`.toUpperCase();
+    }
+  }
+
+  async function storePurchaseData(sessionId, session, proofCode) {
+    try {
+      // Store purchase data in localStorage for the customer portal
+      const purchaseData = {
+        sessionId,
+        proofCode,
+        purchaseDate: new Date().toISOString(),
+        customerEmail: session.customer_email || 'N/A',
+        organization: session.metadata?.organization || 'N/A',
+        customerName: session.customer_details?.name || 'N/A',
+        amount: session.amount_total || 0,
+        currency: session.currency || 'USD',
+        status: session.payment_status || 'unknown',
+        lineItems: session.line_items?.data || [],
+        lastAccessed: new Date().toISOString()
+      };
+
+      // Store in localStorage with error handling
+      try {
+        const existingPurchases = JSON.parse(localStorage.getItem('customerPurchases') || '[]');
+        existingPurchases.push(purchaseData);
+        localStorage.setItem('customerPurchases', JSON.stringify(existingPurchases));
+
+        // Also store the current purchase for easy access
+        localStorage.setItem('currentPurchase', JSON.stringify(purchaseData));
+      } catch (storageError) {
+        console.error('LocalStorage error:', storageError);
+        // Continue execution even if localStorage fails
+      }
+    } catch (error) {
+      console.error('Error storing purchase data:', error);
+      // Don't throw - this shouldn't break the main flow
+    }
+  }
+
+  function displayPurchaseDetails(session, proofCode) {
+    try {
+      // Order Information
+      const orderIdElement = document.getElementById('order-id');
+      const purchaseDateElement = document.getElementById('purchase-date');
+      const orderStatusElement = document.getElementById('order-status');
+
+      if (orderIdElement) {
+        orderIdElement.textContent = session.id || 'N/A';
+      }
+      if (purchaseDateElement) {
+        const date = session.created ? new Date(session.created * 1000).toLocaleDateString() : 'N/A';
+        purchaseDateElement.textContent = date;
+      }
+      if (orderStatusElement) {
+        orderStatusElement.textContent = session.payment_status === 'paid' ? 'Completed' : 'Pending';
+      }
+
+      // Customer Information
+      const customerEmailElement = document.getElementById('customer-email');
+      const customerNameElement = document.getElementById('customer-name');
+      const customerOrgElement = document.getElementById('customer-org');
+
+      if (customerEmailElement) {
+        customerEmailElement.textContent = session.customer_email || 'N/A';
+      }
+      if (customerNameElement) {
+        customerNameElement.textContent = session.customer_details?.name || 'N/A';
+      }
+      if (customerOrgElement) {
+        customerOrgElement.textContent = session.metadata?.organization || 'N/A';
+      }
+
+      // Kit Details
+      const kitDetailsBody = document.getElementById('kit-details-body');
+      if (kitDetailsBody) {
+        kitDetailsBody.innerHTML = ''; // Clear previous content
+        
+        if (session.line_items?.data?.length > 0) {
+          session.line_items.data.forEach(item => {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+              <td>
+                <strong>${item.price?.product?.name || 'Escape Room Kit'}</strong><br>
+                <small class="text-muted">${item.description || ''}</small>
+              </td>
+              <td class="text-end">
+                Qty: ${item.quantity || 1}<br>
+                <strong>$${((item.amount_total || 0) / 100).toFixed(2)}</strong>
+              </td>
+            `;
+            kitDetailsBody.appendChild(row);
+          });
+        } else {
+          // Fallback if line items aren't available
+          const row = document.createElement('tr');
+          row.innerHTML = `
+            <td>
+              <strong>${session.metadata?.kitType === 'ready' 
+                ? 'Ready-Made Kit' 
+                : 'Build-Your-Own Kit'}</strong><br>
+              <small class="text-muted">Theme: ${session.metadata?.theme || 'Not specified'}</small>
+            </td>
+            <td class="text-end">
+              <strong>$${((session.amount_total || 0) / 100).toFixed(2)}</strong>
+            </td>
+          `;
+          kitDetailsBody.appendChild(row);
+        }
+
+        // Total row
+        const totalRow = document.createElement('tr');
+        totalRow.innerHTML = `
+          <td><strong>Total</strong></td>
+          <td class="text-end"><strong>$${((session.amount_total || 0) / 100).toFixed(2)}</strong></td>
+        `;
+        kitDetailsBody.appendChild(totalRow);
+      }
+
+      // Proof of purchase code
+      const proofCodeElement = document.getElementById('proof-code');
+      if (proofCodeElement && proofCode) {
+        proofCodeElement.textContent = proofCode;
+      }
+
+      // Special requirements (if any)
+      const specialRequirements = session.metadata?.specialRequirements;
+      const specialRequirementsSection = document.getElementById('special-requirements-section');
+      const specialRequirementsText = document.getElementById('special-requirements-text');
+      
+      if (specialRequirements && specialRequirementsSection && specialRequirementsText) {
+        specialRequirementsSection.style.display = 'block';
+        specialRequirementsText.textContent = specialRequirements;
+      }
+    } catch (error) {
+      console.error('Error displaying purchase details:', error);
+      showError('Error displaying purchase details');
+    }
+  }
+
+  function showError(message, proofCode = null) {
+    const loadingState = document.getElementById('loading-state');
+    const errorState = document.getElementById('error-state');
+    const accessKitBtn = document.getElementById('access-kit-btn');
+    const errorDetails = document.getElementById('error-details');
+    
+    if (loadingState) {
+      loadingState.style.display = 'none';
+    }
+    if (errorState) {
+      errorState.style.display = 'block';
+    }
+    
+    // Update error message
+    const errorText = errorState ? errorState.querySelector('p') : null;
+    if (errorText) {
+      let errorHtml = `There was an error loading your purchase details: ${message}. Please contact support.`;
+      
+      // Provide fallback access if we have the proof code
+      if (proofCode) {
+        errorHtml += `<br><br>You can still access your kit using code: <strong>${proofCode}</strong>`;
+        
+        if (accessKitBtn) {
+          accessKitBtn.disabled = false;
+          accessKitBtn.addEventListener('click', () => {
+            window.location.href = `/kits/access?code=${proofCode}`;
+          });
+        }
+      }
+      
+      errorText.innerHTML = errorHtml;
+    }
+    
+    // Add more details for debugging
+    if (errorDetails) {
+      errorDetails.innerHTML = `
+        <details>
+          <summary>Technical Details</summary>
+          <pre class="mt-2 p-2 bg-dark text-white">${message}</pre>
+        </details>
+      `;
+    }
+  }
+</script>
+  <style scoped>
+    .spinner-border {
+      width: 3rem;
+      height: 3rem;
+    }
+
+    #proof-code {
+      font-size: 1.2rem;
+      font-weight: bold;
+      letter-spacing: 2px;
+      background: #f8f9fa;
+      border: 2px dashed #dee2e6;
+      padding: 0.75rem;
+      border-radius: 0.375rem;
+      user-select: all;
+    }
+
+    .card {
+      transition: transform 0.2s ease-in-out;
+    }
+
+    .btn:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+
+    .alert-info {
+      background: linear-gradient(135deg, #e3f2fd 0%, #f1f8ff 100%);
+      border: 1px solid #bee5eb;
+    }
+
+    .table-borderless td {
+      border: none;
+      padding: 0.5rem 0;
+    }
+
+    .display-6 {
+      font-size: 3rem;
+    }
+
+    @media (max-width: 768px) {
+      .display-6 {
+        font-size: 2rem;
+      }
+      
+      #proof-code {
+        font-size: 1rem;
+        letter-spacing: 1px;
+      }
+    }
+  </style>
+</Layout>
