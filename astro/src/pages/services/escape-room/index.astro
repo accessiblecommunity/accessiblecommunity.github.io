@@ -24,7 +24,7 @@ import ExternalLink from "@components/ExternalLink.astro";
 import Hero from "@components/ColumnedHero.astro";
 import { Image } from "astro:assets";
 import ImageFigure from "@components/ImageFigure.astro";
-import Layout from "src/layouts/Layout.astro";
+import EscapeRoomLayout from "src/layouts/EscapeRoomLayout.astro";
 import ThemedBox from "@components/ThemedBox.astro";
 import ThemedSection from "@components/ThemedSection.astro";
 
@@ -38,7 +38,7 @@ import picnicBg from "src/images/escape-room/evangelina-silina-BzLUmuRDMWE-unspl
 import { Icon } from "astro-icon/components";
 ---
 
-<Layout {title} {crumbs} {metadata}>
+<EscapeRoomLayout {metadata}>
   <Hero image={heroBg} slot="header" reverse vertical-position="22%">
     <div class="py-2 px-2" slot="heading">
       <h1 class="display-2">
@@ -332,4 +332,4 @@ import { Icon } from "astro-icon/components";
       margin-bottom: 0.75em;
     }
   </style>
-</Layout>
+</EscapeRoomLayout>
