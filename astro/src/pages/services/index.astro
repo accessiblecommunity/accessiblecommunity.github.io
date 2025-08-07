@@ -305,6 +305,15 @@ const metadata: PageMetadata = {
     width: auto;
   }
 
+  // Improve dark mode contrast for feature icons
+  @media (prefers-color-scheme: dark) {
+    .feature-icon {
+      background: linear-gradient(135deg, #1a4b8c 0%, #2d6bb8 100%);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+  }
+
   [data-icon="loca11y-logo"] {
     margin-left: 0.2em;
   }
