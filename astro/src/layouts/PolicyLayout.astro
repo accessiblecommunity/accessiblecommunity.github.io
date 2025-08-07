@@ -23,14 +23,11 @@ const metadata: PageMetadata = {
     </slot>
   </ImageHeading>
   <ThemedSection style="secondary">
-      <div class="d-print-none">
-    <button 
-      class="btn general-button btn-info" 
-      onclick="window.print()"
-    >
-      Print this page
-    </button>
-  </div>
+    <div class="d-print-none">
+      <button class="btn general-button btn-info" onclick="window.print()">
+        Print this page
+      </button>
+    </div>
     <slot />
   </ThemedSection>
 </Layout>

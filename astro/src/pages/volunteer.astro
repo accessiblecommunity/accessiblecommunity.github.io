@@ -4,7 +4,7 @@ import { getOpenGraphImageData } from "@lib/og-image";
 
 import { getCollection, render } from "astro:content";
 import { components } from "@lib/mdx";
-import { sortBy } from 'lodash-es';
+import { sortBy } from "lodash-es";
 
 import Branding from "../components/Branding.astro";
 import GoogleForm from "@components/GoogleForm.astro";
@@ -35,7 +35,7 @@ const crumbs: Breadcrumbs = [
 ];
 
 const teams = await getCollection("recruiting");
-const orderedTeams = sortBy(teams, ['id']);
+const orderedTeams = sortBy(teams, ["id"]);
 ---
 
 <Layout {title} {crumbs} {metadata}>

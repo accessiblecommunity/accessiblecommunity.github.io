@@ -2,7 +2,7 @@
 import { getCollection, render, type CollectionEntry } from "astro:content";
 import { getOpenGraphImageData } from "src/lib/og-image";
 import type { Breadcrumbs, PageMetadata } from "src/lib/types";
-import components from "src/lib/mdx";
+import defaultComponents from "src/lib/mdx";
 
 import "src/styles/bootstrap.scss";
 
@@ -18,7 +18,8 @@ export async function getStaticPaths() {
     },
   ];
 
-  const kits: Array<CollectionEntry<"escapeRoomKits">> =  await getCollection("escapeRoomKits");
+  const kits: Array<CollectionEntry<"escapeRoomKits">> =
+    await getCollection("escapeRoomKits");
 
   return kits.map((kit) => {
     const metadata: PageMetadata = {
@@ -29,8 +30,8 @@ export async function getStaticPaths() {
 
     return {
       params: { id: kit.id },
-      props: { room: kit, crumbs, metadata },      
-    }
+      props: { room: kit, crumbs, metadata },
+    };
   });
 }
 
@@ -47,7 +48,10 @@ const { headings, Content } = await render(kit);
 import Branding from "src/components/Branding.astro";
 import { Icon } from "astro-icon/components";
 import Metadata from "src/components/Metadata.astro";
+import StripedSection from "src/components/StripedSection.astro";
 import ThemedSection from "src/components/ThemedSection.astro";
+
+const components = { Section: StripedSection, ...defaultComponents };
 ---
 
 <!doctype html>
@@ -67,48 +71,69 @@ import ThemedSection from "src/components/ThemedSection.astro";
         </Metadata>
       )
     }
-    <link rel="icon" type="image/png" href="/images/favicon.png" media="(prefers-color-scheme: light"/>
-    <link rel="icon" type="image/png" href="/images/favicon-dark.png" media="(prefers-color-scheme: dark)" />
+    <link
+      rel="icon"
+      type="image/png"
+      href="/images/favicon.png"
+      media="(prefers-color-scheme: light"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      href="/images/favicon-dark.png"
+      media="(prefers-color-scheme: dark)"
+    />
     <link rel="sitemap" href="/sitemap-index.xml" />
     <slot name="head" />
   </head>
 
   <body>
     <div class="bg-primary" style="height: 9rem;">
-      <div
-        class="bg-primary h-100 d-flex align-items-end"
-      >
+      <div class="bg-primary h-100 d-flex align-items-end">
         <div class="container">
           <h1
             class:list={["display-3 text-white mb-1 w-100"]}
             set:text={title}
           />
           <p class="tagline text-white">
-            An Accessible Escape Room provided by 
+            An Accessible Escape Room provided by
             <Icon
-                class="bi"
-                name="ac-logo"
-                height={16}
-                aria-hidden="true"
-              /><Branding>Accessible Community</Branding>
+              class="bi"
+              name="ac-logo"
+              height={16}
+              aria-hidden="true"
+            /><Branding>Accessible Community</Branding>
           </p>
         </div>
       </div>
     </div>
-    <ThemedSection style="tertiary">
-      <h2>Contents</h2>
-      <ul>
-        { headings.map(({depth, slug, text}) => 
-            depth == 2 ? <li><a href={`#${slug}`} set:text={text} />{}</li> : ""
-        )}
-      </ul>
-      <Content {components} />
-    </ThemedSection>
+    <div class="text-bg-light">
+      <div class="container">
+        <ul class="nav nav-underline">
+          {
+            headings.map(({ depth, slug, text }) =>
+              depth == 2 ?
+                <li class="nav-item">
+                  <a class="nav-link" href={`#${slug}`} set:text={text} />
+                </li>
+              : "",
+            )
+          }
+        </ul>
+      </div>
+    </div>
+    <Content {components} />
   </body>
-  
+
   <style scoped>
     p.tagline :global(.bi) {
       margin-bottom: 0.2em;
-    } 
+    }
+    .nav-underline li.nav-item {
+      font-size: 0.8em;
+    }
+    .nav-underline a.nav-link:hover {
+      color: white;
+    }
   </style>
 </html>

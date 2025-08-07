@@ -46,7 +46,11 @@ const breadCrumbs: Breadcrumbs =
         >
       </div>
     </div>
-    <nav id="site-nav" class="collapse navbar-collapse px-3 d-print-none" aria-label="Site">
+    <nav
+      id="site-nav"
+      class="collapse navbar-collapse px-3 d-print-none"
+      aria-label="Site"
+    >
       <ul class="navbar-nav my-1 mx-4">
         <li class="nav-item dropdown">
           <a
@@ -216,7 +220,11 @@ const breadCrumbs: Breadcrumbs =
       >
     </nav>
   </div>
-  <nav id="breadcrumbs-nav" aria-label="Breadcrumb" class="position-absolute d-print-none">
+  <nav
+    id="breadcrumbs-nav"
+    aria-label="Breadcrumb"
+    class="position-absolute d-print-none"
+  >
     <ol class="breadcrumb lh-sm">
       {
         breadCrumbs.map(({ name, href }) => (
@@ -392,10 +400,10 @@ const breadCrumbs: Breadcrumbs =
 <script>
   import { Collapse, Dropdown } from "~bootstrap-es";
 
-  Array.from(document.querySelectorAll(".dropdown")).forEach(
-    (node) => new Dropdown(node),
+  Array.from(document.querySelectorAll(".dropdown")).forEach((node) =>
+    Dropdown.getOrCreateInstance(node),
   );
-  Array.from(document.querySelectorAll(".collapse")).forEach(
-    (node) => new Collapse(node, { toggle: false }),
+  Array.from(document.querySelectorAll(".collapse")).forEach((node) =>
+    Collapse.getOrCreateInstance(node, { toggle: false }),
   );
 </script>

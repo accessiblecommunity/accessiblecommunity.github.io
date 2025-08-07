@@ -50,14 +50,21 @@ const daf = defineCollection({
 });
 
 const escapeRoomKits = defineCollection({
-  loader: glob({ pattern: "**/[^_]*.{md,mdx}", base: "./src/content/escape-room-kits" }),
+  loader: glob({
+    pattern: "**/[^_]*.{md,mdx}",
+    base: "./src/content/escape-room-kits",
+  }),
   schema: z.object({
     title: z.string(),
+    order: z.number().default(99999),
   }),
 });
 
 const escapeRoomThemes = defineCollection({
-  loader: glob({ pattern: "**/[^_]*.{md,mdx}", base: "./src/content/escape-room-themes" }),
+  loader: glob({
+    pattern: "**/[^_]*.{md,mdx}",
+    base: "./src/content/escape-room-themes",
+  }),
   schema: ({ image }) =>
     z.object({
       title: z.string(),
@@ -65,7 +72,7 @@ const escapeRoomThemes = defineCollection({
       tagline: z.string(),
       image: image(),
       alt: z.string().optional(),
-  }),
+    }),
 });
 
 const staff = defineCollection({

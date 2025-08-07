@@ -16,7 +16,8 @@ export async function getStaticPaths() {
     },
   ];
 
-  const rooms: Array<CollectionEntry<"escapeRoomThemes">> =  await getCollection("escapeRoomThemes");
+  const rooms: Array<CollectionEntry<"escapeRoomThemes">> =
+    await getCollection("escapeRoomThemes");
 
   return rooms.map((room) => {
     const metadata: PageMetadata = {
@@ -27,8 +28,8 @@ export async function getStaticPaths() {
 
     return {
       params: { id: room.id },
-      props: { room, crumbs, metadata },      
-    }
+      props: { room, crumbs, metadata },
+    };
   });
 }
 
@@ -48,7 +49,13 @@ import ThemedSection from "@components/ThemedSection.astro";
 ---
 
 <Layout {title} {crumbs} {metadata}>
-  <Hero {image} slot="header" reverse columns={["md-6", "lg-5", "xxl-6",]} vertical-position="22%">
+  <Hero
+    {image}
+    slot="header"
+    reverse
+    columns={["md-6", "lg-5", "xxl-6"]}
+    vertical-position="22%"
+  >
     <div class="py-2 px-2" slot="heading">
       <h1 class="display-2" set:html={room.data.titleHtml} />
     </div>
