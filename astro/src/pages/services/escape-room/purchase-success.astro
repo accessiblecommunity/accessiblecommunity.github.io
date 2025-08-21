@@ -202,33 +202,9 @@ import ThemedSection from "@components/ThemedSection.astro";
     </div>
   </ThemedSection>
 
-  <script src=""https://js.stripe.com/v3/"></script>
+  <script src="https://js.stripe.com/v3/"></script>
 
   <script>
-  // Environment variables
-  const GET_SESSION_URL = import.meta.env.PUBLIC_AZURE_GET_CHECKOUT_URL;
-  const STRIPE_PUBLISHABLE_KEY = import.meta.env.PUBLIC_STRIPE_PUBLISHABLE_KEY;
-
-  // Function to wait for Stripe to load
-  function checkStripeLoaded() {
-    return new Promise((resolve, reject) => {
-      if (typeof Stripe !== 'undefined') return resolve();
-      
-      const timer = setInterval(() => {
-        if (typeof Stripe !== 'undefined') {
-          clearInterval(timer);
-          resolve();
-        }
-      }, 100);
-      
-      // Timeout after 5 seconds
-      setTimeout(() => {
-        clearInterval(timer);
-        reject(new Error('Stripe library failed to load'));
-      }, 5000);
-    });
-  }
-
   document.addEventListener('DOMContentLoaded', async function() {
     const loadingState = document.getElementById('loading-state');
     const purchaseDetails = document.getElementById('purchase-details');
@@ -238,21 +214,9 @@ import ThemedSection from "@components/ThemedSection.astro";
     const accessKitBtn = document.getElementById('access-kit-btn');
     const errorDetails = document.getElementById('error-details');
 
-    // Get session ID from URL
+    // Get session ID from URL (purchase code should NOT be in URL)
     const urlParams = new URLSearchParams(window.location.search);
     const sessionId = urlParams.get('session_id');
-    let proofCode = null;
-
-    // Early validation
-    if (!GET_SESSION_URL) {
-      showError('Backend configuration missing - GET_SESSION_URL not found');
-      return;
-    }
-
-    if (!STRIPE_PUBLISHABLE_KEY) {
-      showError('Stripe configuration missing - STRIPE_PUBLISHABLE_KEY not found');
-      return;
-    }
 
     if (sessionIdElement) {
       sessionIdElement.textContent = sessionId || 'Not available';
@@ -264,83 +228,47 @@ import ThemedSection from "@components/ThemedSection.astro";
     }
 
     try {
-      console.log('Environment check:', {
-        hasStripeKey: !!STRIPE_PUBLISHABLE_KEY,
-        hasGetSessionUrl: !!GET_SESSION_URL
-      });
-
-      // Wait for Stripe to load
-      await checkStripeLoaded();
+      // Get session details from server (which includes the secure purchase code)
+      const response = await fetch(`/api/session-status?session_id=${sessionId}`);
       
-      if (typeof Stripe === 'undefined') {
-        throw new Error('Stripe library not loaded');
-      }
-
-      const stripe = Stripe(STRIPE_PUBLISHABLE_KEY);
-      
-      const response = await fetch(GET_SESSION_URL, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ sessionId })
-      });
-
       if (!response.ok) {
-        const statusText = response.statusText || 'Unknown error';
-        throw new Error(`Failed to fetch session details: ${response.status} ${statusText}`);
+        throw new Error('Failed to fetch session details');
       }
 
-      let session;
-      try {
-        const responseText = await response.text();
-        if (!responseText) {
-          throw new Error('Empty response from server');
-        }
-        session = JSON.parse(responseText);
-      } catch (parseError) {
-        throw new Error('Invalid JSON response from server');
-      }
+      const sessionData = await response.json();
+      const purchaseCode = sessionData.metadata?.purchaseCode;
 
-      if (!session) {
-        throw new Error('No session data received');
+      if (!purchaseCode) {
+        throw new Error('No purchase code found in session');
       }
-
-      // Generate proof of purchase code
-      proofCode = await generateProofOfPurchaseCode(sessionId, session);
-      
-      // Store purchase data for future reference
-      await storePurchaseData(sessionId, session, proofCode);
 
       // Display purchase details
-      displayPurchaseDetails(session, proofCode);
+      displayPurchaseDetails(sessionId, purchaseCode, sessionData);
 
       // Enable kit access
       if (accessKitBtn) {
         accessKitBtn.disabled = false;
         accessKitBtn.addEventListener('click', () => {
-          window.location.href = `/kits/access?code=${proofCode}`;
+          window.location.href = `/services/escape-room/access?code=${purchaseCode}`;
         });
       }
 
       // Setup copy button
-      if (copyCodeBtn && proofCode) {
+      if (copyCodeBtn && purchaseCode) {
         copyCodeBtn.addEventListener('click', async () => {
           try {
             if (navigator.clipboard && navigator.clipboard.writeText) {
-              await navigator.clipboard.writeText(proofCode);
+              await navigator.clipboard.writeText(purchaseCode);
               copyCodeBtn.innerHTML = 'Copied!';
               setTimeout(() => {
                 copyCodeBtn.innerHTML = 'Copy Code';
               }, 2000);
             } else {
-              // Fallback for older browsers
-              fallbackCopyToClipboard(proofCode, copyCodeBtn);
+              fallbackCopyToClipboard(purchaseCode, copyCodeBtn);
             }
           } catch (err) {
             console.error('Clipboard error:', err);
-            // Fallback for clipboard API failure
-            fallbackCopyToClipboard(proofCode, copyCodeBtn);
+            fallbackCopyToClipboard(purchaseCode, copyCodeBtn);
           }
         });
       }
@@ -355,7 +283,7 @@ import ThemedSection from "@components/ThemedSection.astro";
 
     } catch (error) {
       console.error('Error loading purchase details:', error);
-      showError(error.message, proofCode);
+      showError(error.message);
     }
   });
 
@@ -393,79 +321,7 @@ import ThemedSection from "@components/ThemedSection.astro";
     }
   }
 
-  async function generateProofOfPurchaseCode(sessionId, session) {
-    try {
-      // Call your server-side Azure function to generate secure proof code
-      const proofCodeResponse = await fetch('/api/generate-proof-code', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ 
-          sessionId, 
-          purchaseData: session 
-        })
-      });
-
-      if (!proofCodeResponse.ok) {
-        throw new Error(`Failed to generate proof code: ${proofCodeResponse.status}`);
-      }
-
-      const proofData = await proofCodeResponse.json();
-      
-      if (!proofData.proofCode) {
-        throw new Error('No proof code returned from server');
-      }
-
-      return proofData.proofCode;
-    } catch (error) {
-      console.error('Error generating proof code:', error);
-      // Fallback to client-side generation (less secure but functional)
-      const timestamp = new Date().getTime().toString(36);
-      const sessionHash = btoa(sessionId.slice(-8)).replace(/[^a-zA-Z0-9]/g, '').slice(0, 6);
-      const amount = session.amount_total || 0;
-      const checksum = (sessionId.length + amount).toString(36);
-      
-      return `AER-FALLBACK-${timestamp}-${sessionHash}-${checksum}`.toUpperCase();
-    }
-  }
-
-  async function storePurchaseData(sessionId, session, proofCode) {
-    try {
-      // Store purchase data in localStorage for the customer portal
-      const purchaseData = {
-        sessionId,
-        proofCode,
-        purchaseDate: new Date().toISOString(),
-        customerEmail: session.customer_email || 'N/A',
-        organization: session.metadata?.organization || 'N/A',
-        customerName: session.customer_details?.name || 'N/A',
-        amount: session.amount_total || 0,
-        currency: session.currency || 'USD',
-        status: session.payment_status || 'unknown',
-        lineItems: session.line_items?.data || [],
-        lastAccessed: new Date().toISOString()
-      };
-
-      // Store in localStorage with error handling
-      try {
-        const existingPurchases = JSON.parse(localStorage.getItem('customerPurchases') || '[]');
-        existingPurchases.push(purchaseData);
-        localStorage.setItem('customerPurchases', JSON.stringify(existingPurchases));
-
-        // Also store the current purchase for easy access
-        localStorage.setItem('currentPurchase', JSON.stringify(purchaseData));
-      } catch (storageError) {
-        console.error('LocalStorage error:', storageError);
-        // Continue execution even if localStorage fails
-      }
-    } catch (error) {
-      console.error('Error storing purchase data:', error);
-      // Don't throw - this shouldn't break the main flow
-    }
-  }
-
-  function displayPurchaseDetails(session, proofCode) {
+  function displayPurchaseDetails(sessionId, purchaseCode, sessionData) {
     try {
       // Order Information
       const orderIdElement = document.getElementById('order-id');
@@ -473,85 +329,57 @@ import ThemedSection from "@components/ThemedSection.astro";
       const orderStatusElement = document.getElementById('order-status');
 
       if (orderIdElement) {
-        orderIdElement.textContent = session.id || 'N/A';
+        orderIdElement.textContent = sessionId;
       }
       if (purchaseDateElement) {
-        const date = session.created ? new Date(session.created * 1000).toLocaleDateString() : 'N/A';
-        purchaseDateElement.textContent = date;
+        purchaseDateElement.textContent = new Date().toLocaleDateString();
       }
       if (orderStatusElement) {
-        orderStatusElement.textContent = session.payment_status === 'paid' ? 'Completed' : 'Pending';
+        orderStatusElement.textContent = sessionData.status === 'complete' ? 'Completed' : 'Processing';
       }
 
-      // Customer Information
+      // Customer Information  
       const customerEmailElement = document.getElementById('customer-email');
       const customerNameElement = document.getElementById('customer-name');
       const customerOrgElement = document.getElementById('customer-org');
 
       if (customerEmailElement) {
-        customerEmailElement.textContent = session.customer_email || 'N/A';
+        customerEmailElement.textContent = sessionData.customer_email || 'Not available';
       }
       if (customerNameElement) {
-        customerNameElement.textContent = session.customer_details?.name || 'N/A';
+        customerNameElement.textContent = sessionData.metadata?.contactName || 'Not available';
       }
       if (customerOrgElement) {
-        customerOrgElement.textContent = session.metadata?.organization || 'N/A';
+        customerOrgElement.textContent = sessionData.metadata?.organization || 'Not available';
       }
 
       // Kit Details
       const kitDetailsBody = document.getElementById('kit-details-body');
       if (kitDetailsBody) {
-        kitDetailsBody.innerHTML = ''; // Clear previous content
+        const kitType = sessionData.metadata?.kitType === 'build' ? 'Build-your-own Kit' : 'Ready-made Kit';
+        const theme = sessionData.metadata?.theme || 'Not specified';
         
-        if (session.line_items?.data?.length > 0) {
-          session.line_items.data.forEach(item => {
-            const row = document.createElement('tr');
-            row.innerHTML = `
-              <td>
-                <strong>${item.price?.product?.name || 'Escape Room Kit'}</strong><br>
-                <small class="text-muted">${item.description || ''}</small>
-              </td>
-              <td class="text-end">
-                Qty: ${item.quantity || 1}<br>
-                <strong>$${((item.amount_total || 0) / 100).toFixed(2)}</strong>
-              </td>
-            `;
-            kitDetailsBody.appendChild(row);
-          });
-        } else {
-          // Fallback if line items aren't available
-          const row = document.createElement('tr');
-          row.innerHTML = `
+        kitDetailsBody.innerHTML = `
+          <tr>
             <td>
-              <strong>${session.metadata?.kitType === 'ready' 
-                ? 'Ready-Made Kit' 
-                : 'Build-Your-Own Kit'}</strong><br>
-              <small class="text-muted">Theme: ${session.metadata?.theme || 'Not specified'}</small>
+              <strong>${kitType}</strong><br>
+              <small class="text-muted">Theme: ${theme}</small>
             </td>
             <td class="text-end">
-              <strong>$${((session.amount_total || 0) / 100).toFixed(2)}</strong>
+              <strong>Paid</strong>
             </td>
-          `;
-          kitDetailsBody.appendChild(row);
-        }
-
-        // Total row
-        const totalRow = document.createElement('tr');
-        totalRow.innerHTML = `
-          <td><strong>Total</strong></td>
-          <td class="text-end"><strong>$${((session.amount_total || 0) / 100).toFixed(2)}</strong></td>
+          </tr>
         `;
-        kitDetailsBody.appendChild(totalRow);
       }
 
       // Proof of purchase code
       const proofCodeElement = document.getElementById('proof-code');
-      if (proofCodeElement && proofCode) {
-        proofCodeElement.textContent = proofCode;
+      if (proofCodeElement && purchaseCode) {
+        proofCodeElement.textContent = purchaseCode;
       }
 
       // Special requirements (if any)
-      const specialRequirements = session.metadata?.specialRequirements;
+      const specialRequirements = sessionData.metadata?.specialRequirements;
       const specialRequirementsSection = document.getElementById('special-requirements-section');
       const specialRequirementsText = document.getElementById('special-requirements-text');
       
@@ -559,16 +387,16 @@ import ThemedSection from "@components/ThemedSection.astro";
         specialRequirementsSection.style.display = 'block';
         specialRequirementsText.textContent = specialRequirements;
       }
+
     } catch (error) {
       console.error('Error displaying purchase details:', error);
       showError('Error displaying purchase details');
     }
   }
 
-  function showError(message, proofCode = null) {
+  function showError(message) {
     const loadingState = document.getElementById('loading-state');
     const errorState = document.getElementById('error-state');
-    const accessKitBtn = document.getElementById('access-kit-btn');
     const errorDetails = document.getElementById('error-details');
     
     if (loadingState) {
@@ -581,21 +409,7 @@ import ThemedSection from "@components/ThemedSection.astro";
     // Update error message
     const errorText = errorState ? errorState.querySelector('p') : null;
     if (errorText) {
-      let errorHtml = `There was an error loading your purchase details: ${message}. Please contact support.`;
-      
-      // Provide fallback access if we have the proof code
-      if (proofCode) {
-        errorHtml += `<br><br>You can still access your kit using code: <strong>${proofCode}</strong>`;
-        
-        if (accessKitBtn) {
-          accessKitBtn.disabled = false;
-          accessKitBtn.addEventListener('click', () => {
-            window.location.href = `/kits/access?code=${proofCode}`;
-          });
-        }
-      }
-      
-      errorText.innerHTML = errorHtml;
+      errorText.innerHTML = `There was an error: ${message}. Please contact support.`;
     }
     
     // Add more details for debugging

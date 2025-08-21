@@ -1,1 +1,23 @@
+# System files
 .DS_Store
+
+# Node.js dependencies
+node_modules/
+
+# Astro build outputs
+dist/
+.astro/
+
+# Environment variables
+.env
+
+# Local development files
+astro/local-dev/
+
+# Protected materials
+astro/src/protected-materials/
+
+# Test files and debug content
+**/test*.astro
+**/debug*.astro
+**/*-test.*

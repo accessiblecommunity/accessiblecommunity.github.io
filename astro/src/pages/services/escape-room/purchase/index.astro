@@ -80,37 +80,37 @@ import { Icon } from "astro-icon/components";
                 <div class="row gy-3">
                   <div class="col-sm-6">
                     <div class="form-check">
-                      <input class="form-check-input" type="radio" name="theme" id="theme1" value="theme1" required>
-                      <label class="form-check-label" for="theme1">
-                        <strong>Lorem Theme One</strong><br>
-                        <small>Lorem ipsum dolor sit amet.</small>
+                      <input class="form-check-input" type="radio" name="theme" id="corporate" value="corporate" required>
+                      <label class="form-check-label" for="corporate">
+                        <strong>Corporate Conundrum</strong><br>
+                        <small>Retrieve missing ground-breaking technology from your company</small>
                       </label>
                     </div>
                   </div>
                   <div class="col-sm-6">
                     <div class="form-check">
-                      <input class="form-check-input" type="radio" name="theme" id="theme2" value="theme2" required>
-                      <label class="form-check-label" for="theme2">
-                        <strong>Lorem Theme Two</strong><br>
-                        <small>Lorem ipsum dolor sit amet.</small>
+                      <input class="form-check-input" type="radio" name="theme" id="baking" value="baking" required>
+                      <label class="form-check-label" for="baking">
+                        <strong>Baking Bonanza</strong><br>
+                        <small>Find classic recipes to win the blue ribbon at the local fair</small>
                       </label>
                     </div>
                   </div>
                   <div class="col-sm-6">
                     <div class="form-check">
-                      <input class="form-check-input" type="radio" name="theme" id="theme3" value="theme3" required>
-                      <label class="form-check-label" for="theme3">
-                        <strong>Lorem Theme Three</strong><br>
-                        <small>Lorem ipsum dolor sit amet.</small>
+                      <input class="form-check-input" type="radio" name="theme" id="picnic" value="picnic" required>
+                      <label class="form-check-label" for="picnic">
+                        <strong>Puzzling Picnic</strong><br>
+                        <small>Setup a challenging picnic before your friend arrives</small>
                       </label>
                     </div>
                   </div>
                   <div class="col-sm-6">
                     <div class="form-check">
-                      <input class="form-check-input" type="radio" name="theme" id="theme4" value="theme4" required>
-                      <label class="form-check-label" for="theme4">
-                        <strong>Lorem Theme Four</strong><br>
-                        <small>Lorem ipsum dolor sit amet.</small>
+                      <input class="form-check-input" type="radio" name="theme" id="casino" value="casino" required>
+                      <label class="form-check-label" for="casino">
+                        <strong>Cryptic Casino</strong><br>
+                        <small>Play games and collect chips to access the high roller vault</small>
                       </label>
                     </div>
                   </div>
@@ -148,9 +148,9 @@ import { Icon } from "astro-icon/components";
               <!-- Special Requirements -->
               <div class="mb-4">
                 <label for="special-requirements" class="form-label">Special Requirements</label>
-                <textarea id="special-requirements" name="specialRequirements" class="form-control" rows="3" placeholder="Lorem ipsum dolor sit amet" aria-describedby="special-requirements-help"></textarea>
+                <textarea id="special-requirements" name="specialRequirements" class="form-control" rows="3" placeholder="Any specific accessibility needs, customizations, or special requirements for your escape room kit" aria-describedby="special-requirements-help"></textarea>
                 <div id="special-requirements-help" class="form-text">
-                  Optional: Any specific needs or customizations
+                  Optional: Any specific needs or customizations for accessibility
                 </div>
               </div>
 
@@ -162,7 +162,9 @@ import { Icon } from "astro-icon/components";
             </form>
 
             <!-- Stripe Embedded Checkout -->
-            <div id="checkout-container" style="display: none;"></div>
+            <div id="checkout-container" style="display: none;">
+              <div id="checkout"></div>
+            </div>
             <div id="payment-messages" class="mt-3" role="alert" aria-live="polite"></div>
           </div>
         </div>
@@ -174,7 +176,7 @@ import { Icon } from "astro-icon/components";
   <ThemedSection theme="secondary">
     <div class="text-center text-white">
       <h2 class="display-4 mb-4">Ready-Made Kits</h2>
-      <p class="lead mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+      <p class="lead mb-4">Our pre-assembled escape rooms will be available later this year</p>
       
       <div class="row justify-content-center">
         <div class="col-lg-8">
@@ -182,8 +184,8 @@ import { Icon } from "astro-icon/components";
             <div class="card-body">
               <h3 class="card-title text-white mb-3">Coming Soon</h3>
               <p class="text-white mb-4">
-                Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                Ut enim ad minim veniam, quis nostrud exercitation.
+                Pre-assembled escape rooms with higher technology and automation.
+                Perfect for organizations wanting a ready-to-go solution.
               </p>
               <div class="display-5 text-brand fw-bold mb-3">$3,500</div>
               <p class="text-white-50 mb-4">Available later this year</p>
@@ -211,16 +213,27 @@ import { Icon } from "astro-icon/components";
   <script>
     // Environment variables
     const STRIPE_PUBLISHABLE_KEY = import.meta.env.PUBLIC_STRIPE_PUBLISHABLE_KEY;
-    const STRIPE_SECRET_KEY = import.meta.env.STRIPE_SECRET_KEY;
 
-    document.addEventListener('DOMContentLoaded', function() {
+    // Global variables
+    let stripe;
+    let elements;
+    let embeddedCheckout;
+
+    document.addEventListener('DOMContentLoaded', async function() {
+      if (!STRIPE_PUBLISHABLE_KEY) {
+        console.error('Stripe publishable key not found');
+        showError('Payment system not configured');
+        return;
+      }
+
+      // Initialize Stripe
+      stripe = Stripe(STRIPE_PUBLISHABLE_KEY);
+
       const form = document.getElementById('purchase-form');
       const checkoutButton = document.getElementById('checkout-button');
       const checkoutContainer = document.getElementById('checkout-container');
       const paymentMessages = document.getElementById('payment-messages');
       
-      console.log('Form elements found:', { form, checkoutButton });
-
       if (!form || !checkoutButton) {
         console.error('Required form elements not found');
         return;
@@ -229,14 +242,12 @@ import { Icon } from "astro-icon/components";
       // Form submission handler
       form.addEventListener('submit', async function(e) {
         e.preventDefault();
-        console.log('Form submitted');
-
+        
         // Clear previous messages
         paymentMessages.innerHTML = '';
         
         // Validate form
         if (!validateForm()) {
-          console.log('Form validation failed');
           return;
         }
 
@@ -244,14 +255,12 @@ import { Icon } from "astro-icon/components";
         const formData = new FormData(form);
         const purchaseData = Object.fromEntries(formData);
         
-        console.log('Purchase data:', purchaseData);
-
         // Disable submit button
         checkoutButton.disabled = true;
         checkoutButton.textContent = 'Processing...';
 
         try {
-          await processPurchase(purchaseData);
+          await initializeEmbeddedCheckout(purchaseData);
         } catch (error) {
           console.error('Purchase processing failed:', error);
           showError('Failed to process purchase. Please try again.');
@@ -261,6 +270,42 @@ import { Icon } from "astro-icon/components";
           checkoutButton.textContent = 'Purchase';
         }
       });
+
+      async function initializeEmbeddedCheckout(purchaseData) {
+        try {
+          // Create checkout session
+          const response = await fetch('/api/create-checkout-session', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(purchaseData)
+          });
+
+          if (!response.ok) {
+            const errorData = await response.json();
+            throw new Error(errorData.error || 'Failed to create checkout session');
+          }
+
+          const { clientSecret } = await response.json();
+          
+          // Hide form and show checkout
+          form.style.display = 'none';
+          checkoutContainer.style.display = 'block';
+
+          // Initialize embedded checkout
+          const checkout = await stripe.initEmbeddedCheckout({
+            clientSecret: clientSecret,
+          });
+
+          // Mount the embedded checkout
+          checkout.mount('#checkout');
+
+        } catch (error) {
+          console.error('Embedded checkout error:', error);
+          throw error;
+        }
+      }
 
       // Form validation
       function validateForm() {
@@ -347,49 +392,6 @@ import { Icon } from "astro-icon/components";
             ${message}
           </div>
         `;
-      }
-
-      // Purchase processing
-      async function processPurchase(purchaseData) {
-        console.log('Processing purchase with data:', purchaseData);
-
-        if (!STRIPE_PUBLISHABLE_KEY) {
-          throw new Error('Payment system not configured');
-        }
-
-        // Initialize Stripe
-        const stripe = Stripe(STRIPE_PUBLISHABLE_KEY);
-
-        try {
-          // Create checkout session
-          const response = await fetch('/api/create-checkout-session', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(purchaseData)
-          });
-
-          if (!response.ok) {
-            const errorData = await response.json();
-            throw new Error(errorData.error || 'Failed to create checkout session');
-          }
-
-          const session = await response.json();
-          
-          // Redirect to Stripe Checkout
-          const result = await stripe.redirectToCheckout({
-            sessionId: session.id
-          });
-
-          if (result.error) {
-            throw new Error(result.error.message);
-          }
-
-        } catch (error) {
-          console.error('Stripe checkout error:', error);
-          throw error;
-        }
       }
     });
   </script>

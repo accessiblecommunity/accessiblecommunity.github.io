@@ -33,6 +33,7 @@ const botsToDisallow = [
 // https://astro.build/config
 export default defineConfig({
   site: "https://accessiblecommunity.org",
+  output: "server",
   server: {
     host: true,
   },
@@ -63,13 +64,15 @@ export default defineConfig({
         // Bootstrap Icons
         bi: [
           // Navigation
-          'arrow-down-square', 'arrow-up-right-square', 'list',
+          'arrow-down-square', 'arrow-up-right-square', 'arrow-right-square', 'list',
           // Contact Info
           'envelope-at-fill', 'telephone-fill', 'geo-alt-fill',
           // Social Media
           'facebook', 'instagram', 'linkedin', 'rss-fill', 'tiktok', 'youtube','globe', 'mastodon', 'twitter',
           // Descriptive
           'gift-fill', 'pencil-fill', 'people-fill', 'person-fill',
+          // Additional icons
+          'check-circle-fill', 'exclamation-triangle-fill', 'file-text-fill', 'display-fill', 'puzzle-fill', 'tools',
         ],
         // CoreUI Brands
         cib: [
