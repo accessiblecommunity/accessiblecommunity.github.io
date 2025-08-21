@@ -94,6 +94,9 @@ import { Icon } from "astro-icon/components";
       venue, we now offer two options for purchase:</p
     >
 
+    <div>
+      <p>Already have a kit? Access <a href="/services/escape-room/access">your materials</a>.</p>
+    </div>
     <div
       class="d-flex flex-column flex-lg-row gap-4 py-3 justify-content-lg-center text-primary"
     >
@@ -123,8 +126,8 @@ import { Icon } from "astro-icon/components";
             descriptions.</li
           >
         </ul>
-        <button onclick="window.location.href='/services/escape-room/purchase?kit=build-your-own'">
-          Purchase!
+        <button type="button" onclick="window.location.href='/services/escape-room/purchase'" class="btn btn-primary btn-lg">
+          Purchase Now!
         </button>
       </ThemedBox>
       <ThemedBox
@@ -153,13 +156,13 @@ import { Icon } from "astro-icon/components";
             descriptions.</li
           >
         </ul>
+        <button type="button" onclick="window.location.href='/services/escape-room/purchase'" class="btn btn-primary btn-lg">
+          Purchase Now!
+        </button>
       </ThemedBox>
     </div>
-    <p class="lead pt-4">
-      If you are interested in purchasing, please email us at <a
-        href="mailto:escaperoom@accessiblecommunity.org"
-        >escaperoom@accessiblecommunity.org</a
-      >.
+    <p class="lead pt-4 text-center">
+      Ready to get started? <a href="/services/escape-room/purchase" class="btn btn-outline-primary btn-lg ms-2">Purchase Your Kit</a>
     </p>
   </ThemedSection>
 
