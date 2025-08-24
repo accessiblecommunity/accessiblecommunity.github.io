@@ -1,0 +1,61 @@
+---
+import { getOpenGraphImageData } from "@lib/og-image";
+import type { PageMetadata } from "@lib/types";
+import { getImage } from "astro:assets";
+
+const title = "The Accessible Escape Room";
+const metadata: PageMetadata = {
+  title,
+  description: "Overview of the Accessible Escape Room",
+  image: getOpenGraphImageData(Astro.site, "pages", "escape-room"),
+};
+
+import EscapeRoomLayout from "src/layouts/EscapeRoomLayout.astro";
+import heroBg from "src/images/escape-room/how-it-works-bg.jpg";
+import Tabs from "src/components/Tabs.astro";
+
+let heroBgUrl;
+
+if (heroBg) {
+  const optimizedBg = await getImage({ src: heroBg, format: "avif" });
+  heroBgUrl = `url(${optimizedBg.src})`;
+} else {
+  heroBgUrl = "";
+}
+---
+
+<EscapeRoomLayout {metadata}>
+  <section style={`background: no-repeat center ${heroBgUrl}; background-size: cover; background-position: 100% center;`}>
+    <div
+      class="h-100 d-flex align-items-end py-5"
+    >
+      <div class="container">
+        <h1 class="display-3 text-white mb-3">How it works</h1>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <Tabs />
+  </section>
+
+
+  <style scoped>
+    .card-img-top {
+      height: auto;
+    }
+
+    .logo {
+      height: auto;
+      width: 100%;
+    }
+
+    p {
+      margin-bottom: 0.5em;
+    }
+
+    p.lead {
+      margin-bottom: 0.75em;
+    }
+  </style>
+</EscapeRoomLayout>
