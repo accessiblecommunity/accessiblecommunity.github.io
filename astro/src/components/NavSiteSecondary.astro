@@ -1,0 +1,152 @@
+---
+import { Icon } from "astro-icon/components";
+---
+
+<div id="header-navbar" class="navbar navbar-expand-lg align-items-top d-none d-lg-flex">
+    <a
+      class="visually-hidden-focusable btn btn-primary skip-link d-print-none"
+      href="#main-content">
+      Skip to Main Content
+    </a>
+    <div id="brand-nav" class="d-flex align-items-center px-3">
+      <div class="navbar-brand me-2">
+        <Icon name="ac-logo" class="brand-logo" role="img" aria-hidden="true" />
+      </div>
+      <a class="navbar-brand my-1 flex-fill" href="/">
+        Accessible <strong>Community</strong>
+      </a>
+    </div>
+    <nav id="site-nav" class="collapse navbar-collapse px-3 d-print-none" aria-label="Site">
+      <ul class="navbar-nav my-1 mx-4">
+        <li class="nav-item">
+          <a
+          class="nav-link"
+          href="/about/">About</a>
+        </li>
+        <li class="nav-item">
+          <a
+          class="nav-link"
+          href="/services/">
+            Services
+          </a>
+        </li>
+        <li class="nav-item">
+          <a
+          class="nav-link"
+          href="/daf/">Research</a>
+        </li>
+        <li class="nav-item">
+          <a
+          class="nav-link"
+          href="/team/">
+            Team
+          </a>
+        </li>
+        <li class="nav-item">
+          <a
+          class="nav-link"
+          href="/join-us/">
+            Join us
+          </a>
+        </li>
+        <li class="nav-item">
+          <a
+          class="nav-link"
+          href="/donate/">
+            Donate
+          </a>
+        </li>
+      </ul>
+  </nav>
+</>
+
+<style is:global lang="scss">
+  /* first declaration that is commented out below is for debugging purposes. */
+  // * {
+  //    outline: 1px solid white;
+  // }
+
+  @import "../styles/dark-mode.scss";
+  @import "../styles/responsive-sizing.scss";
+
+  #header-navbar {
+    min-width: 320px;
+    background-color: #E1E1E1;
+  }
+
+  .skip-link:focus,
+  .skip-link:focus-within {
+    position: absolute;
+    font-size: 1.25rem;
+    padding: 0.25rem 2.5rem;
+    top: 1rem;
+    left: 0.8rem;
+    z-index: 999;
+  }
+
+  .navbar-brand:focus {
+    color: inherit;
+  }
+  .navbar-brand:focus:hover {
+    color: var(--bs-navbar-brand-hover-color);
+  }
+
+  [data-icon="ac-logo"] {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+
+  #brand-nav {
+    height: 3.5rem;
+  }
+
+  .nav-link {
+    margin-inline: 0.222em;
+    margin-top: 0.222em;
+    margin-bottom: 0.222em;
+  }
+
+  @include media-breakpoint-down(md) {
+    .navbar-brand {
+      --bs-navbar-brand-font-size: 1.1rem;
+      vertical-align: sub;
+    }
+  }
+
+  @include media-breakpoint-down(sm) {
+    .navbar-brand {
+      --bs-navbar-brand-font-size: 1rem;
+      vertical-align: sub;
+    }
+  }
+
+  @include color-mode(dark) {
+    .skip-link {
+      color: var(--bs-primary);
+      background-color: white;
+    }
+
+    .brand-logo {
+      color: #ffffff;
+    }
+  }
+</style>
+
+<style scoped>
+  .gi {
+    height: 1em;
+    width: auto;
+    margin-right: 0.2em;
+  }
+</style>
+
+<script>
+  import { Collapse, Dropdown } from "~bootstrap-es";
+
+  Array.from(document.querySelectorAll(".dropdown")).forEach(
+    (node) => new Dropdown(node),
+  );
+  Array.from(document.querySelectorAll(".collapse")).forEach(
+    (node) => new Collapse(node, { toggle: false }),
+  );
+</script>
