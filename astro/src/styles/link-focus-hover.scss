@@ -4,23 +4,6 @@
 
 // TODO: Original Code that needs to be cleaned up.
 
-.hero-link:focus-visible, .link-light:focus-visible {
-  outline-color: #FFFFFF;
-//   outline-color: #FFFFFF;
-}
-
-
-.btn:focus-visible {
-  outline: 2px solid $primary;
-  outline-offset: 2px;
-  box-shadow: none;
-  border-radius: 0.375rem;
-}
-
-.hero-link:focus-visible, .hero-button:focus-visible, .footer-social-link:focus-visible {
-  outline-color: #FFFFFF;
-}
-
 .form-field:focus {
   border-color: $info-border-contrast;
   border-style: solid;
@@ -46,17 +29,6 @@
   box-shadow: none;
 }
 
-.footer-social-link:hover {
-  color: #FFFFFF;
-  background-color: $primary;
-}
-
-.footer-link:hover, .link-light:hover {
-  color: $primary !important;
-  background-color: #FFFFFF !important;
-  text-decoration-color: var(--bs-primary) !important;
-}
-
 .bio-social-link:hover {
   background-color: $body-tertiary-bg;
 }
@@ -66,26 +38,10 @@
   text-decoration-color: currentColor;
 }
 
-
 @include color-mode(dark) {
   *:focus-visible, .form-field:focus, .form-check-input:focus, .form-check-input:focus-visible, .navbar-toggler:focus, .btn:focus-visible, .nav-link:focus-visible, .form-control:focus-visible {
     outline-color: #FFFFFF;
   }
-
-  // .nav-link:focus {
-  //   color: #FFFFFF;
-  // }
-
-  // .dropdown-item:focus-visible {
-  //   // outline-offset: -0.15em;
-  //   background-color: var(--bs-dropdown-bg);
-  // }
-
-  // *a:hover, .navbar-nav .nav-link:hover, li > .dropdown-item:hover, .link-light:hover {
-  //   color: $primary;
-  //   background-color: #FFFFFF;
-  //   text-decoration-color: $primary;
-  // }
 
   .bio-social-link:hover {
     background-color: $body-tertiary-bg-dark;
@@ -95,11 +51,6 @@
     border-color: $info-border-contrast-dark;
   }
 
-  // TODO: Move breadcrumb and dropdowns to use Bootstrap SASS Variables
-  // .nav-link, .dropdown-item, .dropdown-item:hover {
-  //   color: #FFFFFF;
-  // }
-
   .form-control,.form-control:focus, .form-check-input, .form-check-input:focus {
     border-color: $info-border-contrast-dark;
   }
@@ -107,10 +58,6 @@
   .form-check-input:checked {
     border-color: $info-border-contrast-dark;
   }
-
-  // .bi {  // blue-30
-  //   filter: brightness(0) saturate(100%) invert(71%) sepia(19%) saturate(851%) hue-rotate(172deg) brightness(91%) contrast(95%);
-  // }
 }
 
 
@@ -118,17 +65,24 @@
 
 a {
   --ac-link-hover-bg: var(--bs-link-color);
+  --ac-link-focus-outline-color: var(--bs-link-color);
 
   &:focus-visible {
-    outline: 2px solid var(--bs-link-color);
-    outline-offset: 2px;
     box-shadow: none;
+    outline: 2px solid var(--ac-link-focus-outline-color);
+    outline-offset: 2px;
     text-decoration: none;
   }
   &:hover {
     --bs-link-color-rgb: var(--bs-link-hover-color-rgb);
     background-color: var(--ac-link-hover-bg);
     transition: all 0.1s ease-in;
+  }
+
+  @each $color, $value in $theme-colors {
+    &.link-#{$color} {
+      --ac-link-focus-outline-color: #{$value};
+    }
   }
 }
 @include color-mode(dark) {
@@ -138,11 +92,47 @@ a {
   }
 }
 
+
+.btn {
+  --ac-link-focus-outline-color: var(--bs-btn-bg);
+
+  &:focus-visible {
+    border-radius: 0.375rem;
+    box-shadow: none;
+    outline: 2px solid var(--ac-link-focus-outline-color);
+    outline-offset: 2px;
+
+    &:not(:hover) {
+      @include gradient-bg(var(--bs-btn-bg));
+    }
+  }
+
+  @each $color, $value in $theme-colors {
+    &.border-#{$color} {
+      --ac-link-focus-outline-color: #{$value};
+    }
+  }
+}
+@include color-mode(dark) {
+  // Global mode to switch buttons to a nice contrast in dark mode
+  .btn.btn-contrast-dark {
+    --bs-btn-color: var(--bs-primary);
+    --bs-btn-bg: #FFFFFF;
+
+    &:focus-visible:not(:hover) {
+      color: var(--bs-btn-color);
+    }
+  }
+}
+
+
 .navbar-nav {
   .nav-link {
+    --ac-link-focus-outline-color: var(--bs-nav-link-color);
+
     &:focus-visible {
       color: var(--bs-nav-link-color); // Override hover color on focus
-      outline: 2px solid var(--bs-nav-link-color);
+      outline: 2px solid var(--ac-link-focus-outline-color);
     }
     &:hover {
       color: var(--bs-navbar-hover-color); // Override focus color on hover
@@ -166,14 +156,14 @@ a {
   border-radius: 0.375rem !important;
 }
 
+
 .dropdown-item {
   --bs-link-color: var(--bs-dropdown-link-color);
 
   &:focus-visible {
     background-color: var(--bs-dropdown-bg);
-    color: var(--bs-dropdown-link-color);
-    outline-color: var(--bs-dropdown-link-color);
-    outline-offset: -0.15em;
+    color: var(--bs-dropdown-link-color); // Override hover color on focus
+    --ac-link-focus-outline-color: var(bs-dropdown-link-color);
   }
   &:hover {
     color: var(--#{$prefix}dropdown-link-hover-color); // Override focus color on hover

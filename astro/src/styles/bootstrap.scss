@@ -407,26 +407,11 @@ svg[data-icon="loca11y-logo"].unpad {
     color: $card-title-color-dark;
   }
 
-  .general-button {
-    color: #041058;
-    background-color: #FFFFFF;
-  }
-
-  .general-button:focus {
-    color: #041058;
-    background-color: #FFFFFF;
-  }
-
-  .general-button:hover {
-    color: #041058;
-    background-color: $body-tertiary-bg;
-  }
-
   .list-disc li::marker {
     color: #FFFFFF;
   }
 
-  .text-linkedin {
+  .text-linkedin, .text-primary {
     color: white !important;
   }
 
