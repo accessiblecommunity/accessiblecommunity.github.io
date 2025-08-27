@@ -69,9 +69,9 @@ import { Icon } from "astro-icon/components";
   @import "../styles/dark-mode.scss";
   @import "../styles/responsive-sizing.scss";
 
-  #header-navbar {
+  .navbar {
     min-width: 320px;
-    background-color: #E1E1E1;
+    --bs-body-bg: #E1E1E1;
   }
 
   .skip-link:focus,
@@ -123,6 +123,10 @@ import { Icon } from "astro-icon/components";
   }
 
   @include color-mode(dark) {
+    .navbar {
+      --bs-body-bg: var(--bs-secondary);
+    }
+
     .skip-link {
       color: var(--bs-primary);
       background-color: white;

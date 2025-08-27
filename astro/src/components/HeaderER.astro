@@ -139,6 +139,10 @@ import SiteNav from "./NavSiteSecondary.astro";
   }
   
   @include color-mode(dark) {
+    .navbar {
+      --bs-body-bg: var(--bs-primary);
+    }
+
     .brand-logo {
       color: #ffffff;
     }
