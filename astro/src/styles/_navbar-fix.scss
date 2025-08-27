@@ -2,7 +2,7 @@
 // This is a fix.
 
 .navbar {
-  background-color: $body-bg;
+  background-color: var(--bs-body-bg);
 }
 
 .navbar-brand {
@@ -26,7 +26,6 @@
       --#{$prefix}navbar-toggler-border-color: #{$navbar-dark-toggler-border-color};
       --#{$prefix}navbar-toggler-icon-bg: #{escape-svg($navbar-dark-toggler-icon-bg)};
       // scss-docs-end navbar-dark-css-vars
-      background-color: $ac-navy;
     }
 
     .navbar-brand > svg {

@@ -38,7 +38,7 @@ const breadCrumbs: Breadcrumbs =
         <Icon name="bi:list" class="bi" />
       </button>
       <div class="d-none d-lg-block navbar-brand me-2">
-        <Icon name="ac-logo" class="brand-logo" role="img" aria-hidden="true" />
+        <Icon name="ac-logo" role="img" aria-hidden="true" />
       </div>
       <div class="my-1 flex-fill align-self-start">
         <a class="navbar-brand" href="/"
@@ -243,7 +243,7 @@ const breadCrumbs: Breadcrumbs =
 </header>
 <slot />
 
-<style is:global lang="scss">
+<style lang="scss">
   /* first declaration that is commented out below is for debugging purposes. */
   // * {
   //    outline: 1px solid white;
@@ -252,8 +252,9 @@ const breadCrumbs: Breadcrumbs =
   @import "../styles/dark-mode.scss";
   @import "../styles/responsive-sizing.scss";
 
-  #header-navbar {
+  .navbar {
     min-width: 320px;
+    --bs-body-bg: var(--bs-white);
   }
 
   #breadcrumbs-nav {
@@ -274,13 +275,6 @@ const breadCrumbs: Breadcrumbs =
     z-index: 999;
   }
 
-  .navbar-brand:focus {
-    color: inherit;
-  }
-  .navbar-brand:focus:hover {
-    color: var(--bs-navbar-brand-hover-color);
-  }
-
   [data-icon="ac-logo"] {
     width: 2.5rem;
     height: 2.5rem;
@@ -298,6 +292,16 @@ const breadCrumbs: Breadcrumbs =
   #breadcrumbs-nav {
     top: 2.4rem;
     left: 4rem;
+  }
+
+  .breadcrumb-item {
+    --bs-breadcrumb-item-active-color: var(--bs-primary);
+    --bs-link-color-rgb: var(--bs-primary-rgb);
+
+    > .text-truncate {
+      display: inline-block;
+      max-width: 10em;
+    }
   }
 
   .nav-link {
@@ -326,11 +330,6 @@ const breadCrumbs: Breadcrumbs =
     color: var(--bs-primary);
     padding-inline: 3px;
     font-size: 1.1rem;
-  }
-
-  .breadcrumb-item > .text-truncate {
-    display: inline-block;
-    max-width: 10em;
   }
 
   @include media-breakpoint-down(md) {
@@ -373,12 +372,20 @@ const breadCrumbs: Breadcrumbs =
   }
 
   @include color-mode(dark) {
+    .navbar {
+      --bs-body-bg: var(--bs-primary);
+    }
+    .breadcrumb-item {
+      --bs-breadcrumb-item-active-color: var(--bs-white);
+      --bs-link-color-rgb: var(--bs-white-rgb);
+    }
+
     .skip-link {
       color: var(--bs-primary);
       background-color: white;
     }
 
-    .brand-logo {
+    [data-icon="ac-logo"] {
       color: #ffffff;
     }
 
@@ -387,9 +394,7 @@ const breadCrumbs: Breadcrumbs =
       background-color: var(--bs-primary);
     }
   }
-</style>
 
-<style scoped>
   .gi {
     height: 1em;
     width: auto;

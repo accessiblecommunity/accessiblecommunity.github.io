@@ -1,19 +1,26 @@
 ---
 import { getImage } from "astro:assets";
+import { isEmpty } from "lodash-es";
+
 import type { ImageMetadata } from "astro";
+import type { Breadcrumbs } from "@lib/types";
 
 interface Props {
   image: ImageMetadata | string;
+  title: string;
   theme?: string;
   columns?: string;
   actionBreakpoint?: string;
+  crumbs?: Breadcrumbs;
 }
 
 const {
   image,
+  title,
   theme = "primary",
   columns = "col-lg-6",
   actionBreakpoint = "lg",
+  crumbs = undefined,
 } = Astro.props;
 
 let heroBgUrl;
@@ -31,6 +38,27 @@ if (image) {
   class={`bg-${theme}`}
   style={`background: no-repeat center/cover ${heroBgUrl}`}
 >
+  <nav
+    id="breadcrumbs-nav"
+    aria-label="Breadcrumb"
+    class="breadcrumbs d-print-none"
+    slot="heading"
+  >
+    <ol class="breadcrumb lh-sm">
+      {
+        crumbs?.map(({ name, href }) => (
+          <li class="breadcrumb-item">
+            <a href={href} class="link-offset-1 text-truncate">
+              {name}
+            </a>
+          </li>
+        ))
+      }
+      <li class="breadcrumb-item active" aria-current="page">
+        <span set:text={title} />
+      </li>
+    </ol>
+  </nav>    
   <div class="container hero">
     <slot name="heading" />
     <div class:list={[columns, "mx-auto text-white"]}>
@@ -60,9 +88,18 @@ if (image) {
 </section>
 
 <style>
+  /* Breadcrumbs are 2.25 in height */
   .hero {
-    padding: 4.5rem 0 3rem !important;
+    padding: 2.75rem 0 5rem !important;
     text-align: center;
+  }
+
+  .breadcrumb {
+    --bs-breadcrumb-padding-x: 1rem;
+    --bs-breadcrumb-padding-y: 1rem;
+    --bs-breadcrumb-divider-color: var(--bs-light-border-subtle);
+    --bs-breadcrumb-item-active-color: var(--bs-light-border-subtle);
+    --bs-link-color-rgb: var(--bs-white-rgb);
   }
 
   .hero :global(h1),
@@ -81,12 +118,5 @@ if (image) {
   .hero :global(.display-5),
   .hero :global(.display-6) {
     color: white;
-  }
-
-  .hero .text-bg-hero {
-    background-color: rgba(var(--bs-primary-rgb), var(--bs-bg-opacity));
-    border-radius: var(--bs-border-radius-sm);
-    --bs-bg-opacity: 0.25;
-    padding: 0.25rem 0.5rem; /* py-1 px-2 */
   }
 </style>

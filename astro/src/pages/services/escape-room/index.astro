@@ -21,7 +21,7 @@ const crumbs: Breadcrumbs = [
 
 import Branding from "@components/Branding.astro";
 import ExternalLink from "@components/ExternalLink.astro";
-import Hero from "@components/ColumnedHero.astro";
+import Hero from "@components/HeroWithBreadcrumbs.astro";
 import { Image } from "astro:assets";
 import ImageFigure from "@components/ImageFigure.astro";
 import EscapeRoomLayout from "src/layouts/EscapeRoomLayout.astro";
@@ -39,19 +39,19 @@ import { Icon } from "astro-icon/components";
 ---
 
 <EscapeRoomLayout {metadata}>
-  <Hero image={heroBg} slot="header" reverse vertical-position="22%">
+  <Hero slot="header" image={heroBg} {crumbs} {title}>
     <div class="py-2 px-2" slot="heading">
       <h1 class="display-2">
-        <Branding>The Accessible Escape&nbsp;Room</Branding>.
+        <Branding>The Accessible Escape&nbsp;Room</Branding>
       </h1>
     </div>
-    <div class="py-3">
+    <!-- <div class="py-3">
       <p class="text-bg-hero">
         <Branding>The Accessible Escape Room</Branding> is a fun, accessible team-building
         activity. Teams of 3-10 people, with or without disabilities, try to solve
         puzzles to reach an objective while learning about accessibility.
       </p>
-    </div>
+    </div> -->
   </Hero>
 
   {
