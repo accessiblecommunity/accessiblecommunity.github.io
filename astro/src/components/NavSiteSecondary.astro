@@ -1,8 +1,25 @@
 ---
 import { Icon } from "astro-icon/components";
+import SiteNavigation from "./SiteNavigation.astro";
+
+interface Props {
+  "page-nav-id"?: string;
+}
+
+const { "page-nav-id": pageNavId = undefined } = Astro.props;
+
 ---
 
 <div id="header-navbar" class="navbar navbar-expand-lg align-items-top d-none d-lg-flex">
+  {
+    pageNavId && (
+      <a
+        class="visually-hidden-focusable btn btn-primary skip-link d-print-none"
+        href={`#${pageNavId}`}>
+        Skip to Page Navigation
+      </a>
+    )
+  }
     <a
       class="visually-hidden-focusable btn btn-primary skip-link d-print-none"
       href="#main-content">
@@ -17,48 +34,9 @@ import { Icon } from "astro-icon/components";
       </a>
     </div>
     <nav id="site-nav" class="collapse navbar-collapse px-3 d-print-none" aria-label="Site">
-      <ul class="navbar-nav mx-3">
-        <li class="nav-item">
-          <a
-          class="nav-link"
-          href="/about/">About</a>
-        </li>
-        <li class="nav-item">
-          <a
-          class="nav-link"
-          href="/services/">
-            Services
-          </a>
-        </li>
-        <li class="nav-item">
-          <a
-          class="nav-link"
-          href="/daf/">Research</a>
-        </li>
-        <li class="nav-item">
-          <a
-          class="nav-link"
-          href="/team/">
-            Team
-          </a>
-        </li>
-        <li class="nav-item">
-          <a
-          class="nav-link"
-          href="/join-us/">
-            Join us
-          </a>
-        </li>
-        <li class="nav-item">
-          <a
-          class="nav-link"
-          href="/donate/">
-            Donate
-          </a>
-        </li>
-      </ul>
-  </nav>
-</>
+      <SiteNavigation class="mx-3" />
+    </nav>
+</div>
 
 <style lang="scss">
   /* first declaration that is commented out below is for debugging purposes. */
@@ -79,16 +57,9 @@ import { Icon } from "astro-icon/components";
     position: absolute;
     font-size: 1.25rem;
     padding: 0.25rem 2.5rem;
-    top: 1rem;
-    left: 0.8rem;
+    top: 0.5rem;
+    left: 0.5rem;
     z-index: 999;
-  }
-
-  .navbar-brand:focus {
-    color: inherit;
-  }
-  .navbar-brand:focus:hover {
-    color: var(--bs-navbar-brand-hover-color);
   }
 
   [data-icon="ac-logo"] {
@@ -98,14 +69,6 @@ import { Icon } from "astro-icon/components";
 
   #brand-nav {
     height: 2.5rem;
-  }
-
-  .nav-link {
-    margin-inline: 0.222em;
-    margin-top: 0.222em;
-    margin-bottom: 0.222em;
-    --bs-nav-link-padding-y: 0.222em;
-    --bs-nav-link-padding-x: 0.222em;
   }
 
   @include media-breakpoint-down(md) {
@@ -135,12 +98,6 @@ import { Icon } from "astro-icon/components";
     .brand-logo {
       color: #ffffff;
     }
-  }
-
-  .gi {
-    height: 1em;
-    width: auto;
-    margin-right: 0.2em;
   }
 </style>
 

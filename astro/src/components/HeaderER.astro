@@ -5,7 +5,7 @@ import SiteNav from "./NavSiteSecondary.astro";
 ---
 
 <header class="sticky-top">
-  <SiteNav />
+  <SiteNav page-nav-id="header-escape-navbar" />
   <div id="header-escape-navbar" class="navbar navbar-expand-lg align-items-top">
     <div id="brand-nav" class="container-fluid px-3">
       <button
@@ -89,10 +89,6 @@ import SiteNav from "./NavSiteSecondary.astro";
     min-width: 320px;
   }
 
-  .services-menu .icon-link {
-    gap: 0.25rem;
-  }
-
   .logo-image {
     color: white
   }
@@ -151,14 +147,6 @@ import SiteNav from "./NavSiteSecondary.astro";
       color: #ffffff !important;
       background-color: var(--bs-primary);
     }
-  }
-</style>
-
-<style scoped>
-  .gi {
-    height: 1em;
-    width: auto;
-    margin-right: 0.2em;
   }
 </style>
 

@@ -82,8 +82,11 @@ a {
       --bs-link-color: #{$value};
       --ac-link-focus-outline-color: #{$value};
       --ac-link-hover-bg: #{$value};
-      // TODO: Still working this out.
-      // --bs-link-hover-color-rgb: if($color == "light", var(--bs-primary-rgb), var(--bs-white-rgb));
+      @if $color == light {
+        --bs-link-hover-color-rgb: var(--bs-primary-rgb);
+      } @else {
+        --bs-link-hover-color-rgb: var(--bs-white-rgb);
+      }
 
       &:hover {
         color: RGBA(var(--bs-link-hover-color-rgb), var(--bs-link-opacity, 1)) !important;

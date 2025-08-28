@@ -1,0 +1,215 @@
+---
+import { Icon } from "astro-icon/components";
+import Branding from "@components/Branding.astro";
+import ExternalLink from "@components/ExternalLink.astro";
+
+interface Props {
+  main?: boolean;
+  class?: string;
+}
+
+const { main = false, class: classes = "" } = Astro.props;
+---
+
+<Fragment>
+  <ul class:list={["navbar-nav mx-3", classes]}>
+    <li class="nav-item dropdown">
+      <a
+        class="nav-link dropdown-toggle"
+        data-bs-toggle="dropdown"
+        href="#"
+        role="button"
+        aria-expanded="false">About</a
+      >
+      <ul class="dropdown-menu px-15 pb-1">
+        <li>
+          <a class="dropdown-item" href="/about/mission"
+            >Mission &amp; Vision</a
+          >
+        </li>
+        {
+          /* <li>
+          <a class="dropdown-item" href="/about/a11y">Why Accessibility?</a>
+        </li> */
+        }
+        <li>
+          <a class="dropdown-item" href="/about/story">Founder's Story</a>
+        </li>
+        <li>
+          <a class="dropdown-item" href="/about/policies">Our Policies</a>
+        </li>
+      </ul>
+    </li>
+    <li class="nav-item dropdown">
+      <a
+        class="nav-link dropdown-toggle"
+        data-bs-toggle="dropdown"
+        href="#"
+        role="button"
+        aria-expanded="false">Services</a
+      >
+      <ul class="dropdown-menu px-15 pb-1 services-menu">
+        <li>
+          <a class="dropdown-item" href="/services/tip-of-the-week"
+            >Tip of the Week</a
+          >
+        </li>
+        <li>
+          <a class="dropdown-item" href="/services/evaluations"
+            >Evaluations</a
+          >
+        </li>
+        <li>
+          <a class="dropdown-item" href="/services/escape-room"
+            >Accessible Escape Room</a
+          >
+        </li>
+        <li>
+          <a class="dropdown-item" href="/blog">Our Blog</a>
+        </li>
+        <li><hr class="dropdown-divider" /></li>
+        <li>
+          <a class="dropdown-item" href="/services/globa11y/"
+            ><Icon
+              class="bi gi"
+              name="globa11y-logo"
+              height={16}
+              aria-hidden="true"
+            /><Branding>globa11y</Branding></a
+          >
+        </li>
+        <li>
+          <ExternalLink
+            class="dropdown-item py-2"
+            gaps
+            href="https://www.ta11y.org/"
+          >
+            <Icon
+              class="bi"
+              name="ta11y-logo"
+              height={16}
+              role="img"
+              aria-hidden="true"
+            /><Branding text="ta11y.org" /></ExternalLink
+          >
+        </li>
+        <li>
+          <ExternalLink
+            class="dropdown-item py-2"
+            gaps
+            href="https://www.mutua11y.org/"
+            ><Icon
+              class="bi"
+              name="mutua11y-logo"
+              height={16}
+              role="img"
+              aria-hidden="true"
+            /><Branding text="mutua11y.org" /></ExternalLink
+          >
+        </li>
+      </ul>
+    </li>
+    <li class="nav-item dropdown">
+      <a
+        class="nav-link dropdown-toggle"
+        data-bs-toggle="dropdown"
+        href="#"
+        role="button"
+        aria-expanded="false">Research</a
+      >
+      <ul class="dropdown-menu px-15 pb-1">
+        <li>
+          <a class="dropdown-item text-break py-2" href="/daf/"
+            >Digital Accessibility Framework</a
+          >
+        </li>
+        <li>
+          <ExternalLink
+            class="dropdown-item py-2"
+            href="https://accessiblecommunity.org/useable/"
+          >
+            <Branding text="useable" /></ExternalLink
+          >
+        </li>
+      </ul>
+    </li>
+    <li class="nav-item dropdown">
+      <a
+        class="nav-link dropdown-toggle"
+        data-bs-toggle="dropdown"
+        href="#"
+        role="button"
+        aria-expanded="false">Team</a
+      >
+      <ul class="dropdown-menu px-15 pb-1">
+        <li>
+          <a class="dropdown-item" href="/team/board">Board Members</a>
+        </li>
+        <li>
+          <a class="dropdown-item" href="/team/leadership"
+            >Leadership Team</a
+          >
+        </li>
+        <li><a class="dropdown-item" href="/team/staff">Staff</a></li>
+        <li>
+          <a class="dropdown-item" href="/team/previous"
+            >Previous Contributors</a
+          >
+        </li>
+        <li><a class="dropdown-item" href="/team/partners">Partners</a></li>
+      </ul>
+    </li>
+    <li class="nav-item dropdown">
+      <a
+        class="nav-link dropdown-toggle"
+        data-bs-toggle="dropdown"
+        href="#"
+        role="button"
+        aria-expanded="false">Join us</a
+      >
+      <ul class="dropdown-menu px-15 pb-1">
+        {
+          !main && (
+            <li><a class="dropdown-item" href="/donate">Donate</a></li>
+          )
+        }
+        <li><a class="dropdown-item" href="/volunteer">Volunteer</a></li>
+        <!-- TODO: Hiding the sponsor page until it's done. -->
+        <!-- <li><a class="dropdown-item" href="/join-us/sponsor">Sponsor</a></li> -->
+      </ul>
+    </li>
+  </ul>
+  {
+    main && (
+      <a
+        class="btn btn-info btn-contrast-dark display-65 mx-1 my-1"
+        href="/donate"
+        role="button">Donate</a>
+    )
+  }
+</Fragment>
+
+<style>
+.nav-link {
+  margin-inline: 0.222em;
+  margin-top: 0.222em;
+  margin-bottom: 0.222em;
+  --bs-nav-link-padding-y: 0.222em;
+  --bs-nav-link-padding-x: 0.222em;
+}
+
+.dropdown-menu :global(.dropdown-item) {
+  margin-bottom: 0.333em;
+}
+
+.services-menu .icon-link {
+  gap: 0.25rem;
+}
+
+.gi {
+  height: 1em;
+  width: auto;
+  margin-right: 0.2em;
+}
+
+</style>
