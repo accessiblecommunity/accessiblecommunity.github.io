@@ -53,19 +53,13 @@ const components = { Section: StripedSection, ...defaultComponents };
 <EscapeRoomLayout {metadata}>
   <Hero slot="header" image={kit.data.image} {crumbs} {title}>
     <div class="py-2 px-2" slot="heading">
-      <h1
-        class:list={["display-2 text-white w-100"]}
-        set:text={title}
-      />
+      <h1 class:list={["display-2 text-white w-100"]} set:text={title} />
     </div>
     <p class="tagline text-white">
       An Accessible Escape Room provided by
-      <Icon
-        class="bi"
-        name="ac-logo"
-        height={16}
-        aria-hidden="true"
-      /><Branding>Accessible Community</Branding>
+      <Icon class="bi" name="ac-logo" height={16} aria-hidden="true" /><Branding
+        >Accessible Community</Branding
+      >
     </p>
   </Hero>
   <div class="text-bg-light">

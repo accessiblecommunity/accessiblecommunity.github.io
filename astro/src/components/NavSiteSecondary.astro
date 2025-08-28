@@ -7,35 +7,43 @@ interface Props {
 }
 
 const { "page-nav-id": pageNavId = undefined } = Astro.props;
-
 ---
 
-<div id="header-navbar" class="navbar navbar-expand-lg align-items-top d-none d-lg-flex">
+<div
+  id="header-navbar"
+  class="navbar navbar-expand-lg align-items-top d-none d-lg-flex"
+>
   {
     pageNavId && (
       <a
         class="visually-hidden-focusable btn btn-primary skip-link d-print-none"
-        href={`#${pageNavId}`}>
+        href={`#${pageNavId}`}
+      >
         Skip to Page Navigation
       </a>
     )
   }
-    <a
-      class="visually-hidden-focusable btn btn-primary skip-link d-print-none"
-      href="#main-content">
-      Skip to Main Content
-    </a>
-    <div id="brand-nav" class="d-flex align-items-center px-3">
-      <div class="navbar-brand me-2">
-        <Icon name="ac-logo" class="brand-logo" role="img" aria-hidden="true" />
-      </div>
-      <a class="navbar-brand flex-fill" href="/">
-        Accessible <strong>Community</strong>
-      </a>
+  <a
+    class="visually-hidden-focusable btn btn-primary skip-link d-print-none"
+    href="#main-content"
+  >
+    Skip to Main Content
+  </a>
+  <div id="brand-nav" class="d-flex align-items-center px-3">
+    <div class="navbar-brand me-2">
+      <Icon name="ac-logo" class="brand-logo" role="img" aria-hidden="true" />
     </div>
-    <nav id="site-nav" class="collapse navbar-collapse px-3 d-print-none" aria-label="Site">
-      <SiteNavigation class="mx-3" />
-    </nav>
+    <a class="navbar-brand flex-fill" href="/">
+      Accessible <strong>Community</strong>
+    </a>
+  </div>
+  <nav
+    id="site-nav"
+    class="collapse navbar-collapse px-3 d-print-none"
+    aria-label="Site"
+  >
+    <SiteNavigation class="mx-3" />
+  </nav>
 </div>
 
 <style lang="scss">
@@ -49,7 +57,7 @@ const { "page-nav-id": pageNavId = undefined } = Astro.props;
 
   .navbar {
     min-width: 320px;
-    --bs-body-bg: #E1E1E1;
+    --bs-body-bg: #e1e1e1;
   }
 
   .skip-link:focus,

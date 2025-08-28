@@ -6,7 +6,10 @@ import SiteNav from "./NavSiteSecondary.astro";
 
 <header class="sticky-top">
   <SiteNav page-nav-id="header-escape-navbar" />
-  <div id="header-escape-navbar" class="navbar navbar-expand-lg align-items-top">
+  <div
+    id="header-escape-navbar"
+    class="navbar navbar-expand-lg align-items-top"
+  >
     <div id="brand-nav" class="container-fluid px-3">
       <button
         class="navbar-toggler px-1 me-2 d-print-none"
@@ -25,7 +28,8 @@ import SiteNav from "./NavSiteSecondary.astro";
           name="escape-room-logo"
           height="2.5rem"
           role="img"
-          aria-hidden="true"/>
+          aria-hidden="true"
+        />
       </div>
       <div class="d-flex flex-column flex-fill">
         <div class="lh-1">
@@ -33,17 +37,24 @@ import SiteNav from "./NavSiteSecondary.astro";
             <Branding>Accessible Escape Room</Branding>
           </a>
         </div>
-        <span class="d-lg-none"><em>by</em> <Branding>Accessible Community</Branding></span>
+        <span class="d-lg-none"
+          ><em>by</em> <Branding>Accessible Community</Branding></span
+        >
       </div>
     </div>
-    <nav id="escape-room-nav" class="collapse navbar-collapse px-3 d-print-none d-lg-flex w-100 justify-content-end" aria-label="Escape Room">
+    <nav
+      id="escape-room-nav"
+      class="collapse navbar-collapse px-3 d-print-none d-lg-flex w-100 justify-content-end"
+      aria-label="Escape Room"
+    >
       <ul class="navbar-nav my-1 mx-4">
         <li class="nav-item dropdown">
           <a
             class="nav-link"
             data-bs-toggle="dropdown"
             href="#"
-            aria-expanded="false">Build-Your-Own Kits
+            aria-expanded="false"
+            >Build-Your-Own Kits
           </a>
         </li>
         <li class="nav-item dropdown">
@@ -61,7 +72,7 @@ import SiteNav from "./NavSiteSecondary.astro";
             href="#"
             aria-expanded="false">Our Story</a
           >
-        </li> 
+        </li>
         <li class="nav-item dropdown d-lg-none">
           <a
             class="nav-link"
@@ -69,7 +80,7 @@ import SiteNav from "./NavSiteSecondary.astro";
             href="/"
             aria-expanded="false">Accessible Community Home</a
           >
-        </li>     
+        </li>
       </ul>
     </nav>
   </div>
@@ -90,7 +101,7 @@ import SiteNav from "./NavSiteSecondary.astro";
   }
 
   .logo-image {
-    color: white
+    color: white;
   }
 
   [data-icon="bi:list"] {
@@ -133,7 +144,7 @@ import SiteNav from "./NavSiteSecondary.astro";
       vertical-align: sub;
     }
   }
-  
+
   @include color-mode(dark) {
     .navbar {
       --bs-body-bg: var(--bs-primary);

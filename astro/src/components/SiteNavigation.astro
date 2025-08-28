@@ -23,8 +23,7 @@ const { main = false, class: classes = "" } = Astro.props;
       >
       <ul class="dropdown-menu px-15 pb-1">
         <li>
-          <a class="dropdown-item" href="/about/mission"
-            >Mission &amp; Vision</a
+          <a class="dropdown-item" href="/about/mission">Mission &amp; Vision</a
           >
         </li>
         {
@@ -55,9 +54,7 @@ const { main = false, class: classes = "" } = Astro.props;
           >
         </li>
         <li>
-          <a class="dropdown-item" href="/services/evaluations"
-            >Evaluations</a
-          >
+          <a class="dropdown-item" href="/services/evaluations">Evaluations</a>
         </li>
         <li>
           <a class="dropdown-item" href="/services/escape-room"
@@ -146,9 +143,7 @@ const { main = false, class: classes = "" } = Astro.props;
           <a class="dropdown-item" href="/team/board">Board Members</a>
         </li>
         <li>
-          <a class="dropdown-item" href="/team/leadership"
-            >Leadership Team</a
-          >
+          <a class="dropdown-item" href="/team/leadership">Leadership Team</a>
         </li>
         <li><a class="dropdown-item" href="/team/staff">Staff</a></li>
         <li>
@@ -170,7 +165,11 @@ const { main = false, class: classes = "" } = Astro.props;
       <ul class="dropdown-menu px-15 pb-1">
         {
           !main && (
-            <li><a class="dropdown-item" href="/donate">Donate</a></li>
+            <li>
+              <a class="dropdown-item" href="/donate">
+                Donate
+              </a>
+            </li>
           )
         }
         <li><a class="dropdown-item" href="/volunteer">Volunteer</a></li>
@@ -184,32 +183,34 @@ const { main = false, class: classes = "" } = Astro.props;
       <a
         class="btn btn-info btn-contrast-dark display-65 mx-1 my-1"
         href="/donate"
-        role="button">Donate</a>
+        role="button"
+      >
+        Donate
+      </a>
     )
   }
 </Fragment>
 
 <style>
-.nav-link {
-  margin-inline: 0.222em;
-  margin-top: 0.222em;
-  margin-bottom: 0.222em;
-  --bs-nav-link-padding-y: 0.222em;
-  --bs-nav-link-padding-x: 0.222em;
-}
+  .nav-link {
+    margin-inline: 0.222em;
+    margin-top: 0.222em;
+    margin-bottom: 0.222em;
+    --bs-nav-link-padding-y: 0.222em;
+    --bs-nav-link-padding-x: 0.222em;
+  }
 
-.dropdown-menu :global(.dropdown-item) {
-  margin-bottom: 0.333em;
-}
+  .dropdown-menu :global(.dropdown-item) {
+    margin-bottom: 0.333em;
+  }
 
-.services-menu .icon-link {
-  gap: 0.25rem;
-}
+  .services-menu .icon-link {
+    gap: 0.25rem;
+  }
 
-.gi {
-  height: 1em;
-  width: auto;
-  margin-right: 0.2em;
-}
-
+  .gi {
+    height: 1em;
+    width: auto;
+    margin-right: 0.2em;
+  }
 </style>

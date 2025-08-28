@@ -31,7 +31,6 @@ if (image) {
 } else {
   heroBgUrl = "";
 }
-
 ---
 
 <section
@@ -58,7 +57,7 @@ if (image) {
         <span set:text={title} />
       </li>
     </ol>
-  </nav>    
+  </nav>
   <div class="container hero">
     <slot name="heading" />
     <div class:list={[columns, "mx-auto text-white"]}>

@@ -38,7 +38,7 @@ const { metadata, title } = Astro.props;
     <HeaderER {title} />
 
     <main id="main-content">
-      <div class="content-spacer" />
+      <div class="content-spacer"></div>
       <slot name="header" />
       <slot />
     </main>
@@ -50,7 +50,8 @@ const { metadata, title } = Astro.props;
           <div class="col-md-4">
             <h3 class="h5">About Accessible Community</h3>
             <p>
-              We help organizations make their digital content accessible to people with disabilities.
+              We help organizations make their digital content accessible to
+              people with disabilities.
             </p>
           </div>
           <div class="col-md-4">
@@ -65,14 +66,17 @@ const { metadata, title } = Astro.props;
             <h3 class="h5">Contact Us</h3>
             <p>
               Have questions about our services?<br />
-              <a href="mailto:info@accessiblecommunity.org">info@accessiblecommunity.org</a>
+              <a href="mailto:info@accessiblecommunity.org"
+                >info@accessiblecommunity.org</a
+              >
             </p>
           </div>
         </div>
         <hr />
         <div class="text-center">
           <p class="mb-0">
-            &copy; {new Date().getFullYear()} <Branding>Accessible Community</Branding>. All rights reserved.
+            &copy; {new Date().getFullYear()}
+            <Branding>Accessible Community</Branding>. All rights reserved.
           </p>
         </div>
       </div>
@@ -138,4 +142,5 @@ const { metadata, title } = Astro.props;
       margin-bottom: 0;
     }
   }
-</style> 
+</style>
+
