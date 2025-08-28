@@ -320,9 +320,7 @@ const Socials = [
     min-height: 29px;
     min-width: 29px;
   }
-</style>
 
-<style scoped>
   h2:not(:first-child) {
     margin-top: 1.75em;
   }
@@ -331,8 +329,13 @@ const Socials = [
   dt.contact-us {
     margin-left: 0.5em;
   }
-  a.footer-link {
-    text-underline-offset: 0.175em !important;
+
+  footer :global(a) {
+    --bs-link-hover-color-rgb: var(--bs-primary-rgb);
+
+    &.footer-link {
+      text-underline-offset: 0.175em !important;
+    }
   }
   .gi {
     height: 1em;

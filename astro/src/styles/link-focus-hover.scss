@@ -2,6 +2,12 @@
 /* Keyboard focus and hover customizations */
 /*******************************************/
 
+// We use the following design philosophy on the website
+//    - Outline box for keyboard focus, removing underline.
+//    - Invert background/foreground for hover.
+
+
+
 // TODO: Original Code that needs to be cleaned up.
 
 .form-field:focus {
@@ -29,10 +35,6 @@
   box-shadow: none;
 }
 
-.bio-social-link:hover {
-  background-color: $body-tertiary-bg;
-}
-
 .icon-link {
   text-underline-offset: 0.1em;
   text-decoration-color: currentColor;
@@ -41,10 +43,6 @@
 @include color-mode(dark) {
   *:focus-visible, .form-field:focus, .form-check-input:focus, .form-check-input:focus-visible, .navbar-toggler:focus, .btn:focus-visible, .nav-link:focus-visible, .form-control:focus-visible {
     outline-color: #FFFFFF;
-  }
-
-  .bio-social-link:hover {
-    background-color: $body-tertiary-bg-dark;
   }
 
   .form-field:focus {
@@ -81,7 +79,15 @@ a {
 
   @each $color, $value in $theme-colors {
     &.link-#{$color} {
+      --bs-link-color: #{$value};
       --ac-link-focus-outline-color: #{$value};
+      --ac-link-hover-bg: #{$value};
+      // TODO: Still working this out.
+      // --bs-link-hover-color-rgb: if($color == "light", var(--bs-primary-rgb), var(--bs-white-rgb));
+
+      &:hover {
+        color: RGBA(var(--bs-link-hover-color-rgb), var(--bs-link-opacity, 1)) !important;
+      }
     }
   }
 }
