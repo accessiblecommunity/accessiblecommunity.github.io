@@ -72,10 +72,11 @@ const navLinks = [{
             </li>
           ))
         }
+        <hr class="d-lg-none" />
         <li class="nav-item d-lg-none">
           <a
             class="nav-link"
-            href="/">Accessible Community Home</a
+            href="/"><Branding>Accessible Community</Branding> Home</a
           >
         </li>
       </ul>
@@ -106,6 +107,7 @@ const navLinks = [{
     height: 1.25rem;
   }
   [data-icon="escape-room-logo"] {
+    color: black;
     width: 3.25rem;
     height: 3.25rem;
   }
@@ -114,7 +116,11 @@ const navLinks = [{
     height: 3.5rem;
   }
 
+  .navbar-brand {
+    --bs-navbar-brand-color: black;
+  }
   .nav-link {
+    --bs-nav-link-color: black;
     margin-inline: 0.222em;
     margin-top: 0.222em;
     margin-bottom: 0.222em;

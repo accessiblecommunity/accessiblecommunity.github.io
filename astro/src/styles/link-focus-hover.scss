@@ -137,6 +137,7 @@ a {
 
 .navbar-nav {
   .nav-link {
+    --ac-link-hover-bg: var(--bs-nav-link-color);
     --ac-link-focus-outline-color: var(--bs-nav-link-color);
 
     &:focus-visible {
@@ -145,7 +146,6 @@ a {
     }
     &:hover {
       color: var(--bs-navbar-hover-color); // Override focus color on hover
-      --ac-link-hover-bg: var(--bs-navbar-brand-color);
     }    
   }
 }
