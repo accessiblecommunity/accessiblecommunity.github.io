@@ -2,6 +2,18 @@
 import { Icon } from "astro-icon/components";
 import Branding from "@components/Branding.astro";
 import SiteNav from "./NavSiteSecondary.astro";
+
+const navLinks = [{
+  name: "Build-Your-Own Rooms",
+  href: "/services/escape-room/themes",
+}, {
+  name: "How it works",
+  href: "#",
+}, {
+  name: "Our Story",
+  href: "#",
+}]
+
 ---
 
 <header class="sticky-top">
@@ -48,37 +60,22 @@ import SiteNav from "./NavSiteSecondary.astro";
       aria-label="Escape Room"
     >
       <ul class="navbar-nav my-1 mx-4">
-        <li class="nav-item dropdown">
+        {
+          navLinks.map(({name, href}) => (
+            <li class="nav-item">
+              <a
+                class:list={["nav-link", {"active": Astro.url.pathname.startsWith(href)}]}
+                aria-current={Astro.url.pathname.startsWith(href) && "true" || null}
+                {href}
+                set:text={name}
+              />
+            </li>
+          ))
+        }
+        <li class="nav-item d-lg-none">
           <a
             class="nav-link"
-            data-bs-toggle="dropdown"
-            href="#"
-            aria-expanded="false"
-            >Build-Your-Own Kits
-          </a>
-        </li>
-        <li class="nav-item dropdown">
-          <a
-            class="nav-link"
-            data-bs-toggle="dropdown"
-            href="#"
-            aria-expanded="false">How it works</a
-          >
-        </li>
-        <li class="nav-item dropdown">
-          <a
-            class="nav-link"
-            data-bs-toggle="dropdown"
-            href="#"
-            aria-expanded="false">Our Story</a
-          >
-        </li>
-        <li class="nav-item dropdown d-lg-none">
-          <a
-            class="nav-link"
-            data-bs-toggle="dropdown"
-            href="/"
-            aria-expanded="false">Accessible Community Home</a
+            href="/">Accessible Community Home</a
           >
         </li>
       </ul>

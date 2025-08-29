@@ -8,20 +8,10 @@ const metadata: PageMetadata = {
   description: "Overview of the Accessible Escape Room",
   image: getOpenGraphImageData(Astro.site, "pages", "escape-room"),
 };
-const crumbs: Breadcrumbs = [
-  {
-    name: "Home",
-    href: "/",
-  },
-  {
-    name: "Services",
-    href: "/services",
-  },
-];
 
 import Branding from "@components/Branding.astro";
 import ExternalLink from "@components/ExternalLink.astro";
-import Hero from "@components/HeroWithBreadcrumbs.astro";
+import Hero from "@components/Hero.astro";
 import { Image } from "astro:assets";
 import ImageFigure from "@components/ImageFigure.astro";
 import EscapeRoomLayout from "src/layouts/EscapeRoomLayout.astro";
@@ -39,7 +29,7 @@ import { Icon } from "astro-icon/components";
 ---
 
 <EscapeRoomLayout {metadata}>
-  <Hero slot="header" image={heroBg} {crumbs} {title}>
+  <Hero slot="header" image={heroBg}>
     <div class="py-2 px-2" slot="heading">
       <h1 class="display-2">
         <Branding>The Accessible Escape&nbsp;Room</Branding>
