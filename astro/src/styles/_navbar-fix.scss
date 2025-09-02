@@ -10,7 +10,7 @@
 }
 
 .navbar-brand > svg {
-  color: $navbar-light-icon-color;
+  color: var(--#{$prefix}navbar-brand-color);
 }
 
 @if $enable-dark-mode {
@@ -26,10 +26,6 @@
       --#{$prefix}navbar-toggler-border-color: #{$navbar-dark-toggler-border-color};
       --#{$prefix}navbar-toggler-icon-bg: #{escape-svg($navbar-dark-toggler-icon-bg)};
       // scss-docs-end navbar-dark-css-vars
-    }
-
-    .navbar-brand > svg {
-      color: $navbar-dark-icon-color;
     }
   }
 }  
