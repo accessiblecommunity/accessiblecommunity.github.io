@@ -8,9 +8,7 @@ interface Props {
 
 import { isEmpty } from "lodash-es";
 import { Icon } from "astro-icon/components";
-import Branding from "@components/Branding.astro";
-import ExternalLink from "@components/ExternalLink.astro";
-import SiteNavigation from "./SiteNavigation.astro";
+import NavSiteList from "./NavSiteList.astro";
 
 const { title, crumbs = [] } = Astro.props;
 const breadCrumbs: Breadcrumbs =
@@ -51,7 +49,7 @@ const breadCrumbs: Breadcrumbs =
       class="collapse navbar-collapse px-3 d-print-none"
       aria-label="Site"
     >
-      <SiteNavigation main class="my-1 mx-4" />
+      <NavSiteList main class="my-1 mx-4" />
     </nav>
   </div>
   <nav

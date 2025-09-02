@@ -1,8 +1,9 @@
 ---
 import { Icon } from "astro-icon/components";
-import SiteNavigation from "./SiteNavigation.astro";
+import NavSiteList from "./NavSiteList.astro";
 
 interface Props {
+  // The id of the skip link for page navigation
   "page-nav-id"?: string;
 }
 
@@ -42,7 +43,7 @@ const { "page-nav-id": pageNavId = undefined } = Astro.props;
     class="collapse navbar-collapse px-3 d-print-none"
     aria-label="Site"
   >
-    <SiteNavigation class="mx-3" />
+    <NavSiteList class="mx-3" />
   </nav>
 </div>
 
