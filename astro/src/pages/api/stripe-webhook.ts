@@ -101,7 +101,7 @@ async function storePurchaseData(purchaseData: any) {
     // - Allow login to see purchase history
     
     // Create local storage directory if it doesn't exist
-    const storageDir = path.join(process.cwd(), 'local-dev', 'purchases');
+    const storageDir = path.join(process.cwd(), '..', 'local-dev', 'purchases');
     await fs.mkdir(storageDir, { recursive: true });
 
     // Store purchase data as JSON file
