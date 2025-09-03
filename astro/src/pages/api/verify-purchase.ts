@@ -31,7 +31,11 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
     const body = await request.json();
     const { purchaseCode, email } = body;
 
+    // Add debugging
+    console.log('verify-purchase request:', { purchaseCode, email });
+
     if (!purchaseCode || !email) {
+      console.log('Missing required fields');
       return new Response(
         JSON.stringify({ error: 'Invalid purchase code or email address' }),
         { status: 400, headers: { 'Content-Type': 'application/json' } }
@@ -42,6 +46,7 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
     const purchaseData = await getPurchaseData(purchaseCode);
 
     if (!purchaseData) {
+      console.log('Purchase data not found for code:', purchaseCode);
       return new Response(
         JSON.stringify({ error: 'Invalid purchase code or email address' }),
         { status: 404, headers: { 'Content-Type': 'application/json' } }
@@ -111,14 +116,20 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
 
 async function getPurchaseData(purchaseCode: string) {
   try {
-    const storageDir = path.join(process.cwd(), 'local-dev', 'purchases');
+    // Go up one level from astro/ to repo root, then into local-dev/purchases
+    const storageDir = path.join(process.cwd(), '..', 'local-dev', 'purchases');
     const filename = `${purchaseCode}.json`;
     const filepath = path.join(storageDir, filename);
     
+    // Add debugging
+    console.log('Looking for purchase file:', filepath);
+    
     const data = await fs.readFile(filepath, 'utf8');
+    console.log('Found purchase data for:', purchaseCode);
     return JSON.parse(data);
   } catch (error) {
     // File doesn't exist or other error
+    console.log('Error reading purchase file:', error.message);
     return null;
   }
 }
