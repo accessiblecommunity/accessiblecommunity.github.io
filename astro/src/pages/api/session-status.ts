@@ -19,11 +19,15 @@ export const GET: APIRoute = async ({ url, request }) => {
     
     const session = await stripe.checkout.sessions.retrieve(sessionId);
 
-    // Only return payment status - no sensitive customer data
+    // Return only non-sensitive fields the frontend needs
+    const safeSession = {
+      status: session.status,
+      metadata: session.metadata || null,
+      customer_email: session.customer_email || null,
+    };
+
     return new Response(
-      JSON.stringify({
-        status: session.status
-      }),
+      JSON.stringify(safeSession),
       { 
         status: 200, 
         headers: { 'Content-Type': 'application/json' } 
