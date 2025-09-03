@@ -245,6 +245,18 @@ import ThemedSection from "@components/ThemedSection.astro";
       // Display purchase details
       displayPurchaseDetails(sessionId, purchaseCode, sessionData);
 
+      // Save purchase data locally (since webhook won't fire in development)
+      try {
+        await fetch('/api/save-purchase-data', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ sessionId })
+        });
+        console.log('Purchase data saved locally');
+      } catch (error) {
+        console.error('Failed to save purchase data:', error);
+      }
+
       // Enable kit access
       if (accessKitBtn) {
         accessKitBtn.disabled = false;

@@ -12,7 +12,9 @@ dist/
 .env
 
 # Local development files
-astro/local-dev/
+local-dev/purchases/
+local-dev/emails/
+local-dev/uploads/
 
 # Protected materials
 astro/src/protected-materials/

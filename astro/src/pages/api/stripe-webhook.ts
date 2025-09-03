@@ -88,6 +88,9 @@ async function handleSuccessfulPayment(session: Stripe.Checkout.Session) {
   }
 }
 
+// Export for use in save-purchase-data
+export { handleSuccessfulPayment };
+
 async function storePurchaseData(purchaseData: any) {
   try {
     // TODO: For user accounts/login system, also store purchase by email:
