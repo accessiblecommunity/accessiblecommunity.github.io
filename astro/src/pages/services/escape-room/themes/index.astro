@@ -45,7 +45,7 @@ const rooms: Array<CollectionEntry<"escapeRoomThemes">> =
       {
         rooms.map(room => (
           <div class="col">
-            <div class="card border border-primary-subtle">
+            <div class="card border border-dark">
               <Image
                 src={room.data.image}
                 class="card-img-top"
@@ -54,7 +54,7 @@ const rooms: Array<CollectionEntry<"escapeRoomThemes">> =
               <div class="card-body">
                 <h3 class="card-title" set:html={room.data.titleHtml} />
                 <p class="card-text" set:text={room.data.tagline} />
-                <a href={`/services/escape-room/themes/${room.id}`} class="btn btn-primary">Learn more</a>
+                <a href={`/services/escape-room/themes/${room.id}`} class="btn btn-info">Learn more</a>
               </div>
             </div>
           </div>
@@ -73,6 +73,9 @@ const rooms: Array<CollectionEntry<"escapeRoomThemes">> =
   <style scoped>
     .card-img-top {
       height: auto;
+    }
+    .card-title {
+      color: var(--bs-info);
     }
 
     p {
