@@ -84,6 +84,21 @@ export async function getStaticPaths() {
           ),
         },
       },
+     {
+      params: { name: "townhall" },
+      props: {
+        prefix: "townhall/",
+        metadata: {
+          title: "Townhall",
+          description: "Monthly meeting to work on DAF",
+          image: getOpenGraphImageData(
+            Astro.site,
+            "pages",
+            "daf",
+            "The Digital Accessibility Framework townhall",
+          ),
+        },
+      },     
     },
   ];
 }
