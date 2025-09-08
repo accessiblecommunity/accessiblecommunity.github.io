@@ -1,19 +1,25 @@
 ---
 import type { PageMetadata } from "@lib/types";
 import { getOpenGraphImageData } from "@lib/og-image";
+import { getEntry } from "astro:content";
+
+const entry = await getEntry("daf", "overview");
+
+if (!entry)
+  throw new Error("Can't find the overview entry of DAF")
 
 const metadata: PageMetadata = {
   title: "Digital Accessibility Framework",
-  description: "An overview of the Digital Accessibility Framework",
+  description: entry.data.description,
   image: getOpenGraphImageData(
     Astro.site,
     "pages",
     "daf",
-    "An overview of the Digital Accessibility Framework",
+    entry.data.description,
   ),
 };
 
 import DAFStripedLayout from "src/layouts/DAFStripedLayout.astro";
 ---
 
-<DAFStripedLayout prefix="overview/" {metadata} />
+<DAFStripedLayout {entry} {metadata} />
