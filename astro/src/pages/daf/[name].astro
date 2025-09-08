@@ -1,11 +1,12 @@
 ---
+// TODO: Combine this with DAFStripedLayout and DAFLayout
 import { type PageMetadata } from "@lib/types";
 import { getOpenGraphImageData } from "@lib/og-image";
 import { getCollection, type CollectionEntry } from "astro:content";
 
 export async function getStaticPaths() {
   const entries = await getCollection("daf");
-  const paths = entries.map(entry => ({
+  return entries.map((entry) => ({
     params: { name: entry.id },
     props: {
       entry,
@@ -21,8 +22,6 @@ export async function getStaticPaths() {
       },
     },
   }));
-  console.log(paths);
-  return paths;
 }
 
 interface Props {

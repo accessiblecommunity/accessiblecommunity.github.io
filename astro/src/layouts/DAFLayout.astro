@@ -22,10 +22,10 @@ const entries = await getCollection("daf");
 entries.sort((a, b) => a.data.order - b.data.order);
 
 const navLinks = Object.fromEntries(
-  entries.map(entry => ([
+  entries.map((entry) => [
     entry.data.title,
     `/daf/${entry.id == "overview" ? "" : entry.id + "/"}`,
-  ]))
+  ]),
 );
 ---
 
@@ -46,8 +46,18 @@ const navLinks = Object.fromEntries(
         </Metadata>
       )
     }
-    <link rel="icon" type="image/png" href="/images/favicon.png" media="(prefers-color-scheme: light"/>
-    <link rel="icon" type="image/png" href="/images/favicon-dark.png" media="(prefers-color-scheme: dark)" />
+    <link
+      rel="icon"
+      type="image/png"
+      href="/images/favicon.png"
+      media="(prefers-color-scheme: light)"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      href="/images/favicon-dark.png"
+      media="(prefers-color-scheme: dark)"
+    />
     <link rel="sitemap" href="/sitemap-index.xml" />
     <slot name="head" />
     <script>
