@@ -17,7 +17,7 @@ const { "page-nav-id": pageNavId = undefined } = Astro.props;
   {
     pageNavId && (
       <a
-        class="visually-hidden-focusable btn btn-primary skip-link d-print-none"
+        class="visually-hidden-focusable btn btn-dark skip-link d-print-none"
         href={`#${pageNavId}`}
       >
         Skip to Page Navigation
@@ -25,7 +25,7 @@ const { "page-nav-id": pageNavId = undefined } = Astro.props;
     )
   }
   <a
-    class="visually-hidden-focusable btn btn-primary skip-link d-print-none"
+    class="visually-hidden-focusable btn btn-dark skip-link d-print-none"
     href="#main-content"
   >
     Skip to Main Content
@@ -97,11 +97,6 @@ const { "page-nav-id": pageNavId = undefined } = Astro.props;
   @include color-mode(dark) {
     .navbar {
       --bs-body-bg: var(--bs-secondary);
-    }
-
-    .skip-link {
-      color: var(--bs-primary);
-      background-color: white;
     }
 
     .brand-logo {

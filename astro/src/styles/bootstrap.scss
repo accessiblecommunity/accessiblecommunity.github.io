@@ -353,6 +353,14 @@ body.no-scroll {
   font-family: $headings-font-family;
 }
 
+// For long non-breaking links (like email addresses).
+.link-truncate {
+  @extend .text-truncate;
+  @extend .d-inline-block;
+  @extend .align-top;
+  max-width: 100%;
+}
+
 .list-disc li::marker {
   color: $body-color;
 }
