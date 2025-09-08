@@ -1,5 +1,7 @@
 ---
+// TODO: Utilize the patterns setup by the new subsite layout.
 import { type PageMetadata } from "@lib/types";
+import { getCollection } from "astro:content";
 
 interface Props {
   title?: String;
@@ -8,22 +10,23 @@ interface Props {
 
 import "src/styles/bootstrap.scss";
 
-import Metadata from "@components/Metadata.astro";
-import { Icon } from "astro-icon/components";
-import ExternalLink from "@components/ExternalLink.astro";
 import Branding from "@components/Branding.astro";
+import ExternalLink from "@components/ExternalLink.astro";
+import { Icon } from "astro-icon/components";
+import Metadata from "@components/Metadata.astro";
 
 const { metadata, title } = Astro.props;
 if (!metadata.site) metadata.site = "Digital Accessibility Framework";
 
-const navLinks = {
-  Overview: "/daf/",
-  Background: "/daf/background/",
-  Framework: "/daf/framework/",
-  Matrix: "/daf/matrix/",
-  Roadmap: "/daf/roadmap/",
-  Townhall: "/daf/townhall/",
-};
+const entries = await getCollection("daf");
+entries.sort((a, b) => a.data.order - b.data.order);
+
+const navLinks = Object.fromEntries(
+  entries.map(entry => ([
+    entry.data.title,
+    `/daf/${entry.id == "overview" ? "" : entry.id + "/"}`,
+  ]))
+);
 ---
 
 <!doctype html>

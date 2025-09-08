@@ -1,39 +1,25 @@
 ---
-import { components } from "src/lib/mdx";
-import { getCollection, render } from "astro:content";
+// TODO: Merge this into the DAFLayout.
+import defaultComponents from "src/lib/mdx";
+import { render, type CollectionEntry } from "astro:content";
 import { type PageMetadata } from "@lib/types";
 
 interface Props {
-  prefix: string;
+  entry: CollectionEntry<"daf">;
   metadata: PageMetadata;
 }
-const { prefix, metadata } = Astro.props;
-
-const entries = await getCollection("daf", (entry) =>
-  entry.id.startsWith(prefix),
-);
-entries.sort((a, b) => a.data.order - b.data.order);
-const renderedEntries = await Promise.all(
-  entries.map(async (entry) => await render(entry)),
-);
+const { entry, metadata } = Astro.props;
+const { Content } = await render(entry);
 
 import DAFLayout from "src/layouts/DAFLayout.astro";
 import ThemedSection from "@components/ThemedSection.astro";
+
+const components = { Section: ThemedSection, ...defaultComponents };
 ---
 
 <DAFLayout {metadata}>
   <div class="daf-sl">
-    {
-      renderedEntries.map(({ Content }, index) => (
-        <ThemedSection
-          theme={index % 2 === 0 ? undefined : "secondary"}
-          style={index % 2 === 0 ? "primary" : "subtle"}
-          py={4}
-        >
-          <Content {components} />
-        </ThemedSection>
-      ))
-    }
+    <Content {components} />
   </div>
 </DAFLayout>
 
@@ -52,5 +38,13 @@ import ThemedSection from "@components/ThemedSection.astro";
   .daf-sl :global(h4) {
     font-size: 1.15rem;
     margin-bottom: 1em;
+  }
+  .daf-sl :global(section:nth-child(even)) {
+    background-color: var(--bs-secondary-bg-subtle) !important;
+  }
+  /* Copy py-4 style */
+  .daf-sl :global(section) :global(.py-5) {
+    padding-top: 1.5rem !important;
+    padding-bottom: 1.5rem !important;
   }
 </style>

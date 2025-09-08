@@ -1,116 +1,37 @@
 ---
 import { type PageMetadata } from "@lib/types";
 import { getOpenGraphImageData } from "@lib/og-image";
+import { getCollection, type CollectionEntry } from "astro:content";
 
 export async function getStaticPaths() {
-  return [
-    {
-      params: { name: "index" },
-      props: {
-        prefix: "overview/",
-        metadata: {
-          title: "Overview",
-          description: "The overview of the Digital Accessibility Framework",
-          image: getOpenGraphImageData(
-            Astro.site,
-            "pages",
-            "daf",
-            "The overview of the Digital Accessibility Framework",
-          ),
-        },
+  const entries = await getCollection("daf");
+  const paths = entries.map(entry => ({
+    params: { name: entry.id },
+    props: {
+      entry,
+      metadata: {
+        title: entry.data.title,
+        description: entry.data.description,
+        image: getOpenGraphImageData(
+          Astro.site,
+          "pages",
+          "daf",
+          entry.data.description,
+        ),
       },
     },
-    {
-      params: { name: "background" },
-      props: {
-        prefix: "background/",
-        metadata: {
-          title: "Background",
-          description: "The background of the Digital Accessibility Framework",
-          image: getOpenGraphImageData(
-            Astro.site,
-            "pages",
-            "daf",
-            "The background of the Digital Accessibility Framework",
-          ),
-        },
-      },
-    },
-    {
-      params: { name: "framework" },
-      props: {
-        prefix: "framework/",
-        metadata: {
-          title: "Framework",
-          description:
-            "The high-level breakdown of the Digital Accessibility Framework",
-          image: getOpenGraphImageData(
-            Astro.site,
-            "pages",
-            "daf",
-            "The high-level breakdown of the Digital Accessibility Framework",
-          ),
-        },
-      },
-    },
-    {
-      params: { name: "matrix" },
-      props: {
-        prefix: "matrix/",
-        metadata: {
-          title: "Matrix",
-          description: "The matrix of the Digital Accessibility Framework",
-          image: getOpenGraphImageData(
-            Astro.site,
-            "pages",
-            "daf",
-            "The matrix of the Digital Accessibility Framework",
-          ),
-        },
-      },
-    },
-    {
-      params: { name: "roadmap" },
-      props: {
-        prefix: "roadmap/",
-        metadata: {
-          title: "Roadmap",
-          description: "The roadmap of the Digital Accessibility Framework",
-          image: getOpenGraphImageData(
-            Astro.site,
-            "pages",
-            "daf",
-            "The roadmap of the Digital Accessibility Framework",
-          ),
-        },
-      },
-    },
-    {
-      params: { name: "townhall" },
-      props: {
-        prefix: "townhall/",
-        metadata: {
-          title: "Townhall",
-          description: "Monthly meeting to work on DAF",
-          image: getOpenGraphImageData(
-            Astro.site,
-            "pages",
-            "daf",
-            "The Digital Accessibility Framework townhall",
-          ),
-        },
-      },     
-    },
-  ];
+  }));
+  console.log(paths);
+  return paths;
 }
 
 interface Props {
-  prefix: string;
+  entry: CollectionEntry<"daf">;
   metadata: PageMetadata;
 }
-const { prefix, metadata } = Astro.props;
+const { entry, metadata } = Astro.props;
 
 import DAFStripedLayout from "src/layouts/DAFStripedLayout.astro";
 ---
 
-<DAFStripedLayout {prefix} {metadata} />
+<DAFStripedLayout {entry} {metadata} />
