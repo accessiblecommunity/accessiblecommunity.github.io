@@ -146,7 +146,19 @@ a {
     }
     &:hover {
       color: var(--bs-navbar-hover-color); // Override focus color on hover
-    }    
+    }
+
+    &.active {
+      --ac-link-hover-bg: var(--bs-navbar-active-color);
+      --ac-link-focus-outline-color: var(--bs-navbar-active-color);
+
+      &:focus-visible {
+        color: var(--bs-navbar-active-color); // Override hover color on focus
+      }
+      &:hover {
+        color: var(--bs-navbar-hover-color); // Override focus color on hover
+      }
+    }
   }
 }
 
@@ -172,7 +184,7 @@ a {
   &:focus-visible {
     background-color: var(--bs-dropdown-bg);
     color: var(--bs-dropdown-link-color); // Override hover color on focus
-    --ac-link-focus-outline-color: var(bs-dropdown-link-color);
+    --ac-link-focus-outline-color: var(--bs-dropdown-link-color);
   }
   &:hover {
     color: var(--#{$prefix}dropdown-link-hover-color); // Override focus color on hover

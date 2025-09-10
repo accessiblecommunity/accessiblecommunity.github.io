@@ -2,6 +2,7 @@
 import { Icon } from "astro-icon/components";
 import Branding from "@components/Branding.astro";
 import SiteNav from "./NavSiteSecondary.astro";
+import { areSimilarURLs } from "@lib/links";
 
 const navLinks = [{
   name: "Build-Your-Own Rooms",
@@ -45,7 +46,7 @@ const navLinks = [{
       </div>
       <div class="d-flex flex-column flex-fill">
         <div class="lh-1">
-          <a class="navbar-brand" href="/">
+          <a class="navbar-brand" href="/services/escape-room">
             <Branding>Accessible Escape Room</Branding>
           </a>
         </div>
@@ -64,8 +65,8 @@ const navLinks = [{
           navLinks.map(({name, href}) => (
             <li class="nav-item">
               <a
-                class:list={["nav-link", {"active": Astro.url.pathname.startsWith(href)}]}
-                aria-current={Astro.url.pathname.startsWith(href) && "true" || null}
+                class:list={["nav-link", {"active": areSimilarURLs(Astro.url.pathname, href)}]}
+                aria-current={areSimilarURLs(Astro.url, href) && "true" || null}
                 {href}
                 set:text={name}
               />
@@ -116,6 +117,7 @@ const navLinks = [{
   }
   .nav-link {
     --bs-nav-link-color: black;
+    --bs-navbar-active-color: var(--bs-secondary);
     margin-inline: 0.222em;
     margin-top: 0.222em;
     margin-bottom: 0.222em;
