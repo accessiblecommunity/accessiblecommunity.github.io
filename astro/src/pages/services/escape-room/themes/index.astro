@@ -1,0 +1,90 @@
+---
+import { getOpenGraphImageData } from "@lib/og-image";
+import type { Breadcrumbs, PageMetadata } from "@lib/types";
+import { getCollection, type CollectionEntry } from "astro:content";
+
+const title = "Build-Your-Own Rooms";
+const metadata: PageMetadata = {
+  title,
+  description: "Overview of the Accessible Escape Room",
+  image: getOpenGraphImageData(Astro.site, "pages", "escape-room"),
+};
+const crumbs: Breadcrumbs = [
+  {
+    name: "Home",
+    href: "/services/escape-room",
+  },
+];
+
+import Hero from "@components/HeroWithBreadcrumbs.astro";
+import { Image } from "astro:assets";
+import EscapeRoomLayout from "src/layouts/EscapeRoomLayout.astro";
+import ThemedSection from "@components/ThemedSection.astro";
+
+import heroBg from "src/images/escape-room/jonathan-kemper-9tamF4J0vLk-unsplash.jpg";
+
+const rooms: Array<CollectionEntry<"escapeRoomThemes">> =
+  await getCollection("escapeRoomThemes");
+
+---
+
+<EscapeRoomLayout {metadata}>
+  <Hero slot="header" image={heroBg} {crumbs} {title}>
+    <div class="py-2 px-2" slot="heading">
+      <h1 class="display-2">
+        Build-Your-Own Rooms
+      </h1>
+    </div>
+  </Hero>
+
+  <ThemedSection style="tertiary">
+    <h2 class="display-4 text-center mb-4">Themes</h2>
+    <div
+      class="row row-cols-1 row-cols-lg-2 g-4"
+    >
+      {
+        rooms.map(room => (
+          <div class="col">
+            <div class="card border border-dark">
+              <Image
+                src={room.data.image}
+                class="card-img-top"
+                alt={room.data.alt || null}
+              />
+              <div class="card-body">
+                <h3 class="card-title" set:html={room.data.titleHtml} />
+                <p class="card-text" set:text={room.data.tagline} />
+                <a href={`/services/escape-room/themes/${room.id}`} class="btn btn-info">Learn more</a>
+              </div>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+    <p class="pt-4">
+      Our prebuilt escape rooms will be available to order later this year.
+      Please email us at <a
+        class="link-truncate"
+        href="mailto:escaperoom@accessiblecommunity.org"
+        >escaperoom@accessiblecommunity.org</a
+      > if you are interested in purchasing one.
+    </p>
+  </ThemedSection>
+
+  <style scoped>
+    .card-img-top {
+      height: auto;
+    }
+    .card-title {
+      color: var(--bs-info);
+    }
+
+    p {
+      margin-bottom: 0.5em;
+    }
+
+    p.lead {
+      margin-bottom: 0.75em;
+    }
+  </style>
+</EscapeRoomLayout>

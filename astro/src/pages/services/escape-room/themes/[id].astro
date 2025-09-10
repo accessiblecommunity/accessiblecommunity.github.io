@@ -8,11 +8,11 @@ export async function getStaticPaths() {
   const crumbs: Breadcrumbs = [
     {
       name: "Home",
-      href: "/",
+      href: "/services/escape-room/",
     },
     {
-      name: "Escape Room",
-      href: "/services/escape-room/",
+      name: "Build-Your-Own Rooms",
+      href: "/services/escape-room/themes",
     },
   ];
 
@@ -43,28 +43,84 @@ const { room, crumbs, metadata } = Astro.props;
 const { image, title } = room.data;
 const { Content } = await render(room);
 
-import Hero from "src/components/ColumnedHero.astro";
-import Layout from "src/layouts/Layout.astro";
+import Hero from "@components/HeroWithBreadcrumbs.astro";
+import Layout from "src/layouts/EscapeRoomLayout.astro";
 import ThemedSection from "@components/ThemedSection.astro";
 ---
 
-<Layout {title} {crumbs} {metadata}>
-  <Hero
-    {image}
-    slot="header"
-    reverse
-    columns={["md-6", "lg-5", "xxl-6"]}
-    vertical-position="22%"
-  >
-    <div class="py-2 px-2" slot="heading">
-      <h1 class="display-2" set:html={room.data.titleHtml} />
-    </div>
-    <div class="py-3">
-      <p class="text-bg-hero" set:text={room.data.tagline} />
+<Layout {metadata}>
+  <Hero slot="header" {image} {crumbs} {title}>
+    <div class="px-2" slot="heading">
+      <h1
+        class:list={["display-2 text-white w-100"]}
+        set:html={room.data.titleHtml}
+      />
     </div>
   </Hero>
-
   <ThemedSection style="tertiary">
+    <div class="row row-cols-1 row-cols-lg-2 g-4">
+      <div class="p-4">
+        <h2>The Scenario</h2>
+        <p class="text-bg-hero" set:text={room.data.tagline} />
+      </div>
+      <div class="card">
+        <div class="card-body">
+          <h2 class="card-title">Cost: $500.00</h2>
+          <p class="card-text">One-time purchase includes all materials and lifetime access to digital components.</p>
+          <p class="card-text">Ready to bring this adventure to life?</p>
+          <a href="#" class="btn btn-primary d-block text-center">Purchase</a>
+        </div>
+      </div>
+    </div>
+  </ThemedSection>
+  <ThemedSection theme="secondary" style="subtle">
     <Content {components} />
+  </ThemedSection>
+  <ThemedSection style="tertiary">
+    <h2>Our Escape Room Kits include:</h2>
+    <ul class="list-unstyled fs-4">
+      <li>Required Materials (with links to buy them)</li>
+      <ul class="list-styled fs-6">
+        <li>
+          These typically include various accessible locks and puzzle components. Any needed technology (phone, laptop, tablet, TV, etc) is also mentioned here.
+        </li>
+      </ul>
+      <li>Recommended Materials (with links to buy them)</li>
+      <ul class="list-styled fs-6">
+        <li>
+          These typically include backups of certain required materials, items to help with participant orientation, ideas to help theme or style the space or helpful or fun additions that are part of escape rooms in general.
+        </li>
+      </ul>
+      <li>Downloadable/Printable Files</li>
+      <ul class="list-styled fs-6">
+        <li>
+          Certain parts of the puzzle are files that should be downloaded and printed. These might include pictures, letters, recipe cards, etc. To support participants with visual impairments, a Braille printer may be needed.
+        </li>
+      </ul>
+      <li>Needed Component Pages</li>
+      <ul class="list-styled fs-6">
+        <li>
+          Any virtual components (pages, videos, etc) that we can design and develop. This could also include a Leaderboard to use that is themed for the kit.
+        </li>
+      </ul>
+      <li>Assembly Instructions</li>
+      <ul class="list-styled fs-6">
+        <li>
+          Instructions on how to build the clues and layout the room. This includes the order of how to solve the puzzles/clues. For more complicated builds, a video may be available.
+        </li>
+      </ul>
+      <li>Orientation Information</li>
+      <ul class="list-styled fs-6">
+        <li>
+          A document and/or presentation to help the customer introduce the room and prepare the participants. These might be in slides or a video. These should be fully accessible.
+        </li>
+      </ul>
+      <li>Operational, Reset and Packing Guidance</li>
+      <ul class="list-styled fs-6">
+        <li>
+          Useful tips and hints for running a successful Escape Room, including any specific instructions on resetting the room and packing the materials for shipping, travel or storage.
+        </li>
+      </ul>
+    </ul>
   </ThemedSection>
 </Layout>

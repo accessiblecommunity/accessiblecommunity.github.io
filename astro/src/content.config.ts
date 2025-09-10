@@ -54,10 +54,12 @@ const escapeRoomKits = defineCollection({
     pattern: "**/[^_]*.{md,mdx}",
     base: "./src/content/escape-room-kits",
   }),
-  schema: z.object({
-    title: z.string(),
-    order: z.number().default(99999),
-  }),
+  schema: ({ image }) =>
+    z.object({
+      title: z.string(),
+      image: image(),
+      order: z.number().default(99999),
+    }),
 });
 
 const escapeRoomThemes = defineCollection({

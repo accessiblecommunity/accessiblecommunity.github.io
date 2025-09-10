@@ -1,14 +1,28 @@
 ---
 import { Icon } from "astro-icon/components";
-import { Image } from "astro:assets";
 import Branding from "@components/Branding.astro";
-import escapeRoomLogo from "../images/escape-room/escaperoomlogo-768x768.png";
 import SiteNav from "./NavSiteSecondary.astro";
+import { areSimilarURLs } from "@lib/links";
+
+const navLinks = [{
+  name: "Build-Your-Own Rooms",
+  href: "/services/escape-room/themes",
+}, {
+  name: "How it works",
+  href: "#",
+}, {
+  name: "Our Story",
+  href: "#",
+}]
+
 ---
 
 <header class="sticky-top">
-  <SiteNav />
-  <div id="header-escape-navbar" class="navbar navbar-expand-lg align-items-top">
+  <SiteNav page-nav-id="header-escape-navbar" />
+  <div
+    id="header-escape-navbar"
+    class="navbar navbar-expand-lg align-items-top"
+  >
     <div id="brand-nav" class="container-fluid px-3">
       <button
         class="navbar-toggler px-1 me-2 d-print-none"
@@ -22,69 +36,57 @@ import SiteNav from "./NavSiteSecondary.astro";
         <Icon name="bi:list" class="bi" />
       </button>
       <div class="d-none d-lg-block navbar-brand me-2">
-        <Image
-          src={escapeRoomLogo}
-          alt=""
-          width="40"
-          height="40"
-          class="logo-image"
+        <Icon
+          class="bi"
+          name="escape-room-logo"
+          height="2.5rem"
+          role="img"
           aria-hidden="true"
         />
-        <!-- <Icon 
-            class="bi"
-            name="escaperoom-logo"
-            height={16}
-            role="img"
-            aria-hidden="true"/> -->
       </div>
       <div class="d-flex flex-column flex-fill">
-        <a class="navbar-brand" href="/">
-          <Branding>Accessible Escape Room</Branding>  
-        </a>
-        <span class="d-lg-none"><em>by</em> <Branding>Accessible Community</Branding></span>
+        <div class="lh-1">
+          <a class="navbar-brand" href="/services/escape-room">
+            <Branding>Accessible Escape Room</Branding>
+          </a>
+        </div>
+        <span class="d-lg-none"
+          ><em>by</em> <Branding>Accessible Community</Branding></span
+        >
       </div>
     </div>
-    <nav id="escape-room-nav" class="collapse navbar-collapse px-3 d-print-none d-lg-flex w-100 justify-content-end" aria-label="Escape Room">
+    <nav
+      id="escape-room-nav"
+      class="collapse navbar-collapse px-3 d-print-none d-lg-flex w-100 justify-content-end"
+      aria-label="Escape Room"
+    >
       <ul class="navbar-nav my-1 mx-4">
-        <li class="nav-item dropdown">
+        {
+          navLinks.map(({name, href}) => (
+            <li class="nav-item">
+              <a
+                class:list={["nav-link", {"active": areSimilarURLs(Astro.url.pathname, href)}]}
+                aria-current={areSimilarURLs(Astro.url, href) && "true" || null}
+                {href}
+                set:text={name}
+              />
+            </li>
+          ))
+        }
+        <hr class="d-lg-none" />
+        <li class="nav-item d-lg-none">
           <a
             class="nav-link"
-            data-bs-toggle="dropdown"
-            href="#"
-            aria-expanded="false">Build-Your-Own Kits
-          </a>
-        </li>
-        <li class="nav-item dropdown">
-          <a
-            class="nav-link"
-            data-bs-toggle="dropdown"
-            href="#"
-            aria-expanded="false">How it works</a
+            href="/"><Branding>Accessible Community</Branding> Home</a
           >
         </li>
-        <li class="nav-item dropdown">
-          <a
-            class="nav-link"
-            data-bs-toggle="dropdown"
-            href="#"
-            aria-expanded="false">Our Story</a
-          >
-        </li> 
-        <li class="nav-item dropdown d-lg-none">
-          <a
-            class="nav-link"
-            data-bs-toggle="dropdown"
-            href="/"
-            aria-expanded="false">Accessible Community Home</a
-          >
-        </li>     
       </ul>
     </nav>
   </div>
 </header>
 <slot />
 
-<style is:global lang="scss">
+<style lang="scss">
   /* first declaration that is commented out below is for debugging purposes. */
   // * {
   //    outline: 1px solid white;
@@ -97,31 +99,25 @@ import SiteNav from "./NavSiteSecondary.astro";
     min-width: 320px;
   }
 
-  .services-menu .icon-link {
-    gap: 0.25rem;
-  }
-
-  .navbar-brand:focus {
-    color: inherit;
-  }
-  .navbar-brand:focus:hover {
-    color: var(--bs-navbar-brand-hover-color);
-  }
-
-  .logo-image {
-    color: white
-  }
-
   [data-icon="bi:list"] {
     width: 1.25rem;
     height: 1.25rem;
+  }
+  [data-icon="escape-room-logo"] {
+    width: 3.25rem;
+    height: 3.25rem;
   }
 
   #brand-nav {
     height: 3.5rem;
   }
 
+  .navbar-brand {
+    --bs-navbar-brand-color: black;
+  }
   .nav-link {
+    --bs-nav-link-color: black;
+    --bs-navbar-active-color: var(--bs-secondary);
     margin-inline: 0.222em;
     margin-top: 0.222em;
     margin-bottom: 0.222em;
@@ -148,24 +144,22 @@ import SiteNav from "./NavSiteSecondary.astro";
       vertical-align: sub;
     }
   }
-  
+
   @include color-mode(dark) {
-    .brand-logo {
-      color: #ffffff;
-    }
+    .navbar {
+      --bs-body-bg: var(--bs-black);
 
-    .navbar-toggler {
-      color: #ffffff !important;
-      background-color: var(--bs-primary);
+      .navbar-brand {
+        --bs-navbar-brand-color: var(--bs-white);
+      }
+      .navbar-toggler {
+        color: var(--bs-white);
+        background-color: var(--bs-black);
+      }
+      .nav-link {
+        --bs-nav-link-color: var(--bs-white);
+      }
     }
-  }
-</style>
-
-<style scoped>
-  .gi {
-    height: 1em;
-    width: auto;
-    margin-right: 0.2em;
   }
 </style>
 
