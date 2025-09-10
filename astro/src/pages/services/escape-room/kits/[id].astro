@@ -62,20 +62,18 @@ const components = { Section: StripedSection, ...defaultComponents };
       >
     </p>
   </Hero>
-  <div class="text-bg-light">
-    <div class="container">
-      <ul class="nav nav-underline">
-        {
-          headings.map(({ depth, slug, text }) =>
-            depth == 2 ?
-              <li class="nav-item">
-                <a class="nav-link" href={`#${slug}`} set:text={text} />
-              </li>
-            : "",
-          )
-        }
-      </ul>
-    </div>
+  <div class="text-bg-light container">
+    <ul class="nav nav-underline">
+      {
+        headings.map(({ depth, slug, text }) =>
+          depth == 2 ?
+            <li class="nav-item">
+              <a class="nav-link" href={`#${slug}`} set:text={text} />
+            </li>
+          : "",
+        )
+      }
+    </ul>
   </div>
   <Content {components} />
 </EscapeRoomLayout>
