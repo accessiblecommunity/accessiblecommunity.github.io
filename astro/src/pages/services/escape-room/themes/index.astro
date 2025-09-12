@@ -23,12 +23,12 @@ import ThemedSection from "@components/ThemedSection.astro";
 
 import heroBg from "src/images/escape-room/jonathan-kemper-9tamF4J0vLk-unsplash.jpg";
 
-const rooms: Array<CollectionEntry<"escapeRoomThemes">> =
-  await getCollection("escapeRoomThemes");
+const rooms: Array<CollectionEntry<"escapeRoomThemes">> = 
+  sortBy(await getCollection("escapeRoomThemes"), (room) => room.data.title);
 
 ---
 
-<EscapeRoomLayout {metadata}>
+<EscapeRoomLayout {metadata} {title}>
   <Hero slot="header" image={heroBg} {crumbs} {title}>
     <div class="py-2 px-2" slot="heading">
       <h1 class="display-2">

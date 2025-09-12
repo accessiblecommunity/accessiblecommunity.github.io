@@ -2,6 +2,7 @@
 import { getOpenGraphImageData } from "@lib/og-image";
 import type { PageMetadata } from "@lib/types";
 import { getCollection, type CollectionEntry } from "astro:content";
+import { sortBy } from "lodash-es";
 
 const title = "The Accessible Escape Room";
 const metadata: PageMetadata = {
@@ -10,32 +11,28 @@ const metadata: PageMetadata = {
   image: getOpenGraphImageData(Astro.site, "pages", "escape-room"),
 };
 
-const rooms: Array<CollectionEntry<"escapeRoomThemes">> = await getCollection("escapeRoomThemes");
+const rooms: Array<CollectionEntry<"escapeRoomThemes">> = 
+  sortBy(await getCollection("escapeRoomThemes"), (room) => room.data.title);
+
 
 import Branding from "@components/Branding.astro";
-import ExternalLink from "@components/ExternalLink.astro";
-import Hero from "@components/Hero.astro";
 import { Image } from "astro:assets";
-import ImageFigure from "@components/ImageFigure.astro";
 import EscapeRoomLayout from "src/layouts/EscapeRoomLayout.astro";
-import ThemedBox from "@components/ThemedBox.astro";
 import ThemedSection from "@components/ThemedSection.astro";
 
-import escapeRoomLogo from "src/images/escape-room/escaperoomlogo-768x768.png";
 import brailleBlocks from "src/images/escape-room/braille-blocks.png";
 import woodenPuzzles from "src/images/escape-room/wooden-puzzles.png";
 
-import { Icon } from "astro-icon/components";
 import { YouTube } from 'astro-lazy-youtube-embed'
 ---
 
-<EscapeRoomLayout {metadata}>
+<EscapeRoomLayout {metadata} {title}>
   <ThemedSection slot="header" theme="info" py={4}>
     <div
       class="d-flex flex-column flex-lg-row gap-4 py-3 justify-content-lg-center align-items-center"
     >
       <div class="col col-lg-6 col-xl-7 text-light">
-        <h1 class="visually-hidden">The Accessible Escape Room</h1>
+        <h1 class="visually-hidden" set:text={title}></h1>
         <p class="display-2">A fun and accessible team-building activity.</p>
         <p class="lead">
           Where teams of 3-10 people, with or without disabilities, try to solve
@@ -91,14 +88,14 @@ import { YouTube } from 'astro-lazy-youtube-embed'
     </div>
   </ThemedSection>
 
-  <ThemedSection theme="secondary" style="subtle">
+  <ThemedSection style="subtle" theme="secondary">
     <h2 class="text-center">Our build-your-own rooms.</h2>
     <p class="lead">
       Requests for the <Branding>Accessible Escape Room</Branding> have gone beyond
       our ability to run them. Instead, we are providing kits to build and run your
       own accessible escape room! Each kit includes information on what to purchase,
       how to build and run the escape room, and access to all the electronic files
-      for the escape room you select.           
+      for the escape room you select.
     </p>
     <p class="lead">
       If you would like to bring one of our accessible escape rooms to your business
@@ -290,76 +287,6 @@ import { YouTube } from 'astro-lazy-youtube-embed'
   </ThemedSection>
 */}
 
-  <ThemedSection style="tertiary">
-    <h2 class="mb-4">The history of our escape rooms.</h2>
-    <div
-      class="d-flex flex-column flex-lg-row-reverse gap-4 justify-content-lg-between align-items-center align-items-lg-start"
-    >
-      <div class="col-3 col-lg-2">
-        <Image src={escapeRoomLogo} alt="" class="logo" aria-hidden="true" />
-      </div>
-      <p class="col col-lg-9">
-        A few years ago, over lunch, Matt Ater and Rachael Bradley Montgomery
-        joked about creating an accessible escape room. Why? Because Matt, who
-        is blind, had attended his daughter's birthday party at an escape room
-        and wasn't able to participate – at all! Fast forward a year and we were
-        still talking about it. We realized how few individuals with
-        disabilities were able to enjoy this fun activity and so decided to go
-        ahead and build one. We met with Escape Room Loco in Leesburg, VA to
-        learn more. Then along with a team of volunteers from Accessible
-        Community, MITRE, and Vispero we built our first escape room. It had an
-        espionage theme and while it wasn't perfect, everyone could participate
-        in at least one puzzle, usually more. A team of all blind individuals
-        who helped pilot test it had the best score of everyone!
-      </p>
-    </div>
-  </ThemedSection>
-
-  <ThemedSection>
-    <div
-      class="d-flex flex-column flex-lg-row-reverse gap-4 justify-content-lg-between align-items-center"
-    >
-      <div>
-        <h2 class="mb-4">Making an accessible escape room.</h2>
-        <p>
-          If you would like to create an accessible escape room for your
-          business or organization, here are some tips to get started.</p
-        >
-        <ul>
-          <li
-            >Pick a theme that doesn't cause anxiety. Don't lock people in or
-            create panic intentionally. Instead, create challenging puzzles in a
-            fun atmosphere.</li
-          >
-          <li
-            >Don't design puzzles to rely on a single sense. Provide hints using
-            both sound and sight, preferably sound, sight and touch.</li
-          >
-          <li>Offer an untimed option to participants who need it.</li>
-          <li>Provide accommodations when requested.</li>
-          <li
-            >Create a set of puzzles so that everyone can engage with at least
-            one. This means at least one puzzle should take voice input.</li
-          >
-        </ul>
-      </div>
-
-      <ImageFigure
-        class="col-8 col-lg-4"
-        src={brailleBlocks}
-        imageClass="logo"
-        alt="Alphabet blocks with braille"
-      >
-        <span slot="caption"
-          >We have used these <ExternalLink
-            inline
-            href="https://www.plantoys.com/products/braille-alphabet-a-z"
-            >braille alphabet blocks from Plan Toys</ExternalLink
-          > to successfully engage participants with visual impairment.</span
-        >
-      </ImageFigure>
-    </div>
-  </ThemedSection>
 </EscapeRoomLayout>
 
 <style>
@@ -376,6 +303,7 @@ import { YouTube } from 'astro-lazy-youtube-embed'
   }
   .card-title {
     color: var(--bs-dark);
+    font-weight: 500;
     font-size: 1.3rem;
   }
   h2, h3, h4 {
@@ -383,11 +311,8 @@ import { YouTube } from 'astro-lazy-youtube-embed'
     font-weight: 600;
     margin-bottom: 0.5em;
   }
-  .logo {
-    height: auto;
-    width: 100%;
-  }
   a {
+    --bs-link-color: var(--bs-info);
     --bs-link-color-rgb: var(--bs-info-rgb);
   }
   p {

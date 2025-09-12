@@ -72,7 +72,7 @@ a {
     text-decoration: none;
   }
   &:hover {
-    --bs-link-color-rgb: var(--bs-link-hover-color-rgb);
+    color: RGBA(var(--bs-link-hover-color-rgb), var(--bs-link-opacity, 1));
     background-color: var(--ac-link-hover-bg);
     transition: all 0.1s ease-in;
   }
