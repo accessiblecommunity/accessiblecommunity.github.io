@@ -70,7 +70,6 @@ const escapeRoomThemes = defineCollection({
   schema: ({ image }) =>
     z.object({
       title: z.string(),
-      titleHtml: z.string(),
       tagline: z.string(),
       image: image(),
       alt: z.string().optional(),

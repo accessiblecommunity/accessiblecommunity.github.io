@@ -52,9 +52,9 @@ const rooms: Array<CollectionEntry<"escapeRoomThemes">> =
                 alt={room.data.alt || null}
               />
               <div class="card-body">
-                <h3 class="card-title" set:html={room.data.titleHtml} />
+                <h3 class="card-title" set:text={room.data.title} />
                 <p class="card-text" set:text={room.data.tagline} />
-                <a href={`/services/escape-room/themes/${room.id}`} class="btn btn-info">Learn more</a>
+                <a href={`/services/escape-room/themes/${room.id}`} class="btn btn-info btn-contrast-dark">Learn more</a>
               </div>
             </div>
           </div>
@@ -70,21 +70,28 @@ const rooms: Array<CollectionEntry<"escapeRoomThemes">> =
       > if you are interested in purchasing one.
     </p>
   </ThemedSection>
-
-  <style scoped>
-    .card-img-top {
-      height: auto;
-    }
-    .card-title {
-      color: var(--bs-info);
-    }
-
-    p {
-      margin-bottom: 0.5em;
-    }
-
-    p.lead {
-      margin-bottom: 0.75em;
-    }
-  </style>
 </EscapeRoomLayout>
+
+<style>
+  .card-img-top {
+    height: auto;
+  }
+  .card-title {
+    color: var(--bs-info);
+  }
+  h2, h3, h4 {
+    font-weight: 500;
+    margin-bottom: 0.5em;
+  }
+  .card-title, h2, h3, h4 {
+    color: var(--bs-info);
+  }
+
+  p {
+    margin-bottom: 0.5em;
+  }
+
+  p.lead {
+    margin-bottom: 0.75em;
+  }
+</style>
