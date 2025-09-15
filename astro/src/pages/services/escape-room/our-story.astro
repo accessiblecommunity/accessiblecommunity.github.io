@@ -1,7 +1,6 @@
 ---
 import { getOpenGraphImageData } from "@lib/og-image";
 import type { Breadcrumbs, PageMetadata } from "@lib/types";
-import { getCollection, type CollectionEntry } from "astro:content";
 
 const title = "Our Story";
 const metadata: PageMetadata = {
@@ -18,16 +17,15 @@ const crumbs: Breadcrumbs = [
 
 import ExternalLink from "@components/ExternalLink.astro";
 import EscapeRoomLayout from "src/layouts/EscapeRoomLayout.astro";
+import Hero from "@components/HeroWithBreadcrumbs.astro";
 import Testimonial from "@components/Testimonial.astro";
 import ThemedBox from "@components/ThemedBox.astro";
 import ThemedSection from "@components/ThemedSection.astro";
+import { YouTube } from 'astro-lazy-youtube-embed';
 
 import heroBg from "src/images/escape-room/jonathan-kemper-9tamF4J0vLk-unsplash.jpg";
 
-import Hero from "@components/HeroWithBreadcrumbs.astro";
-import { YouTube } from 'astro-lazy-youtube-embed';
 ---
-
 <EscapeRoomLayout {metadata} {title}>
   <Hero slot="header" image={heroBg} {crumbs} {title}>
     <div class="py-2 px-2" slot="heading">

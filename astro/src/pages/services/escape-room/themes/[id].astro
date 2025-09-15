@@ -40,7 +40,8 @@ interface Props {
 }
 
 const { room, crumbs, metadata } = Astro.props;
-const { image, title } = room.data;
+const { header, title } = room.data;
+const { color: themeColor, image } = header;
 const { Content } = await render(room);
 
 import Hero from "@components/HeroWithBreadcrumbs.astro";
@@ -48,27 +49,22 @@ import Layout from "src/layouts/EscapeRoomLayout.astro";
 import ThemedSection from "@components/ThemedSection.astro";
 ---
 
-<Layout {metadata}>
+<Layout {metadata} {title}>
   <Hero slot="header" {image} {crumbs} {title}>
-    <div class="px-2" slot="heading">
-      <h1
-        class:list={["display-2 text-white w-100"]}
-        set:html={room.data.titleHtml}
-      />
-    </div>
+    <h1 class="display-2 text-nowrap" set:text={title} />
   </Hero>
   <ThemedSection style="tertiary">
     <div class="row row-cols-1 row-cols-lg-2 g-4">
       <div class="p-4">
         <h2>The Scenario</h2>
-        <p class="text-bg-hero" set:text={room.data.tagline} />
+        <p set:text={room.data.tagline} />
       </div>
       <div class="card">
         <div class="card-body">
           <h2 class="card-title">Cost: $500.00</h2>
           <p class="card-text">One-time purchase includes all materials and lifetime access to digital components.</p>
           <p class="card-text">Ready to bring this adventure to life?</p>
-          <a href="#" class="btn btn-primary d-block text-center">Purchase</a>
+          <a href="#" class="btn btn-theme d-block text-center">Purchase</a>
         </div>
       </div>
     </div>
@@ -124,3 +120,22 @@ import ThemedSection from "@components/ThemedSection.astro";
     </ul>
   </ThemedSection>
 </Layout>
+
+<style define:vars={{ themeColor }}>
+  h1 {
+    --bs-bg-opacity: 0.5;
+    font-weight: 500;
+    background-color: rgb(from var(--themeColor) r g b / var(--bs-bg-opacity));
+    padding: 0.25rem 0.5rem; /* py-1 px-2 */
+  }
+  h2, h3, h4 {
+    color: var(--themeColor);
+  }
+  a {
+    --bs-link-color: var(--themeColor);
+  }
+  .btn-theme {
+    --bs-btn-bg: var(--themeColor);
+    --bs-btn-color: var(--bs-light);
+  }
+</style>

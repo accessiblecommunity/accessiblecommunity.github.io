@@ -62,6 +62,7 @@ const escapeRoomKits = defineCollection({
     }),
 });
 
+
 const escapeRoomThemes = defineCollection({
   loader: glob({
     pattern: "**/[^_]*.{md,mdx}",
@@ -73,6 +74,10 @@ const escapeRoomThemes = defineCollection({
       tagline: z.string(),
       image: image(),
       alt: z.string().optional(),
+      header: z.object({
+        image: image(),
+        color: z.string(),
+      }),
     }),
 });
 

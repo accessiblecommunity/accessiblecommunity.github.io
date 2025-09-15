@@ -99,9 +99,10 @@ import { YouTube } from 'astro-lazy-youtube-embed'
     </p>
     <p class="lead">
       If you would like to bring one of our accessible escape rooms to your business
-      or venue, we now offer the following themes:</p
+      or venue, we now offer the <a href="/services/escape-room/themes">following themes</a>:</p
     >
-    <div class="row row-cols-2 row-cols-lg-3 row-cols-xl-4 g-3 align-items-stretch">
+    {/* <div class="row row-cols-2 row-cols-lg-3 row-cols-xl-4 g-3 align-items-stretch"> */}
+    <div class="row row-cols-2 g-3 align-items-stretch">
       {
         rooms.map(room => (
           <div class="col">
@@ -200,89 +201,6 @@ import { YouTube } from 'astro-lazy-youtube-embed'
         href="mailto:escaperoom@accessiblecommunity.org"
         >escaperoom@accessiblecommunity.org</a
       >.
-    </p>
-  </ThemedSection>
-
-  <ThemedSection theme="secondary" style="subtle">
-    <h2>Our <strong>build-your-own</strong> themes.</h2>
-    <div
-      class="d-flex flex-column flex-lg-row gap-4 py-3 justify-content-lg-evenly text-primary"
-    >
-      <div class="card col col-lg-5 border border-primary shadow">
-        <Image
-          src={corporateBg}
-          class="card-img-top"
-          alt="A gentleman wearing dark clothes holding a briefcase"
-        />
-        <div class="card-body">
-          <h3 class="card-title">A corporate <strong>conundrum</strong>.</h3>
-          <p class="card-text"
-            >A piece of ground-breaking technology your company has developed is
-            missing. You've received a tip on how to retrieve it.</p
-          >
-        </div>
-      </div>
-
-      <div class="card col col-lg-5 border border-primary shadow">
-        <Image
-          src={bakingBg}
-          class="card-img-top"
-          alt="A freshly baked pie, next to a jar of flour and a rolling pin"
-        />
-        <div class="card-body">
-          <h3 class="card-title">A baking <strong>bonanza</strong>.</h3>
-          <p class="card-text"
-            >You are looking for classic recipes to submit to the local fair.
-            Will you find them in time to win the blue ribbon?</p
-          >
-        </div>
-      </div>
-    </div>
-  </ThemedSection>
-
-  <ThemedSection theme="secondary">
-    <h2 class="text-white">Our <strong>ready-made</strong> themes.</h2>
-    <div
-      class="d-flex flex-column flex-lg-row gap-4 py-3 justify-content-lg-evenly text-primary"
-    >
-      <div class="card col col-lg-5 border border-primary shadow">
-        <Image
-          src={picnicBg}
-          class="card-img-top"
-          alt="A small picnic on a blanket"
-        />
-        <div class="card-body">
-          <h3 class="card-title">A <strong>puzzling</strong> picnic.</h3>
-          <p class="card-text"
-            >Your friend has invited you for a picnic, but it's strangely
-            challenging to setup. Can you figure out the clues before your
-            friend arrives?</p
-          >
-        </div>
-      </div>
-
-      <div class="card col col-lg-5 border border-primary shadow">
-        <Image
-          src={casinoBg}
-          class="card-img-top"
-          alt="A roulette table with piles of chips"
-        />
-        <div class="card-body">
-          <h3 class="card-title">A <strong>cryptic</strong> casino.</h3>
-          <p class="card-text"
-            >You have arrived for an enjoyable evening out at the local casino.
-            Play games and collect chips to gain access the high roller vault.</p
-          >
-        </div>
-      </div>
-    </div>
-    <p class="pt-4 text-white">
-      Our prebuilt escape rooms will be available to order later this year.
-      Please email us at <a
-        class="link-light link-truncate"
-        href="mailto:escaperoom@accessiblecommunity.org"
-        >escaperoom@accessiblecommunity.org</a
-      > if you are interested in purchasing one.
     </p>
   </ThemedSection>
 */}
