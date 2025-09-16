@@ -180,6 +180,9 @@ $box-shadow-lg: inset 0 0 2px 3px hsla(0, 0%, 100%, 0.125),
 
 // 4. Include any default map overrides here
 $custom-colors: (
+// Escape Room Themes
+  "corporate": #591e00,
+  "kitchen":   #395999,
 // TODO: Add in the brand colors only for buttons or other things that we need.
 //       Don't generate a bunch of styles that will not be needed.
   "facebook":  #4267B2,

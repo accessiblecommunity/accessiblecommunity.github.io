@@ -74,10 +74,15 @@ const escapeRoomThemes = defineCollection({
       tagline: z.string(),
       image: image(),
       alt: z.string().optional(),
-      header: z.object({
+      page: z.object({
         image: image(),
-        color: z.string(),
+        theme: z.string().default("dark"),
       }),
+      about: z.object({
+        players: z.string().optional(),
+        length: z.string().optional(),
+        estimatedMaterialCost: z.number().optional(),
+      }).default({}),
     }),
 });
 

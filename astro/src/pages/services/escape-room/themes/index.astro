@@ -30,12 +30,10 @@ const rooms: Array<CollectionEntry<"escapeRoomThemes">> =
 ---
 
 <EscapeRoomLayout {metadata} {title}>
-  <Hero slot="header" image={heroBg} {crumbs} {title}>
-    <div class="py-2 px-2" slot="heading">
-      <h1 class="display-2">
-        Build-Your-Own Rooms
-      </h1>
-    </div>
+  <Hero slot="header" theme="dark" shade image={heroBg} columns="col col-md-9 col-lg-8 col-xl-7" {crumbs} {title}>
+    <h1 class="display-2 bg-dark bg-opacity-50">
+      Build-Your-Own Rooms
+    </h1>
   </Hero>
 
   <ThemedSection style="tertiary">
@@ -53,9 +51,12 @@ const rooms: Array<CollectionEntry<"escapeRoomThemes">> =
                 alt={room.data.alt || null}
               />
               <div class="card-body">
-                <h3 class="card-title" set:text={room.data.title} />
+                <h3 class={`card-title text-${room.data.page.theme}`} set:text={room.data.title} />
                 <p class="card-text" set:text={room.data.tagline} />
-                <a href={`/services/escape-room/themes/${room.id}`} class="btn btn-info btn-contrast-dark">Learn more</a>
+                <a
+                  href={`/services/escape-room/themes/${room.id}`}
+                  class={`btn btn-${room.data.page.theme} btn-contrast-dark`}
+                >Learn more</a>
               </div>
             </div>
           </div>
@@ -74,15 +75,18 @@ const rooms: Array<CollectionEntry<"escapeRoomThemes">> =
 </EscapeRoomLayout>
 
 <style>
+  h1 {
+    font-weight: 500;
+  }
+  h2, h3, h4 {
+    font-weight: 500;
+    margin-bottom: 0.5em;
+  }
   .card-img-top {
     height: auto;
   }
   .card-title {
     color: var(--bs-info);
-  }
-  h2, h3, h4 {
-    font-weight: 500;
-    margin-bottom: 0.5em;
   }
   .card-title, h2, h3, h4 {
     color: var(--bs-info);

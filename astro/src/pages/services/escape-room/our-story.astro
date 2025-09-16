@@ -23,14 +23,12 @@ import ThemedBox from "@components/ThemedBox.astro";
 import ThemedSection from "@components/ThemedSection.astro";
 import { YouTube } from 'astro-lazy-youtube-embed';
 
-import heroBg from "src/images/escape-room/jonathan-kemper-9tamF4J0vLk-unsplash.jpg";
+import heroBg from "src/images/escape-room/shaded/puzzle-display.jpg";
 
 ---
 <EscapeRoomLayout {metadata} {title}>
-  <Hero slot="header" image={heroBg} {crumbs} {title}>
-    <div class="py-2 px-2" slot="heading">
-      <h1 class="display-2">Our story</h1>
-    </div>
+  <Hero slot="header" shade theme="info" columns="col col-md-5 col-lg-3" image={heroBg} imageVertical="75%" {crumbs} {title}>
+    <h1 class="display-2 bg-info bg-opacity-50">Our Story</h1>
   </Hero>
 
   <div class="er-page">

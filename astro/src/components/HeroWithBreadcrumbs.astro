@@ -7,8 +7,10 @@ import type { Breadcrumbs } from "@lib/types";
 
 interface Props {
   image: ImageMetadata | string;
+  imageVertical?: string;
   title: string;
   theme?: string;
+  shade?: boolean;
   columns?: string;
   actionBreakpoint?: string;
   crumbs?: Breadcrumbs;
@@ -16,8 +18,10 @@ interface Props {
 
 const {
   image,
+  imageVertical = "center",
   title,
   theme = "primary",
+  shade = false,
   columns = "col-lg-6",
   actionBreakpoint = "lg",
   crumbs = undefined,
@@ -35,7 +39,7 @@ if (image) {
 
 <section
   class={`bg-${theme}`}
-  style={`background: no-repeat center/cover ${heroBgUrl}`}
+  style={`background: no-repeat center ${imageVertical}/cover ${heroBgUrl}`}
 >
   <nav
     id="breadcrumbs-nav"
@@ -46,14 +50,14 @@ if (image) {
     <ol class="breadcrumb lh-sm">
       {
         crumbs?.map(({ name, href }) => (
-          <li class="breadcrumb-item">
+          <li class:list={['breadcrumb-item px-1', shade && `bg-${theme} bg-opacity-50`]}>
             <a href={href} class="link-light link-offset-1 text-truncate">
               {name}
             </a>
           </li>
         ))
       }
-      <li class="breadcrumb-item active" aria-current="page">
+      <li class:list={['breadcrumb-item active px-1', shade && `bg-${theme} bg-opacity-50`]} aria-current="page">
         <span set:text={title} />
       </li>
     </ol>
@@ -89,7 +93,7 @@ if (image) {
 <style>
   /* Breadcrumbs are 2.25 in height */
   .hero {
-    padding: 2.75rem 0 5rem;
+    padding: 2.25rem 0 4.5rem;
     text-align: center;
   }
 

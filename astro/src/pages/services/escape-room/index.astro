@@ -113,7 +113,7 @@ import { YouTube } from 'astro-lazy-youtube-embed'
                 alt={room.data.alt || null}
               />
               <div class="card-body">
-                <h3 class="card-title text-truncate" set:text={room.data.title} />
+                <h3 class={`card-title text-truncate text-${room.data.page.theme}`} set:text={room.data.title} />
                 <p class="card-text" set:text={room.data.tagline} />
               </div>
             </div>
@@ -128,83 +128,7 @@ import { YouTube } from 'astro-lazy-youtube-embed'
         >escaperoom@accessiblecommunity.org</a
       >.
     </p>
-  </ThemedSection>  
-
- {/*
-  <ThemedSection>
-    <h2
-      >I like <strong>puzzles</strong>. I would like to <strong>play</strong
-      >.</h2
-    >
-
-    <div
-      class="d-flex flex-column flex-lg-row gap-4 py-3 justify-content-lg-center text-primary"
-    >
-      <ThemedBox
-        theme="info"
-        text={true}
-        border={1}
-        class="col col-lg-6 col-xl-5 shadow rounded"
-      >
-        <h3 class="text-white">Build-your-own Kit</h3>
-        <p>Cost: <strong class="text-brand">$500</strong>.</p>
-        <p>
-          Our "do-it-yourself" escape rooms are lightweight and fun. What's
-          included:
-        </p>
-        <ul class="bullets">
-          <li
-            >Step-by-step instructions on how to assemble the escape room
-            yourself.</li
-          >
-          <li
-            >A guide with how to run the escape room and how to accommodate
-            people with various disabilties.</li
-          >
-          <li
-            >Access to the digital content with appropriate captions and audio
-            descriptions.</li
-          >
-        </ul>
-      </ThemedBox>
-      <ThemedBox
-        theme="primary"
-        text={true}
-        border={1}
-        class="col col-lg-6 col-xl-5 shadow rounded"
-      >
-        <h3 class="text-white">Ready-made Kit</h3>
-        <p>Cost: <strong class="text-brand">$3,500</strong>.</p>
-        <p>
-          Our premade escape rooms have a higher level of technology and
-          automation. What's included:
-        </p>
-        <ul class="bullets">
-          <li
-            >One instance of the escape room, preassembled and sent directly to
-            you.</li
-          >
-          <li
-            >A guide with how to run the escape room and how to accommodate
-            people with various disabilties.</li
-          >
-          <li
-            >Access to the digital content with appropriate captions and audio
-            descriptions.</li
-          >
-        </ul>
-      </ThemedBox>
-    </div>
-    <p class="lead pt-4">
-      If you are interested in purchasing, please email us at <a
-        class="link-truncate"
-        href="mailto:escaperoom@accessiblecommunity.org"
-        >escaperoom@accessiblecommunity.org</a
-      >.
-    </p>
   </ThemedSection>
-*/}
-
 </EscapeRoomLayout>
 
 <style>
@@ -220,7 +144,6 @@ import { YouTube } from 'astro-lazy-youtube-embed'
     height: auto;
   }
   .card-title {
-    color: var(--bs-dark);
     font-weight: 500;
     font-size: 1.3rem;
   }

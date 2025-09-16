@@ -21,27 +21,25 @@ const quotes = [
   "I was surprised by how much I relied on my teammates. It reminded me that collaboration is such a huge part of problem-solving in our training and working with others every day.",
 ]
 
+import Branding from "@components/Branding.astro";
 import EscapeRoomLayout from "src/layouts/EscapeRoomLayout.astro";
 import Hero from "@components/HeroWithBreadcrumbs.astro";
+import { Icon } from "astro-icon/components";
 import ThemedSection from "@components/ThemedSection.astro";
 
-import heroBg from "src/images/escape-room/jonathan-kemper-9tamF4J0vLk-unsplash.jpg";
-import Branding from "@components/Branding.astro";
-import { Icon } from "astro-icon/components";
+import heroBg from "src/images/escape-room/shaded/puzzle-display.jpg";
 ---
 
 <EscapeRoomLayout {metadata} {title}>
-  <Hero slot="header" theme="info" image={heroBg} {crumbs} {title}>
-    <div class="py-2 px-2" slot="heading">
-      <h1 class="display-2" set:text={title} />
-    </div>
+  <Hero slot="header" theme="info" shade image={heroBg} imageVertical="0%" columns="col-8 col-md-5" {crumbs} {title}>
+    <h1 class="display-2 px-1 bg-info bg-opacity-75" set:text={title} />
   </Hero>
 
   <ThemedSection>
     <h2 class="visually-hidden">Overview</h2>
     <p class="lead">
       We believe that team-building activities should be available to everyone. We've created
-      <Branding>The Accessible Escape Room</Branding> to ensure that everyone can take part.
+      the <Branding>Accessible Escape Room</Branding> to ensure that everyone can take part.
     </p>
     <p>
       Each escape room kit is designed so that individuals with disabilities can complete at
@@ -134,6 +132,9 @@ import { Icon } from "astro-icon/components";
 </EscapeRoomLayout>
 
 <style>
+  h1 {
+    font-weight: 500;
+  }
   [data-icon="quote-left"],
   [data-icon="quote-right"] {
     color: var(--bs-info);

@@ -69,7 +69,7 @@ export default defineConfig({
           // Social Media
           'facebook', 'instagram', 'linkedin', 'rss-fill', 'tiktok', 'youtube','globe', 'mastodon', 'twitter',
           // Descriptive
-          'gift-fill', 'pencil-fill', 'people-fill', 'person-fill',
+          'gift-fill', 'pencil-fill', 'people-fill', 'person-fill', 'stopwatch-fill', 'tools',
         ],
         // CoreUI Brands
         cib: [
