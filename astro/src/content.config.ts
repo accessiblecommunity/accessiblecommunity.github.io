@@ -45,6 +45,8 @@ const collaborators = defineCollection({
 const daf = defineCollection({
   loader: glob({ pattern: "**/[^_]*.{md,mdx}", base: "./src/content/daf" }),
   schema: z.object({
+    title: z.string(),
+    description: z.string(),
     order: z.number().default(99999),
   }),
 });
