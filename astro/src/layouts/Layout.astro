@@ -34,8 +34,18 @@ const { title, crumbs, heading, metadata } = Astro.props;
         </Metadata>
       )
     }
-    <link rel="icon" type="image/png" href="/images/favicon.png" media="(prefers-color-scheme: light"/>
-    <link rel="icon" type="image/png" href="/images/favicon-dark.png" media="(prefers-color-scheme: dark)" />
+    <link
+      rel="icon"
+      type="image/png"
+      href="/images/favicon.png"
+      media="(prefers-color-scheme: light"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      href="/images/favicon-dark.png"
+      media="(prefers-color-scheme: dark)"
+    />
     <link rel="sitemap" href="/sitemap-index.xml" />
     <slot name="head" />
   </head>

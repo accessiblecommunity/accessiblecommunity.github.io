@@ -1,0 +1,19 @@
+---
+// Component that allows switching of each stripe without
+import ThemedSection from "./ThemedSection.astro";
+---
+
+<div class="striped">
+  <ThemedSection>
+    <slot />
+  </ThemedSection>
+</div>
+
+<style scoped>
+  div:nth-child(even of .striped) :global(section) {
+    background-color: antiquewhite !important;
+  }
+  .striped :global(img) {
+    float: right;
+  }
+</style>

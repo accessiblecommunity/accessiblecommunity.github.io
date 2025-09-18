@@ -1,0 +1,91 @@
+---
+import { getCollection, render, type CollectionEntry } from "astro:content";
+import { getOpenGraphImageData } from "src/lib/og-image";
+import type { Breadcrumbs, PageMetadata } from "src/lib/types";
+import defaultComponents from "src/lib/mdx";
+
+import "src/styles/bootstrap.scss";
+
+export async function getStaticPaths() {
+  const crumbs: Breadcrumbs = [
+    {
+      name: "Home",
+      href: "/services/escape-room/",
+    },
+  ];
+
+  const kits: Array<CollectionEntry<"escapeRoomKits">> =
+    await getCollection("escapeRoomKits");
+
+  return kits.map((kit) => {
+    const metadata: PageMetadata = {
+      title: kit.data.title,
+      description: `Overview of the ${kit.data.title} Accessible Escape Room`,
+      image: getOpenGraphImageData(Astro.site, "pages", "escape-room"), // Fix
+    };
+
+    return {
+      params: { id: kit.id },
+      props: { room: kit, crumbs, metadata },
+    };
+  });
+}
+
+interface Props {
+  room: CollectionEntry<"escapeRoomKits">;
+  crumbs: Breadcrumbs;
+  metadata: PageMetadata;
+}
+
+const { room: kit, crumbs, metadata } = Astro.props;
+const { title } = kit.data;
+const { headings, Content } = await render(kit);
+
+import Branding from "src/components/Branding.astro";
+import { Icon } from "astro-icon/components";
+import EscapeRoomLayout from "src/layouts/EscapeRoomLayout.astro";
+import Hero from "@components/HeroWithBreadcrumbs.astro";
+import StripedSection from "src/components/StripedSection.astro";
+
+const components = { Section: StripedSection, ...defaultComponents };
+---
+
+<EscapeRoomLayout {metadata}>
+  <Hero slot="header" image={kit.data.image} {crumbs} {title}>
+    <div class="py-2 px-2" slot="heading">
+      <h1 class:list={["display-2 text-white w-100"]} set:text={title} />
+    </div>
+    <p class="tagline text-white">
+      An Accessible Escape Room provided by
+      <Icon class="bi" name="ac-logo" height={16} aria-hidden="true" /><Branding
+        >Accessible Community</Branding
+      >
+    </p>
+  </Hero>
+  <div class="text-bg-light container">
+    <ul class="nav nav-underline">
+      {
+        headings.map(({ depth, slug, text }) =>
+          depth == 2 ?
+            <li class="nav-item">
+              <a class="nav-link" href={`#${slug}`} set:text={text} />
+            </li>
+          : "",
+        )
+      }
+    </ul>
+  </div>
+  <Content {components} />
+</EscapeRoomLayout>
+
+<style>
+  p.tagline :global(.bi) {
+    margin-bottom: 0.2em;
+  }
+  .nav-underline li.nav-item {
+    font-size: 0.8em;
+  }
+  .nav-underline a.nav-link:hover {
+    color: white;
+  }
+</style>

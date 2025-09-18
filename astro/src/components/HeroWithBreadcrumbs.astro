@@ -1,0 +1,125 @@
+---
+import { getImage } from "astro:assets";
+import { isEmpty } from "lodash-es";
+
+import type { ImageMetadata } from "astro";
+import type { Breadcrumbs } from "@lib/types";
+
+interface Props {
+  image: ImageMetadata | string;
+  imageVertical?: string;
+  title: string;
+  theme?: string;
+  shade?: boolean;
+  columns?: string;
+  actionBreakpoint?: string;
+  crumbs?: Breadcrumbs;
+}
+
+const {
+  image,
+  imageVertical = "center",
+  title,
+  theme = "primary",
+  shade = false,
+  columns = "col-lg-6",
+  actionBreakpoint = "lg",
+  crumbs = undefined,
+} = Astro.props;
+
+let heroBgUrl;
+
+if (image) {
+  const optimizedBg = await getImage({ src: image, format: "avif" });
+  heroBgUrl = `url(${optimizedBg.src})`;
+} else {
+  heroBgUrl = "";
+}
+---
+
+<section
+  class={`bg-${theme}`}
+  style={`background: no-repeat center ${imageVertical}/cover ${heroBgUrl}`}
+>
+  <nav
+    id="breadcrumbs-nav"
+    aria-label="Breadcrumb"
+    class="breadcrumbs d-print-none"
+    slot="heading"
+  >
+    <ol class="breadcrumb lh-sm">
+      {
+        crumbs?.map(({ name, href }) => (
+          <li class:list={['breadcrumb-item px-1', shade && `bg-${theme} bg-opacity-50`]}>
+            <a href={href} class="link-light link-offset-1 text-truncate">
+              {name}
+            </a>
+          </li>
+        ))
+      }
+      <li class:list={['breadcrumb-item active px-1', shade && `bg-${theme} bg-opacity-50`]} aria-current="page">
+        <span set:text={title} />
+      </li>
+    </ol>
+  </nav>
+  <div class="container hero">
+    <slot name="heading" />
+    <div class:list={[columns, "mx-auto text-white"]}>
+      <slot />
+    </div>
+  </div>
+  {
+    Astro.slots.has("action-bar") && (
+      <div class={`bg-${theme} bg-opacity-50 py-3 text-white`}>
+        <div
+          class={`d-flex flex-column flex-${actionBreakpoint}-row align-items-center justify-content-${actionBreakpoint}-evenly gap-2`}
+        >
+          <slot name="action-bar" />
+        </div>
+      </div>
+    )
+  }
+  {
+    Astro.slots.has("prologue") && (
+      <div class={`bg-${theme} bg-opacity-50 py-2`}>
+        <div class="container-fluid mx-auto text-white text-center">
+          <slot name="prologue" />
+        </div>
+      </div>
+    )
+  }
+</section>
+
+<style>
+  /* Breadcrumbs are 2.25 in height */
+  .hero {
+    padding: 2.25rem 0 4.5rem;
+    text-align: center;
+  }
+
+  .breadcrumb {
+    --bs-breadcrumb-padding-x: 1.2rem;
+    --bs-breadcrumb-padding-y: 1rem;
+    --bs-breadcrumb-divider-color: var(--bs-light);
+    --bs-breadcrumb-item-active-color: var(--bs-light);
+    --bs-link-color-rgb: var(--bs-white-rgb);
+  }
+
+  .hero :global(h1),
+  .hero :global(h2),
+  .hero :global(h3),
+  .hero :global(h4),
+  .hero :global(h5),
+  .hero :global(h6) {
+    --bs-heading-color: white;
+  }
+
+  .hero :global(.display-1),
+  .hero :global(.display-2),
+  .hero :global(.display-3),
+  .hero :global(.display-4),
+  .hero :global(.display-5),
+  .hero :global(.display-6) {
+    color: white;
+  }
+</style>

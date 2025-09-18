@@ -36,8 +36,18 @@ const styleRules = flatMap(Object.entries(cssRules), ([key, value]) => {
   </div>
 </div>
 
-<style is:global>
-  .heading .display-2 {
+<style>
+  .heading :global(h1),
+  .heading :global(h2),
+  .heading :global(h3),
+  .heading :global(h4) {
+    --bs-heading-color: white;
+  }
+
+  .heading :global(.display-1),
+  .heading :global(.display-2),
+  .heading :global(.display-3),
+  .heading :global(.display-4) {
     color: white;
   }
 </style>

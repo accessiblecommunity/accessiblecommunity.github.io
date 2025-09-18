@@ -7,10 +7,8 @@ interface Props {
 }
 
 import { isEmpty } from "lodash-es";
-import { Image } from "astro:assets";
 import { Icon } from "astro-icon/components";
-import Branding from "@components/Branding.astro";
-import ExternalLink from "@components/ExternalLink.astro";
+import NavSiteList from "./NavSiteList.astro";
 
 const { title, crumbs = [] } = Astro.props;
 const breadCrumbs: Breadcrumbs =
@@ -38,7 +36,7 @@ const breadCrumbs: Breadcrumbs =
         <Icon name="bi:list" class="bi" />
       </button>
       <div class="d-none d-lg-block navbar-brand me-2">
-        <Icon name="ac-logo" class="brand-logo" role="img" aria-hidden="true" />
+        <Icon name="ac-logo" role="img" aria-hidden="true" />
       </div>
       <div class="my-1 flex-fill align-self-start">
         <a class="navbar-brand" href="/"
@@ -46,177 +44,19 @@ const breadCrumbs: Breadcrumbs =
         >
       </div>
     </div>
-    <nav id="site-nav" class="collapse navbar-collapse px-3 d-print-none" aria-label="Site">
-      <ul class="navbar-nav my-1 mx-4">
-        <li class="nav-item dropdown">
-          <a
-            class="nav-link dropdown-toggle"
-            data-bs-toggle="dropdown"
-            href="#"
-            role="button"
-            aria-expanded="false">About</a
-          >
-          <ul class="dropdown-menu px-15 pb-1">
-            <li>
-              <a class="dropdown-item" href="/about/mission"
-                >Mission &amp; Vision</a
-              >
-            </li>
-            {
-              /* <li>
-              <a class="dropdown-item" href="/about/a11y">Why Accessibility?</a>
-            </li> */
-            }
-            <li>
-              <a class="dropdown-item" href="/about/story">Founder's Story</a>
-            </li>
-            <li>
-              <a class="dropdown-item" href="/about/policies">Our Policies</a>
-            </li>
-          </ul>
-        </li>
-        <li class="nav-item dropdown">
-          <a
-            class="nav-link dropdown-toggle"
-            data-bs-toggle="dropdown"
-            href="#"
-            role="button"
-            aria-expanded="false">Services</a
-          >
-          <ul class="dropdown-menu px-15 pb-1 services-menu">
-            <li>
-              <a class="dropdown-item" href="/services/tip-of-the-week"
-                >Tip of the Week</a
-              >
-            </li>
-            <li>
-              <a class="dropdown-item" href="/services/evaluations"
-                >Evaluations</a
-              >
-            </li>
-            <li>
-              <a class="dropdown-item" href="/services/escape-room"
-                >Accessible Escape Room</a
-              >
-            </li>
-            <li>
-              <a class="dropdown-item" href="/blog">Our Blog</a>
-            </li>
-            <li><hr class="dropdown-divider" /></li>
-            <li>
-              <a class="dropdown-item" href="/services/globa11y/"
-                ><Icon
-                  class="bi gi"
-                  name="globa11y-logo"
-                  height={16}
-                  aria-hidden="true"
-                /><Branding>globa11y</Branding></a
-              >
-            </li>
-            <li>
-              <ExternalLink
-                class="dropdown-item py-2"
-                gaps
-                href="https://www.ta11y.org/"
-              >
-                <Icon
-                  class="bi"
-                  name="ta11y-logo"
-                  height={16}
-                  role="img"
-                  aria-hidden="true"
-                /><Branding text="ta11y.org" /></ExternalLink
-              >
-            </li>
-            <li>
-              <ExternalLink
-                class="dropdown-item py-2"
-                gaps
-                href="https://www.mutua11y.org/"
-                ><Icon
-                  class="bi"
-                  name="mutua11y-logo"
-                  height={16}
-                  role="img"
-                  aria-hidden="true"
-                /><Branding text="mutua11y.org" /></ExternalLink
-              >
-            </li>
-          </ul>
-        </li>
-        <li class="nav-item dropdown">
-          <a
-            class="nav-link dropdown-toggle"
-            data-bs-toggle="dropdown"
-            href="#"
-            role="button"
-            aria-expanded="false">Research</a
-          >
-          <ul class="dropdown-menu px-15 pb-1">
-            <li>
-              <a class="dropdown-item text-break py-2" href="/daf/"
-                >Digital Accessibility Framework</a
-              >
-            </li>
-            <li>
-              <ExternalLink
-                class="dropdown-item py-2"
-                href="https://accessiblecommunity.org/useable/"
-              >
-                <Branding text="useable" /></ExternalLink
-              >
-            </li>
-          </ul>
-        </li>
-        <li class="nav-item dropdown">
-          <a
-            class="nav-link dropdown-toggle"
-            data-bs-toggle="dropdown"
-            href="#"
-            role="button"
-            aria-expanded="false">Team</a
-          >
-          <ul class="dropdown-menu px-15 pb-1">
-            <li>
-              <a class="dropdown-item" href="/team/board">Board Members</a>
-            </li>
-            <li>
-              <a class="dropdown-item" href="/team/leadership"
-                >Leadership Team</a
-              >
-            </li>
-            <li><a class="dropdown-item" href="/team/staff">Staff</a></li>
-            <li>
-              <a class="dropdown-item" href="/team/previous"
-                >Previous Contributors</a
-              >
-            </li>
-            <li><a class="dropdown-item" href="/team/partners">Partners</a></li>
-          </ul>
-        </li>
-        <li class="nav-item dropdown">
-          <a
-            class="nav-link dropdown-toggle"
-            data-bs-toggle="dropdown"
-            href="#"
-            role="button"
-            aria-expanded="false">Join us</a
-          >
-          <ul class="dropdown-menu px-15 pb-1">
-            <li><a class="dropdown-item" href="/volunteer">Volunteer</a></li>
-            <!-- TODO: Hiding the sponsor page until it's done. -->
-            <!-- <li><a class="dropdown-item" href="/join-us/sponsor">Sponsor</a></li> -->
-          </ul>
-        </li>
-      </ul>
-      <a
-        class="btn btn-info display-65 mx-1 my-1 general-button"
-        href="/donate"
-        role="button">Donate</a
-      >
+    <nav
+      id="site-nav"
+      class="collapse navbar-collapse px-3 d-print-none"
+      aria-label="Site"
+    >
+      <NavSiteList main class="my-1 mx-4" />
     </nav>
   </div>
-  <nav id="breadcrumbs-nav" aria-label="Breadcrumb" class="position-absolute d-print-none">
+  <nav
+    id="breadcrumbs-nav"
+    aria-label="Breadcrumb"
+    class="position-absolute d-print-none"
+  >
     <ol class="breadcrumb lh-sm">
       {
         breadCrumbs.map(({ name, href }) => (
@@ -235,7 +75,7 @@ const breadCrumbs: Breadcrumbs =
 </header>
 <slot />
 
-<style is:global lang="scss">
+<style lang="scss">
   /* first declaration that is commented out below is for debugging purposes. */
   // * {
   //    outline: 1px solid white;
@@ -244,16 +84,13 @@ const breadCrumbs: Breadcrumbs =
   @import "../styles/dark-mode.scss";
   @import "../styles/responsive-sizing.scss";
 
-  #header-navbar {
+  .navbar {
     min-width: 320px;
+    --bs-body-bg: var(--bs-white);
   }
 
   #breadcrumbs-nav {
     min-width: 250px;
-  }
-
-  .services-menu .icon-link {
-    gap: 0.25rem;
   }
 
   .skip-link:focus,
@@ -264,13 +101,6 @@ const breadCrumbs: Breadcrumbs =
     top: 1rem;
     left: 0.8rem;
     z-index: 999;
-  }
-
-  .navbar-brand:focus {
-    color: inherit;
-  }
-  .navbar-brand:focus:hover {
-    color: var(--bs-navbar-brand-hover-color);
   }
 
   [data-icon="ac-logo"] {
@@ -292,18 +122,24 @@ const breadCrumbs: Breadcrumbs =
     left: 4rem;
   }
 
+  .breadcrumb-item {
+    --bs-breadcrumb-item-active-color: var(--bs-primary);
+    --bs-link-color-rgb: var(--bs-primary-rgb);
+
+    > .text-truncate {
+      display: inline-block;
+      max-width: 10em;
+    }
+  }
+
   .nav-link {
     margin-inline: 0.222em;
     margin-top: 0.222em;
     margin-bottom: 0.222em;
   }
 
-  .dropdown-item {
-    margin-bottom: 0.4444em;
-  }
-
-  .dropdown-menu > .dropdown-item:last-child {
-    margin-bottom: 0em;
+  .dropdown-menu :global(.dropdown-item) {
+    margin-bottom: 0.4em;
   }
 
   @include media-breakpoint-down(lg) {
@@ -318,11 +154,6 @@ const breadCrumbs: Breadcrumbs =
     color: var(--bs-primary);
     padding-inline: 3px;
     font-size: 1.1rem;
-  }
-
-  .breadcrumb-item > .text-truncate {
-    display: inline-block;
-    max-width: 10em;
   }
 
   @include media-breakpoint-down(md) {
@@ -365,12 +196,20 @@ const breadCrumbs: Breadcrumbs =
   }
 
   @include color-mode(dark) {
+    .navbar {
+      --bs-body-bg: var(--bs-primary);
+    }
+    .breadcrumb-item {
+      --bs-breadcrumb-item-active-color: var(--bs-white);
+      --bs-link-color-rgb: var(--bs-white-rgb);
+    }
+
     .skip-link {
       color: var(--bs-primary);
       background-color: white;
     }
 
-    .brand-logo {
+    [data-icon="ac-logo"] {
       color: #ffffff;
     }
 
@@ -381,21 +220,13 @@ const breadCrumbs: Breadcrumbs =
   }
 </style>
 
-<style scoped>
-  .gi {
-    height: 1em;
-    width: auto;
-    margin-right: 0.2em;
-  }
-</style>
-
 <script>
   import { Collapse, Dropdown } from "~bootstrap-es";
 
-  Array.from(document.querySelectorAll(".dropdown")).forEach(
-    (node) => new Dropdown(node),
+  Array.from(document.querySelectorAll(".dropdown")).forEach((node) =>
+    Dropdown.getOrCreateInstance(node),
   );
-  Array.from(document.querySelectorAll(".collapse")).forEach(
-    (node) => new Collapse(node, { toggle: false }),
+  Array.from(document.querySelectorAll(".collapse")).forEach((node) =>
+    Collapse.getOrCreateInstance(node, { toggle: false }),
   );
 </script>

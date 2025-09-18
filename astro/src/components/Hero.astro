@@ -28,7 +28,7 @@ if (image) {
 
 <section
   class={`bg-${theme}`}
-  style={`background: no-repeat center ${heroBgUrl}`}
+  style={`background: no-repeat center/cover ${heroBgUrl}`}
 >
   <div class="container hero">
     <slot name="heading" />
@@ -38,7 +38,7 @@ if (image) {
   </div>
   {
     Astro.slots.has("action-bar") && (
-      <div class="bg-primary bg-opacity-50 py-3 text-white">
+      <div class={`bg-${theme} bg-opacity-50 py-3 text-white`}>
         <div
           class={`d-flex flex-column flex-${actionBreakpoint}-row align-items-center justify-content-${actionBreakpoint}-evenly gap-2`}
         >
@@ -49,7 +49,7 @@ if (image) {
   }
   {
     Astro.slots.has("prologue") && (
-      <div class="bg-primary bg-opacity-50 py-2">
+      <div class={`bg-${theme} bg-opacity-50 py-2`}>
         <div class="container-fluid mx-auto text-white text-center">
           <slot name="prologue" />
         </div>
@@ -58,26 +58,31 @@ if (image) {
   }
 </section>
 
-<style is:global>
+<style>
   .hero {
     padding: 4.5rem 0 3rem !important;
     text-align: center;
   }
 
-  .hero h1,
-  .hero h2,
-  .hero h3,
-  .hero h4,
-  .hero .display-1,
-  .hero .display-2,
-  .hero .display-3,
-  .hero .display-4,
-  .hero .display-5,
-  .hero .display-6 {
+  .hero :global(h1),
+  .hero :global(h2),
+  .hero :global(h3),
+  .hero :global(h4),
+  .hero :global(h5),
+  .hero :global(h6) {
+    --bs-heading-color: white;
+  }
+
+  .hero :global(.display-1),
+  .hero :global(.display-2),
+  .hero :global(.display-3),
+  .hero :global(.display-4),
+  .hero :global(.display-5),
+  .hero :global(.display-6) {
     color: white;
   }
 
-  .hero .text-bg-hero {
+  .hero :global(.text-bg-hero) {
     background-color: rgba(var(--bs-primary-rgb), var(--bs-bg-opacity));
     border-radius: var(--bs-border-radius-sm);
     --bs-bg-opacity: 0.25;

@@ -77,26 +77,30 @@ $enable-smooth-scroll:  false;
 //***********************
 //* Navbar & Breadcrumbs
 //**********************/
-// $navbar-light-color:                rgba(var(--#{$prefix}emphasis-color-rgb), .65) !default;
-$navbar-light-hover-color:          $ac-navy;
+$navbar-light-color:                $ac-navy;
+$navbar-light-hover-color:          #FFFFFF;
 $navbar-light-active-color:         $ac-navy;
 // $navbar-light-disabled-color:       rgba(var(--#{$prefix}emphasis-color-rgb), .3) !default;
-$navbar-light-icon-color:           $ac-navy;
-
 $navbar-light-brand-color:          $ac-navy;
 $navbar-light-brand-hover-color:    #FFFFFF;
+$navbar-light-icon-color:           $ac-navy;
 
+$navbar-dark-color:                 #FFFFFF;
+$navbar-dark-hover-color:           $ac-navy;
+$navbar-dark-active-color:          #FFFFFF;
 $navbar-dark-brand-color:           #FFFFFF;
 $navbar-dark-brand-hover-color:     $ac-navy;
-
 $navbar-dark-icon-color:            #FFFFFF;
 
 $navbar-brand-font-size:            1.2rem;
 $navbar-brand-margin-end:           0.5rem;
 $navbar-brand-padding-y:            0;
 
+$nav-link-focus-box-shadow:         none;
+
 $breadcrumb-font-size:              0.9em;
 $breadcrumb-margin-bottom:          0;
+$breadcrumb-active-color:           $ac-navy;
 
 //************
 //* Dropdowns
@@ -104,18 +108,18 @@ $breadcrumb-margin-bottom:          0;
 // $dropdown-color:                    var(--#{$prefix}body-color) !default;
 // $dropdown-bg:                       var(--#{$prefix}body-bg) !default;
 // $dropdown-border-color:             var(--#{$prefix}border-color-translucent) !default;
-// $dropdown-link-color:               var(--#{$prefix}body-color) !default;
-// $dropdown-link-hover-color:         $dropdown-link-color !default;
-// $dropdown-link-hover-bg:            var(--#{$prefix}tertiary-bg) !default;
+$dropdown-link-color:               $ac-navy;
+$dropdown-link-hover-color:         #FFFFFF;
+$dropdown-link-hover-bg:            $ac-navy;
 // $dropdown-link-active-color:        $component-active-color !default;
 // $dropdown-link-active-bg:           $component-active-bg !default;
 
 // $dropdown-dark-color:               $gray-300 !default;
 // $dropdown-dark-bg:                  $gray-800 !default;
 // $dropdown-dark-border-color:        $dropdown-border-color !default;
-// $dropdown-dark-link-color:          $dropdown-dark-color !default;
-// $dropdown-dark-link-hover-color:    $white !default;
-// $dropdown-dark-link-hover-bg:       rgba($white, .15) !default;
+$dropdown-dark-link-color:          #FFFFFF;
+$dropdown-dark-link-hover-color:    $ac-navy;
+$dropdown-dark-link-hover-bg:       #FFFFFF;
 // $dropdown-dark-link-active-color:   $dropdown-link-active-color !default;
 // $dropdown-dark-link-active-bg:      $dropdown-link-active-bg !default;
 // $dropdown-dark-link-disabled-color: $gray-500 !default;
@@ -176,6 +180,9 @@ $box-shadow-lg: inset 0 0 2px 3px hsla(0, 0%, 100%, 0.125),
 
 // 4. Include any default map overrides here
 $custom-colors: (
+// Escape Room Themes
+  "corporate": $corporate,
+  "kitchen":   $kitchen,
 // TODO: Add in the brand colors only for buttons or other things that we need.
 //       Don't generate a bunch of styles that will not be needed.
   "facebook":  #4267B2,
@@ -197,8 +204,39 @@ $theme-colors: map-merge($theme-colors, $custom-colors);
 //* Utilities API
 //***************/
 
+$custom-colors-text: (
+  "corporate": $corporate-text-emphasis,
+  "kitchen": $kitchen-text-emphasis,
+);
+$theme-colors-text: map-merge($theme-colors-text, $custom-colors-text);
+$custom-colors-bg-subtle: (
+  "corporate": $corporate-bg-subtle,
+  "kitchen": $kitchen-bg-subtle,
+);
+$theme-colors-bg-subtle: map-merge($theme-colors-bg-subtle, $custom-colors-bg-subtle);
+$custom-colors-border-subtle: (
+  "corporate": $corporate-border-subtle,
+  "kitchen": $kitchen-border-subtle,
+);
+$theme-colors-border-subtle: map-merge($theme-colors-border-subtle, $custom-colors-border-subtle);
+$custom-colors-text-dark: (
+  "corporate": $corporate-text-emphasis-dark,
+  "kitchen": $kitchen-text-emphasis-dark,
+);
+$theme-colors-text-dark: map-merge($theme-colors-text-dark, $custom-colors-text-dark);
+$custom-colors-bg-subtle-dark: (
+  "corporate": $corporate-bg-subtle-dark,
+  "kitchen": $kitchen-bg-subtle-dark,
+);
+$theme-colors-bg-subtle-dark: map-merge($theme-colors-bg-subtle-dark, $custom-colors-bg-subtle-dark);
+$custom-colors-border-subtle-dark: (
+  "corporate": $corporate-border-subtle-dark,
+  "kitchen": $kitchen-border-subtle-dark,
+);
+$theme-colors-border-subtle-dark: map-merge($theme-colors-border-subtle-dark, $custom-colors-border-subtle-dark);
+
 // The utilities don't pick up additional themes, so we'll add them automatically.
-$custom-subtle-themes: [];
+$custom-subtle-themes: corporate, kitchen,;
 $custom-util-text-emphasis-colors: ();
 $custom-util-bg-subtle: ();
 $custom-util-border-subtle: ();
@@ -206,13 +244,13 @@ $custom-util-border-subtle: ();
 // CSS Classes to CSS Variables
 @each $theme in $custom-subtle-themes {
   $custom-util-text-emphasis-colors: map.set(
-    $custom-util-text-emphasis-colors, "#{$theme}-emphasis", "var(--#{$prefix}#{$theme}-text-emphasis)"
+    $custom-util-text-emphasis-colors, "#{$theme}-emphasis", var(--#{$prefix}#{$theme}-text-emphasis)
   );
   $custom-util-bg-subtle: map.set(
-    $custom-util-bg-subtle, "#{$theme}-subtle", "var(--#{$prefix}#{$theme}-bg-subtle)"
+    $custom-util-bg-subtle, "#{$theme}-subtle", var(--#{$prefix}#{$theme}-bg-subtle)
   );
   $custom-util-border-subtle: map.set(
-    $custom-util-border-subtle, "#{$theme}-subtle", "var(--#{$prefix}#{$theme}-border-subtle)"
+    $custom-util-border-subtle, "#{$theme}-subtle", var(--#{$prefix}#{$theme}-border-subtle)
   );
 }
 
@@ -302,6 +340,7 @@ $theme-colors-border-contrast-dark: (
 @import "bootstrap/scss/buttons";
 @import "bootstrap/scss/transitions";
 @import "bootstrap/scss/dropdown";
+@import "dropdown-fix";
 @import "bootstrap/scss/nav";
 @import "bootstrap/scss/navbar";
 @import "navbar-fix";
@@ -315,6 +354,7 @@ $theme-colors-border-contrast-dark: (
 @import "bootstrap/scss/utilities/api";
 
 // 8. Add additional custom code here
+@import "./link-focus-hover";
 
 .bg-primary-alpha-3 {
   @extend .bg-primary;
@@ -326,101 +366,12 @@ $theme-colors-border-contrast-dark: (
   --bs-bg-opacity: 0.6;
 }
 
-*:focus-visible, .navbar-toggler:focus, .nav-link:focus-visible {
-  outline: 2px solid $primary;
-  outline-offset: 2px;
-  box-shadow: none;
-  // border-radius: 0.13rem;
-}
-
-.navbar-toggler:focus {
-  border-radius: 0.375rem !important;
-}
-
-.hero-link:focus-visible, .link-light:focus-visible {
-  outline-color: #FFFFFF;
-}
-
-.dropdown-item:focus-visible {
-  background-color: #FFFFFF;
-}
-
-.btn:focus-visible {
-  outline: 2px solid $primary;
-  outline-offset: 2px;
-  box-shadow: none;
-  border-radius: 0.375rem;
-}
-
-.hero-link:focus-visible, .hero-button:focus-visible, .footer-social-link:focus-visible {
-  outline-color: #FFFFFF;
-}
-
-.form-field:focus {
-  border-color: $info-border-contrast;
-  border-style: solid;
-  border-radius: 0.375rem;
-  outline-offset: 2px;
-}
-
-.form-check-input:focus {
-  outline: 2px solid $primary;
-  outline-offset: 2px;
-  box-shadow: none;
-}
-
-.form-control:focus-visible {
-  outline: 2px solid $primary;
-  box-shadow: none;
-  border-radius: 0.375rem;
-}
-
-.form-check-input:focus-visible {
-  outline: 2px solid $primary;
-  outline-offset: 2px;
-  box-shadow: none;
-}
-
-a:hover {
-  text-decoration-color: $primary;
-  transition: all 0.1s ease-in;
-}
-
-*a:hover, .navbar-nav .nav-link:hover, li > .dropdown-item:hover {
-  color: #FFFFFF;
-  background-color: $primary;
-  text-decoration-color: #FFFFFF;
-}
-
-.footer-social-link:hover {
-  color: #FFFFFF;
-  background-color: $primary;
-}
-
-.footer-link:hover, .link-light:hover {
-  color: $primary !important;
-  background-color: #FFFFFF !important;
-  text-decoration-color: $primary !important;
-}
-
-.bio-social-link:hover {
-  background-color: $body-tertiary-bg;
-}
-
-.icon-link {
-  text-underline-offset: 0.1em;
-  text-decoration-color: currentColor;
-}
 
 body.no-scroll {
   position: fixed;
   overflow: hidden;
   width: 100%;
   height: 100vh;
-}
-
-.breadcrumb-item, .breadcrumb-item.active, .nav-link, .dropdown-item, .dropdown-item:hover {
-  color: $primary;
 }
 
 .collapse.show {
@@ -432,12 +383,16 @@ body.no-scroll {
   color: #FFFFFF;
 }
 
-.dropdown-item:hover {
-  background-color: $body-tertiary-bg;
-}
-
 .text-brand {
   font-family: $headings-font-family;
+}
+
+// For long non-breaking links (like email addresses).
+.link-truncate {
+  @extend .text-truncate;
+  @extend .d-inline-block;
+  @extend .align-top;
+  max-width: 100%;
 }
 
 .list-disc li::marker {
@@ -490,85 +445,21 @@ svg[data-icon="loca11y-logo"].unpad {
 }
 
 @include color-mode(dark) {
-  *:focus-visible, .form-field:focus, .form-check-input:focus, .form-check-input:focus-visible, .navbar-toggler:focus, .btn:focus-visible, .nav-link:focus-visible, .form-control:focus-visible {
-    outline-color: #FFFFFF;
-  }
-
-  .nav-link:focus {
-    color: #FFFFFF;
-  }
-
-  .dropdown-item:focus-visible {
-    // outline-offset: -0.15em;
-    background-color: var(--bs-dropdown-bg);
-  }
-
-  *a:hover, .navbar-nav .nav-link:hover, li > .dropdown-item:hover, .link-light:hover {
-    color: $primary;
-    background-color: #FFFFFF;
-    text-decoration-color: $primary;
-  }
-
-  .bio-social-link:hover {
-    background-color: $body-tertiary-bg-dark;
-  }
-
-  .form-field:focus {
-    border-color: $info-border-contrast-dark;
-  }
-
-  // TODO: Fix this.
-  .text-primary {
-    color: var(--bs-light) !important;
-  }
-
-  // TODO: Move breadcrumb and dropdowns to use Bootstrap SASS Variables
-  .breadcrumb-item, .breadcrumb-item.active, .nav-link, .dropdown-item, .dropdown-item:hover {
-    color: #FFFFFF;
-  }
-
   .card-title {
     color: $card-title-color-dark;
-  }
-
-  .general-button {
-    color: #041058;
-    background-color: #FFFFFF;
-  }
-
-  .general-button:focus {
-    color: #041058;
-    background-color: #FFFFFF;
-  }
-
-  .general-button:hover {
-    color: #041058;
-    background-color: $body-tertiary-bg;
   }
 
   .list-disc li::marker {
     color: #FFFFFF;
   }
 
-  .text-linkedin {
+  .text-linkedin, .text-primary {
     color: white !important;
   }
 
   textarea, input {
     border-color: #FFFFFF;
   }
-
-  .form-control,.form-control:focus, .form-check-input, .form-check-input:focus {
-    border-color: $info-border-contrast-dark;
-  }
-
-  .form-check-input:checked {
-    border-color: $info-border-contrast-dark;
-  }
-
-  // .bi {  // blue-30
-  //   filter: brightness(0) saturate(100%) invert(71%) sepia(19%) saturate(851%) hue-rotate(172deg) brightness(91%) contrast(95%);
-  // }
 }
 
 

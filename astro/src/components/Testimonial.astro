@@ -1,14 +1,16 @@
 ---
 import { getEntry, render } from "astro:content";
+import { Icon } from "astro-icon/components";
 import TeamVignette from "./TeamVignette.astro";
 
 interface Props {
   id: string;
+  quotes?: boolean;
   text?: string;
   element?: string;
 }
 
-const { id, element = "div", text = undefined } = Astro.props;
+const { id, quotes = false, element = "div", text = undefined } = Astro.props;
 
 const testimonial = await getEntry("testimonials", id);
 const { Content = "p" } = (testimonial && (await render(testimonial))) || {};
@@ -21,7 +23,17 @@ const NameTag = element;
 
 <figure class="d-flex flex-column justify-content-center">
   <blockquote class:list={["blockquote", text && `text-${text}`]}>
+    {
+      quotes && (
+        <sup aria-hidden="true"><Icon name="quote-left" /></sup>
+      )
+    }
     <Content />
+    {
+      quotes && (
+        <sup aria-hidden="true"><Icon name="quote-right" />&nbsp;</sup>
+      )
+    }
   </blockquote>
   {
     teamMemberId ?
@@ -61,7 +73,16 @@ const NameTag = element;
   /* * {
     outline: 1px solid black;
   } */
+
+  [data-icon="quote-left"],
+  [data-icon="quote-right"] {
+    height: 0.7em;
+  }
   .blockquote-footer {
     color: inherit;
   }
+  .blockquote sup + :global(p) {
+    display: inline;
+  }
+
 </style>
