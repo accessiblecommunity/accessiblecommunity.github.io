@@ -181,8 +181,8 @@ $box-shadow-lg: inset 0 0 2px 3px hsla(0, 0%, 100%, 0.125),
 // 4. Include any default map overrides here
 $custom-colors: (
 // Escape Room Themes
-  "corporate": #591e00,
-  "kitchen":   #395999,
+  "corporate": $corporate,
+  "kitchen":   $kitchen,
 // TODO: Add in the brand colors only for buttons or other things that we need.
 //       Don't generate a bunch of styles that will not be needed.
   "facebook":  #4267B2,
@@ -204,8 +204,39 @@ $theme-colors: map-merge($theme-colors, $custom-colors);
 //* Utilities API
 //***************/
 
+$custom-colors-text: (
+  "corporate": $corporate-text-emphasis,
+  "kitchen": $kitchen-text-emphasis,
+);
+$theme-colors-text: map-merge($theme-colors-text, $custom-colors-text);
+$custom-colors-bg-subtle: (
+  "corporate": $corporate-bg-subtle,
+  "kitchen": $kitchen-bg-subtle,
+);
+$theme-colors-bg-subtle: map-merge($theme-colors-bg-subtle, $custom-colors-bg-subtle);
+$custom-colors-border-subtle: (
+  "corporate": $corporate-border-subtle,
+  "kitchen": $kitchen-border-subtle,
+);
+$theme-colors-border-subtle: map-merge($theme-colors-border-subtle, $custom-colors-border-subtle);
+$custom-colors-text-dark: (
+  "corporate": $corporate-text-emphasis-dark,
+  "kitchen": $kitchen-text-emphasis-dark,
+);
+$theme-colors-text-dark: map-merge($theme-colors-text-dark, $custom-colors-text-dark);
+$custom-colors-bg-subtle-dark: (
+  "corporate": $corporate-bg-subtle-dark,
+  "kitchen": $kitchen-bg-subtle-dark,
+);
+$theme-colors-bg-subtle-dark: map-merge($theme-colors-bg-subtle-dark, $custom-colors-bg-subtle-dark);
+$custom-colors-border-subtle-dark: (
+  "corporate": $corporate-border-subtle-dark,
+  "kitchen": $kitchen-border-subtle-dark,
+);
+$theme-colors-border-subtle-dark: map-merge($theme-colors-border-subtle-dark, $custom-colors-border-subtle-dark);
+
 // The utilities don't pick up additional themes, so we'll add them automatically.
-$custom-subtle-themes: [];
+$custom-subtle-themes: corporate, kitchen,;
 $custom-util-text-emphasis-colors: ();
 $custom-util-bg-subtle: ();
 $custom-util-border-subtle: ();
@@ -213,13 +244,13 @@ $custom-util-border-subtle: ();
 // CSS Classes to CSS Variables
 @each $theme in $custom-subtle-themes {
   $custom-util-text-emphasis-colors: map.set(
-    $custom-util-text-emphasis-colors, "#{$theme}-emphasis", "var(--#{$prefix}#{$theme}-text-emphasis)"
+    $custom-util-text-emphasis-colors, "#{$theme}-emphasis", var(--#{$prefix}#{$theme}-text-emphasis)
   );
   $custom-util-bg-subtle: map.set(
-    $custom-util-bg-subtle, "#{$theme}-subtle", "var(--#{$prefix}#{$theme}-bg-subtle)"
+    $custom-util-bg-subtle, "#{$theme}-subtle", var(--#{$prefix}#{$theme}-bg-subtle)
   );
   $custom-util-border-subtle: map.set(
-    $custom-util-border-subtle, "#{$theme}-subtle", "var(--#{$prefix}#{$theme}-border-subtle)"
+    $custom-util-border-subtle, "#{$theme}-subtle", var(--#{$prefix}#{$theme}-border-subtle)
   );
 }
 

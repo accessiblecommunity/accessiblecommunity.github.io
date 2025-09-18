@@ -44,6 +44,7 @@ const { about, title, page } = room.data;
 const { theme, image } = page;
 const { Content } = await render(room);
 const themeVar = `var(--bs-${theme})`;
+const textVar = `var(--bs-${theme}-text-emphasis)`;
 
 import Hero from "@components/HeroWithBreadcrumbs.astro";
 import { Icon } from "astro-icon/components";
@@ -57,16 +58,16 @@ import ThemedSection from "@components/ThemedSection.astro";
       <h1 class:list={["display-2 text-nowrap", `bg-${theme} bg-opacity-50 p-1`]} set:text={title} />
     </Hero>
   </div>
-  <ThemedSection style="tertiary">
+  <ThemedSection>
     <div class="row row-cols-1 row-cols-lg-2 g-4">
       <div class="p-4">
-        <h2 class={`text-${theme}`}>The Scenario</h2>
+        <h2 class={`text-${theme}-emphasis`}>The Scenario</h2>
         <p set:text={room.data.tagline} />
         <div class="row row-cols-1 row-cols-lg-3 g-4">
           {
             about.players && (
               <div class="col">
-                <Icon name="bi:people-fill" class={`bi text-${theme}`} role="img" title="Suggested Group Size" />
+                <Icon name="bi:people-fill" class={`bi text-${theme}-emphasis`} role="img" title="Suggested Group Size" />
                 {about.players} players
               </div>
             )
@@ -74,7 +75,7 @@ import ThemedSection from "@components/ThemedSection.astro";
           {
             about.length && (
               <div class="col">
-                <Icon name="bi:stopwatch-fill" class={`bi text-${theme}`} role="img" title="Approximate Game Length" />
+                <Icon name="bi:stopwatch-fill" class={`bi text-${theme}-emphasis`} role="img" title="Approximate Game Length" />
                 {about.length}
               </div>
             )
@@ -82,16 +83,16 @@ import ThemedSection from "@components/ThemedSection.astro";
           {
             about.estimatedMaterialCost && (
               <div class="col">
-                <Icon name="bi:tools" class={`bi text-${theme}`} role="img" title="Estimated Material Cost"/>
+                <Icon name="bi:tools" class={`bi text-${theme}-emphasis`} role="img" title="Estimated Material Cost"/>
                 ${about.estimatedMaterialCost}
               </div>
             )
           }
         </div>
       </div>
-      <div class="card">
+      <div class={`card border border-2 border-${theme}-subtle`}>
         <div class="card-body">
-          <h2 class:list={["card-title", `text-${theme}`]}>Kit Cost: $500.00</h2>
+          <h2 class:list={["card-title", `text-${theme}-emphasis`]}>Kit Cost: $500.00</h2>
           <p class="card-text">One-time purchase includes instructions and lifetime access to digital components.</p>
           <p class="card-text">Ready to bring this adventure to life?</p>
           <a
@@ -103,12 +104,12 @@ import ThemedSection from "@components/ThemedSection.astro";
     </div>
   </ThemedSection>
   <div class="local-wrapper">
-    <ThemedSection theme="secondary" style="subtle">
+    <ThemedSection {theme} style="subtle">
       <Content {components} />
     </ThemedSection>
   </div>
   <ThemedSection style="tertiary">
-    <h2 class={`text-${theme}`}>This Escape Room Kit includes:</h2>
+    <h2 class={`text-${theme}-emphasis`}>This Escape Room Kit includes:</h2>
     <dl>
       <dt class="text-brand">A List of Required Materials</dt>
       <dd>
@@ -142,13 +143,13 @@ import ThemedSection from "@components/ThemedSection.astro";
   </ThemedSection>
 </Layout>
 
-<style define:vars={{ themeVar }}>
+<style define:vars={{ textVar }}>
   h1 {
     font-weight: 500;
   }
   .local-wrapper {
     h2, h3, h4 {
-      color: var(--themeVar);
+      color: var(--textVar);
     }
   }
   dl dd {

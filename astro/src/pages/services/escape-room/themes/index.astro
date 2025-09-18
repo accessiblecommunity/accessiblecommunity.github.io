@@ -37,25 +37,25 @@ const rooms: Array<CollectionEntry<"escapeRoomThemes">> =
   </Hero>
 
   <ThemedSection style="tertiary">
-    <h2 class="display-4 text-center mb-4">Themes</h2>
+    <h2 class="display-4 text-dark-emphasis text-center mb-4">Themes</h2>
     <div
       class="row row-cols-1 row-cols-lg-2 g-4"
     >
       {
         rooms.map(room => (
           <div class="col">
-            <div class="card border border-dark">
+            <div class={`card border border-${room.data.page.theme}-subtle`}>
               <Image
                 src={room.data.image}
                 class="card-img-top"
                 alt={room.data.alt || null}
               />
               <div class="card-body">
-                <h3 class={`card-title text-${room.data.page.theme}`} set:text={room.data.title} />
+                <h3 class={`text-${room.data.page.theme}-emphasis`} set:text={room.data.title} />
                 <p class="card-text" set:text={room.data.tagline} />
                 <a
                   href={`/services/escape-room/themes/${room.id}`}
-                  class={`btn btn-${room.data.page.theme} btn-contrast-dark`}
+                  class={`btn btn-${room.data.page.theme}`}
                 >Learn more</a>
               </div>
             </div>
@@ -85,17 +85,9 @@ const rooms: Array<CollectionEntry<"escapeRoomThemes">> =
   .card-img-top {
     height: auto;
   }
-  .card-title {
-    color: var(--bs-info);
-  }
-  .card-title, h2, h3, h4 {
-    color: var(--bs-info);
-  }
-
   p {
     margin-bottom: 0.5em;
   }
-
   p.lead {
     margin-bottom: 0.75em;
   }
