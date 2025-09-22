@@ -1,9 +1,12 @@
 ---
-name: Marriah Barnett
+name:
+  first: Marriah
+  last: Barnett
 roles:
   default: Board Chair
   board: Board Chair
-picture: ../../images/staff/Marriah.png
+photo:
+  image: ../../images/staff/Marriah.png
 ---
 
 Marriah is a corporate leader with a background in designing and executing complex, transformational, business improvement initiatives. Marriah is currently a Manager within Baltimore Gas & Electric’s technical services division. Marriah was the founding president of the Network of Exelon Women Baltimore chapter; a women-focused employee resource group organized to support the professional development of Exelon employees in the Baltimore.

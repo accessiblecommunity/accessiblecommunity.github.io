@@ -1,11 +1,7 @@
 ---
-import Layout from "../../layouts/Layout.astro";
-import ImageHeading from "../../components/ImageHeading.astro";
-import ThemedSection from "../../components/ThemedSection.astro";
-
 import type { Breadcrumbs, PageMetadata } from "@lib/types";
 import { getCollection, type CollectionEntry } from "astro:content";
-import { isEmpty } from "lodash-es";
+import { isEmpty, sortBy } from "lodash-es";
 
 const leadership: CollectionEntry<"staff">[] = await getCollection(
   "staff",
@@ -27,10 +23,19 @@ const staff: CollectionEntry<"staff">[] = await getCollection(
     );
   },
 );
-const teams = await getCollection(
-  "teams",
-  ({ id }) => ["board", "default", "leadership"].indexOf(id) == -1,
+const teams = sortBy(
+  await getCollection(
+    "teams",
+    ({ id }) => ["board", "default", "leadership"].indexOf(id) == -1,
+  ),
+  ['id']
 );
+
+function getFullName({first, last, cited}: CollectionEntry<"staff">["data"]["name"]) {
+  if (cited) return cited;
+  if (last) return `${first} ${last}`;
+  return first;
+}
 
 type Roles = CollectionEntry<"staff">["data"]["roles"];
 type RoleKey = keyof Roles;
@@ -62,7 +67,7 @@ staff.reduce((members: TeamMembers, current: CollectionEntry<"staff">) => {
       const teamKey = teamName as RoleKey;
       const overview: TeamOverview = members[teamKey];
       overview.members.push(
-        `<strong>${current.data.name}</strong> - ${position}`,
+        `<strong>${getFullName(current.data.name)}</strong> - ${position}`,
       );
     }
   }
@@ -84,6 +89,11 @@ const crumbs: Breadcrumbs = [
     href: "/team",
   },
 ];
+
+import Branding from "@components/Branding.astro";
+import Layout from "../../layouts/Layout.astro";
+import ImageHeading from "../../components/ImageHeading.astro";
+import ThemedSection from "../../components/ThemedSection.astro";
 ---
 
 <Layout {title} {crumbs} {metadata}>
@@ -106,7 +116,7 @@ const crumbs: Breadcrumbs = [
           {
             board.map(({ data }) => (
               <li class="text-brand">
-                <strong>{data.name}</strong> - {data.roles.board}
+                <strong>{getFullName(data.name)}</strong> - {data.roles.board}
               </li>
             ))
           }
@@ -122,29 +132,14 @@ const crumbs: Breadcrumbs = [
           {
             leadership.map(({ data }) => (
               <li class="text-brand">
-                <strong>{data.name}</strong> - {data.roles.leadership}
+                <strong>{getFullName(data.name)}</strong> - {data.roles.leadership}
               </li>
             ))
           }
         </ul>
       </div>
     </div>
-    {
-      /*
-    <div class="card mb-5 shadow team-card">
-      <h2 class="card-header text-primary-emphasis">Contributors</h2>
-      <div class="card-body">
-        <ul class="list-inline mx-3">
-          <li class="list-inline-item">Mattheus Batista</li>
-          <li class="list-inline-item">Brian Chu</li>
-          <li class="list-inline-item">Hayley Dott</li>
-          <li class="list-inline-item">Albert Kim</li>
-          <li class="list-inline-item">Eleanor Waldschuetz</li>
-        </ul>
-      </div>
-    </div>
-    */
-    }
+
     <div class="card mb-5 shadow team-card">
       <h2 class="card-header text-primary-emphasis">Staff</h2>
       <div class="card-body">
@@ -193,7 +188,18 @@ const crumbs: Breadcrumbs = [
       </h2>
       <div class="card-body">
         <h3 class="display-6">
-          <strong>Toptal</strong> loca11y Volunteers (Summer/Fall 2023)
+          <strong>Toptal</strong> <Branding>loca11y UX Research</Branding> Volunteers (Winter/Spring 2024)
+        </h3>
+        <ul class="list-inline mx-3">
+          <li class="list-inline-item">Kehinde Ayanleye</li>
+          <li class="list-inline-item">Arun Kumar Dadhwal</li>
+          <li class="list-inline-item">Asmahane Khawja</li>
+          <li class="list-inline-item">Vittal Ramu</li>
+          <li class="list-inline-item">Derrick Shields</li>
+          <li class="list-inline-item">Ning Xu</li>
+        </ul>
+        <h3 class="display-6">
+          <strong>Toptal</strong> <Branding>loca11y Development</Branding> Volunteers (Summer/Fall 2023)
         </h3>
         <ul class="list-inline mx-3">
           <li class="list-inline-item">Joshua Calder</li>

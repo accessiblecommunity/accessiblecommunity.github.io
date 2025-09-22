@@ -64,7 +64,6 @@ const escapeRoomKits = defineCollection({
     }),
 });
 
-
 const escapeRoomThemes = defineCollection({
   loader: glob({
     pattern: "**/[^_]*.{md,mdx}",
@@ -92,8 +91,20 @@ const staff = defineCollection({
   loader: glob({ pattern: "**/[^_]*.{md,mdx}", base: "./src/content/staff" }),
   schema: ({ image }) =>
     z.object({
-      name: z.string(),
-      nickname: z.string().optional(),
+      name: z.object({
+        first: z.string(),
+        last: z.string().optional(),
+        cited: z.string().optional(),
+      }),
+      photo: z.object({
+        image: image(),
+        alt: z.string().optional(),
+      }).default({
+        // @ts-ignore: String path required.
+        image: "src/images/staff/Ta11yCat.png",
+        alt: "The Tally Cat has claimed this spot.",
+      }),
+      current: z.boolean().default(true),
       roles: z
         .object({
           default: z.string(),
@@ -108,9 +119,6 @@ const staff = defineCollection({
           ux: z.string(),
         })
         .partial(),
-      current: z.boolean().default(true),
-      picture: image(),
-      alt: z.string().optional(),
       links: z
         .object({
           email: z.string().email(),

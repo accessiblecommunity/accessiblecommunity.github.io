@@ -1,8 +1,12 @@
 ---
-name: Elaine
+name:
+  first: Elaine
+  last: Lau
+  cited: Elaine
 roles:
   default: UX Team, ta11y
   ux: UX Designer, ta11y
-picture: ../../images/staff/Elaine.png
-alt: Woman with black hair, brown eyes, and clear glasses.
+photo:
+  image: ../../images/staff/Elaine.png
+  alt: Woman with black hair, brown eyes, and clear glasses.
 ---

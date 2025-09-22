@@ -1,7 +1,10 @@
 ---
-name: Linda
+name:
+  first: Linda
+  last: Bradley
 roles:
   default: Content Team
   content: Editor
-picture: ../../images/staff/Linda.png
+photo:
+  image: ../../images/staff/Linda.png
 ---

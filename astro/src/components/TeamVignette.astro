@@ -21,8 +21,9 @@ interface Props {
 }
 
 interface Names {
-  name: string;
-  nickname?: string;
+  first: string;
+  last?: string;
+  cited?: string;
 }
 
 const {
@@ -50,20 +51,20 @@ async function getTeamMemberData(member: MemberProp): Promise<TeamMemberData> {
 }
 
 const memberData: TeamMemberData = await getTeamMemberData(member);
-const { roles, picture, alt, links } = memberData;
+const { name, roles, photo, links } = memberData;
 const teamName = typeof role === "boolean" ? "default" : role;
 const title = role && roles[teamName];
 
-function getDisplayName({ name, nickname }: Names) {
-  if (nickname) {
-    if (highlightName) nickname = `<strong>${nickname}</strong>`;
-    return nickname;
-  } else {
-    const nameArray = name.split(" ");
+function getDisplayName({ first, last, cited }: Names) {
+  if (cited) {
+    const nameArray = cited.split(" ");
     if (highlightName) nameArray[0] = `<strong>${nameArray[0]}</strong>`;
     if (firstNameOnly) return nameArray[0];
-
     return nameArray.join(" ");
+  } else {
+    if (highlightName) first = `<strong>${first}</strong>`;
+    if (firstNameOnly) return first;
+    return `${first} ${last}`;
   }
 }
 
@@ -91,7 +92,7 @@ function formatLinkUrl(linkType: string, value: string) {
   return value;
 }
 
-const displayName = getDisplayName(memberData);
+const displayName = getDisplayName(name);
 const NameTag = element;
 ---
 
@@ -157,8 +158,8 @@ const NameTag = element;
       "vignette-pic rounded-circle rounded-top-0",
       responsive && "d-none d-sm-block",
     ]}
-    src={picture.src}
-    alt={alt ? alt : ""}
+    src={photo.image.src}
+    alt={photo.alt || ""}
   />
 </div>
 

@@ -45,11 +45,11 @@ Your donation goes towards supporting our programs and technology to build disab
     "escape-room": {
       title: "\nThe Accessible Escape Room.",
       description:
-        "A fun, accessible team-building activity for people with or without disabilities. Returning in Spring 2025.",
+        "A fun, accessible team-building activity for people with or without disabilities. Returning in Fall 2025.",
       bgImage: {
-        path: "./src/images/colored-hero/puzzles.jpg",
+        path: "./src/images/escape-room/shaded/puzzle-display.jpg",
         fit: "cover",
-        position: ["center", "center"],
+        position: ["center", "75%"],
       },
       border: {
         color: [4, 10, 58],

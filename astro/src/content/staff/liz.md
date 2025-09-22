@@ -1,8 +1,11 @@
 ---
-name: Liz
+name:
+  first: Liz
+  last: Thomas
 roles:
   default: Content Team
   content: Writer
-picture: ../../images/staff/Liz.png
-alt: Woman with a black bob and blue eyes. She is wearing a green cardigan.
+photo:
+  image: ../../images/staff/Liz.png
+  alt: Woman with a black bob and blue eyes. She is wearing a green cardigan.
 ---

@@ -30,6 +30,7 @@ const socialLinks: Array<LinkConfig> = toPairs(links).map(([type, url]) => {
   const icon = (() => {
     if (type == "email") return "envelope-at";
     else if (type == "threads") return "threads-logo-black";
+    else if (type == "website") return "bi:globe";
     else return `cib:${type}`;
   })();
 

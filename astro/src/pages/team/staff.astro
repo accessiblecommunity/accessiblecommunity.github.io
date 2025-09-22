@@ -22,13 +22,16 @@ function getTeamMembers(tag: string) {
     ),
     // Alphabetize by first name
     (teamMember) =>
-      teamMember.data.nickname || teamMember.data.name.split(" ")[0],
+      teamMember.data.name.cited || teamMember.data.name.first,
   );
 }
 
-const teamEntries = await getCollection(
-  "teams",
-  ({ data }) => !data.management,
+const teamEntries = sortBy(
+  await getCollection(
+    "teams",
+    ({ data }) => !data.management,
+  ),
+  ["id"]
 );
 const teams = await Promise.all(
   teamEntries.map(async (entry) => {
