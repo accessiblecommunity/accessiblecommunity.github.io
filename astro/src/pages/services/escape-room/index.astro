@@ -60,7 +60,7 @@ import { YouTube } from 'astro-lazy-youtube-embed'
 
   <div class="about-escape-rooms">
     <div class="container">
-      <div class="row">
+      <div class="row align-items-start g-4">
         <div class="col-lg-6">
           <Image
             width={474}
@@ -70,12 +70,12 @@ import { YouTube } from 'astro-lazy-youtube-embed'
             alt="Wooden puzzles arranged on a dark wooden surface, including cube puzzles, star-shaped puzzles, and various interlocking wooden pieces"
           />
         </div>
-        <div class="col-lg-6">
-          <h2 class="text-primary mb-4">About our escape rooms</h2>
-          <p class="lead">
+        <div class="col-lg-6 about-escape-rooms-text">
+          <h2 class="text-primary fw-bold fs-2 mb-4">About our escape rooms</h2>
+          <p>
             It may be called an escape room but we don't lock you in. You can leave at any time. We design around fun themes rather than stressful ones. That is just part of what makes our escape room accessible! The puzzles vary in difficulty and everyone, regardless of disability, can participate.
           </p>
-          <p class="lead">
+          <p>
             In order to reach the most people, our escape rooms are portable and designed for easy setup in hotel and conference rooms. The Accessible Escape Room has been traveling to disability and accessibility conferences and other venues since 2022.
           </p>
           <p class="mt-3">
@@ -129,7 +129,7 @@ import { YouTube } from 'astro-lazy-youtube-embed'
       If you would like to bring one of our accessible escape rooms to your business
       or venue, we now offer the <a href="/services/escape-room/themes">following themes</a>:</p
     >
-    {/* <div class="row row-cols-2 row-cols-lg-3 row-cols-xl-4 g-3 align-items-stretch"> */}
+    
     <div class="row row-cols-2 g-3 align-items-stretch">
       {
         rooms.map(room => (
@@ -190,13 +190,13 @@ import { YouTube } from 'astro-lazy-youtube-embed'
 
   .about-escape-rooms {
     background-color: #EDF5FF;
-    padding: 3rem 0;
+    padding: 1.25rem 0;
     margin: 0;
   }
   
   .about-escape-rooms .container {
     background-color: #EDF5FF;
-    padding: 2rem 0;
+    padding: 0.75rem 0;
   }
   
   .about-escape-rooms .row {
@@ -206,7 +206,11 @@ import { YouTube } from 'astro-lazy-youtube-embed'
   
   .about-escape-rooms .col-lg-6 {
     background-color: #EDF5FF;
-    padding: 1rem;
+    padding: 0 1.25rem 1rem;
+  }
+  
+  .about-escape-rooms-text {
+    max-width: 40rem;
   }
   
   .escape-room-image {
