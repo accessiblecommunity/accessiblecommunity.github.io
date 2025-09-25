@@ -39,6 +39,7 @@ import ThemedBox from "@components/ThemedBox.astro";
 import ThemedSection from "@components/ThemedSection.astro";
 
 import heroBg from "../../../images/colored-hero/woman-using-laptop.png";
+import ShadowBoxSection from "@components/ShadowBoxSection.astro";
 ---
 
 <Layout {title} {crumbs} {metadata}>
@@ -52,42 +53,62 @@ import heroBg from "../../../images/colored-hero/woman-using-laptop.png";
     </div>
     <div class="py-3">
       <p class="text-bg-hero">
-        <Branding>Accessible Community</Branding> provides flat fee evaluations for
-        small-to-medium websites and social media for community organizations.
+        <Branding>Accessible Community</Branding> provides digital accessibility
+        evaluations for websites and social media.
       </p>
-      <a class="btn btn-info" href={calendlyLink} target="_blank"
-        >Schedule an initial consultation</a
-      >
+      <div class="d-flex flex-column flex-xl-row gap-2">
+        <a class="btn btn-info" href="#info">Get more information</a>
+        <a class="btn btn-info" href={calendlyLink} target="_blank"
+          >Schedule an initial consultation</a
+        >
+      </div>
     </div>
   </Hero>
 
   <ThemedSection style="tertiary">
-    <h2 class="display-3">
-      Is your <strong>digital content</strong> accessible?
+    <h2 class="display-4 mb-3">
+      Are you reaching <strong>everyone</strong> in your community?
     </h2>
-    <p>
-      We provide various levels of accessibility evaluations to best meet the
-      needs of your organization. This ranges from evaluating your website or
-      assessing your organization's social media presence. We also provide the
-      ability to appraise your digital messaging yourself, if you would like.
-    </p>
-    <p>
-      After the evaluation, we provide reports based on international standards
-      and best practices to help you know how you can best increase your
-      content's audience and reach as many people as possible with your message.
-      We encourage you to make your digital content accessible to be equitable
-      and remove barriers for your audience.
-    </p>
-
-    <h3>What are the options?</h3>
     <div
-      class="d-flex flex-column flex-lg-row gap-4 py-3 justify-content-lg-center text-primary"
+      class="d-flex flex-column flex-xl-row-reverse gap-2 justify-content-xl-evenly align-items-center"
     >
+      <div class="col col-xl-8 col-xxl-9">
+        <p>
+          <Branding class="text-primary">Accessible Community</Branding> provides small-to-medium organizations with accessibility evaluations and assistance for websites and social media. Evaluations are free for small businesses and community organizations, as well as disability-support organizations. For medium-sized businesses and organizations, we charge a small flat fee for our services.
+        </p>
+        <p>
+          We provide several types of accessibility evaluations to meet the needs of your organization. This ranges from evaluating your website or assessing your organization's social media presence. We also provide the ability to appraise your digital messaging yourself, if you would like.
+        </p>
+      </div>
+      <div class="col col-lg-10 col-xl-3 px-2">
+        <p
+          class="display-5 text-center text-primary py-3 border-primary-subtle border-2 border-top border-bottom"
+        >
+          Our digital evaluations are <strong>free</strong> for <strong>small businesses</strong> and <strong>community</strong> <strong>organizations</strong>.
+        </p>
+      </div>
+    </div>
+    <p>
+      After the evaluation, we provide reports based on international standards and best practices to help you know how you can reach as many people as possible with your business or mission. We encourage you to make your digital content accessible to be equitable and remove barriers for your audience.
+    </p>
+    <p>
+      If you are interested, please <a href="#info" class="link-offset-1">fill out the information form</a> below.
+    </p>
+    <hr class="border border-primary-subtle opacity-100">
+    <p class="small">
+      <Branding class="text-primary">Accessible Community</Branding> is a nonprofit organization dedicated to growing accessible communities through socially responsible technology. We provide accessibility evaluations to smaller, community-based organizations to make digital accessibility affordable and achievable.
+    </p>
+  </ThemedSection>
+  <ShadowBoxSection theme="info">
+    <div class="text-center py-4">
+      <h3 class="display-3 mx-auto">What are the <strong>options</strong>?</h3>
+    </div>
+    <div class="row row-cols-1 row-cols-lg-2 gap-4 justify-content-center">
       <ThemedBox
         theme="primary"
         text={true}
         border={1}
-        class="col col-lg-6 col-xl-5 shadow rounded"
+        class="col-10 col-lg-5 shadow rounded"
       >
         <h4 class="text-white">Standard Website Evaluation</h4>
         <p>
@@ -116,12 +137,13 @@ import heroBg from "../../../images/colored-hero/woman-using-laptop.png";
         </ul>
       </ThemedBox>
       <ThemedBox
-        theme="info"
-        text={true}
+        theme="primary"
+        style="subtle"
+        text
         border={1}
-        class="col col-lg-6 col-xl-5 shadow rounded"
+        class="col-10 col-lg-5 shadow rounded"
       >
-        <h4 class="text-white">Social Media Evaluation</h4>
+        <h4 class="fw-bold">Social Media Evaluation</h4>
         <p>
           Cost: <strong class="text-brand">$750</strong>. What's included:
         </p>
@@ -146,15 +168,11 @@ import heroBg from "../../../images/colored-hero/woman-using-laptop.png";
           </li>
         </ul>
       </ThemedBox>
-    </div>
-    <div
-      class="d-flex flex-row gap-4 pt-3 pb-4 justify-content-center text-primary"
-    >
       <ThemedBox
         theme="secondary"
         text={true}
         border={1}
-        class="col col-xl-9 shadow rounded"
+        class="col-10 col-xl-8 shadow rounded"
       >
         <h4 class="text-white">Self-Evaluation</h4>
         <p>Cost: <strong class="text-brand">$0</strong>.</p>
@@ -184,73 +202,18 @@ import heroBg from "../../../images/colored-hero/woman-using-laptop.png";
         </p>
       </ThemedBox>
     </div>
-    <div class="pt-4">
-      <h3>Who is this service for?</h3>
-      <p>
-        <Branding>Accessible Community</Branding> provides these accessibility evaluations
-        for small-to-medium websites and social media for community organizations.
-        Community organizations include:
-      </p>
-      <ul>
-        <li>small businesses,</li>
-        <li>local nonprofits,</li>
-        <li>local government,</li>
-        <li>religious organizations,</li>
-        <li>clubs, and</li>
-        <li>educational organizations.</li>
-      </ul>
-      <p>
-        <Branding>Accessible Community</Branding> is a nonprofit organization dedicated
-        to growing accessible communities through socially responsible technology.
-        We provide accessibility evaluations to smaller, community-based organizations
-        to make digital accessibility affordable and achievable. If you are unsure
-        if you qualify, please complete the <a href="#info">information form</a>
-        below.
-      </p>
-      {
-        /*
-      Commenting this out until we have some discussions...
-      
-      <p>
-        If you do not qualify, we recommend you reach out to one of our partners:
-      </p>
-      <CollaboratorList items={partners} />
-      */
-      }
-
-      <h4>Scholarships</h4>
-      <p>
-        We provide a limited number of free accessibility evaluations to
-        organizations that are unable to afford our services. Please note your
-        desire to be considered for a scholarship when you
-        <ExternalLink href={calendlyLink}
-          >schedule an initial consultation</ExternalLink
-        >
-        or request more information.
-      </p>
-      <p>
-        If you are interested in sponsoring an evaluation for an organization
-        that can't afford it, please make a
-        <ExternalLink href="https://donate.stripe.com/eVadR0agM8ec1TW5kk"
-          >donation via Stripe</ExternalLink
-        >. Thank you for supporting other organizations who want to become
-        accessible.
-      </p>
-    </div>
-  </ThemedSection>
+  </ShadowBoxSection>
 
   <ThemedSection id="info" theme="secondary" style="subtle" text={true}>
-    <h2 class="display-4">How do I get more <strong>information</strong>?</h2>
+    <h2 class="display-4">What are the <strong>next steps</strong>?</h2>
     <GoogleForm
       id="info-form"
       key="AKfycbxQZFm7FIKQabNEmwXbKdUh3IdMUY8efL4e8bEmkK_9rPvH6cUPrdNdQrIN6eMK-vI"
-    >
+      >
       <div slot="prelude">
         <p>
-          You can <ExternalLink href={calendlyLink}
-            >schedule an Accessibility Consultation</ExternalLink
-          > with a member of our evaluations team. Alternatively, if you have questions
-          about our evaluation process, please complete this information form.
+          Contact us for more information using the form below or 
+          <ExternalLink href={calendlyLink}>schedule an Accessibility Consultation</ExternalLink>.
         </p>
         <h3 class="visually-hidden">Information form</h3>
       </div>
@@ -258,13 +221,26 @@ import heroBg from "../../../images/colored-hero/woman-using-laptop.png";
         <div class="col-lg-5">
           <div class="mb-3">
             <label for="nameField" class="form-label mb-1 required-field"
-              >Name</label
+              >Your Name</label
             ><span class="asterisk"></span>
             <input
               type="text"
               name="Name"
               class="form-control w-100 form-field"
               id="nameField"
+              autocomplete="name"
+              required
+            />
+          </div>
+          <div class="mb-3">
+            <label for="orgNameField" class="form-label mb-1 required-field"
+              >Organization Name</label
+            ><span class="asterisk"></span>
+            <input
+              type="text"
+              name="OrgName"
+              class="form-control w-100 form-field"
+              id="orgNameField"
               autocomplete="name"
               required
             />
@@ -282,6 +258,8 @@ import heroBg from "../../../images/colored-hero/woman-using-laptop.png";
               required
             />
           </div>
+        </div>
+        <div class="col-lg-6 mb-3">
           <div class="mb-3">
             <label for="phoneNumberField" class="form-label mb-1"
               >Phone Number</label
@@ -294,8 +272,6 @@ import heroBg from "../../../images/colored-hero/woman-using-laptop.png";
               autocomplete="tel"
             />
           </div>
-        </div>
-        <div class="col-lg-6 mb-3">
           <label for="messageTextarea" class="form-label mb-1 required-field"
             >Message or Questions</label
           ><span class="asterisk"></span>
@@ -304,7 +280,7 @@ import heroBg from "../../../images/colored-hero/woman-using-laptop.png";
             class="form-control w-100 form-text-area"
             id="messageTextarea"
             aria-describedby="messageHelp"
-            rows="6"
+            rows="4"
             required></textarea>
           <div id="messageHelp" class="form-text">
             Please indicate what level of service you are interested in, as well
