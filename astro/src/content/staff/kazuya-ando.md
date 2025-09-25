@@ -11,5 +11,5 @@ links:
   linkedin: https://www.linkedin.com/in/kazuyoando
   instagram: https://www.instagram.com/kazuyo.ando
 photo:
-  image: ../../images/staff/3d/KazA_Headshot.png
+  image: ../../images/staff/3d/KazA_headshot.png
 ---
