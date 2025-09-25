@@ -7,7 +7,7 @@ roles:
   content: Team Lead
   leadership: Director, Education
 photo:
-  image: ../../images/staff/Ellen_profile.png
+  image: ../../images/staff/3d/EllenL_headshot.png
   alt: Older woman with salt and pepper hair, blue eyes, snarky smile, and nerdy glasses.
 links:
   email: ellen@accessiblecommunity.org

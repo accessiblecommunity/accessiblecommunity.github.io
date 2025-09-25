@@ -6,7 +6,7 @@ roles:
   default: Director, User Experience
   leadership: Director, User Experience
   content: Writer
-  ux: UX Researcher
+  ux: Director, Researcher
 photo:
   image: ../../images/staff/Kylin.png
   alt: Middle-aged fair-skinned woman with lavender hair, lime glasses, and teal lipstick. Wearing a cheerful smile and skeleton sweater. Waving.

@@ -5,5 +5,6 @@ name:
   cited: Sean
 roles:
   default: Content Team
-  content: Writer
+  communications: Writer, Day in the Life
+  content: Writer, Day in the Life
 ---

@@ -6,7 +6,7 @@ roles:
   default: Development Team
   development: Full-Stack Developer
 photo:
-  image: ../../images/staff/Ashim.png
+  image: ../../images/staff/3d/Ashim.png
   alt: A person in his 20s with black hair and a mustache, wearing a casual outfit
 links:
   email: asimupdgtm@gmail.com

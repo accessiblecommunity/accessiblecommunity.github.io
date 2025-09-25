@@ -6,7 +6,7 @@ roles:
   default: Content Team
   content: Writer
 photo:
-  image: ../../images/staff/Emily.png
+  image: ../../images/staff/3d/Emily.png
 links:
   linkedin: https://www.linkedin.com/in/tyler-gebauer-1992n/
 ---

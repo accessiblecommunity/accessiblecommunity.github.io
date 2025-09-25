@@ -7,6 +7,6 @@ roles:
   development: Developer
 current: true
 photo:
-  image: ../../images/staff/Nathan.png
+  image: ../../images/staff/3d/Nathan.png
   alt: Man with brown hair, and glasses.
 ---

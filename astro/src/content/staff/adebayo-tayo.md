@@ -1,10 +1,10 @@
 ---
 name:
-  first: Tayo
-  last: Adebayo
+  first: Adebayo
+  last: Tayo
 roles:
-  default: UI/UX
-  ux: Contributor
+  default: UX Researcher, globa11y
+  ux: UX Researcher, globa11y
 links:
   linkedin: https://www.linkedin.com/in/tayoadebayo/
   instagram: https://www.instagram.com/tayoadebayo.m

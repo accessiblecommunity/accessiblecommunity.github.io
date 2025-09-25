@@ -6,7 +6,7 @@ roles:
   default: Content Team
   content: Writer
 photo:
-  image: ../../images/staff/Tyler.png
+  image: ../../images/staff/3d/Tyler.png
 links:
   linkedin: https://www.linkedin.com/in/emilyrc/
   website: https://www.tgtranslation.com/

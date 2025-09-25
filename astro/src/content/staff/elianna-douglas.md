@@ -5,5 +5,5 @@ name:
   cited: Elianna
 roles:
   default: Communications Team
-  communications: Contributor
+  communications: Video Editor
 ---

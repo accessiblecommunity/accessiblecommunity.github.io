@@ -37,7 +37,7 @@ const {
   element = "div",
   size = "",
   responsive = false,
-  showLinks = true,
+  showLinks = false,
 } = Astro.props;
 
 async function getTeamMemberData(member: MemberProp): Promise<TeamMemberData> {
@@ -104,7 +104,8 @@ const NameTag = element;
     "d-inline-flex",
     left ? "flex-row-reverse" : "justify-content-end",
     `align-items-${valign}`,
-    `gap-${size == "lg" ? "2" : "1"}`,
+    `gap-1`,
+    // `gap-${size == "lg" ? "2" : "1"}`,
   ]}
 >
   <div
@@ -117,7 +118,7 @@ const NameTag = element;
       title ?
         <>
           <NameTag class="vignette-name" set:html={displayName} />
-          <div class="vignette-title" set:html={title} />
+          <div class={`vignette-title${showLinks ? "" : "-lg"}`} set:html={title} />
         </>
       : <NameTag
           class="vignette-name justify-content-center"
@@ -128,7 +129,7 @@ const NameTag = element;
     {/* Conditionally render bio links */}
     {
       showLinks && links && Object.keys(links).length > 0 && (
-        <div class="vignette-links mt-1">
+        <div class="vignette-links mt-2">
           {Object.entries(links).map(([linkType, linkValue]) => (
             <a
               href={formatLinkUrl(linkType, linkValue)}
@@ -173,6 +174,11 @@ const NameTag = element;
   }
   .vignette-title {
     color: var(--bs-secondary-color);
+    font-size: 75%;
+    margin-bottom: 0.25rem;
+  }
+  .vignette-title-lg {
+    color: var(--bs-secondary-color);
     font-size: 85%;
     margin-bottom: 0.25rem;
   }
@@ -201,7 +207,7 @@ const NameTag = element;
   .blockquote-footer .vignette-title,
   .vignette-resp .vignette-title,
   .vignette-lg .vignette-title {
-    line-height: 90%;
+    line-height: 80%;
     margin-bottom: 0.1em;
   }
   .vignette .vignette-pic {

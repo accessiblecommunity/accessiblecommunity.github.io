@@ -7,4 +7,6 @@ roles:
   evaluations: Contributor
 links:
   linkedin: https://www.linkedin.com/in/brendawhetstoneux/
+photo:
+  image: ../../images/staff/3d/BrendaW_headshot.png
 ---

@@ -8,7 +8,7 @@ roles:
 tags:
   - ta11y
 photo:
-  image: ../../images/staff/MichaelC.png
+  image: ../../images/staff/3d/MichaelC_headshot.png
   alt: Man in his 50s with short dark brown hair, brown eyes, and a brown and white beard.
 links:
   linkedin: https://www.linkedin.com/in/michael-cooper-0b56401a/

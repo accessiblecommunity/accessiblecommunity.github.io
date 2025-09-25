@@ -6,7 +6,7 @@ roles:
   default: Content Team
   content: Writer
 photo:
-  image: ../../images/staff/LauraC.png
+  image: ../../images/staff/3d/LauraC.png
   alt: Woman with short black hair and glasses.
 links:
   instagram: https://www.instagram.com/lau.curti2/

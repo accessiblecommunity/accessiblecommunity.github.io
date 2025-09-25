@@ -4,6 +4,6 @@ name:
   last: Murphy
   cited: Jasmine
 roles:
-  default: UX Designer, Design System
-  ux: UX Designer, Design System
+  default: Team Lead, Design System
+  ux: Team Lead, Design System
 ---

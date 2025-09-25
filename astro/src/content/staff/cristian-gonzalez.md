@@ -8,4 +8,6 @@ roles:
   globa11y: Project Manager
 links:
   linkedin: https://cl.linkedin.com/in/cristian-gonzales
+photo:
+  image: ../../images/staff/3d/CristianGT_headshot.png
 ---

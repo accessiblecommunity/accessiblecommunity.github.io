@@ -97,11 +97,12 @@ const crumbs: Breadcrumbs = [
                   <li class="list-inline-item staff-list-item my-2 m-md-2 w-100">
                     <div class="text-start bg-body shadow-sm rounded-1 p-2 pt-3 fs-4">
                       <TeamVignette
-                        member={member}
+                        {member}
                         role={team}
-                        firstNameOnly={true}
-                        highlightName={true}
-                        branded={true}
+                        firstNameOnly
+                        highlightName
+                        branded
+                        showLinks
                         valign="start"
                         size="lg"
                       />

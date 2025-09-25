@@ -9,4 +9,5 @@ roles:
 photo:
   image: ../../images/staff/Rida.png
   alt: Young woman with short brown hair and rose gold glasses
+current: false
 ---

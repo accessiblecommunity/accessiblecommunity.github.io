@@ -3,6 +3,6 @@ name:
   first: Sabrina
   last: Taylor
 roles:
-  default: Content
-  content: Contributor
+  default: Writer, Day in the Life
+  content: Writer, Day in the Life
 ---

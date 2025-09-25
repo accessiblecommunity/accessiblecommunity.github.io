@@ -3,8 +3,8 @@ name:
   first: Elizabeth
   last: Chen
 roles:
-  default: UI/UX
-  ux: Contributor
+  default: UX Researcher & Designer
+  ux: Researcher & Designer, loca11y
 links:
   linkedin: https://linkedin.com/in/elizchen
 ---

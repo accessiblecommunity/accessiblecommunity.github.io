@@ -4,6 +4,6 @@ name:
   last: Morales Mayuri
   cited: Paulo Morales
 roles:
-  default: Communications Team
-  communications: Contributor
+  default: Video Editor, Day in the Life
+  communications: Video Editor, Day in the Life
 ---

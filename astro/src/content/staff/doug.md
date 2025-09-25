@@ -6,7 +6,7 @@ roles:
   default: Evaluations Team
   evaluations: Digital Evaluator
 photo:
-  image: ../../images/staff/Doug.png
+  image: ../../images/staff/3d/Doug.png
   alt: A middle-aged man with green eyes and shaved head
 links:
   linkedin: http://www.linkedin.com/in/dougmcsorley/

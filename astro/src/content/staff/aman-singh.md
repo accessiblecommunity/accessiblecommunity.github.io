@@ -8,4 +8,6 @@ roles:
 links:
   linkedin: https://www.linkedin.com/in/asingh44878/
   website: https://www.amansingh.net/
+photo:
+  image: ../../images/staff/3d/Aman_Headshot.png
 ---

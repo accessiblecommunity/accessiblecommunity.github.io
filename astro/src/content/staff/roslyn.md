@@ -3,7 +3,7 @@ name:
   first: Roslyn
   last: Devassy
 roles:
-  default: UX Team (Ta11y)
+  default: UX Designer, ta11y
   ux: UX Designer, ta11y
 photo:
   image: ../../images/staff/Roslyn.png

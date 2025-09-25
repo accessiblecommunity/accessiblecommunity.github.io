@@ -4,7 +4,7 @@ name:
   last: Lau
   cited: Elaine
 roles:
-  default: UX Team, ta11y
+  default: UX Designer, ta11y
   ux: UX Designer, ta11y
 photo:
   image: ../../images/staff/Elaine.png
