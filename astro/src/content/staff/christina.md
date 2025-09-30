@@ -2,7 +2,8 @@
 name:
   first: Christina
   last: Nagy
-  cited: Christina
+cited:
+  first: Christina
 roles:
   default: Evaluations Team
   evaluations: Digital Evaluator

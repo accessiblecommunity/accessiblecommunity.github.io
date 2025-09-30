@@ -2,7 +2,8 @@
 name:
   first: Katelyn
   last: Crosby
-  cited: Katelyn
+cited:
+  first: Katelyn
 roles:
   default: Communications Team
   communications: Team Lead, Social Media

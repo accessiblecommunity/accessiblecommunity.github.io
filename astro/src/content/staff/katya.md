@@ -2,7 +2,9 @@
 name:
   first: Katsiaryna
   last: Chupryna
-  cited: Kate Chupryna
+cited:
+  first: Kate
+  last: Chupryna
 roles:
   default: Evaluatons Team
   evaluations: Digital Evaluator

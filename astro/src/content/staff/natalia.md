@@ -2,7 +2,8 @@
 name:
   first: Natalia
   last: Karhu
-  cited: Natalia
+cited:
+  first: Natalia
 roles:
   default: UX Team (Ta11y)
   ux: UX Researcher, ta11y

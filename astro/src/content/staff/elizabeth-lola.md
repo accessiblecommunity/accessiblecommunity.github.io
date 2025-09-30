@@ -2,7 +2,9 @@
 name:
   first: Elizabeth
   last: Meshioye
-  cited: Elizabeth Lola
+cited:
+  first: Elizabeth
+  last: Lola
 roles:
   default: globa11y
   globa11y: Volunteer Coordination

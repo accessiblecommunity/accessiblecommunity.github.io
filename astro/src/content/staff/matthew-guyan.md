@@ -2,7 +2,9 @@
 name:
   first: Matthew
   last: Guyan
-  cited: Matt Guyan
+cited:
+  first: Matt
+  last: Guyan
 roles:
   default: globa11y
   globa11y: Communications

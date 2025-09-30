@@ -1,8 +1,11 @@
 ---
 name:
-  first: Susana Cristina
+  first: Susana
+  middle: Cristina
   last: Pallero
-  cited: Susana Pallero
+cited:
+  first: Susana
+  last: Pallero
 roles:
   default: globa11y Team
   globa11y: Partner

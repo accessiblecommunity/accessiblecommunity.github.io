@@ -2,7 +2,10 @@
 name:
   first: Asher
   last: Kolieboi
-  cited: Asher Ounzumba Kolieboi
+cited:
+  first: Asher
+  middle: Ounzumba
+  last: Kolieboi
 roles:
   default: Evaluatons Team
   evaluations: Digital Evaluator

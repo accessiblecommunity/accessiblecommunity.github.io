@@ -22,7 +22,7 @@ function getTeamMembers(tag: string) {
     ),
     // Alphabetize by first name
     (teamMember) =>
-      teamMember.data.name.cited || teamMember.data.name.first,
+      teamMember.data.cited?.first || teamMember.data.name.first,
   );
 }
 

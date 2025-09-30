@@ -2,7 +2,8 @@
 name:
   first: Winnie
   last: Magoma
-  cited: Winnie
+cited:
+  first: Winnie
 roles:
   default: Content Team
   content: Writer

@@ -2,7 +2,8 @@
 name:
   first: Alexis
   last: Handler
-  cited: Alexis
+cited:
+  first: Alexis
 roles:
   default: Development Team
   development: Developer, Website

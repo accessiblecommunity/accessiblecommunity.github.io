@@ -2,7 +2,8 @@
 name:
   first: Leticia
   last: de Oliveira Raasch
-  cited: Leticia
+cited:
+  first: Leticia
 roles:
   default: UX Designer
   ux: UX Designer, Design System

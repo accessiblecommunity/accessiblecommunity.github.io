@@ -2,7 +2,10 @@
 name:
   first: Kalaimathy 
   last: Sargunan
-  cited: Kalaimathy S L
+cited:
+  first: Kalaimathy
+  middle: S
+  last: L
 roles:
   default: Communications Team
   communications: Contributor

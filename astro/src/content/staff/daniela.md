@@ -2,7 +2,8 @@
 name:
   first: Daniela
   last: Marina Geli
-  cited: Daniela
+cited:
+  first: Daniela
 roles:
   default: Content Team
   content: Writer

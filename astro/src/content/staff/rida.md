@@ -2,7 +2,8 @@
 name:
   first: Rida
   last: Zeng
-  cited: Rida (Danli)
+cited:
+  first: Rida (Danli)
 roles:
   default: UI/UX Team, loca11y
   ux: UX Designer, loca11y

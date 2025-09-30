@@ -31,10 +31,8 @@ const teams = sortBy(
   ['id']
 );
 
-function getFullName({first, last, cited}: CollectionEntry<"staff">["data"]["name"]) {
-  if (cited) return cited;
-  if (last) return `${first} ${last}`;
-  return first;
+function getFullName({first, middle, last}: CollectionEntry<"staff">["data"]["name"]) {
+  return [first, middle, last].filter((n) => n).join(" ");
 }
 
 type Roles = CollectionEntry<"staff">["data"]["roles"];
@@ -67,7 +65,7 @@ staff.reduce((members: TeamMembers, current: CollectionEntry<"staff">) => {
       const teamKey = teamName as RoleKey;
       const overview: TeamOverview = members[teamKey];
       overview.members.push(
-        `<strong>${getFullName(current.data.name)}</strong> - ${position}`,
+        `<strong>${getFullName(current.data.cited || current.data.name)}</strong> - ${position}`,
       );
     }
   }
@@ -116,7 +114,7 @@ import ThemedSection from "../../components/ThemedSection.astro";
           {
             board.map(({ data }) => (
               <li class="text-brand">
-                <strong>{getFullName(data.name)}</strong> - {data.roles.board}
+                <strong>{getFullName(data.cited || data.name)}</strong> - {data.roles.board}
               </li>
             ))
           }
@@ -132,7 +130,7 @@ import ThemedSection from "../../components/ThemedSection.astro";
           {
             leadership.map(({ data }) => (
               <li class="text-brand">
-                <strong>{getFullName(data.name)}</strong> - {data.roles.leadership}
+                <strong>{getFullName(data.cited || data.name)}</strong> - {data.roles.leadership}
               </li>
             ))
           }

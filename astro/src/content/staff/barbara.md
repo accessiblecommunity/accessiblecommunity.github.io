@@ -2,7 +2,8 @@
 name:
   first: Barbara
   last: Prusiewicz
-  cited: Barbara
+cited:
+  first: Barbara
 roles:
   default: Development Team, loca11y
   development: Frontend Developer, loca11y

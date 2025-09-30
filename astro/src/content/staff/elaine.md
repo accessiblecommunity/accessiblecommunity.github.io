@@ -2,7 +2,8 @@
 name:
   first: Elaine
   last: Lau
-  cited: Elaine
+cited:
+  first: Elaine
 roles:
   default: UX Designer, ta11y
   ux: UX Designer, ta11y

@@ -2,7 +2,10 @@
 name:
   first: Adam
   last: Fishbein
-  cited: Adam R. Fishbein, MPA
+cited:
+  first: Adam
+  middle: R.
+  last: Fishbein, MPA
 roles:
   default: Content Team
   content: Contributor

@@ -2,7 +2,8 @@
 name:
   first: Maren
   last: Fiorelli
-  cited: Maren
+cited:
+  first: Maren
 roles:
   default: UX Team, Design System
   ux: UX Designer, Design System

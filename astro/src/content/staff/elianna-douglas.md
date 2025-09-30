@@ -2,7 +2,8 @@
 name:
   first: Elianna
   last: Douglas
-  cited: Elianna
+cited:
+  first: Elianna
 roles:
   default: Communications Team
   communications: Video Editor

@@ -2,7 +2,10 @@
 name:
   first: Cristian 
   last: Gonzales 
-  cited: Cristian \"CG\" Gonzales
+cited:
+  first: Cristian
+  middle: \"CG\"
+  last: Gonzales
 roles:
   default: PM, globa11y
   globa11y: Project Manager

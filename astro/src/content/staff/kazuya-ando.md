@@ -2,7 +2,9 @@
 name:
   first: Kaz
   last: Ando
-  cited: Kazuyo Ando
+cited:
+  first: Kazuyo
+  last: Ando
 roles:
   default: UX Researcher and Designer, DAF
   content: UX Designer, Day in the Life

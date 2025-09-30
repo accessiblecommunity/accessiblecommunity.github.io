@@ -1,8 +1,11 @@
 ---
 name:
-  first: Md Shah Moazzem
+  first: Md Shah
+  middle: Moazzem
   last: Hossain
-  cited: Moazzem Hossain
+cited:
+  first: Moazzem
+  last: Hossain
 roles:
   default: globa11y
   globa11y: Outreach

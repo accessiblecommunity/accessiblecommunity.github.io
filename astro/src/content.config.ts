@@ -87,15 +87,18 @@ const escapeRoomThemes = defineCollection({
     }),
 });
 
+const nameSchema = z.object({
+  first: z.string(),
+  middle: z.string().optional(),
+  last: z.string().optional(),
+});
+
 const staff = defineCollection({
   loader: glob({ pattern: "**/[^_]*.{md,mdx}", base: "./src/content/staff" }),
   schema: ({ image }) =>
     z.object({
-      name: z.object({
-        first: z.string(),
-        last: z.string().optional(),
-        cited: z.string().optional(),
-      }),
+      name: nameSchema,
+      cited: nameSchema.optional(),
       photo: z.object({
         image: image(),
         alt: z.string().optional(),

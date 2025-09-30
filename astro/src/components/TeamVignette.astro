@@ -22,8 +22,8 @@ interface Props {
 
 interface Names {
   first: string;
+  middle?: string
   last?: string;
-  cited?: string;
 }
 
 const {
@@ -51,21 +51,14 @@ async function getTeamMemberData(member: MemberProp): Promise<TeamMemberData> {
 }
 
 const memberData: TeamMemberData = await getTeamMemberData(member);
-const { name, roles, photo, links } = memberData;
+const { name, cited, roles, photo, links } = memberData;
 const teamName = typeof role === "boolean" ? "default" : role;
 const title = role && roles[teamName];
 
-function getDisplayName({ first, last, cited }: Names) {
-  if (cited) {
-    const nameArray = cited.split(" ");
-    if (highlightName) nameArray[0] = `<strong>${nameArray[0]}</strong>`;
-    if (firstNameOnly) return nameArray[0];
-    return nameArray.join(" ");
-  } else {
-    if (highlightName) first = `<strong>${first}</strong>`;
-    if (firstNameOnly) return first;
-    return `${first} ${last}`;
-  }
+function getDisplayName({ first, middle, last }: Names) {
+  if (highlightName) first = `<strong>${first}</strong>`;
+  if (firstNameOnly) return first;
+  return [first, middle, last].filter((n) => n).join(" ");
 }
 
 function getLinkIcon(linkType: string) {
@@ -92,7 +85,7 @@ function formatLinkUrl(linkType: string, value: string) {
   return value;
 }
 
-const displayName = getDisplayName(name);
+const displayName = getDisplayName(cited || name);
 const NameTag = element;
 ---
 
@@ -118,7 +111,7 @@ const NameTag = element;
       title ?
         <>
           <NameTag class="vignette-name" set:html={displayName} />
-          <div class={`vignette-title${showLinks ? "" : "-lg"}`} set:html={title} />
+          <div class="vignette-title" set:html={title} />
         </>
       : <NameTag
           class="vignette-name justify-content-center"
@@ -175,11 +168,6 @@ const NameTag = element;
   .vignette-title {
     color: var(--bs-secondary-color);
     font-size: 75%;
-    margin-bottom: 0.25rem;
-  }
-  .vignette-title-lg {
-    color: var(--bs-secondary-color);
-    font-size: 85%;
     margin-bottom: 0.25rem;
   }
   .vignette-links {

@@ -2,7 +2,8 @@
 name:
   first: Sean
   last: Canavan
-  cited: Sean
+cited:
+  first: Sean
 roles:
   default: Content Team
   communications: Writer, Day in the Life

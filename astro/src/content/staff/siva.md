@@ -2,7 +2,8 @@
 name:
   first: Siva Suresh
   last: Katta
-  cited: Siva Suresh
+cited:
+  first: Siva Suresh
 roles:
   default: Content and Evaluation Teams
   content: Writer
