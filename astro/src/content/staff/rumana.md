@@ -8,4 +8,5 @@ roles:
 photo:
   image: ../../images/staff/Rumana.png
   alt: A young woman in a hijab, looking the other way.
+current: false
 ---

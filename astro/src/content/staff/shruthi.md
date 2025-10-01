@@ -7,4 +7,5 @@ roles:
   content: Writer
 links:
   linkedin: https://www.linkedin.com/in/shruthi-ashok/
+current: false
 ---

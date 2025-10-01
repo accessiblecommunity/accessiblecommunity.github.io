@@ -12,4 +12,5 @@ photo:
   alt: Woman with long black hair, brown eyes, and glasses.
 links:
   linkedin: https://www.linkedin.com/in/natalia-karhu-profile/
+current: false
 ---

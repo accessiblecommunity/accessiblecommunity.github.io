@@ -10,4 +10,5 @@ roles:
 photo:
   image: ../../images/staff/Daniela.png
   alt: Adult woman with dark brown hair, black eyes and a cheerful smile.
+current: false
 ---

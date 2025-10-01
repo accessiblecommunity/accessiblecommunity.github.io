@@ -10,4 +10,5 @@ photo:
   alt: Woman with medium length brown hair and glasses.
 links:
   linkedin: https://www.linkedin.com/in/laura-gould/
+current: false
 ---

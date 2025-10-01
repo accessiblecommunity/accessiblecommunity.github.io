@@ -15,13 +15,16 @@ const board: CollectionEntry<"staff">[] = await getCollection(
     return data.current == false && data.roles?.board;
   },
 );
-const staff: CollectionEntry<"staff">[] = await getCollection(
-  "staff",
-  ({ data }) => {
-    return (
-      data.current == false && !(data.roles?.leadership || data.roles?.board)
-    );
-  },
+const staff: CollectionEntry<"staff">[] = sortBy(
+  await getCollection(
+    "staff",
+    ({ data }) => {
+      return (
+        data.current == false && !(data.roles?.leadership || data.roles?.board)
+      );
+    },
+  ),
+  [((s) => s.data.cited?.first || s.data.name.first)],
 );
 const teams = sortBy(
   await getCollection(
