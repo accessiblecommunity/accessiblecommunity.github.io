@@ -16,14 +16,14 @@ const rooms: Array<CollectionEntry<"escapeRoomThemes">> =
 
 
 import Branding from "@components/Branding.astro";
+import { Icon } from "astro-icon/components";
 import { Image } from "astro:assets";
 import EscapeRoomLayout from "src/layouts/EscapeRoomLayout.astro";
 import ThemedSection from "@components/ThemedSection.astro";
+import { YouTube } from 'astro-lazy-youtube-embed'
 
 import brailleBlocks from "src/images/escape-room/braille-blocks.png";
 import woodenPuzzles from "src/images/escape-room/wooden-puzzles.png";
-
-import { YouTube } from 'astro-lazy-youtube-embed'
 ---
 
 <EscapeRoomLayout {metadata} {title}>
@@ -38,6 +38,26 @@ import { YouTube } from 'astro-lazy-youtube-embed'
           Where teams of 3-10 people, with or without disabilities, try to solve
           puzzles to reach an objective while learning about accessibility.
         </p>
+        <div class="row row-cols-1 row-cols-sm-2">
+          <div class="col">
+            <a
+              class="link-light link-offset-1 icon-link"
+              href="/services/escape-room/themes"
+            >
+              <Icon name="bi:puzzle-fill" class="bi"></Icon>
+              Explore our rooms
+            </a>
+          </div>
+          <div class="col">
+            <a
+              class="link-light link-offset-1 icon-link"
+              href="/services/escape-room/how-it-works"
+            >
+              <Icon name="bi:tools" class="bi"></Icon>
+              How the rooms work
+            </a>
+          </div>
+        </div>
       </div>
       <div class="d-none d-lg-block col-lg-5 col-xl-4 position-relative" style="height: 325px">
         <Image
@@ -57,34 +77,6 @@ import { YouTube } from 'astro-lazy-youtube-embed'
       </div>
     </div>
   </ThemedSection>
-
-  <div class="about-escape-rooms">
-    <div class="container">
-      <div class="row align-items-start gx-1">
-        <div class="col-lg-6">
-          <Image
-            width={474}
-            height={406}
-            class="escape-room-image rounded"
-            src={woodenPuzzles}
-            alt="Wooden puzzles arranged on a dark wooden surface, including cube puzzles, star-shaped puzzles, and various interlocking wooden pieces"
-          />
-        </div>
-        <div class="col-lg-6 about-escape-rooms-text">
-          <h2 class="text-primary fw-bold fs-2 mb-4">About our escape rooms</h2>
-          <p>
-            It may be called an escape room but we don't lock you in. You can leave at any time. We design around fun themes rather than stressful ones. That is just part of what makes our escape room accessible! The puzzles vary in difficulty and everyone, regardless of disability, can participate.
-          </p>
-          <p>
-            In order to reach the most people, our escape rooms are portable and designed for easy setup in hotel and conference rooms. The Accessible Escape Room has been traveling to disability and accessibility conferences and other venues since 2022.
-          </p>
-          <p class="mt-3">
-            <a href="/services/escape-room/themes" class="fw-bold text-decoration-underline explore-link">Explore rooms</a>
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
 
   <ThemedSection>
     <div
@@ -151,7 +143,7 @@ import { YouTube } from 'astro-lazy-youtube-embed'
     </div>
     <p class="lead pt-4">
       If you are interested in purchasing, please email us at <a
-        class="link-truncate"
+        class="link-info link-truncate"
         href="mailto:escaperoom@accessiblecommunity.org"
         >escaperoom@accessiblecommunity.org</a
       >.
@@ -183,40 +175,10 @@ import { YouTube } from 'astro-lazy-youtube-embed'
   p {
     margin-bottom: 0.5em;
   }
-
   p.lead {
     margin-bottom: 0.75em;
   }
-
-  .about-escape-rooms {
-    background-color: #EDF5FF;
-    padding: 1.25rem 0;
-    margin: 0;
-  }
-  
-  .about-escape-rooms .container {
-    background-color: #EDF5FF;
-    padding: 0.75rem 0;
-  }
-  
-  .about-escape-rooms .row {
-    background-color: #EDF5FF;
-    margin: 0;
-  }
-  
-  .about-escape-rooms .col-lg-6 {
-    background-color: #EDF5FF;
-    padding: 0 0.25rem 1rem;
-  }
-  
-  .about-escape-rooms-text {
-    max-width: 40rem;
-  }
-  .about-escape-rooms-text p {
-    line-height: 1.8;
-  }
-  
-  .escape-room-image {
-    object-fit: cover;
+  a.link-light {
+    --bs-link-hover-color-rgb: var(--bs-info-rgb);
   }
 </style>
