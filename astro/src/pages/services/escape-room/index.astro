@@ -16,14 +16,14 @@ const rooms: Array<CollectionEntry<"escapeRoomThemes">> =
 
 
 import Branding from "@components/Branding.astro";
+import { Icon } from "astro-icon/components";
 import { Image } from "astro:assets";
 import EscapeRoomLayout from "src/layouts/EscapeRoomLayout.astro";
 import ThemedSection from "@components/ThemedSection.astro";
+import { YouTube } from 'astro-lazy-youtube-embed'
 
 import brailleBlocks from "src/images/escape-room/braille-blocks.png";
 import woodenPuzzles from "src/images/escape-room/wooden-puzzles.png";
-
-import { YouTube } from 'astro-lazy-youtube-embed'
 ---
 
 <EscapeRoomLayout {metadata} {title}>
@@ -38,6 +38,26 @@ import { YouTube } from 'astro-lazy-youtube-embed'
           Where teams of 3-10 people, with or without disabilities, try to solve
           puzzles to reach an objective while learning about accessibility.
         </p>
+        <div class="row row-cols-1 row-cols-sm-2">
+          <div class="col">
+            <a
+              class="link-light link-offset-1 icon-link"
+              href="/services/escape-room/themes"
+            >
+              <Icon name="bi:puzzle-fill" class="bi"></Icon>
+              Explore our rooms
+            </a>
+          </div>
+          <div class="col">
+            <a
+              class="link-light link-offset-1 icon-link"
+              href="/services/escape-room/how-it-works"
+            >
+              <Icon name="bi:tools" class="bi"></Icon>
+              How the rooms work
+            </a>
+          </div>
+        </div>
       </div>
       <div class="d-none d-lg-block col-lg-5 col-xl-4 position-relative" style="height: 325px">
         <Image
@@ -99,9 +119,9 @@ import { YouTube } from 'astro-lazy-youtube-embed'
     </p>
     <p class="lead">
       If you would like to bring one of our accessible escape rooms to your business
-      or venue, we now offer the <a href="/services/escape-room/themes">following themes</a>:</p
+      or venue, we now offer the <a href="/services/escape-room/themes" class="link-info">following themes</a>:</p
     >
-    {/* <div class="row row-cols-2 row-cols-lg-3 row-cols-xl-4 g-3 align-items-stretch"> */}
+    
     <div class="row row-cols-2 g-3 align-items-stretch">
       {
         rooms.map(room => (
@@ -123,7 +143,7 @@ import { YouTube } from 'astro-lazy-youtube-embed'
     </div>
     <p class="lead pt-4">
       If you are interested in purchasing, please email us at <a
-        class="link-truncate"
+        class="link-info link-truncate"
         href="mailto:escaperoom@accessiblecommunity.org"
         >escaperoom@accessiblecommunity.org</a
       >.
@@ -152,15 +172,13 @@ import { YouTube } from 'astro-lazy-youtube-embed'
     font-weight: 600;
     margin-bottom: 0.5em;
   }
-  a {
-    --bs-link-color: var(--bs-info);
-    --bs-link-color-rgb: var(--bs-info-rgb);
-  }
   p {
     margin-bottom: 0.5em;
   }
-
   p.lead {
     margin-bottom: 0.75em;
+  }
+  a.link-light {
+    --bs-link-hover-color-rgb: var(--bs-info-rgb);
   }
 </style>
