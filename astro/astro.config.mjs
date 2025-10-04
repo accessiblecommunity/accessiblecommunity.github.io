@@ -10,6 +10,7 @@ import styleGuide from "./style-guide/register.js";
 
 import icon from "astro-icon";
 import mdx from "@astrojs/mdx";
+import netlify from '@astrojs/netlify';
 import robotsTxt from "astro-robots-txt";
 import sitemap from "@astrojs/sitemap";
 
@@ -30,15 +31,18 @@ const botsToDisallow = [
   "Timpibot",
 ];
 
-// https://astro.build/config
 export default defineConfig({
   site: "https://accessiblecommunity.org",
+  adapter: netlify(),
+
   server: {
     host: true,
   },
+
   redirects: {
     "/daf/overview/": "/daf/",
   },
+
   vite: {
     resolve: {
       alias: {
@@ -55,6 +59,7 @@ export default defineConfig({
       noExternal: ["bootstrap"],
     },
   },
+
   integrations: [
     mdx(),
     styleGuide(), 
