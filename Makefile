@@ -54,7 +54,7 @@ $(SOURCE_DIR)/node_modules:
 	@echo Installing JS dependencies. This will take awhile.
 	docker compose exec $(CONTAINER) sh -c "npm install"
 
-$(SOURCE_DIR)/dist: up
+$(SOURCE_DIR)/dist: up $(SOURCE_DIR)/node_modules
 	@echo Running a local build.
 	@docker compose exec $(CONTAINER) sh -c "npm run build"
 
