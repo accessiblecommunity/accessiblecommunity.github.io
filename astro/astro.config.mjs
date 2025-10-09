@@ -74,13 +74,10 @@ export default defineConfig({
           // Social Media
           'facebook', 'instagram', 'linkedin', 'rss-fill', 'tiktok', 'youtube','globe', 'mastodon', 'twitter',
           // Descriptive
-<<<<<<< HEAD
           'gift-fill', 'pencil-fill', 'people-fill', 'person-fill',
           // Additional icons
           'check-circle-fill', 'exclamation-triangle-fill', 'file-text-fill', 'display-fill', 'puzzle-fill', 'tools',
-=======
           'gift-fill', 'pencil-fill', 'people-fill', 'person-fill', 'puzzle-fill', 'stopwatch-fill', 'tools',
->>>>>>> origin/main
         ],
         // CoreUI Brands
         cib: [
