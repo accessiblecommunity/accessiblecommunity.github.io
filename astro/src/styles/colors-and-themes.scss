@@ -93,7 +93,7 @@ $secondary-border-subtle-dark:      #4B555F; // gray-70
 $info:                              #066F80; // branded cyan
 // Note: No dark mode on info
 
-// Secondary Subtle Theme
+// Info Subtle Theme
 $info-text-emphasis:                #004F4F; // cyan-80
 $info-bg-subtle:                    #67DCE0; // cyan-00  
 $info-border-subtle:                #33CCCC; // cyan-10
@@ -105,6 +105,34 @@ $info-border-subtle-dark:           #006161; // cyan-70
 // New Responsive Contrast Theme.
 $info-border-contrast:              #004F4F; // cyan-80
 $info-border-contrast-dark:         #11BABA; // cyan-20
+
+//**************
+//* Escape Room
+//**************
+
+$corporate:                         #8C5642; // briefcase
+
+// Corporate Subtle Theme
+$corporate-text-emphasis:           #6D4333; // 3 shades darker
+$corporate-bg-subtle:               #E3CCC4;
+$corporate-border-subtle:           #D5B2A6;
+
+$corporate-text-emphasis-dark:      #C79988; 
+$corporate-bg-subtle-dark:          #452A21; // 7 shades darker
+$corporate-border-subtle-dark:      #633D2F; // 4 shades darker
+
+
+$kitchen:                           #395999; // blue ribbon
+
+// Corporate Subtle Theme
+$kitchen-text-emphasis:             #283F6D; // 4 shades darker
+$kitchen-bg-subtle:                 #E0E6F3;
+$kitchen-border-subtle:             #A1B5DC;
+
+$kitchen-text-emphasis-dark:        #728FCB;
+$kitchen-bg-subtle-dark:            #1C2C4C; // 7 shades darker
+$kitchen-border-subtle-dark:        #283F6D; // 4 shades darker
+
 
 // Danger Subtle Theme
 $danger-border-subtle:              #c84553;
@@ -122,8 +150,8 @@ $card-title-color-dark:             #7EB0E4; // blue-20
 $link-color:                        #253E92; // blue-80
 $link-color-dark:                   #7EB0E4; // blue-20
 $link-shade-percentage:             40%;
-// $link-hover-color:                  shift-color($link-color, $link-shade-percentage) !default;
-// $link-hover-color-dark:             shift-color($link-color-dark, -$link-shade-percentage) !default;
+$link-hover-color:                  #FFFFFF;
+$link-hover-color-dark:             #FFFFFF;
 
 // Code
 $code-color:                        #590455;

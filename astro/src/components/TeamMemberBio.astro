@@ -30,10 +30,11 @@ const { Content } = await render(member);
       valign="center"
       element="h2"
       size="lg"
+      showLinks={false}
     />
   </div>
   <div
-    class="col-md-3 py-2 pe-3 pe-lg-3 pe-xl-4 ps-md-2 text-center text-md-end align-self-center"
+    class="col-md-3 pb-2 pt-md-3 pe-3 pe-lg-3 pe-xl-4 ps-md-2 text-center text-md-end align-self-center"
   >
     {!isEmpty(links) && <SocialLinks links={links} adjective={`${name}'s`} />}
   </div>

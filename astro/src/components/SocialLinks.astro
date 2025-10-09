@@ -51,14 +51,14 @@ const socialLinks: Array<LinkConfig> = toPairs(links).map(([type, url]) => {
 {
   !isEmpty(socialLinks) && (
     <ul
-      class="list-unstyled d-inline-block mb-3"
+      class="list-unstyled d-inline-block mb-2"
       aria-label={`${adjective} Communications and Social Media Links`}
     >
       {socialLinks.map((sl) => (
-        <li class="d-inline mx-3">
+        <li class="d-inline-block mx-2">
           <a
             href={sl.href}
-            class:list={["align-text-top bio-social-link", `text-${sl.theme}`]}
+            class="d-inline-block align-middle"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -77,9 +77,10 @@ const socialLinks: Array<LinkConfig> = toPairs(links).map(([type, url]) => {
 
 <style>
   .social-icon {
+    fill: currentColor;
     width: 2rem;
     height: 2rem;
-    min-height: 29px;
-    min-width: 29px;
+    min-height: 2rem;
+    min-width: 2rem;
   }
 </style>

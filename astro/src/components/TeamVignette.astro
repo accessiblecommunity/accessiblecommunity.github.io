@@ -70,7 +70,7 @@ function getDisplayName({ name, nickname }: Names) {
 function getLinkIcon(linkType: string) {
   const iconMap: Record<string, string> = {
     email: "bi:envelope-at-fill",
-    linkedin: "bi:linkedin", 
+    linkedin: "bi:linkedin",
     twitter: "bi:twitter-x",
     website: "bi:globe",
     phone: "bi:telephone-fill",
@@ -113,36 +113,44 @@ const NameTag = element;
     ]}
   >
     {
-      title ? (
+      title ?
         <>
           <NameTag class="vignette-name" set:html={displayName} />
           <div class="vignette-title" set:html={title} />
         </>
-      ) : (
-        <NameTag
+      : <NameTag
           class="vignette-name justify-content-center"
           set:html={displayName}
         />
+    }
+
+    {/* Conditionally render bio links */}
+    {
+      showLinks && links && Object.keys(links).length > 0 && (
+        <div class="vignette-links mt-1">
+          {Object.entries(links).map(([linkType, linkValue]) => (
+            <a
+              href={formatLinkUrl(linkType, linkValue)}
+              class="vignette-link"
+              title={`${memberData.name}'s ${linkType}`}
+              target={
+                linkType !== "email" && linkType !== "phone" ?
+                  "_blank"
+                : undefined
+              }
+              rel={
+                linkType !== "email" && linkType !== "phone" ?
+                  "noopener noreferrer"
+                : undefined
+              }
+            >
+              <Icon name={getLinkIcon(linkType)} class="vignette-link-icon" />
+              <span class="visually-hidden">{linkType}</span>
+            </a>
+          ))}
+        </div>
       )
     }
-    
-    {/* Conditionally render bio links */}
-    {showLinks && links && Object.keys(links).length > 0 && (
-      <div class="vignette-links mt-1">
-        {Object.entries(links).map(([linkType, linkValue]) => (
-          <a
-            href={formatLinkUrl(linkType, linkValue)}
-            class="vignette-link"
-            title={`${memberData.name}'s ${linkType}`}
-            target={linkType !== "email" && linkType !== "phone" ? "_blank" : undefined}
-            rel={linkType !== "email" && linkType !== "phone" ? "noopener noreferrer" : undefined}
-          >
-            <Icon name={getLinkIcon(linkType)} class="vignette-link-icon" />
-            <span class="visually-hidden">{linkType}</span>
-          </a>
-        ))}
-      </div>
-    )}
   </div>
   <img
     class:list={[

@@ -1,0 +1,117 @@
+---
+import { Icon } from "astro-icon/components";
+import NavSiteList from "./NavSiteList.astro";
+
+interface Props {
+  // The id of the skip link for page navigation
+  "page-nav-id"?: string;
+}
+
+const { "page-nav-id": pageNavId = undefined } = Astro.props;
+---
+
+<div
+  id="header-navbar"
+  class="navbar navbar-expand-lg align-items-top d-none d-lg-flex"
+>
+  {
+    pageNavId && (
+      <a
+        class="visually-hidden-focusable btn btn-dark skip-link d-print-none"
+        href={`#${pageNavId}`}
+      >
+        Skip to Page Navigation
+      </a>
+    )
+  }
+  <a
+    class="visually-hidden-focusable btn btn-dark skip-link d-print-none"
+    href="#main-content"
+  >
+    Skip to Main Content
+  </a>
+  <div class="brand-wrapper d-flex align-items-center px-3">
+    <div class="navbar-brand me-2">
+      <Icon name="ac-logo" class="brand-logo" role="img" aria-hidden="true" />
+    </div>
+    <a class="navbar-brand flex-fill" href="/">
+      Accessible <strong>Community</strong>
+    </a>
+  </div>
+  <nav
+    id="site-nav"
+    class="collapse navbar-collapse px-3 d-print-none"
+    aria-label="Site"
+  >
+    <NavSiteList class="mx-3" />
+  </nav>
+</div>
+
+<style lang="scss">
+  /* first declaration that is commented out below is for debugging purposes. */
+  // * {
+  //    outline: 1px solid white;
+  // }
+
+  @import "../styles/dark-mode.scss";
+  @import "../styles/responsive-sizing.scss";
+
+  .navbar {
+    min-width: 320px;
+    --bs-body-bg: #e1e1e1;
+  }
+
+  .skip-link:focus,
+  .skip-link:focus-within {
+    position: absolute;
+    font-size: 1.25rem;
+    padding: 0.25rem 2.5rem;
+    top: 0.5rem;
+    left: 0.5rem;
+    z-index: 999;
+  }
+
+  [data-icon="ac-logo"] {
+    width: 1.75rem;
+    height: 1.75rem;
+  }
+
+  .brand-wrapper {
+    height: 2.5rem;
+  }
+
+  @include media-breakpoint-down(md) {
+    .navbar-brand {
+      --bs-navbar-brand-font-size: 1.1rem;
+      vertical-align: sub;
+    }
+  }
+
+  @include media-breakpoint-down(sm) {
+    .navbar-brand {
+      --bs-navbar-brand-font-size: 1rem;
+      vertical-align: sub;
+    }
+  }
+
+  @include color-mode(dark) {
+    .navbar {
+      --bs-body-bg: var(--bs-secondary);
+    }
+
+    .brand-logo {
+      color: #ffffff;
+    }
+  }
+</style>
+
+<script>
+  import { Collapse, Dropdown } from "~bootstrap-es";
+
+  Array.from(document.querySelectorAll(".dropdown")).forEach(
+    (node) => new Dropdown(node),
+  );
+  Array.from(document.querySelectorAll(".collapse")).forEach(
+    (node) => new Collapse(node, { toggle: false }),
+  );
+</script>

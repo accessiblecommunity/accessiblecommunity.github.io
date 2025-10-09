@@ -1,0 +1,175 @@
+---
+import { Icon } from "astro-icon/components";
+import Branding from "@components/Branding.astro";
+import SiteNav from "./NavSiteSecondary.astro";
+import { areSimilarURLs } from "@lib/links";
+
+const navLinks = [{
+  name: "Build-Your-Own Rooms",
+  href: "/services/escape-room/themes",
+}, {
+  name: "How it Works",
+  href: "/services/escape-room/how-it-works",
+}, {
+  name: "Our Story",
+  href: "/services/escape-room/our-story",
+}];
+
+---
+
+<header class="sticky-top" style="top: -3.5em">
+  <SiteNav page-nav-id="header-escape-navbar" />
+  <div
+    id="header-escape-navbar"
+    class="navbar navbar-expand-lg align-items-top"
+  >
+    <div id="brand-nav" class="container-fluid px-3">
+      <button
+        class="navbar-toggler px-1 me-2 d-print-none"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#escape-room-nav"
+        aria-controls="escape-room-nav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <Icon name="bi:list" class="bi" />
+      </button>
+      <div class="d-none d-lg-block navbar-brand me-2">
+        <Icon
+          class="bi"
+          name="escape-room-logo"
+          height="2.5rem"
+          role="img"
+          aria-hidden="true"
+        />
+      </div>
+      <div class="d-flex flex-column flex-fill">
+        <div class="lh-1">
+          <a class="navbar-brand" href="/services/escape-room">
+            <Branding>Accessible Escape Room</Branding>
+          </a>
+        </div>
+        <span class="d-lg-none"
+          ><em>by</em> <Branding>Accessible Community</Branding></span
+        >
+      </div>
+    </div>
+    <nav
+      id="escape-room-nav"
+      class="collapse navbar-collapse px-3 d-print-none d-lg-flex w-100 justify-content-end"
+      aria-label="Escape Room"
+    >
+      <ul class="navbar-nav my-1 mx-4">
+        {
+          navLinks.map(({name, href}) => (
+            <li class="nav-item">
+              <a
+                class:list={["nav-link", {"active": areSimilarURLs(Astro.url.pathname, href)}]}
+                aria-current={areSimilarURLs(Astro.url, href) && "true" || null}
+                {href}
+                set:text={name}
+              />
+            </li>
+          ))
+        }
+        <hr class="d-lg-none" />
+        <li class="nav-item d-lg-none">
+          <a
+            class="nav-link"
+            href="/"><Branding>Accessible Community</Branding> Home</a
+          >
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<slot />
+
+<style lang="scss">
+  /* first declaration that is commented out below is for debugging purposes. */
+  // * {
+  //    outline: 1px solid white;
+  // }
+
+  @import "../styles/dark-mode.scss";
+  @import "../styles/responsive-sizing.scss";
+
+  #header-navbar {
+    min-width: 320px;
+  }
+
+  [data-icon="bi:list"] {
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+  [data-icon="escape-room-logo"] {
+    width: 3.25rem;
+    height: 3.25rem;
+  }
+
+  #brand-nav {
+    height: 3.5rem;
+  }
+
+  .navbar-brand {
+    --bs-navbar-brand-color: black;
+  }
+  .nav-link {
+    --bs-nav-link-color: black;
+    --bs-navbar-active-color: var(--bs-secondary);
+    margin-inline: 0.222em;
+    margin-top: 0.222em;
+    margin-bottom: 0.222em;
+  }
+
+  .navbar-toggler {
+    background-color: #dfe1ed;
+    border-color: var(--bs-primary-text-emphasis);
+    color: var(--bs-primary);
+    padding-inline: 3px;
+    font-size: 1.1rem;
+  }
+
+  @include media-breakpoint-down(md) {
+    .navbar-brand {
+      --bs-navbar-brand-font-size: 1.1rem;
+      vertical-align: sub;
+    }
+  }
+
+  @include media-breakpoint-down(sm) {
+    .navbar-brand {
+      --bs-navbar-brand-font-size: 1rem;
+      vertical-align: sub;
+    }
+  }
+
+  @include color-mode(dark) {
+    .navbar {
+      --bs-body-bg: var(--bs-black);
+
+      .navbar-brand {
+        --bs-navbar-brand-color: var(--bs-white);
+      }
+      .navbar-toggler {
+        color: var(--bs-white);
+        background-color: var(--bs-black);
+      }
+      .nav-link {
+        --bs-nav-link-color: var(--bs-white);
+      }
+    }
+  }
+</style>
+
+<script>
+  import { Collapse, Dropdown } from "~bootstrap-es";
+
+  Array.from(document.querySelectorAll(".dropdown")).forEach(
+    (node) => new Dropdown(node),
+  );
+  Array.from(document.querySelectorAll(".collapse")).forEach(
+    (node) => new Collapse(node, { toggle: false }),
+  );
+</script>

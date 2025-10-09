@@ -1,6 +1,8 @@
 ---
 import { getOpenGraphImageData } from "@lib/og-image";
-import type { Breadcrumbs, PageMetadata } from "@lib/types";
+import type { PageMetadata } from "@lib/types";
+import { getCollection, type CollectionEntry } from "astro:content";
+import { sortBy } from "lodash-es";
 
 const title = "The Accessible Escape Room";
 const metadata: PageMetadata = {
@@ -8,334 +10,175 @@ const metadata: PageMetadata = {
   description: "Overview of the Accessible Escape Room",
   image: getOpenGraphImageData(Astro.site, "pages", "escape-room"),
 };
-const crumbs: Breadcrumbs = [
-  {
-    name: "Home",
-    href: "/",
-  },
-  {
-    name: "Services",
-    href: "/services",
-  },
-];
+
+const rooms: Array<CollectionEntry<"escapeRoomThemes">> = 
+  sortBy(await getCollection("escapeRoomThemes"), (room) => room.data.title);
+
 
 import Branding from "@components/Branding.astro";
-import ExternalLink from "@components/ExternalLink.astro";
-import Hero from "@components/ColumnedHero.astro";
-import { Image } from "astro:assets";
-import ImageFigure from "@components/ImageFigure.astro";
-import Layout from "src/layouts/Layout.astro";
-import ThemedBox from "@components/ThemedBox.astro";
-import ThemedSection from "@components/ThemedSection.astro";
-
-import heroBg from "src/images/escape-room/jonathan-kemper-9tamF4J0vLk-unsplash.jpg";
-import escapeRoomLogo from "src/images/escape-room/escaperoomlogo-768x768.png";
-import brailleBlocks from "src/images/escape-room/braille-blocks.png";
-import bakingBg from "src/images/escape-room/priscilla-du-preez-SU5jSHu1pK8-unsplash.jpg";
-import casinoBg from "src/images/escape-room/ben-iwara-gbSHdpJr1HE-unsplash.jpg";
-import corporateBg from "src/images/escape-room/aleksandar-andreev-k2gRTJM9BPw-unsplash.jpg";
-import picnicBg from "src/images/escape-room/evangelina-silina-BzLUmuRDMWE-unsplash.jpg";
 import { Icon } from "astro-icon/components";
+import { Image } from "astro:assets";
+import EscapeRoomLayout from "src/layouts/EscapeRoomLayout.astro";
+import ThemedSection from "@components/ThemedSection.astro";
+import { YouTube } from 'astro-lazy-youtube-embed'
+
+import brailleBlocks from "src/images/escape-room/braille-blocks.png";
+import woodenPuzzles from "src/images/escape-room/wooden-puzzles.png";
 ---
 
-<Layout {title} {crumbs} {metadata}>
-  <Hero image={heroBg} slot="header" reverse vertical-position="22%">
-    <div class="py-2 px-2" slot="heading">
-      <h1 class="display-2">
-        <Branding>The Accessible Escape&nbsp;Room</Branding>.
-      </h1>
+<EscapeRoomLayout {metadata} {title}>
+  <ThemedSection slot="header" theme="info" py={4}>
+    <div
+      class="d-flex flex-column flex-lg-row gap-4 py-3 justify-content-lg-center align-items-center"
+    >
+      <div class="col col-lg-6 col-xl-7 text-light">
+        <h1 class="visually-hidden" set:text={title}></h1>
+        <p class="display-2">A fun and accessible team-building activity.</p>
+        <p class="lead">
+          Where teams of 3-10 people, with or without disabilities, try to solve
+          puzzles to reach an objective while learning about accessibility.
+        </p>
+        <div class="row row-cols-1 row-cols-sm-2">
+          <div class="col">
+            <a
+              class="link-light link-offset-1 icon-link"
+              href="/services/escape-room/themes"
+            >
+              <Icon name="bi:puzzle-fill" class="bi"></Icon>
+              Explore our rooms
+            </a>
+          </div>
+          <div class="col">
+            <a
+              class="link-light link-offset-1 icon-link"
+              href="/services/escape-room/how-it-works"
+            >
+              <Icon name="bi:tools" class="bi"></Icon>
+              How the rooms work
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="d-none d-lg-block col-lg-5 col-xl-4 position-relative" style="height: 325px">
+        <Image
+          width={400}
+          class="img-wp rounded position-absolute top-0 end-0"
+          src={woodenPuzzles}
+          alt=""
+          aria-hidden="true"
+        />
+        <Image
+          width={300}
+          class="img-bb position-absolute bottom-0 start-0"
+          src={brailleBlocks}
+          alt=""
+          aria-hidden="true"
+        />
+      </div>
     </div>
-    <div class="py-3">
-      <p class="text-bg-hero">
-        <Branding>The Accessible Escape Room</Branding> is a fun, accessible team-building
-        activity. Teams of 3-10 people, with or without disabilities, try to solve
-        puzzles to reach an objective while learning about accessibility.
-      </p>
-    </div>
-  </Hero>
-
-  {
-    /*
-    Note: Temporarily deactivating this until the details for AccessU are formalized.
-
-  <p class="text-bg-primary text-center mb-0 py-3">
-    <a class="icon-link link-light" href="/services/escape-room/csun-2025">
-      <Icon name="bi:pencil-fill" class="bi" role="img" aria-hidden="true" />
-      Register to prototype our newest Escape Room at AccessU 2025!
-    </a>
-  </p>
-*/
-  }
-
-  <ThemedSection style="tertiary">
-    <p class="lead">
-      It may be called an escape room but we don't lock you in. You can leave at
-      any time. We design around fun themes rather than stressful ones. That is
-      just part of what makes our escape room accessible! The puzzles vary in
-      difficulty and everyone, regardless of disability, can participate.
-    </p>
-    <p class="lead">
-      In order to reach the most people, our escape rooms are portable and
-      designed for easy setup in hotel and conference rooms. <Branding
-        >The Accessible Escape Room</Branding
-      > has been traveling to disability and accessibility conferences and other
-      venues since 2022.
-    </p>
   </ThemedSection>
 
   <ThemedSection>
-    <h2
-      >I like <strong>puzzles</strong>. I would like to <strong>play</strong
-      >.</h2
+    <div
+      class="d-flex flex-column flex-xl-row-reverse gap-5 justify-content-xl-between align-items-xl-center"
     >
+      <div class="col">
+        <h2 class="">I like puzzles. I would like to play.</h2>
+        <p class="lead">
+          It may be called an escape room but we don't lock you in. You can leave at
+          any time. We design around fun themes rather than stressful ones. That is
+          just part of what makes our escape room accessible! The puzzles vary in
+          difficulty and everyone, regardless of disability, can participate.
+        </p>
+        <p class="lead">
+          In order to reach the most people, our escape rooms are portable and
+          designed for easy setup in hotel and conference rooms. <Branding
+            >The Accessible Escape Room</Branding
+          > has been traveling to disability and accessibility conferences and other
+          venues since 2022.
+        </p>
+      </div>
+      <div class="col">
+        <YouTube
+          class="rounded"
+          title="Why have an accessible escape room?"
+          videoId="-VJcG6rmavo"
+        />
+      </div>
+    </div>
+  </ThemedSection>
 
+  <ThemedSection style="subtle" theme="secondary">
+    <h2 class="text-center">Our build-your-own rooms.</h2>
     <p class="lead">
-      If you would like to bring an accessible escape room to your business or
-      venue, we now offer two options for purchase:</p
-    >
-
-    <div>
-      <p>Already have a kit? Access <a href="/services/escape-room/access">your materials</a>.</p>
-    </div>
-    <div
-      class="d-flex flex-column flex-lg-row gap-4 py-3 justify-content-lg-center text-primary"
-    >
-      <ThemedBox
-        theme="info"
-        text={true}
-        border={1}
-        class="col col-lg-6 col-xl-5 shadow rounded"
-      >
-        <h3 class="text-white">Build-your-own Kit</h3>
-        <p>Cost: <strong class="text-brand">$500</strong>.</p>
-        <p>
-          Our "do-it-yourself" escape rooms are lightweight and fun. What's
-          included:
-        </p>
-        <ul class="bullets">
-          <li
-            >Step-by-step instructions on how to assemble the escape room
-            yourself.</li
-          >
-          <li
-            >A guide with how to run the escape room and how to accommodate
-            people with various disabilties.</li
-          >
-          <li
-            >Access to the digital content with appropriate captions and audio
-            descriptions.</li
-          >
-        </ul>
-        <button type="button" onclick="window.location.href='/services/escape-room/purchase'" class="btn btn-primary btn-lg">
-          Purchase Now!
-        </button>
-      </ThemedBox>
-      <ThemedBox
-        theme="primary"
-        text={true}
-        border={1}
-        class="col col-lg-6 col-xl-5 shadow rounded"
-      >
-        <h3 class="text-white">Ready-made Kit</h3>
-        <p>Cost: <strong class="text-brand">$3,500</strong>.</p>
-        <p>
-          Our premade escape rooms have a higher level of technology and
-          automation. What's included:
-        </p>
-        <ul class="bullets">
-          <li
-            >One instance of the escape room, preassembled and sent directly to
-            you.</li
-          >
-          <li
-            >A guide with how to run the escape room and how to accommodate
-            people with various disabilties.</li
-          >
-          <li
-            >Access to the digital content with appropriate captions and audio
-            descriptions.</li
-          >
-        </ul>
-        <button type="button" onclick="window.location.href='/services/escape-room/purchase'" class="btn btn-primary btn-lg">
-          Purchase Now!
-        </button>
-      </ThemedBox>
-    </div>
-    <p class="lead pt-4 text-center">
-      Ready to get started? <a href="/services/escape-room/purchase" class="btn btn-outline-primary btn-lg ms-2">Purchase Your Kit</a>
+      Requests for the <Branding>Accessible Escape Room</Branding> have gone beyond
+      our ability to run them. Instead, we are providing kits to build and run your
+      own accessible escape room! Each kit includes information on what to purchase,
+      how to build and run the escape room, and access to all the electronic files
+      for the escape room you select.
     </p>
-  </ThemedSection>
-
-  <ThemedSection theme="secondary" style="subtle">
-    <h2>Our <strong>build-your-own</strong> themes.</h2>
-    <div
-      class="d-flex flex-column flex-lg-row gap-4 py-3 justify-content-lg-evenly text-primary"
+    <p class="lead">
+      If you would like to bring one of our accessible escape rooms to your business
+      or venue, we now offer the <a href="/services/escape-room/themes" class="link-info">following themes</a>:</p
     >
-      <div class="card col col-lg-5 border border-primary shadow">
-        <Image
-          src={corporateBg}
-          class="card-img-top"
-          alt="A gentleman wearing dark clothes holding a briefcase"
-        />
-        <div class="card-body">
-          <h3 class="card-title">A corporate <strong>conundrum</strong>.</h3>
-          <p class="card-text"
-            >A piece of ground-breaking technology your company has developed is
-            missing. You've received a tip on how to retrieve it.</p
-          >
-        </div>
-      </div>
-
-      <div class="card col col-lg-5 border border-primary shadow">
-        <Image
-          src={bakingBg}
-          class="card-img-top"
-          alt="A freshly baked pie, next to a jar of flour and a rolling pin"
-        />
-        <div class="card-body">
-          <h3 class="card-title">A baking <strong>bonanza</strong>.</h3>
-          <p class="card-text"
-            >You are looking for classic recipes to submit to the local fair.
-            Will you find them in time to win the blue ribbon?</p
-          >
-        </div>
-      </div>
+    
+    <div class="row row-cols-2 g-3 align-items-stretch">
+      {
+        rooms.map(room => (
+          <div class="col">
+            <div class="card border border-dark">
+              <Image
+                src={room.data.image}
+                class="card-img-top"
+                alt={room.data.alt || null}
+              />
+              <div class="card-body">
+                <h3 class={`card-title text-truncate text-${room.data.page.theme}`} set:text={room.data.title} />
+                <p class="card-text" set:text={room.data.tagline} />
+              </div>
+            </div>
+          </div>
+        ))
+      }
     </div>
-  </ThemedSection>
-
-  <ThemedSection theme="secondary">
-    <h2 class="text-white">Our <strong>ready-made</strong> themes.</h2>
-    <div
-      class="d-flex flex-column flex-lg-row gap-4 py-3 justify-content-lg-evenly text-primary"
-    >
-      <div class="card col col-lg-5 border border-primary shadow">
-        <Image
-          src={picnicBg}
-          class="card-img-top"
-          alt="A small picnic on a blanket"
-        />
-        <div class="card-body">
-          <h3 class="card-title">A <strong>puzzling</strong> picnic.</h3>
-          <p class="card-text"
-            >Your friend has invited you for a picnic, but it's strangely
-            challenging to setup. Can you figure out the clues before your
-            friend arrives?</p
-          >
-        </div>
-      </div>
-
-      <div class="card col col-lg-5 border border-primary shadow">
-        <Image
-          src={casinoBg}
-          class="card-img-top"
-          alt="A roulette table with piles of chips"
-        />
-        <div class="card-body">
-          <h3 class="card-title">A <strong>cryptic</strong> casino.</h3>
-          <p class="card-text"
-            >You have arrived for an enjoyable evening out at the local casino.
-            Play games and collect chips to gain access the high roller vault.</p
-          >
-        </div>
-      </div>
-    </div>
-    <p class="pt-4 text-white">
-      Our prebuilt escape rooms will be available to order later this year.
-      Please email us at <a
-        class="link-light"
+    <p class="lead pt-4">
+      If you are interested in purchasing, please email us at <a
+        class="link-info link-truncate"
         href="mailto:escaperoom@accessiblecommunity.org"
         >escaperoom@accessiblecommunity.org</a
-      > if you are interested in purchasing one.
+      >.
     </p>
   </ThemedSection>
+</EscapeRoomLayout>
 
-  <ThemedSection style="tertiary">
-    <h2 class="mb-4">The <strong>history</strong> of our escape rooms.</h2>
-    <div
-      class="d-flex flex-column flex-lg-row-reverse gap-4 justify-content-lg-between align-items-center align-items-lg-start"
-    >
-      <div class="col-3 col-lg-2">
-        <Image src={escapeRoomLogo} alt="" class="logo" aria-hidden="true" />
-      </div>
-      <p class="col col-lg-9">
-        A few years ago, over lunch, Matt Ater and Rachael Bradley Montgomery
-        joked about creating an accessible escape room. Why? Because Matt, who
-        is blind, had attended his daughter's birthday party at an escape room
-        and wasn't able to participate – at all! Fast forward a year and we were
-        still talking about it. We realized how few individuals with
-        disabilities were able to enjoy this fun activity and so decided to go
-        ahead and build one. We met with Escape Room Loco in Leesburg, VA to
-        learn more. Then along with a team of volunteers from Accessible
-        Community, MITRE, and Vispero we built our first escape room. It had an
-        espionage theme and while it wasn't perfect, everyone could participate
-        in at least one puzzle, usually more. A team of all blind individuals
-        who helped pilot test it had the best score of everyone!
-      </p>
-    </div>
-  </ThemedSection>
-
-  <ThemedSection>
-    <div
-      class="d-flex flex-column flex-lg-row-reverse gap-4 justify-content-lg-between align-items-center"
-    >
-      <div>
-        <h2 class="mb-4"><strong>Making</strong> an accessible escape room.</h2>
-        <p>
-          If you would like to create an accessible escape room for your
-          business or organization, here are some tips to get started.</p
-        >
-        <ul>
-          <li
-            >Pick a theme that doesn't cause anxiety. Don't lock people in or
-            create panic intentionally. Instead, create challenging puzzles in a
-            fun atmosphere.</li
-          >
-          <li
-            >Don't design puzzles to rely on a single sense. Provide hints using
-            both sound and sight, preferably sound, sight and touch.</li
-          >
-          <li>Offer an untimed option to participants who need it.</li>
-          <li>Provide accommodations when requested.</li>
-          <li
-            >Create a set of puzzles so that everyone can engage with at least
-            one. This means at least one puzzle should take voice input.</li
-          >
-        </ul>
-      </div>
-
-      <ImageFigure
-        class="col-8 col-lg-4"
-        src={brailleBlocks}
-        imageClass="logo"
-        alt="Alphabet blocks with braille"
-      >
-        <span slot="caption"
-          >We have used these <ExternalLink
-            inline
-            href="https://www.plantoys.com/products/braille-alphabet-a-z"
-            >braille alphabet blocks from Plan Toys</ExternalLink
-          > to successfully engage participants with visual impairment.</span
-        >
-      </ImageFigure>
-    </div>
-  </ThemedSection>
-
-  <style scoped>
-    .card-img-top {
-      height: auto;
-    }
-
-    .logo {
-      height: auto;
-      width: 100%;
-    }
-
-    p {
-      margin-bottom: 0.5em;
-    }
-
-    p.lead {
-      margin-bottom: 0.75em;
-    }
-  </style>
-</Layout>
+<style>
+  .img-wp {
+    width: 80%;
+    height: auto;
+  }
+  .img-bb {
+    width: 70%;
+    height: auto;
+  }
+  .card-img-top {
+    height: auto;
+  }
+  .card-title {
+    font-weight: 500;
+    font-size: 1.3rem;
+  }
+  h2, h3, h4 {
+    color: var(--bs-info);
+    font-weight: 600;
+    margin-bottom: 0.5em;
+  }
+  p {
+    margin-bottom: 0.5em;
+  }
+  p.lead {
+    margin-bottom: 0.75em;
+  }
+  a.link-light {
+    --bs-link-hover-color-rgb: var(--bs-info-rgb);
+  }
+</style>
