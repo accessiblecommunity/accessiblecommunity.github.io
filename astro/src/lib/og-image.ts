@@ -6,7 +6,7 @@ export function getOpenGraphImageData(
   filename: string,
   alt: string = "",
 ): ImageData {
-  const url = new URL(`/images/og/${folder}/${filename}.png`, baseUrl);
+  const url = new URL(`/images/og/${folder}/${filename}.png`, baseUrl || 'https://accessiblecommunity.org');
   return {
     data: {
       src: url.href,

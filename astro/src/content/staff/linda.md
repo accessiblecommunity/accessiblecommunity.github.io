@@ -7,4 +7,5 @@ roles:
   content: Editor
 photo:
   image: ../../images/staff/Linda.png
+current: false
 ---

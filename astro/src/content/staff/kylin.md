@@ -5,7 +5,7 @@ name:
 roles:
   default: Director, User Experience
   leadership: Director, User Experience
-  content: Writer
+  # content: Writer
   ux: Director, Researcher
 photo:
   image: ../../images/staff/Kylin.png

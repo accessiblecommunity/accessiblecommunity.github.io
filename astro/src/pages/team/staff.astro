@@ -39,6 +39,7 @@ const teams = await Promise.all(
 
     return {
       name: entry.data.name,
+      branded: entry.data.branded,
       team: entry.id,
       members: getTeamMembers(entry.id),
       Content,
@@ -84,10 +85,15 @@ const crumbs: Breadcrumbs = [
       instead.
     </p>
     {
-      teams.map(({ name, team, members, Content }) => {
+      teams.map(({ name, team, branded, members, Content }) => {
         return (
           <>
-            <h2 class="mt-5"> {name} </h2>
+            <h2 class="mt-5">
+              { branded
+                ? <Branding>{name}</Branding>
+                : name
+              }
+            </h2>
             <div class="mx-3">
               <Content {components} />
             </div>

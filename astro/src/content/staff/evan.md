@@ -3,10 +3,10 @@ name:
   first: Evan
   last: Tansil
 roles:
-  default: Content Team, Evaluations Team
-  content: Writer
-  evaluations: Project Manager
-  leadership: Project Manager, Evaluations
+  default: Digital Evaluator
+  # content: Writer
+  evaluations: Digital Evaluator
+  # leadership: Project Manager, Evaluations
 photo:
   image: ../../images/staff/Evan.png
   alt: African-American man. Short hair with fade. Wearing rectangle glasses. White shirt, with blue blazer.

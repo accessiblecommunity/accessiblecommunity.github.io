@@ -118,6 +118,7 @@ const staff = defineCollection({
           development: z.string(),
           escape_room: z.string(),
           evaluations: z.string(),
+          globa11y: z.string(),
           leadership: z.string(),
           loca11y: z.string(),
           support: z.string(),
@@ -154,6 +155,7 @@ const teams = defineCollection({
   loader: glob({ pattern: "**/[^_]*.{md,mdx}", base: "./src/content/teams" }),
   schema: z.object({
     name: z.string(),
+    branded: z.boolean().default(false),
     recruiting: reference("recruiting").optional(),
     order: z.number().default(99999),
     management: z.boolean().default(false),

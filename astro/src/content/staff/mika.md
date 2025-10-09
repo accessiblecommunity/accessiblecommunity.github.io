@@ -3,8 +3,8 @@ name:
   first: Mika
   last: Panday
 roles:
-  default: UX Deputy, loca11y 
-  content: Writer
+  default: UX Deputy, loca11y
+  # content: Writer
   ux: UX Deputy, loca11y
 photo:
   image: ../../images/staff/Mika.png
