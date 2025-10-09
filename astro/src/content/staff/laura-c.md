@@ -1,10 +1,13 @@
 ---
-name: Laura Curtidor
+name:
+  first: Laura
+  last: Curtidor
 roles:
   default: Content Team
   content: Writer
-picture: ../../images/staff/LauraC.png
-alt: Woman with short black hair and glasses.
+photo:
+  image: ../../images/staff/3d/LauraC.png
+  alt: Woman with short black hair and glasses.
 links:
   instagram: https://www.instagram.com/lau.curti2/
   linkedin: http://linkedin.com/in/laura-curtidor/

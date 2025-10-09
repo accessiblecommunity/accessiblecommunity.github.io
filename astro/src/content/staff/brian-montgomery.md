@@ -1,11 +1,14 @@
 ---
-name: Brian Montgomery
+name:
+  first: Brian
+  last: Montgomery
 roles:
   default: Director, Engineering
   development: Full-Stack Developer
   leadership: Director, Engineering
-picture: ../../images/staff/Brian.png
-alt: Middle-aged male with brown and gray hair, hazel eyes and glasses.
+photo:
+  image: ../../images/staff/Brian.png
+  alt: Middle-aged male with brown and gray hair, hazel eyes and glasses.
 links:
   email: brian@accessiblecommunity.org
   linkedin: https://www.linkedin.com/in/brian-montgomery-139175172/

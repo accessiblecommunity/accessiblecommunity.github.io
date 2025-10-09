@@ -1,8 +1,15 @@
 ---
-name: Winnie
+name:
+  first: Winnie
+  last: Magoma
+cited:
+  first: Winnie
 roles:
   default: Content Team
   content: Writer
 current: false
-picture: ../../images/staff/Winnie.png
+photo:
+  image: ../../images/staff/Winnie.png
+links:
+  website: https://github.com/winniebosy
 ---

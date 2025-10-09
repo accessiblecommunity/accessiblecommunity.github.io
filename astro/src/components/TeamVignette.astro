@@ -21,8 +21,9 @@ interface Props {
 }
 
 interface Names {
-  name: string;
-  nickname?: string;
+  first: string;
+  middle?: string
+  last?: string;
 }
 
 const {
@@ -36,7 +37,7 @@ const {
   element = "div",
   size = "",
   responsive = false,
-  showLinks = true,
+  showLinks = false,
 } = Astro.props;
 
 async function getTeamMemberData(member: MemberProp): Promise<TeamMemberData> {
@@ -50,21 +51,14 @@ async function getTeamMemberData(member: MemberProp): Promise<TeamMemberData> {
 }
 
 const memberData: TeamMemberData = await getTeamMemberData(member);
-const { roles, picture, alt, links } = memberData;
+const { name, cited, roles, photo, links } = memberData;
 const teamName = typeof role === "boolean" ? "default" : role;
 const title = role && roles[teamName];
 
-function getDisplayName({ name, nickname }: Names) {
-  if (nickname) {
-    if (highlightName) nickname = `<strong>${nickname}</strong>`;
-    return nickname;
-  } else {
-    const nameArray = name.split(" ");
-    if (highlightName) nameArray[0] = `<strong>${nameArray[0]}</strong>`;
-    if (firstNameOnly) return nameArray[0];
-
-    return nameArray.join(" ");
-  }
+function getDisplayName({ first, middle, last }: Names) {
+  if (highlightName) first = `<strong>${first}</strong>`;
+  if (firstNameOnly) return first;
+  return [first, middle, last].filter((n) => n).join(" ");
 }
 
 function getLinkIcon(linkType: string) {
@@ -91,7 +85,7 @@ function formatLinkUrl(linkType: string, value: string) {
   return value;
 }
 
-const displayName = getDisplayName(memberData);
+const displayName = getDisplayName(cited || name);
 const NameTag = element;
 ---
 
@@ -103,7 +97,8 @@ const NameTag = element;
     "d-inline-flex",
     left ? "flex-row-reverse" : "justify-content-end",
     `align-items-${valign}`,
-    `gap-${size == "lg" ? "2" : "1"}`,
+    `gap-1`,
+    // `gap-${size == "lg" ? "2" : "1"}`,
   ]}
 >
   <div
@@ -127,7 +122,7 @@ const NameTag = element;
     {/* Conditionally render bio links */}
     {
       showLinks && links && Object.keys(links).length > 0 && (
-        <div class="vignette-links mt-1">
+        <div class="vignette-links mt-2">
           {Object.entries(links).map(([linkType, linkValue]) => (
             <a
               href={formatLinkUrl(linkType, linkValue)}
@@ -157,8 +152,8 @@ const NameTag = element;
       "vignette-pic rounded-circle rounded-top-0",
       responsive && "d-none d-sm-block",
     ]}
-    src={picture.src}
-    alt={alt ? alt : ""}
+    src={photo.image.src}
+    alt={photo.alt || ""}
   />
 </div>
 
@@ -172,7 +167,7 @@ const NameTag = element;
   }
   .vignette-title {
     color: var(--bs-secondary-color);
-    font-size: 85%;
+    font-size: 75%;
     margin-bottom: 0.25rem;
   }
   .vignette-links {
@@ -200,7 +195,7 @@ const NameTag = element;
   .blockquote-footer .vignette-title,
   .vignette-resp .vignette-title,
   .vignette-lg .vignette-title {
-    line-height: 90%;
+    line-height: 80%;
     margin-bottom: 0.1em;
   }
   .vignette .vignette-pic {

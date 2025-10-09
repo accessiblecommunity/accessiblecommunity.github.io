@@ -1,10 +1,13 @@
 ---
-name: Gladys Phan
+name:
+  first: Gladys
+  last: Phan
 roles:
   default: Project Manager, mutua11y mentoring
   leadership: Project Manager, mutua11y mentoring
 current: false
-picture: ../../images/staff/gladys.png
+photo:
+  image: ../../images/staff/gladys.png
 links:
   email: mentoring@accessiblecommunity.org
 ---
