@@ -33,7 +33,7 @@ const botsToDisallow = [
 
 export default defineConfig({
   site: "https://accessiblecommunity.org",
-  adapter: netlify(),
+  // adapter: netlify(),
 
   server: {
     host: true,
@@ -62,7 +62,7 @@ export default defineConfig({
 
   integrations: [
     mdx(),
-    styleGuide(), 
+    styleGuide(),
     icon({
       include: {
         // Bootstrap Icons
