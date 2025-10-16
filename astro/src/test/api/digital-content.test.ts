@@ -1,10 +1,11 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 
-// Mock the sessions from verify-purchase
-const mockSessions = new Map();
+// Mock the session store
+const mockSessions = new Map<string, any>();
 
-vi.mock('./verify-purchase', () => ({
-  sessions: mockSessions,
+vi.mock('src/lib/session-store', () => ({
+  getSession: (sessionId: string) => mockSessions.get(sessionId),
+  invalidateSession: (sessionId: string) => mockSessions.delete(sessionId),
 }));
 
 describe('digital-content API', () => {

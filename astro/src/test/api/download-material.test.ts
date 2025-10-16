@@ -9,14 +9,15 @@ vi.mock('fs/promises', () => ({
   },
 }));
 
-// Mock the sessions from verify-purchase
-const mockSessions = new Map();
+// Mock the session store
+const mockSessions = new Map<string, any>();
 
 // Mock the downloadTokens from generate-download-token
 const mockDownloadTokens = new Map();
 
-vi.mock('./verify-purchase', () => ({
-  sessions: mockSessions,
+vi.mock('src/lib/session-store', () => ({
+  getSession: (sessionId: string) => mockSessions.get(sessionId),
+  invalidateSession: (sessionId: string) => mockSessions.delete(sessionId),
 }));
 
 vi.mock('./generate-download-token', () => ({

@@ -126,11 +126,11 @@ describe('verify-purchase API', () => {
     const { POST } = await import('../../pages/api/verify-purchase');
 
     // Mock file read error (file not found)
-    (fs.readFile as any).mockRejectedValue(new Error('ENOENT: no such file or directory'));
+  (fs.readFile as any).mockRejectedValue(Object.assign(new Error('ENOENT: no such file or directory'), { code: 'ENOENT' }));
 
     const mockRequest = {
       json: () => Promise.resolve({
-        purchaseCode: 'ESC-INVALID',
+  purchaseCode: 'ESC-87654321',
         email: 'test@example.com',
       }),
       headers: {

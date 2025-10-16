@@ -5,11 +5,13 @@ vi.mock('uuid', () => ({
   v4: vi.fn().mockReturnValue('test-token-id-1234'),
 }));
 
-// Mock the sessions from verify-purchase
-const mockSessions = new Map();
+// Mock the session store module
+const mockSessions = new Map<string, any>();
 
-vi.mock('./verify-purchase', () => ({
-  sessions: mockSessions,
+vi.mock('src/lib/session-store', () => ({
+  getSession: (sessionId: string) => mockSessions.get(sessionId),
+  upsertSession: (session: any) => mockSessions.set(session.sessionId, session),
+  clearSessions: () => mockSessions.clear(),
 }));
 
 describe('generate-download-token API', () => {
