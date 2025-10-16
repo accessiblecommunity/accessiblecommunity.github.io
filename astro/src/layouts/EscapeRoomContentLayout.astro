@@ -1,0 +1,271 @@
+---
+import "../styles/bootstrap.scss";
+import Metadata from "../components/Metadata.astro";
+import HeaderER from "../components/HeaderER.astro";
+import { type PageMetadata } from "../lib/types";
+
+interface Props {
+  title: string;
+  metadata?: PageMetadata;
+  theme?: string;
+  organization?: string;
+  kitType?: "build" | "ready" | string;
+}
+
+const { metadata, title, theme = "", organization = "", kitType = "" } = Astro.props as Props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="robots" content="noarchive, noindex, nofollow" />
+
+    {metadata && (
+      <Metadata {...metadata}>
+        <slot name="metadata" slot="metadata" />
+      </Metadata>
+    )}
+
+    <slot name="head" />
+
+  </head>
+  <body>
+    <a class="visually-hidden-focusable btn btn-dark skip-link d-print-none" href="#main-content">
+      Skip to main content
+    </a>
+    <HeaderER title={title} />
+
+    <section class="bg-secondary" style="background: no-repeat center/cover url(/.netlify/images?url=%40fs%2FC%3A%2FUsers%2FNathan%2Faccessiblecommunity.github.io%2Fastro%2Fsrc%2Fimages%2Fcolored-hero%2Fwheelchair_hall.png%3ForigWidth%3D1920%26origHeight%3D1080%26origFormat%3Dpng&fm=avif&w=1920&h=1080);"> 
+    <div class="container hero text-white">
+        <h1 class="visually-hidden">Accessible Escape Room Digital Content</h1>
+        <div class="display-2 py-4 mx-auto text-center">
+            <span class="text-nowrap">{title}</span>
+        </div>
+    </div>
+    <nav
+        class="tab-nav-container overflow-hidden w-100"
+        style="position:sticky; top:var(--er-header-offset,0); z-index:1020;"
+    >
+      <div class="navbar w-100 px-0">
+        <ul class="navbar-nav flex-row flex-wrap w-100 justify-content-md-center justify-content-start gap-2 gap-md-4">
+          <li class="nav-item ms-md-5">
+            <a href="#instructions" class="nav-link px-2 text-nowrap">Instructions</a>
+          </li>
+          <li class="nav-item">
+            <a href="#elements" class="nav-link px-2 text-nowrap">Elements</a>
+          </li>
+          <li class="nav-item">
+            <a href="#layout" class="nav-link px-2 text-nowrap">Room Layout</a>
+          </li>
+          <li class="nav-item">
+            <a href="#leaderboard" class="nav-link px-2 text-nowrap">Leaderboard</a>
+          </li>
+        </ul>
+      </div>
+      <style>
+        .tab-nav-container .nav-link.active {
+          border-bottom: 3px solid #000 !important;
+        }
+      </style>
+    </nav>
+
+    <main id="main-content" role="main" class="bg-white text-black">
+
+
+    <div class="container py-5 color-black">
+      <section id="instructions" class="tab-content-section py-5 mb-5">
+        <h2 class="text-center">Instructions</h2>
+        <slot name="instructions" />
+      </section>
+
+      <section id="elements" class="tab-content-section py-5 mb-5">
+        <h2 class="text-center">Elements</h2>
+        <slot name="elements" />
+      </section>
+
+      <section id="layout" class="tab-content-section py-5 mb-5">
+        <h2 class="text-center">Room Layout</h2>
+        <slot name="layout" />
+      </section>
+
+      <section id="leaderboard" class="tab-content-section py-5 mb-4">
+        <h2 class="text-center">Leaderboard & Results</h2>
+        <div class="table-responsive">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+            <th>Rank</th>
+            <th>Team Name</th>
+            <th>Completion Time</th>
+            </tr>
+          </thead>
+          <tbody id="er-leaderboard-body">
+            <tr>
+            <td colspan="3" class="text-muted">Leaderboard will be populated programmatically.</td>
+            </tr>
+          </tbody>
+        </table>
+        </div>
+      </section>
+
+      <div id="er-content-staging" hidden>
+        <slot />
+      </div>
+    </div>
+    </main>
+
+    <script>
+      // @ts-nocheck
+      let isJumping = false;
+      let headerHeight = 0;
+      let tabBarHeight = 0;
+
+      function computeLayoutOffsets() {
+        const header = document.querySelector("header.sticky-top");
+        const tabNav = document.querySelector(".tab-nav-container");
+        headerHeight = header instanceof HTMLElement ? header.offsetHeight : 0;
+        tabBarHeight = tabNav instanceof HTMLElement ? tabNav.offsetHeight : 0;
+        document.documentElement.style.setProperty("--er-header-offset", `${headerHeight}px`);
+        document.documentElement.style.setProperty("--er-total-offset", `${headerHeight + tabBarHeight}px`);
+      }
+
+      function distributeStagedContent() {
+        const staging = document.getElementById("er-content-staging");
+
+        if (staging) {
+          const sections = {
+            instructions: document.getElementById("instructions"),
+            elements: document.getElementById("elements"),
+            layout: document.getElementById("layout"),
+            leaderboard: document.getElementById("leaderboard"),
+          };
+
+          Array.from(staging.childNodes).forEach((child) => {
+            if (child.nodeType === Node.ELEMENT_NODE || child.nodeType === Node.TEXT_NODE) {
+              const target = child.getAttribute?.("data-slot-target") || child.getAttribute?.("target-slot") || "instructions";
+              if (sections[target]) {
+                if (child.nodeType === Node.ELEMENT_NODE) {
+                  child.removeAttribute("slot");
+                }
+                sections[target].appendChild(child);
+              }
+            }
+          });
+
+          staging.innerHTML = "";
+        }
+
+        computeLayoutOffsets();
+      }
+
+      function updateActiveTab() {
+        if (isJumping) return;
+
+        computeLayoutOffsets();
+
+        const sections = document.querySelectorAll(".tab-content-section");
+  const tabs = document.querySelectorAll(".tab-nav-container .nav-link");
+        const triggerPoint = headerHeight + tabBarHeight + 40;
+
+        let activeSection = "instructions";
+        let closestSection = null;
+        let closestDistance = Infinity;
+
+        sections.forEach((section) => {
+          const rect = section.getBoundingClientRect();
+          const sectionTop = rect.top;
+          const sectionBottom = rect.bottom;
+          const offset = 100;
+
+          if (sectionTop <= triggerPoint && sectionBottom > triggerPoint) {
+            activeSection = section.id;
+          } else {
+            const distance = Math.abs(sectionTop - triggerPoint);
+            if (distance < closestDistance) {
+              closestDistance = distance;
+              closestSection = section.id;
+            }
+          }
+        });
+
+        if (activeSection === "instructions" && closestSection && closestDistance < 300) {
+          activeSection = closestSection;
+        }
+
+        const docHeight = document.documentElement.scrollHeight;
+        const winHeight = window.innerHeight;
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+        if (scrollTop + winHeight >= docHeight - 200) {
+          activeSection = "leaderboard";
+        }
+
+        tabs.forEach((tab) => tab.classList.remove("active"));
+
+        tabs.forEach((tab) => {
+          const href = tab.getAttribute("href");
+          if (href === "#" + activeSection) {
+            tab.classList.add("active");
+          }
+        });
+      }
+
+      let scrollTimeout;
+      window.addEventListener("scroll", () => {
+        clearTimeout(scrollTimeout);
+        scrollTimeout = setTimeout(updateActiveTab, 10);
+      });
+
+      document.querySelectorAll(".tab-nav-container .nav-link").forEach((tab) => {
+        tab.addEventListener("click", function (event) {
+          const href = this.getAttribute("href");
+          if (!href || !href.startsWith("#")) return;
+
+          event.preventDefault();
+
+          const targetId = href.slice(1);
+          const targetEl = document.getElementById(targetId);
+          if (!targetEl) return;
+
+          computeLayoutOffsets();
+
+          isJumping = true;
+
+          document.querySelectorAll(".tab-nav-container .nav-link").forEach((t) => t.classList.remove("active"));
+          this.classList.add("active");
+
+          const offset = headerHeight + tabBarHeight + 20;
+          const y = targetEl.getBoundingClientRect().top + window.scrollY - offset;
+
+          window.scrollTo({ top: y, behavior: "smooth" });
+
+          if (history && history.replaceState) {
+            history.replaceState(null, "", `#${targetId}`);
+          }
+
+          setTimeout(() => {
+            isJumping = false;
+            updateActiveTab();
+          }, 800);
+        });
+      });
+
+      window.addEventListener("load", () => {
+        distributeStagedContent();
+        updateActiveTab();
+      });
+
+      document.addEventListener("DOMContentLoaded", () => {
+        distributeStagedContent();
+        updateActiveTab();
+      });
+
+      computeLayoutOffsets();
+      distributeStagedContent();
+      updateActiveTab();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,27 @@
+---
+import { getEntry, render } from "astro:content";
+import EscapeRoomContentLayout from "src/layouts/EscapeRoomContentLayout.astro";
+import Section from "@components/Section.astro";
+import type { PurchaseSession } from "src/lib/session-store";
+
+// Ensure that 'session' exists on Astro.locals, or use the correct property name if different
+const session = (Astro.locals as { session?: PurchaseSession }).session;
+
+if (!session) {
+  throw new Response(null, { status: 404 });
+}
+
+const themeSlug = (session.theme ?? "corporate").toLowerCase();
+const entry = await getEntry("escapeRoomKits", themeSlug);
+
+if (!entry) {
+  return Astro.redirect('/services/escape-room/access?error=content-missing');
+}
+
+const { Content } = await render(entry);
+const title = entry.data.title ?? "A Corporate Conundrum";
+---
+
+<EscapeRoomContentLayout {title} theme={session.theme} kitType={session.kitType} organization={session.organization}>
+    <Content components={{ Section }} />
+</EscapeRoomContentLayout>
