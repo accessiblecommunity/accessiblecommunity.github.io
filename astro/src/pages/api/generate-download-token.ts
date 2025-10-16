@@ -1,5 +1,5 @@
 import type { APIRoute } from 'astro';
-import { sessions } from './verify-purchase';
+import { getSession } from 'src/lib/session-store';
 import { v4 as uuidv4 } from 'uuid';
 
 // Store for one-time download tokens
@@ -31,7 +31,7 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
     }
 
     // Verify session exists and is valid
-    const sessionData = sessions.get(sessionId);
+    const sessionData = getSession(sessionId);
     
     if (!sessionData || Date.now() > sessionData.expiresAt) {
       return new Response('Invalid session', { status: 401 });
@@ -49,16 +49,18 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
 
     // Create one-time download token (expires in 5 minutes)
     const downloadToken = uuidv4();
+    const expiresAt = Date.now() + (5 * 60 * 1000);
+
     downloadTokens.set(downloadToken, {
       sessionId,
       materialType,
       createdAt: Date.now(),
-      expiresAt: Date.now() + (5 * 60 * 1000), // 5 minutes
+      expiresAt,
       used: false
     });
 
     return new Response(
-      JSON.stringify({ downloadToken }),
+      JSON.stringify({ success: true, downloadToken, expiresAt }),
       { 
         status: 200, 
         headers: { 'Content-Type': 'application/json' } 

@@ -1,7 +1,7 @@
 import type { APIRoute } from 'astro';
 import fs from 'fs/promises';
 import path from 'path';
-import { sessions } from './verify-purchase';
+import { getSession } from 'src/lib/session-store';
 import { downloadTokens } from './generate-download-token';
 
 export const GET: APIRoute = async ({ request, url, clientAddress }) => {
@@ -27,7 +27,7 @@ export const GET: APIRoute = async ({ request, url, clientAddress }) => {
     tokenData.used = true;
 
     // Verify the associated session still exists
-    const sessionData = sessions.get(tokenData.sessionId);
+  const sessionData = getSession(tokenData.sessionId);
     
     if (!sessionData || Date.now() > sessionData.expiresAt) {
       downloadTokens.delete(downloadToken);

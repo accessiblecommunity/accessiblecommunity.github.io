@@ -1,138 +1,216 @@
 import type { APIRoute } from 'astro';
 import fs from 'fs/promises';
 import path from 'path';
-import { v4 as uuidv4 } from 'uuid';
+import { createSession, getCookieHeader, getAllSessions } from 'src/lib/session-store';
+import type { PurchaseSession } from 'src/lib/session-store';
 
-// In-memory session store (in production, use Redis or database)
-const sessions = new Map<string, {
+interface PurchaseRecord {
   purchaseCode: string;
   email: string;
-  theme: string;
-  kitType: string;
-  organization: string;
-  createdAt: number;
-  expiresAt: number;
-  browserFingerprint: string; // Add browser fingerprint
-  ipAddress: string; // Add IP address
-}>();
+  theme?: string;
+  kitType?: string;
+  organization?: string;
+  [key: string]: unknown;
+}
 
-// Clean up expired sessions every hour
-setInterval(() => {
-  const now = Date.now();
-  for (const [sessionId, session] of sessions.entries()) {
-    if (now > session.expiresAt) {
-      sessions.delete(sessionId);
+const GENERIC_ERROR_MESSAGE = 'Invalid purchase code or email address';
+
+function jsonResponse(data: unknown, status = 200, headers?: HeadersInit) {
+  return new Response(JSON.stringify(data), {
+    status,
+    headers: {
+      'Content-Type': 'application/json',
+      'Cache-Control': 'no-store',
+      ...(headers ?? {})
+    }
+  });
+}
+
+
+function normalisePurchaseCode(input: string) {
+  return input.trim().toUpperCase();
+}
+
+function normaliseEmail(input: string) {
+  return input.trim().toLowerCase();
+}
+
+async function readBody(request: Request): Promise<{ purchaseCode?: string; email?: string }> {
+  const contentType = request.headers.get('content-type') ?? '';
+
+  if (!contentType || contentType.includes('application/json')) {
+    try {
+      const json = await request.json();
+      if (json && typeof json === 'object') {
+        return json as any;
+      }
+    } catch (error) {
+      console.error('[verify-purchase] Failed to parse JSON body', error);
+      throw new Error('BODY_PARSE_ERROR');
     }
   }
-}, 60 * 60 * 1000);
 
-export const POST: APIRoute = async ({ request, clientAddress }) => {
-  try {
-    const body = await request.json();
-    const { purchaseCode, email } = body;
-
-    // Add debugging
-    console.log('verify-purchase request:', { purchaseCode, email });
-
-    if (!purchaseCode || !email) {
-      console.log('Missing required fields');
-      return new Response(
-        JSON.stringify({ error: 'Invalid purchase code or email address' }),
-        { status: 400, headers: { 'Content-Type': 'application/json' } }
-      );
+  if (contentType.includes('application/x-www-form-urlencoded') && typeof request.formData === 'function') {
+    try {
+      const form = await request.formData();
+      return {
+        purchaseCode: form.get('purchaseCode')?.toString(),
+        email: form.get('email')?.toString()
+      };
+    } catch (error) {
+      console.error('[verify-purchase] Failed to parse form body', error);
+      throw new Error('BODY_PARSE_ERROR');
     }
+  }
 
-    // Look up purchase data
-    const purchaseData = await getPurchaseData(purchaseCode);
+  return {};
+}
 
-    if (!purchaseData) {
-      console.log('Purchase data not found for code:', purchaseCode);
-      return new Response(
-        JSON.stringify({ error: 'Invalid purchase code or email address' }),
-        { status: 404, headers: { 'Content-Type': 'application/json' } }
-      );
-    }
+function getCandidatePurchaseDirs(): string[] {
+  const env = import.meta.env as Record<string, string | undefined>;
+  const candidates = [
+    env.PURCHASES_DATA_DIR,
+    process.env.PURCHASES_DATA_DIR,
+    path.resolve(process.cwd(), '..', 'local-dev', 'purchases'),
+    path.resolve(process.cwd(), 'local-dev', 'purchases')
+  ];
+  return [...new Set(candidates.filter(Boolean) as string[])];
+}
 
-    // Verify email matches
-    if (purchaseData.email.toLowerCase() !== email.toLowerCase()) {
-      return new Response(
-        JSON.stringify({ error: 'Invalid purchase code or email address' }),
-        { status: 403, headers: { 'Content-Type': 'application/json' } }
-      );
-    }
+async function loadPurchase(purchaseCode: string): Promise<PurchaseRecord | null> {
+  const candidates = getCandidatePurchaseDirs();
+  const filename = `${purchaseCode}.json`;
 
-    // Create browser fingerprint from headers
-    const userAgent = request.headers.get('user-agent') || '';
-    const acceptLanguage = request.headers.get('accept-language') || '';
-    const acceptEncoding = request.headers.get('accept-encoding') || '';
-    const browserFingerprint = Buffer.from(`${userAgent}:${acceptLanguage}:${acceptEncoding}`).toString('base64');
-
-    // Create secure session
-    const sessionId = uuidv4();
-    const sessionData = {
-      purchaseCode,
-      email: purchaseData.email,
-      theme: purchaseData.theme,
-      kitType: purchaseData.kitType,
-      organization: purchaseData.organization,
-      createdAt: Date.now(),
-      expiresAt: Date.now() + (30 * 60 * 1000), // Reduced to 30 minutes
-      browserFingerprint,
-      ipAddress: clientAddress || 'unknown'
-    };
-
-    sessions.set(sessionId, sessionData);
-
-    // Return session ID and purchase details with security token
-    const response = new Response(
-      JSON.stringify({
-        valid: true,
-        sessionId,
-        kitType: purchaseData.kitType,
-        theme: purchaseData.theme,
-        organization: purchaseData.organization,
-        purchaseDate: purchaseData.createdAt,
-      }),
-      { 
-        status: 200, 
-        headers: { 
-          'Content-Type': 'application/json',
-          // Set HttpOnly cookie for additional security
-          'Set-Cookie': `session=${sessionId}; HttpOnly; Secure; SameSite=Strict; Max-Age=1800; Path=/api/`
-        } 
+  for (const dir of candidates) {
+    const filePath = path.join(dir, filename);
+    try {
+      const fileContents = await fs.readFile(filePath, 'utf-8');
+      const parsed = JSON.parse(fileContents) as PurchaseRecord;
+      return parsed;
+    } catch (error: any) {
+      if (error?.code === 'ENOENT') {
+        continue;
       }
+
+      console.error('[verify-purchase] Failed to read purchase file', { filePath, error });
+      throw error;
+    }
+  }
+
+  return null;
+}
+
+async function verifyAndCreateSession(options: {
+  purchaseCode?: string | null;
+  email?: string | null;
+  request: Request;
+  clientAddress?: string;
+  method: string;
+}) {
+  const { purchaseCode, email, request, clientAddress, method } = options;
+
+  if (!purchaseCode || !email) {
+    return jsonResponse({ error: GENERIC_ERROR_MESSAGE }, 400);
+  }
+
+  const normalisedCode = normalisePurchaseCode(purchaseCode);
+  const normalisedEmail = normaliseEmail(email);
+
+  if (!/^ESC-[A-Z0-9]{8}$/.test(normalisedCode) || !/.+@.+\..+/.test(normalisedEmail)) {
+    return jsonResponse({ error: GENERIC_ERROR_MESSAGE }, 400);
+  }
+
+  try {
+    const purchase = await loadPurchase(normalisedCode);
+
+    if (!purchase) {
+      return jsonResponse({ error: GENERIC_ERROR_MESSAGE }, 404);
+    }
+
+    if (!purchase.email || normaliseEmail(purchase.email) !== normalisedEmail) {
+      return jsonResponse({ error: GENERIC_ERROR_MESSAGE }, 403);
+    }
+
+    const session: PurchaseSession = createSession({
+      purchaseCode: purchase.purchaseCode ?? normalisedCode,
+      email: purchase.email,
+      theme: purchase.theme,
+      kitType: purchase.kitType,
+      organization: purchase.organization,
+      headers: request.headers,
+      ipAddress: clientAddress,
+    });
+
+    const response = jsonResponse(
+      {
+        valid: true,
+        sessionId: session.sessionId,
+        expiresAt: session.expiresAt,
+        purchaseCode: session.purchaseCode,
+        email: purchase.email,
+        kitType: purchase.kitType,
+        theme: purchase.theme,
+        organization: purchase.organization
+      },
+      200,
+      { 'Set-Cookie': getCookieHeader(session) }
     );
+
+    console.log(`[verify-purchase] ${method} success`, {
+      purchaseCode: session.purchaseCode,
+      sessionId: session.sessionId,
+      expiresAt: session.expiresAt,
+      // note: sessions will persist in-memory until replaced w/ Azure/Netlify store
+    });
 
     return response;
-
   } catch (error) {
-    console.error('Error verifying purchase:', error);
-    return new Response(
-      JSON.stringify({ error: 'Invalid purchase code or email address' }),
-      { status: 500, headers: { 'Content-Type': 'application/json' } }
-    );
-  }
-};
-
-async function getPurchaseData(purchaseCode: string) {
-  try {
-    // Go up one level from astro/ to repo root, then into local-dev/purchases
-    const storageDir = path.join(process.cwd(), '..', 'local-dev', 'purchases');
-    const filename = `${purchaseCode}.json`;
-    const filepath = path.join(storageDir, filename);
-    
-    // Add debugging
-    console.log('Looking for purchase file:', filepath);
-    
-    const data = await fs.readFile(filepath, 'utf8');
-    console.log('Found purchase data for:', purchaseCode);
-    return JSON.parse(data);
-  } catch (error) {
-    // File doesn't exist or other error
-    console.log('Error reading purchase file:', error.message);
-    return null;
+    console.error('[verify-purchase] Verification error', error);
+    return jsonResponse({ error: GENERIC_ERROR_MESSAGE }, 500);
   }
 }
 
-// Export sessions for use in other APIs
-export { sessions };
+export const POST: APIRoute = async ({ request, clientAddress }) => {
+  try {
+    const body = await readBody(request);
+    return await verifyAndCreateSession({
+      purchaseCode: body.purchaseCode,
+      email: body.email,
+      request,
+      clientAddress,
+      method: 'POST'
+    });
+  } catch (error: any) {
+    if (error?.message === 'BODY_PARSE_ERROR') {
+      return jsonResponse({ error: GENERIC_ERROR_MESSAGE }, 500);
+    }
+
+    console.error('[verify-purchase] Unexpected POST error', error);
+    return jsonResponse({ error: GENERIC_ERROR_MESSAGE }, 500);
+  }
+};
+
+export const GET: APIRoute = async ({ request, url, clientAddress }) => {
+  try {
+    const purchaseCode = url.searchParams.get('purchaseCode');
+    const email = url.searchParams.get('email');
+
+    if (!purchaseCode && !email) {
+      return jsonResponse({ status: 'ok', route: '/api/verify-purchase', ts: Date.now() });
+    }
+
+    return await verifyAndCreateSession({
+      purchaseCode,
+      email,
+      request,
+      clientAddress,
+      method: 'GET'
+    });
+  } catch (error) {
+    console.error('[verify-purchase] Unexpected GET error', error);
+    return jsonResponse({ error: GENERIC_ERROR_MESSAGE }, 500);
+  }
+};
+
+export { getAllSessions as sessions }; // TODO: Remove once downstream modules migrate to session-store directly.
+
