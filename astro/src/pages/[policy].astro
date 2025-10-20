@@ -1,0 +1,20 @@
+---
+import { getCollection, render } from 'astro:content';
+import PolicyLayout from "../layouts/PolicyLayout.astro";
+
+// 1. Generate a new path for every collection entry
+export async function getStaticPaths() {
+  const policyCollection = await getCollection('policies');
+  return policyCollection.map(entry => ({
+    params: { policy: entry.id },
+    props: { entry },
+  }));
+}
+const { entry } = Astro.props;
+const { title, description } = entry.data;
+const { Content } = await render(entry);
+---
+
+<PolicyLayout {title} {description}>
+  <Content />
+</PolicyLayout>
