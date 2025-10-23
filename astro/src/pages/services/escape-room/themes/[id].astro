@@ -67,7 +67,7 @@ import ThemedSection from "@components/ThemedSection.astro";
           {
             about.players && (
               <div class="col">
-                <Icon name="bi:people-fill" class={`bi text-${theme}-emphasis`} role="img" title="Suggested Group Size" />
+                <Icon name="bi:people-fill" class={`bi text-${theme}-emphasis`} aria-hidden="true" />
                 {about.players} players
               </div>
             )
@@ -75,7 +75,7 @@ import ThemedSection from "@components/ThemedSection.astro";
           {
             about.length && (
               <div class="col">
-                <Icon name="bi:stopwatch-fill" class={`bi text-${theme}-emphasis`} role="img" title="Approximate Game Length" />
+                <Icon name="bi:stopwatch-fill" class={`bi text-${theme}-emphasis`} aria-hidden="true"/>
                 {about.length}
               </div>
             )
@@ -83,7 +83,7 @@ import ThemedSection from "@components/ThemedSection.astro";
           {
             about.estimatedMaterialCost && (
               <div class="col">
-                <Icon name="bi:tools" class={`bi text-${theme}-emphasis`} role="img" title="Estimated Material Cost"/>
+                <Icon name="bi:tools" class={`bi text-${theme}-emphasis`} aria-hidden="true" />
                 ${about.estimatedMaterialCost}
               </div>
             )
