@@ -72,7 +72,7 @@ const { metadata, title } = Astro.props;
             <ul class="list-unstyled">
               {
                 navLinks.map(({name, href}) => (
-                  <li><a {href} set:text={name} /></li>
+                  <li><a {href} class="link-offset-1" set:text={name} /></li>
                 ))
               }
             </ul>
@@ -82,13 +82,13 @@ const { metadata, title } = Astro.props;
             <p>
               Have questions about our services?<br />
               <a href="mailto:info@accessiblecommunity.org"
-                class="link-truncate"
+                class="link-offset-1 link-truncate"
                 >info@accessiblecommunity.org</a
               >
             </p>
           </div>
         </div>
-        <hr />
+        <hr aria-hidden="true"/>
         <div class="text-center">
           <p class="mb-0">
             &copy; {new Date().getFullYear()}
@@ -123,18 +123,19 @@ const { metadata, title } = Astro.props;
   .escape-room-footer h3 {
     color: white;
     margin-bottom: 1.5rem;
+    font-weight: 600;
   }
 
   .escape-room-footer a {
     color: white;
-    text-decoration: none;
+    --ac-link-focus-outline-color: white;
+    --ac-link-hover-bg: white;
     transition: all 0.3s ease;
   }
 
   .escape-room-footer a:hover {
-    color: white;
+    color: var(--bs-black);
     opacity: 0.8;
-    text-decoration: underline;
   }
 
   .escape-room-footer hr {

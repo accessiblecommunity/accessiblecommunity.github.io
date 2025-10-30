@@ -24,7 +24,7 @@ import ThemedSection from "@components/ThemedSection.astro";
 
 import heroBg from "src/images/escape-room/jonathan-kemper-9tamF4J0vLk-unsplash.jpg";
 
-const rooms: Array<CollectionEntry<"escapeRoomThemes">> = 
+const rooms: Array<CollectionEntry<"escapeRoomThemes">> =
   sortBy(await getCollection("escapeRoomThemes"), (room) => room.data.title);
 
 ---
@@ -64,12 +64,12 @@ const rooms: Array<CollectionEntry<"escapeRoomThemes">> =
       }
     </div>
     <p class="pt-4">
-      Our prebuilt escape rooms will be available to order later this year.
-      Please email us at <a
+      If you are interested in purchasing a prebuilt room or requesting we run an escape
+      room for a conference or other event, please email us at <a
         class="link-truncate"
         href="mailto:escaperoom@accessiblecommunity.org"
         >escaperoom@accessiblecommunity.org</a
-      > if you are interested in purchasing one.
+      > to discuss.
     </p>
   </ThemedSection>
 </EscapeRoomLayout>
