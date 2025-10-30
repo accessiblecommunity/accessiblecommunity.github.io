@@ -11,7 +11,7 @@ const metadata: PageMetadata = {
   image: getOpenGraphImageData(Astro.site, "pages", "escape-room"),
 };
 
-const rooms: Array<CollectionEntry<"escapeRoomThemes">> = 
+const rooms: Array<CollectionEntry<"escapeRoomThemes">> =
   sortBy(await getCollection("escapeRoomThemes"), (room) => room.data.title);
 
 
@@ -121,7 +121,7 @@ import woodenPuzzles from "src/images/escape-room/wooden-puzzles.png";
       If you would like to bring one of our accessible escape rooms to your business
       or venue, we now offer the <a href="/services/escape-room/themes" class="link-info">following themes</a>:</p
     >
-    
+
     <div class="row row-cols-2 g-3 align-items-stretch">
       {
         rooms.map(room => (
@@ -135,6 +135,10 @@ import woodenPuzzles from "src/images/escape-room/wooden-puzzles.png";
               <div class="card-body">
                 <h3 class={`card-title text-truncate text-${room.data.page.theme}`} set:text={room.data.title} />
                 <p class="card-text" set:text={room.data.tagline} />
+                <a
+                  href={`/services/escape-room/themes/${room.id}`}
+                  class={`btn btn-${room.data.page.theme}`}
+                >Learn more</a>
               </div>
             </div>
           </div>

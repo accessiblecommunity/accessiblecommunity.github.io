@@ -8,5 +8,5 @@ roles:
 photo:
   image: ../../images/staff/3d/Emily.png
 links:
-  linkedin: https://www.linkedin.com/in/tyler-gebauer-1992n/
+  linkedin: https://www.linkedin.com/in/emilyrc/
 ---
