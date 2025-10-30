@@ -7,7 +7,6 @@ export interface PurchaseSession {
   theme?: string;
   kitType?: string;
   organization?: string;
-  createdAt?: string;
   createdAt: number;
   expiresAt: number;
   browserFingerprint: string;
@@ -40,7 +39,6 @@ export function createSession(data: {
   theme?: string;
   kitType?: string;
   organization?: string;
-  createdAt?: string;
   headers: Headers;
   ipAddress?: string;
 }): PurchaseSession {
@@ -58,7 +56,6 @@ export function createSession(data: {
     theme: data.theme,
     kitType: data.kitType,
     organization: data.organization,
-    createdAt: data.createdAt,
     createdAt,
     expiresAt,
     browserFingerprint,
