@@ -28,6 +28,17 @@ const blogs = defineCollection({
   }),
 });
 
+const policies = defineCollection({
+  loader: glob({
+    pattern: "**/[^_]*.{md,mdx}",
+    base: "./src/content/policies",
+  }),
+  schema: z.object({
+    title: z.string(),
+    description: z.string(),
+  }),
+});
+
 const collaborators = defineCollection({
   loader: glob({
     pattern: "**/[^_]*.json",
@@ -79,11 +90,13 @@ const escapeRoomThemes = defineCollection({
         image: image(),
         theme: z.string().default("dark"),
       }),
-      about: z.object({
-        players: z.string().optional(),
-        length: z.string().optional(),
-        estimatedMaterialCost: z.number().optional(),
-      }).default({}),
+      about: z
+        .object({
+          players: z.string().optional(),
+          length: z.string().optional(),
+          estimatedMaterialCost: z.number().optional(),
+        })
+        .default({}),
     }),
 });
 
@@ -99,14 +112,16 @@ const staff = defineCollection({
     z.object({
       name: nameSchema,
       cited: nameSchema.optional(),
-      photo: z.object({
-        image: image(),
-        alt: z.string().optional(),
-      }).default({
-        // @ts-ignore: String path required.
-        image: "src/images/staff/Ta11yCat.png",
-        alt: "The Tally Cat has claimed this spot.",
-      }),
+      photo: z
+        .object({
+          image: image(),
+          alt: z.string().optional(),
+        })
+        .default({
+          // @ts-ignore: String path required.
+          image: "src/images/staff/Ta11yCat.png",
+          alt: "The Tally Cat has claimed this spot.",
+        }),
       current: z.boolean().default(true),
       roles: z
         .object({
@@ -193,6 +208,7 @@ export const collections = {
   escapeRoomKits,
   escapeRoomThemes,
   quotes,
+  policies,
   recruiting,
   staff,
   teams,
