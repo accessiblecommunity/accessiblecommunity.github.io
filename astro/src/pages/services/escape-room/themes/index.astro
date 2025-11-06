@@ -18,9 +18,9 @@ const crumbs: Breadcrumbs = [
 ];
 
 import Hero from "@components/HeroWithBreadcrumbs.astro";
-import { Image } from "astro:assets";
 import EscapeRoomLayout from "src/layouts/EscapeRoomLayout.astro";
 import ThemedSection from "@components/ThemedSection.astro";
+import ImageCard from "@components/ImageCard.astro";
 
 import heroBg from "src/images/escape-room/jonathan-kemper-9tamF4J0vLk-unsplash.jpg";
 
@@ -43,23 +43,17 @@ const rooms: Array<CollectionEntry<"escapeRoomThemes">> =
     >
       {
         rooms.map(room => (
-          <div class="col">
-            <div class={`card border border-${room.data.page.theme}-subtle`}>
-              <Image
-                src={room.data.image}
-                class="card-img-top"
-                alt={room.data.alt || null}
-              />
-              <div class="card-body">
-                <h3 class={`text-${room.data.page.theme}-emphasis`} set:text={room.data.title} />
-                <p class="card-text" set:text={room.data.tagline} />
-                <a
-                  href={`/services/escape-room/themes/${room.id}`}
-                  class={`btn btn-${room.data.page.theme}`}
-                >Learn more</a>
-              </div>
-            </div>
-          </div>
+          <ImageCard
+            image={room.data.image}
+            alt={room.data.alt}
+            title={room.data.title}
+            tagline={room.data.tagline}
+            theme={room.data.page.theme}
+            href={room.data.href || `/services/escape-room/themes/${room.id}`}
+            buttonText={room.data.buttonText || "Learn more"}
+            borderClass={`border-${room.data.page.theme}-subtle`}
+            titleClass={`text-${room.data.page.theme}-emphasis`}
+          />
         ))
       }
     </div>
