@@ -68,28 +68,30 @@ import ThemedSection from "@components/ThemedSection.astro";
       <div class="p-4">
         <h2 class={`text-${theme}-emphasis`}>The Scenario</h2>
         <p set:text={room.data.tagline} />
-        <div class="row row-cols-1 row-cols-lg-3 g-4">
+        <div class="d-flex flex-column flex-lg-row">
           {
             about.players && (
-              <div class="col">
-                <Icon name="bi:people-fill" class={`bi text-${theme}-emphasis`} role="img" title="Suggested Group Size" />
+              <div class="col py-1">
+                <Icon name="bi:people-fill" class={`bi text-${theme}-emphasis`} aria-hidden="true" />
                 {about.players} players
               </div>
             )
           }
           {
             about.length && (
-              <div class="col">
-                <Icon name="bi:stopwatch-fill" class={`bi text-${theme}-emphasis`} role="img" title="Approximate Game Length" />
-                {about.length}
+              <div class="col py-1">
+                <Icon name="bi:stopwatch-fill" class={`bi text-${theme}-emphasis`} aria-hidden="true" />
+                Around {about.length}
               </div>
             )
           }
+        </div>
+        <div class="row gy-2">
           {
             about.estimatedMaterialCost && (
-              <div class="col">
-                <Icon name="bi:tools" class={`bi text-${theme}-emphasis`} role="img" title="Estimated Material Cost"/>
-                ${about.estimatedMaterialCost}
+              <div class="col py-1">
+                <Icon name="bi:tools" class={`bi text-${theme}-emphasis`} aria-hidden="true" />
+                About ${about.estimatedMaterialCost} to purchase the materials to build and assemble
               </div>
             )
           }
@@ -98,7 +100,10 @@ import ThemedSection from "@components/ThemedSection.astro";
       <div class={`card border border-2 border-${theme}-subtle`}>
         <div class="card-body">
           <h2 class:list={["card-title", `text-${theme}-emphasis`]}>Kit Cost: $500.00</h2>
-          <p class="card-text">One-time purchase includes instructions and lifetime access to digital components.</p>
+          <p class="card-text">
+            One-time purchase includes instructions and lifetime access to digital components.
+            Materials to build the escape room are not included.
+          </p>
           <p class="card-text">Ready to bring this adventure to life?</p>
           <a
             href="mailto:escaperoom@accessiblecommunity.org"
@@ -156,6 +161,10 @@ import ThemedSection from "@components/ThemedSection.astro";
     h2, h3, h4 {
       color: var(--textVar);
     }
+  }
+  .bi {
+    margin-bottom: 0.2em;
+    vertical-align: middle;
   }
   dl dd {
     padding-inline-start: 1em;

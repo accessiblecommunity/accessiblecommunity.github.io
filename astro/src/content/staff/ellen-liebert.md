@@ -1,11 +1,14 @@
 ---
-name: Ellen Liebert
+name:
+  first: Ellen
+  last: Liebert
 roles:
   default: Director, Education
   content: Team Lead
   leadership: Director, Education
-picture: ../../images/staff/Ellen_profile.png
-alt: Older woman with salt and pepper hair, blue eyes, snarky smile, and nerdy glasses.
+photo:
+  image: ../../images/staff/3d/EllenL_headshot.png
+  alt: Older woman with salt and pepper hair, blue eyes, snarky smile, and nerdy glasses.
 links:
   email: ellen@accessiblecommunity.org
 ---

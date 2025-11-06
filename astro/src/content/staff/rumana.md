@@ -1,8 +1,12 @@
 ---
-name: Rumana
+name:
+  first: Rumana
+  last: Qadri
 roles:
   default: Intern, Content Team
   content: Intern
-picture: ../../images/staff/Rumana.png
-alt: A young woman in a hijab, looking the other way.
+photo:
+  image: ../../images/staff/Rumana.png
+  alt: A young woman in a hijab, looking the other way.
+current: false
 ---

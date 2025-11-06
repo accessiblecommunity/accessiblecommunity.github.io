@@ -1,9 +1,12 @@
 ---
-name: Olga
+name:
+  first: Olga
+  last: Kupolova
 roles:
   default: Content Team, Evaluations Team
   content: Writer
   evaluations: Digital Evaluator
-picture: ../../images/staff/Olga.png
-alt: Smiling woman with brown hair in a blue suit.
+photo:
+  image: ../../images/staff/3d/OlgaK_headshot.png
+  alt: Smiling woman with brown hair in a blue suit.
 ---

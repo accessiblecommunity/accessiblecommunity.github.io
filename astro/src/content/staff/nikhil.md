@@ -1,8 +1,11 @@
 ---
-name: Nikhil
+name:
+  first: Nikhil
 roles:
-  default: Social Media Team
+  default: Communications Team
   communications: Video Editor
-picture: ../../images/staff/Nikhil.png
-alt: An enthusiastic, teenage boy with messy black hair and eyes.
+photo:
+  image: ../../images/staff/Nikhil.png
+  alt: An enthusiastic, teenage boy with messy black hair and eyes.
+current: false
 ---

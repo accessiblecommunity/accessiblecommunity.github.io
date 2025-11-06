@@ -1,8 +1,14 @@
 ---
-name: Daniela
+name:
+  first: Daniela
+  last: Marina Geli
+cited:
+  first: Daniela
 roles:
   default: Content Team
   content: Writer
-picture: ../../images/staff/Daniela.png
-alt: Adult woman with dark brown hair, black eyes and a cheerful smile.
+photo:
+  image: ../../images/staff/Daniela.png
+  alt: Adult woman with dark brown hair, black eyes and a cheerful smile.
+current: false
 ---

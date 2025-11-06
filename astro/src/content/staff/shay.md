@@ -1,8 +1,12 @@
 ---
-name: Shay
+name:
+  first: Shay
+  last: Major
 roles:
-  default: Social Media Team
+  default: Communications Team
   communications: Content Creator
-picture: ../../images/staff/Shay.png
-alt: Young woman with dark blonde hair and green eyes.
+photo:
+  image: ../../images/staff/Shay.png
+  alt: Young woman with dark blonde hair and green eyes.
+current: false
 ---

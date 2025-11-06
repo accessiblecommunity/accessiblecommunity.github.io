@@ -28,6 +28,17 @@ const blogs = defineCollection({
   }),
 });
 
+const policies = defineCollection({
+  loader: glob({
+    pattern: "**/[^_]*.{md,mdx}",
+    base: "./src/content/policies",
+  }),
+  schema: z.object({
+    title: z.string(),
+    description: z.string(),
+  }),
+});
+
 const collaborators = defineCollection({
   loader: glob({
     pattern: "**/[^_]*.json",
@@ -64,7 +75,6 @@ const escapeRoomKits = defineCollection({
     }),
 });
 
-
 const escapeRoomThemes = defineCollection({
   loader: glob({
     pattern: "**/[^_]*.{md,mdx}",
@@ -80,37 +90,56 @@ const escapeRoomThemes = defineCollection({
         image: image(),
         theme: z.string().default("dark"),
       }),
-      about: z.object({
-        players: z.string().optional(),
-        length: z.string().optional(),
-        estimatedMaterialCost: z.number().optional(),
-      }).default({}),
+      about: z
+        .object({
+          players: z.string().optional(),
+          length: z.string().optional(),
+          estimatedMaterialCost: z.number().optional(),
+        })
+        .default({}),
     }),
+});
+
+const nameSchema = z.object({
+  first: z.string(),
+  middle: z.string().optional(),
+  last: z.string().optional(),
 });
 
 const staff = defineCollection({
   loader: glob({ pattern: "**/[^_]*.{md,mdx}", base: "./src/content/staff" }),
   schema: ({ image }) =>
     z.object({
-      name: z.string(),
-      nickname: z.string().optional(),
+      name: nameSchema,
+      cited: nameSchema.optional(),
+      photo: z
+        .object({
+          image: image(),
+          alt: z.string().optional(),
+        })
+        .default({
+          // @ts-ignore: String path required.
+          image: "src/images/staff/Ta11yCat.png",
+          alt: "The Tally Cat has claimed this spot.",
+        }),
+      current: z.boolean().default(true),
       roles: z
         .object({
           default: z.string(),
           board: z.string(),
           communications: z.string(),
           content: z.string(),
+          day_in_the_life: z.string(),
           development: z.string(),
+          escape_room: z.string(),
           evaluations: z.string(),
+          globa11y: z.string(),
           leadership: z.string(),
           loca11y: z.string(),
           support: z.string(),
           ux: z.string(),
         })
         .partial(),
-      current: z.boolean().default(true),
-      picture: image(),
-      alt: z.string().optional(),
       links: z
         .object({
           email: z.string().email(),
@@ -141,6 +170,7 @@ const teams = defineCollection({
   loader: glob({ pattern: "**/[^_]*.{md,mdx}", base: "./src/content/teams" }),
   schema: z.object({
     name: z.string(),
+    branded: z.boolean().default(false),
     recruiting: reference("recruiting").optional(),
     order: z.number().default(99999),
     management: z.boolean().default(false),
@@ -178,6 +208,7 @@ export const collections = {
   escapeRoomKits,
   escapeRoomThemes,
   quotes,
+  policies,
   recruiting,
   staff,
   teams,

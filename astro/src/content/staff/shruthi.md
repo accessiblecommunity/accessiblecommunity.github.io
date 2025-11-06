@@ -1,10 +1,11 @@
 ---
-name: Shruthi
+name:
+  first: Shruthi
+  last: Ashok
 roles:
   default: Content Team
   content: Writer
-picture: ../../images/staff/Ta11yCat.png
-alt: The Tally Cat has claimed this spot.
 links:
   linkedin: https://www.linkedin.com/in/shruthi-ashok/
+current: false
 ---

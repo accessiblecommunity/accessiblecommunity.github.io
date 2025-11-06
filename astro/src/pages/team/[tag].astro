@@ -37,7 +37,7 @@ const teamMembers = sortBy(
     ({ data }) =>
       data.current && data.roles && Object.keys(data.roles).includes(tag),
   ),
-  ({ data }) => data.name.split(" ").slice(1).join(" "),
+  ({ data }) => data.name.last,
 );
 
 const metadata: PageMetadata = {

@@ -1,8 +1,11 @@
 ---
-name: Roslyn
+name:
+  first: Roslyn
+  last: Devassy
 roles:
-  default: UX Team (Ta11y)
+  default: UX Designer, ta11y
   ux: UX Designer, ta11y
-picture: ../../images/staff/Roslyn.png
-alt: Woman with black hair and brown eyes.
+photo:
+  image: ../../images/staff/Roslyn.png
+  alt: Woman with black hair and brown eyes.
 ---

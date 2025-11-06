@@ -20,7 +20,7 @@ function getTeamMembers(tag: string) {
     ),
     // Alphabetize by first name
     (teamMember) =>
-      teamMember.data.nickname || teamMember.data.name.split(" ")[0],
+      teamMember.data.cited?.first || teamMember.data.name.first,
   );
 }
 

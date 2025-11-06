@@ -1,9 +1,12 @@
 ---
-name: Nathan Race
+name:
+  first: Nathan
+  last: Race
 roles:
   default: Development Team
   development: Developer
 current: true
-picture: ../../images/staff/Nathan.png
-alt: Man with brown hair, and glasses.
+photo:
+  image: ../../images/staff/3d/Nathan.png
+  alt: Man with brown hair, and glasses.
 ---
