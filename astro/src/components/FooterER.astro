@@ -1,0 +1,93 @@
+---
+import Branding from "../components/Branding.astro";
+
+const navLinks = [
+  { name: "Build-Your-Own Rooms", href: "/services/escape-room/themes" },
+  { name: "How it Works", href: "/services/escape-room/how-it-works" },
+  { name: "Our Story", href: "/services/escape-room/our-story" },
+];
+---
+
+<footer class="escape-room-footer">
+  <div class="container">
+    <div class="row g-4">
+      <div class="col-md-4">
+        <h3 class="h5">About Accessible Community</h3>
+        <p>
+          We help organizations make their digital content accessible to
+          people with disabilities.
+        </p>
+      </div>
+      <div class="col-md-4">
+        <h3 class="h5">Quick Links</h3>
+        <ul class="list-unstyled">
+          {navLinks.map(({ name, href }) => (
+            <li><a {href} class="link-offset-1" set:text={name} /></li>
+          ))}
+        </ul>
+      </div>
+      <div class="col-md-4">
+        <h3 class="h5">Contact Us</h3>
+        <p>
+          Have questions about our services?<br />
+          <a href="mailto:info@accessiblecommunity.org"
+            class="link-offset-1 link-truncate"
+            >info@accessiblecommunity.org</a
+          >
+        </p>
+      </div>
+    </div>
+    <hr aria-hidden="true" />
+    <div class="text-center">
+      <p class="mb-0">
+        &copy; {new Date().getFullYear()} <Branding>Accessible Community</Branding>.
+        All rights reserved.
+      </p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .escape-room-footer {
+    background: linear-gradient(135deg, #2c3e50 0%, var(--bs-black) 100%);
+    color: white;
+    padding: 4rem 0 2rem;
+  }
+
+  .escape-room-footer h3 {
+    color: white;
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+  }
+
+  .escape-room-footer a {
+    color: white;
+    --ac-link-focus-outline-color: white;
+    --ac-link-hover-bg: white;
+    transition: all 0.3s ease;
+  }
+
+  .escape-room-footer a:hover {
+    color: var(--bs-black);
+    opacity: 0.8;
+  }
+
+  .escape-room-footer hr {
+    border-color: rgba(255, 255, 255, 0.1);
+    margin: 2rem 0;
+  }
+
+  @media (max-width: 991.98px) {
+    .escape-room-footer {
+      padding: 3rem 0 1.5rem;
+    }
+
+    .escape-room-footer .col-md-4 {
+      margin-bottom: 2rem;
+    }
+
+    .escape-room-footer .col-md-4:last-child {
+      margin-bottom: 0;
+    }
+  }
+</style>
