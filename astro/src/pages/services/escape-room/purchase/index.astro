@@ -1,5 +1,6 @@
 ---
 import { getOpenGraphImageData } from "@lib/og-image";
+import { getCollection } from "astro:content";
 import type { Breadcrumbs, PageMetadata } from "@lib/types";
 
 const title = "Purchase - The Accessible Escape Room";
@@ -19,6 +20,7 @@ import Layout from "src/layouts/Layout.astro";
 import ThemedBox from "@components/ThemedBox.astro";
 import ThemedSection from "@components/ThemedSection.astro";
 import { Icon } from "astro-icon/components";
+const themes = await getCollection('escapeRoomThemes');
 ---
 
 <Layout {title} {crumbs} {metadata}>
@@ -59,42 +61,17 @@ import { Icon } from "astro-icon/components";
               <fieldset class="mb-4">
                 <legend class="h5">Choose Your Theme *</legend>
                 <div class="row gy-3">
-                  <div class="col-sm-6">
-                    <div class="form-check">
-                      <input class="form-check-input" type="radio" name="theme" id="corporate" value="corporate" required>
-                      <label class="form-check-label" for="corporate">
-                        <strong>Corporate Conundrum</strong><br>
-                        <small>Retrieve missing ground-breaking technology from your company</small>
-                      </label>
+                  {themes.map((entry) => (
+                    <div class="col-sm-6">
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" name="theme" id={entry.id} value={entry.id} required />
+                        <label class="form-check-label" for={entry.id}>
+                          <strong>{entry.data.title}</strong><br />
+                          <small>{entry.data.tagline}</small>
+                        </label>
+                      </div>
                     </div>
-                  </div>
-                  <div class="col-sm-6">
-                    <div class="form-check">
-                      <input class="form-check-input" type="radio" name="theme" id="baking" value="baking" required>
-                      <label class="form-check-label" for="baking">
-                        <strong>Baking Bonanza</strong><br>
-                        <small>Find classic recipes to win the blue ribbon at the local fair</small>
-                      </label>
-                    </div>
-                  </div>
-                  <div class="col-sm-6">
-                    <div class="form-check">
-                      <input class="form-check-input" type="radio" name="theme" id="picnic" value="picnic" required>
-                      <label class="form-check-label" for="picnic">
-                        <strong>Puzzling Picnic</strong><br>
-                        <small>Setup a challenging picnic before your friend arrives</small>
-                      </label>
-                    </div>
-                  </div>
-                  <div class="col-sm-6">
-                    <div class="form-check">
-                      <input class="form-check-input" type="radio" name="theme" id="casino" value="casino" required>
-                      <label class="form-check-label" for="casino">
-                        <strong>Cryptic Casino</strong><br>
-                        <small>Play games and collect chips to access the high roller vault</small>
-                      </label>
-                    </div>
-                  </div>
+                  ))}
                 </div>
                 <div id="theme-error" class="invalid-feedback" role="alert"></div>
               </fieldset>
