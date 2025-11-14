@@ -26,7 +26,7 @@ export const POST: APIRoute = async ({ request }) => {
     // Map theme values to display names
     const themeNames: Record<string, string> = {
       'corporate': 'Corporate Conundrum',
-      'baking': 'Baking Bonanza',
+      'kitchen': 'Baking Bonanza',
       'picnic': 'Puzzling Picnic',
       'casino': 'Cryptic Casino'
     };
