@@ -95,17 +95,23 @@ export default defineConfig({
     robotsTxt({
       sitemap: true,
       policy: [
+        // Block specified bots entirely
         ...botsToDisallow.map((userAgent) => ({
           userAgent,
           disallow: ['/'],
         })),
+        // General user-agent rules
         {
           userAgent: '*',
-          disallow: ['/fixable/'],
-        },
-        {
-          userAgent: '*',
-          allow: ['/'],
+          allow: ['/', '/materials/basic/'],
+          disallow: [
+            '/fixable/',
+            '/materials/premium/',
+            '/protected-materials/',
+            '/api/download-material',
+            '/api/digital-content',
+            '/api/verify-purchase',
+          ],
         },
       ]
     })
