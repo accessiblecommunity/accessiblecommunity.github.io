@@ -19,7 +19,6 @@ describe('digital-content API', () => {
       purchaseCode: 'ESC-12345678',
       email: 'test@example.com',
       theme: 'corporate',
-      kitType: 'build',
       organization: 'Test Corp',
       createdAt: Date.now(),
       expiresAt: Date.now() + (30 * 60 * 1000),
@@ -142,7 +141,6 @@ describe('digital-content API', () => {
       purchaseCode: 'ESC-12345678',
       email: 'test@example.com',
       theme: 'corporate',
-      kitType: 'build',
       organization: 'Test Corp',
       createdAt: Date.now() - (60 * 60 * 1000), // 1 hour ago
       expiresAt: Date.now() - (30 * 60 * 1000), // Expired 30 minutes ago
@@ -233,7 +231,6 @@ describe('digital-content API', () => {
         purchaseCode: 'ESC-12345678',
         email: 'test@example.com',
         theme: theme,
-        kitType: 'build',
         organization: 'Test Corp',
         createdAt: Date.now(),
         expiresAt: Date.now() + (30 * 60 * 1000),
@@ -265,53 +262,4 @@ describe('digital-content API', () => {
     }
   });
 
-  it('should generate different content for different kit types', async () => {
-    const { GET } = await import('../../pages/api/digital-content');
-
-    const kitTypes = ['build', 'ready'];
-    
-    for (const kitType of kitTypes) {
-      const sessionId = `session-${kitType}`;
-      const mockFingerprint = Buffer.from('Mozilla/5.0 Test Browser:en-US,en;q=0.9:gzip, deflate, br').toString('base64');
-      
-      mockSessions.set(sessionId, {
-        purchaseCode: 'ESC-12345678',
-        email: 'test@example.com',
-        theme: 'corporate',
-        kitType: kitType,
-        organization: 'Test Corp',
-        createdAt: Date.now(),
-        expiresAt: Date.now() + (30 * 60 * 1000),
-        browserFingerprint: mockFingerprint,
-        ipAddress: '127.0.0.1',
-      });
-
-      const mockURL = new URL(`http://localhost:4321/api/digital-content?session=${sessionId}`);
-      
-      const mockRequest = {
-        headers: new Map([
-          ['cookie', `session=${sessionId}`],
-          ['user-agent', 'Mozilla/5.0 Test Browser'],
-          ['accept-language', 'en-US,en;q=0.9'],
-          ['accept-encoding', 'gzip, deflate, br'],
-        ]),
-      };
-
-      const response = await GET({ 
-        request: mockRequest, 
-        url: mockURL,
-        clientAddress: '127.0.0.1' 
-      } as any);
-
-      expect(response.status).toBe(200);
-      
-      const html = await response.text();
-      
-      if (kitType === 'build') {
-        expect(html).toContain('Build-your-own');
-      } else {
-        expect(html).toContain('Ready-made');
-      }
-    }
-  });
 });

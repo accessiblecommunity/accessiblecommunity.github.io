@@ -44,7 +44,7 @@ import { Icon } from "astro-icon/components";
         <div class="text-center mb-5">
           <h2 class="display-4 mb-3">Purchase Options</h2>
           <p class="lead">
-            Select your kit type and theme below
+            Select your kit theme below
           </p>
         </div>
 
@@ -55,25 +55,6 @@ import { Icon } from "astro-icon/components";
           </div>
           <div class="card-body">
             <form id="purchase-form" novalidate>
-
-              <!-- Kit Type Selection -->
-              <fieldset class="mb-4">
-                <legend class="h5">Kit Type *</legend>
-                <div class="form-check mb-2">
-                  <input class="form-check-input" type="radio" name="kitType" id="kit-build" value="build" required>
-                  <label class="form-check-label" for="kit-build">
-                    Build-your-own Kit — <span class="fw-bold">$500</span>
-                  </label>
-                </div>
-                <div class="form-check">
-                  <input class="form-check-input" type="radio" name="kitType" id="kit-ready" value="ready" required>
-                  <label class="form-check-label" for="kit-ready">
-                    Ready-made Kit — <span class="fw-bold">$3,500</span>
-                  </label>
-                </div>
-                <div id="kitType-error" class="invalid-feedback" role="alert"></div>
-              </fieldset>
-
               <!-- Theme Selection -->
               <fieldset class="mb-4">
                 <legend class="h5">Choose Your Theme *</legend>
@@ -166,40 +147,6 @@ import { Icon } from "astro-icon/components";
               <div id="checkout"></div>
             </div>
             <div id="payment-messages" class="mt-3" role="alert" aria-live="polite"></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </ThemedSection>
-
-  <!-- Ready-Made Kit Coming Soon Section -->
-  <ThemedSection theme="secondary">
-    <div class="text-center text-white">
-      <h2 class="display-4 mb-4">Ready-Made Kits</h2>
-      <p class="lead mb-4">Our pre-assembled escape rooms will be available later this year</p>
-      
-      <div class="row justify-content-center">
-        <div class="col-lg-8">
-          <div class="card border-light bg-transparent">
-            <div class="card-body">
-              <h3 class="card-title text-white mb-3">Coming Soon</h3>
-              <p class="text-white mb-4">
-                Pre-assembled escape rooms with higher technology and automation.
-                Perfect for organizations wanting a ready-to-go solution.
-              </p>
-              <div class="display-5 text-brand fw-bold mb-3">$3,500</div>
-              <p class="text-white-50 mb-4">Available later this year</p>
-              <a 
-                href="mailto:escaperoom@accessiblecommunity.org" 
-                class="btn btn-outline-light btn-lg"
-                aria-describedby="ready-made-info"
-              >
-                Get Notified
-              </a>
-              <div id="ready-made-info" class="mt-2 text-white-75 small">
-                Email us to be notified when ready-made kits become available
-              </div>
-            </div>
           </div>
         </div>
       </div>
@@ -319,13 +266,6 @@ import { Icon } from "astro-icon/components";
         document.querySelectorAll('.form-control, .form-check-input').forEach(el => {
           el.classList.remove('is-invalid');
         });
-
-        // Kit type validation
-        const kitType = document.querySelector('input[name="kitType"]:checked');
-        if (!kitType) {
-          showFieldError('kitType-error', 'Please select a kit type');
-          isValid = false;
-        }
 
         // Theme validation
         const theme = document.querySelector('input[name="theme"]:checked');

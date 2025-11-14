@@ -3,7 +3,7 @@ import type { APIRoute } from 'astro';
 export const POST: APIRoute = async ({ request }) => {
   try {
     const body = await request.json();
-    const { email, purchaseCode, organization, kitType, theme } = body;
+    const { email, purchaseCode, organization, theme } = body;
 
     // In a production environment, you would use a service like:
     // - SendGrid
@@ -21,7 +21,7 @@ Dear ${organization},
 Thank you for purchasing an Accessible Escape Room Kit!
 
 Your Purchase Details:
-- Kit Type: ${kitType === 'build' ? 'Build-your-own Kit' : 'Ready-made Kit'}
+- Kit Type: Build-your-own Kit
 - Theme: ${theme}
 - Organization: ${organization}
 
@@ -45,7 +45,7 @@ The Accessible Community Team
     //   to: email,
     //   subject: 'Your Accessible Escape Room Kit Purchase Confirmation',
     //   text: emailContent,
-    //   html: generateHtmlEmail(purchaseCode, organization, kitType, theme)
+    //   html: generateHtmlEmail(purchaseCode, organization, theme)
     // });
 
     return new Response(

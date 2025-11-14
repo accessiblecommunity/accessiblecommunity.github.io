@@ -7,10 +7,10 @@ const stripe = new Stripe(import.meta.env.STRIPE_SECRET_KEY);
 export const POST: APIRoute = async ({ request }) => {
   try {
     const body = await request.json();
-    const { kitType, theme, organization, contactName, email, specialRequirements } = body;
+    const { theme, organization, contactName, email, specialRequirements } = body;
 
     // Validate required fields
-    if (!kitType || !theme || !organization || !contactName || !email) {
+    if (!theme || !organization || !contactName || !email) {
       return new Response(
         JSON.stringify({ error: 'Missing required fields' }),
         { status: 400, headers: { 'Content-Type': 'application/json' } }
@@ -20,9 +20,8 @@ export const POST: APIRoute = async ({ request }) => {
     // Generate unique purchase code
     const purchaseCode = `ESC-${uuidv4().split('-')[0].toUpperCase()}`;
 
-    // Determine price based on kit type
-    const price = kitType === 'build' ? 50000 : 350000; // Stripe uses cents
-    const kitTypeName = kitType === 'build' ? 'Build-your-own Kit' : 'Ready-made Kit';
+    // Set price for build-your-own kit
+    const price = 50000; // $500 in cents for Stripe
 
     // Map theme values to display names
     const themeNames: Record<string, string> = {
@@ -42,7 +41,7 @@ export const POST: APIRoute = async ({ request }) => {
           price_data: {
             currency: 'usd',
             product_data: {
-              name: `${kitTypeName} - ${themeName}`,
+              name: `Build-your-own Escape Room Kit - ${themeName}`,
               description: `Accessible Escape Room Kit for ${organization}`,
             },
             unit_amount: price,
@@ -55,7 +54,6 @@ export const POST: APIRoute = async ({ request }) => {
       customer_email: email,
       metadata: {
         purchaseCode,
-        kitType,
         theme,
         organization,
         contactName,

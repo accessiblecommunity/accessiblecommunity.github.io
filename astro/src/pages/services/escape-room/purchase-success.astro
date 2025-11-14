@@ -368,13 +368,12 @@ import ThemedSection from "@components/ThemedSection.astro";
       // Kit Details
       const kitDetailsBody = document.getElementById('kit-details-body');
       if (kitDetailsBody) {
-        const kitType = sessionData.metadata?.kitType === 'build' ? 'Build-your-own Kit' : 'Ready-made Kit';
         const theme = sessionData.metadata?.theme || 'Not specified';
         
         kitDetailsBody.innerHTML = `
           <tr>
             <td>
-              <strong>${kitType}</strong><br>
+              <strong>Build-your-own Kit</strong><br>
               <small class="text-muted">Theme: ${theme}</small>
             </td>
             <td class="text-end">
