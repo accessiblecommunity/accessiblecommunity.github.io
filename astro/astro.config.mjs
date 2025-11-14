@@ -90,7 +90,10 @@ export default defineConfig({
       }
     }),
     sitemap({
-      filter: (page) => !page.endsWith('/commitment-form/') && !page.endsWith('fixable/'),
+      filter: (page) =>
+        !page.endsWith('/commitment-form/') &&
+        !page.includes('/fixable/') &&
+        !page.includes('/services/escape-room/content/'),
     }),
     robotsTxt({
       sitemap: true,
@@ -111,6 +114,7 @@ export default defineConfig({
             '/api/download-material',
             '/api/digital-content',
             '/api/verify-purchase',
+            '/services/escape-room/content/',
           ],
         },
       ]
