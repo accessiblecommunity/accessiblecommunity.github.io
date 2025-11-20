@@ -1,12 +1,9 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
-import fs from 'fs/promises';
+import { storePurchaseData } from '@lib/purchase-storage';
 
-// Mock fs module
-vi.mock('fs/promises', () => ({
-  default: {
-    mkdir: vi.fn(),
-    writeFile: vi.fn(),
-  },
+// Mock purchase storage
+vi.mock('@lib/purchase-storage', () => ({
+  storePurchaseData: vi.fn().mockResolvedValue(undefined),
 }));
 
 // Mock Stripe
@@ -26,10 +23,6 @@ global.fetch = vi.fn();
 describe('stripe-webhook API', () => {
   beforeEach(() => {
     vi.clearAllMocks();
-    
-    // Mock successful file operations
-    (fs.mkdir as any).mockResolvedValue(undefined);
-    (fs.writeFile as any).mockResolvedValue(undefined);
     
     // Mock successful email sending
     (global.fetch as any).mockResolvedValue({
@@ -83,9 +76,11 @@ describe('stripe-webhook API', () => {
     expect(responseText).toBe('Webhook handled successfully');
     
     // Verify purchase data was stored
-    expect(fs.writeFile).toHaveBeenCalledWith(
-      expect.stringMatching(/ESC-12345678\.json$/),
-      expect.stringContaining('"purchaseCode":"ESC-12345678"')
+    expect(storePurchaseData).toHaveBeenCalledWith(
+      expect.objectContaining({
+        purchaseCode: 'ESC-12345678',
+        sessionId: 'cs_test_session123',
+      })
     );
   });
 
@@ -186,13 +181,13 @@ describe('stripe-webhook API', () => {
     expect(responseText).toBe('Webhook handled successfully');
     
     // Should not store any purchase data for unhandled events
-    expect(fs.writeFile).not.toHaveBeenCalled();
+    expect(storePurchaseData).not.toHaveBeenCalled();
   });
 
   it('should handle file system errors gracefully', async () => {
     const { POST } = await import('../../pages/api/stripe-webhook');
 
-    (fs.mkdir as any).mockRejectedValue(new Error('Permission denied'));
+    (storePurchaseData as any).mockRejectedValueOnce(new Error('Permission denied'));
 
     const mockEvent = {
       type: 'checkout.session.completed',
@@ -277,7 +272,7 @@ describe('stripe-webhook API', () => {
     expect(response.status).toBe(200);
     
     // Purchase data should still be stored
-    expect(fs.writeFile).toHaveBeenCalled();
+    expect(storePurchaseData).toHaveBeenCalled();
   });
 
   it('should store complete purchase data with all metadata', async () => {
@@ -316,13 +311,14 @@ describe('stripe-webhook API', () => {
     await POST({ request: mockRequest } as any);
 
     // Verify all data is included
-    expect(fs.writeFile).toHaveBeenCalledWith(
-      expect.stringMatching(/ESC-12345678\.json$/),
-      expect.stringMatching(/"purchaseCode":"ESC-12345678"/)
+    expect(storePurchaseData).toHaveBeenCalledWith(
+      expect.objectContaining({
+        purchaseCode: 'ESC-12345678',
+      })
     );
 
-    const writeCall = (fs.writeFile as any).mock.calls[0];
-    const savedData = JSON.parse(writeCall[1]);
+    const storeCall = (storePurchaseData as any).mock.calls[0];
+    const savedData = storeCall[0];
 
     expect(savedData).toMatchObject({
       sessionId: 'cs_test_session123',

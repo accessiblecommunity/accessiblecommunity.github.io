@@ -1,7 +1,7 @@
 import type { APIRoute } from 'astro';
 import Stripe from 'stripe';
-import fs from 'fs/promises';
-import path from 'path';
+import { storePurchaseData } from '@lib/purchase-storage';
+import { sendConfirmationEmail } from '@lib/email';
 
 const stripe = new Stripe(import.meta.env.STRIPE_SECRET_KEY);
 const endpointSecret = import.meta.env.STRIPE_WEBHOOK_SECRET;
@@ -64,25 +64,13 @@ async function handleSuccessfulPayment(session: Stripe.Checkout.Session) {
 
   // Send confirmation email with secure purchase code
   try {
-    const emailResponse = await fetch('/api/send-confirmation-email', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        email: metadata.email,
-        purchaseCode: metadata.purchaseCode,
-        organization: metadata.organization,
-        kitType: metadata.kitType,
-        theme: metadata.theme,
-      }),
+    await sendConfirmationEmail({
+      email: metadata.email,
+      purchaseCode: metadata.purchaseCode,
+      organization: metadata.organization,
+      theme: metadata.theme,
     });
-
-    if (!emailResponse.ok) {
-      console.error('Failed to send confirmation email');
-    } else {
-      console.log('Confirmation email sent successfully');
-    }
+    console.log('Confirmation email sent successfully');
   } catch (error) {
     console.error('Error sending confirmation email:', error);
   }
@@ -90,31 +78,3 @@ async function handleSuccessfulPayment(session: Stripe.Checkout.Session) {
 
 // Export for use in save-purchase-data
 export { handleSuccessfulPayment };
-
-async function storePurchaseData(purchaseData: any) {
-  try {
-    // TODO: For user accounts/login system, also store purchase by email:
-    // - Link purchase codes to customer email addresses
-    // - Store in database: { email, purchaseCode, productId, purchaseDate }
-    // - Enable "view all my purchases" functionality
-    
-    // TODO?: For Google OAuth integration:
-    // - Add optional account linking after purchase
-    // - Store OAuth user ID with purchase data
-    // - Allow login to see purchase history
-    
-    // Create local storage directory if it doesn't exist
-    const storageDir = path.join(process.cwd(), '..', 'local-dev', 'purchases');
-    await fs.mkdir(storageDir, { recursive: true });
-
-    // Store purchase data as JSON file
-    const filename = `${purchaseData.purchaseCode}.json`;
-    const filepath = path.join(storageDir, filename);
-    
-    await fs.writeFile(filepath, JSON.stringify(purchaseData, null, 2));
-    // Purchase data stored successfully
-  } catch (error) {
-    console.error('Error storing purchase data:', error);
-    throw error;
-  }
-}

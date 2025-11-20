@@ -1,17 +1,7 @@
 import type { APIRoute } from 'astro';
-import fs from 'fs/promises';
-import path from 'path';
 import { createSession, getCookieHeader, getAllSessions } from 'src/lib/session-store';
 import type { PurchaseSession } from 'src/lib/session-store';
-
-interface PurchaseRecord {
-  purchaseCode: string;
-  email: string;
-  theme?: string;
-  kitType?: string;
-  organization?: string;
-  [key: string]: unknown;
-}
+import { getPurchaseData } from '@lib/purchase-storage';
 
 const GENERIC_ERROR_MESSAGE = 'Invalid purchase code or email address';
 
@@ -66,40 +56,6 @@ async function readBody(request: Request): Promise<{ purchaseCode?: string; emai
   return {};
 }
 
-function getCandidatePurchaseDirs(): string[] {
-  const env = import.meta.env as Record<string, string | undefined>;
-  const candidates = [
-    env.PURCHASES_DATA_DIR,
-    process.env.PURCHASES_DATA_DIR,
-    path.resolve(process.cwd(), '..', 'local-dev', 'purchases'),
-    path.resolve(process.cwd(), 'local-dev', 'purchases')
-  ];
-  return [...new Set(candidates.filter(Boolean) as string[])];
-}
-
-async function loadPurchase(purchaseCode: string): Promise<PurchaseRecord | null> {
-  const candidates = getCandidatePurchaseDirs();
-  const filename = `${purchaseCode}.json`;
-
-  for (const dir of candidates) {
-    const filePath = path.join(dir, filename);
-    try {
-      const fileContents = await fs.readFile(filePath, 'utf-8');
-      const parsed = JSON.parse(fileContents) as PurchaseRecord;
-      return parsed;
-    } catch (error: any) {
-      if (error?.code === 'ENOENT') {
-        continue;
-      }
-
-      console.error('[verify-purchase] Failed to read purchase file', { filePath, error });
-      throw error;
-    }
-  }
-
-  return null;
-}
-
 async function verifyAndCreateSession(options: {
   purchaseCode?: string | null;
   email?: string | null;
@@ -121,7 +77,7 @@ async function verifyAndCreateSession(options: {
   }
 
   try {
-    const purchase = await loadPurchase(normalisedCode);
+    const purchase = await getPurchaseData(normalisedCode);
 
     if (!purchase) {
       return jsonResponse({ error: GENERIC_ERROR_MESSAGE }, 404);
