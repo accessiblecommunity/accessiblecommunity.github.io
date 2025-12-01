@@ -28,6 +28,10 @@ const blogs = defineCollection({
   }),
 });
 
+const markdown = defineCollection({
+  loader: glob({ pattern: "**/[^_]*.{md,mdx}", base: "./src/content/markdown" }),
+})
+
 const policies = defineCollection({
   loader: glob({
     pattern: "**/[^_]*.{md,mdx}",
@@ -180,7 +184,7 @@ const teams = defineCollection({
 const quotes = defineCollection({
   loader: glob({ pattern: "**/[^_]*.{md,mdx}", base: "./src/content/quotes" }),
   schema: z.object({
-    quotee: z.string(),
+    quotee: z.string().optional(),
   }),
 });
 
@@ -207,6 +211,7 @@ export const collections = {
   daf,
   escapeRoomKits,
   escapeRoomThemes,
+  markdown,
   quotes,
   policies,
   recruiting,
