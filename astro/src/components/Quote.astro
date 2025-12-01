@@ -1,6 +1,7 @@
 ---
 import { Icon } from "astro-icon/components";
 import { getEntry, render } from "astro:content";
+import components from "@lib/mdx";
 
 const { q, text = "primary", class: extraClasses } = Astro.props;
 const quote = await getEntry("quotes", q);
@@ -10,12 +11,14 @@ const { Content = "p" } = (quote && (await render(quote))) || {};
 <figure class={extraClasses}>
   <blockquote class={`blockquote text-${text}`}>
     <sup aria-hidden="true"><Icon name="quote-left" />&nbsp;</sup>
-    <Content />
+    <Content {components} />
     <sup aria-hidden="true">&nbsp;<Icon name="quote-right" /></sup>
   </blockquote>
-  <figcaption class={`blockquote-footer text-${text} text-end`}>
-    {quote?.data.quotee}
-  </figcaption>
+  {
+    quote?.data.quotee && (
+      <figcaption class={`blockquote-footer text-${text} text-end`} set:text={quote?.data.quotee} />
+    )
+  }
 </figure>
 
 <style>
@@ -27,7 +30,11 @@ const { Content = "p" } = (quote && (await render(quote))) || {};
   .blockquote :global(p) {
     display: inline;
   }
+  .blockquote :global(p:last-child) {
+    margin-bottom: 0;
+  }
   .blockquote-footer {
     font-size: 1em;
+    margin-top: 0.5em;
   }
 </style>

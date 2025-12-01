@@ -117,7 +117,7 @@ a {
   }
 
   @each $color, $value in $theme-colors {
-    &.btn-#{$color} {
+    &.btn-#{$color}, &.border-#{$color} {
       --ac-link-focus-outline-color: #{$value};
     }
   }
