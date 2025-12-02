@@ -13,7 +13,7 @@ export async function getBlogAuthors(
     collection: "staff",
   }));
   const authors: Array<CollectionEntry<"staff">> = await getEntries(authorRefs);
-  return authors;
+  return sortBy(authors, ["data.name.first"]);
 }
 
 export async function getBlogTopics(blogs?) {
@@ -30,9 +30,12 @@ export async function getBlogDates(blogs?) {
 
   const dates = blogs.map((blog) => ({
     date: blog.data.published,
-    sort: parseFloat(
-      `${blog.data.published.getYear()}.${blog.data.published.getMonth()}`,
-    ),
+    sort: `${blog.data.published.getYear()}.${blog.data.published.getMonth().toLocaleString(
+      'en-US', {
+        minimumIntegerDigits: 2,
+        useGrouping: false
+      }
+    )}`,
   }));
 
   const sortedDates = sortBy(dates, ["sort"]);
