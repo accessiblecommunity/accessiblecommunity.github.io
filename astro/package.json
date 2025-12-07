@@ -18,7 +18,7 @@
     "@fontsource/atkinson-hyperlegible": "^5.0.20",
     "@iconify-json/bi": "^1.1.23",
     "@iconify-json/cib": "^1.1.8",
-    "astro": "^5.15.6",
+    "astro": "^5.16.4",
     "astro-icon": "^1.1.0",
     "astro-lazy-youtube-embed": "^0.5.4",
     "astro-og-canvas": "^0.5.6",
