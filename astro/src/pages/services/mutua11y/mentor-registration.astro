@@ -1,0 +1,68 @@
+---
+import { getOpenGraphImageData } from "@lib/og-image";
+import type { Breadcrumbs, PageMetadata } from "@lib/types";
+
+const title = "mutua11y Mentoring";
+const metadata: PageMetadata = {
+  title,
+  description: "Overview of the mutua11y mentoring program",
+  image: getOpenGraphImageData(Astro.site, "pages", "mutua11y"),
+};
+
+const crumbs: Breadcrumbs = [
+  {
+    name: "Home",
+    href: "/",
+  },
+  {
+    name: "Services",
+    href: "/services",
+  },
+];
+
+import Layout from "../../../layouts/Layout.astro";
+import ThemedSection from "@components/ThemedSection.astro";
+---
+
+<Layout {title} {crumbs} {metadata} heading="Mentor Registration">
+  <ThemedSection theme="tertiary">
+    <h2>Application</h2>
+
+    <form class="pure-form pure-form-stacked">
+
+    <p id="questionHelp" class="pure-form-message">Please answer the security questions below.</p>
+    <label for="emailField" class="form-label mb-1 required-field">Email (Required)</label><span class="asterisk"></span>
+    <input
+        type="email"
+        name="Email"
+        class="form-control w-100"
+        id="emailField"
+        autocomplete="email"
+        aria-describedby="emailHelp"
+        required
+    />
+
+    <h3>Code of Conduct</h3>
+    <p>The purpose of this code of conduct is to set clear expectations of behavior between all parties involved in the Accessibility Mentoring Program in order to create a positive experience for all participants. This code applies to mentors, protégés and Accessible Community staff involved in the mentoring program.</p>
+
+    <h3>Key Points</h3>
+    <ul>
+        <li>Mutual Respect and Caring – I will respect each individual’s unique experiences, needs, and perspective. I will do my best to be transparent and honest; to communicate my needs and keep the best interest of others in mind. I will try to treat others as I wish to be treated.</li>
+        <li>Assumption of Best Intent – I will assume everyone involved in this program has my best interest at heart. I will seek to communicate first when misunderstandings or conflicts arise. I will seek outside opinions only after I have tried to (re-)communicate with others. I know that I can reach out to mentoring@accessiblecommunity.org if I need assistance.</li>
+        <li>Confidentiality – Mentoring requires sharing information about personal experiences. I will respect the confidentiality of conversations that occur during mentoring. I will make reasonable efforts to protect the privacy and confidentiality of my mentor or protégé.</li>
+        <li>Honor your commitments – I will do my best to keep my commitment as a mentor or protégé and provide the time and attention that participation requires. I will attend meetings at the time scheduled and will have prepared any agreed upon materials.</li>
+        <li>Emergencies and other unexpected circumstances happen. If I am unable to meet a commitment in the mentoring program, I will communicate this to my mentor or protégé as soon as possible.</li>
+        <li>Maintain friendly professionalism – I understand that mentoring relationships include both personal and professional aspects. As a result, I will be kind and friendly, while understanding that professional boundaries and behaviors are still required.</li>
+        <li>Respect for Intellectual Property – I will respect the intellectual property of others including my mentor or protégé and this mentoring program. I will make reasonable efforts to protect the intellectual property of all participants, including my organization’s.</li>
+        <li>If personal intellectual property needs to be discussed during my mentoring conversations, I will work with my mentor or protégé to define clear boundaries and identify any potential conflicts of interest before discussing intellectual property. We will document those boundaries in an email to mentoring@accessiblecommunity.org.</li>
+    </ul>
+    <p>If I wish to use the materials from Accessible Community outside the program, I will contact mentoring@accessiblecommunity.org to request permission.</p>
+
+    <div class="pure-group">
+        <button type="submit" class="pure-button primary-button" @click="submit">Sign in</button>
+        <button type="reset" class="pure-button warning-button" @click="reset">Save & Continue Later</button>
+    </div>
+    </form>     
+
+  </ThemedSection>
+</Layout>
