@@ -116,14 +116,14 @@ const expertiseAreas = [
     <h2>Application</h2>
 
     <form class="pure-form pure-form-stacked">
-      <p id="questionHelp" class="pure-form-message"
-        >For emerging accessibility professionals to sign up for the mentoring
-        program.</p
-      >
+      <p id="questionHelp" class="pure-form-message">
+        For emerging accessibility professionals to sign up for the mentoring
+        program.
+      </p>
       <div class="field">
-        <label for="emailField" class="form-label mb-1 required-field"
-          >Email (Required)</label
-        >
+        <label for="emailField" class="form-label mb-1 required-field">
+          Email (Required)
+        </label>
         <input
           type="email"
           name="Email"
@@ -133,8 +133,8 @@ const expertiseAreas = [
           required
         />
 
-        <label for="linkedInField" class="form-label mb-1"
-          >LinkedIn Profile
+        <label for="linkedInField" class="form-label mb-1">
+          LinkedIn Profile
         </label>
         <input
           type="text"
@@ -143,9 +143,9 @@ const expertiseAreas = [
           id="linkedInField"
         />
 
-        <label for="fullName" class="form-label mb-1 required-field"
-          >Full Name (Required)</label
-        >
+        <label for="fullName" class="form-label mb-1 required-field">
+          Full Name (Required)
+        </label>
         <input
           type="text"
           name="FullName"
@@ -154,12 +154,12 @@ const expertiseAreas = [
           required
         />
 
-        <label for="refer" class="form-label mb-1"
-          >How would you like us to refer to you?</label
-        >
-        <p id="questionHelp" style={{ fontSize: "0.75rem" }}
-          >Example: First name, nick name, title and last name, etc</p
-        >
+        <label for="refer" class="form-label mb-1">
+          How would you like us to refer to you?
+        </label>
+        <p id="questionHelp" style={{ fontSize: "0.75rem" }}>
+          Example: First name, nick name, title and last name, etc
+        </p>
         <input
           type="text"
           name="refer"
@@ -168,21 +168,21 @@ const expertiseAreas = [
           aria-describedby="questionHelp"
         />
 
-        <label for="region" class="form-label mb-1 required-field"
-          >What region of the world do you primarily live and work in? (Select
-          One, Required)</label
-        >
+        <label for="region" class="form-label mb-1 required-field">
+          What region of the world do you primarily live and work in? (Select
+          One, Required)
+        </label>
         <select name="region" class="form-control w-100" id="region" required>
-          <option value=""
-            >Select the region you most frequently live and work in</option
-          >
+          <option value="">
+            Select the region you most frequently live and work in
+          </option>
           {regions.map((region) => <option value={region}>{region}</option>)}
         </select>
 
-        <label class="form-label mb-1 required-field"
-          >Do you work on accessibility in any of the following countries?
-          (Select all that apply)(Required)</label
-        >
+        <label class="form-label mb-1 required-field">
+          Do you work on accessibility in any of the following countries?
+          (Select all that apply)(Required)
+        </label>
         {
           countries.map((country) => (
             <div class="form-check mb-2">
@@ -199,9 +199,9 @@ const expertiseAreas = [
           ))
         }
 
-        <label for="timezone" class="form-label mb-1 required-field"
-          >What timezone do you live in? (Required)</label
-        >
+        <label for="timezone" class="form-label mb-1 required-field">
+          What timezone do you live in? (Required)
+        </label>
         <select
           name="timezone"
           class="form-control w-100"
@@ -225,9 +225,7 @@ const expertiseAreas = [
           id="accessibilityBackground"
           rows="10"
           required
-          aria-describedby="backgroundHelp"
-        >
-        </textarea>
+          aria-describedby="backgroundHelp"></textarea>
 
         <label for="goals" class="form-label">
           Briefly describe your goals for participating in this program.
@@ -245,24 +243,24 @@ const expertiseAreas = [
         >
         </textarea>
 
-        <label for="experience" class="form-label mb-1 required-field"
-          >How many years of experience do you have in accessibility? (Required)</label
-        >
+        <label for="experience" class="form-label mb-1 required-field">
+          How many years of experience do you have in accessibility? (Required)
+        </label>
         <select
           name="experience"
           class="form-control w-100"
           id="experience"
           required
         >
-          <option value=""
-            >Select the number of years that best fits your experience</option
-          >
+          <option value="select">
+            Select the number of years that best fits your experience
+          </option>
           {experienceLevels.map((tz) => <option value={tz}>{tz}</option>)}
         </select>
 
-        <label class="form-label mb-1"
-          >What areas do you have expertise in? (Select all that apply)</label
-        >
+        <label class="form-label mb-1">
+          What areas do you have expertise in? (Select all that apply)
+        </label>
         {
           expertiseAreas.map((area) => (
             <div class="form-check mb-2">
@@ -279,16 +277,16 @@ const expertiseAreas = [
           ))
         }
 
-        <label for="english" class="form-label required-field"
-          >Is English your preferred language? (Required)</label
-        >
+        <label for="english" class="form-label required-field">
+          Is English your preferred language? (Required)
+        </label>
         <select name="english" class="form-control w-100" id="english" required>
           <option value="yes">Yes</option>
           <option value="no">No</option>
         </select>
 
-        <label for="otherLanguages" class="form-label mb-1"
-          >If no, please specify your preferred language(s):
+        <label for="otherLanguages" class="form-label mb-1">
+          If no, please specify your preferred language(s):
         </label>
         <input
           type="text"
@@ -299,82 +297,86 @@ const expertiseAreas = [
       </div>
 
       <h3 class="mt-4">Code of Conduct</h3>
-      <p
-        >The purpose of this code of conduct is to set clear expectations of
+      <p>
+        The purpose of this code of conduct is to set clear expectations of
         behavior between all parties involved in the Accessibility Mentoring
         Program in order to create a positive experience for all participants.
         This code applies to mentors, protégés and Accessible Community staff
-        involved in the mentoring program.</p
-      >
+        involved in the mentoring program.
+      </p>
 
       <h3>Key Points</h3>
       <ul>
-        <li
-          >Mutual Respect and Caring – I will respect each individual’s unique
+        <li>
+          Mutual Respect and Caring – I will respect each individual’s unique
           experiences, needs, and perspective. I will do my best to be
           transparent and honest; to communicate my needs and keep the best
           interest of others in mind. I will try to treat others as I wish to be
-          treated.</li
-        >
-        <li
-          >Assumption of Best Intent – I will assume everyone involved in this
+          treated.
+        </li>
+        <li>
+          Assumption of Best Intent – I will assume everyone involved in this
           program has my best interest at heart. I will seek to communicate
           first when misunderstandings or conflicts arise. I will seek outside
           opinions only after I have tried to (re-)communicate with others. I
           know that I can reach out to mentoring@accessiblecommunity.org if I
-          need assistance.</li
-        >
-        <li
-          >Confidentiality – Mentoring requires sharing information about
+          need assistance.
+        </li>
+        <li>
+          Confidentiality – Mentoring requires sharing information about
           personal experiences. I will respect the confidentiality of
           conversations that occur during mentoring. I will make reasonable
           efforts to protect the privacy and confidentiality of my mentor or
-          protégé.</li
-        >
-        <li
-          >Honor your commitments – I will do my best to keep my commitment as a
+          protégé.
+        </li>
+        <li>
+          Honor your commitments – I will do my best to keep my commitment as a
           mentor or protégé and provide the time and attention that
           participation requires. I will attend meetings at the time scheduled
-          and will have prepared any agreed upon materials.</li
-        >
-        <li
-          >Emergencies and other unexpected circumstances happen. If I am unable
+          and will have prepared any agreed upon materials.
+        </li>
+        <li>
+          Emergencies and other unexpected circumstances happen. If I am unable
           to meet a commitment in the mentoring program, I will communicate this
-          to my mentor or protégé as soon as possible.</li
-        >
-        <li
-          >Maintain friendly professionalism – I understand that mentoring
+          to my mentor or protégé as soon as possible.
+        </li>
+        <li>
+          Maintain friendly professionalism – I understand that mentoring
           relationships include both personal and professional aspects. As a
           result, I will be kind and friendly, while understanding that
-          professional boundaries and behaviors are still required.</li
-        >
-        <li
-          >Respect for Intellectual Property – I will respect the intellectual
+          professional boundaries and behaviors are still required.
+        </li>
+        <li>
+          Respect for Intellectual Property – I will respect the intellectual
           property of others including my mentor or protégé and this mentoring
           program. I will make reasonable efforts to protect the intellectual
-          property of all participants, including my organization’s.</li
-        >
-        <li
-          >If personal intellectual property needs to be discussed during my
+          property of all participants, including my organization’s.
+        </li>
+        <li>
+          If personal intellectual property needs to be discussed during my
           mentoring conversations, I will work with my mentor or protégé to
           define clear boundaries and identify any potential conflicts of
           interest before discussing intellectual property. We will document
-          those boundaries in an email to mentoring@accessiblecommunity.org.</li
-        >
+          those boundaries in an email to mentoring@accessiblecommunity.org.
+        </li>
       </ul>
-      <p
-        >If I wish to use the materials from Accessible Community outside the
+      <p>
+        If I wish to use the materials from Accessible Community outside the
         program, I will contact mentoring@accessiblecommunity.org to request
-        permission.</p
-      >
+        permission.
+      </p>
 
       <div class="pure-group">
-        <button type="submit" class="pure-button primary-button" @click="submit"
-          >Sign in</button
+        <button
+          type="submit"
+          class="pure-button primary-button"
+          @click="submit"
         >
-        <button type="reset" class="pure-button warning-button" @click="reset"
-          >Save & Continue Later</button
-        >
+          Sign in
+        </button>
+        <button type="reset" class="pure-button warning-button" @click="reset">
+          Save & Continue Later
+        </button>
       </div>
     </form>
   </ThemedSection>
