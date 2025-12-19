@@ -2,6 +2,9 @@
 import { getOpenGraphImageData } from "@lib/og-image";
 import type { Breadcrumbs, PageMetadata } from "@lib/types";
 
+import Layout from "../../../layouts/Layout.astro";
+import ThemedSection from "@components/ThemedSection.astro";
+
 const title = "mutua11y Mentoring";
 const metadata: PageMetadata = {
   title,
@@ -20,10 +23,30 @@ const crumbs: Breadcrumbs = [
   },
 ];
 
-import Layout from "../../../layouts/Layout.astro";
-import ThemedSection from "@components/ThemedSection.astro";
-
-const timeZones = ['UTC -11', 'UTC -10', 'UTC -9', 'UTC -8', 'UTC -7', 'UTC -6', 'UTC -5', 'UTC -4', 'UTC -3', 'UTC -2', 'UTC -1', 'UTC', 'UTC +1', 'UTC +2', 'UTC +3', 'UTC +4', 'UTC +5', 'UTC +6', 'UTC +7', 'UTC +8', 'UTC +9', 'UTC +10'];
+const timeZones = [
+  "UTC -11",
+  "UTC -10",
+  "UTC -9",
+  "UTC -8",
+  "UTC -7",
+  "UTC -6",
+  "UTC -5",
+  "UTC -4",
+  "UTC -3",
+  "UTC -2",
+  "UTC -1",
+  "UTC",
+  "UTC +1",
+  "UTC +2",
+  "UTC +3",
+  "UTC +4",
+  "UTC +5",
+  "UTC +6",
+  "UTC +7",
+  "UTC +8",
+  "UTC +9",
+  "UTC +10",
+];
 
 const regions = [
   "Africa",
@@ -84,7 +107,7 @@ const expertiseAreas = [
   "Testing",
   "Universal Design",
   "Web Design and Development",
-  "Other"
+  "Other",
 ];
 ---
 
@@ -93,176 +116,271 @@ const expertiseAreas = [
     <h2>Application</h2>
 
     <form class="pure-form pure-form-stacked">
-
-    <p id="questionHelp" class="pure-form-message">For emerging accessibility professionals to sign up for the mentoring program.</p>
-    <div class="field">
-        <label for="emailField" class="form-label mb-1 required-field">Email (Required)</label>
-        <input
-        type="email"
-        name="Email"
-        class="form-control w-100"
-        id="emailField"
-        autocomplete="email"
-        required
-        />
-
-        <label for="linkedInField" class="form-label mb-1">LinkedIn Profile </label>
-        <input
-        type="text"
-        name="LinkedIn"
-        class="form-control w-100"
-        id="linkedInField"
-        />
-
-        <label for="fullName" class="form-label mb-1 required-field">Full Name (Required)</label>
-        <input
-        type="text"
-        name="FullName"
-        class="form-control w-100"
-        id="fullName"
-        required
-        />
-
-        <label for="refer" class="form-label mb-1">How would you like us to refer to you?</label>
-        <p id="questionHelp" style={{fontSize: "0.75rem"}}>Example: First name, nick name, title and last name, etc</p>
-        <input
-        type="text"
-        name="refer"
-        class="form-control w-100"
-        id="refer"
-        aria-describedby="questionHelp"
-        />
-
-        <label for="region" class="form-label mb-1 required-field">What region of the world do you primarily live and work in? (Select One, Required)</label>
-        <select
-        name="region"
-        class="form-control w-100"
-        id="region"
-        required
+      <p id="questionHelp" class="pure-form-message"
+        >For emerging accessibility professionals to sign up for the mentoring
+        program.</p
+      >
+      <div class="field">
+        <label for="emailField" class="form-label mb-1 required-field"
+          >Email (Required)</label
         >
-            <option value="">Select the region you most frequently live and work in</option>
-            {regions.map((region) => (
-                <option value={region}>{region}</option>
-            ))}
+        <input
+          type="email"
+          name="Email"
+          class="form-control w-100"
+          id="emailField"
+          autocomplete="email"
+          required
+        />
+
+        <label for="linkedInField" class="form-label mb-1"
+          >LinkedIn Profile
+        </label>
+        <input
+          type="text"
+          name="LinkedIn"
+          class="form-control w-100"
+          id="linkedInField"
+        />
+
+        <label for="fullName" class="form-label mb-1 required-field"
+          >Full Name (Required)</label
+        >
+        <input
+          type="text"
+          name="FullName"
+          class="form-control w-100"
+          id="fullName"
+          required
+        />
+
+        <label for="refer" class="form-label mb-1"
+          >How would you like us to refer to you?</label
+        >
+        <p id="questionHelp" style={{ fontSize: "0.75rem" }}
+          >Example: First name, nick name, title and last name, etc</p
+        >
+        <input
+          type="text"
+          name="refer"
+          class="form-control w-100"
+          id="refer"
+          aria-describedby="questionHelp"
+        />
+
+        <label for="region" class="form-label mb-1 required-field"
+          >What region of the world do you primarily live and work in? (Select
+          One, Required)</label
+        >
+        <select name="region" class="form-control w-100" id="region" required>
+          <option value=""
+            >Select the region you most frequently live and work in</option
+          >
+          {regions.map((region) => <option value={region}>{region}</option>)}
         </select>
 
-        <label  class="form-label mb-1 required-field">Do you work on accessibility in any of the following countries? (Select all that apply)(Required)</label>
-        {countries.map((country) => (
-            <div class="form-check mb-2">
-              <input class="form-check-input" type="checkbox" id={country} value={country}>
-              <label class="form-check-label" for={country}>{country}</label>
-            </div>
-        ))}
-
-        <label for="timezone" class="form-label mb-1 required-field">What timezone do you live in? (Required)</label>
-        <select
-        name="timezone"
-        class="form-control w-100"
-        id="timezone"
-        required
+        <label class="form-label mb-1 required-field"
+          >Do you work on accessibility in any of the following countries?
+          (Select all that apply)(Required)</label
         >
-            <option value="">Select the timezone you live in</option>
-            {timeZones.map((tz) => (
-                <option value={tz}>{tz}</option>
-            ))}
+        {
+          countries.map((country) => (
+            <div class="form-check mb-2">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                id={country}
+                value={country}
+              />
+              <label class="form-check-label" for={country}>
+                {country}
+              </label>
+            </div>
+          ))
+        }
+
+        <label for="timezone" class="form-label mb-1 required-field"
+          >What timezone do you live in? (Required)</label
+        >
+        <select
+          name="timezone"
+          class="form-control w-100"
+          id="timezone"
+          required
+        >
+          <option value="">Select the timezone you live in</option>
+          {timeZones.map((tz) => <option value={tz}>{tz}</option>)}
         </select>
 
         <label for="accessibilityBackground" class="form-label">
-            In a couple of sentences, briefly describe your accessibility background. (Required)
+          In a couple of sentences, briefly describe your accessibility
+          background. (Required)
         </label>
-        <p id="backgroundHelp" style={{fontSize: "0.75rem"}}>
-            Please include descriptions of projects you've worked on and how long you've been working in the field.
+        <p id="backgroundHelp" style={{ fontSize: "0.75rem" }}>
+          Please include descriptions of projects you've worked on and how long
+          you've been working in the field.
         </p>
-        <textarea 
-            class="form-control" 
-            id="accessibilityBackground" 
-            rows="10" 
-            required 
-            aria-describedby="backgroundHelp">
+        <textarea
+          class="form-control"
+          id="accessibilityBackground"
+          rows="10"
+          required
+          aria-describedby="backgroundHelp"
+        >
         </textarea>
 
         <label for="goals" class="form-label">
-            Briefly describe your goals for participating in this program. (Required)
+          Briefly describe your goals for participating in this program.
+          (Required)
         </label>
-        <p id="goalsHelp" style={{fontSize: "0.75rem"}}>
-            What does success look like?
+        <p id="goalsHelp" style={{ fontSize: "0.75rem" }}>
+          What does success look like?
         </p>
-        <textarea 
-            class="form-control" 
-            id="goals" 
-            rows="10" 
-            required 
-            aria-describedby="goalsHelp">
+        <textarea
+          class="form-control"
+          id="goals"
+          rows="10"
+          required
+          aria-describedby="goalsHelp"
+        >
         </textarea>
 
-        <label for="experience" class="form-label mb-1 required-field">How many years of experience do you have in accessibility? (Required)</label>
-        <select
-        name="experience"
-        class="form-control w-100"
-        id="experience"
-        required
+        <label for="experience" class="form-label mb-1 required-field"
+          >How many years of experience do you have in accessibility? (Required)</label
         >
-            <option value="">Select the number of years that best fits your experience</option>
-            {experienceLevels.map((tz) => (
-                <option value={tz}>{tz}</option>
-            ))}
+        <select
+          name="experience"
+          class="form-control w-100"
+          id="experience"
+          required
+        >
+          <option value=""
+            >Select the number of years that best fits your experience</option
+          >
+          {experienceLevels.map((tz) => <option value={tz}>{tz}</option>)}
         </select>
 
-        <label  class="form-label mb-1">What areas do you have expertise in? (Select all that apply)</label>
-        {expertiseAreas.map((area) => (
-            <div class="form-check mb-2">
-              <input class="form-check-input" type="checkbox" id={area} value={area}>
-              <label class="form-check-label" for={area}>{area}</label>
-            </div>
-        ))}
-
-        <label for="english" class="form-label required-field">Is English your preferred language? (Required)</label>
-        <select
-        name="english"
-        class="form-control w-100"
-        id="english"
-        required
+        <label class="form-label mb-1"
+          >What areas do you have expertise in? (Select all that apply)</label
         >
+        {
+          expertiseAreas.map((area) => (
+            <div class="form-check mb-2">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                id={area}
+                value={area}
+              />
+              <label class="form-check-label" for={area}>
+                {area}
+              </label>
+            </div>
+          ))
+        }
+
+        <label for="english" class="form-label required-field"
+          >Is English your preferred language? (Required)</label
+        >
+        <select name="english" class="form-control w-100" id="english" required>
           <option value="yes">Yes</option>
           <option value="no">No</option>
         </select>
 
-        <label for="otherLanguages" class="form-label mb-1">If no, please specify your preferred language(s):
+        <label for="otherLanguages" class="form-label mb-1"
+          >If no, please specify your preferred language(s):
         </label>
         <input
-        type="text"
-        name="otherLanguages"
-        class="form-control w-100"
-        id="otherLanguages"
+          type="text"
+          name="otherLanguages"
+          class="form-control w-100"
+          id="otherLanguages"
         />
-    </div>
+      </div>
 
-    <h3 class="mt-4">Code of Conduct</h3>
-    <p>The purpose of this code of conduct is to set clear expectations of behavior between all parties involved in the Accessibility Mentoring Program in order to create a positive experience for all participants. This code applies to mentors, protégés and Accessible Community staff involved in the mentoring program.</p>
+      <h3 class="mt-4">Code of Conduct</h3>
+      <p
+        >The purpose of this code of conduct is to set clear expectations of
+        behavior between all parties involved in the Accessibility Mentoring
+        Program in order to create a positive experience for all participants.
+        This code applies to mentors, protégés and Accessible Community staff
+        involved in the mentoring program.</p
+      >
 
-    <h3>Key Points</h3>
-    <ul>
-        <li>Mutual Respect and Caring – I will respect each individual’s unique experiences, needs, and perspective. I will do my best to be transparent and honest; to communicate my needs and keep the best interest of others in mind. I will try to treat others as I wish to be treated.</li>
-        <li>Assumption of Best Intent – I will assume everyone involved in this program has my best interest at heart. I will seek to communicate first when misunderstandings or conflicts arise. I will seek outside opinions only after I have tried to (re-)communicate with others. I know that I can reach out to mentoring@accessiblecommunity.org if I need assistance.</li>
-        <li>Confidentiality – Mentoring requires sharing information about personal experiences. I will respect the confidentiality of conversations that occur during mentoring. I will make reasonable efforts to protect the privacy and confidentiality of my mentor or protégé.</li>
-        <li>Honor your commitments – I will do my best to keep my commitment as a mentor or protégé and provide the time and attention that participation requires. I will attend meetings at the time scheduled and will have prepared any agreed upon materials.</li>
-        <li>Emergencies and other unexpected circumstances happen. If I am unable to meet a commitment in the mentoring program, I will communicate this to my mentor or protégé as soon as possible.</li>
-        <li>Maintain friendly professionalism – I understand that mentoring relationships include both personal and professional aspects. As a result, I will be kind and friendly, while understanding that professional boundaries and behaviors are still required.</li>
-        <li>Respect for Intellectual Property – I will respect the intellectual property of others including my mentor or protégé and this mentoring program. I will make reasonable efforts to protect the intellectual property of all participants, including my organization’s.</li>
-        <li>If personal intellectual property needs to be discussed during my mentoring conversations, I will work with my mentor or protégé to define clear boundaries and identify any potential conflicts of interest before discussing intellectual property. We will document those boundaries in an email to mentoring@accessiblecommunity.org.</li>
-    </ul>
-    <p>If I wish to use the materials from Accessible Community outside the program, I will contact mentoring@accessiblecommunity.org to request permission.</p>
+      <h3>Key Points</h3>
+      <ul>
+        <li
+          >Mutual Respect and Caring – I will respect each individual’s unique
+          experiences, needs, and perspective. I will do my best to be
+          transparent and honest; to communicate my needs and keep the best
+          interest of others in mind. I will try to treat others as I wish to be
+          treated.</li
+        >
+        <li
+          >Assumption of Best Intent – I will assume everyone involved in this
+          program has my best interest at heart. I will seek to communicate
+          first when misunderstandings or conflicts arise. I will seek outside
+          opinions only after I have tried to (re-)communicate with others. I
+          know that I can reach out to mentoring@accessiblecommunity.org if I
+          need assistance.</li
+        >
+        <li
+          >Confidentiality – Mentoring requires sharing information about
+          personal experiences. I will respect the confidentiality of
+          conversations that occur during mentoring. I will make reasonable
+          efforts to protect the privacy and confidentiality of my mentor or
+          protégé.</li
+        >
+        <li
+          >Honor your commitments – I will do my best to keep my commitment as a
+          mentor or protégé and provide the time and attention that
+          participation requires. I will attend meetings at the time scheduled
+          and will have prepared any agreed upon materials.</li
+        >
+        <li
+          >Emergencies and other unexpected circumstances happen. If I am unable
+          to meet a commitment in the mentoring program, I will communicate this
+          to my mentor or protégé as soon as possible.</li
+        >
+        <li
+          >Maintain friendly professionalism – I understand that mentoring
+          relationships include both personal and professional aspects. As a
+          result, I will be kind and friendly, while understanding that
+          professional boundaries and behaviors are still required.</li
+        >
+        <li
+          >Respect for Intellectual Property – I will respect the intellectual
+          property of others including my mentor or protégé and this mentoring
+          program. I will make reasonable efforts to protect the intellectual
+          property of all participants, including my organization’s.</li
+        >
+        <li
+          >If personal intellectual property needs to be discussed during my
+          mentoring conversations, I will work with my mentor or protégé to
+          define clear boundaries and identify any potential conflicts of
+          interest before discussing intellectual property. We will document
+          those boundaries in an email to mentoring@accessiblecommunity.org.</li
+        >
+      </ul>
+      <p
+        >If I wish to use the materials from Accessible Community outside the
+        program, I will contact mentoring@accessiblecommunity.org to request
+        permission.</p
+      >
 
-    <div class="pure-group">
-        <button type="submit" class="pure-button primary-button" @click="submit">Sign in</button>
-        <button type="reset" class="pure-button warning-button" @click="reset">Save & Continue Later</button>
-    </div>
-    </form>     
-
+      <div class="pure-group">
+        <button type="submit" class="pure-button primary-button" @click="submit"
+          >Sign in</button
+        >
+        <button type="reset" class="pure-button warning-button" @click="reset"
+          >Save & Continue Later</button
+        >
+      </div>
+    </form>
   </ThemedSection>
   <style scoped>
     .field * + label:not(.form-check-label) {
-    margin-top: 1rem;
-  }
+      margin-top: 1rem;
+    }
   </style>
 </Layout>
