@@ -1,10 +1,9 @@
 ---
 import { getOpenGraphImageData } from "@lib/og-image";
 import type { Breadcrumbs, PageMetadata } from "@lib/types";
-import CollaboratorList from "../../../components/CollaboratorList.astro";
 import { getCollection } from "astro:content";
 
-const title = "mutua11y Mentoring";
+const title = "mutua11y mentoring";
 const metadata: PageMetadata = {
   title,
   description: "Overview of the mutua11y mentoring program",
@@ -18,10 +17,18 @@ const crumbs: Breadcrumbs = [
   },
   {
     name: "Services",
-    href: "/services",
+    href: "/services/",
+  },
+  {
+    name: "mutua11y",
+    href: "/services/mutua11y/",
+    branded: true,
   },
 ];
 
+import Branding from "@components/Branding.astro";
+import CollaboratorList from "../../../components/CollaboratorList.astro";
+import ImageHeading from "@components/ImageHeading.astro";
 import Layout from "../../../layouts/Layout.astro";
 import ThemedSection from "@components/ThemedSection.astro";
 
@@ -40,12 +47,16 @@ const partners = await getCollection("collaborators", ({ data }) =>
 );
 ---
 
-<Layout {title} {crumbs} {metadata} heading="Mentoring">
-  <ThemedSection theme="tertiary">
+<Layout {title} brandedTitle {crumbs} {metadata}>
+  <ImageHeading image="hands" slot="header">
+    About <Branding>mutua11y mentoring</Branding>
+  </ImageHeading>
+
+  <ThemedSection style="tertiary">
     <h2>Overview</h2>
 
     <p>
-      <a href="/">Accessible Community</a>, in partnership with <a
+      <a href="/"><Branding>Accessible Community</Branding></a>, in partnership with <a
         href="https://www.deque.com/"
         target="_blank"
       >
@@ -55,7 +66,7 @@ const partners = await getCollection("collaborators", ({ data }) =>
       </a>, <a href="https://plc.pearson.com/en-US/company" target="_blank">
         Pearson
       </a>, and <a href="https://www.tpgi.com/" target="_blank"> TPGi </a>,
-      coordinates mutua11y's accessibility mentoring program. This program
+      coordinates <Branding class="text-primary">mutua11y's</Branding> accessibility mentoring program. This program
       brings together emerging accessibility professionals with experts in the
       field. Mentors and protégés meet for an hour once or twice a month for
       3-12 months. The activities include discussion prompts and an optional
@@ -93,13 +104,14 @@ const partners = await getCollection("collaborators", ({ data }) =>
     </p>
 
     <p>
-      When enrolled in mutua11y's accessibility mentoring program, we will
+      When enrolled in <Branding>mutua11y's</Branding> accessibility mentoring program, we will
       provide opportunities to join activities like certification study groups,
       interview workshops and more so even when protégés are not matched
       immediately they will have a chance to learn.
     </p>
-
-    <h2>Who Can Be A Mentor?</h2>
+  </ThemedSection>
+  <ThemedSection>
+    <h2>Who Can Be A <strong>Mentor</strong>?</h2>
     <p
       >We are looking for mentors with at least 5, preferably 10, years of
       experience in web and software accessibility though we accept some mentors
@@ -123,8 +135,9 @@ const partners = await getCollection("collaborators", ({ data }) =>
         mentor registration.
       </a>
     </p>
-
-    <h2>Who Can Be A Protege?</h2>
+  </ThemedSection>
+  <ThemedSection style="tertiary">
+    <h2>Who Can Be A <strong>Protégé</strong>?</h2>
     We are looking for individuals who have:
     <ul>
       <li>
@@ -146,7 +159,8 @@ const partners = await getCollection("collaborators", ({ data }) =>
     <p>
       Apply using our <a href="/protege-registration/">protégé registration.</a>
     </p>
-
+  </ThemedSection>
+  <ThemedSection>
     <h2>Questions?</h2>
     <p>
       Contact <a href="mailto:mentoring@accessiblecommunity.org">
@@ -159,7 +173,8 @@ const partners = await getCollection("collaborators", ({ data }) =>
       will be considered without attention to race, color, religion, gender
       identity, sexual orientation, national origin, or disability status.
     </p>
-
+  </ThemedSection>
+  <ThemedSection theme="secondary" style="subtle">
     <h2>Partners</h2>
     <CollaboratorList items={partners} />
   </ThemedSection>

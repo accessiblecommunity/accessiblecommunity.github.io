@@ -1,13 +1,34 @@
 ---
-import { getOpenGraphImageData } from "@lib/og-image";
 import type { Breadcrumbs, PageMetadata } from "@lib/types";
+import { getCollection } from "astro:content";
+import { getOpenGraphImageData } from "@lib/og-image";
+
+import Branding from "@components/Branding.astro";
+import CollaboratorList from "@components/CollaboratorList.astro";
+import ExternalLink from "@components/ExternalLink.astro";
+import Hero from "@components/Hero.astro";
+import { Icon } from "astro-icon/components";
+import Layout from "../../../layouts/Layout.astro";
+import Testimonial from "@components/Testimonial.astro";
+import ThemedBox from "@components/ThemedBox.astro";
+import ThemedSection from "@components/ThemedSection.astro";
+
+import heroBg from "../../../images/colored-hero/hands-together.png";
+
+const programUrl = "/services/mutua11y/mentoring/";
+const protegeUrl = "https://www.mutua11y.org/protege-registration/";
+// const protegeUrl = "/services/mutua11y/protege-registration/";
+const mentorUrl = "/services/mutua11y/mentor-registration/";
+const mentoringEmail = "mailto:mentoring@accessiblecommunity.org";
 
 const title = "mutua11y";
 const metadata: PageMetadata = {
   title,
-  description: "Overview of the mutua11y Initiative",
-  image: getOpenGraphImageData(Astro.site, "pages", "mutua11y"),
+  description:
+    "About the accessibility mentoring program at Accessible Community",
+  image: getOpenGraphImageData(Astro.site, "pages", "donate"),
 };
+
 const crumbs: Breadcrumbs = [
   {
     name: "Home",
@@ -19,70 +40,184 @@ const crumbs: Breadcrumbs = [
   },
 ];
 
-import Branding from "@components/Branding.astro";
-import Hero from "@components/ColumnedHero.astro";
-import Layout from "../../../layouts/Layout.astro";
-import ThemedSection from "@components/ThemedSection.astro";
+const partners = await getCollection("collaborators", ({ data }) => {
+  return data.tags.includes("mentoring-partner");
+});
 
-import heroBg from "src/images/np_Man with prosthetic hand typing on a computer_4jzKz4_free.jpg";
-import { Icon } from "astro-icon/components";
+const contributors = await getCollection("collaborators", ({ data }) => {
+  return data.tags.includes("mentoring-contributor");
+});
 ---
 
-<Layout {title} {crumbs} {metadata}>
-  <Hero
-    image={heroBg}
-    slot="header"
-    reverse
-    vertical-position="22%"
-    horizontal-position="78%"
-  >
-    <div class="py-2 px-2" slot="heading">
-      <h1 class="display-4">
-        <span class="me-1">Introducing</span>
-        <span class="text-nowrap">
-          <Icon class="bi" name="mutua11y-logo" aria-hidden="true" />
-          <Branding>mutua11y</Branding>
-        </span>
-      </h1>
+<Layout {title} brandedTitle {crumbs} {metadata}>
+  <Hero image={heroBg} slot="header" actionBreakpoint="md">
+    <div slot="heading" class="mb-4">
+      <h1 class="visually-hidden">Mentoring</h1>
+      <blockquote class="display-2 text-white mx-3">
+        <div>
+          <sup aria-hidden="true"><Icon name="quote-left" height="0.5em" /></sup
+          >&nbsp;<span class="small"
+            >Tell me and I forget, teach me and I may&nbsp;remember,</span
+          >
+        </div>
+        <div>
+          <span class="fw-bold"
+            >involve me and I learn.&nbsp;<sup aria-hidden="true"
+              ><Icon name="quote-right" height="0.5em" /></sup
+            >
+          </span>
+        </div>
+      </blockquote>
+      <div class="blockquote-footer text-end text-white me-5 display-6">
+        <span class="display-7">Benjamin Franklin</span>
+      </div>
     </div>
-    <!-- <div class="py-3">
-      <p class="text-bg-hero">
-        A <strong class="text-brand">pilot social enterprise initiative</strong>
-        to help bridge the gap between digital accessibility skills development,
-        employment opportunities, government and small-to-medium business needs.
-      </p>
-    </div> -->
+    <p class="lead text-bg-hero">
+      <Branding>mutua11y mentoring</Branding>
+      is a program that pairs senior experts with years of experience with novice
+      digital accessibility professionals to mentor and guide them in their career
+      development.
+    </p>
+    <Fragment slot="action-bar">
+      <a class="icon-link link-light" href={programUrl}>
+        <Icon
+          name="mutua11y-logo"
+          class="bi"
+          style="height: 1.1em; width: inherit"
+          role="img"
+          aria-hidden="true"
+        />
+        <span> Learn more about the program </span>
+      </a>
+      <a class="icon-link link-light" href={protegeUrl}>
+        <Icon name="bi:person-fill" class="bi" role="img" aria-hidden="true" />
+        <span> Apply to be a protegé </span>
+      </a>
+      <a class="icon-link link-light" href={mentorUrl}>
+        <Icon name="bi:people-fill" class="bi" role="img" aria-hidden="true" />
+        <span> Apply to be a mentor </span>
+      </a>
+    </Fragment>
   </Hero>
-  <ThemedSection theme="tertiary">
-    <h2>Our Goal</h2>
-    <p>To establish and nurture disability-inclusive communities that help accessibility experts grow their experience and connections.</p>
-    <div class="row row-cols-lg-2 g-5 py-4">
-      <div class="col-lg-6">
-        <h3 class="text-center">Mentoring</h3>
-        <p>The mutua11y accessibility mentoring program brings together emerging accessibility professionals with experienced mentors. 
-            <br />
-            <a href="/services/mutua11y/mentoring/">Learn More About Mentoring</a>
+
+  <ThemedSection theme="secondary" style="subtle">
+    <div
+      class="d-flex flex-column flex-xl-row gap-4 justify-content-xl-between align-items-xl-center"
+    >
+      <div class="col col-xl-6">
+        <h2 class="display-3">The <strong>first step</strong> is hard.</h2>
+        <p class="lead">
+          When you are first getting started in any industry, it's difficult to
+          get your foot in the door. With <a
+            href={programUrl}><Branding>mutua11y mentoring</Branding></a
+          >, we have established a program that matches senior digital
+          accessibility experts with those just getting started in their
+          accessibility journey. In addition, our program provides guidance in
+          achieving your certifications and finding a job.
         </p>
       </div>
-      <div class="col-lg-6">
-        <h3 class="text-center">Workshops</h3>
-        <p>
-          No cost workshops to spark global accessibility conversations to collaborate and share knowledge and resources.:
-        </p>
-      </div>
-      <div class="col-lg-8 text-center mx-auto">
-        <h3>Resource Library</h3>
-        <p>
-          <a href="https://www.mutua11y.org/document-library/" target="_blank">Templates, videos, and other resources</a> to make your accessibility journey easier.
-        </p>
-      </div>
+      <ThemedBox
+        theme="primary"
+        style="subtle"
+        border={1}
+        class="col col-xl-5 text-start p-4 pb-0 shadow rounded"
+      >
+        <Testimonial id="eve/short" />
+      </ThemedBox>
     </div>
-    <p class="text-center">Contact Us: <a href="mailto:mutua11y@accessiblecommunity.org">mutua11y@accessiblecommunity.org</a></p>
   </ThemedSection>
-  <style scoped>
-    .logo {
-      height: 1em;
-      width: auto;
-    }
-  </style>
+
+  <ThemedSection style="tertiary">
+    <div
+      class="d-flex flex-column flex-xl-row-reverse gap-4 justify-content-xl-between align-items-xl-center"
+    >
+      <div class="col col-xl-7">
+        <h2 class="display-3">Help the <strong>next generation</strong>.</h2>
+        <p class="lead">
+          For our mentors, we ask is that you have a series of guided
+          conversations for an hour or two a month. You will gain insight and
+          learn about each of your experiences and they navigate a career in
+          digitial accessibility. Passing on your knowledge to an upcoming
+          accessibility professionals is invaluable to them.
+        </p>
+      </div>
+      <ThemedBox
+        theme="info"
+        border={1}
+        class="col col-xl-4 text-start p-4 pb-0 shadow rounded"
+      >
+        <Testimonial id="rashimi/full" text="white" />
+      </ThemedBox>
+    </div>
+  </ThemedSection>
+
+  <ThemedSection style="secondary">
+    <h2 class="display-3">How can I <strong>be involved</strong>?</h2>
+    <div
+      class="d-flex flex-column flex-lg-row gap-4 py-3 justify-content-lg-evenly text-primary"
+    >
+      <ThemedBox
+        text={true}
+        border={1}
+        class="border-primary col col-xl-3 shadow rounded"
+      >
+        <h3 class="display-5 mb-3">
+          Be a <strong>protegé</strong>.
+        </h3>
+        <p class="text-center">
+          If you've taken some training or have started your certification
+          process, you are a great fit.
+        </p>
+        <div class="text-center">
+          <ExternalLink href={protegeUrl} class="text-brand">
+            Apply to be a Protegé
+          </ExternalLink>
+        </div>
+      </ThemedBox>
+      <ThemedBox
+        text={true}
+        border={1}
+        class="border-primary col col-xl-3 shadow rounded"
+      >
+        <h3 class="display-5 mb-3">
+          Be a <strong>mentor</strong>.
+        </h3>
+        <p class="text-center">
+          We are looking for mentors with at least 5-10 years of experience in
+          digital accessibility.
+        </p>
+        <div class="text-center">
+          <a href={mentorUrl} class="text-brand">
+            Apply to be a Mentor
+          </a>
+        </div>
+      </ThemedBox>
+      <ThemedBox
+        text={true}
+        border={1}
+        class="border-primary col col-xl-3 shadow rounded"
+      >
+        <h3 class="display-5 mb-3">
+          Ask <strong>questions</strong>.
+        </h3>
+        <p class="text-center">
+          Do you have any questions or concerns about our program? We're happy
+          to answer.
+        </p>
+        <div class="text-center">
+          <a href={mentoringEmail}>Email your questions</a>
+        </div>
+      </ThemedBox>
+    </div>
+    <p class="lead pt-5">
+      Learn more about the <a
+        href={programUrl}><Branding>mutua11y mentoring</Branding></a> program.
+    </p>
+  </ThemedSection>
+
+  <ThemedSection>
+    <h2 class="display-3">Thanks to our <strong>partners</strong>.</h2>
+    <CollaboratorList items={partners} />
+    <CollaboratorList items={contributors} />
+  </ThemedSection>
 </Layout>
