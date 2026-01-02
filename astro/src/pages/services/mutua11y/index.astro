@@ -5,7 +5,6 @@ import { getOpenGraphImageData } from "@lib/og-image";
 
 import Branding from "@components/Branding.astro";
 import CollaboratorList from "@components/CollaboratorList.astro";
-import ExternalLink from "@components/ExternalLink.astro";
 import Hero from "@components/Hero.astro";
 import { Icon } from "astro-icon/components";
 import Layout from "../../../layouts/Layout.astro";
@@ -16,8 +15,7 @@ import ThemedSection from "@components/ThemedSection.astro";
 import heroBg from "../../../images/colored-hero/hands-together.png";
 
 const programUrl = "/services/mutua11y/mentoring/";
-const protegeUrl = "https://www.mutua11y.org/protege-registration/";
-// const protegeUrl = "/services/mutua11y/protege-registration/";
+const protegeUrl = "/services/mutua11y/protege-registration/";
 const mentorUrl = "/services/mutua11y/mentor-registration/";
 const mentoringEmail = "mailto:mentoring@accessiblecommunity.org";
 
@@ -52,7 +50,7 @@ const contributors = await getCollection("collaborators", ({ data }) => {
 <Layout {title} brandedTitle {crumbs} {metadata}>
   <Hero image={heroBg} slot="header" actionBreakpoint="md">
     <div slot="heading" class="mb-4">
-      <h1 class="visually-hidden">Mentoring</h1>
+      <h1 class="visually-hidden">About mutually Mentoring</h1>
       <blockquote class="display-2 text-white mx-3">
         <div>
           <sup aria-hidden="true"><Icon name="quote-left" height="0.5em" /></sup
@@ -169,9 +167,7 @@ const contributors = await getCollection("collaborators", ({ data }) => {
           process, you are a great fit.
         </p>
         <div class="text-center">
-          <ExternalLink href={protegeUrl} class="text-brand">
-            Apply to be a Protegé
-          </ExternalLink>
+          <a href={protegeUrl} class="text-brand">Apply to be a Protégé</a>
         </div>
       </ThemedBox>
       <ThemedBox
@@ -187,9 +183,7 @@ const contributors = await getCollection("collaborators", ({ data }) => {
           digital accessibility.
         </p>
         <div class="text-center">
-          <a href={mentorUrl} class="text-brand">
-            Apply to be a Mentor
-          </a>
+          <a href={mentorUrl} class="text-brand">Apply to be a Mentor</a>
         </div>
       </ThemedBox>
       <ThemedBox

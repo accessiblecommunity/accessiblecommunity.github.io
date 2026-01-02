@@ -31,6 +31,7 @@ import CollaboratorList from "../../../components/CollaboratorList.astro";
 import ImageHeading from "@components/ImageHeading.astro";
 import Layout from "../../../layouts/Layout.astro";
 import ThemedSection from "@components/ThemedSection.astro";
+import ExternalLink from "@components/ExternalLink.astro";
 
 const partners = await getCollection("collaborators", ({ data }) =>
   data.tags.includes("partner")
@@ -56,22 +57,28 @@ const partners = await getCollection("collaborators", ({ data }) =>
     <h2>Overview</h2>
 
     <p>
-      <a href="/"><Branding>Accessible Community</Branding></a>, in partnership with <a
+      <a href="/"><Branding>Accessible Community</Branding></a>, in partnership with
+      <ExternalLink
         href="https://www.deque.com/"
-        target="_blank"
-      >
-        Deque
-      </a>, <a href="https://www.levelaccess.com/" target="_blank">
-        Level Access
-      </a>, <a href="https://plc.pearson.com/en-US/company" target="_blank">
-        Pearson
-      </a>, and <a href="https://www.tpgi.com/" target="_blank"> TPGi </a>,
-      coordinates <Branding class="text-primary">mutua11y's</Branding> accessibility mentoring program. This program
-      brings together emerging accessibility professionals with experts in the
-      field. Mentors and protégés meet for an hour once or twice a month for
-      3-12 months. The activities include discussion prompts and an optional
-      opportunity to assess a small organizations website and discuss the
-      results.
+        inline
+      >Deque</ExternalLink>,
+      <ExternalLink
+        href="https://www.levelaccess.com/"
+        inline
+      >Level Access</ExternalLink>,
+      <ExternalLink
+        href="https://plc.pearson.com/en-US/company"
+        inline
+      >Pearson</ExternalLink>, and
+      <ExternalLink
+        href="https://www.tpgi.com/" inline
+      >TPGi</ExternalLink>,
+      coordinates <Branding class="text-primary">mutua11y's</Branding> accessibility
+      mentoring program. This program brings together emerging accessibility
+      professionals with experts in the field. Mentors and protégés meet for an hour
+      once or twice a month for 3-12 months. The activities include discussion prompts
+      and an optional opportunity to assess a small organizations website and discuss
+      the results.
     </p>
 
     <p>The goals for our mentoring program include:</p>
