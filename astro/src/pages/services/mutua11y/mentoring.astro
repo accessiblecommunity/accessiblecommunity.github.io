@@ -1,0 +1,188 @@
+---
+import { getOpenGraphImageData } from "@lib/og-image";
+import type { Breadcrumbs, PageMetadata } from "@lib/types";
+import { getCollection } from "astro:content";
+
+const title = "mutua11y mentoring";
+const metadata: PageMetadata = {
+  title,
+  description: "Overview of the mutua11y mentoring program",
+  image: getOpenGraphImageData(Astro.site, "pages", "mutua11y"),
+};
+
+const crumbs: Breadcrumbs = [
+  {
+    name: "Home",
+    href: "/",
+  },
+  {
+    name: "Services",
+    href: "/services/",
+  },
+  {
+    name: "mutua11y",
+    href: "/services/mutua11y/",
+    branded: true,
+  },
+];
+
+import Branding from "@components/Branding.astro";
+import CollaboratorList from "../../../components/CollaboratorList.astro";
+import ImageHeading from "@components/ImageHeading.astro";
+import Layout from "../../../layouts/Layout.astro";
+import ThemedSection from "@components/ThemedSection.astro";
+import ExternalLink from "@components/ExternalLink.astro";
+
+const partners = await getCollection("collaborators", ({ data }) =>
+  data.tags.includes("partner")
+).then((items) =>
+  items.filter(
+    (item) =>
+      item.data.name === "Deque" ||
+      item.data.name === "Level Access" ||
+      item.data.name === "Pearson" ||
+      item.data.name === "TPGi" ||
+      item.data.name === "Knowbility" ||
+      item.data.name === "TetraLogical"
+  )
+);
+---
+
+<Layout {title} brandedTitle {crumbs} {metadata}>
+  <ImageHeading image="hands" slot="header">
+    About <Branding>mutua11y mentoring</Branding>
+  </ImageHeading>
+
+  <ThemedSection style="tertiary">
+    <h2>Overview</h2>
+
+    <p>
+      <a href="/"><Branding>Accessible Community</Branding></a>, in partnership with
+      <ExternalLink
+        href="https://www.deque.com/"
+        inline
+      >Deque</ExternalLink>,
+      <ExternalLink
+        href="https://www.levelaccess.com/"
+        inline
+      >Level Access</ExternalLink>,
+      <ExternalLink
+        href="https://plc.pearson.com/en-US/company"
+        inline
+      >Pearson</ExternalLink>, and
+      <ExternalLink
+        href="https://www.tpgi.com/" inline
+      >TPGi</ExternalLink>,
+      coordinates <Branding class="text-primary">mutua11y's</Branding> accessibility
+      mentoring program. This program brings together emerging accessibility
+      professionals with experts in the field. Mentors and protégés meet for an hour
+      once or twice a month for 3-12 months. The activities include discussion prompts
+      and an optional opportunity to assess a small organizations website and discuss
+      the results.
+    </p>
+
+    <p>The goals for our mentoring program include:</p>
+
+    <ol>
+      <li>
+        Supplementing limited educational opportunities in accessibility and
+        universal design by providing hands on experience.
+      </li>
+      <li>
+        Helping small businesses and community organizations become more
+        inclusive of people with diverse abilities.
+      </li>
+      <li>
+        Building a workforce of educated professionals by engaging and inspiring
+        them about creating a more inclusive world.
+      </li>
+    </ol>
+
+    <p>
+      We match protégés with mentors as mentors become available. We do our best
+      to prioritize requests who have been waiting for a mentor for a while but
+      we also strive for a good match in skills and location.
+    </p>
+
+    <p>
+      We provide activities and discussion prompts to help make the mentoring as
+      productive and easy as possible. Some pairs choose to use these and others
+      choose to follow their own discussion topics.
+    </p>
+
+    <p>
+      When enrolled in <Branding>mutua11y's</Branding> accessibility mentoring program, we will
+      provide opportunities to join activities like certification study groups,
+      interview workshops and more so even when protégés are not matched
+      immediately they will have a chance to learn.
+    </p>
+  </ThemedSection>
+  <ThemedSection>
+    <h2>Who Can Be A <strong>Mentor</strong>?</h2>
+    <p
+      >We are looking for mentors with at least 5, preferably 10, years of
+      experience in web and software accessibility though we accept some mentors
+      with less experience accessibility but additional experience in a related
+      field such as development, design, user experience (UX), policy, etc.
+    </p>
+
+    <p>We are also looking for mentors in:</p>
+
+    <ul>
+      <li>Universal Design</li>
+      <li>ADA Compliance</li>
+      <li>Occupational Therapy</li>
+    </ul>
+
+    <p>
+      The ideal mentor is patient, creative, and prepared to share their passion
+      and knowledge for this field with others. If you are interested in
+      becoming a mentor or if your company would like become a partner, please
+      complete the <a href="/services/mutua11y/mentor-registration/">
+        mentor registration.
+      </a>
+    </p>
+  </ThemedSection>
+  <ThemedSection style="tertiary">
+    <h2>Who Can Be A <strong>Protégé</strong>?</h2>
+    We are looking for individuals who have:
+    <ul>
+      <li>
+        taken at least one accessibility-related training or certification and
+        have 1-5 years of experience in web or software accessibility, or
+      </li>
+      <li>
+        are self-trained and have 2-5 years of experience in web or software
+        accessibility.
+      </li>
+    </ul>
+
+    <p>
+      Accessibility specialties include design, development, testing, user
+      experience (UX), or other related areas of digital accessibility. The
+      ideal protégé is self-motivated, creative, and prepared to learn.
+    </p>
+
+    <p>
+      Apply using our <a href="/protege-registration/">protégé registration.</a>
+    </p>
+  </ThemedSection>
+  <ThemedSection>
+    <h2>Questions?</h2>
+    <p>
+      Contact <a href="mailto:mentoring@accessiblecommunity.org">
+        mentoring@accessiblecommunity.org
+      </a>if you have any questions.
+    </p>
+
+    <p>
+      Accessible Community is an equal opportunity organization. All applicants
+      will be considered without attention to race, color, religion, gender
+      identity, sexual orientation, national origin, or disability status.
+    </p>
+  </ThemedSection>
+  <ThemedSection theme="secondary" style="subtle">
+    <h2>Partners</h2>
+    <CollaboratorList items={partners} />
+  </ThemedSection>
+</Layout>

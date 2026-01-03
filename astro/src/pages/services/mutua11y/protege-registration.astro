@@ -1,0 +1,440 @@
+---
+import type { Breadcrumbs, PageMetadata } from "@lib/types";
+import {
+  timeZones,
+  regions,
+  countries,
+  accessibilityAreas,
+  training,
+  topics,
+} from "@lib/mutua11y";
+
+const title = "Protégé Registration";
+const metadata: PageMetadata = {
+  title,
+  description: "Protégé Registration for the mutua11y mentoring program",
+};
+
+const crumbs: Breadcrumbs = [
+  {
+    name: "Home",
+    href: "/",
+  },
+  {
+    name: "Services",
+    href: "/services",
+  },
+  {
+    name: "mutua11y",
+    href: "/services/mutua11y/",
+    branded: true,
+  },
+];
+
+import Branding from "@components/Branding.astro";
+import GoogleForm from "@components/GoogleForm.astro";
+import ImageHeading from "@components/ImageHeading.astro";
+import Layout from "../../../layouts/Layout.astro";
+import ThemedSection from "@components/ThemedSection.astro";
+---
+
+<Layout {title} {crumbs} {metadata}>
+  <ImageHeading image="hands" slot="header">
+    Protégé Registration for <Branding>mutua11y</Branding>
+  </ImageHeading>
+  <ThemedSection theme="tertiary">
+    <h2>Application Form</h2>
+
+    <GoogleForm
+      id="protegeFormEl"
+      key="AKfycbwPXy-jWeyQ7vtO8gpxmienZHe_9QLqU1FrTcT_y8hDUAOzESplX5Wcgk4Sm_kFB22w"
+      class="p-4"
+      arrayFields={["Countries", "Interests", "Topics", "Training"]}
+    >
+      <Fragment slot="prelude">
+        For emerging accessibility professionals to sign up for the mentoring
+        program.
+      </Fragment>
+      <input type="hidden" name="Type" value="ProtegeRegistration" />
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <label for="fullNameField" class="form-label mb-1 required-field"
+            >Full Name</label
+          ><span class="asterisk"></span>
+          <input
+            type="text"
+            name="FullName"
+            class="form-control w-100"
+            id="fullNameField"
+            placeholder="John Doe"
+            autocomplete="name"
+            aria-describedby="fullNameHelp"
+            required
+          />
+          <p id="fullNameHelp" class="form-text">
+            Please provide your full legal name.
+          </p>
+          <label for="citedNameField" class="form-label mb-1"
+            >Cited Name</label
+          ></span>
+          <input
+            type="text"
+            name="CitedName"
+            class="form-control w-100"
+            id="citedNameField"
+            placeholder="Nickname, Dr. Lastname, etc."
+            autocomplete="name"
+            aria-describedby="citedNameHelp"
+          />
+          <p id="citedNameHelp" class="form-text">
+            How you would like us to refer to you.
+          </p>
+        </div>
+        <div class="col-md-6 mb-3">
+          <label for="emailField" class="form-label mb-1 required-field"
+            >Email Address</label
+          ><span class="asterisk"></span>
+          <input
+            type="email"
+            name="Email"
+            class="form-control w-100"
+            id="emailField"
+            autocomplete="email"
+            placeholder="address@domain.com"
+            aria-describedby="emailHelp"
+            required
+          />
+          <p id="emailHelp" class="form-text">
+            This will be the primary method that we will contact you.
+            Please use an email address that you check on a regular basis.
+          </p>
+          <label for="linkedInField" class="form-label mb-1"
+            >LinkedIn Profile</label
+          ><span class="asterisk"></span>
+          <input
+            type="text"
+            id="linkedInField"
+            name="LinkedIn"
+            class="form-control w-100"
+            placeholder="www.linkedin.com/in/name-123456789"
+            autocomplete="url"
+            aria-describedby="linkedInHelp"
+          />
+          <p id="linkedInHelp" class="form-text">
+            The url of your LinkedIn profile, in you have one and would like it shared.
+          </p>
+        </div>
+      </div>
+      <div class="row border-top border-1 border-info mt-4 pt-4">
+        <div class="col-md-12 mb-3">
+          <h3 class="display-5">Your location and language information</h3>
+          <p class="form-text">
+            We will use this information to try and best match your geographic region, timezone and spoken languages whenever possible.
+          </p>
+        </div>
+        <div class="col-md-6 mb-3">
+          <fieldset>
+            <legend class="mb-1 fs-6 required-field">
+              What region of the world do you primarily live and work in? <span class="asterisk" aria-hidden="true"></span>
+            </legend>
+            <select
+              class="form-select mb-2"
+              name="Region"
+              aria-label="Region selection"
+              required
+            >
+              <option selected disabled>
+                Select the region you most frequently live and work in...
+              </option>
+              { regions.map((region) => <option value={region} set:text={region} />) }
+            </select>
+          </fieldset>
+        </div>
+        <div class="col-md-6 mb-3">
+          <fieldset>
+            <legend class="mb-1 fs-6 required-field">
+              What timezone do you live in? <span class="asterisk" aria-hidden="true"></span>
+            </legend>
+            <select
+              class="form-select mb-2"
+              name="Timezone"
+              aria-label="Timezone selection"
+              required
+            >
+              <option selected disabled aria-disabled="false">Select the timezone you live in...</option>
+              { timeZones.map((tz) => <option value={tz} set:text={tz} />) }
+            </select>
+          </fieldset>
+        </div>
+        <div class="col-12 mb-3">
+          <fieldset aria-required>
+            <legend class="mb-2 fs-6">
+              Do you work on accessibility in any of the following countries?
+              <span class="form-text">(Select all that apply)</span>
+            </legend>
+            <div class="row row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 row-cols-xxl-6 mx-1">
+              {
+                countries.map((country) => (
+                  <div class="form-check mb-2">
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      name="Countries"
+                      id={`fieldCountry${country}`}
+                      value={country}
+                    />
+                    <label
+                      class="form-check-label"
+                      for={`fieldCountry${country}`}
+                      set:text={country}
+                    />
+                  </div>
+                ))
+              }
+            </div>
+          </fieldset>
+        </div>
+        <div class="col-md-6">
+          <label for="englishField" class="form-label mb-1 required-field">
+            Is English your preferred language?
+          </label><span class="asterisk" />
+          <select id="englishField" name="English" class="form-select w-100" required>
+            <option value="yes">Yes</option>
+            <option value="no">No</option>
+          </select>
+        </div>
+        <div class="col-md-6">
+          <label for="otherLanguagesField" class="form-label mb-1">
+            If no, please specify your preferred language(s):
+          </label>
+          <input
+            id="otherLanguagesField"
+            type="text"
+            name="OtherLanguages"
+            class="form-control w-100"
+          />
+        </div>
+        <div class="col-md-12 mb-3">
+        </div>
+      </div>
+      <div class="row border-top border-1 border-info mt-4 pt-4">
+        <div class="col-md-12">
+          <h3 class="display-5">Your accessibility experience</h3>
+          <p class="form-text">
+            We will use this information to try and best match a mentor with a similar background and interests.
+          </p>
+        </div>
+        <div class="col-lg-6">
+          <label for="backgroundField" class="form-label required-field">
+            Briefly describe your accessibility background.
+          </label><span class="asterisk" />
+          <textarea
+            id="backgroundField"
+            name="Background"
+            class="form-control"
+            rows="4"
+            required
+            aria-describedby="backgroundHelp"
+          />
+          <p id="backgroundHelp" class="form-text">
+            In a couple of sentences, describe your accessibility background and experience. Please include descriptions of projects you've worked on and how long you've been working in the field.
+          </p>
+        </div>
+        <div class="col-lg-6">
+          <label for="goalsField" class="form-label required-field">
+            Briefly describe your goals for participation.
+          </label><span class="asterisk" />
+          <textarea
+            id="goalsField"
+            name="Goals"
+            class="form-control"
+            rows="4"
+            required
+            aria-describedby="goalsHelp"
+          />
+          <p id="goalsHelp" class="form-text">
+            In a couple of sentences, explain why you are registering to be a mentor and what a successful mentorship looks like.
+          </p>
+        </div>
+        <div class="col-lg-12 col-xl-4">
+          <fieldset class="mb-3">
+            <legend class="mb-2 fs-6">
+              What areas are you interested in?
+              <span class="form-text">(Select all that apply)</span>
+            </legend>
+            <div class="row row-cols-lg-2 row-cols-xl-1 mx-1">
+              {
+                accessibilityAreas.map((area) => (
+                  <div class="form-check mb-2">
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      name="Interests"
+                      id={`fieldInterests${area}`}
+                      value={area}
+                    />
+                    <label
+                      class="form-check-label"
+                      for={`fieldInterests${area}`}
+                      set:text={area}
+                    />
+                  </div>
+                ))
+              }
+            </div>
+          </fieldset>
+        </div>
+        <div class="col-lg-12 col-xl-4">
+          <hr class="d-none d-lg-block d-xl-none" />
+          <fieldset aria-required class="mb-3">
+            <legend class="mb-2 fs-6 required-field">
+              How have you learned about accessibility to date?
+              <span class="asterisk" />
+              <span class="form-text">(Select all that apply)</span>
+            </legend>
+            <div class="row row-cols-lg-2 row-cols-xl-1 mx-1">
+              {
+                training.map((area) => (
+                  <div class="form-check mb-2">
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      name="Training"
+                      id={`fieldTraining${area}`}
+                      value={area}
+                    />
+                    <label
+                      class="form-check-label"
+                      for={`fieldTraining${area}`}
+                      set:text={area}
+                    />
+                  </div>
+                ))
+              }
+            </div>
+          </fieldset>
+        </div>
+        <div class="col-lg-12 col-xl-4">
+          <hr class="d-none d-lg-block d-xl-none" />
+          <fieldset class="mb-3">
+            <legend class="mb-2 fs-6">
+              What accessibility topics would you hope to discuss with your mentor?
+              <span class="form-text">(Select all that apply)</span>
+            </legend>
+            <div class="row row-cols-lg-2 row-cols-xl-1 mx-1">
+              {
+                topics.map((area) => (
+                  <div class="form-check mb-2">
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      name="Topics"
+                      id={`fieldTopics${area}`}
+                      value={area}
+                    />
+                    <label
+                      class="form-check-label"
+                      for={`fieldTopics${area}`}
+                      set:text={area}
+                    />
+                  </div>
+                ))
+              }
+            </div>
+          </fieldset>
+        </div>
+      </div>
+      <div class="row border-top border-1 border-info mt-4 pt-4">
+        <h3 class="mt-4">Code of Conduct</h3>
+        <p class="small">
+          The purpose of this code of conduct is to set clear expectations of
+          behavior between all parties involved in the Accessibility Mentoring
+          Program in order to create a positive experience for all participants.
+          This code applies to mentors, protégés and Accessible Community staff
+          involved in the mentoring program.
+        </p>
+
+        <h4>Key Points</h4>
+        <ul class="small">
+          <li>
+            <strong>Mutual Respect and Caring</strong> – I will respect each individual’s unique
+            experiences, needs, and perspective. I will do my best to be
+            transparent and honest; to communicate my needs and keep the best
+            interest of others in mind. I will try to treat others as I wish to be
+            treated.
+          </li>
+          <li>
+            <strong>Assumption of Best Intent</strong> – I will assume everyone involved in this
+            program has my best interest at heart. I will seek to communicate
+            first when misunderstandings or conflicts arise. I will seek outside
+            opinions only after I have tried to (re-)communicate with others. I
+            know that I can reach out to <a href="mailto:mentoring@accessiblecommunity.org"
+            >mentoring@accessiblecommunity.org</a> if I
+            need assistance.
+          </li>
+          <li>
+            <strong>Confidentiality</strong> – Mentoring requires sharing information about
+            personal experiences. I will respect the confidentiality of
+            conversations that occur during mentoring. I will make reasonable
+            efforts to protect the privacy and confidentiality of my mentor or
+            protégé.
+          </li>
+          <li>
+            <p>
+              <strong>Honor your commitments</strong> – I will do my best to keep my commitment as a
+              mentor or protégé and provide the time and attention that
+              participation requires. I will attend meetings at the time scheduled
+              and will have prepared any agreed upon materials.
+            </p>
+            <p>
+              Emergencies and other unexpected circumstances happen. If I am unable
+              to meet a commitment in the mentoring program, I will communicate this
+              to my mentor or protégé as soon as possible.
+            </p>
+          </li>
+          <li>
+            <p>
+              <strong>Maintain friendly professionalism</strong> – I understand that mentoring
+              relationships include both personal and professional aspects. As a
+              result, I will be kind and friendly, while understanding that
+              professional boundaries and behaviors are still required.
+            </p>
+          </li>
+          <li>
+            <p>
+              <strong>Respect for Intellectual Property</strong> – I will respect the intellectual
+              property of others including my mentor or protégé and this mentoring
+              program. I will make reasonable efforts to protect the intellectual
+              property of all participants, including my organization’s.
+            </p>
+            <p>
+              If personal intellectual property needs to be discussed during my
+              mentoring conversations, I will work with my mentor or protégé to
+              define clear boundaries and identify any potential conflicts of
+              interest before discussing intellectual property. We will document
+              those boundaries in an email to <a href="mailto:mentoring@accessiblecommunity.org">mentoring@accessiblecommunity.org</a>.
+            </p>
+            <p>
+              If I wish to use the materials from Accessible Community outside the program, I will contact
+              <a href="mailto:mentoring@accessiblecommunity.org">mentoring@accessiblecommunity.org</a>
+              to request permission.
+            </p>
+          </li>
+        </ul>
+      </div>
+    </GoogleForm>
+  </ThemedSection>
+  <style scoped>
+    .field * + label:not(.form-check-label) {
+      margin-top: 1rem;
+    }
+    li {
+      margin-left: 1.25em;
+      margin-right: 1.25em;
+
+      & p:last-child {
+        margin-bottom: 0;
+      }
+    }
+  </style>
+</Layout>
