@@ -4,6 +4,7 @@ import { type ImageMetadata } from "astro";
 export interface Breadcrumb {
   name: string;
   href: string | URL;
+  branded ?: boolean;
 }
 export type Breadcrumbs = Array<Breadcrumb>;
 
