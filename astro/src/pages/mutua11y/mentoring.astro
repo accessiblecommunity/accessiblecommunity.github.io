@@ -16,20 +16,16 @@ const crumbs: Breadcrumbs = [
     href: "/",
   },
   {
-    name: "Services",
-    href: "/services/",
-  },
-  {
     name: "mutua11y",
-    href: "/services/mutua11y/",
+    href: "/mutua11y/",
     branded: true,
   },
 ];
 
 import Branding from "@components/Branding.astro";
-import CollaboratorList from "../../../components/CollaboratorList.astro";
+import CollaboratorList from "@components/CollaboratorList.astro";
 import ImageHeading from "@components/ImageHeading.astro";
-import Layout from "../../../layouts/Layout.astro";
+import Layout from "src/layouts/Layout.astro";
 import ThemedSection from "@components/ThemedSection.astro";
 import ExternalLink from "@components/ExternalLink.astro";
 
@@ -138,7 +134,7 @@ const partners = await getCollection("collaborators", ({ data }) =>
       The ideal mentor is patient, creative, and prepared to share their passion
       and knowledge for this field with others. If you are interested in
       becoming a mentor or if your company would like become a partner, please
-      complete the <a href="/services/mutua11y/mentor-registration/">
+      complete the <a href="/mutua11y/mentor-registration/">
         mentor registration.
       </a>
     </p>

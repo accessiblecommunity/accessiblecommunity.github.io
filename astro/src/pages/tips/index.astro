@@ -1,37 +1,33 @@
 ---
-import Branding from "../../components/Branding.astro";
+import Branding from "@components/Branding.astro";
 import { Icon } from "astro-icon/components";
-import ImageHeading from "../../components/ImageHeading.astro";
+import ImageHeading from "@components/ImageHeading.astro";
 import Layout from "../../layouts/Layout.astro";
-import ShadowBoxSection from "../../components/ShadowBoxSection.astro";
-import ThemedSection from "../../components/ThemedSection.astro";
-import TipLicense from "../../components/TipLicense.astro";
-import TipOfTheWeek from "../../components/TipOfTheWeek.astro";
-import TipRegistration from "../../components/TipRegistration.astro";
+import ShadowBoxSection from "@components/ShadowBoxSection.astro";
+import ThemedSection from "@components/ThemedSection.astro";
+import TipLicense from "@components/TipLicense.astro";
+import TipOfTheWeek from "@components/TipOfTheWeek.astro";
+import TipRegistration from "@components/TipRegistration.astro";
 
-import { getTipCatalog } from "../../lib/tips";
+import { getTipCatalog } from "@lib/tips";
 import { getOpenGraphImageData } from "@lib/og-image";
 import { startCase } from "lodash-es";
 import type { Breadcrumbs, PageMetadata } from "@lib/types";
 
 const { categories, tips } = await getTipCatalog();
+
 const title = "Tip of the Week";
 const description =
   "Overview of the Accessibility Tip of the Week service that Accessible Community provides";
 const metadata: PageMetadata = {
   title,
-  description:
-    "An overview and archive of Accessible Community's Tips of the Week",
+  description,
   image: getOpenGraphImageData(Astro.site, "pages", "tips", description),
 };
 const crumbs: Breadcrumbs = [
   {
     name: "Home",
     href: "/",
-  },
-  {
-    name: "Services",
-    href: "/services",
   },
 ];
 ---
@@ -42,7 +38,7 @@ const crumbs: Breadcrumbs = [
       rel="alternate"
       type="application/rss+xml"
       title="Accessible Community's Tip of the Week"
-      href={`${Astro.site}/services/tip-of-the-week/rss.xml`}
+      href={`${Astro.site}/tips/rss.xml`}
     />
   </Fragment>
   <ImageHeading image="notes" slot="header">
@@ -75,7 +71,7 @@ const crumbs: Breadcrumbs = [
 
       <TipRegistration>
         <h3 class="display-6 text-primary-emphasis mb-0">
-          <strong>Tip of the Week</strong> Registration
+          <Branding>Tip of the Week</Branding> Registration
         </h3>
         <p class="small">
           <span class="text-primary-emphasis fw-bold">Note:</span> Required fields
@@ -90,19 +86,20 @@ const crumbs: Breadcrumbs = [
       Our <strong>most recent</strong> tip.
     </h2>
     <div class="p-2 p-sm-3 p-md-4 rounded-3">
-      <TipOfTheWeek id="etiquette" />
+      <TipOfTheWeek />
     </div>
   </ShadowBoxSection>
 
+  {/* Hide Tips of the Week for now.
   <ThemedSection theme="tertiary">
     <h2 class="display-4 text-primary mb-4">
-      Tip of the Week <strong>Archive</strong>.
+      Tip of the Week <strong>Archive</strong>
     </h2>
     <hr />
     <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 mt-5">
       <div class="col">
         <h3>Most Recent</h3>
-        <ul class="mt-1 mb-3 list-disc list-spaced">
+        <ul class="mt-1 mb-3 list-disc">
           {
             tips.slice(0, 7).map((tip) => (
               <li>
@@ -116,7 +113,7 @@ const crumbs: Breadcrumbs = [
         categories.map((cat) => (
           <div class="col">
             <h3>{startCase(cat)}</h3>
-            <ul class="mt-1 mb-4 list-disc list-spaced">
+            <ul class="mt-1 mb-4 list-disc">
               {tips.map(
                 (tip) =>
                   tip.data.tags.includes(cat) && (
@@ -131,8 +128,9 @@ const crumbs: Breadcrumbs = [
       }
     </div>
   </ThemedSection>
+  */}
 
-  <ThemedSection style="secondary" py={4}>
+  <ThemedSection style="secondary">
     <TipLicense />
   </ThemedSection>
 </Layout>
