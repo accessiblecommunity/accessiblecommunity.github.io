@@ -21,7 +21,7 @@ export async function GET(context) {
     title: "Accessibility Tip of the Week",
     description:
       "Our Tip of the Week is a quick accessibility tip that can improve the accessibility of your website, social media, events, and more.",
-    site: `${context.site}/tips/`,
+    site: `${context.site}/tips`,
     items: await Promise.all(
       tips.map(async (tip) => {
         const { Content } = await render(tip);
