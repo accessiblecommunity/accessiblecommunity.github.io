@@ -4,15 +4,16 @@ import {
   timeZones,
   regions,
   countries,
+  experienceLevels,
   accessibilityAreas,
   training,
   topics,
 } from "@lib/mutua11y";
 
-const title = "Protégé Registration";
+const title = "Mentor Registration";
 const metadata: PageMetadata = {
   title,
-  description: "Protégé Registration for the mutua11y mentoring program",
+  description: "Mentor Registration for the mutua11y mentoring program",
 };
 
 const crumbs: Breadcrumbs = [
@@ -21,12 +22,8 @@ const crumbs: Breadcrumbs = [
     href: "/",
   },
   {
-    name: "Services",
-    href: "/services",
-  },
-  {
     name: "mutua11y",
-    href: "/services/mutua11y/",
+    href: "/mutua11y/",
     branded: true,
   },
 ];
@@ -34,28 +31,28 @@ const crumbs: Breadcrumbs = [
 import Branding from "@components/Branding.astro";
 import GoogleForm from "@components/GoogleForm.astro";
 import ImageHeading from "@components/ImageHeading.astro";
-import Layout from "../../../layouts/Layout.astro";
+import Layout from "src/layouts/Layout.astro";
 import ThemedSection from "@components/ThemedSection.astro";
 ---
 
-<Layout {title} {crumbs} {metadata}>
+<Layout {title} {crumbs} {metadata} heading="Mentor Registration">
   <ImageHeading image="hands" slot="header">
-    Protégé Registration for <Branding>mutua11y</Branding>
+    Mentor Registration for <Branding>mutua11y</Branding>
   </ImageHeading>
   <ThemedSection theme="tertiary">
     <h2>Application Form</h2>
 
     <GoogleForm
-      id="protegeFormEl"
+      id="mentorFormEl"
       key="AKfycbwPXy-jWeyQ7vtO8gpxmienZHe_9QLqU1FrTcT_y8hDUAOzESplX5Wcgk4Sm_kFB22w"
       class="p-4"
-      arrayFields={["Countries", "Interests", "Topics", "Training"]}
+      arrayFields={["Countries", "Expertise"]}
     >
       <Fragment slot="prelude">
         For emerging accessibility professionals to sign up for the mentoring
         program.
       </Fragment>
-      <input type="hidden" name="Type" value="ProtegeRegistration" />
+      <input type="hidden" name="Type" value="MentorRegistration" />
       <div class="row">
         <div class="col-md-6 mb-3">
           <label for="fullNameField" class="form-label mb-1 required-field"
@@ -87,7 +84,7 @@ import ThemedSection from "@components/ThemedSection.astro";
             aria-describedby="citedNameHelp"
           />
           <p id="citedNameHelp" class="form-text">
-            How you would like us to refer to you.
+            How you would like us to refer to and credit you in our materials.
           </p>
         </div>
         <div class="col-md-6 mb-3">
@@ -221,7 +218,7 @@ import ThemedSection from "@components/ThemedSection.astro";
         <div class="col-md-12">
           <h3 class="display-5">Your accessibility experience</h3>
           <p class="form-text">
-            We will use this information to try and best match a mentor with a similar background and interests.
+            We will use this information to try and best match a protégé with a similar background and interests.
           </p>
         </div>
         <div class="col-lg-6">
@@ -239,8 +236,7 @@ import ThemedSection from "@components/ThemedSection.astro";
           <p id="backgroundHelp" class="form-text">
             In a couple of sentences, describe your accessibility background and experience. Please include descriptions of projects you've worked on and how long you've been working in the field.
           </p>
-        </div>
-        <div class="col-lg-6">
+
           <label for="goalsField" class="form-label required-field">
             Briefly describe your goals for participation.
           </label><span class="asterisk" />
@@ -256,85 +252,44 @@ import ThemedSection from "@components/ThemedSection.astro";
             In a couple of sentences, explain why you are registering to be a mentor and what a successful mentorship looks like.
           </p>
         </div>
-        <div class="col-lg-12 col-xl-4">
-          <fieldset class="mb-3">
+        <div class="col-lg-6">
+          <fieldset aria-required="true" class="mb-3">
+            <legend class="mb-1 fs-6 required-field">
+              How many years of experience do you have in accessibility?
+              <span class="asterisk" aria-hidden="true"></span>
+            </legend>
+              <select
+                name="Experience"
+                class="form-select w-100"
+                id="experienceField"
+                required
+              >
+                <option selected disabled>
+                  Select the number of years that best fits your experience...
+                </option>
+                {experienceLevels.map((tz) => <option value={tz}>{tz}</option>)}
+              </select>
+          </fieldset>
+          <fieldset aria-required class="mb-3">
+            <hr class="d-none d-lg-block" />
             <legend class="mb-2 fs-6">
-              What areas are you interested in?
+              What areas do you have expertise in?
               <span class="form-text">(Select all that apply)</span>
             </legend>
-            <div class="row row-cols-lg-2 row-cols-xl-1 mx-1">
+            <div class="row row-cols-xl-2 mx-1">
               {
                 accessibilityAreas.map((area) => (
                   <div class="form-check mb-2">
                     <input
                       class="form-check-input"
                       type="checkbox"
-                      name="Interests"
-                      id={`fieldInterests${area}`}
+                      name="Expertise"
+                      id={`fieldExpertise${area}`}
                       value={area}
                     />
                     <label
                       class="form-check-label"
-                      for={`fieldInterests${area}`}
-                      set:text={area}
-                    />
-                  </div>
-                ))
-              }
-            </div>
-          </fieldset>
-        </div>
-        <div class="col-lg-12 col-xl-4">
-          <hr class="d-none d-lg-block d-xl-none" />
-          <fieldset aria-required class="mb-3">
-            <legend class="mb-2 fs-6 required-field">
-              How have you learned about accessibility to date?
-              <span class="asterisk" />
-              <span class="form-text">(Select all that apply)</span>
-            </legend>
-            <div class="row row-cols-lg-2 row-cols-xl-1 mx-1">
-              {
-                training.map((area) => (
-                  <div class="form-check mb-2">
-                    <input
-                      class="form-check-input"
-                      type="checkbox"
-                      name="Training"
-                      id={`fieldTraining${area}`}
-                      value={area}
-                    />
-                    <label
-                      class="form-check-label"
-                      for={`fieldTraining${area}`}
-                      set:text={area}
-                    />
-                  </div>
-                ))
-              }
-            </div>
-          </fieldset>
-        </div>
-        <div class="col-lg-12 col-xl-4">
-          <hr class="d-none d-lg-block d-xl-none" />
-          <fieldset class="mb-3">
-            <legend class="mb-2 fs-6">
-              What accessibility topics would you hope to discuss with your mentor?
-              <span class="form-text">(Select all that apply)</span>
-            </legend>
-            <div class="row row-cols-lg-2 row-cols-xl-1 mx-1">
-              {
-                topics.map((area) => (
-                  <div class="form-check mb-2">
-                    <input
-                      class="form-check-input"
-                      type="checkbox"
-                      name="Topics"
-                      id={`fieldTopics${area}`}
-                      value={area}
-                    />
-                    <label
-                      class="form-check-label"
-                      for={`fieldTopics${area}`}
+                      for={`fieldExpertise${area}`}
                       set:text={area}
                     />
                   </div>
