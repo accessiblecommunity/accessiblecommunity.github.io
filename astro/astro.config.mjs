@@ -81,7 +81,9 @@ export default defineConfig({
       }
     }),
     sitemap({
-      filter: (page) => !page.endsWith('/commitment-form/') && !page.endsWith('fixable/'),
+      filter: (page) => {
+        return !page.endsWith('/commitment-form/') && !page.endsWith('fixable/') && !page.endsWith('tips/archive/');
+      },
     }),
     robotsTxt({
       sitemap: true,
@@ -92,7 +94,7 @@ export default defineConfig({
         })),
         {
           userAgent: '*',
-          disallow: ['/fixable/'],
+          disallow: ['/fixable/', '/tips/archive/'],
         },
         {
           userAgent: '*',
