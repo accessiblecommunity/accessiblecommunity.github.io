@@ -1,4 +1,3 @@
----
 import { getOpenGraphImageData } from "@lib/og-image";
 import type { Breadcrumbs, PageMetadata } from "@lib/types";
 import { getCollection, type CollectionEntry } from "astro:content";
@@ -47,13 +46,13 @@ const rooms: Array<CollectionEntry<"escapeRoomThemes">> =
             image={room.data.image}
             alt={room.data.alt}
             title={room.data.title}
-            tagline={room.data.tagline}
             theme={room.data.page.theme}
-            href={room.data.href}
+            href={`/services/escape-room/themes/${room.id}`}
             buttonText={room.data.buttonText || "Learn more"}
-            borderClass={`border-${room.data.page.theme}-subtle`}
             titleClass={`text-${room.data.page.theme}-emphasis`}
-          />
+          >
+            <p class="card-text" set:text={room.data.tagline} />
+          </ImageCard>
         ))
       }
     </div>

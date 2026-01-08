@@ -130,13 +130,13 @@ import woodenPuzzles from "src/images/escape-room/wooden-puzzles.png";
             image={room.data.image}
             alt={room.data.alt}
             title={room.data.title}
-            tagline={room.data.tagline}
             theme={room.data.page.theme}
-            href={room.data.href}
+            href={`/services/escape-room/themes/${room.id}`}
             buttonText={room.data.buttonText || "Learn more"}
-            borderClass="border-dark"
             titleClass={`text-truncate text-${room.data.page.theme}`}
-          />
+          >
+            <p class="card-text" set:text={room.data.tagline} />
+          </ImageCard>
         ))
       }
     </div>

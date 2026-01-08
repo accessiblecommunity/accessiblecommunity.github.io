@@ -6,7 +6,6 @@ interface Props {
   image: ImageMetadata;
   alt?: string | null;
   title: string;
-  tagline: string;
   theme: string;
   href: string;
   buttonText: string;
@@ -19,16 +18,16 @@ const {
   image, 
   alt, 
   title, 
-  tagline, 
   theme, 
   href, 
   buttonText,
-  borderClass = "border-dark",
-  titleClass,
   colClass = "col"
 } = Astro.props;
 
-const finalTitleClass = titleClass || `text-${theme}`;
+const { 
+  borderClass = `border-${theme}-subtle`, 
+  titleClass = `text-${theme}`,
+} = Astro.props;
 ---
 
 <div class={colClass}>
@@ -39,8 +38,8 @@ const finalTitleClass = titleClass || `text-${theme}`;
       alt={alt || null}
     />
     <div class="card-body">
-      <h3 class={`card-title ${finalTitleClass}`} set:text={title} />
-      <p class="card-text" set:text={tagline} />
+      <h3 class={`card-title ${titleClass}`} set:text={title} />
+      <slot />
       <a
         href={href}
         class={`btn btn-${theme}`}
