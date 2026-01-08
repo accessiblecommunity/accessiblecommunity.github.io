@@ -8,27 +8,17 @@ const metadata: PageMetadata = {
   description: "Overview of the mutua11y Initiative",
   image: getOpenGraphImageData(Astro.site, "pages", "mutua11y"),
 };
-const crumbs: Breadcrumbs = [
-  {
-    name: "Home",
-    href: "/",
-  },
-  {
-    name: "Services",
-    href: "/services",
-  },
-];
 
 import Branding from "@components/Branding.astro";
 import Hero from "@components/ColumnedHero.astro";
-import Layout from "../../../layouts/Layout.astro";
+import Layout from "src/layouts/Layout.astro";
 import ThemedSection from "@components/ThemedSection.astro";
 
 import heroBg from "src/images/np_Man with prosthetic hand typing on a computer_4jzKz4_free.jpg";
 import { Icon } from "astro-icon/components";
 ---
 
-<Layout {title} {crumbs} {metadata}>
+<Layout {title} {metadata}>
   <Hero
     image={heroBg}
     slot="header"
@@ -59,9 +49,9 @@ import { Icon } from "astro-icon/components";
     <div class="row row-cols-lg-2 g-5 py-4">
       <div class="col-lg-6">
         <h3 class="text-center">Mentoring</h3>
-        <p>The mutua11y accessibility mentoring program brings together emerging accessibility professionals with experienced mentors. 
+        <p>The mutua11y accessibility mentoring program brings together emerging accessibility professionals with experienced mentors.
             <br />
-            <a href="/services/mutua11y/mentoring/">Learn More About Mentoring</a>
+            <a href="/mutua11y/mentoring/">Learn More About Mentoring</a>
         </p>
       </div>
       <div class="col-lg-6">

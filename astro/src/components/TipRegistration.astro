@@ -17,21 +17,12 @@ const {
 ---
 
 <div
-  id="mc_embed_signup"
   class:list={[
     !defaultWidth && "col-lg-5",
     "p-4 bg-body",
     border && `border border-${border} border-${theme} rounded`,
-    "validate",
   ]}
 >
-  <form
-    action="https://accessiblecommunity.us14.list-manage.com/subscribe/post?u=c9f6664d008774e9c5d591533&id=dbdbc147c8&f_id=0082fde0f0"
-    method="post"
-    id="mc-embedded-subscribe-form"
-    name="mc-embedded-subscribe-form"
-    target="_blank"
-  >
     <slot>
       <p class="lead">
         Want a <strong class="text-primary">free and simple</strong> way to learn
@@ -49,182 +40,40 @@ const {
       </p>
       <p>Required fields have an asterisk (<span class="asterisk">*</span>).</p>
     </slot>
-    {
-      newsletters ?
-        // This is MailChimp's newsletter groups
-        <div class="mc-field-group input-group">
-          <strong>Newsletters from us </strong>
-          <ul>
-            <li>
-              <input
-                type="checkbox"
-                name="group[46629][1]"
-                id="mce-group[46629]-46629-0"
-                value=""
-              />
-              <label for="mce-group[46629]-46629-0">Tip of the Week</label>
-            </li>
-            <li>
-              <input
-                type="checkbox"
-                name="group[46629][2]"
-                id="mce-group[46629]-46629-1"
-                value=""
-              />
-              <label for="mce-group[46629]-46629-1">Quarterly Newsletter</label>
-            </li>
-          </ul>
-        </div>
-      : <input
-          type="hidden"
-          tabindex="-1"
-          name="group[46629][1]"
-          id="mce-group[46629]-46629-0"
-          value=""
-        />
-    }
-    <div class="col mb-3">
-      <label for="mce-EMAIL" class="form-label mb-1 required-field"
-        >Email address</label
-      ><span class="asterisk"></span>
-      <input
-        id="mce-EMAIL"
-        type="email"
-        name="EMAIL"
-        class="form-control w-100"
-        autocomplete="email"
-        required
-        value=""
-      />
-    </div>
-    <div class="row">
-      <div class:list={[!defaultWidth && "col-xl-5", "mb-3"]}>
-        <label for="mce-FNAME" class="form-label mb-1 required-field"
-          >First Name</label
+  <form
+    action="https://buttondown.com/api/emails/embed-subscribe/accessible-community"
+    method="post"
+    class="embeddable-buttondown-form"
+  >
+        <label for="emailField" class="form-label mb-1 required-field"
+          >Email address</label
         ><span class="asterisk"></span>
         <input
-          id="mce-FNAME"
-          type="text"
-          name="FNAME"
+          type="email"
+          name="email"
           class="form-control w-100"
-          autocomplete="given-name"
+          id="emailField"
+          autocomplete="email"
+          placeholder="address@domain.com"
           required
-          value=""
         />
-      </div>
-      <div class:list={[!defaultWidth && "col-xl-7", "mb-3"]}>
-        <label for="mce-LNAME" class="form-label mb-1">Last Name</label><span
-          class="asterisk"></span>
+        <label for="firstNameField" class="form-label mt-2 mb-1"
+          >First name</label
+        ><span class="asterisk"></span>
         <input
-          id="mce-LNAME"
           type="text"
-          name="LNAME"
+          id="firstNameField"
+          name="metadata__fname"
           class="form-control w-100"
-          autocomplete="family-name"
-          value=""
+          placeholder="Your first name"
+          autocomplete="first-name"
         />
-      </div>
-    </div>
-    {
-      announcements ?
-        // This is MailChimp's announcement groups
-        <div class="mc-field-group input-group">
-          <strong>Send me announcements for </strong>
-          <ul>
-            <li>
-              <input
-                type="checkbox"
-                name="group[46633][4]"
-                id="mce-group[46633]-46633-0"
-                value=""
-              />
-              <label for="mce-group[46633]-46633-0">
-                Accessibility professionals
-              </label>
-            </li>
-            <li>
-              <input
-                type="checkbox"
-                name="group[46633][8]"
-                id="mce-group[46633]-46633-1"
-                value=""
-              />
-              <label for="mce-group[46633]-46633-1">
-                Small businesses or nonprofit organizations
-              </label>
-            </li>
-            <li>
-              <input
-                type="checkbox"
-                name="group[46633][16]"
-                id="mce-group[46633]-46633-2"
-                value=""
-              />
-              <label for="mce-group[46633]-46633-2">
-                People with disabilities or caregivers
-              </label>
-            </li>
-          </ul>
-        </div>
-      : ""
-    }
-    <div aria-hidden="true" style="position: absolute; left: -5000px;">
-      <input type="hidden" name="tags" value="7203297" />
-      {/* Mailchimp's API or security token. Changed to a hidden */}
-      <input
-        type="text"
-        name="b_c9f6664d008774e9c5d591533_dbdbc147c8"
-        aria-label="Security field, please ignore"
-        tabindex="-1"
-        value=""
-      />
-    </div>
-    <div class="row">
-      <div class="col">
-        <button
-          id="mc-embedded-subscribe"
-          type="submit"
-          class={`btn btn-info w-100 btn-contrast-dark`}>Sign Up</button
-        >
-      </div>
-    </div>
-    <div id="mce-responses" class="row small">
-      <div
-        class="response text-danger"
-        id="mce-error-response"
-        style="display: none;"
-      >
-      </div>
-      <div
-        class="response text-success"
-        id="mce-success-response"
-        style="display: none;"
-      >
-      </div>
-    </div>
+      <input type="submit" value="Subscribe" class="btn btn-info w-100 mt-3" />
   </form>
 </div>
 
-<script
-  is:inline
-  type="text/javascript"
-  src="//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js"></script>
-<script is:inline type="text/javascript">
-  (function ($) {
-    window.fnames = new Array();
-    window.ftypes = new Array();
-    fnames[0] = "EMAIL";
-    ftypes[0] = "email";
-    fnames[1] = "FNAME";
-    ftypes[1] = "text";
-    fnames[2] = "LNAME";
-    ftypes[2] = "text";
-    fnames[3] = "ADDRESS";
-    ftypes[3] = "address";
-    fnames[4] = "PHONE";
-    ftypes[4] = "phone";
-    fnames[5] = "BIRTHDAY";
-    ftypes[5] = "birthday";
-  })(jQuery);
-  var $mcj = jQuery.noConflict(true);
-</script>
+<style>
+  .form-label {
+    font-size: 90%;
+  }
+</style>

@@ -7,16 +7,16 @@ import Branding from "@components/Branding.astro";
 import CollaboratorList from "@components/CollaboratorList.astro";
 import Hero from "@components/Hero.astro";
 import { Icon } from "astro-icon/components";
-import Layout from "../../../layouts/Layout.astro";
+import Layout from "src/layouts/Layout.astro";
 import Testimonial from "@components/Testimonial.astro";
 import ThemedBox from "@components/ThemedBox.astro";
 import ThemedSection from "@components/ThemedSection.astro";
 
-import heroBg from "../../../images/colored-hero/hands-together.png";
+import heroBg from "src/images/colored-hero/hands-together.png";
 
-const programUrl = "/services/mutua11y/mentoring/";
-const protegeUrl = "/services/mutua11y/protege-registration/";
-const mentorUrl = "/services/mutua11y/mentor-registration/";
+const programUrl = "/mutua11y/mentoring/";
+const protegeUrl = "/mutua11y/protege-registration/";
+const mentorUrl = "/mutua11y/mentor-registration/";
 const mentoringEmail = "mailto:mentoring@accessiblecommunity.org";
 
 const title = "mutua11y";
@@ -27,17 +27,6 @@ const metadata: PageMetadata = {
   image: getOpenGraphImageData(Astro.site, "pages", "donate"),
 };
 
-const crumbs: Breadcrumbs = [
-  {
-    name: "Home",
-    href: "/",
-  },
-  {
-    name: "Services",
-    href: "/services",
-  },
-];
-
 const partners = await getCollection("collaborators", ({ data }) => {
   return data.tags.includes("mentoring-partner");
 });
@@ -47,7 +36,7 @@ const contributors = await getCollection("collaborators", ({ data }) => {
 });
 ---
 
-<Layout {title} brandedTitle {crumbs} {metadata}>
+<Layout {title} brandedTitle {metadata}>
   <Hero image={heroBg} slot="header" actionBreakpoint="md">
     <div slot="heading" class="mb-4">
       <h1 class="visually-hidden">About mutually Mentoring</h1>

@@ -20,10 +20,6 @@ const crumbs: Breadcrumbs = [
     name: "Home",
     href: "/",
   },
-  {
-    name: "Services",
-    href: "/services",
-  },
 ];
 
 import Branding from "@components/Branding.astro";
@@ -32,11 +28,11 @@ import ExternalLink from "@components/ExternalLink.astro";
 import GoogleForm from "@components/GoogleForm.astro";
 import Hero from "@components/ColumnedHero.astro";
 import { Icon } from "astro-icon/components";
-import Layout from "../../../layouts/Layout.astro";
+import Layout from "src/layouts/Layout.astro";
 import ThemedBox from "@components/ThemedBox.astro";
 import ThemedSection from "@components/ThemedSection.astro";
 
-import heroBg from "../../../images/colored-hero/woman-using-laptop.png";
+import heroBg from "src/images/colored-hero/woman-using-laptop.png";
 import ShadowBoxSection from "@components/ShadowBoxSection.astro";
 ---
 
@@ -190,7 +186,7 @@ import ShadowBoxSection from "@components/ShadowBoxSection.astro";
           those with little-to-no accessibility experience.
         </p>
         <p>
-          <a href="/services#ta11y" class="link-light link-offset-1">
+          <a href="/services/#ta11y" class="link-light link-offset-1">
             Read more about <Branding text="ta11y.org" /></a
           >
           to see if this free solution is for you.

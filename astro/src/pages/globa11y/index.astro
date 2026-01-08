@@ -8,27 +8,17 @@ const metadata: PageMetadata = {
   description: "Overview of the globa11y Initiative",
   image: getOpenGraphImageData(Astro.site, "pages", "globa11y"),
 };
-const crumbs: Breadcrumbs = [
-  {
-    name: "Home",
-    href: "/",
-  },
-  {
-    name: "Services",
-    href: "/services",
-  },
-];
 
 import Branding from "@components/Branding.astro";
 import Hero from "@components/ColumnedHero.astro";
-import Layout from "../../../layouts/Layout.astro";
+import Layout from "src/layouts/Layout.astro";
 import ThemedSection from "@components/ThemedSection.astro";
 
 import heroBg from "src/images/np_Man with prosthetic hand typing on a computer_4jzKz4_free.jpg";
 import { Icon } from "astro-icon/components";
 ---
 
-<Layout {title} brandedTitle {crumbs} {metadata}>
+<Layout {title} brandedTitle {metadata}>
   <Hero
     image={heroBg}
     slot="header"

@@ -13,7 +13,7 @@ const metadata: PageMetadata = {
 const crumbs: Breadcrumbs = [
   {
     name: "Home",
-    href: "/services/escape-room",
+    href: "/escape-room/",
   },
 ];
 
@@ -54,7 +54,7 @@ const rooms: Array<CollectionEntry<"escapeRoomThemes">> =
                 <h3 class={`text-${room.data.page.theme}-emphasis`} set:text={room.data.title} />
                 <p class="card-text" set:text={room.data.tagline} />
                 <a
-                  href={`/services/escape-room/themes/${room.id}`}
+                  href={`/escape-room/themes/${room.id}`}
                   class={`btn btn-${room.data.page.theme}`}
                 >Learn more</a>
               </div>
