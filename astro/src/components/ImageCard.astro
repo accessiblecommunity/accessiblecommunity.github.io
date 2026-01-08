@@ -1,0 +1,57 @@
+---
+import { Image } from "astro:assets";
+import type { ImageMetadata } from "astro";
+
+interface Props {
+  image: ImageMetadata;
+  alt?: string | null;
+  title: string;
+  theme: string;
+  href: string;
+  buttonText: string;
+  borderClass?: string;
+  titleClass?: string;
+  colClass?: string;
+}
+
+const { 
+  image, 
+  alt, 
+  title, 
+  theme, 
+  href, 
+  buttonText,
+  colClass = "col"
+} = Astro.props;
+
+const { 
+  borderClass = `border-${theme}-subtle`, 
+  titleClass = `text-${theme}`,
+} = Astro.props;
+---
+
+<div class={colClass}>
+  <div class={`card border ${borderClass}`}>
+    <Image
+      src={image}
+      class="card-img-top"
+      alt={alt || null}
+    />
+    <div class="card-body">
+      <h3 class={`card-title ${titleClass}`} set:text={title} />
+      <slot />
+      <a
+        href={href}
+        class={`btn btn-${theme}`}
+        set:text={buttonText}
+      />
+    </div>
+  </div>
+</div>
+
+<style>
+  .card-img-top {
+    height: auto;
+  }
+</style>
+
