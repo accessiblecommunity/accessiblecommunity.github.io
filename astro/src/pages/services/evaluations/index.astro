@@ -7,8 +7,6 @@ import type { Breadcrumbs, PageMetadata } from "@lib/types";
 // const partners = await getCollection("collaborators", ({ data }) =>
 //   data.tags.includes("evaluator"),
 // );
-const calendlyLink =
-  "https://calendly.com/evaluation-accessiblecommunity/30min";
 
 const title = "Evaluations";
 const metadata: PageMetadata = {
@@ -57,10 +55,7 @@ import ShadowBoxSection from "@components/ShadowBoxSection.astro";
         evaluations for websites and social media.
       </p>
       <div class="d-flex flex-column flex-xl-row gap-2">
-        <a class="btn btn-info" href="#info">Get more information</a>
-        <a class="btn btn-info" href={calendlyLink} target="_blank"
-          >Schedule an initial consultation</a
-        >
+        <a class="btn btn-info" href="#request">Request an evaluation</a>
       </div>
     </div>
   </Hero>
@@ -92,7 +87,7 @@ import ShadowBoxSection from "@components/ShadowBoxSection.astro";
       After the evaluation, we provide reports based on international standards and best practices to help you know how you can reach as many people as possible with your business or mission. We encourage you to make your digital content accessible to be equitable and remove barriers for your audience.
     </p>
     <p>
-      If you are interested, please <a href="#info" class="link-offset-1">fill out the information form</a> below.
+      If you are interested, please <a href="#request" class="link-offset-1">fill out the request form</a> below.
     </p>
     <hr class="border border-primary-subtle opacity-100">
     <p class="small">
@@ -204,18 +199,17 @@ import ShadowBoxSection from "@components/ShadowBoxSection.astro";
     </div>
   </ShadowBoxSection>
 
-  <ThemedSection id="info" theme="secondary" style="subtle" text={true}>
-    <h2 class="display-4">What are the <strong>next steps</strong>?</h2>
+  <ThemedSection id="request" theme="secondary" style="subtle" text={true}>
+    <h2 class="display-4"><strong>Request</strong> an accessibility evaluation.</h2>
     <GoogleForm
       id="info-form"
       key="AKfycbxQZFm7FIKQabNEmwXbKdUh3IdMUY8efL4e8bEmkK_9rPvH6cUPrdNdQrIN6eMK-vI"
       >
       <div slot="prelude">
         <p>
-          Contact us for more information using the form below or 
-          <ExternalLink href={calendlyLink}>schedule an Accessibility Consultation</ExternalLink>.
+          Please fill out this form to request an evaluation.
         </p>
-        <h3 class="visually-hidden">Information form</h3>
+        <h3 class="visually-hidden">Request form</h3>
       </div>
       <div class="row justify-content-lg-between">
         <div class="col-lg-5">
@@ -274,18 +268,15 @@ import ShadowBoxSection from "@components/ShadowBoxSection.astro";
           </div>
           <label for="messageTextarea" class="form-label mb-1 required-field"
             >Message or Questions</label
-          ><span class="asterisk"></span>
+          >
           <textarea
             name="Message"
             class="form-control w-100 form-text-area"
             id="messageTextarea"
             aria-describedby="messageHelp"
-            rows="4"
-            required></textarea>
+            rows="4"></textarea>
           <div id="messageHelp" class="form-text">
-            Please indicate what level of service you are interested in, as well
-            as any questions you have about the services we provide or the
-            organization itself.
+            Please add any additional information or questions you have.
           </div>
         </div>
       </div>

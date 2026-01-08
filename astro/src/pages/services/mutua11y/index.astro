@@ -3,24 +3,23 @@ import type { Breadcrumbs, PageMetadata } from "@lib/types";
 import { getCollection } from "astro:content";
 import { getOpenGraphImageData } from "@lib/og-image";
 
-import Branding from "../components/Branding.astro";
-import CollaboratorList from "../components/CollaboratorList.astro";
-import ExternalLink from "../components/ExternalLink.astro";
-import Hero from "../components/Hero.astro";
+import Branding from "@components/Branding.astro";
+import CollaboratorList from "@components/CollaboratorList.astro";
+import Hero from "@components/Hero.astro";
 import { Icon } from "astro-icon/components";
-import Layout from "../layouts/Layout.astro";
-import Testimonial from "../components/Testimonial.astro";
-import ThemedBox from "../components/ThemedBox.astro";
-import ThemedSection from "../components/ThemedSection.astro";
+import Layout from "../../../layouts/Layout.astro";
+import Testimonial from "@components/Testimonial.astro";
+import ThemedBox from "@components/ThemedBox.astro";
+import ThemedSection from "@components/ThemedSection.astro";
 
-import heroBg from "../images/colored-hero/hands-together.png";
+import heroBg from "../../../images/colored-hero/hands-together.png";
 
-const programUrl = "https://www.mutua11y.org/mentoring/";
-const protegeUrl = "https://www.mutua11y.org/protege-registration/";
-const mentorUrl = "https://www.mutua11y.org/mentor-registration/";
+const programUrl = "/services/mutua11y/mentoring/";
+const protegeUrl = "/services/mutua11y/protege-registration/";
+const mentorUrl = "/services/mutua11y/mentor-registration/";
 const mentoringEmail = "mailto:mentoring@accessiblecommunity.org";
 
-const title = "Mentoring";
+const title = "mutua11y";
 const metadata: PageMetadata = {
   title,
   description:
@@ -48,10 +47,10 @@ const contributors = await getCollection("collaborators", ({ data }) => {
 });
 ---
 
-<Layout {title} {crumbs} {metadata}>
+<Layout {title} brandedTitle {crumbs} {metadata}>
   <Hero image={heroBg} slot="header" actionBreakpoint="md">
     <div slot="heading" class="mb-4">
-      <h1 class="visually-hidden">Mentoring</h1>
+      <h1 class="visually-hidden">About mutually Mentoring</h1>
       <blockquote class="display-2 text-white mx-3">
         <div>
           <sup aria-hidden="true"><Icon name="quote-left" height="0.5em" /></sup
@@ -78,7 +77,7 @@ const contributors = await getCollection("collaborators", ({ data }) => {
       development.
     </p>
     <Fragment slot="action-bar">
-      <ExternalLink class="link-light" href={programUrl} gaps={true}>
+      <a class="icon-link link-light" href={programUrl}>
         <Icon
           name="mutua11y-logo"
           class="bi"
@@ -87,15 +86,15 @@ const contributors = await getCollection("collaborators", ({ data }) => {
           aria-hidden="true"
         />
         <span> Learn more about the program </span>
-      </ExternalLink>
-      <ExternalLink class="link-light" href={protegeUrl} gaps={true}>
+      </a>
+      <a class="icon-link link-light" href={protegeUrl}>
         <Icon name="bi:person-fill" class="bi" role="img" aria-hidden="true" />
         <span> Apply to be a protegé </span>
-      </ExternalLink>
-      <ExternalLink class="link-light" href={mentorUrl} gaps={true}>
+      </a>
+      <a class="icon-link link-light" href={mentorUrl}>
         <Icon name="bi:people-fill" class="bi" role="img" aria-hidden="true" />
         <span> Apply to be a mentor </span>
-      </ExternalLink>
+      </a>
     </Fragment>
   </Hero>
 
@@ -107,10 +106,8 @@ const contributors = await getCollection("collaborators", ({ data }) => {
         <h2 class="display-3">The <strong>first step</strong> is hard.</h2>
         <p class="lead">
           When you are first getting started in any industry, it's difficult to
-          get your foot in the door. With <ExternalLink
-            href={programUrl}
-            gaps={true}
-            inline={true}><Branding>mutua11y mentoring</Branding></ExternalLink
+          get your foot in the door. With <a
+            href={programUrl}><Branding>mutua11y mentoring</Branding></a
           >, we have established a program that matches senior digital
           accessibility experts with those just getting started in their
           accessibility journey. In addition, our program provides guidance in
@@ -170,9 +167,7 @@ const contributors = await getCollection("collaborators", ({ data }) => {
           process, you are a great fit.
         </p>
         <div class="text-center">
-          <ExternalLink href={protegeUrl} class="text-brand">
-            Apply to be a Protegé
-          </ExternalLink>
+          <a href={protegeUrl} class="text-brand">Apply to be a Protégé</a>
         </div>
       </ThemedBox>
       <ThemedBox
@@ -188,9 +183,7 @@ const contributors = await getCollection("collaborators", ({ data }) => {
           digital accessibility.
         </p>
         <div class="text-center">
-          <ExternalLink href={mentorUrl} class="text-brand">
-            Apply to be a Mentor
-          </ExternalLink>
+          <a href={mentorUrl} class="text-brand">Apply to be a Mentor</a>
         </div>
       </ThemedBox>
       <ThemedBox
@@ -206,26 +199,19 @@ const contributors = await getCollection("collaborators", ({ data }) => {
           to answer.
         </p>
         <div class="text-center">
-          <ExternalLink href={mentoringEmail} inline={true}
-            >Email your questions</ExternalLink
-          >
+          <a href={mentoringEmail}>Email your questions</a>
         </div>
       </ThemedBox>
     </div>
     <p class="lead pt-5">
-      Learn more about the <ExternalLink
-        href={programUrl}
-        inline={true}
-        gaps={true}><Branding>mutua11y mentoring</Branding></ExternalLink
-      > program.
+      Learn more about the <a
+        href={programUrl}><Branding>mutua11y mentoring</Branding></a> program.
     </p>
   </ThemedSection>
 
   <ThemedSection>
     <h2 class="display-3">Thanks to our <strong>partners</strong>.</h2>
     <CollaboratorList items={partners} />
-
-    <h3 class="display-3 mt-4">And our <strong>contributors</strong>.</h3>
     <CollaboratorList items={contributors} />
   </ThemedSection>
 </Layout>

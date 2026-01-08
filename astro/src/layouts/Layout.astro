@@ -3,6 +3,7 @@ import { type Breadcrumbs, type PageMetadata } from "../lib/types";
 
 interface Props {
   title: String;
+  brandedTitle ?: boolean;
   crumbs?: Breadcrumbs;
   heading?: String;
   metadata?: PageMetadata;
@@ -14,7 +15,7 @@ import Footer from "../components/Footer.astro";
 import Header from "../components/Header.astro";
 import Metadata from "../components/Metadata.astro";
 
-const { title, crumbs, heading, metadata } = Astro.props;
+const { title, brandedTitle = false, crumbs, heading, metadata } = Astro.props;
 ---
 
 <!doctype html>
@@ -51,7 +52,7 @@ const { title, crumbs, heading, metadata } = Astro.props;
   </head>
 
   <body>
-    <Header {title} {crumbs} />
+    <Header {title} {brandedTitle} {crumbs} />
     <main id="main-content">
       <slot name="header">
         <div slot="header" class="bg-primary" style="height: 8rem;">

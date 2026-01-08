@@ -28,6 +28,10 @@ const blogs = defineCollection({
   }),
 });
 
+const markdown = defineCollection({
+  loader: glob({ pattern: "**/[^_]*.{md,mdx}", base: "./src/content/markdown" }),
+})
+
 const policies = defineCollection({
   loader: glob({
     pattern: "**/[^_]*.{md,mdx}",
@@ -121,7 +125,7 @@ const staff = defineCollection({
         })
         .default({
           // @ts-ignore: String path required.
-          image: "src/images/staff/Ta11yCat.png",
+          image: "/src/images/staff/Ta11yCat.png",
           alt: "The Tally Cat has claimed this spot.",
         }),
       current: z.boolean().default(true),
@@ -182,7 +186,7 @@ const teams = defineCollection({
 const quotes = defineCollection({
   loader: glob({ pattern: "**/[^_]*.{md,mdx}", base: "./src/content/quotes" }),
   schema: z.object({
-    quotee: z.string(),
+    quotee: z.string().optional(),
   }),
 });
 
@@ -209,6 +213,7 @@ export const collections = {
   daf,
   escapeRoomKits,
   escapeRoomThemes,
+  markdown,
   quotes,
   policies,
   recruiting,

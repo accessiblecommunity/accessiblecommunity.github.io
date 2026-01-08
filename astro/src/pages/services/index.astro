@@ -25,9 +25,9 @@ const services = [
   {
     icon: "mutua11y-logo",
     name: "mutua11y",
-    title: "mutua11y.org",
+    title: "mutua11y pilot",
     text: "A platform for communities, local government, organizations and accessibility professionals to share information and ideas.",
-    link: "https://www.mutua11y.org",
+    link: "/services/mutua11y",
   },
   {
     icon: "loca11y-logo",
@@ -113,7 +113,7 @@ const metadata: PageMetadata = {
                 </a>
                 {!link ?
                   <div class="text-brand fw-bold flex-fill">Coming soon.</div>
-                : name === "globa11y" ?
+                : link.startsWith("/") ?
                   <a href={link} class="text-brand">
                     Visit <Branding text={name} />
                   </a>
@@ -180,19 +180,18 @@ const metadata: PageMetadata = {
 
   <ThemedSection id="mutua11y" theme="primary">
     <h2 class="display-3 text-bg-primary" aria-hidden="true">
-      <Branding no-aria>About mutua11y.org</Branding>
+      <Branding>About the mutua11y platform</Branding>
     </h2>
-    <h2 class="visually-hidden">About mutually.org</h2>
     <p class="text-bg-primary">
-      An online community to connect and advance disability-related
-      professionals.
+      An online community to connect and advance disability-related professionals.
       <Branding>mutua11y</Branding> provides a platform for accessibility professionals
       and others interested to collaborate on projects and ideas; thus establishing
-      "open-source accessibility."
+      "open-source accessibility."  Our hope is to establish and nurture disability-inclusive
+      communities that help accessibility experts grow their experience and connections.
     </p>
     <ul class="text-bg-primary">
       <li>
-        The <a href="/mentoring" class="link-light"
+        The <a href="/services/mutua11y/mentoring/" class="link-light"
           ><Branding>mutua11y mentoring</Branding></a
         >
         program matches senior accessibility experts with novice accessibility professionals
