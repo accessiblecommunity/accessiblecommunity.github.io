@@ -1,0 +1,70 @@
+---
+export type RadioOption = {
+  /** Unique id for input + label */
+  id: string;
+  /** Label text */
+  label: string;
+  /** Radio value */
+  value: string;
+  /** Optional description text */
+  description?: string;
+  /** Disabled state */
+  disabled?: boolean;
+};
+
+export interface Props {
+  /** Group label */
+  legend: string;
+  /** Shared name for radio inputs */
+  name: string;
+  /** Radio options */
+  options: RadioOption[];
+  /** Pre-selected value */
+  selected?: string;
+  /** Optional help text */
+  helpText?: string;
+  /** Optional error text */
+  errorText?: string;
+  /** Optional class */
+  className?: string;
+}
+
+const { legend, name, options, selected, helpText, errorText, className } = Astro.props;
+
+const helpId = helpText ? `${name}-help` : undefined;
+const errorId = errorText ? `${name}-error` : undefined;
+const describedBy = [errorId, helpId].filter(Boolean).join(" ") || undefined;
+---
+
+<fieldset class={className} aria-describedby={describedBy}>
+  <legend>{legend}</legend>
+
+  {errorText && (
+    <p id={errorId} role="alert">
+      {errorText}
+    </p>
+  )}
+
+  {helpText && <p id={helpId}>{helpText}</p>}
+
+  {options.map((opt) => {
+    const descId = opt.description ? `${opt.id}-desc` : undefined;
+    const inputDescribedBy = [descId].filter(Boolean).join(" ") || undefined;
+
+    return (
+      <div>
+        <input
+          type="radio"
+          id={opt.id}
+          name={name}
+          value={opt.value}
+          checked={selected === opt.value}
+          disabled={opt.disabled}
+          aria-describedby={inputDescribedBy}
+        />
+        <label for={opt.id}>{opt.label}</label>
+        {opt.description && <div id={descId}>{opt.description}</div>}
+      </div>
+    );
+  })}
+</fieldset>
