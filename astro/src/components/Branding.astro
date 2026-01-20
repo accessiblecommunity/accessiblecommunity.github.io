@@ -6,19 +6,21 @@ interface Props {
 }
 
 let {
-  text = "",
+  "text": inputText = "",
   class: extraClasses = "",
   "no-aria": noAria = false,
 } = Astro.props;
 
-if (Astro.slots.has("default")) text = await Astro.slots.render("default");
+if (Astro.slots.has("default")) inputText = await Astro.slots.render("default");
 
-text = text
+const text = inputText
   .replace(/Accessib(le)/, '<span class="fw-lighter">Accessib$1</span>')
   .replace(
-    /(glob|mutu|loc|t)a11y/i,
-    noAria ?
-      '<span class="text-lowercase">$1<span class="fw-lighter">a11y</span></span>'
+    // Sometimes the YAML parsing inserts a space between => "a 11 y"
+    // TODO: Fix capitalization of second word for programs.
+    /(glob|mutu|loc|t)a\s?11\s?y/i,
+    noAria
+    ? '<span class="text-lowercase">$1<span class="fw-lighter">a11y</span></span>'
     : '<span class="text-lowercase" aria-hidden="true">$1<span class="fw-lighter">a11y</span></span><span class="visually-hidden">$1ally</span>',
   )
   .replace(
@@ -33,6 +35,8 @@ text = text
       '<span class="text-lowercase">$1<span class="fw-lighter">able</span></span>'
     : '<span class="text-lowercase" aria-hidden="true">$1<span class="fw-lighter">able</span></span><span class="visually-hidden">$1able</span>',
   );
+
+const cssClasses = inputText === text ? [extraClasses] : ["text-brand fw-bold", extraClasses];
 ---
 
 {/* Style is up top to remove additional whitespace after the tag */}
@@ -43,4 +47,4 @@ text = text
     line-height: normal;
   }
 </style>
-<span class:list={["text-brand fw-bold", extraClasses]} set:html={text} />
+<span class:list={cssClasses} set:html={text} />
