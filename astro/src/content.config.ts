@@ -104,6 +104,26 @@ const escapeRoomThemes = defineCollection({
     }),
 });
 
+const podcastShows = defineCollection({
+  loader: glob({
+    pattern: "**/[^_]*.{md,mdx}",
+    base: "./src/content/podcasts/shows",
+  }),
+  schema: ({ image }) =>
+    z.object({
+      title: z.string(),
+      host: reference("staff"),
+      image: image(),
+      links: z
+        .object({
+          youtube: z.string().url(),
+          applePodcasts: z.string().url(),
+        })
+        .partial()
+        .optional(),
+    }),
+})
+
 const nameSchema = z.object({
   first: z.string(),
   middle: z.string().optional(),
@@ -138,6 +158,7 @@ const staff = defineCollection({
           escape_room: z.string(),
           evaluations: z.string(),
           globa11y: z.string(),
+          podcasts: z.string(),
           leadership: z.string(),
           loca11y: z.string(),
           support: z.string(),
@@ -212,6 +233,7 @@ export const collections = {
   // escapeRoomKits,
   escapeRoomThemes,
   markdown,
+  podcastShows,
   quotes,
   policies,
   recruiting,

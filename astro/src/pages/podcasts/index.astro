@@ -1,0 +1,121 @@
+---
+import { getCollection, render, type CollectionEntry } from "astro:content";
+import { sortBy } from "lodash-es";
+
+import type { SocialLinkDictionary } from "@components/SocialLinks.astro";
+type PodcastLinks = CollectionEntry<"podcastShows">["data"]["links"];
+
+const shows: CollectionEntry<"podcastShows">[] = sortBy(
+  await getCollection("podcastShows"),
+  [(show) => show.data.title],
+);
+const staff: CollectionEntry<"staff">[] = sortBy(
+  await getCollection(
+    "staff", ({data}) => data.current && Object.keys(data.roles ?? {}).includes("podcasts")
+  ),
+  // Alphabetize by first name
+  ({data}) => data.cited?.first || data.name.first,
+);
+
+function toUrlMap(links: PodcastLinks): SocialLinkDictionary {
+  const urlMap: SocialLinkDictionary = {};
+  // @ts-ignore
+  Object.entries(links).forEach(([key, value]) => {
+    if (value !== null && value !== undefined) {
+      urlMap[key] = new URL(value)
+    }
+  });
+  return urlMap;
+};
+
+type MusicLink = {name: string, href: string};
+type Music = {song: MusicLink, composer: MusicLink, license?: MusicLink};
+
+const music: Music[] = [{
+  song: {
+    name: "Unforgettable Moments",
+    href: "https://freesound.org/people/UNIVERSFIELD/sounds/698550",
+  },
+  composer: {
+    name: "UNIVERSFIELD",
+    href: "https://freesound.org/people/UNIVERSFIELD",
+  },
+  license: {
+    name: "CC BY 4.0",
+    href: "https://creativecommons.org/licenses/by/4.0/?ref=openverse",
+  }
+}];
+
+import components from "@lib/mdx";
+import ExternalLink from "@components/ExternalLink.astro";
+import { Image } from "astro:assets";
+import Layout from "src/layouts/Layout.astro";
+import SocialLinks from "@components/SocialLinks.astro";
+import StaffList from "@components/StaffList.astro";
+import ThemedSection from "@components/ThemedSection.astro";
+---
+
+<Layout title="Podcasts">
+  {
+    shows.map((show, index) => (
+      <ThemedSection style={(index % 2) ? "tertiary" : undefined}>
+        <div
+          class:list={[
+            "d-flex flex-column flex-md-row-reverse gap-4",
+            // (index % 2) ? "flex-xl-row-reverse" : "flex-xl-row",
+            "justify-content-md-evenly align-items-md-start"
+          ]}
+        >
+          <div class="col col-md-9 col-xl-10">
+            <h2 set:text={show.data.title} />
+            {render(show).then(({ Content }) => (
+              <Content {components} />
+            ))}
+          </div>
+          <div class="d-none d-md-block col-md-3 col-xl-2">
+            <Image class="logo rounded" src={show.data.image} alt={`${show.data.title} logo`} />
+            { show.data.links && (
+              <SocialLinks links={toUrlMap(show.data.links)} />
+            )}
+          </div>
+        </div>
+      </ThemedSection>
+    ))
+  }
+  <ThemedSection style="secondary">
+    <h2>Credits</h2>
+    <h3 class="mt-4 mb-2">Contributors</h3>
+    <p>Thank you to all of our staff who help make these podcasts possible.</p>
+    <StaffList team="podcasts" />
+
+    <h3 class="mt-4 mb-2">Music</h3>
+    <p>
+      The following music was used during the creation of these podcasts:
+      <ul>
+        {
+          music.map(({song, composer, license}) => (
+            <li>
+              <ExternalLink href={song.href} inline> {song.name} </ExternalLink>
+              by
+              <ExternalLink href={composer.href} inline> {composer.name} </ExternalLink>
+              { license && (
+                <span>is licensed by</span>
+                <ExternalLink href={license.href} inline> {license.name} </ExternalLink>
+              )}
+            </li>
+          ))
+        }
+      </ul>
+    </p>
+  </ThemedSection>
+</Layout>
+<style>
+  .logo {
+    width: 100%;
+    height: auto;
+    margin-bottom: 0.5rem;
+  }
+  p:has(+ ul) {
+    margin-bottom: 0.25em;
+  }
+</style>

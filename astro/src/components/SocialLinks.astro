@@ -1,10 +1,10 @@
 ---
-import { capitalize, isEmpty, toPairs } from "lodash-es";
+import { isEmpty, kebabCase, startCase, toPairs } from "lodash-es";
 import { Icon } from "astro-icon/components";
 
 // TODO: Not specific enough as a type
-interface SocialLinkDictionary {
-  [index: string]: URL;
+export interface SocialLinkDictionary {
+  [index: string]: URL | undefined;
 }
 
 interface LinkConfig {
@@ -31,11 +31,11 @@ const socialLinks: Array<LinkConfig> = toPairs(links).map(([type, url]) => {
     if (type == "email") return "envelope-at";
     else if (type == "threads") return "threads-logo-black";
     else if (type == "website") return "bi:globe";
-    else return `cib:${type}`;
+    else return `cib:${kebabCase(type)}`;
   })();
 
   const href = type == "email" ? `mailto:${url}` : url;
-  const service = type == "linkedin" ? "LinkedIn" : capitalize(type);
+  const service = type == "linkedin" ? "LinkedIn" : startCase(type);
   const description = type == "email" ? "address" : "profile";
   const theme = brandingThemes[type] ?? type;
 
