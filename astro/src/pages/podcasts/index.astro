@@ -66,14 +66,14 @@ import ThemedSection from "@components/ThemedSection.astro";
             "justify-content-md-evenly align-items-md-start"
           ]}
         >
-          <div class="col col-md-9 col-xl-10">
-            <h2 set:text={show.data.title} />
+          <div class="col col-md-9 col-lg-10">
+            <h2 class="pb-2 mb-4 border-bottom border-primary" set:text={show.data.title} />
             {render(show).then(({ Content }) => (
               <Content {components} />
             ))}
           </div>
-          <div class="d-none d-md-block col-md-3 col-xl-2">
-            <Image class="logo rounded" src={show.data.image} alt={`${show.data.title} logo`} />
+          <div class="col col-md-3 col-lg-2">
+            <Image class="d-none d-md-block logo rounded" src={show.data.image} alt={`${show.data.title} logo`} />
             { show.data.links && (
               <SocialLinks links={toUrlMap(show.data.links)} />
             )}

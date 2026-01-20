@@ -8,5 +8,5 @@ roles:
   default: Content Team
   communications: Writer, Day in the Life
   content: Writer, Day in the Life
-  podcasts: Contributor
+  podcasts: Day in the Life, Contributor
 ---
