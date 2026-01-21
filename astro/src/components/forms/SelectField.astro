@@ -1,0 +1,89 @@
+---
+export type SelectOption = {
+  /** Option value */
+  value: string;
+  /** Visible label */
+  label: string;
+  /** Disabled option */
+  disabled?: boolean;
+};
+
+export interface Props {
+  /** Group label */
+  legend: string;
+  /** Select id */
+  id: string;
+  /** Name attribute */
+  name: string;
+  /** Select options */
+  options: SelectOption[];
+  /** Selected value */
+  selected?: string;
+  /** Optional placeholder option */
+  placeholder?: string;
+  /** Optional help text */
+  helpText?: string;
+  /** Optional error text */
+  errorText?: string;
+  /** Required field */
+  required?: boolean;
+  /** Disabled select */
+  disabled?: boolean;
+  /** Optional class */
+  className?: string;
+}
+
+const {
+  legend,
+  id,
+  name,
+  options,
+  selected,
+  placeholder,
+  helpText,
+  errorText,
+  required,
+  disabled,
+  className,
+} = Astro.props;
+
+const helpId = helpText ? `${id}-help` : undefined;
+const errorId = errorText ? `${id}-error` : undefined;
+const describedBy = [errorId, helpId].filter(Boolean).join(" ") || undefined;
+---
+
+<fieldset class={className} aria-describedby={describedBy}>
+  <legend>{legend}</legend>
+
+  {errorText && (
+    <p id={errorId} role="alert">
+      {errorText}
+    </p>
+  )}
+
+  {helpText && <p id={helpId}>{helpText}</p>}
+
+  <label for={id}>
+    {required && <span aria-hidden="true">*</span>}
+  </label>
+
+  <select
+    id={id}
+    name={name}
+    required={required}
+    disabled={disabled}
+    aria-describedby={describedBy}
+  >
+    {placeholder && (
+      <option value="" disabled selected={!selected}>
+        {placeholder}
+      </option>
+    )}
+
+    {options.map((opt) => (
+      <option
+        value={opt.value}
+        selected={opt.value === selected}
+        disabled={opt.disabled}
+      >
+        {
