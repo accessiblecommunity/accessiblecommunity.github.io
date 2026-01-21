@@ -62,7 +62,7 @@ import ThemedSection from "@components/ThemedSection.astro";
   </ImageHeading>
   {
     shows.map((show, index) => (
-      <ThemedSection style={(index % 2) ? "tertiary" : undefined}>
+      <ThemedSection style={(index % 2) ? "tertiary" : undefined} id={show.id}>
         <div
           class:list={[
             "d-flex flex-column flex-md-row-reverse gap-4",
@@ -79,13 +79,12 @@ import ThemedSection from "@components/ThemedSection.astro";
           <div class="col col-md-3 col-lg-2">
             <Image class="d-none d-md-block logo rounded" src={show.data.image} alt={`${show.data.title} logo`} />
             {
-              show.data.links
-              ? (
+              show.data.links ? (
                 <div>
                   <span class="d-md-none display-6 fw-bold align-middle">Available at:</span>
                   <SocialLinks links={toUrlMap(show.data.links)} iconSize="1.5em" label="Podcast Locations" />
-                </div>)
-              : (
+                </div>
+              ) : (
                 <div class="display-7 fw-bold">Coming Soon.</div>
               )
             }
