@@ -1,0 +1,52 @@
+---
+import { getCollection, type CollectionEntry } from 'astro:content';
+import { sortBy } from "lodash-es";
+
+interface Props {
+  team: string; // TODO: declare enum;
+}
+
+const { team } = Astro.props;
+const staff: CollectionEntry<"staff">[] = sortBy(
+  await getCollection(
+    "staff", ({data}) => data.current && Object.keys(data.roles ?? {}).includes(team)
+  ),
+  // Alphabetize by first name
+  ({data}) => data.cited?.first || data.name.first,
+);
+
+import TeamVignette from "@components/TeamVignette.astro";
+---
+
+<ul class="list-inline-block text-center px-2 px-md-4">
+  {staff.map((member) => {
+    return (
+      <li class="list-inline-item staff-list-item my-2 m-md-2 w-100">
+        <div class="text-start bg-body shadow-sm rounded-1 p-2 pt-3 fs-4">
+          <TeamVignette
+            {member}
+            role={team}
+            firstNameOnly
+            highlightName
+            branded
+            showLinks
+            valign="start"
+            size="lg"
+          />
+        </div>
+      </li>
+    );
+  })}
+</ul>
+<style>
+  .staff-list-item {
+    max-width: 18rem;
+  }
+  .staff-list-item :global(.vignette-name) {
+    color: var(--bs-primary-text-emphasis);
+    margin-bottom: -0.1em;
+  }
+  .staff-list-item :global(.vignette-title) {
+    line-height: 1.1em;
+  }
+</style>

@@ -1,10 +1,3 @@
-import path from "path";
-import { fileURLToPath } from "url";
-
-// https://flaviocopes.com/fix-dirname-not-defined-es-module-scope/
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-
 import { defineConfig } from "astro/config";
 import styleGuide from "./style-guide/register.js";
 
@@ -67,7 +60,7 @@ export default defineConfig({
           // Contact Info
           'envelope-at-fill', 'telephone-fill', 'geo-alt-fill',
           // Social Media
-          'facebook', 'instagram', 'linkedin', 'rss-fill', 'tiktok', 'youtube','globe', 'mastodon', 'twitter',
+          'facebook', 'instagram', 'linkedin', 'rss-fill', 'tiktok', 'globe', 'mastodon', 'twitter',
           // Descriptive
           'gift-fill', 'pencil-fill', 'people-fill', 'person-fill', 'puzzle-fill', 'stopwatch-fill', 'tools',
         ],
@@ -75,6 +68,8 @@ export default defineConfig({
         cib: [
           // Social Media
           'facebook', 'instagram', 'linkedin', 'mastodon', 'twitter',
+          // Streaming
+          'apple-podcasts', 'youtube',
           // Payment
           "cc-paypal", "cc-stripe", "paypal", "stripe",
         ],
