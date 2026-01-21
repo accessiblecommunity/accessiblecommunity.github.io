@@ -49,6 +49,7 @@ const music: Music[] = [{
 import components from "@lib/mdx";
 import ExternalLink from "@components/ExternalLink.astro";
 import { Image } from "astro:assets";
+import ImageHeading from "@components/ImageHeading.astro";
 import Layout from "src/layouts/Layout.astro";
 import SocialLinks from "@components/SocialLinks.astro";
 import StaffList from "@components/StaffList.astro";
@@ -56,6 +57,9 @@ import ThemedSection from "@components/ThemedSection.astro";
 ---
 
 <Layout title="Podcasts">
+  <ImageHeading image="podcast" slot="header">
+    <h1 class="display-3">Podcasts</h1>
+  </ImageHeading>
   {
     shows.map((show, index) => (
       <ThemedSection style={(index % 2) ? "tertiary" : undefined}>
@@ -74,9 +78,17 @@ import ThemedSection from "@components/ThemedSection.astro";
           </div>
           <div class="col col-md-3 col-lg-2">
             <Image class="d-none d-md-block logo rounded" src={show.data.image} alt={`${show.data.title} logo`} />
-            { show.data.links && (
-              <SocialLinks links={toUrlMap(show.data.links)} />
-            )}
+            {
+              show.data.links
+              ? (
+                <div>
+                  <span class="d-md-none display-6 fw-bold align-middle">Available at:</span>
+                  <SocialLinks links={toUrlMap(show.data.links)} iconSize="1.5em" label="Podcast Locations" />
+                </div>)
+              : (
+                <div class="display-7 fw-bold">Coming Soon.</div>
+              )
+            }
           </div>
         </div>
       </ThemedSection>

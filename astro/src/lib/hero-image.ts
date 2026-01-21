@@ -10,6 +10,7 @@ import balloonsImage from "../images/colored-hero/balloons.png";
 import blogImage from "../images/colored-hero/pen-paper.png";
 import handsImage from "../images/colored-hero/hands-together.png";
 import notesImage from "../images/colored-hero/post-it-notes.png";
+import podcastImage from "../images/colored-hero/podcast.png";
 import policyImage from "../images/colored-hero/policy.png";
 import teamImage from "../images/colored-hero/team.png";
 
@@ -18,6 +19,7 @@ export enum HeroTheme {
   hands = "hands",
   notes = "notes",
   party = "party",
+  podcast = "podcast",
   policy = "policy",
   team = "team",
 }
@@ -33,6 +35,7 @@ const heroImagePaths: HeroThemeMapping<string> = {
   hands: "./src/images/colored-hero/hands-together.png",
   notes: "./src/images/colored-hero/post-it-notes.png",
   party: "./src/images/colored-hero/balloons.png",
+  podcast: "./src/images/colored-hero/podcast.png",
   policy: "./src/images/colored-hero/policy.png",
   team: "./src/images/colored-hero/team.png",
 };
@@ -41,6 +44,7 @@ const heroImages: HeroThemeMapping<ImageMetadata> = {
   hands: handsImage,
   notes: notesImage,
   party: balloonsImage,
+  podcast: podcastImage,
   policy: policyImage,
   team: teamImage,
 };
@@ -62,6 +66,11 @@ const heroBackgroundCss: HeroThemeMapping<object> = {
   policy: {
     height: "8.5rem",
     "background-position": "center 60%",
+    "background-size": "cover",
+  },
+  podcast: {
+    height: "11rem",
+    "background-position": "center 55%",
     "background-size": "cover",
   },
   team: {
