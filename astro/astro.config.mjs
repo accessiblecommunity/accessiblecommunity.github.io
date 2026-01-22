@@ -73,6 +73,10 @@ export default defineConfig({
           // Payment
           "cc-paypal", "cc-stripe", "paypal", "stripe",
         ],
+        'simple-icons': [
+          // Streaming
+          'podcastindex'
+        ],
       }
     }),
     sitemap({
