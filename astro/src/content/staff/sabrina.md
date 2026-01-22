@@ -5,5 +5,5 @@ name:
 roles:
   default: Writer, Day in the Life
   content: Writer, Day in the Life
-  podcasts: Day in the Life, Contributor
+  podcasts: Contributor, Day in the Life
 ---

@@ -4,9 +4,10 @@ import { sortBy } from "lodash-es";
 
 interface Props {
   team: string; // TODO: declare enum;
+  size?: string;
 }
 
-const { team } = Astro.props;
+const { team, size = "18rem" } = Astro.props;
 const staff: CollectionEntry<"staff">[] = sortBy(
   await getCollection(
     "staff", ({data}) => data.current && Object.keys(data.roles ?? {}).includes(team)
@@ -38,9 +39,9 @@ import TeamVignette from "@components/TeamVignette.astro";
     );
   })}
 </ul>
-<style>
+<style define:vars={{ "sli-size": size }}>
   .staff-list-item {
-    max-width: 18rem;
+    max-width: var(--sli-size);
   }
   .staff-list-item :global(.vignette-name) {
     color: var(--bs-primary-text-emphasis);
