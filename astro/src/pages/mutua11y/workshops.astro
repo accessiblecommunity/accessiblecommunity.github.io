@@ -1,0 +1,107 @@
+---
+import { getOpenGraphImageData } from "@lib/og-image";
+import type { Breadcrumbs, PageMetadata } from "@lib/types";
+
+const title = "mutua11y workshops";
+const metadata: PageMetadata = {
+  title,
+  description: "Overview of the mutua11y workshops program",
+  image: getOpenGraphImageData(Astro.site, "pages", "mutua11y"),
+};
+
+const crumbs: Breadcrumbs = [
+  {
+    name: "Home",
+    href: "/",
+  },
+  {
+    name: "mutua11y",
+    href: "/mutua11y/",
+    branded: true,
+  },
+];
+
+import Branding from "@components/Branding.astro";
+import ImageHeading from "@components/ImageHeading.astro";
+import Layout from "src/layouts/Layout.astro";
+import ThemedSection from "@components/ThemedSection.astro";
+import ExternalLink from "@components/ExternalLink.astro";
+---
+
+<Layout {title} brandedTitle {crumbs} {metadata}>
+  <ImageHeading image="pen-paper" slot="header">Workshops</ImageHeading>
+
+  <ThemedSection style="secondary">
+    <h2>Overview</h2>
+    <p>
+      <a href="/"><Branding>Accessible Community</Branding></a>, in partnership
+      with
+      <ExternalLink href="https://www.deque.com/" inline>
+        Knowbility
+      </ExternalLink> and
+      <ExternalLink href="https://www.levelaccess.com/" inline>
+        Teach Access
+      </ExternalLink>,are providing Accessibility Workshops. Workshops bring
+      together accessibility and other disability-related professionals to share
+      ideas, lessons learned, and resources. So often in accessibility, we end
+      up reinventing the same content in various organizations. Our goal is to
+      create and maintain a library of resources and exemplars that
+      professionals can use as a starting point. We also hope to have fun and
+      learn from each other along the way. There is no cost to participate.
+      Monitor our blog to learn about upcoming workshops.
+    </p>
+  </ThemedSection>
+  <ThemedSection>
+    <h2>What to Expect</h2>
+    <p>Workshops will be</p>
+    <ul>
+      <li>Focus on a single topic.</li>
+      <li>Last for 1.5-hours.</li>
+      <li>Use Zoom.</li>
+      <li>
+        Be conducted in English, captioned and have sign language interpreting.
+      </li>
+    </ul>
+
+    <p>
+      The first part of each workshop will be presentations by experts on the
+      workshop topic. These talks will be recorded and stored in the library
+      along with resulting resources. We will then break into subgroups to talk
+      about the topic in more detail, generate new ideas, and share resources.
+      During the last 5-10 minutes of each workshop, we will come back together
+      to share our discussions with the wider group and create a small group of
+      volunteers who will work together after the workshop is done to finalize
+      the resulting resources and ideas. If you would like to suggest a topic,
+      please send your suggestions to
+      <a href="mailto:mutua11y@accessiblecommunity.org">
+        mutua11y@accessiblecommunity.org
+      </a>
+    </p>
+  </ThemedSection>
+  <ThemedSection style="secondary">
+    <h2>Previous Workshops</h2>
+
+    <h3>Building the business case for accessibility</h3>
+    <ul>
+      <li>
+        Goal: Create a list of resources and strategies to help advocate for
+        accessibility
+      </li>
+      <li>Recording</li>
+    </ul>
+
+    <h3>Panel Discussion</h3>
+    <ul>
+      <li>Irene Mbari-Kirika (Emerging Economies)</li>
+      <li>Sharron Rush (Medium and Large Organizations)</li>
+      <li>Kate from Teach Access (Education)</li>
+    </ul>
+
+    <h3>Resources</h3>
+    <ul>
+      <li>W3C WAI Accessibility Statement Generator</li>
+      <li>Sharron Rush (Medium and Large Organizations)</li>
+      <li>Kate from Teach Access (Education)</li>
+    </ul>
+  </ThemedSection>
+</Layout>
