@@ -23,7 +23,7 @@ export enum HeroTheme {
   podcast = "podcast",
   policy = "policy",
   team = "team",
-  "pen-paper" = "pen-paper", // alias
+  "pen-paper" = "pen-paper",
 }
 export type HeroThemeType = `${HeroTheme}`;
 export type HeroThemeMapping<T> = {
