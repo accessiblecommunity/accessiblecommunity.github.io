@@ -152,7 +152,7 @@ $form-check-input-checked-border-color:   $primary;
 //********
 // Shadows - Tweaked from https://codyhouse.co/nuggets/beautiful-css-shadows
 //********
-                // inner glow 
+                // inner glow
 $box-shadow-sm: inset 0 0 1px 2px hsla(0, 0%, 100%, 0.125),
                 // multiple soft shadows
                 0 0.5px 1px hsla(0, 0%, 0%, 0.1),
@@ -336,6 +336,7 @@ $theme-colors-border-contrast-dark: (
 @import "bootstrap/scss/images";
 @import "bootstrap/scss/containers";
 @import "bootstrap/scss/grid";
+@import "bootstrap/scss/tables";
 @import "bootstrap/scss/forms";
 @import "bootstrap/scss/buttons";
 @import "bootstrap/scss/transitions";
