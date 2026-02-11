@@ -1,10 +1,3 @@
-import path from "path";
-import { fileURLToPath } from "url";
-
-// https://flaviocopes.com/fix-dirname-not-defined-es-module-scope/
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-
 import { defineConfig } from "astro/config";
 import styleGuide from "./style-guide/register.js";
 
@@ -41,20 +34,15 @@ export default defineConfig({
 
   redirects: {
     "/daf/overview/": "/daf/",
+    // Move old services URLs to new ones.
+    "/services/escape-room": "/escape-room/",
+    "/services/evaluations": "/evaluations/",
+    "/services/globa11y/": "/globa11y/",
+    "/services/mutua11y/": "/mutua11y/",
+    "/services/tip-of-the-week": "/tips/",
   },
 
   vite: {
-    resolve: {
-      alias: {
-        "~bootstrap": path.resolve(__dirname, "node_modules/bootstrap"),
-        "~bootstrap-es": path.resolve(
-          __dirname,
-          "node_modules/bootstrap/dist/js/bootstrap.esm.min.js",
-        ),
-        '@': './src',
-      },
-      extensions: ['.js', '.ts', '.mjs'],
-    },
     ssr: {
       noExternal: ["bootstrap"],
     },
@@ -62,7 +50,7 @@ export default defineConfig({
 
   integrations: [
     mdx(),
-    styleGuide(), 
+    styleGuide(),
     icon({
       include: {
         // Bootstrap Icons
@@ -72,7 +60,7 @@ export default defineConfig({
           // Contact Info
           'envelope-at-fill', 'telephone-fill', 'geo-alt-fill',
           // Social Media
-          'facebook', 'instagram', 'linkedin', 'rss-fill', 'tiktok', 'youtube','globe', 'mastodon', 'twitter',
+          'facebook', 'instagram', 'linkedin', 'rss-fill', 'tiktok', 'globe', 'mastodon', 'twitter',
           // Descriptive
           'gift-fill', 'pencil-fill', 'people-fill', 'person-fill', 'puzzle-fill', 'stopwatch-fill', 'tools',
         ],
@@ -80,13 +68,21 @@ export default defineConfig({
         cib: [
           // Social Media
           'facebook', 'instagram', 'linkedin', 'mastodon', 'twitter',
+          // Streaming
+          'apple-podcasts', 'youtube',
           // Payment
           "cc-paypal", "cc-stripe", "paypal", "stripe",
+        ],
+        'simple-icons': [
+          // Streaming
+          'podcastindex'
         ],
       }
     }),
     sitemap({
-      filter: (page) => !page.endsWith('/commitment-form/') && !page.endsWith('fixable/'),
+      filter: (page) => {
+        return !page.endsWith('/commitment-form/') && !page.endsWith('fixable/') && !page.endsWith('tips/archive/');
+      },
     }),
     robotsTxt({
       sitemap: true,
@@ -97,7 +93,7 @@ export default defineConfig({
         })),
         {
           userAgent: '*',
-          disallow: ['/fixable/'],
+          disallow: ['/fixable/', '/tips/archive/'],
         },
         {
           userAgent: '*',

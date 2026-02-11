@@ -1,10 +1,10 @@
 ---
-import { capitalize, isEmpty, toPairs } from "lodash-es";
+import { isEmpty, kebabCase, startCase, toPairs } from "lodash-es";
 import { Icon } from "astro-icon/components";
 
 // TODO: Not specific enough as a type
-interface SocialLinkDictionary {
-  [index: string]: URL;
+export interface SocialLinkDictionary {
+  [index: string]: URL | undefined;
 }
 
 interface LinkConfig {
@@ -17,11 +17,12 @@ interface LinkConfig {
 
 interface Props {
   links: SocialLinkDictionary;
-  adjective?: string;
+  label?: string;
   gap?: number;
+  iconSize?: string;
 }
 
-const { links, adjective = "" } = Astro.props;
+const { links, label = "", iconSize = "2em", gap = 2 } = Astro.props;
 const brandingThemes = {
   email: "primary",
 };
@@ -31,11 +32,12 @@ const socialLinks: Array<LinkConfig> = toPairs(links).map(([type, url]) => {
     if (type == "email") return "envelope-at";
     else if (type == "threads") return "threads-logo-black";
     else if (type == "website") return "bi:globe";
-    else return `cib:${type}`;
+    else if (type == "podcastIndex") return "simple-icons:podcastindex";
+    else return `cib:${kebabCase(type)}`;
   })();
 
   const href = type == "email" ? `mailto:${url}` : url;
-  const service = type == "linkedin" ? "LinkedIn" : capitalize(type);
+  const service = type == "linkedin" ? "LinkedIn" : startCase(type);
   const description = type == "email" ? "address" : "profile";
   const theme = brandingThemes[type] ?? type;
 
@@ -51,12 +53,9 @@ const socialLinks: Array<LinkConfig> = toPairs(links).map(([type, url]) => {
 
 {
   !isEmpty(socialLinks) && (
-    <ul
-      class="list-unstyled d-inline-block mb-2"
-      aria-label={`${adjective} Communications and Social Media Links`}
-    >
+    <ul class="list-unstyled d-inline-block mb-2" aria-label={label}>
       {socialLinks.map((sl) => (
-        <li class="d-inline-block mx-2">
+        <li class:list={["d-inline-block", `mx-${gap}`]}>
           <a
             href={sl.href}
             class="d-inline-block align-middle"
@@ -67,7 +66,9 @@ const socialLinks: Array<LinkConfig> = toPairs(links).map(([type, url]) => {
               name={sl.icon}
               class="bi social-icon"
               role="img"
-              aria-label={`${adjective} ${sl.service} ${sl.description}`}
+              aria-label={`${label} ${sl.service} ${sl.description}`}
+              width={iconSize}
+              height={iconSize}
             />
           </a>
         </li>
@@ -76,12 +77,12 @@ const socialLinks: Array<LinkConfig> = toPairs(links).map(([type, url]) => {
   )
 }
 
-<style>
+<style define:vars={{ "si-icon-size": iconSize }}>
   .social-icon {
     fill: currentColor;
-    width: 2rem;
-    height: 2rem;
-    min-height: 2rem;
-    min-width: 2rem;
+    width: var(--si-icon-size);
+    height: var(--si-icon-size);
+    min-height: var(--si-icon-size);
+    min-width: var(--si-icon-size);
   }
 </style>

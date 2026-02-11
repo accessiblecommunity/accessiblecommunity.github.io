@@ -4,7 +4,8 @@ name:
   last: Whetstone
 roles:
   default: Evaluations Team
-  evaluations: Contributor
+  evaluations: Digital Evaluator
+  podcasts: Contributor, Day in the Life
 links:
   linkedin: https://www.linkedin.com/in/brendawhetstoneux/
 photo:

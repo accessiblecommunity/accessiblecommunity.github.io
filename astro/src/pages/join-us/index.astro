@@ -16,15 +16,9 @@ const metadata: PageMetadata = {
   title,
   description: "Overview of ways to join Accessible Community",
 };
-const crumbs: Breadcrumbs = [
-  {
-    name: "Home",
-    href: "/",
-  },
-];
 ---
 
-<Layout {title} {crumbs} {metadata}>
+<Layout {title} {metadata}>
   <Hero image={heroBg} slot="header" actionBreakpoint="md">
     <div slot="heading" class="mb-4">
       <h1 class="visually-hidden">Join Us</h1>
@@ -59,22 +53,6 @@ const crumbs: Breadcrumbs = [
         <Icon name="bi:people-fill" class="bi" role="img" aria-hidden="true" />
         Join our organization
       </a>
-      <ExternalLink
-        class="link-light"
-        href="https://gofund.me/94499fef"
-        gaps={true}
-      >
-        <Icon
-          name="loca11y-logo"
-          class="bi"
-          style="height: 1.1em; width: inherit"
-          role="img"
-          aria-hidden="true"
-        />
-        <span>
-          Help us launch <Branding>loca11y.org</Branding>
-        </span>
-      </ExternalLink>
     </Fragment>
   </Hero>
 

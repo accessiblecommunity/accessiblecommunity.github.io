@@ -42,7 +42,7 @@ import woodenPuzzles from "src/images/escape-room/wooden-puzzles.png";
           <div class="col">
             <a
               class="link-light link-offset-1 icon-link"
-              href="/services/escape-room/themes"
+              href="/escape-room/themes"
             >
               <Icon name="bi:puzzle-fill" class="bi"></Icon>
               Explore our rooms
@@ -51,7 +51,7 @@ import woodenPuzzles from "src/images/escape-room/wooden-puzzles.png";
           <div class="col">
             <a
               class="link-light link-offset-1 icon-link"
-              href="/services/escape-room/how-it-works"
+              href="/escape-room/how-it-works"
             >
               <Icon name="bi:tools" class="bi"></Icon>
               How the rooms work
@@ -79,9 +79,11 @@ import woodenPuzzles from "src/images/escape-room/wooden-puzzles.png";
   </ThemedSection>
 
   <ThemedSection>
-    <div
-      class="d-flex flex-column flex-xl-row-reverse gap-5 justify-content-xl-between align-items-xl-center"
-    >
+    <div class:list={[
+      "d-flex flex-column",
+        "flex-xl-row-reverse",
+        "gap-5 justify-content-xl-between align-items-xl-center"
+    ]}>
       <div class="col">
         <h2 class="">I like puzzles. I would like to play.</h2>
         <p class="lead">
@@ -119,7 +121,7 @@ import woodenPuzzles from "src/images/escape-room/wooden-puzzles.png";
     </p>
     <p class="lead">
       If you would like to bring one of our accessible escape rooms to your business
-      or venue, we now offer the <a href="/services/escape-room/themes" class="link-info">following themes</a>:</p
+      or venue, we now offer the <a href="/escape-room/themes" class="link-info">following themes</a>:</p
     >
 
     <div class="row row-cols-2 g-3 align-items-stretch">
@@ -136,7 +138,7 @@ import woodenPuzzles from "src/images/escape-room/wooden-puzzles.png";
                 <h3 class={`card-title text-truncate text-${room.data.page.theme}`} set:text={room.data.title} />
                 <p class="card-text" set:text={room.data.tagline} />
                 <a
-                  href={`/services/escape-room/themes/${room.id}`}
+                  href={`/escape-room/themes/${room.id}`}
                   class={`btn btn-${room.data.page.theme}`}
                 >Learn more</a>
               </div>

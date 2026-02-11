@@ -7,6 +7,7 @@ cited:
 roles:
   default: Communications Team
   communications: Team Lead, Social Media
+  podcasts: Contributor, Communications
 links:
   linkedin: https://www.linkedin.com/in/kcrosby92/
 photo:
