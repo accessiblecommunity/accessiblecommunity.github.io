@@ -1,4 +1,4 @@
-import { defineConfig } from "astro/config";
+import { defineConfig, envField } from "astro/config";
 import styleGuide from "./style-guide/register.js";
 
 import icon from "astro-icon";
@@ -26,6 +26,7 @@ const botsToDisallow = [
 
 export default defineConfig({
   site: "https://accessiblecommunity.org",
+  output: 'server',
   adapter: netlify(),
 
   server: {
@@ -48,6 +49,12 @@ export default defineConfig({
     },
   },
 
+  env: {
+    schema: {
+      DATABASE_URL: envField.string({ context: "server", access: "secret", optional: false }),
+    }
+  },
+
   integrations: [
     mdx(),
     styleGuide(),
@@ -56,12 +63,15 @@ export default defineConfig({
         // Bootstrap Icons
         bi: [
           // Navigation
-          'arrow-down-square', 'arrow-up-right-square', 'list',
+          'arrow-down-square', 'arrow-up-right-square', 'arrow-right-square', 'list',
           // Contact Info
           'envelope-at-fill', 'telephone-fill', 'geo-alt-fill',
           // Social Media
           'facebook', 'instagram', 'linkedin', 'rss-fill', 'tiktok', 'globe', 'mastodon', 'twitter',
           // Descriptive
+          'gift-fill', 'pencil-fill', 'people-fill', 'person-fill',
+          // Additional icons
+          'check-circle-fill', 'exclamation-triangle-fill', 'file-text-fill', 'display-fill', 'puzzle-fill', 'tools',
           'gift-fill', 'pencil-fill', 'people-fill', 'person-fill', 'puzzle-fill', 'stopwatch-fill', 'tools',
         ],
         // CoreUI Brands
@@ -80,24 +90,34 @@ export default defineConfig({
       }
     }),
     sitemap({
-      filter: (page) => {
-        return !page.endsWith('/commitment-form/') && !page.endsWith('fixable/') && !page.endsWith('tips/archive/');
-      },
+      filter: (page) =>
+        !page.endsWith('/commitment-form/') &&
+        !page.includes('/fixable/') &&
+        !page.includes('/services/escape-room/content/') &&
+        !page.endsWith('tips/archive/')
     }),
     robotsTxt({
       sitemap: true,
       policy: [
+        // Block specified bots entirely
         ...botsToDisallow.map((userAgent) => ({
           userAgent,
           disallow: ['/'],
         })),
+        // General user-agent rules
         {
           userAgent: '*',
-          disallow: ['/fixable/', '/tips/archive/'],
-        },
-        {
-          userAgent: '*',
-          allow: ['/'],
+          allow: ['/', '/materials/basic/'],
+          disallow: [
+            '/fixable/',
+            '/materials/premium/',
+            '/protected-materials/',
+            '/api/download-material',
+            '/api/digital-content',
+            '/api/verify-purchase',
+            '/services/escape-room/content/',
+            '/tips/archive/',
+          ],
         },
       ]
     })

@@ -7,6 +7,7 @@ interface Props {
   crumbs?: Breadcrumbs;
   heading?: String;
   metadata?: PageMetadata;
+  hideSiteHeader?: boolean;
 }
 
 import "../styles/bootstrap.scss";
@@ -15,7 +16,7 @@ import Footer from "../components/Footer.astro";
 import Header from "../components/Header.astro";
 import Metadata from "../components/Metadata.astro";
 
-const { title, brandedTitle = false, crumbs, heading, metadata } = Astro.props;
+const { title, brandedTitle = false, crumbs, heading, metadata, hideSiteHeader = false } = Astro.props as Props;
 ---
 
 <!doctype html>
@@ -52,7 +53,7 @@ const { title, brandedTitle = false, crumbs, heading, metadata } = Astro.props;
   </head>
 
   <body>
-    <Header {title} {brandedTitle} {crumbs} />
+    { hideSiteHeader ? <slot name="siteHeader" /> : <Header {title} {brandedTitle} {crumbs} /> }
     <main id="main-content">
       <slot name="header">
         <div slot="header" class="bg-primary" style="height: 8rem;">
@@ -71,7 +72,9 @@ const { title, brandedTitle = false, crumbs, heading, metadata } = Astro.props;
       </slot>
       <slot />
     </main>
-    <Footer />
+      <slot name="footer">
+        <Footer />
+      </slot>
   </body>
 
   <script src="../scripts/headings.js"></script>

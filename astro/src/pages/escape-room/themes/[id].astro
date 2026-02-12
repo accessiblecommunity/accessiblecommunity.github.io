@@ -4,6 +4,8 @@ import { getOpenGraphImageData } from "src/lib/og-image";
 import type { Breadcrumbs, PageMetadata } from "src/lib/types";
 import components from "src/lib/mdx";
 
+export const prerender = true;
+
 export async function getStaticPaths() {
   const crumbs: Breadcrumbs = [
     {
@@ -40,8 +42,11 @@ interface Props {
 }
 
 const { room, crumbs, metadata } = Astro.props;
-const { about, title, page } = room.data;
-const { theme, image } = page;
+const title = room.data.title;
+const about = room.data.about ?? {};
+const page = room.data.page as Record<string, any> | undefined;
+const theme = (page?.theme ?? "brand") as string;
+const image = page?.image;
 const { Content } = await render(room);
 const themeVar = `var(--bs-${theme})`;
 const textVar = `var(--bs-${theme}-text-emphasis)`;

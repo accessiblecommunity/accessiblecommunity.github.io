@@ -22,7 +22,7 @@ up:
 	@docker compose up --detach
 
 down:
-	@docker compose down
+	@docker compose --profile "*" down
 
 shell: up
 	@docker compose exec $(CONTAINER) bash
@@ -50,6 +50,17 @@ update-dependencies: up
 build:
 	@docker compose build
 
+serve-tools:
+	@docker compose --profile tools up --detach
+	@echo Running Adminer at http://localhost:8080/
+
+db-push:
+	@docker compose exec ${CONTAINER} sh -c "npx drizzle-kit push"
+
+db-migrate:
+	@docker compose exec ${CONTAINER} sh -c "npx drizzle-kit generate"
+	@docker compose exec ${CONTAINER} sh -c "npx drizzle-kit migrate"
+
 $(SOURCE_DIR)/node_modules:
 	@echo Installing JS dependencies. This will take awhile.
 	docker compose exec $(CONTAINER) sh -c "npm install"
@@ -63,6 +74,10 @@ clean-astro-content:
 	@$(RemoveDirCmd) $(call FixPath,$(SOURCE_DIR)/.astro)
 	@$(RemoveDirCmd) $(call FixPath,$(SOURCE_DIR)/node_modules/.astro-og-canvas)
 
+clean-db:
+	@echo Removing database volume
+	@docker volume rm website_pg_data
+
 clean-js-dist:
 	@echo Removing the $(SOURCE_DIR)/dist directory.
 	@$(RemoveDirCmd) $(call FixPath,$(SOURCE_DIR)/dist)
@@ -74,5 +89,6 @@ clean-js-modules:
 clean: clean-js-dist clean-js-modules
 
 .PHONY: serve up down build shell dist version \
-	clean clean-astro-content clean-js-dist clean-js-modules \
+	prettier serve-tools upgrade-astro update-dependencies \
+	clean clean-astro-content clean-db clean-js-dist clean-js-modules \
 	.FORCE

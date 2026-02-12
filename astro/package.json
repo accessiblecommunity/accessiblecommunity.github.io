@@ -7,7 +7,8 @@
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "test": "vitest run"
   },
   "dependencies": {
     "@astrojs/mdx": "4.3.13",
@@ -25,12 +26,20 @@
     "astro-og-canvas": "0.5.6",
     "astro-robots-txt": "1.0.0",
     "bootstrap": "5.3.8",
+    "dotenv": "17.2.4",
+    "drizzle-orm": "0.45.1",
     "lodash-es": "4.17.23",
+    "pg": "8.18.0",
     "sanitize-html": "2.13.0",
     "sass": "1.77.5"
   },
   "devDependencies": {
+    "@types/pg": "^8.16.0",
+    "drizzle-kit": "^0.31.9",
+    "jsdom": "^27.0.0",
     "prettier": "^3.2.5",
-    "prettier-plugin-astro": "^0.14.0"
+    "prettier-plugin-astro": "^0.14.0",
+    "tsx": "^4.21.0",
+    "vitest": "^2.1.4"
   }
 }
