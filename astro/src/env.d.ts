@@ -8,3 +8,7 @@ declare namespace App {
 		session?: PurchaseSession;
 	}
 }
+
+interface ImportMetaEnv {
+  readonly DATABASE_URL: string;
+}

@@ -1,4 +1,4 @@
-import { defineConfig } from "astro/config";
+import { defineConfig, envField } from "astro/config";
 import styleGuide from "./style-guide/register.js";
 
 import icon from "astro-icon";
@@ -47,6 +47,12 @@ export default defineConfig({
     ssr: {
       noExternal: ["bootstrap"],
     },
+  },
+
+  env: {
+    schema: {
+      DATABASE_URL: envField.string({ context: "server", access: "secret", optional: false }),
+    }
   },
 
   integrations: [

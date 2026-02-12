@@ -1,3 +1,6 @@
+volumes:
+  pg_data:
+
 services:
   website:
     container_name: website-astro
@@ -10,3 +13,25 @@ services:
       - 4322:4322
     volumes:
       - '.:/website'
+  db:
+    image: postgres:16
+    container_name: postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: db
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+
+  adminer:
+    image: adminer
+    container_name: adminer
+    profiles:
+      - tools
+    restart: always
+    ports:
+      - 8080:8080
+    depends_on:
+      - db
