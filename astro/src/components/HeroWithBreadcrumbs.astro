@@ -9,6 +9,7 @@ interface Props {
   image: ImageMetadata | string;
   imageVertical?: string;
   title: string;
+  brandedTitle?: boolean;
   theme?: string;
   shade?: boolean;
   columns?: string;
@@ -20,6 +21,7 @@ const {
   image,
   imageVertical = "center",
   title,
+  brandedTitle = false,
   theme = "primary",
   shade = false,
   columns = "col-lg-6",
@@ -35,6 +37,8 @@ if (image) {
 } else {
   heroBgUrl = "";
 }
+
+import Branding from "./Branding.astro";
 ---
 
 <section
@@ -49,16 +53,16 @@ if (image) {
   >
     <ol class="breadcrumb lh-sm">
       {
-        crumbs?.map(({ name, href }) => (
+        crumbs?.map(({ name, href, branded }) => (
           <li class:list={['breadcrumb-item px-1', shade && `bg-${theme} bg-opacity-50`]}>
             <a href={href} class="link-light link-offset-1 text-truncate">
-              {name}
+              { branded ? (<Branding set:text={name} />) : name }
             </a>
           </li>
         ))
       }
       <li class:list={['breadcrumb-item active px-1', shade && `bg-${theme} bg-opacity-50`]} aria-current="page">
-        <span set:text={title} />
+        <span class="text-truncate">{ brandedTitle ? (<Branding set:text={title} />) : title }</span>
       </li>
     </ol>
   </nav>

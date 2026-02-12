@@ -53,13 +53,20 @@ const metadata: PageMetadata = {
   ),
 };
 
+function formatName(author) {
+  const { name, cited = undefined } = author.data;
+  const { first, middle, last } = cited || name;
+  return [first, middle, last].filter((n) => n).join(" ");
+}
+
 const { Content } = await render(blog);
 
 import components from "../lib/mdx";
-import ImageHeading from "../components/ImageHeading.astro";
-import Layout from "../layouts/Layout.astro";
-import TeamVignette from "../components/TeamVignette.astro";
-import ThemedSection from "../components/ThemedSection.astro";
+import Branding from "@components/Branding.astro";
+import ImageHeading from "@components/ImageHeading.astro";
+import Layout from "./Layout.astro";
+import TeamVignette from "@components/TeamVignette.astro";
+import ThemedSection from "@components/ThemedSection.astro";
 ---
 
 <Layout {crumbs} {title} {metadata}>
@@ -68,7 +75,7 @@ import ThemedSection from "../components/ThemedSection.astro";
       property="article:published_time"
       content={blog.data.published.toISOString()}
     />
-    <meta property="article:author" content={blogAuthor.data.name} />
+    <meta property="article:author" content={formatName(blogAuthor)} />
     <meta property="article:section" content="Accessibility" />
     {blog.data.tags.map((tag) => <meta property="article:tag" content={tag} />)}
   </Fragment>
@@ -132,7 +139,7 @@ import ThemedSection from "../components/ThemedSection.astro";
                 <ul class="mt-1 mb-3 list-disc list-spaced">
                   {topics.map((cat) => (
                     <li>
-                      <a href={`/blog/topics/${cat}`}>{startCase(cat)}</a>
+                      <a href={`/blog/topics/${cat}`}><Branding text={startCase(cat)} /></a>
                     </li>
                   ))}
                 </ul>
@@ -147,7 +154,7 @@ import ThemedSection from "../components/ThemedSection.astro";
                   {authors.map((author) => (
                     <li>
                       <a href={`/blog/authors/${author.id}`}>
-                        {author.data.name}
+                        {formatName(author)}
                       </a>
                     </li>
                   ))}

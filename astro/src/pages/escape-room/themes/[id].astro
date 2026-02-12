@@ -1,0 +1,176 @@
+---
+import { getCollection, render, type CollectionEntry } from "astro:content";
+import { getOpenGraphImageData } from "src/lib/og-image";
+import type { Breadcrumbs, PageMetadata } from "src/lib/types";
+import components from "src/lib/mdx";
+
+export const prerender = true;
+
+export async function getStaticPaths() {
+  const crumbs: Breadcrumbs = [
+    {
+      name: "Home",
+      href: "/escape-room/",
+    },
+    {
+      name: "Build-Your-Own Rooms",
+      href: "/escape-room/themes",
+    },
+  ];
+
+  const rooms: Array<CollectionEntry<"escapeRoomThemes">> =
+    await getCollection("escapeRoomThemes");
+
+  return rooms.map((room) => {
+    const metadata: PageMetadata = {
+      title: room.data.title,
+      description: `Overview of the ${room.data.title} Accessible Escape Room`,
+      image: getOpenGraphImageData(Astro.site, "pages", "escape-room"), // Fix
+    };
+
+    return {
+      params: { id: room.id },
+      props: { room, crumbs, metadata },
+    };
+  });
+}
+
+interface Props {
+  room: CollectionEntry<"escapeRoomThemes">;
+  crumbs: Breadcrumbs;
+  metadata: PageMetadata;
+}
+
+const { room, crumbs, metadata } = Astro.props;
+const title = room.data.title;
+const about = room.data.about ?? {};
+const page = room.data.page as Record<string, any> | undefined;
+const theme = (page?.theme ?? "brand") as string;
+const image = page?.image;
+const { Content } = await render(room);
+const themeVar = `var(--bs-${theme})`;
+const textVar = `var(--bs-${theme}-text-emphasis)`;
+
+import Hero from "@components/HeroWithBreadcrumbs.astro";
+import { Icon } from "astro-icon/components";
+import Layout from "src/layouts/EscapeRoomLayout.astro";
+import ThemedSection from "@components/ThemedSection.astro";
+---
+
+<Layout {metadata} {title}>
+  <div class="local-wrapper">
+    <Hero slot="header" columns="col col-lg-7" {theme} shade {image} {crumbs} {title}>
+      <h1 class:list={["display-2 text-nowrap", `bg-${theme} bg-opacity-50 p-1`]} set:text={title} />
+    </Hero>
+  </div>
+  <ThemedSection>
+    <div class="row row-cols-1 row-cols-lg-2 g-4">
+      <div class="p-4">
+        <h2 class={`text-${theme}-emphasis`}>The Scenario</h2>
+        <p set:text={room.data.tagline} />
+        <div class="d-flex flex-column flex-lg-row">
+          {
+            about.players && (
+              <div class="col py-1">
+                <Icon name="bi:people-fill" class={`bi text-${theme}-emphasis`} aria-hidden="true" />
+                {about.players} players
+              </div>
+            )
+          }
+          {
+            about.length && (
+              <div class="col py-1">
+                <Icon name="bi:stopwatch-fill" class={`bi text-${theme}-emphasis`} aria-hidden="true" />
+                Around {about.length}
+              </div>
+            )
+          }
+        </div>
+        <div class="row gy-2">
+          {
+            about.estimatedMaterialCost && (
+              <div class="col py-1">
+                <Icon name="bi:tools" class={`bi text-${theme}-emphasis`} aria-hidden="true" />
+                About ${about.estimatedMaterialCost} to purchase the materials to build and assemble
+              </div>
+            )
+          }
+        </div>
+      </div>
+      <div class={`card border border-2 border-${theme}-subtle`}>
+        <div class="card-body">
+          <h2 class:list={["card-title", `text-${theme}-emphasis`]}>Kit Cost: $500.00</h2>
+          <p class="card-text">
+            One-time purchase includes instructions and lifetime access to digital components.
+            Materials to build the escape room are not included.
+          </p>
+          <p class="card-text">Ready to bring this adventure to life?</p>
+          <a
+            href="mailto:escaperoom@accessiblecommunity.org"
+            class={`btn btn-${theme} d-block text-center`}
+          >Contact Us to Purchase</a>
+        </div>
+      </div>
+    </div>
+  </ThemedSection>
+  <div class="local-wrapper">
+    <ThemedSection {theme} style="subtle">
+      <Content {components} />
+    </ThemedSection>
+  </div>
+  <ThemedSection style="tertiary">
+    <h2 class={`text-${theme}-emphasis`}>This Escape Room Kit includes:</h2>
+    <dl>
+      <dt class="text-brand">A List of Required Materials</dt>
+      <dd>
+        These typically include various accessible locks and puzzle components. Links for purchase will be included. Any needed technology (phone, laptop, tablet, TV, etc) is also mentioned here.
+      </dd>
+      <dt class="text-brand">Ideas for Recommended Materials</dt>
+      <dd>
+        These typically include backups of certain required materials, items to help with participant orientation, ideas to help theme or style the space or helpful or fun additions that are part of escape rooms in general. Links for purchase will be included.
+      </dd>
+      <dt class="text-brand">Assembly Instructions</dt>
+      <dd>
+        Instructions on how to build the clues and layout the room. This includes the order of how to solve the puzzles/clues. For more complicated builds, a video may be available.
+      </dd>
+      <dt class="text-brand">Downloadable/Printable Files</dt>
+      <dd>
+        Certain parts of the puzzle are files that should be downloaded and printed. These might include pictures, letters, recipe cards, etc. To support participants with visual impairments, a Braille printer may be needed.
+      </dd>
+      <dt class="text-brand">Needed Digital Assets</dt>
+      <dd>
+        Any virtual components (pages, videos, etc) that we design and develop. This could also include a Leaderboard to use that is themed for the kit.
+      </dd>
+      <dt class="text-brand">Orientation Information</dt>
+      <dd>
+        A document and/or presentation to help the customer introduce the room and prepare the participants. These might be in slides or a video, and will be fully accessible.
+      </dd>
+      <dt class="text-brand">Operational, Reset and Packing Guidance</dt>
+      <dd>
+        Useful tips and hints for running a successful Escape Room, including any specific instructions on resetting the room and packing the materials for shipping, travel or storage.
+      </dd>
+    </dl>
+  </ThemedSection>
+</Layout>
+
+<style define:vars={{ textVar }}>
+  h1 {
+    font-weight: 500;
+  }
+  .local-wrapper {
+    h2, h3, h4 {
+      color: var(--textVar);
+    }
+  }
+  .bi {
+    margin-bottom: 0.2em;
+    vertical-align: middle;
+  }
+  dl dd {
+    padding-inline-start: 1em;
+    font-size: 90%;
+  }
+  dl dd + dt {
+    margin-top: 1em;
+  }
+</style>

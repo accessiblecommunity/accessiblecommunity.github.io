@@ -1,0 +1,150 @@
+---
+import { getOpenGraphImageData } from "@lib/og-image";
+import type { Breadcrumbs, PageMetadata } from "@lib/types";
+
+const title = "How it Works";
+const metadata: PageMetadata = {
+  title,
+  description: "Questions about the Accessible Escape Room",
+  image: getOpenGraphImageData(Astro.site, "pages", "escape-room"),
+};
+const crumbs: Breadcrumbs = [
+  {
+    name: "Home",
+    href: "/escape-room/",
+  },
+];
+
+const quotes = [
+  "The puzzles were no joke! It was a perfect mix of frustrating and fun. I walked away feeling like I learned something, not just about the activity, but about myself.",
+  "I didn't expect to enjoy it as much as I did. It was genuiniely fun and I loved how much it made us think through problems.",
+  "I was surprised by how much I relied on my teammates. It reminded me that collaboration is such a huge part of problem-solving in our training and working with others every day.",
+]
+
+import Branding from "@components/Branding.astro";
+import EscapeRoomLayout from "src/layouts/EscapeRoomLayout.astro";
+import Hero from "@components/HeroWithBreadcrumbs.astro";
+import { Icon } from "astro-icon/components";
+import ThemedSection from "@components/ThemedSection.astro";
+
+import heroBg from "src/images/escape-room/shaded/puzzle-display.jpg";
+---
+
+<EscapeRoomLayout {metadata} {title}>
+  <Hero slot="header" theme="info" shade image={heroBg} imageVertical="0%" columns="col-8 col-md-5" {crumbs} {title}>
+    <h1 class="display-2 px-1 bg-info bg-opacity-75" set:text={title} />
+  </Hero>
+
+  <ThemedSection>
+    <h2 class="visually-hidden">Overview</h2>
+    <p class="lead">
+      We believe that team-building activities should be available to everyone. We've created
+      the <Branding>Accessible Escape Room</Branding> to ensure that everyone can take part.
+    </p>
+    <p>
+      Each escape room kit is designed so that individuals with disabilities can complete at
+      least one puzzle as a part of a group and participate in others. Each kit is also designed
+      to be flexable and portable, so that they can be packed up easily and transported where
+      they are needed.
+    </p>
+    <p>
+      We've built and playtested each accessible escape room. Then, we document the process so
+      that everything you need to purchase and assemble it is included. This allows you to pay
+      less and customize the experience.
+    </p>
+  </ThemedSection>
+
+  <ThemedSection style="subtle" theme="secondary">
+    <h2 class="text-center text-info mb-4">Quotes from our Customers</h2>
+    <div class="row row-cols-1 row-cols-lg-3 g-3 align-items-stretch align-items-lg-center">
+      {
+        quotes.map(q => (
+          <div class="col">
+            <div class="card border border-2 border-info">
+              <div class="card-body">
+                <p class="card-text">
+                  <sup aria-hidden="true"><Icon name="quote-left" />&nbsp;</sup><span
+                  set:text={q} /><sup aria-hidden="true">&nbsp;<Icon name="quote-right" /></sup>
+                </p>
+              </div>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </ThemedSection>
+
+  <ThemedSection style="tertiary" id="faq">
+    <h2 class="text-info">Frequently Asked Questions</h2>
+    <dl>
+      <dt class="text-brand">What comes with an escape room kit?</dt>
+      <dd>
+        Each escape room kit comes with the following:
+        <ul>
+          <li>Detailed instructions for assembling the room, include a list of materials to purchase.</li>
+          <li>Suggestions of additional (optional) materials and ideas to theme the space and add to the experience.</li>
+          <li>Files to download and print. If you are supporting blind players, you will need access to a braille printer.</li>
+          <li>Digital components that will make use of a provided phone, tablet or laptop.</li>
+          <li>Orientation materials to introduce the players and prepare them for the room and the theme.</li>
+          <li>Useful tips and hints for running a successful Escape Room, including specific instructions on resetting the room and packing the materials for shipping, travel or storage.</li>
+        </ul>
+      </dd>
+
+      <dt class="text-brand">Can people who are blind or deaf-blind play?</dt>
+      <dd>
+        Yes, we have playtested with blind participants to ensure they can participate. Deaf-blind players
+        are supported through a braille printouts of audio and other content. We also use tactile feedback
+        on most of our puzzles and provide some tips for orienting visually- or cognitively-impaired players
+        around the room before starting.
+      </dd>
+
+      <dt class="text-brand">How long does it take to build an escape room?</dt>
+      <dd>
+        In general, it will take a few hours to assemble one of these kits once you've purchased the materials.
+        We recommend setting up and playtesting the room a few times beforehand.
+      </dd>
+
+      <dt class="text-brand">How long does it take to play an escape room?</dt>
+      <dd>
+        In general, our escape rooms will take between 15-40 mintues to play. However, this depends on several factors:
+        <ul>
+          <li>How many people are in a group?</li>
+          <li>How experienced your participants are at escape rooms or puzzles?</li>
+          <li>How well your groups work together?</li>
+          <li>How spread out the puzzle pieces are in the room?</li>
+          <li>How well are certain clues hidden?</li>
+        </ul>
+        Each of our kits allow for an optional puzzle to be purchased and built, which will also extend the
+        play time.
+      </dd>
+
+      <dt class="text-brand">Can I use the escape room to raise money for my organization?</dt>
+      <dd>
+        Yes, you absolutely can. We only ask that you credit <Branding class="text-primary">Accessible Community</Branding> and any sponsors of each escape room by using the provided slide(s) in the orientation.
+      </dd>
+
+      <dt class="text-brand">Are these available in languages other than English?</dt>
+      <dd>
+        We provide foreign language versions on request. If you are interested, please reach out to us directly at <a class="link-truncate" href="mailto:escaperoom@accessiblecommunity.org">escaperoom@accessiblecommunity.org</a>.
+      </dd>
+    </dl>
+  </ThemedSection>
+</EscapeRoomLayout>
+
+<style>
+  h1 {
+    font-weight: 500;
+  }
+  [data-icon="quote-left"],
+  [data-icon="quote-right"] {
+    color: var(--bs-info);
+    height: 0.7em;
+  }
+
+  dl dd {
+    padding-inline-start: 1em;
+  }
+  dl dd + dt {
+    margin-top: 1em;
+  }
+</style>

@@ -9,7 +9,7 @@ ifdef OS
 	FixPath = $(subst /,\,$1)
 # The set command will return an error, even though it succeeds.
 else
-	WriteCmd = printf 
+	WriteCmd = printf
 	RemoveCmd = rm -rf
 	RemoveDirCmd = rm -rf
 	FixPath = $1
@@ -24,7 +24,7 @@ up:
 down:
 	@docker compose down
 
-shell:
+shell: up
 	@docker compose exec $(CONTAINER) bash
 
 dist: clean-js-dist $(SOURCE_DIR)/dist

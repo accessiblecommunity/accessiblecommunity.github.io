@@ -1,15 +1,23 @@
 ---
 import type { PageMetadata } from "@lib/types";
 import { getOpenGraphImageData } from "@lib/og-image";
+import components from "@lib/mdx";
+import { getEntry, render, type CollectionEntry } from "astro:content";
 
 import Branding from "../components/Branding.astro";
 import Hero from "../components/Hero.astro";
 import { Icon } from "astro-icon/components";
 import Layout from "../layouts/Layout.astro";
+import Quote from "@components/Quote.astro";
 import ShadowBoxSection from "../components/ShadowBoxSection.astro";
+import TeamVignette from "@components/TeamVignette.astro";
 import ThemedSection from "../components/ThemedSection.astro";
 
 import heroBg from "../images/colored-hero/donate.png";
+import rachael from "../images/rachael-at-booth.jpg";
+
+import ThemedBox from "@components/ThemedBox.astro";
+import { Image } from "astro:assets";
 const directorEmail = "mailto:director@accessiblecommunity.org";
 const paypalUrl = "https://paypal.me/AccessibleCommunity";
 const stripeUrl = "https://donate.stripe.com/eVadR0agM8ec1TW5kk";
@@ -56,6 +64,23 @@ const metadata: PageMetadata = {
   description: "Come join us at Accessible Community",
   image: getOpenGraphImageData(Astro.site, "pages", "donate"),
 };
+
+const letter = await getEntry("markdown", "donor-letter");
+if (!letter) throw new Error("Could not find content `markdown/donor-letter`");
+ const { Content } = await render(letter);
+
+const statesRegistered = ["Maryland", "Virginia"];
+const statesAccepting = [
+  "Delaware",
+  "Idaho",
+  "Indiana",
+  "Iowa",
+  "Montana",
+  "Nebraska",
+  "South Dakota",
+  "Vermont",
+  "Wyoming",
+];
 ---
 
 <Layout {title} {metadata}>
@@ -63,18 +88,20 @@ const metadata: PageMetadata = {
     <div slot="heading" class="mb-4">
       <h1 class="visually-hidden">Donate</h1>
       <span class="display-2">
-        <strong>Building tools</strong> that build communities.
+        Growing <strong>disability-inclusive</strong> communities <br class="d-none d-lg-inline" />
+        through socially responsible technology.
+        <!-- <strong>Building tools</strong> that build communities. -->
       </span>
     </div>
-    <p class="lead text-bg-hero mb-5">
+    <!-- <p class="lead text-bg-hero mb-5">
       <Branding>Accessible Community</Branding> is a 501(c)3 organization. Your donation
       goes towards supporting our programs, accommodations and technology costs.
-    </p>
+    </p> -->
     <div class="d-grid gap-4 mx-4 d-sm-flex justify-content-sm-center">
       {
         heroButtons.map(({ icon, href, name, className }) => (
           <a
-            class="btn btn-primary border-light d-flex justify-content-center align-items-center px-4 gap-1 "
+            class="btn btn-primary border-light d-flex justify-content-center align-items-center px-4 gap-1"
             href={href}
             target="_blank"
             rel="noopener noreferrer"
@@ -89,9 +116,18 @@ const metadata: PageMetadata = {
 
   <ThemedSection style="tertiary">
     <div class="row justify-content-center">
-      <div class="col col-lg-10">
-        <h2 class="display-3">Support our <strong>mission</strong>.</h2>
-        <div class="lead">
+      <div class="col col-lg-10 donor-letter">
+        <h2 class="display-5">Dear <strong>potential donor</strong>,</h2>
+        <Content components={{ThemedBox, Quote, ...components}} />
+        <div class="text-primary-emphasis text-end fs-4 my-4 founder-cited">
+          <TeamVignette
+            member="rachael-bradley-montgomery"
+            left={false}
+            valign="center"
+          />
+        </div>
+
+        <!-- <div class="lead">
           <p>
             Your support of <Branding class="text-primary"
               >Accessible Community</Branding
@@ -122,47 +158,15 @@ const metadata: PageMetadata = {
               >Thank you for your support!</span
             >
           </p>
-        </div>
+        </div> -->
       </div>
     </div>
   </ThemedSection>
 
   <ShadowBoxSection theme="info" style="secondary">
-    <h2 class="display-3 text-center fw-bold my-3">How can I donate?</h2>
+    <h2 class="display-3 text-center fw-bold my-3">How can I help?</h2>
     <div class="row justify-content-center px-3">
-      <div class="col-md-5 col-lg-3 d-flex flex-column justify-content-start">
-        <div>
-          <p>We are currently registered to solicit donations in:</p>
-          <ul>
-            <li>Maryland</li>
-            <li>Virginia</li>
-          </ul>
-        </div>
-        <div class="d-none d-md-block mt-3 me-3">
-          <strong>Note:</strong>
-          If you would like to make a donation through corporate or government giving,
-          by check, or some other means, please <a href={directorEmail}
-            >email our director</a
-          > to discuss your donation.
-        </div>
-      </div>
-      <div class="col-md-5 col-lg-3">
-        <p>
-          We can also accept donations from individuals who currently reside in:
-        </p>
-        <ul>
-          <li>Delaware</li>
-          <li>Idaho</li>
-          <li>Indiana</li>
-          <li>Iowa</li>
-          <li>Montana</li>
-          <li>Nebraska</li>
-          <li>South Dakota</li>
-          <li>Vermont</li>
-          <li>Wyoming</li>
-        </ul>
-      </div>
-      <div class="col-lg-3 col-xl-2">
+      <div class="col col-lg-3 col-xl-2">
         <div
           class="d-grid d-sm-flex flex-lg-column justify-content-sm-center gap-3 pb-3"
         >
@@ -181,18 +185,37 @@ const metadata: PageMetadata = {
           }
         </div>
       </div>
+      <div class="col-lg-7">
+        <p>
+          If you would like to make a donation through corporate or government giving,
+          by check, or some other means, please <a href={directorEmail}
+            >email our director</a
+          > to discuss your donation. Checks should be mailed to the following address:
+          <pre class="address">
+Accessible Community
+609 E. Main Street
+Suite CC1002
+Purcellville, VA  20132</pre>
+          If you are intestered in volunteering, please see our <a href="/volunteer/">volunteer page</a>.
+        </p>
+      </div>
     </div>
-    <p class="d-md-none px-3">
-      <strong>Note:</strong>
-      If you would like to make a donation through corporate or government giving,
-      by check, or some other means, please <a href={directorEmail}
-        >email our director</a
-      > to discuss your donation.
-    </p>
   </ShadowBoxSection>
 </Layout>
 
 <style lang="scss">
+  .donor-letter :global(pre),
+  pre.address {
+    padding: 0em 1.5em 0.5em;
+    margin-bottom: 0.5em;
+    background-color: inherit !important;
+    color: inherit !important;
+  }
+
+  .founder-cited {
+    line-height: 1.2em;
+  }
+
   span.cib-paypal {
     margin-top: 0.4em;
     margin-bottom: 0.4em;

@@ -1,0 +1,94 @@
+---
+import { getOpenGraphImageData } from "@lib/og-image";
+import type { Breadcrumbs, PageMetadata } from "@lib/types";
+import { getCollection, type CollectionEntry } from "astro:content";
+import { sortBy } from "lodash-es";
+
+const title = "Build-Your-Own Rooms";
+const metadata: PageMetadata = {
+  title,
+  description: "Overview of the Accessible Escape Room",
+  image: getOpenGraphImageData(Astro.site, "pages", "escape-room"),
+};
+const crumbs: Breadcrumbs = [
+  {
+    name: "Home",
+    href: "/escape-room/",
+  },
+];
+
+import Hero from "@components/HeroWithBreadcrumbs.astro";
+import { Image } from "astro:assets";
+import EscapeRoomLayout from "src/layouts/EscapeRoomLayout.astro";
+import ThemedSection from "@components/ThemedSection.astro";
+
+import heroBg from "src/images/escape-room/jonathan-kemper-9tamF4J0vLk-unsplash.jpg";
+
+const rooms: Array<CollectionEntry<"escapeRoomThemes">> =
+  sortBy(await getCollection("escapeRoomThemes"), (room) => room.data.title);
+
+---
+
+<EscapeRoomLayout {metadata} {title}>
+  <Hero slot="header" theme="dark" shade image={heroBg} columns="col col-md-9 col-lg-8 col-xl-7" {crumbs} {title}>
+    <h1 class="display-2 bg-dark bg-opacity-50">
+      Build-Your-Own Rooms
+    </h1>
+  </Hero>
+
+  <ThemedSection style="tertiary">
+    <h2 class="display-4 text-dark-emphasis text-center mb-4">Themes</h2>
+    <div
+      class="row row-cols-1 row-cols-lg-2 g-4"
+    >
+      {
+        rooms.map(room => (
+          <div class="col">
+            <div class={`card border border-${room.data.page.theme}-subtle`}>
+              <Image
+                src={room.data.image}
+                class="card-img-top"
+                alt={room.data.alt || null}
+              />
+              <div class="card-body">
+                <h3 class={`text-${room.data.page.theme}-emphasis`} set:text={room.data.title} />
+                <p class="card-text" set:text={room.data.tagline} />
+                <a
+                  href={`/escape-room/themes/${room.id}`}
+                  class={`btn btn-${room.data.page.theme}`}
+                >Learn more</a>
+              </div>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+    <p class="pt-4">
+      If you are interested in purchasing a prebuilt room or requesting we run an escape
+      room for a conference or other event, please email us at <a
+        class="link-truncate"
+        href="mailto:escaperoom@accessiblecommunity.org"
+        >escaperoom@accessiblecommunity.org</a
+      > to discuss.
+    </p>
+  </ThemedSection>
+</EscapeRoomLayout>
+
+<style>
+  h1 {
+    font-weight: 500;
+  }
+  h2, h3, h4 {
+    font-weight: 500;
+    margin-bottom: 0.5em;
+  }
+  .card-img-top {
+    height: auto;
+  }
+  p {
+    margin-bottom: 0.5em;
+  }
+  p.lead {
+    margin-bottom: 0.75em;
+  }
+</style>

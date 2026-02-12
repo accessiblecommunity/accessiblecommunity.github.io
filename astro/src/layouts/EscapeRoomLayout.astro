@@ -1,8 +1,21 @@
 ---
-import Layout from "./Layout.astro";
-import HeaderER from "../components/HeaderER.astro";
-import FooterER from "../components/FooterER.astro";
 import type { Breadcrumbs, PageMetadata } from "../lib/types";
+
+import Layout from "src/layouts/Layout.astro";
+import HeaderER from "@components/HeaderER.astro";
+import FooterER from "@components/FooterER.astro";
+
+// Single these from the Header.
+const navLinks = [{
+  name: "Build-Your-Own Rooms",
+  href: "/escape-room/themes",
+}, {
+  name: "How it Works",
+  href: "/escape-room/how-it-works",
+}, {
+  name: "Our Story",
+  href: "/escape-room/our-story",
+}];
 
 interface Props {
   title: string;
@@ -13,7 +26,7 @@ interface Props {
 const { title, metadata, crumbs } = Astro.props as Props;
 ---
 
-<Layout {title} {metadata} {crumbs} hideSiteHeader={true}>
+<Layout {title} {metadata} {crumbs}>
   <slot name="head" slot="head" />
   <HeaderER {title} slot="siteHeader" />
   <slot name="header" slot="header" />

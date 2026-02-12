@@ -3,14 +3,16 @@ import { type Breadcrumbs } from "../lib/types";
 
 interface Props {
   title: String;
+  brandedTitle?: boolean;
   crumbs?: Breadcrumbs;
 }
 
 import { isEmpty } from "lodash-es";
 import { Icon } from "astro-icon/components";
+import Branding from "./Branding.astro";
 import NavSiteList from "./NavSiteList.astro";
 
-const { title, crumbs = [] } = Astro.props;
+const { title, brandedTitle = false, crumbs = [], } = Astro.props;
 const breadCrumbs: Breadcrumbs =
   isEmpty(crumbs) && title != "Home" ? [{ name: "Home", href: "/" }] : crumbs;
 ---
@@ -59,16 +61,16 @@ const breadCrumbs: Breadcrumbs =
   >
     <ol class="breadcrumb lh-sm">
       {
-        breadCrumbs.map(({ name, href }) => (
+        breadCrumbs.map(({ name, href, branded }) => (
           <li class="breadcrumb-item">
             <a href={href} class="link-offset-1 text-truncate">
-              {name}
+              { branded ? (<Branding set:text={name} />) : name }
             </a>
           </li>
         ))
       }
       <li class="breadcrumb-item active" aria-current="page">
-        <span class="text-truncate" set:text={title} />
+        <span class="text-truncate">{ brandedTitle ? (<Branding set:text={title} />) : title }</span>
       </li>
     </ol>
   </nav>
