@@ -1,4 +1,12 @@
-# January 2026 Good News Roundup on Disability Inclusion and Accessibility
+---
+title: January 2026 Good News Roundup on Disability Inclusion and Accessibility
+description: A selection of uplifting stories on disability inclusion from January 20206
+published: 2026-02-12
+tags:
+  - good news
+author: katelyn
+---
+
 Inspired by Sam Bentley’s ongoing good news video series, we are bringing visibility to disabilities by spotlighting a few of our favorite uplifting news stories on disability inclusion and accessibility from last month\!  
    
 **January 28th**: Canada’s new Digital Technologies Accessibility Regulations focus directly on digital technologies and apply to all federally regulated organizations. The explicit regulatory requirements shift accessibility from policies and reporting to technical standards, testing, documentation, and ongoing maintenance. Original article: [Canada’s ACA Digital Accessibility Deadlines: What to Do Now](https://blog.usablenet.com/canadas-aca-digital-accessibility-deadlines-what-to-do-now)   
