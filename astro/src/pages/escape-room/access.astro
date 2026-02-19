@@ -1,0 +1,276 @@
+---
+import Layout from "src/layouts/Layout.astro";
+const title = 'Kit Access';
+---
+
+<Layout {title}>
+  <main class="container" style="padding:2rem 1rem">
+    <h1>Access Your Kit</h1>
+    <p>Enter your purchase code and email to verify access.</p>
+    
+    <script>
+      // Check for error parameter and show message
+      const urlParams = new URLSearchParams(window.location.search);
+      const error = urlParams.get('error');
+      if (error === 'content-missing') {
+        const statusEl = document.getElementById('status');
+        if (statusEl) {
+          statusEl.textContent = 'Content for your purchase is unavailable. Please try again.';
+          statusEl.className = 'text-danger';
+        }
+      }
+    </script>
+
+    <form id="access-form" class="col p-4 bg-body border border-2 border-info-contrast rounded">
+      <div class="col-md-6 mb-3">
+        <label for="purchaseCode" class="form-label mb-1 required-field">
+          Purchase Code
+        </label>
+        <span class="asterisk"></span>
+        <input 
+          id="purchaseCode" 
+          name="purchaseCode" 
+          class="form-control w-100"
+          placeholder="ESC-XXXXXXXX" 
+          required 
+          pattern="^ESC-[A-Za-z0-9]{8}$" 
+        />
+      </div>
+      <div class="col-md-6 mb-3">
+        <label for="email" class="form-label mb-1 required-field">
+          Email
+        </label>
+        <span class="asterisk"></span>
+        <input 
+          id="email" 
+          name="email" 
+          type="email" 
+          class="form-control w-100"
+          placeholder="you@example.com" 
+          autocomplete="email"
+          required 
+        />
+      </div>
+      <button type="submit" class="btn btn-primary">Verify Access</button>
+    </form>
+    <p id="status" role="status" aria-live="polite" style="margin-top:1rem"></p>
+    <section id="purchases" hidden style="margin-top:2rem">
+      <h2>Purchases</h2>
+      <p class="purchases-intro" style="margin-bottom:1rem">Select a purchase to open its digital content.</p>
+      <ul id="purchase-list" style="display:grid;gap:1rem;padding:0;list-style:none"></ul>
+    </section>
+    <script>
+  const form = document.getElementById('access-form');
+  const statusEl = document.getElementById('status');
+  const debugEl = document.getElementById('debug-status') as HTMLTextAreaElement | null;
+  const purchasesSection = document.getElementById('purchases');
+  const purchaseList = document.getElementById('purchase-list');
+
+  function setStatus(msg, cls = '') {
+    if (!statusEl) return;
+    statusEl.className = cls;
+    statusEl.textContent = msg;
+  }
+
+  function setDebug(msg) {
+    if (!debugEl) return;
+    const ts = new Date().toISOString();
+    // Sanitize debug messages to avoid logging sensitive data
+    const sanitized = String(msg).replace(/([a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})/g, '[EMAIL]');
+    debugEl.value += `[${ts}] ${sanitized}\n`;
+    debugEl.scrollTop = debugEl.scrollHeight;
+  }
+
+  function resolveDestination(payload) {
+    const theme = (payload && payload.theme ? String(payload.theme) : '').trim().toLowerCase();
+    // Validate theme contains only safe characters
+    if (!theme || !/^[a-z0-9-]+$/.test(theme)) {
+      return null; // Let caller handle missing/invalid theme
+    }
+    return `/services/escape-room/content/${encodeURIComponent(theme)}`;
+  }
+
+  function friendlyError(status, rawReason) {
+    const reason = typeof rawReason === 'string' ? rawReason.trim() : '';
+    const normalized = reason.toLowerCase();
+
+    if (status === 400) {
+      if (normalized.includes('format')) {
+        return 'Please double-check your purchase code and email format.';
+      }
+      return 'We need both a valid purchase code and email to continue.';
+    }
+    if (status === 403) {
+      return 'That purchase code and email don’t match our records.';
+    }
+    if (status === 404) {
+      return 'We couldn’t find a purchase with that code. Make sure it’s correct or reach out to us.';
+    }
+    if (status === 429) {
+      return 'Too many attempts. Please wait a minute before trying again.';
+    }
+    if (status >= 500) {
+      return 'We ran into a server issue while verifying. Please try again shortly.';
+    }
+
+    return reason || 'We couldn’t verify your purchase right now. Please try again.';
+  }
+
+  function handleFailure(response, data) {
+    const status = response?.status ?? 0;
+    const rawReason = data?.reason || data?.error || (status ? `HTTP ${status}` : '');
+    return friendlyError(status, rawReason);
+  }
+
+  function normalisePurchases(payload) {
+    if (!payload) return [];
+    if (Array.isArray(payload.purchases)) {
+      return payload.purchases.filter(Boolean);
+    }
+    if (payload.valid) {
+      return [payload];
+    }
+    return [];
+  }
+
+  function describePurchase(purchase, index) {
+    // TODO: Add organization, kitType, and purchase date details later
+    const theme = purchase?.theme ? String(purchase.theme).trim() : '';
+    if (theme) {
+      return `${theme.charAt(0).toUpperCase() + theme.slice(1)} theme`;
+    }
+    return `Purchase ${index + 1}`;
+  }
+
+  function showPurchases(payload) {
+    if (!purchaseList || !purchasesSection) return;
+
+    const purchases = normalisePurchases(payload);
+    if (!purchases.length) {
+      setStatus('We verified your details but couldn\'t find any purchases. Please contact support.', 'text-danger');
+      setDebug('No purchases found in payload');
+      purchasesSection.hidden = true;
+      purchaseList.innerHTML = '';
+      return;
+    }
+
+    purchaseList.innerHTML = '';
+    purchases.forEach((purchase, index) => {
+      const item = document.createElement('li');
+      item.style.display = 'flex';
+      item.style.flexWrap = 'wrap';
+      item.style.gap = '0.5rem';
+      item.style.alignItems = 'center';
+      item.style.justifyContent = 'space-between';
+      item.style.border = '1px solid var(--divider-color, #ccc)';
+      item.style.borderRadius = '0.75rem';
+      item.style.padding = '1rem';
+
+      const info = document.createElement('div');
+      info.style.flex = '1 1 auto';
+      info.style.minWidth = '200px';
+      
+      const title = document.createElement('strong');
+      title.textContent = describePurchase(purchase, index);
+      
+      const details = document.createElement('div');
+      details.style.marginTop = '0.25rem';
+      details.style.fontSize = '0.9rem';
+      details.style.color = 'var(--text-muted, #555)';
+      details.textContent = 'Code: ';
+      
+      const codeEl = document.createElement('code');
+      codeEl.textContent = purchase?.purchaseCode ?? '—';
+      details.appendChild(codeEl);
+      
+      info.appendChild(title);
+      info.appendChild(details);
+
+      const button = document.createElement('button');
+      button.type = 'button';
+      button.className = 'btn btn-primary';
+      button.textContent = 'View digital content';
+      button.addEventListener('click', () => {
+        const destination = resolveDestination(purchase);
+        if (!destination) {
+          setStatus('This purchase has invalid theme data. Please contact support.', 'text-danger');
+          setDebug('Invalid or missing theme in purchase data');
+          return;
+        }
+        setDebug(`Navigating to ${destination}`);
+        window.location.assign(destination);
+      });
+
+      item.append(info, button);
+      purchaseList.append(item);
+    });
+
+    purchasesSection.hidden = false;
+  }
+
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const codeEl = (document.getElementById('purchaseCode'));
+    const emailEl = (document.getElementById('email'));
+    const purchaseCode = codeEl && 'value' in codeEl ? String(codeEl.value).trim().toUpperCase() : '';
+    const em = emailEl && 'value' in emailEl ? String(emailEl.value).trim() : '';
+
+    if (purchaseList && purchasesSection) {
+      purchasesSection.hidden = true;
+      purchaseList.innerHTML = '';
+    }
+
+    setStatus('Verifying…');
+    setDebug('Starting verification sequence');
+
+    try {
+      // Try GET first (fast and simple)
+      setDebug('Attempting GET verification');
+      const qs = new URLSearchParams({ purchaseCode, email: em }).toString();
+      const rGet = await fetch(`/api/verify-purchase?${qs}`, { cache: 'no-store' });
+      setDebug(`GET response status: ${rGet.status}`);
+      let dGet = {} as any;
+      try { dGet = await rGet.json(); } catch {}
+      if (rGet.ok && dGet && dGet.valid) {
+        setStatus('Choose a purchase below to continue.', 'text-success');
+        setDebug('GET verification succeeded; presenting purchases');
+        showPurchases(dGet);
+        return;
+      }
+
+      // Fallback to POST
+      setDebug('GET not valid; attempting POST verification');
+      const rPost = await fetch('/api/verify-purchase', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ purchaseCode, email: em }),
+      });
+      setDebug(`POST response status: ${rPost.status}`);
+      let dPost = {} as any;
+      try { dPost = await rPost.json(); } catch {}
+      if (rPost.ok && dPost && dPost.valid) {
+        setStatus('Verified! Choose a purchase below to continue.', 'text-success');
+        setDebug('POST verification succeeded; presenting purchases');
+        showPurchases(dPost);
+      } else {
+        const message = handleFailure(rPost, dPost);
+        setStatus(message, 'text-danger');
+        setDebug(`POST verification failed: ${message}`);
+        if (purchaseList && purchasesSection) {
+          purchasesSection.hidden = true;
+          purchaseList.innerHTML = '';
+        }
+      }
+    } catch (err) {
+      console.error('Verify error', err);
+      setStatus('We couldn’t reach the verification service. Check your connection and try again.', 'text-danger');
+      setDebug(`Network or unexpected error: ${err instanceof Error ? err.message : String(err)}`);
+      if (purchaseList && purchasesSection) {
+        purchasesSection.hidden = true;
+        purchaseList.innerHTML = '';
+      }
+    }
+  });
+    </script>
+  </main>
+</Layout>

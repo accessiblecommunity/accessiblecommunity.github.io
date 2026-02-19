@@ -1,0 +1,12 @@
+---
+// Wrapper that forwards attributes and ensures the layout sees `target-slot`
+// Usage in MD/MDX:
+//   <Section target-slot="layout">...</Section>
+const props = Astro.props as Record<string, any>;
+const targetSlot = props['target-slot'];
+const { slot: _ignoredSlot, ...rest } = props;
+const dataAttrs = targetSlot ? { 'data-slot-target': String(targetSlot) } : {};
+---
+<div {...rest} {...dataAttrs}>
+  <slot />
+</div>

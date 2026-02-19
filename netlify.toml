@@ -1,0 +1,20 @@
+[build]
+  publish = "astro/dist"
+  command = "cd astro && npm install && npm run build"
+
+[build.environment]
+  NODE_VERSION = "18"
+
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/:splat"
+  status = 200
+
+[functions]
+  directory = "netlify/functions"
+  node_bundler = "esbuild"
+
+# Environment variables needed:
+# STRIPE_PUBLISHABLE_KEY
+# STRIPE_SECRET_KEY  
+# STRIPE_WEBHOOK_SECRET
