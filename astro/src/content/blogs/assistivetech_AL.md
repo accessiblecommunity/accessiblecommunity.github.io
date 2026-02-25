@@ -1,3 +1,19 @@
+---
+title: More Than Devices: How Assistive Technology Expands Access for Everyone
+published: 2026-02-20
+summary: This post explores assistive technology, what it is, how it exapnds accessibility, and practical ways to start using it.
+who: Educators, accessibility advocates, developers, and anyone interested in inclusive technology.
+benefits: 
+  -Learn what assistive technology really is
+  -Understand examples for different needs
+  -Identify barriers to access
+  -Explore practical applications for accessibility
+tags: 
+  -accessibility 
+  -assistive technology
+  -inclusive design
+  -tech
+  ---
 # More Than Devices: How Assistive Technology Expands Access for Everyone
 
 ![][image1]
