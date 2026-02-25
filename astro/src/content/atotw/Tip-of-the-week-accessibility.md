@@ -1,6 +1,18 @@
+title: Tip of the Week: Getting Started in Accessibility
+published: 2026-02-19
+summary: Quick ways to begin improving accessibility in your businesses, content, and spaces.
+who: content creators, developers, and anyone who wants to be accessible.
+benefits: 
+	-improves clarity and readability
+	- helps meet accessibility standards
+	-makes content usable for more people
+tags: 
+	-accessibility 
+	-tips
+	-beginners
 # Tip of the Week: Getting Started in Accessibility
 
-# Introduction
+## Introduction
 
 	Accessibility can feel overwhelming at first, but getting started is easier than you think\! The key is to approach it with curiosity and a willingness to make small, meaningful changes. Accessibility isn’t about giving anyone an “unfair advantage,” it is more about making spaces, products, and services usable for everyone. 
 
@@ -12,8 +24,8 @@ Here are a few ways you can begin:
 4. **Ask for feedback.** Connect with disabled users or colleagues and listen to their experiences. Their insight is invaluable and often points out things you may have never considered.   
 5. **Challenge assumptions, look beyond stigma.** Question the stereotypes you might have been told or have heard about disabilities and accessibility. Look past stigma and see the people underneath. 
 
-# Conclusion
+## Conclusion
 
-Remember that accessibility benefits everyone, not just the disabled community. Clearer communication, easier navigation, and thoughtful design will end up helping everyone. By starting small and staying curious, you can create a more inclusive environment in any workplace, classroom, or digital space\!
+Remember that accessibility benefits everyone, not just the disabled community. Clearer communication, easier navigation, and thoughtful design will end up helping everyone. By starting small and staying curious, you can create a more inclusive environment in any workplace, classroom, or digital space.
 
 Would you like to receive a simple but effective accessibility tip in your inbox each week? Sign up at https://accessiblecommunity.org/tips/
