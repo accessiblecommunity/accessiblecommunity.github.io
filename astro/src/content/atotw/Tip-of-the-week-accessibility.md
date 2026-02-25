@@ -8,15 +8,15 @@ benefits:
 	- helps meet accessibility standards
 	-makes content usable for more people
 tags: 
-	-accessibility 
-	-tips
-	-beginners
-	---
+-accessibility 
+-tips
+-beginners
+---
 # Tip of the Week: Getting Started in Accessibility
 
 ## Introduction
 
-	Accessibility can feel overwhelming at first, but getting started is easier than you think. The key is to approach it with curiosity and a willingness to make small, meaningful changes. Accessibility isn’t about giving anyone an “unfair advantage,” it is more about making spaces, products, and services usable for everyone. 
+Accessibility can feel overwhelming at first, but getting started is easier than you think. The key is to approach it with curiosity and a willingness to make small, meaningful changes. Accessibility isn’t about giving anyone an “unfair advantage,” it is more about making spaces, products, and services usable for everyone. 
 
 Here are a few ways you can begin:
 
