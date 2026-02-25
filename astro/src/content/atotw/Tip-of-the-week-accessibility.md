@@ -8,9 +8,9 @@ benefits:
 	- helps meet accessibility standards
 	-makes content usable for more people
 tags: 
--accessibility 
--tips
--beginners
+  -accessibility 
+  -tips
+  -beginners
 ---
 # Tip of the Week: Getting Started in Accessibility
 
