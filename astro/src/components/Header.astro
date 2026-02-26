@@ -10,7 +10,7 @@ interface Props {
 import { isEmpty } from "lodash-es";
 import { Icon } from "astro-icon/components";
 import Branding from "./Branding.astro";
-import NavSiteList from "./NavSiteList.astro";
+import NavSiteList from "@components/navigation/NavSiteList.astro";
 
 const { title, brandedTitle = false, crumbs = [], } = Astro.props;
 const breadCrumbs: Breadcrumbs =

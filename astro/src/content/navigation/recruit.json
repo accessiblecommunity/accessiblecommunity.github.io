@@ -1,0 +1,13 @@
+{
+  "name": "Join us",
+  "fullName": "Join Us",
+  "groups": [
+    [{
+      "name": "Volunteer",
+      "href": "/volunteer/"
+    }, {
+      "name": "Donate",
+      "href": "/donate/"
+    }]
+  ]
+}
