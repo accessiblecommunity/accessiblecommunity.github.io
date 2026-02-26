@@ -1,0 +1,47 @@
+{
+  "name": "Projects",
+  "fullName": "Our Projects",
+  "groups": [
+    [{
+      "name": "ta11y.org",
+      "branded": true,
+      "href": "https://www.ta11y.org",
+      "external": true,
+      "icon": "ta11y-logo"
+    }, {
+      "name": "mutua11y mentoring",
+      "branded": true,
+      "href": "/mutua11y/",
+      "icon": "mutua11y-logo",
+      "iconCls": "gi"
+    }, {
+      "name": "globa11y pilot",
+      "href": "/globa11y/",
+      "branded": true,
+      "icon": "globa11y-logo",
+      "iconCls": "gi"
+    }],
+    [{
+      "name": "Accessible Escape Room",
+      "branded": true,
+      "href": "/escape-room/"
+    }, {
+      "name": "Digital Evaluations",
+      "href": "/evaluations/"
+    }],
+    [{
+      "name": "Digital Accessibility Framework",
+      "href": "/daf/"
+    }, {
+      "name": "fixable",
+      "branded": true,
+      "href": "https://accessiblecommunity.github.io/fixable/",
+      "external": true
+    }, {
+      "name": "useable",
+      "branded": true,
+      "href": "https://accessiblecommunity.github.io/useable/",
+      "external": true
+    }]
+  ]
+}

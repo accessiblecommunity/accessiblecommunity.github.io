@@ -1,0 +1,26 @@
+{
+  "name": "Policies",
+  "fullName": "Our Policies",
+  "groups": [
+    [{
+      "name": "Accessibility Statement",
+      "href": "/accessibility-statement/"
+    }, {
+      "name": "Privacy Policy",
+      "href": "/privacy-policy/"
+    }],
+    [{
+      "name": "Code of Conduct",
+      "href": "/code-of-conduct/"
+    }, {
+      "name": "Harrassment Policy",
+      "href": "/harrassment-policy/"
+    }, {
+      "name": "Non-Discrimination Policy",
+      "href": "/non-discrimination-policy/"
+    }, {
+      "name": "Technology Policy",
+      "href": "/technology-policy/"
+    }]
+  ]
+}
