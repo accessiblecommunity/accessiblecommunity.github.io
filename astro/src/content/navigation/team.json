@@ -1,0 +1,22 @@
+{
+  "name": "Team",
+  "fullName": "Our Team",
+  "groups": [
+    [{
+      "name": "Board Members",
+      "href": "/team/board/"
+    }, {
+      "name": "Leadership Team",
+      "href": "/team/leadership/"
+    }, {
+      "name": "Staff",
+      "href": "/team/staff/"
+    }, {
+      "name": "Partners",
+      "href": "/team/partners/"
+    }, {
+      "name": "Previous Contributors",
+      "href": "/team/previous/"
+    }]
+  ]
+}

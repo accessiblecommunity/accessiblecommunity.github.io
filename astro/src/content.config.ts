@@ -30,7 +30,28 @@ const blogs = defineCollection({
 
 const markdown = defineCollection({
   loader: glob({ pattern: "**/[^_]*.{md,mdx}", base: "./src/content/markdown" }),
-})
+});
+
+const navigation = defineCollection({
+  loader: glob({ pattern: "**/[^_]*.json", base: "./src/content/navigation" }),
+  schema: z.object({
+    "name": z.string(),
+    "fullName": z.string().optional(),
+    "groups": z.array(
+      z.object({
+        name: z.string(),
+        branded: z.boolean().default(false),
+        href: z.string(),
+        external: z.boolean().default(false),
+        icon: z.string().optional(),
+        iconCls: z.string().optional(),
+      }).array(),
+    )
+  }).transform((data) => ({
+    ...data,
+    fullName: data.fullName || data.name,
+  })),
+});
 
 const policies = defineCollection({
   loader: glob({
@@ -234,6 +255,7 @@ export const collections = {
   // escapeRoomKits,
   escapeRoomThemes,
   markdown,
+  navigation,
   podcastShows,
   quotes,
   policies,
