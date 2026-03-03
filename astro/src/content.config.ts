@@ -87,18 +87,18 @@ const daf = defineCollection({
   }),
 });
 
-// const escapeRoomKits = defineCollection({
-//   loader: glob({
-//     pattern: "**/[^_]*.{md,mdx}",
-//     base: "./src/content/escape-room/kits",
-//   }),
-//   schema: ({ image }) =>
-//     z.object({
-//       title: z.string(),
-//       image: image(),
-//       order: z.number().default(99999),
-//     }),
-// });
+const escapeRoomKits = defineCollection({
+  loader: glob({
+    pattern: "**/[^_]*.{md,mdx}",
+    base: "./src/content/escape-room/kits",
+  }),
+  schema: ({ image }) =>
+    z.object({
+      title: z.string(),
+      image: image(),
+      order: z.number().default(99999),
+    }),
+});
 
 const escapeRoomThemes = defineCollection({
   loader: glob({
@@ -252,7 +252,7 @@ export const collections = {
   blogs,
   collaborators,
   daf,
-  // escapeRoomKits,
+  escapeRoomKits,
   escapeRoomThemes,
   markdown,
   navigation,
