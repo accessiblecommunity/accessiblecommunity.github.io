@@ -3,7 +3,7 @@
   command = "cd astro && npm install && npm run build"
 
 [build.environment]
-  NODE_VERSION = "18"
+  NODE_VERSION = "22"
 
 [[redirects]]
   from = "/api/*"
@@ -16,5 +16,5 @@
 
 # Environment variables needed:
 # STRIPE_PUBLISHABLE_KEY
-# STRIPE_SECRET_KEY  
+# STRIPE_SECRET_KEY
 # STRIPE_WEBHOOK_SECRET

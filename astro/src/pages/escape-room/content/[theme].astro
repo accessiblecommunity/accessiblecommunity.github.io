@@ -1,31 +1,42 @@
 ---
-import { getCollection, render } from "astro:content";
+import { auth } from "@lib/auth";
+import { getEntry, render } from "astro:content";
 import EscapeRoomContentLayout from "src/layouts/EscapeRoomContentLayout.astro";
 import Section from "@components/Section.astro";
+
 // import type { PurchaseSession } from "src/lib/session-store";
 
-export async function getStaticPaths() {
-  const kits = await getCollection("escapeRoomKits");
+export const prerender = false
+const { theme } = Astro.params;
+if (!theme) {
+  return Astro.redirect('/escape-room/access?error=content-missing');
+}
 
-  return kits.map((entry) => ({
-    params: { theme: entry.id },
-    props: { entry },
-  }));
-};
+const entry = await getEntry("escapeRoomKits", theme);
 
-// if (!entry) {
-//   return Astro.redirect('/services/escape-room/access?error=content-missing');
-// }
+if (!entry) {
+  return Astro.redirect('/escape-room/access?error=content-missing');
+}
 
 const {session, user} = Astro.locals;
-
 if (!session || !user) {
-  throw new Response(null, { status: 401 });
+  const data = await auth.api.signInMagicLink({
+      body: {
+          email: "user@email.com", // required
+          name: "my-name",
+          callbackURL: Astro.url.toString(),
+          errorCallbackURL: "/error",
+      },
+      // This endpoint requires session cookies.
+      headers: Astro.request.headers,
+  });
+  // throw new Response(null, { status: 401 });
+  return Astro.redirect('/escape-room/access?error=content-missing');
 }
 
 // TODO: Verify that purchase happened in database.
 
-const { entry } = Astro.props;
+
 const { Content } = await render(entry);
 const title = entry.data.title;
 ---

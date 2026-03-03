@@ -3,7 +3,6 @@ import type { MiddlewareHandler } from 'astro';
 import { auth } from "@lib/auth";
 import { defineMiddleware } from "astro:middleware";
 
-const PROTECTED_ESCAPE_ROOM_PREFIX = '/escape-room/content/';
 
 export const onRequest: MiddlewareHandler = defineMiddleware(
   async ({ url, request, locals }, next) => {
@@ -29,10 +28,6 @@ export const onRequest: MiddlewareHandler = defineMiddleware(
       locals.user = isAuthed.user;
       locals.session = isAuthed.session;
     } else {
-      if (url.pathname.startsWith(PROTECTED_ESCAPE_ROOM_PREFIX)) {
-        return new Response(null, { status: 401 });
-      }
-
       locals.user = null;
       locals.session = null;
     }

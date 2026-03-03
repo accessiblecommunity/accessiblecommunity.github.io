@@ -1,5 +1,6 @@
 ---
 import Layout from "src/layouts/Layout.astro";
+export const prerender = true
 const title = 'Kit Access';
 ---
 
@@ -7,7 +8,7 @@ const title = 'Kit Access';
   <main class="container" style="padding:2rem 1rem">
     <h1>Access Your Kit</h1>
     <p>Enter your purchase code and email to verify access.</p>
-    
+
     <script>
       // Check for error parameter and show message
       const urlParams = new URLSearchParams(window.location.search);
@@ -27,13 +28,13 @@ const title = 'Kit Access';
           Purchase Code
         </label>
         <span class="asterisk"></span>
-        <input 
-          id="purchaseCode" 
-          name="purchaseCode" 
+        <input
+          id="purchaseCode"
+          name="purchaseCode"
           class="form-control w-100"
-          placeholder="ESC-XXXXXXXX" 
-          required 
-          pattern="^ESC-[A-Za-z0-9]{8}$" 
+          placeholder="ESC-XXXXXXXX"
+          required
+          pattern="^ESC-[A-Za-z0-9]{8}$"
         />
       </div>
       <div class="col-md-6 mb-3">
@@ -41,14 +42,14 @@ const title = 'Kit Access';
           Email
         </label>
         <span class="asterisk"></span>
-        <input 
-          id="email" 
-          name="email" 
-          type="email" 
+        <input
+          id="email"
+          name="email"
+          type="email"
           class="form-control w-100"
-          placeholder="you@example.com" 
+          placeholder="you@example.com"
           autocomplete="email"
-          required 
+          required
         />
       </div>
       <button type="submit" class="btn btn-primary">Verify Access</button>
@@ -169,20 +170,20 @@ const title = 'Kit Access';
       const info = document.createElement('div');
       info.style.flex = '1 1 auto';
       info.style.minWidth = '200px';
-      
+
       const title = document.createElement('strong');
       title.textContent = describePurchase(purchase, index);
-      
+
       const details = document.createElement('div');
       details.style.marginTop = '0.25rem';
       details.style.fontSize = '0.9rem';
       details.style.color = 'var(--text-muted, #555)';
       details.textContent = 'Code: ';
-      
+
       const codeEl = document.createElement('code');
       codeEl.textContent = purchase?.purchaseCode ?? '—';
       details.appendChild(codeEl);
-      
+
       info.appendChild(title);
       info.appendChild(details);
 

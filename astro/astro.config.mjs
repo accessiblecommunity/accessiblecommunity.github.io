@@ -26,7 +26,7 @@ const botsToDisallow = [
 
 export default defineConfig({
   site: "https://accessiblecommunity.org",
-  output: 'server',
+  output: 'static',
   adapter: netlify(),
 
   server: {
