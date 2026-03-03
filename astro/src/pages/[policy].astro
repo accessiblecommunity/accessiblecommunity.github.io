@@ -1,6 +1,8 @@
 ---
 import { getCollection, render } from 'astro:content';
-import PolicyLayout from "../layouts/PolicyLayout.astro";
+import PolicyLayout from "src/layouts/PolicyLayout.astro";
+
+export const prerender = true
 
 export async function getStaticPaths() {
   const policyCollection = await getCollection('policies');

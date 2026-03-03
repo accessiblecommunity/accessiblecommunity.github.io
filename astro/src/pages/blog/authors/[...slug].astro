@@ -4,6 +4,7 @@ import { getBlogAuthors, orderByRecent } from "../../../lib/blog";
 import type { Breadcrumbs } from "@lib/types";
 import type { CollectionEntry } from "astro:content";
 
+export const prerender = true
 export async function getStaticPaths() {
   const authors = await getBlogAuthors();
   const crumbs: Breadcrumbs = [
