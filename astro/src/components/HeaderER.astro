@@ -1,20 +1,13 @@
 ---
-import { Icon } from "astro-icon/components";
-import Branding from "@components/Branding.astro";
-import SiteNav from "@components/navigation/NavSiteSecondary.astro";
 import { areSimilarURLs } from "@lib/links";
+import { getEntry } from "astro:content";
 
-const navLinks = [{
-  name: "Build-Your-Own Rooms",
-  href: "/escape-room/themes",
-}, {
-  name: "How it Works",
-  href: "/escape-room/how-it-works",
-}, {
-  name: "Our Story",
-  href: "/escape-room/our-story",
-}];
+import Branding from "@components/Branding.astro";
+import { Icon } from "astro-icon/components";
+import SiteNav from "@components/navigation/NavSiteSecondary.astro";
 
+const entry = await getEntry("navigation", "escape-room");
+const navLinks = entry!.data.groups.flat();
 ---
 
 <header class="sticky-top" style="top: -3.5em">

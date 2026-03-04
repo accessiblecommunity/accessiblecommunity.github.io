@@ -1,0 +1,15 @@
+{
+  "name": "Accessible Escape Room",
+  "groups": [
+    [{
+      "name": "Build-Your-Own Rooms",
+      "href": "/escape-room/themes"
+    }, {
+      "name": "How it Works",
+      "href": "/escape-room/how-it-works"
+    }, {
+      "name": "Our Story",
+      "href": "/escape-room/our-story"
+    }]
+  ]
+}

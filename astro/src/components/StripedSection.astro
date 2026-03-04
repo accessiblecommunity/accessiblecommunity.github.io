@@ -11,7 +11,7 @@ import ThemedSection from "./ThemedSection.astro";
 
 <style scoped>
   div:nth-child(even of .striped) :global(section) {
-    background-color: antiquewhite !important;
+    background-color: var(--ac-stripe, antiquewhite) !important;
   }
   .striped :global(img) {
     float: right;

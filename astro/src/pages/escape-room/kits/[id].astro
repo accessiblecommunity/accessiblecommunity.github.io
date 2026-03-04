@@ -1,0 +1,149 @@
+---
+import { getCollection, render, type CollectionEntry } from "astro:content";
+import { getOpenGraphImageData } from "src/lib/og-image";
+import type { Breadcrumbs, PageMetadata } from "src/lib/types";
+import defaultComponents from "src/lib/mdx";
+
+import "src/styles/bootstrap.scss";
+
+export const prerender = true
+export async function getStaticPaths() {
+  const crumbs: Breadcrumbs = [
+    {
+      name: "Home",
+      href: "/escape-room/",
+    },
+  ];
+
+  const kits: Array<CollectionEntry<"escapeRoomKits">> =
+    await getCollection("escapeRoomKits");
+
+  return kits.map((kit) => {
+    const metadata: PageMetadata = {
+      title: `${kit.data.title} Kit`,
+      description: `Overview of the ${kit.data.title} Accessible Escape Room`,
+      image: getOpenGraphImageData(Astro.site, "pages", "escape-room"), // Fix
+    };
+
+    return {
+      params: { id: kit.id },
+      props: { room: kit, crumbs, metadata },
+    };
+  });
+}
+
+interface Props {
+  room: CollectionEntry<"escapeRoomKits">;
+  crumbs: Breadcrumbs;
+  metadata: PageMetadata;
+}
+
+const { room: kit, crumbs, metadata } = Astro.props;
+const { title } = metadata;
+const { headings, Content } = await render(kit);
+
+const theme = kit.id;
+const stripeVar = `var(--bs-${theme}-bg-subtle)`;
+const themeVar = `var(--bs-${theme})`;
+const textVar = `var(--bs-${theme}-text-emphasis)`;
+const textRgbVar = `var(--bs-${theme}-rgb)`;
+
+import Branding from "@components/Branding.astro";
+import { Icon } from "astro-icon/components";
+import EscapeRoomLayout from "src/layouts/EscapeRoomLayout.astro";
+import Hero from "@components/HeroWithBreadcrumbs.astro";
+import StripedSection from "@components/StripedSection.astro";
+
+const components = { Section: StripedSection, ...defaultComponents };
+---
+
+<EscapeRoomLayout {title} {metadata}>
+  <div class="local-wrapper">
+    <Hero slot="header" columns="col col-lg-8" {theme} shade image={kit.data.image} {crumbs} {title}>
+      <div class:list={[`bg-${theme} bg-opacity-50 p-1`]}>
+        <h1 class="display-2 text-nowrap" set:text={title} />
+        <p class="tagline text-white mb-1">
+          An <Branding>Accessible Escape Room</Branding> provided by
+          <Icon class="bi" name="ac-logo" height={16} aria-hidden="true" /><Branding
+            >Accessible Community</Branding
+          >
+        </p>
+      </div>
+    </Hero>
+  </div>
+
+  <div class={`bg-${theme} py-1 sticky-top`} style="top: 4.5rem;">
+    <div class="container">
+      <ul class:list={["nav nav-underline"]}>
+        {
+          headings.map(({ depth, slug, text }) =>
+            depth == 2 ?
+              <li class="nav-item">
+                <a class:list={["nav-link px-2", `link-light`]} href={`#${slug}-section`} set:text={text} />
+              </li>
+            : "",
+          )
+        }
+      </ul>
+    </div>
+  </div>
+  <div class="local-wrapper">
+    <Content {components} />
+  </div>
+</EscapeRoomLayout>
+
+<style define:vars={{ textVar, textRgbVar, stripeVar }}>
+  :root {
+    --ac-stripe: var(--stripeVar);
+  }
+  p.tagline :global(.bi) {
+    margin-bottom: 0.2em;
+  }
+  .nav-underline {
+    li.nav-item {
+      font-size: 0.8em;
+    }
+    a.nav-link {
+      font-family: 'Archivo Variable', system-ui;
+      font-weight: 500;
+
+      &:hover {
+        color: white;
+      }
+    }
+  }
+
+  /* Astro's CSS Parsing is weird */
+  .local-wrapper {
+    --ac-stripe: var(--stripeVar);
+  }
+  .local-wrapper :global(h2),
+  .local-wrapper :global(h3),
+  .local-wrapper :global(h4),
+  .local-wrapper :global(dt) {
+    color: var(--textVar);
+  }
+  .local-wrapper :global(a) {
+    --ac-link-focus-outline-color: var(--textVar);
+    --ac-link-hover-bg: var(--textVar);
+    color: var(--textVar);
+
+    &.icon-link {
+      text-decoration-color: var(--textVar);
+    }
+  }
+  .local-wrapper :global(a:hover) {
+    color: white;
+  }
+</style>
+
+<script>
+  window.addEventListener("load", () => {
+    document.querySelectorAll('.striped > section').forEach((sectionNode) => {
+      const headingNode = sectionNode.querySelector('h2');
+
+      if (headingNode)
+        sectionNode.id = `${headingNode.id}-section`;
+    });
+  })
+</script>

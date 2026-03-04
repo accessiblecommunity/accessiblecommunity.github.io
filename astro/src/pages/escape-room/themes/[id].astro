@@ -47,6 +47,7 @@ const about = room.data.about ?? {};
 const page = room.data.page as Record<string, any> | undefined;
 const theme = (page?.theme ?? "brand") as string;
 const image = page?.image;
+
 const { Content } = await render(room);
 const themeVar = `var(--bs-${theme})`;
 const textVar = `var(--bs-${theme}-text-emphasis)`;
