@@ -15,30 +15,7 @@ const { main = false, class: classes = "" } = Astro.props;
     <NavDropdownMenu name="projects" />
     <NavDropdownMenu name="outreach" />
     <NavDropdownMenu name="team" />
-
-    <li class="nav-item dropdown">
-      <a
-        class="nav-link dropdown-toggle"
-        data-bs-toggle="dropdown"
-        href="#"
-        role="button"
-        aria-expanded="false">Join us</a
-      >
-      <ul class="dropdown-menu px-15 pb-1">
-        {
-          !main && (
-            <li>
-              <a class="dropdown-item" href="/donate">
-                Donate
-              </a>
-            </li>
-          )
-        }
-        <li><a class="dropdown-item" href="/volunteer">Volunteer</a></li>
-        <!-- TODO: Hiding the sponsor page until it's done. -->
-        <!-- <li><a class="dropdown-item" href="/join-us/sponsor">Sponsor</a></li> -->
-      </ul>
-    </li>
+    <NavDropdownMenu name="recruit" hide-tags={main ? ["button"] : []} />
   </ul>
   {
     main && (

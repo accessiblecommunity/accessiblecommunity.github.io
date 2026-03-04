@@ -45,6 +45,7 @@ const navigation = defineCollection({
         external: z.boolean().default(false),
         icon: z.string().optional(),
         iconCls: z.string().optional(),
+        tags: z.string().array().default([]),
       }).array(),
     )
   }).transform((data) => ({

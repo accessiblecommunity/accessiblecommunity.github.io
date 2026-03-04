@@ -79,6 +79,7 @@ export default defineConfig({
           'envelope-at-fill', 'telephone-fill', 'geo-alt-fill',
           // Social Media
           'facebook', 'instagram', 'linkedin', 'rss-fill', 'tiktok', 'globe', 'mastodon', 'twitter',
+          'github',
           // Descriptive
           'gift-fill', 'pencil-fill', 'people-fill', 'person-fill',
           // Additional icons

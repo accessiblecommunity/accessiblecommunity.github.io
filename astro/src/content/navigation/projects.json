@@ -42,6 +42,13 @@
       "branded": true,
       "href": "https://accessiblecommunity.github.io/useable/",
       "external": true
+    }],
+    [{
+      "name": "GitHub",
+      "href": "https://github.com/accessiblecommunity",
+      "external": true,
+      "icon": "bi:github",
+      "iconCls": "bi-github"
     }]
   ]
 }

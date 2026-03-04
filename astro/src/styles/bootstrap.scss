@@ -405,6 +405,11 @@ body.no-scroll {
   margin-top: 0.5em;
 }
 
+dl dd > dl {
+  margin-block-start: 0.5rem;
+  margin-inline-start: 1.25rem;
+}
+
 #mc_embed_signup input.mce_inline_error {
   border-color: $danger-border-subtle !important;
 }

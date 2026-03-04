@@ -3,15 +3,24 @@ import { getEntry } from 'astro:content';
 
 interface Props {
   name: string;
+  "hide-tags"?: string[]
 }
 
-const { name } = Astro.props;
-const entry = await getEntry("navigation", name);
+const { name: collectionName, "hide-tags": hideTags = [] } = Astro.props;
+const entry = await getEntry("navigation", collectionName);
 
 if (entry === undefined)
-  throw new Error(`Could not find navigation entry '${name}'.`);
+  throw new Error(`Could not find navigation entry '${collectionName}'.`);
 
-const { data } = entry;
+const { name: dropdownText, groups } = entry.data;
+const hide = new Set(hideTags);
+const sections = hide.size
+  ? groups.map(
+      group => group.filter(
+        link => hide.intersection(new Set(link.tags)).size === 0
+      )
+    ).filter(x => x?.length)
+  : groups;
 
 import Branding from '@components/Branding.astro';
 import ExternalLink from '@components/ExternalLink.astro';
@@ -25,16 +34,16 @@ import { Icon } from "astro-icon/components";
     href="#"
     role="button"
     aria-expanded="false"
-    set:text={data.name}
+    set:text={dropdownText}
   />
   <ul class="dropdown-menu px-15 pb-1">
-  { data.groups.map((linkGroup, index) => (
+  { sections.map((links, index) => (
     <Fragment>
       { index !== 0 && <li><hr class="dropdown-divider" /></li> }
-      { linkGroup.map(({ name, branded, href, external, icon, iconCls }) => (
+      { links.map(({ name, branded, href, external, icon, iconCls }) => (
         <li>
           { external
-            ? <ExternalLink {href} gaps={!!icon} class="dropdown-item py-1">{
+            ? <ExternalLink {href} gaps={!!icon} class="dropdown-item pt-1">{
                 icon && (<Icon
                   class:list={["bi", iconCls]}
                   name={icon}

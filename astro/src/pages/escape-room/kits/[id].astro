@@ -72,20 +72,22 @@ const components = { Section: StripedSection, ...defaultComponents };
     </Hero>
   </div>
 
-  <div class={`bg-${theme} py-1 sticky-top`} style="top: 4.5rem;">
-    <div class="container">
-      <ul class:list={["nav nav-underline"]}>
-        {
-          headings.map(({ depth, slug, text }) =>
-            depth == 2 ?
-              <li class="nav-item">
-                <a class:list={["nav-link px-2", `link-light`]} href={`#${slug}-section`} set:text={text} />
-              </li>
-            : "",
-          )
-        }
-      </ul>
-    </div>
+  <div class={`py-1 sticky-top`} style={`top: 0.6rem; background: linear-gradient(to right, transparent 25%, var(--bs-${theme}) 50%)`}>
+    <ul class:list={["nav nav-underline justify-content-end mx-4 px-3"]}>
+      {
+        headings.map(({ depth, slug, text }) =>
+          depth == 2 ?
+            <li class="nav-item">
+              <a
+                class:list={["nav-link px-2", `link-light`]}
+                style=""
+                href={`#${slug}-section`} set:text={text}
+              />
+            </li>
+          : "",
+        )
+      }
+    </ul>
   </div>
   <div class="local-wrapper">
     <Content {components} />
@@ -105,10 +107,12 @@ const components = { Section: StripedSection, ...defaultComponents };
     }
     a.nav-link {
       font-family: 'Archivo Variable', system-ui;
+      font-size: 1rem;
       font-weight: 500;
 
-      &:hover {
-        color: white;
+      &.link-light {
+        --bs-link-hover-color-rgb: var(--textRgbVar);
+        --bs-nav-underline-border-width: 0.175rem;
       }
     }
   }
