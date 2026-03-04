@@ -1,4 +1,5 @@
 import { defineConfig, envField } from "astro/config";
+import { remarkDefinitionList, defListHastHandlers } from 'remark-definition-list';
 import styleGuide from "./style-guide/register.js";
 
 import icon from "astro-icon";
@@ -58,6 +59,11 @@ export default defineConfig({
       BETTER_AUTH_URL: envField.string({ context: "server", access: "public", }),
       DATABASE_URL: envField.string({ context: "server", access: "secret", optional: false }),
     }
+  },
+
+  markdown: {
+    remarkPlugins: [ remarkDefinitionList, ],
+    remarkRehype: { handlers: defListHastHandlers },
   },
 
   integrations: [

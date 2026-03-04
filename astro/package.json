@@ -32,6 +32,7 @@
     "drizzle-orm": "0.45.1",
     "lodash-es": "^4.17.23",
     "pg": "8.18.0",
+    "remark-definition-list": "2.0.0",
     "sanitize-html": "2.13.0",
     "sass": "1.77.5"
   },
