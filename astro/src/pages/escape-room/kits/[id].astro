@@ -60,7 +60,7 @@ const components = { Section: StripedSection, ...defaultComponents };
 <EscapeRoomLayout {title} {metadata}>
   <div class="local-wrapper">
     <Hero slot="header" columns="col col-lg-8" {theme} shade image={kit.data.image} {crumbs} {title}>
-      <div class:list={[`bg-${theme} bg-opacity-50 p-1`]}>
+      <div class:list={[`bg-${theme} p-1`]} style="--bs-bg-opacity: 0.33;">
         <h1 class="display-2 text-nowrap" set:text={title} />
         <p class="tagline text-white mb-1">
           An <Branding>Accessible Escape Room</Branding> provided by
@@ -72,7 +72,7 @@ const components = { Section: StripedSection, ...defaultComponents };
     </Hero>
   </div>
 
-  <div class={`py-1 sticky-top`} style={`top: 0.6rem; background: linear-gradient(to right, transparent 25%, var(--bs-${theme}) 50%)`}>
+  <div class={`py-1 sticky-top`} style={`top: 0.6rem; background: linear-gradient(to right, transparent 25%, var(--bs-${theme}) 50%);`}>
     <ul class:list={["nav nav-underline justify-content-end mx-4 px-3"]}>
       {
         headings.map(({ depth, slug, text }) =>

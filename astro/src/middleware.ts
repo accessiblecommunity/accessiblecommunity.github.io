@@ -3,14 +3,25 @@ import type { MiddlewareHandler } from 'astro';
 import { auth } from "@lib/auth";
 import { defineMiddleware } from "astro:middleware";
 
+// Is this still needed ?
+const RESTRICTED_PATHS = [
+  '/materials/premium/',
+  '/protected-materials/',
+  '/escape-room/content',
+]
+
+const PROTECTED_PATHS = [
+  '/escape-room/content',
+  '/escape-room/kits',
+]
+
 
 export const onRequest: MiddlewareHandler = defineMiddleware(
-  async ({ url, request, locals }, next) => {
+  async (context, next) => {
+    const { url, request, locals } = context;
 
-    // Is this still needed ?
     // Block direct access to protected materials
-    if (url.pathname.startsWith('/materials/premium/') ||
-        url.pathname.startsWith('/protected-materials/')) {
+    if (RESTRICTED_PATHS.find(path => url.pathname.startsWith(path))) {
       return new Response('Unauthorized', {
         status: 401,
         headers: {
@@ -20,16 +31,20 @@ export const onRequest: MiddlewareHandler = defineMiddleware(
       });
     }
 
-    const isAuthed = await auth.api.getSession({
-      headers: request.headers,
-    })
+    if (PROTECTED_PATHS.find(path => url.pathname.startsWith(path))) {
+      const isAuthed = await auth.api.getSession({
+        headers: request.headers,
+      })
 
-    if (isAuthed) {
-      locals.user = isAuthed.user;
-      locals.session = isAuthed.session;
-    } else {
-      locals.user = null;
-      locals.session = null;
+      if (isAuthed) {
+        locals.user = isAuthed.user;
+        locals.session = isAuthed.session;
+      } else {
+        context.
+
+        locals.user = null;
+        locals.session = null;
+      }
     }
 
     return next();
