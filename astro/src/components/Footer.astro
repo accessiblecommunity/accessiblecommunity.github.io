@@ -1,14 +1,7 @@
 ---
-import { Icon } from "astro-icon/components";
-
-import Branding from "./Branding.astro";
-import ExternalLink from "./ExternalLink.astro";
+import { getEntry } from "astro:content";
 
 const currentYear = new Date().getFullYear();
-
-const facebookURL = "https://www.facebook.com/AccessibleCommunity";
-const linkedinURL = "https://in.linkedin.com/company/accessible-community";
-const instagramURL = "https://www.instagram.com/accessible_community/";
 
 const ContactUs = [
   {
@@ -37,211 +30,59 @@ const ContactUs = [
   */
 ];
 
-const Socials = [
-  {
-    name: "Facebook",
-    icon: "bi:facebook",
-    href: facebookURL,
-    className: "bi bi-facebook social-icon",
-  },
-  {
-    name: "LinkedIn",
-    icon: "bi:linkedin",
-    href: linkedinURL,
-    className: "bi bi-linkedin social-icon",
-  },
-  {
-    name: "Instagram",
-    icon: "bi:instagram",
-    href: instagramURL,
-    className: "bi bi-instagram social-icon",
-  },
-];
+const socialEntry = await getEntry("navigation", "social-media");
+const Socials = socialEntry?.data.groups[0];
+
+import Branding from "./Branding.astro";
+import FooterLinkList from "./navigation/FooterLinkList.astro";
+import { Icon } from "astro-icon/components";
 ---
 
 <footer id="footer" class="bg-primary py-5 d-print-none">
   <div class="py-2 px-4 container-footer">
     <div
-      class="d-flex flex-column flex-lg-row justify-content-between gap-0 column-gap-3"
+      class="d-flex flex-column flex-lg-row justify-content-between gap-0 column-gap-4"
     >
       <div>
-        <h2 class="text-white fw-bold display-6">About Us</h2>
-        <ul class="list-unstyled list-spaced mb-3">
-          <li>
-            <a class="link-light footer-link" href="/about/mission"
-              >Mission &amp; Vision</a
-            >
-          </li>
-          <li>
-            <a class="link-light footer-link" href="/about/story"
-              >Founder's Story</a
-            >
-          </li>
-          <li>
-            <a class="link-light footer-link" href="/about/policies"
-              >Our Policies</a
-            >
-          </li>
-        </ul>
-
-        <h2 class="text-white fw-bold display-6">Our Team</h2>
-        <ul class="list-unstyled list-spaced mb-3">
-          <li>
-            <a class="link-light footer-link" href="/team/board"
-              >Board Members</a
-            >
-          </li>
-          <li>
-            <a class="link-light footer-link" href="/team/leadership"
-              >Leadership Team</a
-            >
-          </li>
-          <li>
-            <a class="link-light footer-link" href="/team/staff">Staff</a>
-          </li>
-          <li>
-            <a class="link-light footer-link" href="/team/previous"
-              >Previous Contributors</a
-            >
-          </li>
-          <li>
-            <a class="link-light footer-link" href="/team/partners">Partners</a>
-          </li>
-        </ul>
-      </div>
-      <div>
-        <h2 class="text-white fw-bold display-6">Research Projects</h2>
-        <ul class="list-unstyled list-spaced me-4 mb-4">
-          <li>
-            <a class="link-light footer-link" href="/daf"
-              >Digital Accessibility Framework</a
-            >
-          </li>
-          <li>
-            <ExternalLink
-              class="link-light footer-link"
-              inline
-              href="https://accessiblecommunity.org/useable"
-              ><Branding text="useable" /></ExternalLink
-            >
-          </li>
-        </ul>
-
-        <h2 class="text-white fw-bold display-6">Our Services</h2>
-        <ul class="list-unstyled list-spaced me-4 mb-4">
-          <li>
-            <a class="link-light footer-link" href="/tips"
-              >Tip of the Week</a
-            >
-          </li>
-          <li>
-            <a class="link-light footer-link" href="/evaluations"
-              >Evaluations</a
-            >
-          </li>
-          <li>
-            <a class="link-light footer-link" href="/escape-room/"
-              >Accessible Escape Room</a
-            >
-          </li>
-          <li>
-            <a class="link-light footer-link" href="/blog">Our Blog</a>
-          </li>
-          <li>
-            <a class="link-light footer-link" href="/podcasts">Our Podcasts</a>
-          </li>
-          <li><hr class="border-light" /></li>
-          <li>
-            <a
-              class="link-light footer-link align-text-bottom"
-              href="/globa11y/"
-              ><Icon
-                class="bi gi"
-                name="globa11y-logo"
-                height={16}
-                aria-hidden="true"
-              /><Branding>globa11y</Branding></a
-            >
-          </li>
-          <li>
-            <a
-              class="link-light footer-link align-text-bottom"
-              href="/mutua11y/"
-              ><Icon
-                class="bi gi"
-                name="mutua11y-logo"
-                height={16}
-                aria-hidden="true"
-              /><Branding>mutua11y mentoring</Branding>
-            </a>
-          </li>
-          <li>
-            <ExternalLink
-              class="link-light footer-link"
-              gaps
-              href="https://www.ta11y.org/"
-            >
-              <Icon
-                class="bi"
-                name="ta11y-logo"
-                height={16}
-                role="img"
-                aria-hidden="true"
-              /><Branding text="ta11y.org" /></ExternalLink
-            >
-          </li>
-        </ul>
+        <FooterLinkList name="about" />
+        <FooterLinkList name="team" />
       </div>
 
       <div>
-        <h2 class="text-white fw-bold display-6">Join Us</h2>
-        <ul class="list-unstyled list-spaced mb-3">
-          <li
-            ><a class="link-light footer-link" href="/volunteer">Volunteer</a
-            ></li
-          >
-          <li><a class="link-light footer-link" href="/donate">Donate</a></li>
-        </ul>
-
-        <h2 class="text-white fw-bold display-6">User Policies</h2>
-        <ul class="list-unstyled list-spaced mb-3">
-          <li>
-            <a class="link-light footer-link" href="/accessibility-statement"
-              >Accessibility&nbsp;Statement</a
-            >
-          </li>
-          <li>
-            <a class="link-light footer-link" href="/privacy-policy"
-              >Privacy Policy</a
-            >
-          </li>
-        </ul>
-
-        <h2 class="text-white fw-bold display-6">Staff Policies</h2>
-        <ul class="list-unstyled list-spaced me-4 mb-4">
-          <li>
-            <a class="link-light footer-link" href="/code-of-conduct"
-              >Code&nbsp;of&nbsp;Conduct</a
-            >
-          </li>
-          <li>
-            <a class="link-light footer-link" href="/harrassment-policy"
-              >Harrassment&nbsp;Policy</a
-            >
-          </li>
-          <li>
-            <a class="link-light footer-link" href="/non-discrimination-policy"
-              >Non-Discrimination Policy</a
-            >
-          </li>
-          <li>
-            <a class="link-light footer-link" href="/technology-policy"
-              >Technology&nbsp;Policy</a
-            >
-          </li>
-        </ul>
+        <FooterLinkList name="projects" />
       </div>
+
       <div>
+        <FooterLinkList name="recruit" />
+        <FooterLinkList name="policies" />
+      </div>
+
+      <div>
+        <FooterLinkList name="outreach">
+          <h2 class="visually-hidden">Social Media</h2>
+          <ul class="text-center">
+            {
+              Socials?.map(({ icon, href, iconCls, name }) => (
+                <li class="d-inline-block ms-2 me-3">
+                  <a
+                    class="d-inline-block link-light"
+                    href={href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <Icon
+                      name={icon}
+                      class:list={["social-icon", iconCls]}
+                      role="img"
+                      aria-label={name}
+                    />
+                  </a>
+                </li>
+              ))
+            }
+          </ul>
+        </FooterLinkList>
+
         <h2 class="text-white fw-bold display-6">Contact Us</h2>
         <dl class="mb-3 text-light">
           {
@@ -266,47 +107,22 @@ const Socials = [
             ))
           }
         </dl>
-        <h2 class="text-white fw-bold display-6 mb-0">Social Media</h2>
-        <div class="flex-column text-center">
-          <div>
-            <ul class="ps-0 mb-0">
-              {
-                Socials.map(({ icon, href, className, name }) => (
-                  <li class="d-inline-block m-3">
-                    <a
-                      class="d-inline-block link-light"
-                      href={href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <Icon
-                        name={icon}
-                        class={className}
-                        height="2rem"
-                        width="2rem"
-                        role="img"
-                        aria-label={name}
-                      />
-                    </a>
-                  </li>
-                ))
-              }
-            </ul>
-          </div>
-          <div class="mt-2 legal-footer">
-            <p class="pt-2 text-center mb-0 text-light">
-              <small>Accessible Community is a 501(c)3&nbsp;organization.</small
-              >
-            </p>
-            <p class="text-center mb-0 text-light">
-              <small
-                >© <time datetime={`${currentYear}`}>{currentYear}</time> Accessible&nbsp;Community</small
-              >
-            </p>
-          </div>
-        </div>
       </div>
     </div>
+  </div>
+  <div class="mt-2 legal-footer">
+    <p class="pt-2 text-center mb-0 text-light">
+      <small><Branding>Accessible Community</Branding> is a 501(c)3&nbsp;organization.</small
+      >
+    </p>
+    <p class="text-center mb-0 text-light">
+      <small
+        >
+        <Branding>
+          © <time datetime={`${currentYear}`}>{currentYear}</time> Accessible&nbsp;Community
+        </Branding></small
+      >
+    </p>
   </div>
 </footer>
 
@@ -321,11 +137,11 @@ const Socials = [
   }
 
   .social-icon {
-    min-height: 29px;
-    min-width: 29px;
+    min-height: 24px;
+    min-width: 24px;
   }
 
-  h2:not(:first-child) {
+  footer :global(h2:not(:first-child)) {
     margin-top: 1.75em;
   }
 
@@ -354,5 +170,6 @@ const Socials = [
   }
   .legal-footer {
     border-top: 1px solid #dfe1ed;
+    margin: 0 1.5em;
   }
 </style>

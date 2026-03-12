@@ -62,29 +62,17 @@ const crumbs: Breadcrumbs = [
         local communities more accessible. We are currently designing
         <a href="/services#loca11y"><Branding>loca11y</Branding></a>, a website
         which will help connect people with disabilities to their local
-        organizations that are supporting them. We are hoping this website will
-        enable individuals with disabilities to:
+        organizations that are supporting them.
       </p>
       <ul>
-        <li
-          >Engage actively in their their communities and improve their
-          experiences,</li
-        >
-        <li
-          >Provide insights about their interactions with their local
-          organizations,</li
-        >
-        <li
-          >Share experiences attending venues and events in their local area.</li
-        >
+        <li>Engage actively in their communities and improve their experiences,</li>
+        <li>Provide insights about their interactions with local organizations,</li>
+        <li>Share experiences attending venues and events in their local area.</li>
       </ul>
       <p>
         We are looking for adults with a disability or caretakers of people with
-        disabilities to participate in a 30-45 minute interview. Your knowledge
-        and insight will help us to design this site and drive positive change.
-        The interview will be completely confidential. We do not have funding to
-        provide compensation for participating. Please complete the interest
-        form if you are willing to help us with this project. Thank you!
+        disabilities to participate in a 30–45 minute interview. Your insight
+        will help us design this site and drive positive change.
       </p>
     </div>
   </ThemedSection>
@@ -103,9 +91,10 @@ const crumbs: Breadcrumbs = [
       <div class="row flex-lg-row">
         <div class="col-lg-6">
           <div class="mb-3">
-            <label for="nameField" class="form-label mb-1 required-field"
-              >Your name</label
-            ><span class="asterisk"></span>
+            <label for="nameField" class="form-label mb-1 required-field">
+              Your name
+            </label>
+            <span class="asterisk"></span>
             <input
               type="text"
               name="Name"
@@ -115,10 +104,12 @@ const crumbs: Breadcrumbs = [
               required
             />
           </div>
+
           <div class="mb-3">
-            <label for="emailField" class="form-label mb-1 required-field"
-              >Your email address</label
-            ><span class="asterisk"></span>
+            <label for="emailField" class="form-label mb-1 required-field">
+              Your email address
+            </label>
+            <span class="asterisk"></span>
             <input
               type="text"
               name="Email"
@@ -129,36 +120,43 @@ const crumbs: Breadcrumbs = [
             />
             <div id="emailHelp" class="form-text small">
               We will only use this address to contact you regarding the
-              interview. We&nbsp;will not use your email address for other
-              purposes, nor will we share your email address with anyone, as
-              stated in our
-              <a href="/privacy-policy" target="_blank">privacy policy</a>.
+              interview.
+              <a href="/privacy-policy" target="_blank">Privacy policy</a>.
             </div>
           </div>
+
           <div class="mb-3">
-            <label for="regionField" class="form-label mb-1"
-              >Your time zone or region</label
-            ><span class="asterisk"></span>
+            <label for="regionField" class="form-label mb-1">
+              Your time zone or region
+            </label>
+            <span class="asterisk"></span>
             <input
               type="text"
               name="Region"
               class="form-control w-100"
               id="regionField"
-              aria-describedby="regionHelp"
+              aria-describedby="regionHelp regionHelpLink"
               required
             />
             <div id="regionHelp" class="form-text small">
-              The time zone or geographic region where you live. This will allow
-              us to plan and more easily coordinate schedules to find a
-              convenient time to talk with you.
+              The time zone or geographic region where you live. This helps us
+              coordinate schedules more easily.
+            </div>
+            <div id="regionHelpLink" class="form-text small">
+              Not sure what your time zone is?
+              <a href="https://time.is/" target="_blank" rel="noopener noreferrer">
+                Find your current time zone and UTC offset
+              </a>.
             </div>
           </div>
         </div>
+
         <div class="col-lg-6">
           <fieldset class="mb-3">
             <legend class="fs-6 required-field">
               How would you self-describe? <span class="asterisk"></span>
             </legend>
+
             <div class="form-check d-flex mb-2 align-items-center">
               <input
                 class="form-check-input"
@@ -172,6 +170,7 @@ const crumbs: Breadcrumbs = [
                 I am a person with disabilities.
               </label>
             </div>
+
             <div class="form-check d-flex mb-2 align-items-center">
               <input
                 class="form-check-input"
@@ -184,6 +183,7 @@ const crumbs: Breadcrumbs = [
                 I am a caretaker of a person with disabilities.
               </label>
             </div>
+
             <div class="form-check d-flex mb-2 align-items-center">
               <input
                 class="form-check-input"
@@ -197,40 +197,38 @@ const crumbs: Breadcrumbs = [
               </label>
             </div>
           </fieldset>
+
           <div class="mb-3">
-            <label for="summaryTextarea" class="form-label mb-1 required-field"
-              >Summary of disabilities</label
-            ><span class="asterisk"></span>
+            <label for="summaryTextarea" class="form-label mb-1 required-field">
+              Summary of disabilities
+            </label>
+            <span class="asterisk"></span>
             <textarea
               name="Disabilities"
               class="form-control w-100 form-text-area form-field"
               id="summaryTextarea"
               required
-              aria-describedby="summaryHelp"></textarea>
+              aria-describedby="summaryHelp"
+            ></textarea>
             <div id="summaryHelp" class="form-text small">
-              If you have a disability or take care of someone with a
-              disability, please briefly describe the disability in a way that
-              you are comfortable with. We&nbsp;will not share this information.
+              Please briefly describe the disability in a way you are comfortable
+              with. We will not share this information.
             </div>
           </div>
         </div>
       </div>
+
       <div slot="buttons" class="row">
         <div class="col-md-6 my-3 mx-auto">
-          <button type="submit" class="btn btn-info w-100 btn-contrast-dark"
-            >Submit</button
-          >
+          <button type="submit" class="btn btn-info w-100 btn-contrast-dark">
+            Submit
+          </button>
         </div>
       </div>
     </GoogleForm>
   </ThemedSection>
 
   <style>
-    /* first declaration that is commented out below is for debugging purposes. */
-    /* * {
-   outline: 1px solid black;
- } */
-
     [data-icon="loca11y-logo"] {
       height: 1.25em;
       width: 1.25em;
@@ -239,11 +237,6 @@ const crumbs: Breadcrumbs = [
     #form :global(.interview-form) {
       border: 3.5px solid;
       border-radius: 0.5rem;
-    }
-
-    .check {
-      width: 1.25em;
-      height: 1.25em;
     }
 
     fieldset label {

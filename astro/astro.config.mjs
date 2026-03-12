@@ -40,6 +40,9 @@ export default defineConfig({
     "/services/globa11y/": "/globa11y/",
     "/services/mutua11y/": "/mutua11y/",
     "/services/tip-of-the-week": "/tips/",
+    // Redirect to Github projects
+    "/fixable": "https://accessiblecommunity.github.io/fixable/",
+    "/useable": "https://accessiblecommunity.github.io/useable/",
   },
 
   vite: {

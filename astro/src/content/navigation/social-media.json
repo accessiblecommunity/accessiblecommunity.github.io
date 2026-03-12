@@ -1,0 +1,23 @@
+{
+  "name": "Social Media",
+  "fullName": "Social Media",
+  "groups": [
+    [{
+      "name": "Facebook",
+      "href": "https://www.facebook.com/AccessibleCommunity",
+      "external": true,
+      "icon": "bi:facebook",
+      "iconCls": "bi bi-facebook"
+    }, {
+      "name": "LinkedIn",
+      "href": "https://in.linkedin.com/company/accessible-community",
+      "icon": "bi:linkedin",
+      "iconCls": "bi bi-linkedin"
+    }, {
+      "name": "Instagram",
+      "href": "https://www.instagram.com/accessible_community/",
+      "icon": "bi:instagram",
+      "iconCls": "bi bi-instagram"
+    }]
+  ]
+}
