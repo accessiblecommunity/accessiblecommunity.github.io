@@ -254,13 +254,14 @@ import ThemedSection from "@components/ThemedSection.astro";
             In a couple of sentences, explain why you are registering to be a mentor and what a successful mentorship looks like.
           </p>
         </div>
-        <div class="col-lg-6">
+        <div class="col-lg-12 col-xl-6">
           <fieldset aria-required class="mb-3">
-            <legend class="mb-2 fs-6">
+            <legend class="mb-2 fs-6 required-field">
               What areas do you have expertise in?
+              <span class="asterisk" />
               <span class="form-text">(Select all that apply)</span>
             </legend>
-            <div class="row row-cols-xl-2 mx-1">
+            <div class="row row-cols-lg-2 row-cols-xl-1 mx-1">
               {
                 accessibilityAreas.map((area) => (
                   <div class="form-check mb-2">
@@ -281,26 +282,30 @@ import ThemedSection from "@components/ThemedSection.astro";
               }
             </div>
           </fieldset>
+        </div>
+        <div class="col-lg-12 col-xl-6">
+          <hr class="d-none d-lg-block d-xl-none" />
           <fieldset aria-required class="mb-3">
             <legend class="mb-2 fs-6 required-field">
-              Which of our partner organizations do you work at?
+              Which of our partner organizations do you work for?
               <span class="asterisk" />
+              <span class="form-text">(Select all that apply)</span>
             </legend>
-            <div class="row row-cols-xl-2 mx-1">
+            <div class="row row-cols-lg-2 row-cols-xl-1 mx-1">
               {
-                partnerOrgs.map((partner) => (
+                partnerOrgs.map((partnerOrg) => (
                   <div class="form-check mb-2">
                     <input
                       class="form-check-input"
                       type="checkbox"
                       name="Expertise"
-                      id={`workAffiliation${partner}`}
-                      value={partner}
+                      id={`workAffiliation${partnerOrg}`}
+                      value={partnerOrg}
                     />
                     <label
                       class="form-check-label"
-                      for={`workAffiliation${partner}`}
-                      set:text={partner}
+                      for={`workAffiliation${partnerOrg}`}
+                      set:text={partnerOrg}
                     />
                   </div>
                 ))
@@ -309,6 +314,7 @@ import ThemedSection from "@components/ThemedSection.astro";
           </fieldset>
         </div>
         <div class="col-lg-6">
+          <hr class="d-none d-lg-block d-xl-none" />
           <fieldset aria-required="true" class="mb-3">
             <legend class="mb-1 fs-6 required-field">
               How many years of experience do you have in accessibility?

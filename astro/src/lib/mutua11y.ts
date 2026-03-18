@@ -114,5 +114,5 @@ export const partnerOrgs = [
   "OzeWAI",
   "TPGi",
   "Knowbility",
-  "I do not work at a partner organization",
+  "I work somewhere else",
 ];
