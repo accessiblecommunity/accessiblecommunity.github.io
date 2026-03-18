@@ -107,3 +107,12 @@ export const topics = [
   "Virtual and augmented reality",
   "Other",
 ];
+
+export const partnerOrgs = [
+  "Level Access",
+  "Deque",
+  "OzeWAI",
+  "TPGi",
+  "Knowbility",
+  "I do not work at a partner organization",
+];
