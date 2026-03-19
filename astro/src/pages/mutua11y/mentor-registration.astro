@@ -296,7 +296,7 @@ import ThemedSection from "@components/ThemedSection.astro";
               <span class="asterisk" />
               <span class="form-text">(Select all that apply)</span>
             </legend>
-            <div class="row row-cols-lg-2 row-cols-xl-1 mx-1">
+            <div class="row row-cols-lg-2 row-cols-xl-1 mx-1 mb-3">
               {
                 partnerOrgs.map((partnerOrg) => (
                   <div class="form-check mb-2">
@@ -315,30 +315,28 @@ import ThemedSection from "@components/ThemedSection.astro";
                   </div>
                 ))
               }
-            </div>
-          </fieldset>
         </div>
-        <div class="col-lg-6">
+        <div>
           <div class="d-none d-lg-block d-xl-none border border-top mb-3">
           </div>
-          <fieldset aria-required="true" class="mb-3">
-            <legend class="mb-1 fs-6 required-field">
-              How many years of experience do you have in accessibility?
-              <span class="asterisk" aria-hidden="true"></span>
-            </legend>
-              <select
-                name="Experience"
-                class="form-select w-100"
-                id="experienceField"
-                required
-              >
-                <option selected disabled>
-                  Select the number of years that best fits your experience...
-                </option>
-                {experienceLevels.map((tz) => <option value={tz}>{tz}</option>)}
-              </select>
-          </fieldset>
         </div>
+        <fieldset aria-required="true" class="mb-3 col-lg-6 col-xl-12">
+          <legend class="mb-1 fs-6 required-field">
+            How many years of experience do you have in accessibility?
+            <span class="asterisk" aria-hidden="true"></span>
+          </legend>
+            <select
+              name="Experience"
+              class="form-select w-100"
+              id="experienceField"
+              required
+            >
+              <option selected disabled>
+                Select the number of years that best fits your experience...
+              </option>
+              {experienceLevels.map((tz) => <option value={tz}>{tz}</option>)}
+            </select>
+        </fieldset>
       </div>
       <div class="row border-top border-1 border-info mt-4 pt-4">
         <h3 class="mt-4">Code of Conduct</h3>
