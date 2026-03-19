@@ -59,6 +59,9 @@ export default defineConfig({
       BETTER_AUTH_SECRET: envField.string({ context: "server", access: "secret", optional: false }),
       BETTER_AUTH_URL: envField.string({ context: "server", access: "public", }),
       DATABASE_URL: envField.string({ context: "server", access: "secret", optional: false }),
+      RESEND_API_KEY: envField.string({ context: "server", access: "secret", optional: false }),
+      // TODO: Remove later.
+      TEST_EMAIL: envField.string({ context: "server", access: "public", optional: false }),
     }
   },
 

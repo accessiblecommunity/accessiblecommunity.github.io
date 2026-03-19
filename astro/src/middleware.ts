@@ -3,10 +3,11 @@ import type { MiddlewareHandler } from 'astro';
 import { auth } from "@lib/auth";
 import { defineMiddleware } from "astro:middleware";
 
-// Is this still needed ?
+// TODO: Is this still needed ?
 const RESTRICTED_PATHS = [
   '/materials/premium/',
   '/protected-materials/',
+  // TODO: Testing magic-link here.
   // '/escape-room/content',
 ]
 

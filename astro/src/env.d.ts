@@ -15,5 +15,7 @@ interface ImportMetaEnv {
 	readonly BETTER_AUTH_SECRET: string;
 	readonly BETTER_AUTH_URL: string;
   readonly DATABASE_URL: string;
-
+	readonly RESEND_API_KEY: string;
+	// TODO: Remove
+	readonly TEST_EMAIL: string;
 }

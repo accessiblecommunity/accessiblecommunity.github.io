@@ -23,7 +23,7 @@ if (!session || !user) {
   // TODO: Redirect the user to a login screen to get the email.
   const data = await auth.api.signInMagicLink({
       body: {
-          email: "user@email.com", // required
+          email: import.meta.env.TEST_EMAIL, // required
           name: "my-name",
           callbackURL: Astro.url.toString(),
           errorCallbackURL: "/error",
