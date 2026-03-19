@@ -13,6 +13,7 @@
   "dependencies": {
     "@astrojs/mdx": "4.3.13",
     "@astrojs/netlify": "6.6.4",
+    "@astrojs/react": "4.4.2",
     "@astrojs/rss": "4.0.15",
     "@astrojs/sitemap": "3.7.0",
     "@fontsource-variable/archivo": "5.0.19",
@@ -21,6 +22,7 @@
     "@iconify-json/cib": "1.1.8",
     "@iconify-json/simple-icons": "1.2.67",
     "@plausible-analytics/tracker": "0.4.4",
+    "@react-email/components": "1.0.10",
     "astro": "^5.18.0",
     "astro-icon": "1.1.5",
     "astro-lazy-youtube-embed": "0.5.4",
@@ -32,16 +34,21 @@
     "drizzle-orm": "0.45.1",
     "lodash-es": "^4.17.23",
     "pg": "8.18.0",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4",
     "remark-definition-list": "2.0.0",
     "sanitize-html": "2.13.0",
     "sass": "1.77.5"
   },
   "devDependencies": {
     "@types/pg": "^8.16.0",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
     "drizzle-kit": "^0.31.9",
     "jsdom": "^27.0.0",
     "prettier": "^3.2.5",
     "prettier-plugin-astro": "^0.14.0",
+    "react-email": "5.2.10",
     "tsx": "^4.21.0",
     "vitest": "^4.0.18"
   }

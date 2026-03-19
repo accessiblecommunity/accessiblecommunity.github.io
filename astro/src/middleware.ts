@@ -7,7 +7,7 @@ import { defineMiddleware } from "astro:middleware";
 const RESTRICTED_PATHS = [
   '/materials/premium/',
   '/protected-materials/',
-  '/escape-room/content',
+  // '/escape-room/content',
 ]
 
 const PROTECTED_PATHS = [

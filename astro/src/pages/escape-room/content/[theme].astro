@@ -20,6 +20,7 @@ if (!entry) {
 
 const {session, user} = Astro.locals;
 if (!session || !user) {
+  // TODO: Redirect the user to a login screen to get the email.
   const data = await auth.api.signInMagicLink({
       body: {
           email: "user@email.com", // required
