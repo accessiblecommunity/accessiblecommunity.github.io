@@ -59,6 +59,7 @@ import Branding from "./Branding.astro";
               { branded ? (<Branding set:text={name} />) : name }
             </a>
           </li>
+          <span aria-hidden="true">&nbsp/&nbsp</span>
         ))
       }
       <li class:list={['breadcrumb-item active px-1', shade && `bg-${theme} bg-opacity-50`]} aria-current="page">
