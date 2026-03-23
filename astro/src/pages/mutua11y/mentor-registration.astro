@@ -8,6 +8,7 @@ import {
   accessibilityAreas,
   training,
   topics,
+  partnerOrgs,
 } from "@lib/mutua11y";
 
 const title = "Mentor Registration";
@@ -71,6 +72,8 @@ import ThemedSection from "@components/ThemedSection.astro";
           <p id="fullNameHelp" class="form-text">
             Please provide your full legal name.
           </p>
+        </div>
+        <div class="col-md-6 mb-3">
           <label for="citedNameField" class="form-label mb-1"
             >Cited Name</label
           ></span>
@@ -105,6 +108,8 @@ import ThemedSection from "@components/ThemedSection.astro";
             This will be the primary method that we will contact you.
             Please use an email address that you check on a regular basis.
           </p>
+        </div>
+        <div class="col-md-6 mb-3">
           <label for="linkedInField" class="form-label mb-1"
             >LinkedIn Profile</label
           ><span class="asterisk"></span>
@@ -132,7 +137,7 @@ import ThemedSection from "@components/ThemedSection.astro";
         <div class="col-md-6 mb-3">
           <fieldset>
             <legend class="mb-1 fs-6 required-field">
-              What region of the world do you primarily live and work in? <span class="asterisk" aria-hidden="true"></span>
+              What region do you primarily live and work in? <span class="asterisk" aria-hidden="true"></span>
             </legend>
             <select
               class="form-select mb-2"
@@ -195,7 +200,7 @@ import ThemedSection from "@components/ThemedSection.astro";
           <label for="englishField" class="form-label mb-1 required-field">
             Is English your preferred language?
           </label><span class="asterisk" />
-          <select id="englishField" name="English" class="form-select w-100" required>
+          <select id="englishField" name="English" class="form-select mb-2 w-100" required>
             <option value="yes">Yes</option>
             <option value="no">No</option>
           </select>
@@ -236,7 +241,8 @@ import ThemedSection from "@components/ThemedSection.astro";
           <p id="backgroundHelp" class="form-text">
             In a couple of sentences, describe your accessibility background and experience. Please include descriptions of projects you've worked on and how long you've been working in the field.
           </p>
-
+        </div>
+        <div class="col-lg-6">
           <label for="goalsField" class="form-label required-field">
             Briefly describe your goals for participation.
           </label><span class="asterisk" />
@@ -252,31 +258,14 @@ import ThemedSection from "@components/ThemedSection.astro";
             In a couple of sentences, explain why you are registering to be a mentor and what a successful mentorship looks like.
           </p>
         </div>
-        <div class="col-lg-6">
-          <fieldset aria-required="true" class="mb-3">
-            <legend class="mb-1 fs-6 required-field">
-              How many years of experience do you have in accessibility?
-              <span class="asterisk" aria-hidden="true"></span>
-            </legend>
-              <select
-                name="Experience"
-                class="form-select w-100"
-                id="experienceField"
-                required
-              >
-                <option selected disabled>
-                  Select the number of years that best fits your experience...
-                </option>
-                {experienceLevels.map((tz) => <option value={tz}>{tz}</option>)}
-              </select>
-          </fieldset>
+        <div class="col-lg-12 col-xl-6">
           <fieldset aria-required class="mb-3">
-            <hr class="d-none d-lg-block" />
-            <legend class="mb-2 fs-6">
+            <legend class="mb-2 fs-6 required-field">
               What areas do you have expertise in?
+              <span class="asterisk" />
               <span class="form-text">(Select all that apply)</span>
             </legend>
-            <div class="row row-cols-xl-2 mx-1">
+            <div class="row row-cols-lg-2 row-cols-xl-1 mx-1">
               {
                 accessibilityAreas.map((area) => (
                   <div class="form-check mb-2">
@@ -298,6 +287,56 @@ import ThemedSection from "@components/ThemedSection.astro";
             </div>
           </fieldset>
         </div>
+        <div class="col-lg-12 col-xl-6">
+          <div class="d-none d-lg-block d-xl-none border border-top mb-3">
+          </div>
+          <fieldset aria-required class="mb-3">
+            <legend class="mb-2 fs-6 required-field">
+              Which of our partner organizations do you work for?
+              <span class="asterisk" />
+              <span class="form-text">(Select all that apply)</span>
+            </legend>
+            <div class="row row-cols-lg-2 row-cols-xl-1 mx-1 mb-3">
+              {
+                partnerOrgs.map((partnerOrg) => (
+                  <div class="form-check mb-2">
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      name="Expertise"
+                      id={`workAffiliation${partnerOrg}`}
+                      value={partnerOrg}
+                    />
+                    <label
+                      class="form-check-label"
+                      for={`workAffiliation${partnerOrg}`}
+                      set:text={partnerOrg}
+                    />
+                  </div>
+                ))
+              }
+        </div>
+        <div>
+          <div class="d-none d-lg-block d-xl-none border border-top mb-3">
+          </div>
+        </div>
+        <fieldset aria-required="true" class="mb-3 col-lg-6 col-xl-12">
+          <legend class="mb-1 fs-6 required-field">
+            How many years of experience do you have in accessibility?
+            <span class="asterisk" aria-hidden="true"></span>
+          </legend>
+            <select
+              name="Experience"
+              class="form-select w-100"
+              id="experienceField"
+              required
+            >
+              <option selected disabled>
+                Select the number of years that best fits your experience...
+              </option>
+              {experienceLevels.map((tz) => <option value={tz}>{tz}</option>)}
+            </select>
+        </fieldset>
       </div>
       <div class="row border-top border-1 border-info mt-4 pt-4">
         <h3 class="mt-4">Code of Conduct</h3>
