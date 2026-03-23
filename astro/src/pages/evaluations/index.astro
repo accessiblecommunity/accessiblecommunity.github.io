@@ -301,8 +301,12 @@ import ShadowBoxSection from "@components/ShadowBoxSection.astro";
 </Layout>
 
 <style>
+  p:has(+ .bullets) {
+    margin-bottom: 0.333em;
+  }
   .bullets {
     padding-inline-start: 1.5em;
+    padding-block-end: 0.5em;
   }
   .small {
     font-size: 90%;
