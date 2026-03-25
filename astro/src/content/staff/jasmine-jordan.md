@@ -8,5 +8,5 @@ roles:
   default: Video Editor
   podcasts: Video Editor
 photo:
-  image: ../../images/staff/JasmineJ_headshot.png
+  image: ../../images/staff/3d/JasmineJ_headshot.png
 ---

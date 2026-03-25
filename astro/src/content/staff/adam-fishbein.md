@@ -7,7 +7,7 @@ cited:
   middle: R.
   last: Fishbein, MPA
 photo:
-  image: ../../images/staff/AdamF_headshot.png
+  image: ../../images/staff/3d/AdamF_headshot.png
 roles:
   default: Content Team
   content: Contributor
