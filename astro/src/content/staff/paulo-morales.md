@@ -8,4 +8,5 @@ cited:
 roles:
   default: Video Editor, Day in the Life
   communications: Video Editor, Day in the Life
+current: false
 ---
