@@ -34,8 +34,7 @@ export const auth = betterAuth({
                 const resend = new Resend(import.meta.env.RESEND_API_KEY);
 
                 resend.emails.send({
-                    // TODO: Update after additional config.
-                    from: 'onboarding@resend.dev',
+                    from: 'login@mail.accessiblecommunity.org',
                     to: email,
                     subject: 'Login Information',
                     html,
