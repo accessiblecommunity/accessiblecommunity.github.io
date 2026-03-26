@@ -114,12 +114,6 @@ a {
   }
 }
 @include color-mode(dark) {
-  #main-skip-link:focus-visible {
-      outline-color: white;
-  }
-  #main-skip-link:not(:hover) {
-      background-color: white;
-  }
   // Global mode to switch buttons to a nice contrast in dark mode
   .btn.btn-contrast-dark {
     --bs-btn-color: var(--bs-primary);
