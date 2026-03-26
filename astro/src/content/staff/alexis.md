@@ -9,6 +9,6 @@ roles:
   development: Developer, Website
 current: true
 photo:
-  image: ../../images/staff/Alexis2.png
-  alt: Woman with short brown hair, brown eyes, and dark rectangular glasses.
+  image: ../../images/staff/3d/AlexisH_headshot.png
+  alt: Woman with brown hair, brown eyes, and dark rectangular glasses.
 ---
