@@ -32,7 +32,7 @@ if (!session || !user) {
       headers: Astro.request.headers,
   });
   // throw new Response(null, { status: 401 });
-  return Astro.redirect('/escape-room/access?error=content-missing');
+  return Astro.redirect(`/escape-room/login?redirect=${Astro.url.pathname.toString()}`);
 }
 
 // TODO: Verify that purchase happened in database.
