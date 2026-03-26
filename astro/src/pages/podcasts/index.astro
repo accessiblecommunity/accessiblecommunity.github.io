@@ -156,6 +156,22 @@ import GoogleForm from "@components/forms/GoogleForm.astro";
               <a href="/privacy-policy" target="_blank">Privacy policy</a>.
             </div>
           </div>
+
+          <div class="mb-3">
+            <label for="accommodationField" class="form-label mb-1 required-field">
+              Do you need any accomodations to be successful?
+            </label>
+            <p id="accomodationHelp" class="form-text small">
+              Please list any accomodations that you need for the interview or ongoing communciations.
+            </p>
+            <textarea
+              name="accommodations"
+              class="form-control w-100"
+              id="accommodationField"
+              aria-describedby="accomodationHelp"
+            />
+
+          </div>
         </div>
         <div class="col-lg-6">
           <h3>What You Can Expect</h3>
