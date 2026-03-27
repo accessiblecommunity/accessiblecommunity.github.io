@@ -137,10 +137,10 @@ const podcastShows = defineCollection({
       image: image(),
       links: z
         .object({
-          youtube: z.string().url(),
           applePodcasts: z.string().url(),
-          spotify: z.string().url(),
           podcastIndex: z.string().url(),
+          spotify: z.string().url(),
+          youtube: z.string().url(),
         })
         .partial()
         .optional(),
