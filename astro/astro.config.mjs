@@ -72,7 +72,7 @@ export default defineConfig({
           // Social Media
           'facebook', 'instagram', 'linkedin', 'mastodon', 'twitter',
           // Streaming
-          'apple-podcasts', 'youtube',
+          'apple-podcasts', 'spotify', 'youtube',
           // Payment
           "cc-paypal", "cc-stripe", "paypal", "stripe",
         ],

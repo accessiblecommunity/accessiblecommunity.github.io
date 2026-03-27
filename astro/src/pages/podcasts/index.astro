@@ -1,8 +1,10 @@
 ---
+import type { PageMetadata } from "@lib/types";
+import type { SocialLinkDictionary } from "@components/SocialLinks.astro";
+
 import { getCollection, render, type CollectionEntry } from "astro:content";
 import { sortBy } from "lodash-es";
 
-import type { SocialLinkDictionary } from "@components/SocialLinks.astro";
 type PodcastLinks = CollectionEntry<"podcastShows">["data"]["links"];
 
 const shows: CollectionEntry<"podcastShows">[] = sortBy(
@@ -14,7 +16,7 @@ const staff: CollectionEntry<"staff">[] = sortBy(
     "staff", ({data}) => data.current && Object.keys(data.roles ?? {}).includes("podcasts")
   ),
   // Alphabetize by first name
-  ({data}) => data.cited?.first || data.name.first,
+  ({data}) => data.cited?.first ?? data.name.first,
 );
 
 function toUrlMap(links: PodcastLinks): SocialLinkDictionary {
@@ -46,7 +48,14 @@ const music: Music[] = [{
   }
 }];
 
+const metadata: PageMetadata = {
+  title: "Podcast Series",
+  description: "Details of the podcast series that Accessible Community provides",
+};
+
 import components from "@lib/mdx";
+
+import Branding from "@components/Branding.astro";
 import ExternalLink from "@components/ExternalLink.astro";
 import { Image } from "astro:assets";
 import ImageHeading from "@components/ImageHeading.astro";
@@ -54,15 +63,29 @@ import Layout from "src/layouts/Layout.astro";
 import SocialLinks from "@components/SocialLinks.astro";
 import StaffList from "@components/StaffList.astro";
 import ThemedSection from "@components/ThemedSection.astro";
+import ThemedBox from "@components/ThemedBox.astro";
 ---
 
-<Layout title="Podcasts">
+<Layout title={metadata.title} {metadata}>
   <ImageHeading image="podcast" slot="header">
-    <h1 class="display-3">Podcasts</h1>
+    <h1 class="display-3">Podcast Series</h1>
   </ImageHeading>
   {
     shows.map((show, index) => (
-      <ThemedSection style={(index % 2) ? "tertiary" : undefined} id={show.id}>
+      <ThemedSection style={(index % 2) ? "tertiary" : undefined} id={show.id} py={3}>
+        {index === 0
+        ? <ThemedBox theme="primary" style="subtle" border={1} padding={3} class="mb-5 p-3 rounded">
+            <div class="d-flex flex-column flex-lg-row justify-content-center column-gap-3 align-items-center mt-2">
+              <p class="lead text-center">Subscribe to the <Branding>Accessible Community</Branding>&nbsp;podcast.</p>
+              {
+                show.data.links
+                ? <SocialLinks links={toUrlMap(show.data.links)} iconSize="1.5em" label="Podcast Locations" />
+                : ""
+              }
+            </div>
+          </ThemedBox>
+        : "" }
+        <h2 class="pb-2 mb-4 border-bottom border-primary" set:text={show.data.title} />
         <div
           class:list={[
             "d-flex flex-column flex-md-row-reverse gap-4",
@@ -71,13 +94,14 @@ import ThemedSection from "@components/ThemedSection.astro";
           ]}
         >
           <div class="col col-md-9 col-lg-10">
-            <h2 class="pb-2 mb-4 border-bottom border-primary" set:text={show.data.title} />
             {render(show).then(({ Content }) => (
               <Content {components} />
             ))}
           </div>
           <div class="col col-md-3 col-lg-2">
             <Image class="d-none d-md-block logo rounded" src={show.data.image} alt={`${show.data.title} logo`} />
+            {/*
+            TODO: When we split the series into separate podcasts.
             {
               show.data.links ? (
                 <div>
@@ -87,14 +111,14 @@ import ThemedSection from "@components/ThemedSection.astro";
               ) : (
                 <div class="display-7 fw-bold">Coming Soon.</div>
               )
-            }
+            } */}
           </div>
         </div>
       </ThemedSection>
     ))
   }
   <ThemedSection style="secondary">
-    <h2>Credits</h2>
+    <h2 class="display-4">Credits and Thanks</h2>
     <h3 class="mt-4 mb-2">Contributors</h3>
     <p>Thank you to all of our staff who help make these podcasts possible.</p>
     <StaffList team="podcasts" size="19rem" />
