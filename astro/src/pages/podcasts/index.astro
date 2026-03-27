@@ -1,5 +1,6 @@
 ---
 import { getCollection, render, type CollectionEntry } from "astro:content";
+import { type PageMetadata } from "../lib/types";
 import { sortBy } from "lodash-es";
 
 import type { SocialLinkDictionary } from "@components/SocialLinks.astro";
@@ -55,9 +56,14 @@ import SocialLinks from "@components/SocialLinks.astro";
 import StaffList from "@components/StaffList.astro";
 import ThemedSection from "@components/ThemedSection.astro";
 import GoogleForm from "@components/forms/GoogleForm.astro";
+
+const title = "Podcasts";
+const metadata: PageMetadata = {
+  title,
+};
 ---
 
-<Layout title="Podcasts">
+<Layout title={title} metadata={metadata}>
   <ImageHeading image="podcast" slot="header">
     <h1 class="display-3">Podcasts</h1>
   </ImageHeading>
@@ -94,7 +100,7 @@ import GoogleForm from "@components/forms/GoogleForm.astro";
       </ThemedSection>
     ))
   }
-  <ThemedSection style="tertiary">
+  <ThemedSection style="secondary">
     <h2>Share your experience</h2>
     <p>
       Would you like to share your experiences living with disability with our podcasts? Do you have an accessibility success story you would like to share?
@@ -109,7 +115,7 @@ import GoogleForm from "@components/forms/GoogleForm.astro";
         <div class="col-lg-6">
           <div class="mb-3">
             {/* Name */}
-            <label for="nameField" class="form-label mb-1 required-field">
+            <label for="firstNameField" class="form-label mb-1 required-field">
               First name
             </label>
             <span class="asterisk"></span>
@@ -123,7 +129,7 @@ import GoogleForm from "@components/forms/GoogleForm.astro";
             />
           </div>
         <div class="mb-3">
-          <label for="nameField" class="form-label mb-1 required-field">
+          <label for="lastNameField" class="form-label mb-1 required-field">
             Last name
           </label>
           <span class="asterisk"></span>
