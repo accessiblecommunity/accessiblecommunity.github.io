@@ -5,6 +5,7 @@ name:
 roles:
   default: UX Researcher, ta11y
   ux: UX Researcher, ta11y
+current: false
 links:
   linkedin: https://www.linkedin.com/in/mariachristinaantoniou/
 ---
