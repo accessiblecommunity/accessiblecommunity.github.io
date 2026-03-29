@@ -64,30 +64,17 @@ import Layout from "src/layouts/Layout.astro";
 import SocialLinks from "@components/SocialLinks.astro";
 import StaffList from "@components/StaffList.astro";
 import ThemedSection from "@components/ThemedSection.astro";
-<<<<<<< HEAD
 import GoogleForm from "@components/forms/GoogleForm.astro";
 
-const title = "Podcasts";
-const metadata: PageMetadata = {
-  title,
-};
----
-
-<Layout title={title} metadata={metadata}>
-=======
 import ThemedBox from "@components/ThemedBox.astro";
 ---
 
 <Layout title="Our Podcast" {metadata}>
->>>>>>> afd5a9be2f53cf03df1f0a5987e8c300858f88b8
   <ImageHeading image="podcast" slot="header">
     <h1 class="display-3">Podcast Series</h1>
   </ImageHeading>
   {
     shows.map((show, index) => (
-<<<<<<< HEAD
-      <ThemedSection style={(index % 2) ? "secondary" : undefined} id={show.id}>
-=======
       <ThemedSection style={(index % 2) ? "tertiary" : undefined} id={show.id} py={3}>
         {index === 0
         ? <ThemedBox theme="primary" style="subtle" border={1} padding={3} class="mb-5 p-3 rounded">
@@ -102,7 +89,6 @@ import ThemedBox from "@components/ThemedBox.astro";
           </ThemedBox>
         : "" }
         <h2 class="pb-2 mb-4 border-bottom border-primary" set:text={show.data.title} />
->>>>>>> afd5a9be2f53cf03df1f0a5987e8c300858f88b8
         <div
           class:list={[
             "d-flex flex-column flex-md-row-reverse gap-4",
