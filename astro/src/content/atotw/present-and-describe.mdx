@@ -9,7 +9,7 @@ tags:
     - event-accessibility
 ---
 
-import ThemedBox from "../../components/ThemedBox.astro"
+import ThemedBox from "../../components/ThemedColumn.astro"
 
 When learning to give presentations, one of the common pieces of advice is to "not read the slides". The rationale is that the audience can read the bullet points themselves; the speaker is not adding anything to the presentation by just dictating what is there.
 
@@ -19,12 +19,12 @@ In order to both engage your audience and provide accessible presentations, use 
 
 For example, a slide for the ideas in this tip might say:
 
-<ThemedBox border={1} class="rounded mb-4 col col-md-9 col-lg-7 col-xl-5">
+<ThemedColumn border={1} md="9" lg="7" xl="5" class="rounded mb-4">
 **Goal:** Create accessible presentations
 1. List the key points on the slides
 2. Expand on each point while speaking
 3. Provide captions and a transcript of recording
-</ThemedBox>
+</ThemedColumn>
 
 When you are speaking, talk to each point and expand upon it. This keeps your audience engaged because you are not just reading the slides. Describe any charts or images that appear in your presentation. By doing this, you make it easy to provide captions and audio descriptions to enhance your accessibility. Both the visual and auditory information will be included in the soundtrack.
 
