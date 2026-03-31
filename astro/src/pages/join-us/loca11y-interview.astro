@@ -1,5 +1,6 @@
 ---
 import Branding from "../../components/Branding.astro";
+import Column from "../../components/Column.astro";
 import GoogleForm from "../../components/forms/GoogleForm.astro";
 import { Icon } from "astro-icon/components";
 import ImageHeading from "../../components/ImageHeading.astro";
@@ -55,7 +56,7 @@ const crumbs: Breadcrumbs = [
       Thank you for your assistance to help our local communities become more
       <strong class="text-brand">disability-friendly</strong>.
     </p>
-    <div class="col">
+    <Column>
       <p>
         We are <Branding>Accessible Community</Branding>, a nonprofit
         organization dedicated to providing technical solutions to help make
@@ -74,7 +75,7 @@ const crumbs: Breadcrumbs = [
         disabilities to participate in a 30–45 minute interview. Your insight
         will help us design this site and drive positive change.
       </p>
-    </div>
+    </Column>
   </ThemedSection>
 
   <ThemedSection id="form" style="secondary">
@@ -89,7 +90,7 @@ const crumbs: Breadcrumbs = [
       messageText="Thank you for being willing to participate in our research. Based on the number of submissions we receive, we will email you about the next steps for an interview."
     >
       <div class="row flex-lg-row">
-        <div class="col-lg-6">
+        <Column noDefault lg="6">
           <div class="mb-3">
             <label for="nameField" class="form-label mb-1 required-field">
               Your name
@@ -149,9 +150,9 @@ const crumbs: Breadcrumbs = [
               </a>.
             </div>
           </div>
-        </div>
+        </Column>
 
-        <div class="col-lg-6">
+        <Column noDefault lg="6">
           <fieldset class="mb-3">
             <legend class="fs-6 required-field">
               How would you self-describe? <span class="asterisk"></span>
@@ -215,16 +216,16 @@ const crumbs: Breadcrumbs = [
               with. We will not share this information.
             </div>
           </div>
-        </div>
+        </Column>
       </div>
 
       <div slot="buttons" class="row">
-        <div class="col-md-6 my-3 mx-auto">
+        <Column noDefault md="6" class="my-3 mx-auto">
           <button type="submit" class="btn btn-info w-100 btn-contrast-dark">
             Submit
           </button>
         </div>
-      </div>
+      </Column>
     </GoogleForm>
   </ThemedSection>
 
