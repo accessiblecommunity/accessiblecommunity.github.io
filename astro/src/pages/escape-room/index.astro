@@ -16,6 +16,7 @@ const rooms: Array<CollectionEntry<"escapeRoomThemes">> =
 
 
 import Branding from "@components/Branding.astro";
+import Column from "@components/Column.astro";
 import { Icon } from "astro-icon/components";
 import { Image } from "astro:assets";
 import EscapeRoomLayout from "src/layouts/EscapeRoomLayout.astro";
@@ -31,7 +32,7 @@ import woodenPuzzles from "src/images/escape-room/wooden-puzzles.png";
     <div
       class="d-flex flex-column flex-lg-row gap-4 py-3 justify-content-lg-center align-items-center"
     >
-      <div class="col col-lg-6 col-xl-7 text-light">
+      <Column lg="6" xl="7" class="text-light">
         <h1 class="visually-hidden" set:text={title}></h1>
         <p class="display-2">A fun and accessible team-building activity.</p>
         <p class="lead">
@@ -58,8 +59,8 @@ import woodenPuzzles from "src/images/escape-room/wooden-puzzles.png";
             </a>
           </div>
         </div>
-      </div>
-      <div class="d-none d-lg-block col-lg-5 col-xl-4 position-relative" style="height: 325px">
+      </Column>
+      <Column noDefault lg="5" xl="4" class="d-none d-lg-block position-relative" style="height: 325px">
         <Image
           width={400}
           class="img-wp rounded position-absolute top-0 end-0"
@@ -74,7 +75,7 @@ import woodenPuzzles from "src/images/escape-room/wooden-puzzles.png";
           alt=""
           aria-hidden="true"
         />
-      </div>
+      </Column>
     </div>
   </ThemedSection>
 
