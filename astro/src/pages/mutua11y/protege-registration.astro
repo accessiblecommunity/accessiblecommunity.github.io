@@ -28,6 +28,7 @@ const crumbs: Breadcrumbs = [
 ];
 
 import Branding from "@components/Branding.astro";
+import Column from "@components/Column.astro";
 import GoogleForm from "@components/forms/GoogleForm.astro";
 import ImageHeading from "@components/ImageHeading.astro";
 import Layout from "src/layouts/Layout.astro";
@@ -53,7 +54,7 @@ import ThemedSection from "@components/ThemedSection.astro";
       </Fragment>
       <input type="hidden" name="Type" value="ProtegeRegistration" />
       <div class="row">
-        <div class="col-md-6 mb-3">
+        <Column noDefault md="6" class="mb-3">
           <label for="fullNameField" class="form-label mb-1 required-field"
             >Full Name</label
           ><span class="asterisk"></span>
@@ -70,8 +71,8 @@ import ThemedSection from "@components/ThemedSection.astro";
           <p id="fullNameHelp" class="form-text">
             Please provide your full legal name.
           </p>
-        </div>
-        <div class="col-md-6 mb-3">
+        </Column>
+        <Column noDefault md="6" class="mb-3">
           <label for="citedNameField" class="form-label mb-1"
             >Cited Name</label
           ></span>
@@ -87,8 +88,8 @@ import ThemedSection from "@components/ThemedSection.astro";
           <p id="citedNameHelp" class="form-text">
             How you would like us to refer to you.
           </p>
-        </div>
-        <div class="col-md-6 mb-3">
+        </Column>
+        <dColumn noDefault md="6" class="mb-3">
           <label for="emailField" class="form-label mb-1 required-field"
             >Email Address</label
           ><span class="asterisk"></span>
@@ -106,8 +107,8 @@ import ThemedSection from "@components/ThemedSection.astro";
             This will be the primary method that we will contact you.
             Please use an email address that you check on a regular basis.
           </p>
-        </div>
-        <div class="col-md-6 mb-3">
+        </Column>
+        <Column noDefault md="6" class="mb-3">
           <label for="linkedInField" class="form-label mb-1"
             >LinkedIn Profile</label
           ><span class="asterisk"></span>
@@ -123,16 +124,16 @@ import ThemedSection from "@components/ThemedSection.astro";
           <p id="linkedInHelp" class="form-text">
             The url of your LinkedIn profile, in you have one and would like it shared.
           </p>
-        </div>
+        </Column>
       </div>
       <div class="row border-top border-1 border-info mt-4 pt-4">
-        <div class="col-md-12 mb-3">
+        <Column noDefault md="12" class="mb-3">
           <h3 class="display-5">Your location and language information</h3>
           <p class="form-text">
             We will use this information to try and best match your geographic region, timezone and spoken languages whenever possible.
           </p>
-        </div>
-        <div class="col-md-6 mb-3">
+        </Column>
+        <Column noDefault md="6" class="mb-3">
           <fieldset>
             <legend class="mb-1 fs-6 required-field">
               What region do you primarily live and work in? <span class="asterisk" aria-hidden="true"></span>
@@ -149,8 +150,8 @@ import ThemedSection from "@components/ThemedSection.astro";
               { regions.map((region) => <option value={region} set:text={region} />) }
             </select>
           </fieldset>
-        </div>
-        <div class="col-md-6 mb-3">
+        </Column>
+        <Column noDefault md="6" class="mb-3">
           <fieldset>
             <legend class="mb-1 fs-6 required-field">
               What timezone do you live in? <span class="asterisk" aria-hidden="true"></span>
@@ -165,7 +166,7 @@ import ThemedSection from "@components/ThemedSection.astro";
               { timeZones.map((tz) => <option value={tz} set:text={tz} />) }
             </select>
           </fieldset>
-        </div>
+        </Column>
         <div class="col-12 mb-3">
           <fieldset aria-required>
             <legend class="mb-2 fs-6">
@@ -194,7 +195,7 @@ import ThemedSection from "@components/ThemedSection.astro";
             </div>
           </fieldset>
         </div>
-        <div class="col-md-6">
+        <Column noDefault md="6">
           <label for="englishField" class="form-label mb-1 required-field">
             Is English your preferred language?
           </label><span class="asterisk" />
@@ -202,8 +203,8 @@ import ThemedSection from "@components/ThemedSection.astro";
             <option value="yes">Yes</option>
             <option value="no">No</option>
           </select>
-        </div>
-        <div class="col-md-6">
+        </Column>
+        <Column noDefault md="6">
           <label for="otherLanguagesField" class="form-label mb-1">
             If no, please specify your preferred language(s):
           </label>
@@ -213,18 +214,18 @@ import ThemedSection from "@components/ThemedSection.astro";
             name="OtherLanguages"
             class="form-control w-100"
           />
-        </div>
-        <div class="col-md-12 mb-3">
-        </div>
+        </Column>
+        <Column noDefault md="12" class="mb-3">
+        </Column>
       </div>
       <div class="row border-top border-1 border-info mt-4 pt-4">
-        <div class="col-md-12">
+        <Column noDefault md="12">
           <h3 class="display-5">Your accessibility experience</h3>
           <p class="form-text">
             We will use this information to try and best match a mentor with a similar background and interests.
           </p>
-        </div>
-        <div class="col-lg-6">
+        </Column>
+        <Column noDefault lg="6">
           <label for="backgroundField" class="form-label required-field">
             Briefly describe your accessibility background.
           </label><span class="asterisk" />
@@ -239,8 +240,8 @@ import ThemedSection from "@components/ThemedSection.astro";
           <p id="backgroundHelp" class="form-text">
             In a couple of sentences, describe your accessibility background and experience. Please include descriptions of projects you've worked on and how long you've been working in the field.
           </p>
-        </div>
-        <div class="col-lg-6">
+        </Column>
+        <Column noDefault lg="6">
           <label for="goalsField" class="form-label required-field">
             Briefly describe your goals for participation.
           </label><span class="asterisk" />
@@ -255,8 +256,8 @@ import ThemedSection from "@components/ThemedSection.astro";
           <p id="goalsHelp" class="form-text">
             In a couple of sentences, explain why you are registering to be a mentor and what a successful mentorship looks like.
           </p>
-        </div>
-        <div class="col-lg-12 col-xl-6">
+        </Column>
+        <Column noDefault lg="12" xl="6">
           <fieldset class="mb-3">
             <legend class="mb-2 fs-6">
               What areas are you interested in?
@@ -283,8 +284,8 @@ import ThemedSection from "@components/ThemedSection.astro";
               }
             </div>
           </fieldset>
-        </div>
-        <div class="col-lg-12 col-xl-6">
+        </Column>
+        <Column noDefault lg="12" xl="6">
           <div class="d-none d-lg-block d-xl-none border border-top mb-3">
           </div>
           <fieldset aria-required class="mb-3">
@@ -314,8 +315,8 @@ import ThemedSection from "@components/ThemedSection.astro";
               }
             </div>
           </fieldset>
-        </div>
-        <div class="col-lg-12 col-xl-6">
+        </Column>
+        <Column noDefault lg="12" xl="6">
           <div class="d-none d-lg-block d-xl-none border border-top mb-3">
           </div>
           <fieldset class="mb-3">
@@ -344,7 +345,7 @@ import ThemedSection from "@components/ThemedSection.astro";
               }
             </div>
           </fieldset>
-        </div>
+        </Column>
       </div>
       <div class="row border-top border-1 border-info mt-4 pt-4">
         <h3 class="mt-4">Code of Conduct</h3>
