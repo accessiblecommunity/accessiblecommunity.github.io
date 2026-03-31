@@ -5,6 +5,7 @@ import components from "@lib/mdx";
 import { getEntry, render, type CollectionEntry } from "astro:content";
 
 import Branding from "../components/Branding.astro";
+import Column from "../components/Column.astro";
 import Hero from "../components/Hero.astro";
 import { Icon } from "astro-icon/components";
 import Layout from "../layouts/Layout.astro";
@@ -116,7 +117,7 @@ const statesAccepting = [
 
   <ThemedSection style="tertiary">
     <div class="row justify-content-center">
-      <div class="col col-lg-10 donor-letter">
+      <Column lg="10" class="donor-letter">
         <h2 class="display-5">Dear <strong>potential donor</strong>,</h2>
         <Content components={{ThemedBox, Quote, ...components}} />
         <div class="text-primary-emphasis text-end fs-4 my-4 founder-cited">
@@ -159,14 +160,14 @@ const statesAccepting = [
             >
           </p>
         </div> -->
-      </div>
+      </Column>
     </div>
   </ThemedSection>
 
   <ShadowBoxSection theme="info" style="secondary">
     <h2 class="display-3 text-center fw-bold my-3">How can I help?</h2>
     <div class="row justify-content-center px-3">
-      <div class="col col-lg-3 col-xl-2">
+      <Column lg="3" xl="2">
         <div
           class="d-grid d-sm-flex flex-lg-column justify-content-sm-center gap-3 pb-3"
         >
@@ -184,8 +185,8 @@ const statesAccepting = [
             ))
           }
         </div>
-      </div>
-      <div class="col-lg-7">
+      </Column>
+      <Column noDefault lg="7">
         <p>
           If you would like to make a donation through corporate or government giving,
           by check, or some other means, please <a href={directorEmail}
@@ -198,7 +199,7 @@ Suite CC1002
 Purcellville, VA  20132</pre>
           If you are intestered in volunteering, please see our <a href="/volunteer/">volunteer page</a>.
         </p>
-      </div>
+      </Column>
     </div>
   </ShadowBoxSection>
 </Layout>
