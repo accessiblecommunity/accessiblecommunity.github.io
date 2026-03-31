@@ -1,0 +1,35 @@
+---
+import { undefined } from 'astro:schema';
+
+type ColumnSizes = "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9" | "10" | "11" | "12";
+
+export interface Props {
+  class?: string;
+  noDefault?: boolean;
+  sm?: ColumnSizes;
+  md?: ColumnSizes;
+  lg?: ColumnSizes;
+  xl?: ColumnSizes;
+  xxl?: ColumnSizes;
+}
+
+const {
+  class: cssClass = "",
+  noDefault = false,
+  sm = undefined,
+  md = undefined,
+  lg = undefined,
+  xl = undefined,
+  xxl = undefined,
+} = Astro.props;
+---
+
+<div class:list={[
+  !noDefault && "col", 
+  sm && `col-sm-${sm}`,
+  md && `col-md-${md}`,
+  lg && `col-lg-${lg}`,
+  xl && `col-xl-${xl}`,
+  xxl && `col-xxl-${xxl}`,
+  cssClass,
+]}><slot /></div>
