@@ -7,4 +7,5 @@ cited:
 roles:
   default: Communications Team
   communications: Video Editor
+current: false
 ---

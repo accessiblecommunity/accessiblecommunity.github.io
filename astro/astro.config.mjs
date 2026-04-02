@@ -129,7 +129,7 @@ export default defineConfig({
           '/services/escape-room/content/',
           '/tips/archive/',
         ],
-      },
-    ]
+      }
+    ],
   })],
 });

@@ -127,7 +127,7 @@ const NameTag = element;
             <a
               href={formatLinkUrl(linkType, linkValue)}
               class="vignette-link"
-              title={`${memberData.name}'s ${linkType}`}
+              title={`${memberData.cited?.first ?? memberData.name.first}'s ${linkType}`}
               target={
                 linkType !== "email" && linkType !== "phone" ?
                   "_blank"
