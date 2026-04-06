@@ -90,8 +90,7 @@ const crumbs = [];
       </ThemedColumn>
       <Column
         lg="3"
-        class="p-3 shadow rounded no-bg-color"
-        style={`background-image: url(${fixBgNoColor.src});`}
+        class="p-3 shadow rounded no-bg-color bg-example"
       >
         <p class="text-center text-light fs-4">
           Always specify a <code>background-color</code>, even when an image is
@@ -308,6 +307,10 @@ const crumbs = [];
     background-size: 100% 100%;
     background-repeat: no-repeat;
     align-content: center;
+  }
+
+  .bg-example {
+    background-image: url(${fixBgNoColor.src});
   }
 
   @include color-mode(dark) {

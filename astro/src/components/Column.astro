@@ -6,7 +6,6 @@ type ColumnSizes = "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9" | "10" | 
 export interface Props {
   id?: string;
   class?: string;
-  style?: string;
   noDefault?: boolean;
   sm?: ColumnSizes;
   md?: ColumnSizes;
@@ -18,7 +17,6 @@ export interface Props {
 const {
   id: elementID = "",
   class: cssClass = "",
-  style: inlineStyle = "",
   noDefault = false,
   sm = undefined,
   md = undefined,
@@ -37,5 +35,4 @@ const {
   xxl && `col-xxl-${xxl}`,
   elementID,
   cssClass,
-  inlineStyle,
 ]}><slot /></div>

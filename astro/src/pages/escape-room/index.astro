@@ -60,21 +60,23 @@ import woodenPuzzles from "src/images/escape-room/wooden-puzzles.png";
           </div>
         </div>
       </Column>
-      <Column noDefault lg="5" xl="4" class="d-none d-lg-block position-relative" style="height: 325px">
-        <Image
-          width={400}
-          class="img-wp rounded position-absolute top-0 end-0"
-          src={woodenPuzzles}
-          alt=""
-          aria-hidden="true"
-        />
-        <Image
-          width={300}
-          class="img-bb position-absolute bottom-0 start-0"
-          src={brailleBlocks}
-          alt=""
-          aria-hidden="true"
-        />
+      <Column noDefault lg="5" xl="4" class="d-none d-lg-block position-relative">
+        <div class="escape-img-column">
+          <Image
+            width={400}
+            class="img-wp rounded position-absolute top-0 end-0"
+            src={woodenPuzzles}
+            alt=""
+            aria-hidden="true"
+          />
+          <Image
+            width={300}
+            class="img-bb position-absolute bottom-0 start-0"
+            src={brailleBlocks}
+            alt=""
+            aria-hidden="true"
+          />
+        </div>
       </Column>
     </div>
   </ThemedSection>
@@ -173,6 +175,9 @@ import woodenPuzzles from "src/images/escape-room/wooden-puzzles.png";
   .card-title {
     font-weight: 500;
     font-size: 1.3rem;
+  }
+  .escape-img-column {
+    height: 325px;
   }
   h2, h3, h4 {
     color: var(--bs-info);
