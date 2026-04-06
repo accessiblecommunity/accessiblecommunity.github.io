@@ -4,6 +4,7 @@ import { undefined } from 'astro:schema';
 type ColumnSizes = "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9" | "10" | "11" | "12";
 
 export interface Props {
+  id?: string;
   class?: string;
   noDefault?: boolean;
   sm?: ColumnSizes;
@@ -14,6 +15,7 @@ export interface Props {
 }
 
 const {
+  id: elementID = "",
   class: cssClass = "",
   noDefault = false,
   sm = undefined,
@@ -31,5 +33,6 @@ const {
   lg && `col-lg-${lg}`,
   xl && `col-xl-${xl}`,
   xxl && `col-xxl-${xxl}`,
+  elementID,
   cssClass,
 ]}><slot /></div>
