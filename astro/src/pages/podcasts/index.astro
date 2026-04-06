@@ -120,20 +120,44 @@ import ThemedBox from "@components/ThemedBox.astro";
       </ThemedSection>
     ))
   }
-  
-  <ThemedSection style="tertiary">
-    <h2>Share your experience</h2>
+
+  <ThemedSection text>
+    <h2 class="display-4">Share your experience</h2>
     <p>
       Would you like to share your experiences living with disability with our podcasts? Do you have an accessibility success story you would like to share?
       Please complete the sign up form below and we will be in touch.
     </p>
+
     <GoogleForm
       id="podcastInterviewForm"
-      class="col p-4 bg-body form-border interview-form"
-      key="TODO"
+      key="AKfycbx26smDFVUQy7lquGCDUAVBDdk5sqRS5k6_MgWJKDd9-qIkjm2OSH3uCSUpPIZCaG0"
+      class="col p-4 bg-body-tertiary border border-2 border-primary rounded"
     >
-      <div class="row flex-lg-row">
-        <div class="col-lg-6">
+      <div slot="prelude">
+        <h3 class="text-info">What You Can Expect</h3>
+        <ul>
+          <li>
+            A supportive and empathetic interview by a knowledgeable professional.
+          </li>
+          <li>
+            A pre-interview meeting to answer any questions you have, ensure you have the accommodations you need, familiarize you with the process, and ensure you are comfortable answering the questions.
+          </li>
+          <li>
+            We schedule interviews for 1 hour 15 minutes but you control the time. We can stop early or run over, based on your comfort level.
+          </li>
+          <li>
+            We understand concerns about AI and privacy. We commit to not using AI on content associated with your name beyond Zoom transcription used during the interviews.
+          </li>
+        </ul>
+        <h3 class="text-info">Upcoming Topics</h3>
+        <ul>
+          <li>April: Multiple Sclerosis</li>
+          <li>May: TBD</li>
+        </ul>
+        <h3 class="text-info">Podcast Interview Form</h3>
+      </div>
+      <div class="row row-cols-1 row-cols-lg-2">
+        <div class="col col-lg-6">
           <div class="mb-3">
             {/* Name */}
             <label for="firstNameField" class="form-label mb-1 required-field">
@@ -142,124 +166,108 @@ import ThemedBox from "@components/ThemedBox.astro";
             <span class="asterisk"></span>
             <input
               type="text"
-              name="firstName"
+              name="FirstName"
               class="form-control w-100"
               id="firstNameField"
               autocomplete="name"
               required
             />
           </div>
-        <div class="mb-3">
-          <label for="lastNameField" class="form-label mb-1 required-field">
-            Last name
-          </label>
-          <span class="asterisk"></span>
-          <input
-            type="text"
-            name="lastName"
-            class="form-control w-100"
-            id="lastNameField"
-            autocomplete="name"
-            required
-          />
-        </div>
-
-        {/* Email */}
-        <div class="mb-3">
-          <label for="emailField" class="form-label mb-1 required-field">
-            Email
-          </label>
-          <span class="asterisk"></span>
-          <input
-            type="text"
-            name="Email"
-            class="form-control w-100"
-            id="emailField"
-            aria-describedby="emailHelp"
-            required
-          />
-          <div id="emailHelp" class="form-text small">
-            We will only use this address to contact you regarding the
-            interview.
-            <a href="/privacy-policy" target="_blank">Privacy policy</a>.
-          </div>
-        </div>
-
-        {/* Disability or Accessibility success topic */}
-        <div class="mb-4">
-          <label for="topic" class="form-label mb-1 required-field">
-            Disability or Accessibility Success Topic
-          </label>
-          <span class="asterisk"></span>
-          <select name="topic" class="form-control w-100" id="topic" required>
-            <option value="" disabled selected>Select a topic</option>
-            <option value="accessibilitySuccess">Accessibility Success Story</option>
-            <option value="other">Other (please specify in comments)</option>
-          </select>
-        </div>
-
-        <div class="mb-4">
-          <input type="checkbox" name="consent" id="consent" class="form-check-input" required />
-          <label for="consent" class="form-label mb-1 required-field">
-            Would you like your name used or to be anonymous?
-          </label>
-        </div>
-
-        {/* Accommodations */}
-        <div class="mb-3">
-          <label for="accommodationField" class="form-label mb-1 required-field">
-            Do you need any accomodations to be successful?
-          </label>
-          <p id="accomodationHelp" class="form-text small">
-            Please list any accomodations that you need for the interview or ongoing communciations.
-          </p>
-          <textarea
-            name="accommodations"
-            class="form-control w-100"
-            id="accommodationField"
-            aria-describedby="accomodationHelp"
-          />
-        </div>
-
-          {/* Comments */}
-          <div>
-            <label for="comments" class="form-label mb-1 required-field">
-              General comments
+          <div class="mb-4">
+            <label for="lastNameField" class="form-label mb-1 required-field">
+              Last name
             </label>
-            <textarea
-              name="comments"
+            <span class="asterisk"></span>
+            <input
+              type="text"
+              name="LastName"
               class="form-control w-100"
-              id="comments"
+              id="lastNameField"
+              autocomplete="name"
+              required
             />
           </div>
+          <div class="mb-3">
+            <input type="checkbox" name="Consent" id="consent" class="form-check-input" required />
+            <label for="consent" class="form-label mb-1 required-field">
+              Would you like your name used or to be anonymous?
+            </label>
+          </div>
+
+          {/* Disability or Accessibility success topic */}
+          <div class="mb-3">
+            <label for="topic" class="form-label mb-1 required-field">
+              Disability or Accessibility Success Topic
+            </label>
+            <span class="asterisk"></span>
+            <select name="Topic" class="form-control w-100" id="topic" required>
+              <option value="" disabled selected>Select a topic</option>
+              <option value="accessibilitySuccess">Accessibility Success Story</option>
+              <option value="other">Other (please specify in comments)</option>
+            </select>
+          </div>
+
+          {/* Email */}
+          <div class="mb-3">
+            <label for="emailField" class="form-label mb-1 required-field">
+              Email
+            </label>
+            <span class="asterisk"></span>
+            <input
+              type="text"
+              name="Email"
+              class="form-control w-100"
+              id="emailField"
+              aria-describedby="emailHelp"
+              required
+            />
+            <p id="emailHelp" class="form-text small">
+              We will only use this address to contact you regarding the
+              interview.
+              <a href="/privacy-policy" target="_blank">Privacy policy</a>.
+            </p>
+          </div>
         </div>
-        <div class="col-lg-6">
-          <h3>What You Can Expect</h3>
-          <ul>
-            <li>
-              A supportive and empathetic interview by a knowledgeable professional.
-            </li>
-            <li>
-              A pre-interview meeting to answer any questions you have, ensure you have the accommodations you need, familiarize you with the process, and ensure you are comfortable answering the questions.
-            </li>
-            <li>
-              We schedule interviews for 1 hour 15 minutes but you control the time. We can stop early or run over, based on your comfort level.
-            </li>
-            <li>
-              We understand concerns about AI and privacy. We commit to not using AI on content associated with your name beyond Zoom transcription used during the interviews.
-            </li>
-          </ul>
-          <h4>Upcoming Topics</h4>
-          <p>
-            April: Multiple Sclerosis
-          </p>
-          <p>
-            May: TBD
-          </p>
-        </div>
+
+        <div class="col col-lg-6">
+          {/* Accommodations */}
+          <div class="mb-3">
+            <label for="accommodationField" class="form-label mb-1 required-field">
+              Do you need any accomodations to be successful?
+            </label>
+            <textarea
+              id="accommodationField"
+              name="Accommodations"
+              class="form-control w-100"
+              rows="4"
+              aria-describedby="accomodationHelp"
+            />
+            <p id="accomodationHelp" class="form-text small">
+              Please list any accomodations that you need for the interview or ongoing communciations.
+            </p>
+          </div>
+
+            {/* Comments */}
+            <div>
+              <label for="comments" class="form-label mb-1 required-field">
+                General comments
+              </label>
+              <textarea
+                id="comments"
+                name="Comments"
+                class="form-control w-100"
+                rows="4"
+                aria-describedby="commentsHelp"
+              />
+              <p id="commentsHelp" class="form-text small">
+                Please add any other comments, thoughts or questions you have.
+              </p>
+            </div>
+          </div>
       </div>
     </GoogleForm>
   </ThemedSection>
+
   {/* Credits */}
   <ThemedSection style="secondary">
     <h2 class="display-4">Credits and Thanks</h2>
