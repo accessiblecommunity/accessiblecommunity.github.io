@@ -5,6 +5,7 @@ interface Props {
   arrayFields?: Array<string>;
   class?: string;
   messageText?: string;
+  buttonTheme?: string;
 }
 
 const defaultMessage =
@@ -15,6 +16,7 @@ const {
   arrayFields = [],
   class: classes = null,
   messageText = defaultMessage,
+  buttonTheme = "info",
 } = Astro.props;
 const messageId = `${id}-message`;
 ---
@@ -29,7 +31,7 @@ const messageId = `${id}-message`;
   <slot />
   <slot name="buttons">
     <div class="col-md-6 mt-4 mx-auto">
-      <button type="submit" class="btn btn-info w-100">Submit</button>
+      <button type="submit" class={`btn btn-${buttonTheme} w-100`}>Submit</button>
     </div>
   </slot>
 </form>
