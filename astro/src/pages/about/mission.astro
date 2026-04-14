@@ -7,6 +7,7 @@ import Quote from "../../components/Quote.astro";
 import ThemedBox from "../../components/ThemedBox.astro";
 import ThemedColumn from "../../components/ThemedColumn.astro";
 import ThemedSection from "../../components/ThemedSection.astro";
+import Row from "../../components/Row.astro";
 import ShadowBoxSection from "../../components/ShadowBoxSection.astro";
 import { Image } from "astro:assets";
 import type { Breadcrumbs, PageMetadata } from "@lib/types";
@@ -142,11 +143,11 @@ import partnerImage from "../../images/np_Business-partners-discussing-work-arra
   </ThemedSection>
 
   <ShadowBoxSection theme="info">
-    <div class="row gap-4">
+    <Row gap="4">
       <h2 class="col display-3 text-center py-4">
         <strong>Communities</strong> are <strong>people</strong>.
       </h2>
-    </div>
+    </Row>
     <div class="d-flex flex-column flex-lg-row gap-3 justify-content-lg-evenly">
       <ThemedColumn
         lg="3"

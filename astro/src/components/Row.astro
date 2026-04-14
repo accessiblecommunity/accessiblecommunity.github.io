@@ -1,12 +1,18 @@
 ---
+import { undefined } from 'astro:schema';
+
+type gapSizes = "1" | "2" | "3" | "4";
+
 export interface Props {
   id?: string;
   class?: string;
+  gap?: gapSizes;
 }
 
 const {
   id: elementID = "",
   class: cssClass = "",
+  gap = undefined,
 } = Astro.props;
 ---
 
@@ -14,4 +20,5 @@ const {
   "row", 
   elementID,
   cssClass,
+  gap && `gap-${gap}`,
 ]}><slot /></div>
