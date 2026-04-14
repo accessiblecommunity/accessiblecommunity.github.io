@@ -20,6 +20,7 @@ import Column from "@components/Column.astro";
 import { Icon } from "astro-icon/components";
 import { Image } from "astro:assets";
 import EscapeRoomLayout from "src/layouts/EscapeRoomLayout.astro";
+import Row from "@components/Row.astro";
 import ThemedSection from "@components/ThemedSection.astro";
 import { YouTube } from 'astro-lazy-youtube-embed'
 
@@ -39,7 +40,7 @@ import woodenPuzzles from "src/images/escape-room/wooden-puzzles.png";
           Where teams of 3-10 people, with or without disabilities, try to solve
           puzzles to reach an objective while learning about accessibility.
         </p>
-        <div class="row row-cols-1 row-cols-sm-2">
+        <Row baseRowCols="1" smRowCols="2">
           <div class="col">
             <a
               class="link-light link-offset-1 icon-link"
@@ -58,7 +59,7 @@ import woodenPuzzles from "src/images/escape-room/wooden-puzzles.png";
               How the rooms work
             </a>
           </div>
-        </div>
+        </Row>
       </Column>
       <Column noDefault lg="5" xl="4" class="d-none d-lg-block position-relative">
         <div class="escape-img-column">
@@ -127,7 +128,7 @@ import woodenPuzzles from "src/images/escape-room/wooden-puzzles.png";
       or venue, we now offer the <a href="/escape-room/themes" class="link-info">following themes</a>:</p
     >
 
-    <div class="row row-cols-2 g-3 align-items-stretch">
+    <Row baseRowCols="2" g="3" class="align-items-stretch">
       {
         rooms.map(room => (
           <div class="col">
@@ -149,7 +150,7 @@ import woodenPuzzles from "src/images/escape-room/wooden-puzzles.png";
           </div>
         ))
       }
-    </div>
+    </Row>
     <p class="lead pt-4">
       If you are interested in purchasing, please email us at <a
         class="link-info link-truncate"
