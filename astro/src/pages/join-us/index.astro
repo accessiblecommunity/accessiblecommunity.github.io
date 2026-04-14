@@ -1,6 +1,7 @@
 ---
 import Branding from "../../components/Branding.astro";
 import ExternalLink from "../../components/ExternalLink.astro";
+import FlexColumn from "../../components/FlexColumn.astro";
 import Hero from "../../components/Hero.astro";
 import { Icon } from "astro-icon/components";
 import Layout from "../../layouts/Layout.astro";
@@ -57,8 +58,8 @@ const metadata: PageMetadata = {
   </Hero>
 
   <ThemedSection style="tertiary">
-    <div
-      class="container d-flex flex-column flex-lg-row gap-5 justify-content-xl-between"
+    <FlexColumn
+      lgFlexRow gap="5" class="container justify-content-xl-between"
     >
       <ThemedColumn
         lg="6"
@@ -74,6 +75,6 @@ const metadata: PageMetadata = {
       >
         <Quote q="kindness" />
       </ThemedColumn>
-    </div>
+    </FlexColumn>
   </ThemedSection>
 </Layout>
