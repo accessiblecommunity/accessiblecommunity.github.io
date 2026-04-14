@@ -2,17 +2,20 @@
 import { undefined } from 'astro:schema';
 
 type gapSizes = "1" | "2" | "3" | "4";
+type gutterSizes = "1" | "2" | "3" | "4" | "5";
 
 export interface Props {
   id?: string;
   class?: string;
   gap?: gapSizes;
+  gutters?: gutterSizes;
 }
 
 const {
   id: elementID = "",
   class: cssClass = "",
   gap = undefined,
+  gutters = undefined,
 } = Astro.props;
 ---
 
@@ -21,4 +24,5 @@ const {
   elementID,
   cssClass,
   gap && `gap-${gap}`,
+  gutters && `gutters-${gutters}`,
 ]}><slot /></div>
