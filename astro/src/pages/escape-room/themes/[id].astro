@@ -47,6 +47,7 @@ const themeVar = `var(--bs-${theme})`;
 const textVar = `var(--bs-${theme}-text-emphasis)`;
 
 import Column from "@components/Column.astro";
+import FlexColumn from "@components/FlexColumn.astro";
 import Hero from "@components/HeroWithBreadcrumbs.astro";
 import { Icon } from "astro-icon/components";
 import Layout from "src/layouts/EscapeRoomLayout.astro";
@@ -65,7 +66,7 @@ import ThemedSection from "@components/ThemedSection.astro";
       <div class="p-4">
         <h2 class={`text-${theme}-emphasis`}>The Scenario</h2>
         <p set:text={room.data.tagline} />
-        <div class="d-flex flex-column flex-lg-row">
+        <FlexColumn lgFlexRow>
           {
             about.players && (
               <Column class="py-1">
@@ -82,7 +83,7 @@ import ThemedSection from "@components/ThemedSection.astro";
               </Column>
             )
           }
-        </div>
+        </FlexColumn>
         <Row gy="2">
           {
             about.estimatedMaterialCost && (
