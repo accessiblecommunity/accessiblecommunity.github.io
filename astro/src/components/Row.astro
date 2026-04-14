@@ -9,6 +9,8 @@ export interface Props {
   class?: string;
   gap?: gapSizes;
   gutters?: gutterSizes;
+  gx?: gutterSizes;
+  gy?: gutterSizes;
 }
 
 const {
@@ -16,6 +18,8 @@ const {
   class: cssClass = "",
   gap = undefined,
   gutters = undefined,
+  gx = undefined,
+  gy = undefined,
 } = Astro.props;
 ---
 
@@ -24,5 +28,7 @@ const {
   elementID,
   cssClass,
   gap && `gap-${gap}`,
-  gutters && `gutters-${gutters}`,
+  gutters && `g-${gutters}`,
+  gx && `gx-${gutters}`,
+  gy && `gy-${gutters}`,
 ]}><slot /></div>
