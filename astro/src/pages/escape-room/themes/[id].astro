@@ -50,8 +50,8 @@ import Column from "@components/Column.astro";
 import Hero from "@components/HeroWithBreadcrumbs.astro";
 import { Icon } from "astro-icon/components";
 import Layout from "src/layouts/EscapeRoomLayout.astro";
-import ThemedSection from "@components/ThemedSection.astro";
 import Row from "@components/Row.astro";
+import ThemedSection from "@components/ThemedSection.astro";
 ---
 
 <Layout {metadata} {title}>
@@ -61,7 +61,7 @@ import Row from "@components/Row.astro";
     </Hero>
   </div>
   <ThemedSection>
-    <div class="row row-cols-1 row-cols-lg-2 g-4">
+    <Row baseRowCols="1" lgRowCols="2" g="4">
       <div class="p-4">
         <h2 class={`text-${theme}-emphasis`}>The Scenario</h2>
         <p set:text={room.data.tagline} />
@@ -108,7 +108,7 @@ import Row from "@components/Row.astro";
           >Contact Us to Purchase</a>
         </div>
       </div>
-    </div>
+    </Row>
   </ThemedSection>
   <div class="local-wrapper">
     <ThemedSection {theme} style="subtle">
