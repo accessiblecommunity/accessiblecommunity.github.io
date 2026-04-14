@@ -4,7 +4,7 @@ interface Props {
   theme?: string;
   style?: string;
   text?: boolean;
-  verticalPaddings?: Array<string>;
+  yPaddings?: Array<string>;
   fluid?: boolean;
 }
 
@@ -13,18 +13,18 @@ const {
   theme = undefined,
   style = undefined,
   text = false,
-  verticalPaddings = ["xs-1", "sm-2", "md-3", "lg-4"],
+  yPaddings = ["xs-1", "sm-2", "md-3", "lg-4"],
   fluid = false,
 } = Astro.props;
 
 import { getBackgroundAndText } from "../lib/themes.ts";
 
 const bgAndTextClass = getBackgroundAndText(theme, style, text);
-const verticalPaddingClasses = verticalPaddings.map((p) => `py-${p}`);
+const yPaddingClasses = yPaddings.map((p) => `py-${p}`);
 ---
 
 <section {id} class:list={[bgAndTextClass, "py-4"]}>
-  <div class:list={[`container${fluid ? "-fluid" : ""}`, verticalPaddingClasses]}>
+  <div class:list={[`container${fluid ? "-fluid" : ""}`, yPaddingClasses]}>
     <slot />
   </div>
 </section>
