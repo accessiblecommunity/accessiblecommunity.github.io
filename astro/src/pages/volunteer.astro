@@ -8,6 +8,7 @@ import { sortBy } from "lodash-es";
 
 import Branding from "../components/Branding.astro";
 import Column from "../components/Column.astro";
+import FlexColumn from "@components/FlexColumn.astro";
 import GoogleForm from "@components/forms/GoogleForm.astro";
 import Hero from "../components/Hero.astro";
 import { Icon } from "astro-icon/components";
@@ -83,8 +84,8 @@ const orderedTeams = sortBy(teams, ["id"]);
   </Hero>
 
   <ThemedSection style="tertiary">
-    <div
-      class="d-flex flex-column flex-lg-row gap-4 justify-content-lg-between align-items-center"
+    <FlexColumn
+      lgFlexRow gap="4" class="justify-content-lg-between align-items-center"
     >
       <Column lg="7">
         <h2 class="display-4 mb-4">
@@ -109,12 +110,12 @@ const orderedTeams = sortBy(teams, ["id"]);
         style="height: auto"
         alt="A group of people gathered around a laptop"
       />
-    </div>
+    </FlexColumn>
   </ThemedSection>
 
   <ThemedSection id="orientation" theme="primary">
-    <div
-      class="d-flex flex-column flex-lg-row-reverse gap-5 justify-content-lg-between align-items-center"
+    <FlexColumn
+      gap="5" class="flex-lg-row-reverse justify-content-lg-between align-items-center"
     >
       <Column lg="5" xl="6">
         <h2 class="display-3 text-light mb-4">
@@ -136,7 +137,7 @@ const orderedTeams = sortBy(teams, ["id"]);
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
         referrerpolicy="strict-origin-when-cross-origin"
         allowfullscreen></iframe>
-    </div>
+    </FlexColumn>
   </ThemedSection>
 
   <ThemedSection id="teams" style="secondary">
