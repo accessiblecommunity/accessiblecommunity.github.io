@@ -20,6 +20,7 @@ const crumbs: Breadcrumbs = [
 ];
 
 import Branding from "@components/Branding.astro";
+import Column from "@components/Column.astro";
 import GoogleForm from "@components/forms/GoogleForm.astro";
 import Hero from "@components/ColumnedHero.astro";
 import Layout from "src/layouts/Layout.astro";
@@ -73,7 +74,7 @@ const timeSlots = ["7:20", "7:50", "8:20", "8:50", "9:20"];
       class="col p-4 bg-body border border-2 border-primary-contrast rounded"
     >
       <div class="row">
-        <div class="col-md-12 mb-3">
+        <Column noDefault md="12" class="mb-3">
           <label for="nameField" class="form-label mb-1 required-field"
             >Full Name</label
           ><span class="asterisk"></span>
@@ -85,8 +86,8 @@ const timeSlots = ["7:20", "7:50", "8:20", "8:50", "9:20"];
             autocomplete="full-name"
             required
           />
-        </div>
-        <div class="col-md-6 mb-3">
+        </Column>
+        <Column noDefault md="6" class="mb-3">
           <label for="emailField" class="form-label mb-1 required-field"
             >Email Address</label
           ><span class="asterisk"></span>
@@ -103,8 +104,8 @@ const timeSlots = ["7:20", "7:50", "8:20", "8:50", "9:20"];
             The email you would like us to use for confirmation, scheduling
             updates, or cancellations.
           </div>
-        </div>
-        <div class="col-md-6 mb-3">
+        </Column>
+        <Column noDefault md="6" class="mb-3">
           <label for="phoneField" class="form-label mb-1 required-field"
             >Phone (or WhatsApp) Number</label
           ><span class="asterisk"></span>
@@ -121,7 +122,7 @@ const timeSlots = ["7:20", "7:50", "8:20", "8:50", "9:20"];
             The phone number (or WhatsApp number) you would like us to use for
             confirmation, scheduling updates, or cancellations.
           </div>
-        </div>
+        </Column>
 
         <div class="col-12 mb-3">
           <fieldset>

@@ -10,6 +10,7 @@ const metadata: PageMetadata = {
 };
 
 import Branding from "@components/Branding.astro";
+import Column from "@components/Column.astro";
 import Hero from "@components/ColumnedHero.astro";
 import Layout from "src/layouts/Layout.astro";
 import ThemedSection from "@components/ThemedSection.astro";
@@ -47,19 +48,19 @@ import { Icon } from "astro-icon/components";
     <h2>Our Goal</h2>
     <p>To establish and nurture disability-inclusive communities that help accessibility experts grow their experience and connections.</p>
     <div class="row row-cols-lg-2 g-5 py-4">
-      <div class="col-lg-6">
+      <Column noDefault lg="6">
         <h3 class="text-center">Mentoring</h3>
         <p>The mutua11y accessibility mentoring program brings together emerging accessibility professionals with experienced mentors.
             <br />
             <a href="/mutua11y/mentoring/">Learn More About Mentoring</a>
         </p>
-      </div>
-      <div class="col-lg-6">
+      </Column>
+      <Column noDefault lg="6">
         <h3 class="text-center">Workshops</h3>
         <p>
           No cost workshops to spark global accessibility conversations to collaborate and share knowledge and resources.:
         </p>
-      </div>
+      </Column>
       <div class="col-lg-8 text-center mx-auto">
         <h3>Resource Library</h3>
         <p>

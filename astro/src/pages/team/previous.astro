@@ -92,6 +92,7 @@ const crumbs: Breadcrumbs = [
 ];
 
 import Branding from "@components/Branding.astro";
+import Column from "@components/Column.astro";
 import Layout from "../../layouts/Layout.astro";
 import ImageHeading from "../../components/ImageHeading.astro";
 import ThemedSection from "../../components/ThemedSection.astro";
@@ -102,12 +103,12 @@ import ThemedSection from "../../components/ThemedSection.astro";
     Previous <strong>Contributors</strong>
   </ImageHeading>
   <ThemedSection style="secondary">
-    <div class="col-xxl-9 pb-3">
+    <Column noDefault xxl="9" class="pb-3">
       <p class="lead">
         We sincerely appreciate the time and energy that each person listed
         below has contributed to our mission.
       </p>
-    </div>
+    </Column>
     <div class="card mb-5 shadow team-card">
       <h2 class="card-header text-primary-emphasis">
         Board <strong>Members</strong>

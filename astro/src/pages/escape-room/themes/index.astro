@@ -26,7 +26,7 @@ import heroBg from "src/images/escape-room/jonathan-kemper-9tamF4J0vLk-unsplash.
 
 const rooms = sortBy(
   await getCollection("escapeRoomThemes"),
-  (room) => room.data.title
+  (room: CollectionEntry<"escapeRoomThemes">) => room.data.title
 );
 
 ---

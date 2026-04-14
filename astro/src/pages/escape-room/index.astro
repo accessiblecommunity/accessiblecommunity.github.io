@@ -19,6 +19,7 @@ const rooms: Array<CollectionEntry<"escapeRoomThemes">> =
 
 
 import Branding from "@components/Branding.astro";
+import Column from "@components/Column.astro";
 import { Icon } from "astro-icon/components";
 import { Image } from "astro:assets";
 import EscapeRoomLayout from "src/layouts/EscapeRoomLayout.astro";
@@ -35,7 +36,7 @@ import woodenPuzzles from "src/images/escape-room/wooden-puzzles.png";
     <div
       class="d-flex flex-column flex-lg-row gap-4 py-3 justify-content-lg-center align-items-center"
     >
-      <div class="col col-lg-6 col-xl-7 text-light">
+      <Column lg="6" xl="7" class="text-light">
         <h1 class="visually-hidden" set:text={title}></h1>
         <p class="display-2">A fun and accessible team-building activity.</p>
         <p class="lead">
@@ -62,23 +63,25 @@ import woodenPuzzles from "src/images/escape-room/wooden-puzzles.png";
             </a>
           </div>
         </div>
-      </div>
-      <div class="d-none d-lg-block col-lg-5 col-xl-4 position-relative" style="height: 325px">
-        <Image
-          width={400}
-          class="img-wp rounded position-absolute top-0 end-0"
-          src={woodenPuzzles}
-          alt=""
-          aria-hidden="true"
-        />
-        <Image
-          width={300}
-          class="img-bb position-absolute bottom-0 start-0"
-          src={brailleBlocks}
-          alt=""
-          aria-hidden="true"
-        />
-      </div>
+      </Column>
+      <Column noDefault lg="5" xl="4" class="d-none d-lg-block position-relative">
+        <div class="escape-img-column">
+          <Image
+            width={400}
+            class="img-wp rounded position-absolute top-0 end-0"
+            src={woodenPuzzles}
+            alt=""
+            aria-hidden="true"
+          />
+          <Image
+            width={300}
+            class="img-bb position-absolute bottom-0 start-0"
+            src={brailleBlocks}
+            alt=""
+            aria-hidden="true"
+          />
+        </div>
+      </Column>
     </div>
   </ThemedSection>
 
@@ -170,6 +173,9 @@ import woodenPuzzles from "src/images/escape-room/wooden-puzzles.png";
   .card-title {
     font-weight: 500;
     font-size: 1.3rem;
+  }
+  .escape-img-column {
+    height: 325px;
   }
   h2, h3, h4 {
     color: var(--bs-info);
