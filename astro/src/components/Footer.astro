@@ -36,6 +36,7 @@ const Socials = socialEntry?.data.groups[0];
 import Branding from "./Branding.astro";
 import FooterLinkList from "./navigation/FooterLinkList.astro";
 import { Icon } from "astro-icon/components";
+import Row from "@components/Row.astro";
 ---
 
 <footer id="footer" class="bg-primary py-5 d-print-none">
@@ -87,7 +88,7 @@ import { Icon } from "astro-icon/components";
         <dl class="mb-3 text-light">
           {
             ContactUs.map(({ icon, href, html, className, name }) => (
-              <div class="row">
+              <Row>
                 <dt class="contact-us">
                   <Icon
                     name={icon}
@@ -103,7 +104,7 @@ import { Icon } from "astro-icon/components";
                     <a class="link-light footer-link" {href} set:html={html} />
                   </dd>
                 : <dd class="col" set:html={html} />}
-              </div>
+              </Row>
             ))
           }
         </dl>
