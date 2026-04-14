@@ -30,6 +30,7 @@ import GoogleForm from "@components/forms/GoogleForm.astro";
 import Hero from "@components/ColumnedHero.astro";
 import { Icon } from "astro-icon/components";
 import Layout from "src/layouts/Layout.astro";
+import Row from "@components/Row.astro";
 import ThemedBox from "@components/ThemedBox.astro";
 import ThemedSection from "@components/ThemedSection.astro";
 
@@ -95,7 +96,7 @@ import ShadowBoxSection from "@components/ShadowBoxSection.astro";
     <div class="text-center py-4">
       <h3 class="display-3 mx-auto">What are the <strong>options</strong>?</h3>
     </div>
-    <div class="row row-cols-1 row-cols-lg-2 gap-4 justify-content-center">
+    <Row class="row-cols-1 row-cols-lg-2 gap-4 justify-content-center">
       <ThemedBox
         theme="primary"
         text={true}
@@ -213,7 +214,7 @@ import ShadowBoxSection from "@components/ShadowBoxSection.astro";
         </div>
         <p>Cost: <strong class="text-brand">$0</strong>.</p>
       </ThemedBox>
-    </div>
+    </Row>
   </ShadowBoxSection>
 
   <ThemedSection id="request" theme="secondary" style="subtle" text={true}>
@@ -228,7 +229,7 @@ import ShadowBoxSection from "@components/ShadowBoxSection.astro";
         </p>
         <h3 class="visually-hidden">Request form</h3>
       </div>
-      <div class="row justify-content-lg-between">
+      <Row class="justify-content-lg-between">
         <Column noDefault lg="5">
           <div class="mb-3">
             <label for="nameField" class="form-label mb-1 required-field"
@@ -296,7 +297,7 @@ import ShadowBoxSection from "@components/ShadowBoxSection.astro";
             Please add any additional information or questions you have.
           </div>
         </Column>
-      </div>
+      </Row>
     </GoogleForm>
   </ThemedSection>
 </Layout>
