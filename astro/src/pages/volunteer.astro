@@ -13,6 +13,7 @@ import Hero from "../components/Hero.astro";
 import { Icon } from "astro-icon/components";
 import Layout from "../layouts/Layout.astro";
 import ThemedSection from "../components/ThemedSection.astro";
+import Row from "../components/Row.astro";
 
 import heroBg from "../images/colored-hero/hands-together.png";
 import teamPic from "src/images/colored-hero/team.png";
@@ -159,7 +160,7 @@ const orderedTeams = sortBy(teams, ["id"]);
         >.
       </p>
     </div>
-    <div class="row justify-content-center gap-5 py-4">
+    <Row gap="5" class="justify-content-center py-4">
       {
         orderedTeams.map((team) => (
           <Column noDefault lg="8">
@@ -178,7 +179,7 @@ const orderedTeams = sortBy(teams, ["id"]);
           </Column>
         ))
       }
-    </div>
+    </Row>
   </ThemedSection>
 
   <ThemedSection id="form" style="tertiary">
@@ -204,7 +205,7 @@ const orderedTeams = sortBy(teams, ["id"]);
           your time and talents, then please complete the form below.
         </p>
       </div>
-      <div class="row">
+      <Row>
         <Column noDefault md="6" class="mb-3">
           <label for="firstNameField" class="form-label mb-1 required-field"
             >First Name</label
@@ -323,7 +324,7 @@ const orderedTeams = sortBy(teams, ["id"]);
             and/or work.</div
           ></div
         >
-      </div>
+      </Row>
       <div slot="message">
         <Column class="p-4 border border-2 border-info-contrast rounded">
           <p class="lead mb-0">
