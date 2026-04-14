@@ -40,6 +40,7 @@ const { tips = [] } = catalog;
 const related = await getRelatedTips(tip);
 
 import Column from "../components/Column.astro";
+import FlexColumn from "../components/FlexColumn.astro";
 import { Icon } from "astro-icon/components";
 import ImageHeading from "../components/ImageHeading.astro";
 import Layout from "../layouts/Layout.astro";
@@ -85,8 +86,8 @@ const metadata: PageMetadata = {
 
   <ImageHeading image={tip?.data.theme} slot="header" set:html={header} />
   <ThemedSection style="tertiary">
-    <div
-      class="d-flex flex-column flex-lg-row justify-content-lg-between gap-3"
+    <FlexColumn
+      lgFlexRow gap="3" class="justify-content-lg-between"
     >
       <Column lg="7">
         {tip && <TipOfTheWeek {tip} />}
@@ -129,7 +130,7 @@ const metadata: PageMetadata = {
           </TipRegistration>
         </Column>
       </nav>
-    </div>
+    </FlexColumn>
   </ThemedSection>
 
   <ThemedSection style="secondary" py={3}>
