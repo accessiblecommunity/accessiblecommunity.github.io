@@ -41,7 +41,7 @@ import woodenPuzzles from "src/images/escape-room/wooden-puzzles.png";
           puzzles to reach an objective while learning about accessibility.
         </p>
         <Row baseRowCols="1" smRowCols="2">
-          <div class="col">
+          <Column>
             <a
               class="link-light link-offset-1 icon-link"
               href="/escape-room/themes"
@@ -49,8 +49,8 @@ import woodenPuzzles from "src/images/escape-room/wooden-puzzles.png";
               <Icon name="bi:puzzle-fill" class="bi"></Icon>
               Explore our rooms
             </a>
-          </div>
-          <div class="col">
+          </Column>
+          <Column>
             <a
               class="link-light link-offset-1 icon-link"
               href="/escape-room/how-it-works"
@@ -58,7 +58,7 @@ import woodenPuzzles from "src/images/escape-room/wooden-puzzles.png";
               <Icon name="bi:tools" class="bi"></Icon>
               How the rooms work
             </a>
-          </div>
+          </Column>
         </Row>
       </Column>
       <Column noDefault lg="5" xl="4" class="d-none d-lg-block position-relative">
@@ -88,7 +88,7 @@ import woodenPuzzles from "src/images/escape-room/wooden-puzzles.png";
         "flex-xl-row-reverse",
         "gap-5 justify-content-xl-between align-items-xl-center"
     ]}>
-      <div class="col">
+      <Column>
         <h2 class="">I like puzzles. I would like to play.</h2>
         <p class="lead">
           It may be called an escape room but we don't lock you in. You can leave at
@@ -103,8 +103,8 @@ import woodenPuzzles from "src/images/escape-room/wooden-puzzles.png";
           > has been traveling to disability and accessibility conferences and other
           venues since 2022.
         </p>
-      </div>
-      <div class="col">
+      </Column>
+      <Column>
         <YouTube
           class="rounded"
           title="Why have an accessible escape room?"
@@ -131,7 +131,7 @@ import woodenPuzzles from "src/images/escape-room/wooden-puzzles.png";
     <Row baseRowCols="2" g="3" class="align-items-stretch">
       {
         rooms.map(room => (
-          <div class="col">
+          <Column>
             <div class="card border border-dark">
               <Image
                 src={room.data.image}
@@ -147,7 +147,7 @@ import woodenPuzzles from "src/images/escape-room/wooden-puzzles.png";
                 >Learn more</a>
               </div>
             </div>
-          </div>
+          </Column>
         ))
       }
     </Row>
