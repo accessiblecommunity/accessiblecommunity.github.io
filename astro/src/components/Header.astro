@@ -10,7 +10,7 @@ interface Props {
 import { isEmpty } from "lodash-es";
 import { Icon } from "astro-icon/components";
 import Branding from "./Branding.astro";
-import NavSiteList from "./NavSiteList.astro";
+import NavSiteList from "@components/navigation/NavSiteList.astro";
 
 const { title, brandedTitle = false, crumbs = [], } = Astro.props;
 const breadCrumbs: Breadcrumbs =
@@ -208,6 +208,14 @@ const breadCrumbs: Breadcrumbs =
 
     .skip-link {
       color: var(--bs-primary);
+      background-color: white;
+    }
+
+    .skip-link:focus-visible {
+      outline-color: white;
+    }
+    
+    .skip-link:not(:hover) {
       background-color: white;
     }
 

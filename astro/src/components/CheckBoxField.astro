@@ -1,0 +1,67 @@
+---
+export type CheckBoxOption = {
+  /** Unique id used for input id + label for */
+  id: string;
+  /** Text shown next to the checkbox */
+  label: string;
+  /** Optional default checked state */
+  checked?: boolean;
+  /** Optional disabled state */
+  disabled?: boolean;
+  /** Optional hint text shown under the label */
+  description?: string;
+};
+
+export interface Props {
+  /** Fieldset legend (group label) */
+  legend: string;
+  /** Name attribute for the checkbox inputs */
+  name: string;
+  /** Checkbox options */
+  options: CheckBoxOption[];
+  /** Optional help text for the whole group */
+  helpText?: string;
+  /** Optional error text for the whole group */
+  errorText?: string;
+  /** Optional additional classes */
+  className?: string;
+}
+
+const { legend, name, options, helpText, errorText, className } = Astro.props;
+
+const helpId = helpText ? `${name}-help` : undefined;
+const errorId = errorText ? `${name}-error` : undefined;
+const describedBy = [errorId, helpId].filter(Boolean).join(" ") || undefined;
+---
+
+<fieldset class={className} aria-describedby={describedBy}>
+  <legend>{legend}</legend>
+
+  {errorText && (
+    <p id={errorId} role="alert">
+      {errorText}
+    </p>
+  )}
+
+  {helpText && <p id={helpId}>{helpText}</p>}
+
+  {options.map((opt) => {
+    const descId = opt.description ? `${opt.id}-desc` : undefined;
+    const inputDescribedBy = [descId].filter(Boolean).join(" ") || undefined;
+
+    return (
+      <div>
+        <input
+          type="checkbox"
+          id={opt.id}
+          name={name}
+          checked={opt.checked}
+          disabled={opt.disabled}
+          aria-describedby={inputDescribedBy}
+        />
+        <label for={opt.id}>{opt.label}</label>
+        {opt.description && <div id={descId}>{opt.description}</div>}
+      </div>
+    );
+  })}
+</fieldset>

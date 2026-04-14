@@ -13,23 +13,14 @@
 .form-field:focus {
   border-color: $info-border-contrast;
   border-style: solid;
-  border-radius: 0.375rem;
   outline-offset: 2px;
 }
 
-.form-check-input:focus {
-  outline: 2px solid $primary;
-  outline-offset: 2px;
-  box-shadow: none;
-}
-
-.form-control:focus-visible {
-  outline: 2px solid $primary;
-  box-shadow: none;
+.form-field:focus, .form-control:focus-visible, .form-select:focus-visible {
   border-radius: 0.375rem;
 }
 
-.form-check-input:focus-visible {
+.form-check-input:focus, .form-check-input:focus-visible, .form-control:focus-visible, .form-select:focus-visible {
   outline: 2px solid $primary;
   outline-offset: 2px;
   box-shadow: none;
@@ -41,7 +32,7 @@
 }
 
 @include color-mode(dark) {
-  *:focus-visible, .form-field:focus, .form-check-input:focus, .form-check-input:focus-visible, .navbar-toggler:focus, .btn:focus-visible, .nav-link:focus-visible, .form-control:focus-visible {
+  *:focus-visible, .form-field:focus, .form-check-input:focus, .form-check-input:focus-visible, .navbar-toggler:focus, .btn:focus-visible, .nav-link:focus-visible, .form-control:focus-visible, .form-select:focus-visible {
     outline-color: #FFFFFF;
   }
 
@@ -49,7 +40,7 @@
     border-color: $info-border-contrast-dark;
   }
 
-  .form-control,.form-control:focus, .form-check-input, .form-check-input:focus {
+  .form-control,.form-control:focus, .form-check-input, .form-check-input:focus, .form-select, form-select:focus {
     border-color: $info-border-contrast-dark;
   }
 
@@ -143,6 +134,9 @@ a {
     &:focus-visible {
       color: var(--bs-nav-link-color); // Override hover color on focus
       outline: 2px solid var(--ac-link-focus-outline-color);
+    }
+    &:focus {
+      color: var(--bs-nav-link-color);
     }
     &:hover {
       color: var(--bs-navbar-hover-color); // Override focus color on hover

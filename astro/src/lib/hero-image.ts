@@ -10,16 +10,20 @@ import balloonsImage from "../images/colored-hero/balloons.png";
 import blogImage from "../images/colored-hero/pen-paper.png";
 import handsImage from "../images/colored-hero/hands-together.png";
 import notesImage from "../images/colored-hero/post-it-notes.png";
+import podcastImage from "../images/colored-hero/podcast.png";
 import policyImage from "../images/colored-hero/policy.png";
 import teamImage from "../images/colored-hero/team.png";
+import penPaperImage from "../images/colored-hero/pen-paper.png";
 
 export enum HeroTheme {
   blog = "blog",
   hands = "hands",
   notes = "notes",
   party = "party",
+  podcast = "podcast",
   policy = "policy",
   team = "team",
+  "pen-paper" = "pen-paper",
 }
 export type HeroThemeType = `${HeroTheme}`;
 export type HeroThemeMapping<T> = {
@@ -33,16 +37,20 @@ const heroImagePaths: HeroThemeMapping<string> = {
   hands: "./src/images/colored-hero/hands-together.png",
   notes: "./src/images/colored-hero/post-it-notes.png",
   party: "./src/images/colored-hero/balloons.png",
+  podcast: "./src/images/colored-hero/podcast.png",
   policy: "./src/images/colored-hero/policy.png",
   team: "./src/images/colored-hero/team.png",
+  "pen-paper": "./src/images/colored-hero/pen-paper.png",
 };
 const heroImages: HeroThemeMapping<ImageMetadata> = {
   blog: blogImage,
   hands: handsImage,
   notes: notesImage,
   party: balloonsImage,
+  podcast: podcastImage,
   policy: policyImage,
   team: teamImage,
+  "pen-paper": penPaperImage,
 };
 const heroBackgroundCss: HeroThemeMapping<object> = {
   blog: {
@@ -64,6 +72,11 @@ const heroBackgroundCss: HeroThemeMapping<object> = {
     "background-position": "center 60%",
     "background-size": "cover",
   },
+  podcast: {
+    height: "11rem",
+    "background-position": "center 55%",
+    "background-size": "cover",
+  },
   team: {
     height: "9rem",
     "background-position": "center 30%",
@@ -72,6 +85,11 @@ const heroBackgroundCss: HeroThemeMapping<object> = {
   notes: {
     height: "10rem",
     "background-position": "center 45%",
+    "background-size": "cover",
+  },
+  "pen-paper": {
+    height: "13rem",
+    "background-position": "center 75%",
     "background-size": "cover",
   },
 };

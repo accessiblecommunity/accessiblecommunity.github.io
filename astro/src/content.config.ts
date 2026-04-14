@@ -30,7 +30,28 @@ const blogs = defineCollection({
 
 const markdown = defineCollection({
   loader: glob({ pattern: "**/[^_]*.{md,mdx}", base: "./src/content/markdown" }),
-})
+});
+
+const navigation = defineCollection({
+  loader: glob({ pattern: "**/[^_]*.json", base: "./src/content/navigation" }),
+  schema: z.object({
+    "name": z.string(),
+    "fullName": z.string().optional(),
+    "groups": z.array(
+      z.object({
+        name: z.string(),
+        branded: z.boolean().default(false),
+        href: z.string(),
+        external: z.boolean().default(false),
+        icon: z.string().optional(),
+        iconCls: z.string().optional(),
+      }).array(),
+    )
+  }).transform((data) => ({
+    ...data,
+    fullName: data.fullName || data.name,
+  })),
+});
 
 const policies = defineCollection({
   loader: glob({
@@ -66,23 +87,23 @@ const daf = defineCollection({
   }),
 });
 
-const escapeRoomKits = defineCollection({
-  loader: glob({
-    pattern: "**/[^_]*.{md,mdx}",
-    base: "./src/content/escape-room-kits",
-  }),
-  schema: ({ image }) =>
-    z.object({
-      title: z.string(),
-      image: image(),
-      order: z.number().default(99999),
-    }),
-});
+// const escapeRoomKits = defineCollection({
+//   loader: glob({
+//     pattern: "**/[^_]*.{md,mdx}",
+//     base: "./src/content/escape-room/kits",
+//   }),
+//   schema: ({ image }) =>
+//     z.object({
+//       title: z.string(),
+//       image: image(),
+//       order: z.number().default(99999),
+//     }),
+// });
 
 const escapeRoomThemes = defineCollection({
   loader: glob({
     pattern: "**/[^_]*.{md,mdx}",
-    base: "./src/content/escape-room-themes",
+    base: "./src/content/escape-room/themes",
   }),
   schema: ({ image }) =>
     z.object({
@@ -104,6 +125,28 @@ const escapeRoomThemes = defineCollection({
         .default({}),
     }),
 });
+
+const podcastShows = defineCollection({
+  loader: glob({
+    pattern: "**/[^_]*.{md,mdx}",
+    base: "./src/content/podcasts/shows",
+  }),
+  schema: ({ image }) =>
+    z.object({
+      title: z.string(),
+      host: reference("staff"),
+      image: image(),
+      links: z
+        .object({
+          applePodcasts: z.string().url(),
+          podcastIndex: z.string().url(),
+          spotify: z.string().url(),
+          youtube: z.string().url(),
+        })
+        .partial()
+        .optional(),
+    }),
+})
 
 const nameSchema = z.object({
   first: z.string(),
@@ -139,6 +182,7 @@ const staff = defineCollection({
           escape_room: z.string(),
           evaluations: z.string(),
           globa11y: z.string(),
+          podcasts: z.string(),
           leadership: z.string(),
           loca11y: z.string(),
           support: z.string(),
@@ -210,9 +254,11 @@ export const collections = {
   blogs,
   collaborators,
   daf,
-  escapeRoomKits,
+  // escapeRoomKits,
   escapeRoomThemes,
   markdown,
+  navigation,
+  podcastShows,
   quotes,
   policies,
   recruiting,

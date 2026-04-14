@@ -3,8 +3,7 @@
 
 // Fontsource input
 @import "@fontsource-variable/archivo";
-@import "@fontsource/atkinson-hyperlegible/400.css";
-@import "@fontsource/atkinson-hyperlegible/700.css";
+@import '@fontsource-variable/atkinson-hyperlegible-next';
 
 // From https://getbootstrap.com/docs/5.3/customize/sass/#importing
 // 1. Include functions first (so you can manipulate colors, SVGs, calc, etc)
@@ -14,7 +13,7 @@
 @import "./colors-and-themes";
 
 $font-size-root:              18px;
-$font-family-sans-serif:      'Atkinson Hyperlegible', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !default;
+$font-family-sans-serif:      'Atkinson Hyperlegible Next Variable', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !default;
 $font-weight-bold:            700;
 
 $h1-font-size:                2rem;
@@ -101,6 +100,7 @@ $nav-link-focus-box-shadow:         none;
 $breadcrumb-font-size:              0.9em;
 $breadcrumb-margin-bottom:          0;
 $breadcrumb-active-color:           $ac-navy;
+$breadcrumb-divider:                "/" / "";
 
 //************
 //* Dropdowns
@@ -148,11 +148,12 @@ $form-check-min-height:                   30px;
 $form-check-input-checked-bg-color:       $primary;
 $form-check-input-checked-border-color:   $primary;
 
+$form-select-border-width:                $input-border-width;
 
 //********
 // Shadows - Tweaked from https://codyhouse.co/nuggets/beautiful-css-shadows
 //********
-                // inner glow 
+                // inner glow
 $box-shadow-sm: inset 0 0 1px 2px hsla(0, 0%, 100%, 0.125),
                 // multiple soft shadows
                 0 0.5px 1px hsla(0, 0%, 0%, 0.1),
@@ -336,6 +337,7 @@ $theme-colors-border-contrast-dark: (
 @import "bootstrap/scss/images";
 @import "bootstrap/scss/containers";
 @import "bootstrap/scss/grid";
+@import "bootstrap/scss/tables";
 @import "bootstrap/scss/forms";
 @import "bootstrap/scss/buttons";
 @import "bootstrap/scss/transitions";

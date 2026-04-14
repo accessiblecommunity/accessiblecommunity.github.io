@@ -8,6 +8,7 @@
     "paths": {
       "@components/*": ["src/components/*"],
       "@lib/*": ["src/lib/*"],
+      "~bootstrap-es": ["node_modules/bootstrap/dist/js/bootstrap.esm.min.js"],
     }
   },
 }

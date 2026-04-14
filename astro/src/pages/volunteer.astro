@@ -7,7 +7,7 @@ import { components } from "@lib/mdx";
 import { sortBy } from "lodash-es";
 
 import Branding from "../components/Branding.astro";
-import GoogleForm from "@components/GoogleForm.astro";
+import GoogleForm from "@components/forms/GoogleForm.astro";
 import Hero from "../components/Hero.astro";
 import { Icon } from "astro-icon/components";
 import Layout from "../layouts/Layout.astro";
@@ -66,7 +66,7 @@ const orderedTeams = sortBy(teams, ["id"]);
     </p>
     <Fragment slot="action-bar">
       <a href="#orientation" class="icon-link link-light">
-        <Icon name="bi:youtube" class="bi" role="img" aria-hidden="true" />
+        <Icon name="cib:youtube" class="bi" role="img" aria-hidden="true" />
         Watch the orientation video
       </a>
       <a href="#teams" class="icon-link link-light">
@@ -346,7 +346,7 @@ const orderedTeams = sortBy(teams, ["id"]);
     cursor: pointer;
   }
 
-  [data-icon="bi:youtube"] {
+  [data-icon="cib:youtube"] {
     font-size: 125%;
   }
 

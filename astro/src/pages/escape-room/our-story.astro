@@ -1,0 +1,128 @@
+---
+import { getOpenGraphImageData } from "@lib/og-image";
+import type { Breadcrumbs, PageMetadata } from "@lib/types";
+
+const title = "Our Story";
+const metadata: PageMetadata = {
+  title,
+  description: "The story of the Accessible Escape Room",
+  image: getOpenGraphImageData(Astro.site, "pages", "escape-room"),
+};
+const crumbs: Breadcrumbs = [
+  {
+    name: "Home",
+    href: "/escape-room/",
+  },
+];
+
+import ExternalLink from "@components/ExternalLink.astro";
+import EscapeRoomLayout from "src/layouts/EscapeRoomLayout.astro";
+import Hero from "@components/HeroWithBreadcrumbs.astro";
+import Testimonial from "@components/Testimonial.astro";
+import ThemedBox from "@components/ThemedBox.astro";
+import ThemedSection from "@components/ThemedSection.astro";
+import { YouTube } from 'astro-lazy-youtube-embed';
+
+import heroBg from "src/images/escape-room/shaded/puzzle-display.jpg";
+
+---
+<EscapeRoomLayout {metadata} {title}>
+  <Hero slot="header" shade theme="info" columns="col col-md-5 col-lg-3" image={heroBg} imageVertical="75%" {crumbs} {title}>
+    <h1 class="display-2 bg-info bg-opacity-50">Our Story</h1>
+  </Hero>
+
+  <div class="er-page">
+    <ThemedSection>
+      <h2 class="">The history of our escape rooms</h2>
+      <div
+        class="d-flex flex-column flex-lg-row gap-5 justify-content-lg-between align-items-lg-start"
+      >
+        <div class="col">
+          <p>
+            A few years ago, over lunch, Matt Ater and Rachael Bradley Montgomery
+            joked about creating an accessible escape room. Why? Because Matt, who
+            is blind, had attended his daughter's birthday party at an escape room
+            and wasn't able to participate – at all! Fast forward a year and we were
+            still talking about it. We realized how few individuals with
+            disabilities were able to enjoy this fun activity and so decided to go
+            ahead and build one. We met with Escape Room Loco in Leesburg, VA to
+            learn more. Then along with a team of volunteers from <a href="/">Accessible
+            Community</a>, <ExternalLink inline href="https://www.mitre.org/"
+            >MITRE</ExternalLink>, and <ExternalLink inline href="https://vispero.com/"
+            >Vispero</ExternalLink>, we built our first escape room. It had an
+            espionage theme and while it wasn't perfect, everyone could participate
+            in at least one puzzle, usually more. A team of all blind individuals
+            who helped pilot test it had the best score of everyone!
+          </p>
+        </div>
+        <ThemedBox
+          theme="info"
+          border={1}
+          class="col col-lg-4 text-start p-4 pb-0 shadow-sm rounded"
+        >
+          <Testimonial id="matt-ater/nap" text="light" />
+        </ThemedBox>
+      </div>
+    </ThemedSection>
+
+    <ThemedSection theme="secondary" style="subtle">
+      <div
+        class="d-flex flex-column flex-lg-row-reverse gap-5 justify-content-lg-between align-items-center"
+      >
+        <div class="col">
+          <h2 class="mb-4">Making an accessible escape room</h2>
+          <p>
+            If you would like to create an accessible escape room for your
+            business or organization, here are some tips to get started.</p
+          >
+          <ul>
+            <li
+              >Pick a theme that doesn't cause anxiety. Don't lock people in or
+              create panic intentionally. Instead, create challenging puzzles in a
+              fun atmosphere.</li
+            >
+            <li
+              >Don't design puzzles to rely on a single sense. Provide hints using
+              both sound and sight, preferably sound, sight and touch.</li
+            >
+            <li>Offer an untimed option to participants who need it.</li>
+            <li>Provide accommodations when requested.</li>
+            <li
+              >Create a set of puzzles so that everyone can engage with at least
+              one. This means at least one puzzle should take voice input.</li
+            >
+          </ul>
+        </div>
+
+        <div class="col col-lg-5">
+          <YouTube
+            class="rounded"
+            title="Designing accessible escape rooms"
+            videoId="VAgKrhNIk2U"
+          />
+        </div>
+      </div>
+    </ThemedSection>
+  </div>
+</EscapeRoomLayout>
+
+<style>
+  h2, h3, h4 {
+    color: var(--bs-info);
+    font-weight: 600;
+    margin-bottom: 0.5em;
+  }
+  .er-page :global(a) {
+    --bs-link-color-rgb: var(--bs-info-rgb);
+    --bs-link-hover-color-rgb: var(--bs-white-rgb);
+    --ac-link-hover-bg: var(--bs-info);
+      --ac-link-focus-outline-color: var(--bs-info);
+}
+  p {
+    margin-bottom: 0.5em;
+  }
+
+  p.lead {
+    margin-bottom: 0.75em;
+  }
+</style>

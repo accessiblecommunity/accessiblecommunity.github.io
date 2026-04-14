@@ -8,8 +8,8 @@ import { getContainerRenderer as mdxRenderer } from "@astrojs/mdx";
 
 import type { CollectionEntry } from "astro:content";
 import { render } from "astro:content";
-import { orderByRecent } from "../../lib/tips";
-import { components, sanitizeOptions } from "../../lib/mdx";
+import { orderByRecent } from "src/lib/tips";
+import { components, sanitizeOptions } from "src/lib/mdx";
 
 const renderers = await loadRenderers([mdxRenderer()]);
 const container = await AstroContainer.create({ renderers });
@@ -21,7 +21,7 @@ export async function GET(context) {
     title: "Accessibility Tip of the Week",
     description:
       "Our Tip of the Week is a quick accessibility tip that can improve the accessibility of your website, social media, events, and more.",
-    site: `${context.site}/services/tip-of-the-week/`,
+    site: `${context.site}/tips`,
     items: await Promise.all(
       tips.map(async (tip) => {
         const { Content } = await render(tip);

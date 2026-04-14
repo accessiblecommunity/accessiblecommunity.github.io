@@ -1,0 +1,75 @@
+---
+import ImageHeading from "@components/ImageHeading.astro";
+import Layout from "../../layouts/Layout.astro";
+import ThemedSection from "@components/ThemedSection.astro";
+import TipLicense from "@components/TipLicense.astro";
+
+import { getTipCatalog } from "@lib/tips";
+import { getOpenGraphImageData } from "@lib/og-image";
+import { startCase } from "lodash-es";
+import type { Breadcrumbs, PageMetadata } from "@lib/types";
+
+const { categories, tips } = await getTipCatalog();
+
+const title = "Tip of the Week Archive";
+const description = "Archive for the Accessibility Tips of the week";
+const metadata: PageMetadata = {
+  title,
+  description,
+  image: getOpenGraphImageData(Astro.site, "pages", "tips", description),
+};
+const crumbs: Breadcrumbs = [
+  {
+    name: "Home",
+    href: "/",
+  },
+  {
+    name: "Tip of the Week",
+    href: "/tips",
+  },
+];
+---
+
+<Layout {title} {crumbs} {metadata}>
+  <ImageHeading image="notes" slot="header">
+    Accessibility <strong>Tip</strong>&nbsp;of the <strong>Week</strong> Archive
+  </ImageHeading>
+
+  <ThemedSection theme="tertiary">
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 mt-5">
+      <div class="col">
+        <h2 class="display-5">Most Recent</h2>
+        <ul class="mt-1 mb-3 list-disc">
+          {
+            tips.slice(0, 7).map((tip) => (
+              <li>
+                <a href={`/tips/${tip.id}`}>{tip.data.title}</a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+      {
+        categories.map((cat) => (
+          <div class="col">
+            <h2 class="display-5">{startCase(cat)}</h2>
+            <ul class="mt-1 mb-4 list-disc">
+              {tips.map(
+                (tip) =>
+                  tip.data.tags.includes(cat) && (
+                    <li class="list-item">
+                      <a href={`/tips/${tip.id}`}>{tip.data.title}</a>
+                    </li>
+                  ),
+              )}
+            </ul>
+          </div>
+        ))
+      }
+    </div>
+  </ThemedSection>
+
+  <ThemedSection style="secondary">
+    <TipLicense />
+  </ThemedSection>
+</Layout>

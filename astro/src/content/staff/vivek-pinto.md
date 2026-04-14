@@ -9,6 +9,8 @@ cited:
 roles:
   default: Evaluations Team
   evaluations: Digital Evaluator
+photo:
+  image: ../../images/staff/3d/VivekPinto_headshot.png
 links:
   linkedin: https://www.linkedin.com/in/vivekpinto2001/
 ---

@@ -8,6 +8,7 @@ cited:
 roles:
   default: UX Researcher and Designer, DAF
   content: UX Designer, Day in the Life
+  podcasts: Contributor, Day in the Life
   ux: UX Researcher and Designer, DAF
 links:
   linkedin: https://www.linkedin.com/in/kazuyoando

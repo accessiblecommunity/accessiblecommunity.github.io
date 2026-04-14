@@ -1,0 +1,16 @@
+{
+  "name": "About",
+  "fullName": "About Us",
+  "groups": [
+    [{
+      "name": "Mission & Vision",
+      "href": "/about/mission/"
+    }, {
+      "name": "Founder's Story",
+      "href": "/about/story/"
+    }, {
+      "name": "Our Policies",
+      "href": "/about/policies/"
+    }]
+  ]
+}

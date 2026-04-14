@@ -1,0 +1,78 @@
+---
+import { getOpenGraphImageData } from "@lib/og-image";
+import type { Breadcrumbs, PageMetadata } from "@lib/types";
+
+const title = "mutua11y";
+const metadata: PageMetadata = {
+  title,
+  description: "Overview of the mutua11y Initiative",
+  image: getOpenGraphImageData(Astro.site, "pages", "mutua11y"),
+};
+
+import Branding from "@components/Branding.astro";
+import Hero from "@components/ColumnedHero.astro";
+import Layout from "src/layouts/Layout.astro";
+import ThemedSection from "@components/ThemedSection.astro";
+
+import heroBg from "src/images/np_Man with prosthetic hand typing on a computer_4jzKz4_free.jpg";
+import { Icon } from "astro-icon/components";
+---
+
+<Layout {title} {metadata}>
+  <Hero
+    image={heroBg}
+    slot="header"
+    reverse
+    vertical-position="22%"
+    horizontal-position="78%"
+  >
+    <div class="py-2 px-2" slot="heading">
+      <h1 class="display-4">
+        <span class="me-1">Introducing</span>
+        <span class="text-nowrap">
+          <Icon class="bi" name="mutua11y-logo" aria-hidden="true" />
+          <Branding>mutua11y</Branding>
+        </span>
+      </h1>
+    </div>
+    <!-- <div class="py-3">
+      <p class="text-bg-hero">
+        A <strong class="text-brand">pilot social enterprise initiative</strong>
+        to help bridge the gap between digital accessibility skills development,
+        employment opportunities, government and small-to-medium business needs.
+      </p>
+    </div> -->
+  </Hero>
+  <ThemedSection theme="tertiary">
+    <h2>Our Goal</h2>
+    <p>To establish and nurture disability-inclusive communities that help accessibility experts grow their experience and connections.</p>
+    <div class="row row-cols-lg-2 g-5 py-4">
+      <div class="col-lg-6">
+        <h3 class="text-center">Mentoring</h3>
+        <p>The mutua11y accessibility mentoring program brings together emerging accessibility professionals with experienced mentors.
+            <br />
+            <a href="/mutua11y/mentoring/">Learn More About Mentoring</a>
+        </p>
+      </div>
+      <div class="col-lg-6">
+        <h3 class="text-center">Workshops</h3>
+        <p>
+          No cost workshops to spark global accessibility conversations to collaborate and share knowledge and resources.:
+        </p>
+      </div>
+      <div class="col-lg-8 text-center mx-auto">
+        <h3>Resource Library</h3>
+        <p>
+          <a href="https://www.mutua11y.org/document-library/" target="_blank">Templates, videos, and other resources</a> to make your accessibility journey easier.
+        </p>
+      </div>
+    </div>
+    <p class="text-center">Contact Us: <a href="mailto:mutua11y@accessiblecommunity.org">mutua11y@accessiblecommunity.org</a></p>
+  </ThemedSection>
+  <style scoped>
+    .logo {
+      height: 1em;
+      width: auto;
+    }
+  </style>
+</Layout>

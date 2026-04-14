@@ -70,7 +70,7 @@ function getLinkIcon(linkType: string) {
     phone: "bi:telephone-fill",
     facebook: "bi:facebook",
     instagram: "bi:instagram",
-    youtube: "bi:youtube",
+    youtube: "cib:youtube",
   };
   return iconMap[linkType] || "bi:link-45deg";
 }
@@ -127,7 +127,7 @@ const NameTag = element;
             <a
               href={formatLinkUrl(linkType, linkValue)}
               class="vignette-link"
-              title={`${memberData.name}'s ${linkType}`}
+              title={`${memberData.cited?.first ?? memberData.name.first}'s ${linkType}`}
               target={
                 linkType !== "email" && linkType !== "phone" ?
                   "_blank"

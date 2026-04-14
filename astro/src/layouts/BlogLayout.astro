@@ -62,10 +62,11 @@ function formatName(author) {
 const { Content } = await render(blog);
 
 import components from "../lib/mdx";
-import ImageHeading from "../components/ImageHeading.astro";
-import Layout from "../layouts/Layout.astro";
-import TeamVignette from "../components/TeamVignette.astro";
-import ThemedSection from "../components/ThemedSection.astro";
+import Branding from "@components/Branding.astro";
+import ImageHeading from "@components/ImageHeading.astro";
+import Layout from "./Layout.astro";
+import TeamVignette from "@components/TeamVignette.astro";
+import ThemedSection from "@components/ThemedSection.astro";
 ---
 
 <Layout {crumbs} {title} {metadata}>
@@ -138,7 +139,7 @@ import ThemedSection from "../components/ThemedSection.astro";
                 <ul class="mt-1 mb-3 list-disc list-spaced">
                   {topics.map((cat) => (
                     <li>
-                      <a href={`/blog/topics/${cat}`}>{startCase(cat)}</a>
+                      <a href={`/blog/topics/${cat}`}><Branding text={startCase(cat)} /></a>
                     </li>
                   ))}
                 </ul>
