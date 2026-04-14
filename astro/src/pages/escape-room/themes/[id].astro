@@ -51,6 +51,7 @@ import Hero from "@components/HeroWithBreadcrumbs.astro";
 import { Icon } from "astro-icon/components";
 import Layout from "src/layouts/EscapeRoomLayout.astro";
 import ThemedSection from "@components/ThemedSection.astro";
+import Row from "@components/Row.astro";
 ---
 
 <Layout {metadata} {title}>
@@ -82,7 +83,7 @@ import ThemedSection from "@components/ThemedSection.astro";
             )
           }
         </div>
-        <div class="row gy-2">
+        <Row gy="2">
           {
             about.estimatedMaterialCost && (
               <Column class="py-1">
@@ -91,7 +92,7 @@ import ThemedSection from "@components/ThemedSection.astro";
               </Column>
             )
           }
-        </div>
+        </Row>
       </div>
       <div class={`card border border-2 border-${theme}-subtle`}>
         <div class="card-body">
