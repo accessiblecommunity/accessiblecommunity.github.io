@@ -1,6 +1,7 @@
 ---
 import Branding from "../../components/Branding.astro";
 import Column from "../../components/Column.astro";
+import FlexColumn from "@components/FlexColumn.astro";
 import GoogleForm from "../../components/forms/GoogleForm.astro";
 import { Icon } from "astro-icon/components";
 import ImageHeading from "../../components/ImageHeading.astro";
@@ -37,8 +38,8 @@ const crumbs: Breadcrumbs = [
     <strong>loc</strong>a11y <strong>Interview</strong>
   </ImageHeading>
   <div class="bg-primary py-2 text-white">
-    <div
-      class="d-flex flex-column flex-md-row align-items-center justify-content-md-evenly gap-2"
+    <FlexColumn
+      mdFlexRow gap="2" class="align-items-center justify-content-md-evenly"
     >
       <a href="#overview" class="icon-link link-light">
         <Icon name="loca11y-logo" class="bi" role="img" aria-hidden="true" />
@@ -48,7 +49,7 @@ const crumbs: Breadcrumbs = [
         <Icon name="bi:pencil-fill" class="bi" role="img" aria-hidden="true" />
         Fill out the interview form
       </a>
-    </div>
+    </FlexColumn>
   </div>
 
   <ThemedSection id="overview" style="tertiary">
