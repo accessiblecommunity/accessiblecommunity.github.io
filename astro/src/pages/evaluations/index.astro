@@ -26,6 +26,7 @@ import Branding from "@components/Branding.astro";
 // import CollaboratorList from "@components/CollaboratorList.astro";
 import Column from "@components/Column.astro";
 import ExternalLink from "@components/ExternalLink.astro";
+import FlexColumn from "@components/FlexColumn.astro";
 import GoogleForm from "@components/forms/GoogleForm.astro";
 import Hero from "@components/ColumnedHero.astro";
 import { Icon } from "astro-icon/components";
@@ -52,9 +53,9 @@ import ShadowBoxSection from "@components/ShadowBoxSection.astro";
         <Branding>Accessible Community</Branding> provides affordable accessibility
         evaluations for websites and social media.
       </p>
-      <div class="d-flex flex-column flex-xl-row gap-2">
+      <FlexColumn xlFlexRow gap="2">
         <a class="btn btn-info" href="#request">Request an evaluation</a>
-      </div>
+      </FlexColumn>
     </div>
   </Hero>
 
@@ -62,8 +63,8 @@ import ShadowBoxSection from "@components/ShadowBoxSection.astro";
     <h2 class="display-4 mb-3">
       Are you reaching <strong>everyone</strong> in your community?
     </h2>
-    <div
-      class="d-flex flex-column flex-xl-row-reverse gap-2 justify-content-xl-evenly align-items-center"
+    <FlexColumn
+      gap="2" class="flex-xl-row-reverse justify-content-xl-evenly align-items-center"
     >
       <Column xl="8" xxl="9">
         <p>
@@ -80,7 +81,7 @@ import ShadowBoxSection from "@components/ShadowBoxSection.astro";
           Evaluations are <strong>free</strong> for <strong>small businesses</strong> and <strong>community organizations</strong>.
         </p>
       </Column>
-    </div>
+    </FlexColumn>
     <p>
       We provide a detailed report based on international standards and best practices to help you reach as many people as possible with your business or mission. We also help you get there with additional assistance after the evaluation.
     </p>
