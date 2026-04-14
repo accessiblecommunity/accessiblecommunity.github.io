@@ -23,6 +23,7 @@ import Column from "@components/Column.astro";
 import { Icon } from "astro-icon/components";
 import { Image } from "astro:assets";
 import EscapeRoomLayout from "src/layouts/EscapeRoomLayout.astro";
+import FlexColumn from "@components/FlexColumn.astro";
 import Row from "@components/Row.astro";
 import ThemedSection from "@components/ThemedSection.astro";
 import ImageCard from "@components/ImageCard.astro";
@@ -34,8 +35,8 @@ import woodenPuzzles from "src/images/escape-room/wooden-puzzles.png";
 
 <EscapeRoomLayout {metadata} {title}>
   <ThemedSection slot="header" theme="info" py={4}>
-    <div
-      class="d-flex flex-column flex-lg-row gap-4 py-3 justify-content-lg-center align-items-center"
+    <FlexColumn
+      lgFlexRow gap="4" class="py-3 justify-content-lg-center align-items-center"
     >
       <Column lg="6" xl="7" class="text-light">
         <h1 class="visually-hidden" set:text={title}></h1>
@@ -83,15 +84,11 @@ import woodenPuzzles from "src/images/escape-room/wooden-puzzles.png";
           />
         </div>
       </Column>
-    </div>
+    </FlexColumn>
   </ThemedSection>
 
   <ThemedSection>
-    <div class:list={[
-      "d-flex flex-column",
-        "flex-xl-row-reverse",
-        "gap-5 justify-content-xl-between align-items-xl-center"
-    ]}>
+    <FlexColumn gap="5" class="flex-xl-row-reverse justify-content-xl-between align-items-xl-center">
       <Column>
         <h2 class="">I like puzzles. I would like to play.</h2>
         <p class="lead">
@@ -114,8 +111,8 @@ import woodenPuzzles from "src/images/escape-room/wooden-puzzles.png";
           title="Why have an accessible escape room?"
           videoId="-VJcG6rmavo"
         />
-      </div>
-    </div>
+      </Column>
+    </FlexColumn>
   </ThemedSection>
 
   <ThemedSection style="subtle" theme="secondary">
