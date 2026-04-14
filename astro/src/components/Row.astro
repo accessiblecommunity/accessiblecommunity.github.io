@@ -1,0 +1,17 @@
+---
+export interface Props {
+  id?: string;
+  class?: string;
+}
+
+const {
+  id: elementID = "",
+  class: cssClass = "",
+} = Astro.props;
+---
+
+<div class:list={[
+  "row", 
+  elementID,
+  cssClass,
+]}><slot /></div>
