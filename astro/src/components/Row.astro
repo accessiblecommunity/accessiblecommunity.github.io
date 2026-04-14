@@ -2,24 +2,23 @@
 import { boolean, undefined } from 'astro:schema';
 import { fade } from 'astro:transitions';
 
-type numberColumns = "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9" | "10" | "11" | "12";
-type gapSizes = "1" | "2" | "3" | "4";
-type gutterSizes = "1" | "2" | "3" | "4" | "5";
+type rowColumns = "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9" | "10" | "11" | "12";
+type gapGutterSizes = "1" | "2" | "3" | "4" | "5";
 
-//Note: RowCols are the max number of columns across within a Row
+//Note: RowCols are the max number of horizontal columns within a Row
 export interface Props {
   id?: string;
   class?: string;
-  gap?: gapSizes;
-  g?: gutterSizes;
-  gx?: gutterSizes;
-  gy?: gutterSizes;
-  baseRowCols?: numberColumns;
-  smRowCols?: numberColumns;
-  mdRowCols?: numberColumns;
-  lgRowCols?: numberColumns;
-  xlRowCols?: numberColumns;
-  xxlRowCols?: numberColumns;
+  gap?: gapGutterSizes;
+  g?: gapGutterSizes;
+  gx?: gapGutterSizes;
+  gy?: gapGutterSizes;
+  baseRowCols?: rowColumns;
+  smRowCols?: rowColumns;
+  mdRowCols?: rowColumns;
+  lgRowCols?: rowColumns;
+  xlRowCols?: rowColumns;
+  xxlRowCols?: rowColumns;
 }
 
 const {
