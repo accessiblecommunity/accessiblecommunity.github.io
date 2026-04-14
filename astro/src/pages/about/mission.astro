@@ -2,13 +2,14 @@
 import Branding from "../../components/Branding.astro";
 import Column from "@components/Column.astro";
 import ExternalLink from "../../components/ExternalLink.astro";
+import FlexColumn from "@components/FlexColumn.astro";
 import Layout from "../../layouts/Layout.astro";
 import Quote from "../../components/Quote.astro";
+import Row from "../../components/Row.astro";
+import ShadowBoxSection from "../../components/ShadowBoxSection.astro";
 import ThemedBox from "../../components/ThemedBox.astro";
 import ThemedColumn from "../../components/ThemedColumn.astro";
 import ThemedSection from "../../components/ThemedSection.astro";
-import Row from "../../components/Row.astro";
-import ShadowBoxSection from "../../components/ShadowBoxSection.astro";
 import { Image } from "astro:assets";
 import type { Breadcrumbs, PageMetadata } from "@lib/types";
 
@@ -71,8 +72,8 @@ import partnerImage from "../../images/np_Business-partners-discussing-work-arra
   </ThemedSection>
 
   <ThemedSection theme="primary" text={true}>
-    <div
-      class="container d-flex flex-column flex-lg-row gap-4 gy-5 py-3 justify-content-lg-between"
+    <FlexColumn
+      lgFlexRow gap="4" class="container gy-5 py-3 justify-content-lg-between"
     >
       <Column lg="7" class="text-white">
         <h2 class="display-3 text-white pb-4">Our <strong>mission</strong>.</h2>
@@ -107,7 +108,7 @@ import partnerImage from "../../images/np_Business-partners-discussing-work-arra
           </li>
         </ul>
       </Column>
-    </div>
+    </FlexColumn>
   </ThemedSection>
 
   <ThemedSection style="tertiary">
@@ -148,7 +149,7 @@ import partnerImage from "../../images/np_Business-partners-discussing-work-arra
         <strong>Communities</strong> are <strong>people</strong>.
       </h2>
     </Row>
-    <div class="d-flex flex-column flex-lg-row gap-3 justify-content-lg-evenly">
+    <FlexColumn lgFlexRow gap="3" class="justify-content-lg-evenly">
       <ThemedColumn
         lg="3"
         xl="3"
@@ -181,7 +182,7 @@ import partnerImage from "../../images/np_Business-partners-discussing-work-arra
           >" has become a rallying cry for their desire to be involved.
         </p>
       </Column>
-    </div>
+    </FlexColumn>
   </ShadowBoxSection>
 
   <ShadowBoxSection theme="secondary-subtle">
@@ -192,8 +193,8 @@ import partnerImage from "../../images/np_Business-partners-discussing-work-arra
         >.
       </h2>
     </Row>
-    <div
-      class="d-flex flex-column flex-xl-row gap-4 justify-content-xl-center align-items-center px-4"
+    <FlexColumn
+      xlFlexRow gap="4" class="justify-content-xl-center align-items-center px-4"
     >
       <Column xl="6" xxl="5">
         <p class="text-start">
@@ -234,7 +235,7 @@ import partnerImage from "../../images/np_Business-partners-discussing-work-arra
           format="avif"
         />
       </Column>
-    </div>
+    </FlexColumn>
   </ShadowBoxSection>
 </Layout>
 
