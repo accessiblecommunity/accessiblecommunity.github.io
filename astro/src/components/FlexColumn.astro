@@ -11,6 +11,9 @@ export interface Props {
   lgFlexRow?: boolean;
   xlFlexRow?: boolean;
   xxlFlexRow?: boolean;
+  mdReverse?: boolean;
+  lgReverse?: boolean;
+  xlReverse?: boolean;
   gap?: gapSizes;
   class?: string;
 }
@@ -22,6 +25,9 @@ const {
   lgFlexRow = false,
   xlFlexRow = false,
   xxlFlexRow = false,
+  mdReverse = false,
+  lgReverse = false,
+  xlReverse = false,
   gap = undefined,
   class: cssClass = "",
 } = Astro.props;
@@ -35,6 +41,9 @@ const {
   lgFlexRow && "flex-lg-row",
   xlFlexRow && "flex-xl-row",
   xxlFlexRow && "flex-xxl-row",
+  mdReverse && "flex-md-row-reverse",
+  lgReverse && "flex-lg-row-reverse",
+  xlReverse && "flex-xl-row-reverse",
   gap && `gap-${gap}`,
   cssClass,
 ]}><slot /></div>
