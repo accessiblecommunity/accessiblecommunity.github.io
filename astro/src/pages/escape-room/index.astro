@@ -12,7 +12,10 @@ const metadata: PageMetadata = {
 };
 
 const rooms: Array<CollectionEntry<"escapeRoomThemes">> =
-  sortBy(await getCollection("escapeRoomThemes"), (room) => room.data.title);
+  sortBy(
+    await getCollection("escapeRoomThemes"),
+    (room: CollectionEntry<"escapeRoomThemes">) => room.data.title
+  );
 
 
 import Branding from "@components/Branding.astro";
@@ -23,6 +26,7 @@ import EscapeRoomLayout from "src/layouts/EscapeRoomLayout.astro";
 import FlexColumn from "@components/FlexColumn.astro";
 import Row from "@components/Row.astro";
 import ThemedSection from "@components/ThemedSection.astro";
+import ImageCard from "@components/ImageCard.astro";
 import { YouTube } from 'astro-lazy-youtube-embed'
 
 import brailleBlocks from "src/images/escape-room/braille-blocks.png";
@@ -145,6 +149,17 @@ import woodenPuzzles from "src/images/escape-room/wooden-puzzles.png";
               </div>
             </div>
           </Column>
+          <ImageCard
+            image={room.data.image}
+            alt={room.data.alt || null}
+            title={room.data.title}
+            theme={room.data.page.theme}
+            href={`/services/escape-room/themes/${room.id}`}
+            buttonText={room.data.buttonText || "Learn more"}
+            titleClass={`text-truncate text-${room.data.page.theme}`}
+          >
+            <p class="card-text" set:text={room.data.tagline} />
+          </ImageCard>
         ))
       }
     </Row>
