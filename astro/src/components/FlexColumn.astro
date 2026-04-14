@@ -1,0 +1,40 @@
+---
+import { undefined } from 'astro:schema';
+
+type gapSizes = "1" | "2" | "3" | "4" | "5";
+
+//Note: RowCols are the max number of columns horizontally within a Row
+export interface Props {
+  id?: string;
+  smFlexRow?: boolean;
+  mdFlexRow?: boolean;
+  lgFlexRow?: boolean;
+  xlFlexRow?: boolean;
+  xxlFlexRow?: boolean;
+  gap?: gapSizes;
+  class?: string;
+}
+
+const {
+  id: elementID = "",
+  smFlexRow = false,
+  mdFlexRow = false,
+  lgFlexRow = false,
+  xlFlexRow = false,
+  xxlFlexRow = false,
+  gap = undefined,
+  class: cssClass = "",
+} = Astro.props;
+---
+
+<div class:list={[
+  "d-flex flex-column", 
+  elementID,
+  smFlexRow && "flex-sm-row",
+  mdFlexRow && "flex-md-row",
+  lgFlexRow && "flex-lg-row",
+  xlFlexRow && "flex-xl-row",
+  xxlFlexRow && "flex-xxl-row",
+  gap && `gap-${gap}`,
+  cssClass,
+]}><slot /></div>
