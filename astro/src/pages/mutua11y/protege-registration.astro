@@ -32,8 +32,8 @@ import Column from "@components/Column.astro";
 import GoogleForm from "@components/forms/GoogleForm.astro";
 import ImageHeading from "@components/ImageHeading.astro";
 import Layout from "src/layouts/Layout.astro";
-import ThemedSection from "@components/ThemedSection.astro";
 import Row from "@components/Row.astro";
+import ThemedSection from "@components/ThemedSection.astro";
 ---
 
 <Layout {title} {crumbs} {metadata}>
@@ -174,7 +174,7 @@ import Row from "@components/Row.astro";
               Do you work on accessibility in any of the following countries?
               <span class="form-text">(Select all that apply)</span>
             </legend>
-            <Row class="row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 row-cols-xxl-6 mx-1">
+            <Row smRowCols="2" mdRowCols="3" lgRowCols="4" xlRowCols="5" xxlRowCols="6" class="mx-1">
               {
                 countries.map((country) => (
                   <div class="form-check mb-2">
@@ -264,7 +264,7 @@ import Row from "@components/Row.astro";
               What areas are you interested in?
               <span class="form-text">(Select all that apply)</span>
             </legend>
-            <Row class="row-cols-lg-2 row-cols-xl-1 mx-1">
+            <Row lgRowCols="2" xlRowCols="1" class="mx-1">
               {
                 accessibilityAreas.map((area) => (
                   <div class="form-check mb-2">
@@ -295,7 +295,7 @@ import Row from "@components/Row.astro";
               <span class="asterisk" />
               <span class="form-text">(Select all that apply)</span>
             </legend>
-            <Row class="row-cols-lg-2 row-cols-xl-1 mx-1">
+            <Row lgRowCols="2" xlRowCols="1" class="mx-1">
               {
                 training.map((area) => (
                   <div class="form-check mb-2">
@@ -325,7 +325,7 @@ import Row from "@components/Row.astro";
               What accessibility topics would you hope to discuss with your mentor?
               <span class="form-text">(Select all that apply)</span>
             </legend>
-            <Row class="row-cols-lg-2 row-cols-xl-1 mx-1">
+            <Row lgRowCols="2" xlRowCols="1" class="mx-1">
               {
                 topics.map((area) => (
                   <div class="form-check mb-2">
