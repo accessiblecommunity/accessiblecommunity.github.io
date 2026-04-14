@@ -1,9 +1,9 @@
 ---
 import Branding from "@components/Branding.astro";
+import FlexColumn from "@components/FlexColumn.astro";
 import { Icon } from "astro-icon/components";
 import ImageHeading from "@components/ImageHeading.astro";
 import Layout from "../../layouts/Layout.astro";
-import Row from "@components/Row.astro";
 import ShadowBoxSection from "@components/ShadowBoxSection.astro";
 import ThemedSection from "@components/ThemedSection.astro";
 import TipLicense from "@components/TipLicense.astro";
@@ -48,8 +48,8 @@ const crumbs: Breadcrumbs = [
 
   <ThemedSection style="tertiary">
     <h2 class="display-3">Making accessibility <strong>simpler</strong>.</h2>
-    <div
-      class="d-flex flex-column flex-lg-row gap-4 justify-content-lg-evenly align-items-lg-center py-2"
+    <FlexColumn
+      lgFlexRow gap="4" class="justify-content-lg-evenly align-items-lg-center py-2"
     >
       <div>
         <p class="lead"> It takes five minutes. </p>
@@ -79,7 +79,7 @@ const crumbs: Breadcrumbs = [
           have an asterisk (<span class="asterisk">*</span>).
         </p>
       </TipRegistration>
-    </div>
+    </FlexColumn>
   </ThemedSection>
 
   <ShadowBoxSection theme="info" fluid={false}>
