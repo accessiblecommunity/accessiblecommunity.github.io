@@ -3,6 +3,7 @@ import Branding from "@components/Branding.astro";
 import { Icon } from "astro-icon/components";
 import ImageHeading from "@components/ImageHeading.astro";
 import Layout from "../../layouts/Layout.astro";
+import Row from "@components/Row.astro";
 import ShadowBoxSection from "@components/ShadowBoxSection.astro";
 import ThemedSection from "@components/ThemedSection.astro";
 import TipLicense from "@components/TipLicense.astro";
@@ -96,7 +97,7 @@ const crumbs: Breadcrumbs = [
       Tip of the Week <strong>Archive</strong>
     </h2>
     <hr />
-    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 mt-5">
+    <Row baseRowCols="1" mdRowCols="2" lgRowCols="3" class="mt-5">
       <div class="col">
         <h3>Most Recent</h3>
         <ul class="mt-1 mb-3 list-disc">
@@ -126,7 +127,7 @@ const crumbs: Breadcrumbs = [
           </div>
         ))
       }
-    </div>
+    </Row>
   </ThemedSection>
   */}
 
