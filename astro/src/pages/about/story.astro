@@ -4,6 +4,7 @@ import ImageHeading from "../../components/ImageHeading.astro";
 import Layout from "../../layouts/Layout.astro";
 import TeamVignette from "../../components/TeamVignette.astro";
 import ThemedBox from "../../components/ThemedBox.astro";
+import ThemedColumn from "../../components/ThemedColumn.astro";
 import ThemedSection from "../../components/ThemedSection.astro";
 import { Icon } from "astro-icon/components";
 
@@ -47,12 +48,16 @@ const crumbs: Breadcrumbs = [
       of this group. Despite this, we create environments with barriers built into
       them.
     </p>
-    <ThemedBox
+    <ThemedColumn
+      noDefault
+      md="9"
+      lg="7"
+      xxl="10"
       theme="primary"
       style="subtle"
       border={1}
       text={true}
-      class="mx-auto col-md-9 col-lg-7 col-xxl-10 rounded-1 mb-4"
+      class="mx-auto rounded-1 mb-4"
     >
       <div class="display-6 text-center">
         <sup aria-hidden="true"
@@ -66,7 +71,7 @@ const crumbs: Breadcrumbs = [
           >&nbsp;<Icon name="quote-right" height="1em" /></sup
         >
       </div>
-    </ThemedBox>
+    </ThemedColumn>
     <p>
       I founded Accessible Community after developing chemical sensitivity
       during pregnancy. There is no existing solution to help me safely go to
@@ -83,12 +88,16 @@ const crumbs: Breadcrumbs = [
       sensitivity. “Oh, my mother has that.” he said. “She doesn't go anywhere
       anymore.” Several years later, I more fully understand why.
     </p>
-    <ThemedBox
+    <ThemedColumn
+      noDefault
+      md="10"
+      lg="9"
+      xl="10"
       theme="primary"
       style="subtle"
       border={1}
       text={true}
-      class="mx-auto col-md-10 col-lg-9 col-xl-10 rounded-1 mb-4"
+      class="mx-auto rounded-1 mb-4"
     >
       <div class="display-6 text-center">
         <sup aria-hidden="true"
@@ -103,7 +112,7 @@ const crumbs: Breadcrumbs = [
           >&nbsp;<Icon name="quote-right" height="1em" /></sup
         >
       </div>
-    </ThemedBox>
+    </ThemedColumn>
     <p>
       We often discuss the need for ramps in physical spaces, captions for
       multimedia, and screen reader support in digital content. We don't often

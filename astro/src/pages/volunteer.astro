@@ -7,6 +7,7 @@ import { components } from "@lib/mdx";
 import { sortBy } from "lodash-es";
 
 import Branding from "../components/Branding.astro";
+import Column from "../components/Column.astro";
 import GoogleForm from "@components/forms/GoogleForm.astro";
 import Hero from "../components/Hero.astro";
 import { Icon } from "astro-icon/components";
@@ -84,7 +85,7 @@ const orderedTeams = sortBy(teams, ["id"]);
     <div
       class="d-flex flex-column flex-lg-row gap-4 justify-content-lg-between align-items-center"
     >
-      <div class="col col-lg-7">
+      <Column lg="7">
         <h2 class="display-4 mb-4">
           Are you interested in <strong>volunteering</strong>?
         </h2>
@@ -100,7 +101,7 @@ const orderedTeams = sortBy(teams, ["id"]);
           After you fill out the form, we will be in touch with regarding
           talking to one of our leadership team.
         </p>
-      </div>
+      </Column>
       <Image
         class="col-10 col-lg-5 rounded shadow border border-primary"
         src={teamPic}
@@ -114,7 +115,7 @@ const orderedTeams = sortBy(teams, ["id"]);
     <div
       class="d-flex flex-column flex-lg-row-reverse gap-5 justify-content-lg-between align-items-center"
     >
-      <div class="col col-lg-5 col-xl-6">
+      <Column lg="5" xl="6">
         <h2 class="display-3 text-light mb-4">
           Our Volunteer <strong>Orientation</strong>
         </h2>
@@ -124,7 +125,7 @@ const orderedTeams = sortBy(teams, ["id"]);
           >. This will go over the benefits of volunteering, our expectations
           and how you can join our organization.</p
         >
-      </div>
+      </Column>
       <iframe
         width="560"
         height="315"
@@ -161,7 +162,7 @@ const orderedTeams = sortBy(teams, ["id"]);
     <div class="row justify-content-center gap-5 py-4">
       {
         orderedTeams.map((team) => (
-          <div class="col-lg-8">
+          <Column noDefault lg="8">
             <div class="card mb-3 shadow team-card">
               <div class="card-header">
                 <h3 class="card-title mb-0" set:text={team.data.name} />
@@ -174,7 +175,7 @@ const orderedTeams = sortBy(teams, ["id"]);
                 </div>
               </div>
             </div>
-          </div>
+          </Column>
         ))
       }
     </div>
@@ -204,7 +205,7 @@ const orderedTeams = sortBy(teams, ["id"]);
         </p>
       </div>
       <div class="row">
-        <div class="col-md-6 mb-3">
+        <Column noDefault md="6" class="mb-3">
           <label for="firstNameField" class="form-label mb-1 required-field"
             >First Name</label
           ><span class="asterisk"></span>
@@ -216,8 +217,8 @@ const orderedTeams = sortBy(teams, ["id"]);
             autocomplete="given-name"
             required
           />
-        </div>
-        <div class="col-md-6 mb-3">
+        </Column>
+        <Column noDefault md="6" class="mb-3">
           <label for="lastNameField" class="form-label mb-1 required-field"
             >Last Name</label
           ><span class="asterisk"></span>
@@ -229,8 +230,8 @@ const orderedTeams = sortBy(teams, ["id"]);
             autocomplete="family-name"
             required
           />
-        </div>
-        <div class="col-md-6 mb-3">
+        </Column>
+        <Column noDefault md="6" class="mb-3">
           <label for="emailField" class="form-label mb-1 required-field"
             >Email Address</label
           ><span class="asterisk"></span>
@@ -247,8 +248,8 @@ const orderedTeams = sortBy(teams, ["id"]);
             The email you would like us to associate with your account accesses.
             This is ideally a Gmail address.
           </div>
-        </div>
-        <div class="col-md-6 mb-3">
+        </Column>
+        <Column noDefault md="6" class="mb-3">
           <label for="countryField" class="form-label mb-1 required-field"
             >Country</label
           ><span class="asterisk"></span>
@@ -264,8 +265,8 @@ const orderedTeams = sortBy(teams, ["id"]);
           <div id="countryHelp" class="form-text">
             The country where you spend the majority of your time.
           </div>
-        </div>
-        <div class="col-md-6 mb-3">
+        </Column>
+        <Column noDefault md="6" class="mb-3">
           <label for="teamField" class="form-label mb-1 required-field"
             >Desired Team</label
           ><span class="asterisk"></span>
@@ -285,8 +286,8 @@ const orderedTeams = sortBy(teams, ["id"]);
           <div id="emailHelp" class="form-text">
             Which team you would like to volunteer with?
           </div>
-        </div>
-        <div class="col-md-6 mb-3">
+        </Column>
+        <Column noDefault md="6" class="mb-3">
           <fieldset>
             <legend class="mb-2 fs-5 required-field">
               Are you willing to commit to at least 4 hours a week?
@@ -306,7 +307,7 @@ const orderedTeams = sortBy(teams, ["id"]);
               </label>
             </div>
           </fieldset>
-        </div>
+        </Column>
         <div class="mb-3">
           <label for="accommodationTextarea" class="form-label mb-1"
             >Do you need any accomodations to be successful?</label
@@ -324,13 +325,13 @@ const orderedTeams = sortBy(teams, ["id"]);
         >
       </div>
       <div slot="message">
-        <div class="col p-4 border border-2 border-info-contrast rounded">
+        <Column class="p-4 border border-2 border-info-contrast rounded">
           <p class="lead mb-0">
             Thank you for your interest in volunteering with
             <Branding class="text-primary">Accessible Community</Branding>.
             We'll be in touch shortly.
           </p>
-        </div>
+        </Column>
       </div>
     </GoogleForm>
   </ThemedSection>

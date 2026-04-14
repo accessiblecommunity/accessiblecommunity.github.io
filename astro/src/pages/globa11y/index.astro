@@ -10,6 +10,7 @@ const metadata: PageMetadata = {
 };
 
 import Branding from "@components/Branding.astro";
+import Column from "@components/Column.astro";
 import Hero from "@components/ColumnedHero.astro";
 import Layout from "src/layouts/Layout.astro";
 import ThemedSection from "@components/ThemedSection.astro";
@@ -117,7 +118,7 @@ import { Icon } from "astro-icon/components";
       </p>
     </div>
     <div class="row row-cols-lg-2 g-5 py-4">
-      <div class="col-lg-6">
+      <Column noDefault lg="6">
         <h3>Volunteer With Us</h3>
         <p> We're currently seeking volunteers in the following roles: </p>
         <ul>
@@ -137,8 +138,8 @@ import { Icon } from "astro-icon/components";
           >
         </ul>
         <p> No matter your skill set, there's a role for you. </p>
-      </div>
-      <div class="col-lg-6">
+      </Column>
+      <Column noDefault lg="6">
         <h3>Partner With Us</h3>
         <p>
           We're also looking to collaborate with organizations who share our
@@ -159,8 +160,8 @@ import { Icon } from "astro-icon/components";
         <p>
           Together, we can build a talent pipeline that works for everyone.
         </p>
-      </div>
-      <div class="col-lg-8">
+      </Column>
+      <Column noDefault lg="8">
         <h3>Get Involved</h3>
         <p>
           Ready to be part of something bold, human, and hopeful? <a
@@ -175,7 +176,7 @@ import { Icon } from "astro-icon/components";
             >globa11y@accessiblecommunity.org</a
           >
         </p>
-      </div>
+      </Column>
     </div>
   </ThemedSection>
   <style scoped>

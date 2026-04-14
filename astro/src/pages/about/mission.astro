@@ -1,9 +1,11 @@
 ---
 import Branding from "../../components/Branding.astro";
+import Column from "@components/Column.astro";
 import ExternalLink from "../../components/ExternalLink.astro";
 import Layout from "../../layouts/Layout.astro";
 import Quote from "../../components/Quote.astro";
 import ThemedBox from "../../components/ThemedBox.astro";
+import ThemedColumn from "../../components/ThemedColumn.astro";
 import ThemedSection from "../../components/ThemedSection.astro";
 import ShadowBoxSection from "../../components/ShadowBoxSection.astro";
 import { Image } from "astro:assets";
@@ -35,7 +37,7 @@ import partnerImage from "../../images/np_Business-partners-discussing-work-arra
     <div
       class="row flex-column-reverse flex-lg-row align-items-center justify-content-center gy-4 p-4"
     >
-      <div class="col-lg-6 col-xl-7 col-xxl-6">
+      <Column noDefault lg="6" xl="7" xxl="6">
         <h1 class="visually-hidden">Mission and Vision</h1>
         <h2 class="display-5 text-info-emphasis mb-1">
           <span>Our <strong>vision</strong>.</span>
@@ -53,8 +55,8 @@ import partnerImage from "../../images/np_Business-partners-discussing-work-arra
           and community leaders, and individuals with disabilities to create a more
           inclusive world.
         </p>
-      </div>
-      <div class="col col-sm-10 col-md-8 col-lg-6 col-xl-5 col-xxl-4">
+      </Column>
+      <Column sm="10" md="8" lg="6" xl="5" xxl="4">
         <Image
           src={missionImage}
           class="img-fluid"
@@ -63,7 +65,7 @@ import partnerImage from "../../images/np_Business-partners-discussing-work-arra
           loading="lazy"
           alt="Image depicting Accessible Community's vision. Four circles connected with our logo. Contained in the circles are People with Disabilities, Local Organizations, Community Leaders, and Accessibility Experts."
         />
-      </div>
+      </Column>
     </div>
   </ThemedSection>
 
@@ -71,7 +73,7 @@ import partnerImage from "../../images/np_Business-partners-discussing-work-arra
     <div
       class="container d-flex flex-column flex-lg-row gap-4 gy-5 py-3 justify-content-lg-between"
     >
-      <div class="text-white col col-lg-7">
+      <Column lg="7" class="text-white">
         <h2 class="display-3 text-white pb-4">Our <strong>mission</strong>.</h2>
         <ul class="ms-2">
           <li>
@@ -91,8 +93,8 @@ import partnerImage from "../../images/np_Business-partners-discussing-work-arra
             disability-related professions and disabled professionals.
           </li>
         </ul>
-      </div>
-      <div class="text-white col col-lg-4">
+      </Column>
+      <Column lg="4" class="text-white">
         <h2 class="display-3 text-white pb-4">Our <strong>goals</strong>.</h2>
         <ul class="ms-2">
           <li>
@@ -103,7 +105,7 @@ import partnerImage from "../../images/np_Business-partners-discussing-work-arra
             Help community organizations become more disability inclusive.
           </li>
         </ul>
-      </div>
+      </Column>
     </div>
   </ThemedSection>
 
@@ -146,14 +148,16 @@ import partnerImage from "../../images/np_Business-partners-discussing-work-arra
       </h2>
     </div>
     <div class="d-flex flex-column flex-lg-row gap-3 justify-content-lg-evenly">
-      <ThemedBox
+      <ThemedColumn
+        lg="3"
+        xl="3"
         theme="info"
         style="subtle"
-        class="mx-4 my-auto col col-lg-3 col-xl-3 rounded shadow-sm"
+        class="mx-4 my-auto rounded shadow-sm"
       >
         <Quote q="loneliness" />
-      </ThemedBox>
-      <div class="text-primary col col-lg-8 col-xl-7 px-4">
+      </ThemedColumn>
+      <Column lg="8" xl="7" class="text-primary px-4">
         <p class="lead">
           <ExternalLink
             href="https://www.cdc.gov/ncbddd/disabilityandhealth/infographic-disability-impacts-all.html"
@@ -175,7 +179,7 @@ import partnerImage from "../../images/np_Business-partners-discussing-work-arra
             >Nothing about us without us</strong
           >" has become a rallying cry for their desire to be involved.
         </p>
-      </div>
+      </Column>
     </div>
   </ShadowBoxSection>
 
@@ -190,7 +194,7 @@ import partnerImage from "../../images/np_Business-partners-discussing-work-arra
     <div
       class="d-flex flex-column flex-xl-row gap-4 justify-content-xl-center align-items-center px-4"
     >
-      <div class="col col-xl-6 col-xxl-5">
+      <Column xl="6" xxl="5">
         <p class="text-start">
           Over
           <ExternalLink
@@ -219,8 +223,8 @@ import partnerImage from "../../images/np_Business-partners-discussing-work-arra
             ><strong>$200 billion</strong> of discretionary spending</ExternalLink
           > they possess.
         </p>
-      </div>
-      <div class="col col-xl-6 col-xxl-5">
+      </Column>
+      <Column xl="6" xxl="5">
         <Image
           class="rounded img-fluid"
           src={partnerImage}
@@ -228,7 +232,7 @@ import partnerImage from "../../images/np_Business-partners-discussing-work-arra
           loading="lazy"
           format="avif"
         />
-      </div>
+      </Column>
     </div>
   </ShadowBoxSection>
 </Layout>
