@@ -13,6 +13,7 @@ import Branding from "@components/Branding.astro";
 import Column from "@components/Column.astro";
 import Hero from "@components/ColumnedHero.astro";
 import Layout from "src/layouts/Layout.astro";
+import Row from "@components/Row.astro";
 import ThemedSection from "@components/ThemedSection.astro";
 
 import heroBg from "src/images/np_Man with prosthetic hand typing on a computer_4jzKz4_free.jpg";
@@ -117,7 +118,7 @@ import { Icon } from "astro-icon/components";
         passionate people like you to help us make it happen.
       </p>
     </div>
-    <div class="row row-cols-lg-2 g-5 py-4">
+    <Row lgRowCols="2" g="5" class="py-4">
       <Column noDefault lg="6">
         <h3>Volunteer With Us</h3>
         <p> We're currently seeking volunteers in the following roles: </p>
@@ -177,7 +178,7 @@ import { Icon } from "astro-icon/components";
           >
         </p>
       </Column>
-    </div>
+    </Row>
   </ThemedSection>
   <style scoped>
     .logo {
