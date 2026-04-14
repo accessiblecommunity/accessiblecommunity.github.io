@@ -89,9 +89,9 @@ import ThemedBox from "@components/ThemedBox.astro";
         : "" }
         <h2 class="pb-2 mb-4 border-bottom border-primary" set:text={show.data.title} />
         <FlexColumn
+          mdReverse
           gap="4"
           class:list={[
-            "flex-md-row-reverse",
             // (index % 2) ? "flex-xl-row-reverse" : "flex-xl-row",
             "justify-content-md-evenly align-items-md-start"
           ]}
