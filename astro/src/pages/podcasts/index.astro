@@ -73,7 +73,7 @@ import ThemedBox from "@components/ThemedBox.astro";
   </ImageHeading>
   {
     shows.map((show, index) => (
-      <ThemedSection style={(index % 2) ? "tertiary" : undefined} id={show.id} py={3}>
+      <ThemedSection style={(index % 2) ? "tertiary" : undefined} id={show.id}>
         {index === 0
         ? <ThemedBox theme="primary" style="subtle" border={1} padding={3} class="mb-5 p-3 rounded">
             <div class="d-flex flex-column flex-lg-row justify-content-center column-gap-3 align-items-center mt-2">
