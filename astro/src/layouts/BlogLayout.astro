@@ -93,7 +93,7 @@ import ThemedSection from "@components/ThemedSection.astro";
       <strong>Blog</strong>
     </slot>
   </ImageHeading>
-  <ThemedSection style="tertiary" py={0}>
+  <ThemedSection style="tertiary">
     <div class="d-flex gap-4">
       <article class:list={[sidebar ? "d-none d-lg-block" : "col", "col-lg-9"]}>
         <h1 class="display-4 border-bottom mb-3" set:text={blog.data.title} />
