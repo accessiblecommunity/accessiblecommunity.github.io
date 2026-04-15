@@ -132,17 +132,6 @@ import woodenPuzzles from "src/images/escape-room/wooden-puzzles.png";
     <Row baseRowCols="2" g="3" class="align-items-stretch">
       {
         rooms.map(room => (
-          <ImageCard
-            image={room.data.image}
-            alt={room.data.alt || null}
-            title={room.data.title}
-            theme={room.data.page.theme}
-            href={`/services/escape-room/themes/${room.id}`}
-            buttonText={room.data.buttonText || "Learn more"}
-            titleClass={`text-truncate text-${room.data.page.theme}`}
-          >
-            <p class="card-text" set:text={room.data.tagline} />
-          </ImageCard>
           <Column>
             <ImageCard
               image={room.data.image}
