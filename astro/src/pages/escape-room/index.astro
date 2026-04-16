@@ -12,14 +12,19 @@ const metadata: PageMetadata = {
 };
 
 const rooms: Array<CollectionEntry<"escapeRoomThemes">> =
-  sortBy(await getCollection("escapeRoomThemes"), (room) => room.data.title);
+  sortBy(
+    await getCollection("escapeRoomThemes"),
+    (room: CollectionEntry<"escapeRoomThemes">) => room.data.title
+  );
 
 
 import Branding from "@components/Branding.astro";
+import Column from "@components/Column.astro";
 import { Icon } from "astro-icon/components";
 import { Image } from "astro:assets";
 import EscapeRoomLayout from "src/layouts/EscapeRoomLayout.astro";
 import ThemedSection from "@components/ThemedSection.astro";
+import ImageCard from "@components/ImageCard.astro";
 import { YouTube } from 'astro-lazy-youtube-embed'
 
 import brailleBlocks from "src/images/escape-room/braille-blocks.png";
@@ -27,11 +32,11 @@ import woodenPuzzles from "src/images/escape-room/wooden-puzzles.png";
 ---
 
 <EscapeRoomLayout {metadata} {title}>
-  <ThemedSection slot="header" theme="info" py={4}>
+  <ThemedSection slot="header" theme="info">
     <div
       class="d-flex flex-column flex-lg-row gap-4 py-3 justify-content-lg-center align-items-center"
     >
-      <div class="col col-lg-6 col-xl-7 text-light">
+      <Column lg="6" xl="7" class="text-light">
         <h1 class="visually-hidden" set:text={title}></h1>
         <p class="display-2">A fun and accessible team-building activity.</p>
         <p class="lead">
@@ -58,23 +63,25 @@ import woodenPuzzles from "src/images/escape-room/wooden-puzzles.png";
             </a>
           </div>
         </div>
-      </div>
-      <div class="d-none d-lg-block col-lg-5 col-xl-4 position-relative" style="height: 325px">
-        <Image
-          width={400}
-          class="img-wp rounded position-absolute top-0 end-0"
-          src={woodenPuzzles}
-          alt=""
-          aria-hidden="true"
-        />
-        <Image
-          width={300}
-          class="img-bb position-absolute bottom-0 start-0"
-          src={brailleBlocks}
-          alt=""
-          aria-hidden="true"
-        />
-      </div>
+      </Column>
+      <Column noDefault lg="5" xl="4" class="d-none d-lg-block position-relative">
+        <div class="escape-img-column">
+          <Image
+            width={400}
+            class="img-wp rounded position-absolute top-0 end-0"
+            src={woodenPuzzles}
+            alt=""
+            aria-hidden="true"
+          />
+          <Image
+            width={300}
+            class="img-bb position-absolute bottom-0 start-0"
+            src={brailleBlocks}
+            alt=""
+            aria-hidden="true"
+          />
+        </div>
+      </Column>
     </div>
   </ThemedSection>
 
@@ -127,23 +134,17 @@ import woodenPuzzles from "src/images/escape-room/wooden-puzzles.png";
     <div class="row row-cols-2 g-3 align-items-stretch">
       {
         rooms.map(room => (
-          <div class="col">
-            <div class="card border border-dark">
-              <Image
-                src={room.data.image}
-                class="card-img-top"
-                alt={room.data.alt || null}
-              />
-              <div class="card-body">
-                <h3 class={`card-title text-truncate text-${room.data.page.theme}`} set:text={room.data.title} />
-                <p class="card-text" set:text={room.data.tagline} />
-                <a
-                  href={`/escape-room/themes/${room.id}`}
-                  class={`btn btn-${room.data.page.theme}`}
-                >Learn more</a>
-              </div>
-            </div>
-          </div>
+          <ImageCard
+            image={room.data.image}
+            alt={room.data.alt || null}
+            title={room.data.title}
+            theme={room.data.page.theme}
+            href={`/services/escape-room/themes/${room.id}`}
+            buttonText={room.data.buttonText || "Learn more"}
+            titleClass={`text-truncate text-${room.data.page.theme}`}
+          >
+            <p class="card-text" set:text={room.data.tagline} />
+          </ImageCard>
         ))
       }
     </div>
@@ -172,6 +173,9 @@ import woodenPuzzles from "src/images/escape-room/wooden-puzzles.png";
   .card-title {
     font-weight: 500;
     font-size: 1.3rem;
+  }
+  .escape-img-column {
+    height: 325px;
   }
   h2, h3, h4 {
     color: var(--bs-info);

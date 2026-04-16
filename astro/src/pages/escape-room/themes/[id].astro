@@ -52,6 +52,7 @@ const { Content } = await render(room);
 const themeVar = `var(--bs-${theme})`;
 const textVar = `var(--bs-${theme}-text-emphasis)`;
 
+import Column from "@components/Column.astro";
 import Hero from "@components/HeroWithBreadcrumbs.astro";
 import { Icon } from "astro-icon/components";
 import Layout from "src/layouts/EscapeRoomLayout.astro";
@@ -72,28 +73,28 @@ import ThemedSection from "@components/ThemedSection.astro";
         <div class="d-flex flex-column flex-lg-row">
           {
             about.players && (
-              <div class="col py-1">
+              <Column class="py-1">
                 <Icon name="bi:people-fill" class={`bi text-${theme}-emphasis`} aria-hidden="true" />
                 {about.players} players
-              </div>
+              </Column>
             )
           }
           {
             about.length && (
-              <div class="col py-1">
+              <Column class="py-1">
                 <Icon name="bi:stopwatch-fill" class={`bi text-${theme}-emphasis`} aria-hidden="true" />
                 Around {about.length}
-              </div>
+              </Column>
             )
           }
         </div>
         <div class="row gy-2">
           {
             about.estimatedMaterialCost && (
-              <div class="col py-1">
+              <Column class="py-1">
                 <Icon name="bi:tools" class={`bi text-${theme}-emphasis`} aria-hidden="true" />
                 About ${about.estimatedMaterialCost} to purchase the materials to build and assemble
-              </div>
+              </Column>
             )
           }
         </div>

@@ -15,11 +15,12 @@ const crumbs: Breadcrumbs = [
   },
 ];
 
+import Column from "@components/Column.astro";
 import ExternalLink from "@components/ExternalLink.astro";
 import EscapeRoomLayout from "src/layouts/EscapeRoomLayout.astro";
 import Hero from "@components/HeroWithBreadcrumbs.astro";
 import Testimonial from "@components/Testimonial.astro";
-import ThemedBox from "@components/ThemedBox.astro";
+import ThemedColumn from "@components/ThemedColumn.astro";
 import ThemedSection from "@components/ThemedSection.astro";
 import { YouTube } from 'astro-lazy-youtube-embed';
 
@@ -37,7 +38,7 @@ import heroBg from "src/images/escape-room/shaded/puzzle-display.jpg";
       <div
         class="d-flex flex-column flex-lg-row gap-5 justify-content-lg-between align-items-lg-start"
       >
-        <div class="col">
+        <Column>
           <p>
             A few years ago, over lunch, Matt Ater and Rachael Bradley Montgomery
             joked about creating an accessible escape room. Why? Because Matt, who
@@ -54,14 +55,15 @@ import heroBg from "src/images/escape-room/shaded/puzzle-display.jpg";
             in at least one puzzle, usually more. A team of all blind individuals
             who helped pilot test it had the best score of everyone!
           </p>
-        </div>
-        <ThemedBox
+        </Column>
+        <ThemedColumn
+          lg="4"
           theme="info"
           border={1}
-          class="col col-lg-4 text-start p-4 pb-0 shadow-sm rounded"
+          class="text-start p-4 pb-0 shadow-sm rounded"
         >
           <Testimonial id="matt-ater/nap" text="light" />
-        </ThemedBox>
+        </ThemedColumn>
       </div>
     </ThemedSection>
 
@@ -69,7 +71,7 @@ import heroBg from "src/images/escape-room/shaded/puzzle-display.jpg";
       <div
         class="d-flex flex-column flex-lg-row-reverse gap-5 justify-content-lg-between align-items-center"
       >
-        <div class="col">
+        <Column>
           <h2 class="mb-4">Making an accessible escape room</h2>
           <p>
             If you would like to create an accessible escape room for your
@@ -92,15 +94,15 @@ import heroBg from "src/images/escape-room/shaded/puzzle-display.jpg";
               one. This means at least one puzzle should take voice input.</li
             >
           </ul>
-        </div>
+        </Column>
 
-        <div class="col col-lg-5">
+        <Column lg="5">
           <YouTube
             class="rounded"
             title="Designing accessible escape rooms"
             videoId="VAgKrhNIk2U"
           />
-        </div>
+        </Column>
       </div>
     </ThemedSection>
   </div>

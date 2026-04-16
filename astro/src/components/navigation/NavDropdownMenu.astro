@@ -9,8 +9,9 @@ interface Props {
 const { name: collectionName, "hide-tags": hideTags = [] } = Astro.props;
 const entry = await getEntry("navigation", collectionName);
 
-if (entry === undefined)
+if (entry === undefined) {
   throw new Error(`Could not find navigation entry '${collectionName}'.`);
+}
 
 const { name: dropdownText, groups } = entry.data;
 const hide = new Set(hideTags);

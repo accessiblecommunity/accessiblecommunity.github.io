@@ -1,0 +1,24 @@
+---
+import type { Props as ColumnProps } from "@components/Column.astro";
+import type { Props as ThemedBoxProps } from "@components/ThemedBox.astro";
+
+import Column from "@components/Column.astro";
+
+interface Props extends ColumnProps, ThemedBoxProps {}
+
+const {
+  theme = undefined,
+  style = undefined,
+  text = true,
+  border = 0,
+  padding = 4,
+  ...columnProps
+} = Astro.props;
+
+import { getBackgroundAndText, getBorder } from "../lib/themes.ts";
+
+const bgAndTextClasses = getBackgroundAndText(theme, style, text);
+const borderClasses = getBorder(border, theme, style === "subtle");
+---
+
+<Column {...columnProps} class:list={[bgAndTextClasses, borderClasses, `p-${padding}`]}><slot /></Column>
