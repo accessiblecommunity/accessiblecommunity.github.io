@@ -2,18 +2,20 @@
 import { type PageMetadata } from "../lib/types";
 
 import Branding from "../components/Branding.astro";
+import Column from "@components/Column.astro";
 import ExternalLink from "../components/ExternalLink.astro";
 import Hero from "../components/Hero.astro";
 import { Icon } from "astro-icon/components";
 import Layout from "../layouts/Layout.astro";
+import ThemedColumn from "../components/ThemedColumn.astro";
 import ThemedSection from "../components/ThemedSection.astro";
-import ThemedBox from "../components/ThemedBox.astro";
 import TipRegistration from "../components/TipRegistration.astro";
 import Testimonial from "../components/Testimonial.astro";
 
 import heroBg from "../images/colored-hero/wheelchair_hall.png";
 import websiteImg from "../images/website.jpg";
 
+export const prerender = true
 const title = "Home";
 const metadata: PageMetadata = {
   title,
@@ -76,7 +78,7 @@ const metadata: PageMetadata = {
     <div
       class="d-flex flex-column flex-xl-row justify-content-xl-evenly align-items-center"
     >
-      <div class="col col-xl-8 col-xxl-9">
+      <Column xl="8" xxl="9">
         <p>
           According to the CDC,
           <ExternalLink
@@ -104,8 +106,8 @@ const metadata: PageMetadata = {
             href="/about/story">founder's story</a
           > to learn more.
         </p>
-      </div>
-      <div class="d-none d-xl-block col-lg-10 col-xl-3 col-xxl-2">
+      </Column>
+      <Column noDefault xl="3" xxl="2" class="d-none d-xl-block">
         <p
           class="display-4 text-center text-primary py-3 border-primary-subtle border-top border-bottom"
         >
@@ -113,7 +115,7 @@ const metadata: PageMetadata = {
             >disability</strong
           >.
         </p>
-      </div>
+      </Column>
     </div>
   </ThemedSection>
 
@@ -121,7 +123,7 @@ const metadata: PageMetadata = {
     <div
       class="d-flex flex-column flex-xl-row-reverse gap-4 justify-content-xl-between align-items-xl-center"
     >
-      <div class="col col-xl-7">
+      <Column xl="7">
         <h2 class="display-3">What we <strong>do</strong>.</h2>
         <ul class="ms-2">
           <li>
@@ -141,14 +143,16 @@ const metadata: PageMetadata = {
             disability-related professions and disabled professionals.
           </li>
         </ul>
-      </div>
-      <ThemedBox
+      </Column>
+      <ThemedColumn
+        xl="4"
         theme="info"
         border={1}
-        class="col col-xl-4 text-start p-4 pb-0 shadow rounded"
+        padding={4}
+        class="text-start pb-0 shadow rounded"
       >
         <Testimonial id="daniela/short" text="light" />
-      </ThemedBox>
+      </ThemedColumn>
     </div>
   </ThemedSection>
 
@@ -157,10 +161,11 @@ const metadata: PageMetadata = {
     <div
       class="d-flex flex-column flex-xl-row gap-4 py-3 justify-content-lg-evenly justify-content-xl-center text-primary"
     >
-      <ThemedBox
+      <ThemedColumn
+        xl="3"
         text={true}
         border={1}
-        class="border-primary col col-xl-3 shadow rounded"
+        class="border-primary shadow rounded"
       >
         <h3 class="display-5" aria-hidden="true">
           <Icon
@@ -180,11 +185,12 @@ const metadata: PageMetadata = {
         <div class="text-center">
           <span class="text-brand fw-bold">Coming soon.</span>
         </div>
-      </ThemedBox>
-      <ThemedBox
+      </ThemedColumn>
+      <ThemedColumn
+        xl="3"
         text={true}
         border={1}
-        class="border-primary col col-xl-3 shadow rounded"
+        class="border-primary shadow rounded"
       >
         <h3 class="display-5" aria-hidden="true">
           <Icon
@@ -207,11 +213,12 @@ const metadata: PageMetadata = {
             Visit <Branding>ta11y.org</Branding>
           </ExternalLink>
         </div>
-      </ThemedBox>
-      <ThemedBox
+      </ThemedColumn>
+      <ThemedColumn
+        xl="3"
         text={true}
         border={1}
-        class="border-primary col col-xl-3 shadow rounded"
+        class="border-primary shadow rounded"
       >
         <h3 class="display-5" aria-hidden="true">
           <Icon
@@ -233,11 +240,12 @@ const metadata: PageMetadata = {
             >Visit <Branding>mutua11y</Branding></a
           >
         </div>
-      </ThemedBox>
-      <ThemedBox
+      </ThemedColumn>
+      <ThemedColumn
+        xl="3"
         text={true}
         border={1}
-        class="border-primary col col-xl-3 shadow rounded"
+        class="border-primary shadow rounded"
       >
         <h3 class="display-5" aria-hidden="true">
           <Icon
@@ -259,7 +267,7 @@ const metadata: PageMetadata = {
             >Visit <Branding>globa11y</Branding></a
           >
         </div>
-      </ThemedBox>
+      </ThemedColumn>
     </div>
     <p class="lead pt-5">
       Learn more about <a href="/services">our services</a>.
@@ -271,7 +279,11 @@ const metadata: PageMetadata = {
       Start your organization's <strong>disability-inclusion</strong> journey.
     </h2>
     <div class="d-flex flex-column flex-lg-row gap-4 justify-content-lg-evenly">
-      <ThemedBox theme="primary" border={3} class="col-lg-5 rounded">
+      <ThemedColumn
+        lg="5"
+        theme="primary"
+        border={3}
+        class="rounded">
         <p class="lead">
           Would you like a <span class="text-brand fw-bold"
             >free and simple</span
@@ -289,7 +301,7 @@ const metadata: PageMetadata = {
             href="/privacy-policy">sell or share your data</a
           >.
         </p>
-      </ThemedBox>
+      </ThemedColumn>
       <TipRegistration>
         <h3 class="display-6 text-info-emphasis mb-0">
           <strong>Tip of the Week</strong> Registration

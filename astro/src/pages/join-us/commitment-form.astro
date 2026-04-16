@@ -1,5 +1,6 @@
 ---
 import Branding from "../../components/Branding.astro";
+import Column from "../../components/Column.astro";
 import ExternalLink from "../../components/ExternalLink.astro";
 import ImageHeading from "../../components/ImageHeading.astro";
 import Layout from "../../layouts/Layout.astro";
@@ -59,7 +60,7 @@ const crumbs: Breadcrumbs = [
       </p>
       <h3 class="mt-3">Name and Email</h3>
       <div class="row">
-        <div class="col-md-6 mb-3">
+        <Column noDefault md="6" class="mb-3">
           <label for="firstNameField" class="form-label mb-1 required-field"
             >First Name</label
           ><span class="asterisk"></span>
@@ -71,8 +72,8 @@ const crumbs: Breadcrumbs = [
             autocomplete="given-name"
             required
           />
-        </div>
-        <div class="col-md-6 mb-3">
+        </Column>
+        <Column noDefault md="6" class="mb-3">
           <label for="lastNameField" class="form-label mb-1 required-field"
             >Last Name</label
           ><span class="asterisk"></span>
@@ -84,8 +85,8 @@ const crumbs: Breadcrumbs = [
             autocomplete="family-name"
             required
           />
-        </div>
-        <div class="col-md-6 mb-3">
+        </Column>
+        <Column noDefault md="6" class="mb-3">
           <label for="emailField" class="form-label mb-1 required-field"
             >Email Address</label
           ><span class="asterisk"></span>
@@ -100,7 +101,7 @@ const crumbs: Breadcrumbs = [
           <div id="emailHelp" class="form-text small">
             The email address we will use for all communications with you.
           </div>
-        </div>
+        </Column>
       </div>
 
       <h3 class="mt-3">Code of Conduct</h3>
@@ -137,7 +138,7 @@ const crumbs: Breadcrumbs = [
         social media (if any) you want us to link to.
       </p>
       <div class="row">
-        <div class="col-lg-6 mb-3">
+        <Column noDefault lg="6" class="mb-3">
           <label for="citedNameField" class="form-label mb-1 required-field"
             >Cited Name</label
           ><span class="asterisk"></span>
@@ -152,8 +153,8 @@ const crumbs: Breadcrumbs = [
           <div id="citedNameHelp" class="form-text small">
             How you would like your name credit on our website to appear.
           </div>
-        </div>
-        <div class="col-lg-6 mb-3">
+        </Column>
+        <Column noDefault lg="6" class="mb-3">
           <label for="linkedInProfileField" class="form-label mb-1"
             >LinkedIn Profile</label
           >
@@ -168,9 +169,9 @@ const crumbs: Breadcrumbs = [
             The URL of your LinkedIn profile (if you want us to link it).
           </div>
         </div>
-      </div>
+      </Column>
       <div class="row flex-lg-row-reverse">
-        <div class="col-lg-6 mb-3">
+        <Column noDefault lg="6" class="mb-3">
           <div class="mb-3">
             <label for="instagramProfileField" class="form-label mb-1"
               >Instagram Profile</label
@@ -202,8 +203,8 @@ const crumbs: Breadcrumbs = [
               it).
             </div>
           </div>
-        </div>
-        <div class="col-lg-6 mb-3">
+        </Column>
+        <Column noDefault lg="6" class="mb-3">
           <fieldset class="border-3 border-top form-border">
             <legend class="my-3 fs-5">
               We have a Team Spotlight where team members can be highlighted on
@@ -236,11 +237,11 @@ const crumbs: Breadcrumbs = [
               </label>
             </div>
           </fieldset>
-        </div>
+        </Column>
       </div>
 
       <div class="row mt-3">
-        <div class="col mb-3">
+        <Column class="mb-3">
           <h3>T-shirt</h3>
           <fieldset>
             <legend class="mb-2 fs-5">
@@ -266,29 +267,29 @@ const crumbs: Breadcrumbs = [
               <option value="XXXL">Triple XL (XXXL)</option>
             </select>
           </fieldset>
-        </div>
+        </Column>
       </div>
 
       <div class="row">
-        <div class="col-md-6 my-3 mx-auto">
+        <Column noDefault md="6" class="my-3 mx-auto">
           <button
             id="commitmentSubmit"
             type="submit"
             class="btn btn-info w-100 btn-contrast-dark">Submit</button
           >
-        </div>
+        </Column>
       </div>
     </form>
-    <div
-      class="d-none col p-4 border border-3 border-info-contrast rounded"
+    <Column
       id="commitmentSuccess"
+      class="d-none p-4 border border-3 border-info-contrast rounded"
     >
       <div class="lead">
         Thank you for committing to volunteer with
         <Branding class="text-primary">Accessible Community</Branding>. We'll be
         in touch shortly.
       </div>
-    </div>
+    </Column>
   </ThemedSection>
 
   <script is:inline>

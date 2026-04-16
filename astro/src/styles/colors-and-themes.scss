@@ -5,7 +5,7 @@ $ac-navy:                           #041058;
 
 //*******************
 // Coloring subtle themes.
-// 
+//
 // `text-emphasis` is a darker version of the base color.
 // `bg-subtle` is a significantly lighter version of the base color.
 // `border-subtle` is a lighter version of the base color, and a slightly darker version of bg-subtle.
@@ -34,7 +34,7 @@ $body-color-dark:                   white;
 
 //***************************
 //* Body Secondary. Used for:
-//*     Captions (Table/Figure), Form text, Input placeholder, Disabled (Links/Pagination), 
+//*     Captions (Table/Figure), Form text, Input placeholder, Disabled (Links/Pagination),
 //*     Toast Headers, List groups, Breadcrumbs, Progress and Hover backgrounds
 //***************************
 $body-secondary-color:              #5C6672; // gray-50
@@ -74,7 +74,7 @@ $primary-border-subtle-dark:        tint-color($primary, 30%);
 //*****************
 //* Secondary Theme
 //*****************
-$secondary:                         #6E7786; // gray-50   
+$secondary:                         #6E7786; // gray-50
 // Note: No dark mode on secondary
 
 // Secondary Subtle Theme
@@ -83,7 +83,7 @@ $secondary-bg-subtle:               #E6E6E7; // gray-00
 $secondary-border-subtle:           #CACBD4; // gray-10
 
 $secondary-text-emphasis-dark:      #989CAD; // gray-30
-$secondary-bg-subtle-dark:          #2B3438; // gray-90  
+$secondary-bg-subtle-dark:          #2B3438; // gray-90
 $secondary-border-subtle-dark:      #4B555F; // gray-70
 
 
@@ -95,11 +95,11 @@ $info:                              #066F80; // branded cyan
 
 // Info Subtle Theme
 $info-text-emphasis:                #004F4F; // cyan-80
-$info-bg-subtle:                    #67DCE0; // cyan-00  
+$info-bg-subtle:                    #67DCE0; // cyan-00
 $info-border-subtle:                #33CCCC; // cyan-10
 
 $info-text-emphasis-dark:           #11BABA; // cyan-20
-$info-bg-subtle-dark:               #003D3D; // cyan-90 
+$info-bg-subtle-dark:               #003D3D; // cyan-90
 $info-border-subtle-dark:           #006161; // cyan-70
 
 // New Responsive Contrast Theme.
@@ -114,10 +114,10 @@ $corporate:                         #8C5642; // briefcase
 
 // Corporate Subtle Theme
 $corporate-text-emphasis:           #6D4333; // 3 shades darker
-$corporate-bg-subtle:               #E3CCC4;
-$corporate-border-subtle:           #D5B2A6;
+$corporate-bg-subtle:               #F1E6E1;
+$corporate-border-subtle:           #E3CCC4;
 
-$corporate-text-emphasis-dark:      #C79988; 
+$corporate-text-emphasis-dark:      #D5B3A6;
 $corporate-bg-subtle-dark:          #452A21; // 7 shades darker
 $corporate-border-subtle-dark:      #633D2F; // 4 shades darker
 

@@ -23,3 +23,5 @@ astro/src/protected-materials/
 **/test*.astro
 **/debug*.astro
 **/*-test.*
+# Local Netlify folder
+.netlify

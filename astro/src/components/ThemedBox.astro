@@ -1,10 +1,11 @@
 ---
-interface Props {
+export interface Props {
   theme?: string;
   style?: string;
   text?: boolean;
   border?: number;
   class?: string;
+  padding?: number
 }
 
 const {
@@ -12,6 +13,7 @@ const {
   style = undefined,
   text = true,
   border = 0,
+  padding = 4,
   class: extraClasses = "",
 } = Astro.props;
 
@@ -21,6 +23,6 @@ const bgAndTextClasses = getBackgroundAndText(theme, style, text);
 const borderClasses = getBorder(border, theme, style === "subtle");
 ---
 
-<div class:list={[bgAndTextClasses, borderClasses, "p-4", extraClasses]}>
+<div class:list={[bgAndTextClasses, borderClasses, `p-${padding}`, extraClasses]}>
   <slot />
 </div>

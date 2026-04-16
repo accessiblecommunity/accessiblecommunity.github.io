@@ -1,36 +1,53 @@
 ---
-import type { Breadcrumbs, PageMetadata } from "../lib/types";
+import { type PageMetadata } from "../lib/types";
+import "../styles/bootstrap.scss";
 
-import Layout from "src/layouts/Layout.astro";
-import HeaderER from "@components/HeaderER.astro";
 import FooterER from "@components/FooterER.astro";
-
-// Single these from the Header.
-const navLinks = [{
-  name: "Build-Your-Own Rooms",
-  href: "/escape-room/themes",
-}, {
-  name: "How it Works",
-  href: "/escape-room/how-it-works",
-}, {
-  name: "Our Story",
-  href: "/escape-room/our-story",
-}];
+import HeaderER from "@components/HeaderER.astro";
+import Metadata from "@components/Metadata.astro";
 
 interface Props {
   title: string;
   metadata?: PageMetadata;
-  crumbs?: Breadcrumbs;
 }
 
-const { title, metadata, crumbs } = Astro.props as Props;
+const { metadata, title } = Astro.props;
 ---
 
-<Layout {title} {metadata} {crumbs}>
-  <slot name="head" slot="head" />
-  <HeaderER {title} slot="siteHeader" />
-  <slot name="header" slot="header" />
-  <slot />
-  <FooterER slot="footer" />
-</Layout>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="robots" content="noarchive" />
+
+    {
+      metadata && (
+        <Metadata {...metadata}>
+          <slot name="metadata" slot="metadata" />
+        </Metadata>
+      )
+    }
+    <link rel="icon" type="image/png" href="/images/favicon.png" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <slot name="head" />
+  </head>
+
+  <body>
+    <!-- Custom Header -->
+    <HeaderER {title} />
+
+    <main id="main-content">
+      <div class="content-spacer"></div>
+      <slot name="header" />
+      <slot />
+    </main>
+
+    <FooterER />
+
+    <script src="../scripts/headings.js"></script>
+    <script src="../scripts/body-no-scroll.js"></script>
+  </body>
+</html>
 

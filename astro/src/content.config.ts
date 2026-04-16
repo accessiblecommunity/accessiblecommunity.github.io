@@ -30,7 +30,29 @@ const blogs = defineCollection({
 
 const markdown = defineCollection({
   loader: glob({ pattern: "**/[^_]*.{md,mdx}", base: "./src/content/markdown" }),
-})
+});
+
+const navigation = defineCollection({
+  loader: glob({ pattern: "**/[^_]*.json", base: "./src/content/navigation" }),
+  schema: z.object({
+    "name": z.string(),
+    "fullName": z.string().optional(),
+    "groups": z.array(
+      z.object({
+        name: z.string(),
+        branded: z.boolean().default(false),
+        href: z.string(),
+        external: z.boolean().default(false),
+        icon: z.string().optional(),
+        iconCls: z.string().optional(),
+        tags: z.string().array().default([]),
+      }).array(),
+    )
+  }).transform((data) => ({
+    ...data,
+    fullName: data.fullName || data.name,
+  })),
+});
 
 const policies = defineCollection({
   loader: glob({
@@ -66,18 +88,18 @@ const daf = defineCollection({
   }),
 });
 
-// const escapeRoomKits = defineCollection({
-//   loader: glob({
-//     pattern: "**/[^_]*.{md,mdx}",
-//     base: "./src/content/escape-room/kits",
-//   }),
-//   schema: ({ image }) =>
-//     z.object({
-//       title: z.string(),
-//       image: image(),
-//       order: z.number().default(99999),
-//     }),
-// });
+const escapeRoomKits = defineCollection({
+  loader: glob({
+    pattern: "**/[^_]*.{md,mdx}",
+    base: "./src/content/escape-room/kits",
+  }),
+  schema: ({ image }) =>
+    z.object({
+      title: z.string(),
+      image: image(),
+      order: z.number().default(99999),
+    }),
+});
 
 const escapeRoomThemes = defineCollection({
   loader: glob({
@@ -90,6 +112,7 @@ const escapeRoomThemes = defineCollection({
       tagline: z.string(),
       image: image(),
       alt: z.string().optional(),
+      buttonText: z.string().optional().default("Learn more"),
       page: z.object({
         image: image(),
         theme: z.string().default("dark"),
@@ -116,9 +139,10 @@ const podcastShows = defineCollection({
       image: image(),
       links: z
         .object({
-          youtube: z.string().url(),
           applePodcasts: z.string().url(),
           podcastIndex: z.string().url(),
+          spotify: z.string().url(),
+          youtube: z.string().url(),
         })
         .partial()
         .optional(),
@@ -231,9 +255,10 @@ export const collections = {
   blogs,
   collaborators,
   daf,
-  // escapeRoomKits,
+  escapeRoomKits,
   escapeRoomThemes,
   markdown,
+  navigation,
   podcastShows,
   quotes,
   policies,

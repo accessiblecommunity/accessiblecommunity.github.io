@@ -1,14 +1,30 @@
 {
   "extends": "astro/tsconfigs/base",
-  "include": [".astro/types.d.ts", "**/*"],
-  "exclude": ["dist"],
+  "include": [
+    ".astro/types.d.ts",
+    "**/*"
+  ],
+  "exclude": [
+    "dist"
+  ],
   "compilerOptions": {
     "strictNullChecks": true,
     "baseUrl": ".",
     "paths": {
-      "@components/*": ["./src/components/*"],
-      "@lib/*": ["./src/lib/*"],
-      "~bootstrap-es": ["./node_modules/bootstrap/dist/js/bootstrap.esm.min.js"],
-    }
-  },
+      "@components/*": [
+        "./src/components/*"
+      ],
+      "@images/*": [
+        "./src/images/*"
+      ],
+      "@lib/*": [
+        "./src/lib/*"
+      ],
+      "~bootstrap-es": [
+        "./node_modules/bootstrap/dist/js/bootstrap.esm.min.js"
+      ]
+    },
+    "jsx": "react-jsx",
+    "jsxImportSource": "react"
+  }
 }

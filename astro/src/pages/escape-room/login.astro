@@ -1,0 +1,71 @@
+---
+import Layout from "src/layouts/EscapeRoomLayout.astro";
+export const prerender = true
+const title = 'Escape Room Login';
+---
+
+<Layout {title}>
+  <main class="container" style="padding:2rem 1rem">
+    <h1 class="text-info-emphasis">Login</h1>
+    <p>Enter your email to verify access.</p>
+
+    <form id="login-form" class="col p-4 bg-body border border-2 border-info-contrast rounded">
+      <div class="col-md-6 mb-3">
+        <label for="email" class="form-label mb-1 required-field">
+          Email
+        </label>
+        <span class="asterisk"></span>
+        <input
+          id="email"
+          name="email"
+          type="email"
+          class="form-control w-100"
+          placeholder="you@example.com"
+          autocomplete="email"
+          required
+        />
+      </div>
+      <button type="submit" class="btn btn-info">Verify Access</button>
+    </form>
+    <div id="afterSuccess" class="d-none">
+      <p class="lead mb-0">
+        Please check your email for the Magic Link information.
+      </p>
+    </div>
+    <div id="afterError" class="d-none">
+      <p class="lead mb-0">
+        An error occurred while sending you an email. Our apologies... please try again shortly.
+      </p>
+    </div>
+  </main>
+</Layout>
+
+<script>
+  import { authClient } from "@lib/auth-client";
+
+  const formEl = document.getElementById('login-form');
+  formEl?.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    formEl.classList.add("d-none");
+    // TODO: Place spinner here.
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const redirectURL = urlParams.get('redirect') ?? undefined;
+
+    const { data, error } = await authClient.signIn.magicLink({
+        email: "user@email.com", // required
+        name: "my-name",
+        callbackURL: redirectURL,
+        newUserCallbackURL: "/welcome",
+        errorCallbackURL: "/error",
+    });
+
+    if (data?.status) {
+        const messageEl = document.getElementById("afterSuccess");
+        messageEl?.classList.remove("d-none");
+    } else {
+        const messageEl = document.getElementById("afterError");
+        messageEl?.classList.remove("d-none");
+    }
+  })
+</script>

@@ -8,6 +8,7 @@ const pages = Object.fromEntries(
   collectionEntries.map(({ id, data }) => [id, data]),
 );
 
+export const prerender = true
 export const { getStaticPaths, GET } = OGImageRoute({
   param: "id",
   pages: pages,

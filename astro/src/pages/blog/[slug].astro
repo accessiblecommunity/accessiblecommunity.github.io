@@ -1,6 +1,7 @@
 ---
 import { getBlogCatalog } from "../../lib/blog";
 
+export const prerender = true
 export async function getStaticPaths() {
   const catalog = await getBlogCatalog();
   const crumbs = [

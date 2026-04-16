@@ -22,6 +22,14 @@ const { title, brandedTitle = false, crumbs, heading, metadata, hideSiteHeader =
 <!doctype html>
 <html lang="en">
   <head>
+    <script>
+      import { init } from '@plausible-analytics/tracker';
+      init({
+        domain: 'accessiblecommunity.org',
+        bindToWindow: true
+      });
+    </script>
+
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="generator" content={Astro.generator} />
@@ -40,7 +48,7 @@ const { title, brandedTitle = false, crumbs, heading, metadata, hideSiteHeader =
       rel="icon"
       type="image/png"
       href="/images/favicon.png"
-      media="(prefers-color-scheme: light"
+      media="(prefers-color-scheme: light)"
     />
     <link
       rel="icon"
@@ -79,14 +87,4 @@ const { title, brandedTitle = false, crumbs, heading, metadata, hideSiteHeader =
 
   <script src="../scripts/headings.js"></script>
   <script src="../scripts/body-no-scroll.js"></script>
-  {
-    import.meta.env.PROD && (
-      <script
-        is:inline
-        defer
-        data-domain="accessiblecommunity.org"
-        src="https://plausible.io/js/script.js"
-      />
-    )
-  }
 </html>

@@ -4,6 +4,7 @@ import { type PageMetadata } from "@lib/types";
 import { getOpenGraphImageData } from "@lib/og-image";
 import { getCollection, type CollectionEntry } from "astro:content";
 
+export const prerender = true
 export async function getStaticPaths() {
   const entries = await getCollection("daf");
   return entries.map((entry) => ({

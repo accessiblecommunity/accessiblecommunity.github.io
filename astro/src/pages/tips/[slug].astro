@@ -2,6 +2,7 @@
 import { getTipCatalog, type TipCatalog } from "../../lib/tips";
 import type { CollectionEntry } from "astro:content";
 
+export const prerender = true
 export async function getStaticPaths() {
   const catalog: TipCatalog = await getTipCatalog();
 

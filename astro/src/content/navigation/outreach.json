@@ -1,0 +1,15 @@
+{
+  "name": "Outreach",
+  "groups": [
+    [{
+      "name": "Tip of the Week",
+      "href": "/tips/"
+    }, {
+      "name": "Our Blog",
+      "href": "/blog/"
+    }, {
+      "name": "Our Podcast",
+      "href": "/podcasts/"
+    }]
+  ]
+}

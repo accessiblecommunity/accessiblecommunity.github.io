@@ -5,6 +5,7 @@ import { kebabCase } from "lodash-es";
 import type { Breadcrumbs } from "@lib/types";
 import type { CollectionEntry } from "astro:content";
 
+export const prerender = true
 export async function getStaticPaths() {
   const dates = await getBlogDates();
   const crumbs: Breadcrumbs = [

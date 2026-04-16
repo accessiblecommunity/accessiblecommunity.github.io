@@ -1,27 +1,47 @@
 ---
+import { auth } from "@lib/auth";
 import { getEntry, render } from "astro:content";
 import EscapeRoomContentLayout from "src/layouts/EscapeRoomContentLayout.astro";
 import Section from "@components/Section.astro";
-import type { PurchaseSession } from "src/lib/session-store";
 
-// Ensure that 'session' exists on Astro.locals (protected by middleware)
-const session = (Astro.locals as { session?: PurchaseSession }).session;
+// import type { PurchaseSession } from "src/lib/session-store";
 
-if (!session) {
-  throw new Response(null, { status: 404 });
+export const prerender = false
+const { theme } = Astro.params;
+if (!theme) {
+  return Astro.redirect('/escape-room/access?error=content-missing');
 }
 
-const themeSlug = (session.theme ?? "corporate").toLowerCase();
-const entry = await getEntry("escapeRoomKits", themeSlug);
+const entry = await getEntry("escapeRoomKits", theme);
 
 if (!entry) {
-  return Astro.redirect('/services/escape-room/access?error=content-missing');
+  return Astro.redirect('/escape-room/access?error=content-missing');
 }
 
+const {session, user} = Astro.locals;
+if (!session || !user) {
+  // TODO: Redirect the user to a login screen to get the email.
+  const data = await auth.api.signInMagicLink({
+      body: {
+          email: import.meta.env.TEST_EMAIL, // required
+          name: "my-name",
+          callbackURL: Astro.url.toString(),
+          errorCallbackURL: "/error",
+      },
+      // This endpoint requires session cookies.
+      headers: Astro.request.headers,
+  });
+  // throw new Response(null, { status: 401 });
+  return Astro.redirect(`/escape-room/login?redirect=${Astro.url.pathname.toString()}`);
+}
+
+// TODO: Verify that purchase happened in database.
+
+
 const { Content } = await render(entry);
-const title = entry.data.title ?? "Escape Room Kit";
+const title = entry.data.title;
 ---
 
-<EscapeRoomContentLayout {title} theme={session.theme} kitType={session.kitType} organization={session.organization}>
-    <Content components={{ Section }} />
+<EscapeRoomContentLayout {title}>
+  <Content components={{ Section }} />
 </EscapeRoomContentLayout>

@@ -1,0 +1,16 @@
+---
+import ReactMagicLinkEmail from './MagicLink.tsx';
+import { getImage } from 'astro:assets';
+import acLogo from "@images/ac-logo-white.png";
+
+interface Props {
+  href: string;
+  loginCode?: string;
+}
+
+const logo = await getImage({ src: acLogo });
+const baseUrl = import.meta.env.BASE_URL;
+const { href, loginCode } = Astro.props;
+---
+
+<ReactMagicLinkEmail {baseUrl} {href} {loginCode} logoUrl={logo.src} />

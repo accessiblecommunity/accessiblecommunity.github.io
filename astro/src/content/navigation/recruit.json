@@ -1,0 +1,14 @@
+{
+  "name": "Join us",
+  "fullName": "Join Us",
+  "groups": [
+    [{
+      "name": "Donate",
+      "href": "/donate/",
+      "tags": ["button"]
+    }, {
+      "name": "Volunteer",
+      "href": "/volunteer/"
+    }]
+  ]
+}

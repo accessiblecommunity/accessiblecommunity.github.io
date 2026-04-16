@@ -1,0 +1,93 @@
+---
+import { getEntry } from 'astro:content';
+
+interface Props {
+  name: string;
+  "hide-tags"?: string[]
+}
+
+const { name: collectionName, "hide-tags": hideTags = [] } = Astro.props;
+const entry = await getEntry("navigation", collectionName);
+
+if (entry === undefined) {
+  throw new Error(`Could not find navigation entry '${collectionName}'.`);
+}
+
+const { name: dropdownText, groups } = entry.data;
+const hide = new Set(hideTags);
+const sections = hide.size
+  ? groups.map(
+      group => group.filter(
+        link => hide.intersection(new Set(link.tags)).size === 0
+      )
+    ).filter(x => x?.length)
+  : groups;
+
+import Branding from '@components/Branding.astro';
+import ExternalLink from '@components/ExternalLink.astro';
+import { Icon } from "astro-icon/components";
+---
+
+<li class="nav-item dropdown">
+  <a
+    class="nav-link dropdown-toggle"
+    data-bs-toggle="dropdown"
+    href="#"
+    role="button"
+    aria-expanded="false"
+    set:text={dropdownText}
+  />
+  <ul class="dropdown-menu px-15 pb-1">
+  { sections.map((links, index) => (
+    <Fragment>
+      { index !== 0 && <li><hr class="dropdown-divider" /></li> }
+      { links.map(({ name, branded, href, external, icon, iconCls }) => (
+        <li>
+          { external
+            ? <ExternalLink {href} gaps={!!icon} class="dropdown-item pt-1">{
+                icon && (<Icon
+                  class:list={["bi", iconCls]}
+                  name={icon}
+                  width={16}
+                  height={16}
+                  role="img"
+                  aria-hidden="true"
+                />)
+              }{ branded ? <Branding text={name} /> : name}</ExternalLink>
+            : <a {href} class:list={["dropdown-item", { "py-1" : !!icon }]}>{
+                icon && (<Icon
+                  class:list={["bi ndi", iconCls]}
+                  name={icon}
+                  height={16}
+                  role="img"
+                  aria-hidden="true"
+                />)
+              }{ branded ? <Branding text={name} /> : name}</a>
+          }
+        </li>
+      ))}
+    </Fragment>
+  ))}
+  </ul>
+</li>
+
+<style>
+  .nav-link {
+    margin-inline: 0.222em;
+    margin-top: 0.222em;
+    margin-bottom: 0.222em;
+    --bs-nav-link-padding-y: 0.222em;
+    --bs-nav-link-padding-x: 0.222em;
+  }
+
+  .dropdown-menu li :global(a) {
+    line-height: 1.5rem;
+    margin-bottom: 0.333em;
+  }
+
+  .ndi {
+    height: 1em;
+    width: auto;
+    margin-right: 0.2em;
+  }
+</style>
