@@ -13,6 +13,7 @@ import Branding from "@components/Branding.astro";
 import Column from "@components/Column.astro";
 import Hero from "@components/ColumnedHero.astro";
 import Layout from "src/layouts/Layout.astro";
+import Row from "@components/Row.astro";
 import ThemedSection from "@components/ThemedSection.astro";
 
 import heroBg from "src/images/np_Man with prosthetic hand typing on a computer_4jzKz4_free.jpg";
@@ -47,7 +48,7 @@ import { Icon } from "astro-icon/components";
   <ThemedSection theme="tertiary">
     <h2>Our Goal</h2>
     <p>To establish and nurture disability-inclusive communities that help accessibility experts grow their experience and connections.</p>
-    <div class="row row-cols-lg-2 g-5 py-4">
+    <Row lgRowCols="2" g="5" class="py-4">
       <Column noDefault lg="6">
         <h3 class="text-center">Mentoring</h3>
         <p>The mutua11y accessibility mentoring program brings together emerging accessibility professionals with experienced mentors.
@@ -67,7 +68,7 @@ import { Icon } from "astro-icon/components";
           <a href="https://www.mutua11y.org/document-library/" target="_blank">Templates, videos, and other resources</a> to make your accessibility journey easier.
         </p>
       </div>
-    </div>
+    </Row>
     <p class="text-center">Contact Us: <a href="mailto:mutua11y@accessiblecommunity.org">mutua11y@accessiblecommunity.org</a></p>
   </ThemedSection>
   <style scoped>

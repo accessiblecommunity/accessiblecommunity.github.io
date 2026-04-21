@@ -1,0 +1,51 @@
+---
+type RowColumns = "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9" | "10" | "11" | "12";
+type GapGutterSizes = "1" | "2" | "3" | "4" | "5";
+
+//Note: RowCols are the max number of columns horizontally within a Row
+export interface Props {
+  id?: string;
+  baseRowCols?: RowColumns;
+  smRowCols?: RowColumns;
+  mdRowCols?: RowColumns;
+  lgRowCols?: RowColumns;
+  xlRowCols?: RowColumns;
+  xxlRowCols?: RowColumns;
+  gap?: GapGutterSizes;
+  g?: GapGutterSizes;
+  gx?: GapGutterSizes;
+  gy?: GapGutterSizes;
+  class?: string;
+}
+
+const {
+  id: elementID = "",
+  baseRowCols = undefined,
+  smRowCols = undefined,
+  mdRowCols = undefined,
+  lgRowCols = undefined,
+  xlRowCols = undefined,
+  xxlRowCols = undefined,
+  gap = undefined,
+  g = undefined,
+  gx = undefined,
+  gy = undefined,
+  class: cssClass = "",
+} = Astro.props;
+---
+
+<div class:list={[
+  "row", 
+  elementID,
+  baseRowCols && `row-cols-${baseRowCols}`,
+  smRowCols && `row-cols-sm-${smRowCols}`,
+  mdRowCols && `row-cols-md-${mdRowCols}`,
+  lgRowCols && `row-cols-lg-${lgRowCols}`,
+  xlRowCols && `row-cols-xl-${xlRowCols}`,
+  xxlRowCols && `row-cols-xxl-${xxlRowCols}`,
+  gap && `gap-${gap}`,
+  g && `g-${g}`,
+  gx && `gx-${g}`,
+  gy && `gy-${g}`,
+  cssClass,
+]}><slot /></div>

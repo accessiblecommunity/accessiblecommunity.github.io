@@ -58,6 +58,7 @@ import components from "@lib/mdx";
 import Branding from "@components/Branding.astro";
 import Column from "@components/Column.astro";
 import ExternalLink from "@components/ExternalLink.astro";
+import FlexColumn from "@components/FlexColumn.astro";
 import { Image } from "astro:assets";
 import ImageHeading from "@components/ImageHeading.astro";
 import Layout from "src/layouts/Layout.astro";
@@ -76,20 +77,21 @@ import ThemedBox from "@components/ThemedBox.astro";
       <ThemedSection style={(index % 2) ? "tertiary" : undefined} id={show.id}>
         {index === 0
         ? <ThemedBox theme="primary" style="subtle" border={1} padding={3} class="mb-5 p-3 rounded">
-            <div class="d-flex flex-column flex-lg-row justify-content-center column-gap-3 align-items-center mt-2">
+            <FlexColumn lgFlexRow class="justify-content-center column-gap-3 align-items-center mt-2">
               <p class="lead text-center">Subscribe to the <Branding>Accessible Community</Branding>&nbsp;podcast.</p>
               {
                 show.data.links
                 ? <SocialLinks links={toUrlMap(show.data.links)} iconSize="1.5em" label="Podcast Locations" />
                 : ""
               }
-            </div>
+            </FlexColumn>
           </ThemedBox>
         : "" }
         <h2 class="pb-2 mb-4 border-bottom border-primary" set:text={show.data.title} />
-        <div
+        <FlexColumn
+          mdReverse
+          gap="4"
           class:list={[
-            "d-flex flex-column flex-md-row-reverse gap-4",
             // (index % 2) ? "flex-xl-row-reverse" : "flex-xl-row",
             "justify-content-md-evenly align-items-md-start"
           ]}
@@ -114,7 +116,7 @@ import ThemedBox from "@components/ThemedBox.astro";
               )
             } */}
           </Column>
-        </div>
+        </FlexColumn>
       </ThemedSection>
     ))
   }

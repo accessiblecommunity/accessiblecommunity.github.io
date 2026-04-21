@@ -63,6 +63,7 @@ const { Content } = await render(blog);
 
 import components from "../lib/mdx";
 import Branding from "@components/Branding.astro";
+import FlexColumn from "@components/FlexColumn.astro";
 import ImageHeading from "@components/ImageHeading.astro";
 import Layout from "./Layout.astro";
 import TeamVignette from "@components/TeamVignette.astro";
@@ -96,8 +97,8 @@ import ThemedSection from "@components/ThemedSection.astro";
     <div class="d-flex gap-4">
       <article class:list={[sidebar ? "d-none d-lg-block" : "col", "col-lg-9"]}>
         <h1 class="display-4 border-bottom mb-3" set:text={blog.data.title} />
-        <div
-          class="d-flex flex-column flex-md-row justify-content-between mb-4"
+        <FlexColumn
+          mdFlexRow class="justify-content-between mb-4"
         >
           <div>
             <div class="d-md-block display-6">
@@ -108,7 +109,7 @@ import ThemedSection from "@components/ThemedSection.astro";
             class="text-brand text-primary-emphasis me-1 text-center text-md-end"
             set:text={published}
           />
-        </div>
+        </FlexColumn>
         <div class="py-4 mb-4">
           <Content {components} />
         </div>

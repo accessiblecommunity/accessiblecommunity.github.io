@@ -23,6 +23,8 @@ import Column from "@components/Column.astro";
 import { Icon } from "astro-icon/components";
 import { Image } from "astro:assets";
 import EscapeRoomLayout from "src/layouts/EscapeRoomLayout.astro";
+import FlexColumn from "@components/FlexColumn.astro";
+import Row from "@components/Row.astro";
 import ThemedSection from "@components/ThemedSection.astro";
 import ImageCard from "@components/ImageCard.astro";
 import { YouTube } from 'astro-lazy-youtube-embed'
@@ -33,8 +35,8 @@ import woodenPuzzles from "src/images/escape-room/wooden-puzzles.png";
 
 <EscapeRoomLayout {metadata} {title}>
   <ThemedSection slot="header" theme="info">
-    <div
-      class="d-flex flex-column flex-lg-row gap-4 py-3 justify-content-lg-center align-items-center"
+    <FlexColumn
+      lgFlexRow gap="4" class="py-3 justify-content-lg-center align-items-center"
     >
       <Column lg="6" xl="7" class="text-light">
         <h1 class="visually-hidden" set:text={title}></h1>
@@ -43,8 +45,8 @@ import woodenPuzzles from "src/images/escape-room/wooden-puzzles.png";
           Where teams of 3-10 people, with or without disabilities, try to solve
           puzzles to reach an objective while learning about accessibility.
         </p>
-        <div class="row row-cols-1 row-cols-sm-2">
-          <div class="col">
+        <Row baseRowCols="1" smRowCols="2">
+          <Column>
             <a
               class="link-light link-offset-1 icon-link"
               href="/escape-room/themes"
@@ -52,8 +54,8 @@ import woodenPuzzles from "src/images/escape-room/wooden-puzzles.png";
               <Icon name="bi:puzzle-fill" class="bi"></Icon>
               Explore our rooms
             </a>
-          </div>
-          <div class="col">
+          </Column>
+          <Column>
             <a
               class="link-light link-offset-1 icon-link"
               href="/escape-room/how-it-works"
@@ -61,8 +63,8 @@ import woodenPuzzles from "src/images/escape-room/wooden-puzzles.png";
               <Icon name="bi:tools" class="bi"></Icon>
               How the rooms work
             </a>
-          </div>
-        </div>
+          </Column>
+        </Row>
       </Column>
       <Column noDefault lg="5" xl="4" class="d-none d-lg-block position-relative">
         <div class="escape-img-column">
@@ -82,16 +84,12 @@ import woodenPuzzles from "src/images/escape-room/wooden-puzzles.png";
           />
         </div>
       </Column>
-    </div>
+    </FlexColumn>
   </ThemedSection>
 
   <ThemedSection>
-    <div class:list={[
-      "d-flex flex-column",
-        "flex-xl-row-reverse",
-        "gap-5 justify-content-xl-between align-items-xl-center"
-    ]}>
-      <div class="col">
+    <FlexColumn xlReverse gap="5" class="justify-content-xl-between align-items-xl-center">
+      <Column>
         <h2 class="">I like puzzles. I would like to play.</h2>
         <p class="lead">
           It may be called an escape room but we don't lock you in. You can leave at
@@ -106,15 +104,15 @@ import woodenPuzzles from "src/images/escape-room/wooden-puzzles.png";
           > has been traveling to disability and accessibility conferences and other
           venues since 2022.
         </p>
-      </div>
-      <div class="col">
+      </Column>
+      <Column>
         <YouTube
           class="rounded"
           title="Why have an accessible escape room?"
           videoId="-VJcG6rmavo"
         />
-      </div>
-    </div>
+      </Column>
+    </FlexColumn>
   </ThemedSection>
 
   <ThemedSection style="subtle" theme="secondary">
@@ -131,23 +129,25 @@ import woodenPuzzles from "src/images/escape-room/wooden-puzzles.png";
       or venue, we now offer the <a href="/escape-room/themes" class="link-info">following themes</a>:</p
     >
 
-    <div class="row row-cols-2 g-3 align-items-stretch">
+    <Row baseRowCols="2" g="3" class="align-items-stretch">
       {
         rooms.map(room => (
-          <ImageCard
-            image={room.data.image}
-            alt={room.data.alt || null}
-            title={room.data.title}
-            theme={room.data.page.theme}
-            href={`/services/escape-room/themes/${room.id}`}
-            buttonText={room.data.buttonText || "Learn more"}
-            titleClass={`text-truncate text-${room.data.page.theme}`}
-          >
-            <p class="card-text" set:text={room.data.tagline} />
-          </ImageCard>
+          <Column>
+            <ImageCard
+              image={room.data.image}
+              alt={room.data.alt || null}
+              title={room.data.title}
+              theme={room.data.page.theme}
+              href={`/services/escape-room/themes/${room.id}`}
+              buttonText={room.data.buttonText || "Learn more"}
+              titleClass={`text-truncate text-${room.data.page.theme}`}
+            >
+              <p class="card-text" set:text={room.data.tagline} />
+            </ImageCard>
+          </Column>
         ))
       }
-    </div>
+    </Row>
     <p class="lead pt-4">
       If you are interested in purchasing, please email us at <a
         class="link-info link-truncate"

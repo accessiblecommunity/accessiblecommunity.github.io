@@ -6,6 +6,7 @@ import { getOpenGraphImageData } from "@lib/og-image";
 import Branding from "@components/Branding.astro";
 import CollaboratorList from "@components/CollaboratorList.astro";
 import Column from "@components/Column.astro";
+import FlexColumn from "@components/FlexColumn.astro";
 import Hero from "@components/Hero.astro";
 import { Icon } from "astro-icon/components";
 import Layout from "src/layouts/Layout.astro";
@@ -89,8 +90,8 @@ const contributors = await getCollection("collaborators", ({ data }) => {
   </Hero>
 
   <ThemedSection theme="secondary" style="subtle">
-    <div
-      class="d-flex flex-column flex-xl-row gap-4 justify-content-xl-between align-items-xl-center"
+    <FlexColumn
+      xlFlexRow gap="4" class="justify-content-xl-between align-items-xl-center"
     >
       <Column xl="6">
         <h2 class="display-3">The <strong>first step</strong> is hard.</h2>
@@ -113,12 +114,12 @@ const contributors = await getCollection("collaborators", ({ data }) => {
       >
         <Testimonial id="eve/short" />
       </ThemedColumn>
-    </div>
+    </FlexColumn>
   </ThemedSection>
 
   <ThemedSection style="tertiary">
-    <div
-      class="d-flex flex-column flex-xl-row-reverse gap-4 justify-content-xl-between align-items-xl-center"
+    <FlexColumn
+      xlReverse gap="4" class="justify-content-xl-between align-items-xl-center"
     >
       <Column xl="7">
         <h2 class="display-3">Help the <strong>next generation</strong>.</h2>
@@ -138,13 +139,13 @@ const contributors = await getCollection("collaborators", ({ data }) => {
       >
         <Testimonial id="rashimi/full" text="white" />
       </ThemedColumn>
-    </div>
+    </FlexColumn>
   </ThemedSection>
 
   <ThemedSection style="secondary">
     <h2 class="display-3">How can I <strong>be involved</strong>?</h2>
-    <div
-      class="d-flex flex-column flex-lg-row gap-4 py-3 justify-content-lg-evenly text-primary"
+    <FlexColumn
+      lgFlexRow gap="4" class="py-3 justify-content-lg-evenly text-primary"
     >
       <ThemedColumn
         xl="3"
@@ -197,7 +198,7 @@ const contributors = await getCollection("collaborators", ({ data }) => {
           <a href={mentoringEmail}>Email your questions</a>
         </div>
       </ThemedColumn>
-    </div>
+    </FlexColumn>
     <p class="lead pt-5">
       Learn more about the <a
         href={programUrl}><Branding>mutua11y mentoring</Branding></a> program.

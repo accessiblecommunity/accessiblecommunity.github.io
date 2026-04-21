@@ -19,6 +19,7 @@ const crumbs: Breadcrumbs = [
 
 import Hero from "@components/HeroWithBreadcrumbs.astro";
 import EscapeRoomLayout from "src/layouts/EscapeRoomLayout.astro";
+import Row from "@components/Row.astro";
 import ThemedSection from "@components/ThemedSection.astro";
 import ImageCard from "@components/ImageCard.astro";
 
@@ -40,8 +41,8 @@ const rooms = sortBy(
 
   <ThemedSection style="tertiary">
     <h2 class="display-4 text-dark-emphasis text-center mb-4">Themes</h2>
-    <div
-      class="row row-cols-1 row-cols-lg-2 g-4"
+    <Row
+      baseRowCols="1" lgRowCols="2" g="4"
     >
       {
         rooms.map(room => (
@@ -58,7 +59,7 @@ const rooms = sortBy(
           </ImageCard>
         ))
       }
-    </div>
+    </Row>
     <p class="pt-4">
       If you are interested in purchasing a prebuilt room or requesting we run an escape
       room for a conference or other event, please email us at <a

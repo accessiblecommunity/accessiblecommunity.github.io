@@ -34,6 +34,7 @@ import Column from "@components/Column.astro";
 import GoogleForm from "@components/forms/GoogleForm.astro";
 import ImageHeading from "@components/ImageHeading.astro";
 import Layout from "src/layouts/Layout.astro";
+import Row from "@components/Row.astro";
 import ThemedSection from "@components/ThemedSection.astro";
 ---
 
@@ -55,7 +56,7 @@ import ThemedSection from "@components/ThemedSection.astro";
         program.
       </Fragment>
       <input type="hidden" name="Type" value="MentorRegistration" />
-      <div class="row">
+      <Row>
         <Column noDefault md="6" class="mb-3">
           <label for="fullNameField" class="form-label mb-1 required-field"
             >Full Name</label
@@ -127,8 +128,8 @@ import ThemedSection from "@components/ThemedSection.astro";
             The url of your LinkedIn profile, in you have one and would like it shared.
           </p>
         </Column>
-      </div>
-      <div class="row border-top border-1 border-info mt-4 pt-4">
+      </Row>
+      <Row class="border-top border-1 border-info mt-4 pt-4">
         <Column noDefault md="12" class="mb-3">
           <h3 class="display-5">Your location and language information</h3>
           <p class="form-text">
@@ -175,7 +176,7 @@ import ThemedSection from "@components/ThemedSection.astro";
               Do you work on accessibility in any of the following countries?
               <span class="form-text">(Select all that apply)</span>
             </legend>
-            <div class="row row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 row-cols-xxl-6 mx-1">
+            <Row smRowCols="2" mdRowCols="3" lgRowCols="4" xlRowCols="5" xxlRowCols="6" class="mx-1">
               {
                 countries.map((country) => (
                   <div class="form-check mb-2">
@@ -194,7 +195,7 @@ import ThemedSection from "@components/ThemedSection.astro";
                   </div>
                 ))
               }
-            </div>
+            </Row>
           </fieldset>
         </Column>
         <Column noDefault md="6">
@@ -219,8 +220,8 @@ import ThemedSection from "@components/ThemedSection.astro";
         </Column>
         <Column noDefault md="12" class="mb-3">
         </Column>
-      </div>
-      <div class="row border-top border-1 border-info mt-4 pt-4">
+      </Row>
+      <Row class="border-top border-1 border-info mt-4 pt-4">
         <Column noDefault md="12">
           <h3 class="display-5">Your accessibility experience</h3>
           <p class="form-text">
@@ -266,7 +267,7 @@ import ThemedSection from "@components/ThemedSection.astro";
               <span class="asterisk" />
               <span class="form-text">(Select all that apply)</span>
             </legend>
-            <div class="row row-cols-lg-2 row-cols-xl-1 mx-1">
+            <Row lgRowCols="2" xlRowCols="1" class="mx-1">
               {
                 accessibilityAreas.map((area) => (
                   <div class="form-check mb-2">
@@ -285,7 +286,7 @@ import ThemedSection from "@components/ThemedSection.astro";
                   </div>
                 ))
               }
-            </div>
+            </Row>
           </fieldset>
         </Column>
         <Column noDefault lg="12" xl="6">
@@ -297,7 +298,7 @@ import ThemedSection from "@components/ThemedSection.astro";
               <span class="asterisk" />
               <span class="form-text">(Select all that apply)</span>
             </legend>
-            <div class="row row-cols-lg-2 row-cols-xl-1 mx-1 mb-3">
+            <Row lgRowCols="2" xlRowCols="1" class="mx-1 mb-3">
               {
                 partnerOrgs.map((partnerOrg) => (
                   <div class="form-check mb-2">
@@ -316,6 +317,7 @@ import ThemedSection from "@components/ThemedSection.astro";
                   </div>
                 ))
               }
+            </Row>
         </Column>
         <div>
           <div class="d-none d-lg-block d-xl-none border border-top mb-3">
@@ -338,8 +340,8 @@ import ThemedSection from "@components/ThemedSection.astro";
               {experienceLevels.map((tz) => <option value={tz}>{tz}</option>)}
             </select>
         </fieldset>
-      </div>
-      <div class="row border-top border-1 border-info mt-4 pt-4">
+      </Row>
+      <Row class="border-top border-1 border-info mt-4 pt-4">
         <h3 class="mt-4">Code of Conduct</h3>
         <p class="small">
           The purpose of this code of conduct is to set clear expectations of
@@ -434,7 +436,7 @@ import ThemedSection from "@components/ThemedSection.astro";
             </div>
           </fieldset>
         </div>
-      </div>
+      </Row>
     </GoogleForm>
   </ThemedSection>
   <style scoped>

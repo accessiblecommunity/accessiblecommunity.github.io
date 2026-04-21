@@ -8,10 +8,12 @@ import { sortBy } from "lodash-es";
 
 import Branding from "../components/Branding.astro";
 import Column from "../components/Column.astro";
+import FlexColumn from "@components/FlexColumn.astro";
 import GoogleForm from "@components/forms/GoogleForm.astro";
 import Hero from "../components/Hero.astro";
 import { Icon } from "astro-icon/components";
 import Layout from "../layouts/Layout.astro";
+import Row from "../components/Row.astro";
 import ThemedSection from "../components/ThemedSection.astro";
 
 import heroBg from "../images/colored-hero/hands-together.png";
@@ -82,8 +84,8 @@ const orderedTeams = sortBy(teams, ["id"]);
   </Hero>
 
   <ThemedSection style="tertiary">
-    <div
-      class="d-flex flex-column flex-lg-row gap-4 justify-content-lg-between align-items-center"
+    <FlexColumn
+      lgFlexRow gap="4" class="justify-content-lg-between align-items-center"
     >
       <Column lg="7">
         <h2 class="display-4 mb-4">
@@ -108,12 +110,12 @@ const orderedTeams = sortBy(teams, ["id"]);
         style="height: auto"
         alt="A group of people gathered around a laptop"
       />
-    </div>
+    </FlexColumn>
   </ThemedSection>
 
   <ThemedSection id="orientation" theme="primary">
-    <div
-      class="d-flex flex-column flex-lg-row-reverse gap-5 justify-content-lg-between align-items-center"
+    <FlexColumn
+      lgReverse gap="5" class="justify-content-lg-between align-items-center"
     >
       <Column lg="5" xl="6">
         <h2 class="display-3 text-light mb-4">
@@ -135,7 +137,7 @@ const orderedTeams = sortBy(teams, ["id"]);
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
         referrerpolicy="strict-origin-when-cross-origin"
         allowfullscreen></iframe>
-    </div>
+    </FlexColumn>
   </ThemedSection>
 
   <ThemedSection id="teams" style="secondary">
@@ -159,7 +161,7 @@ const orderedTeams = sortBy(teams, ["id"]);
         >.
       </p>
     </div>
-    <div class="row justify-content-center gap-5 py-4">
+    <Row gap="5" class="justify-content-center py-4">
       {
         orderedTeams.map((team) => (
           <Column noDefault lg="8">
@@ -178,7 +180,7 @@ const orderedTeams = sortBy(teams, ["id"]);
           </Column>
         ))
       }
-    </div>
+    </Row>
   </ThemedSection>
 
   <ThemedSection id="form" style="tertiary">
@@ -204,7 +206,7 @@ const orderedTeams = sortBy(teams, ["id"]);
           your time and talents, then please complete the form below.
         </p>
       </div>
-      <div class="row">
+      <Row>
         <Column noDefault md="6" class="mb-3">
           <label for="firstNameField" class="form-label mb-1 required-field"
             >First Name</label
@@ -323,7 +325,7 @@ const orderedTeams = sortBy(teams, ["id"]);
             and/or work.</div
           ></div
         >
-      </div>
+      </Row>
       <div slot="message">
         <Column class="p-4 border border-2 border-info-contrast rounded">
           <p class="lead mb-0">

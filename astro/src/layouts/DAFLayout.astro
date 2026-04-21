@@ -12,6 +12,7 @@ import "src/styles/bootstrap.scss";
 
 import Branding from "@components/Branding.astro";
 import ExternalLink from "@components/ExternalLink.astro";
+import FlexColumn from "@components/FlexColumn.astro";
 import { Icon } from "astro-icon/components";
 import Metadata from "@components/Metadata.astro";
 
@@ -141,8 +142,8 @@ const navLinks = Object.fromEntries(
 
     <footer class="bg-primary text-light py-5 px-5 d-print-none">
       <div class="py-2">
-        <div
-          class="d-flex flex-column flex-lg-row justify-content-around gap-0 column-gap-5"
+        <FlexColumn
+          lgFlexRow gap="0" class="justify-content-around column-gap-5"
         >
           <div class="foundation-stmt">
             <p>
@@ -207,7 +208,7 @@ const navLinks = Object.fromEntries(
               <li class="text-light"> Gregg Vanderheiden </li>
             </ul>
           </div>
-        </div>
+        </FlexColumn>
       </div>
     </footer>
   </body>

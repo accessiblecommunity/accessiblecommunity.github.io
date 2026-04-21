@@ -47,9 +47,11 @@ const themeVar = `var(--bs-${theme})`;
 const textVar = `var(--bs-${theme}-text-emphasis)`;
 
 import Column from "@components/Column.astro";
+import FlexColumn from "@components/FlexColumn.astro";
 import Hero from "@components/HeroWithBreadcrumbs.astro";
 import { Icon } from "astro-icon/components";
 import Layout from "src/layouts/EscapeRoomLayout.astro";
+import Row from "@components/Row.astro";
 import ThemedSection from "@components/ThemedSection.astro";
 ---
 
@@ -60,11 +62,11 @@ import ThemedSection from "@components/ThemedSection.astro";
     </Hero>
   </div>
   <ThemedSection>
-    <div class="row row-cols-1 row-cols-lg-2 g-4">
+    <Row baseRowCols="1" lgRowCols="2" g="4">
       <div class="p-4">
         <h2 class={`text-${theme}-emphasis`}>The Scenario</h2>
         <p set:text={room.data.tagline} />
-        <div class="d-flex flex-column flex-lg-row">
+        <FlexColumn lgFlexRow>
           {
             about.players && (
               <Column class="py-1">
@@ -81,8 +83,8 @@ import ThemedSection from "@components/ThemedSection.astro";
               </Column>
             )
           }
-        </div>
-        <div class="row gy-2">
+        </FlexColumn>
+        <Row gy="2">
           {
             about.estimatedMaterialCost && (
               <Column class="py-1">
@@ -91,7 +93,7 @@ import ThemedSection from "@components/ThemedSection.astro";
               </Column>
             )
           }
-        </div>
+        </Row>
       </div>
       <div class={`card border border-2 border-${theme}-subtle`}>
         <div class="card-body">
@@ -107,7 +109,7 @@ import ThemedSection from "@components/ThemedSection.astro";
           >Contact Us to Purchase</a>
         </div>
       </div>
-    </div>
+    </Row>
   </ThemedSection>
   <div class="local-wrapper">
     <ThemedSection {theme} style="subtle">

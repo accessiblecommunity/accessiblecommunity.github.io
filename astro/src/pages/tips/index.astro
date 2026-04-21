@@ -1,5 +1,6 @@
 ---
 import Branding from "@components/Branding.astro";
+import FlexColumn from "@components/FlexColumn.astro";
 import { Icon } from "astro-icon/components";
 import ImageHeading from "@components/ImageHeading.astro";
 import Layout from "../../layouts/Layout.astro";
@@ -47,8 +48,8 @@ const crumbs: Breadcrumbs = [
 
   <ThemedSection style="tertiary">
     <h2 class="display-3">Making accessibility <strong>simpler</strong>.</h2>
-    <div
-      class="d-flex flex-column flex-lg-row gap-4 justify-content-lg-evenly align-items-lg-center py-2"
+    <FlexColumn
+      lgFlexRow gap="4" class="justify-content-lg-evenly align-items-lg-center py-2"
     >
       <div>
         <p class="lead"> It takes five minutes. </p>
@@ -78,7 +79,7 @@ const crumbs: Breadcrumbs = [
           have an asterisk (<span class="asterisk">*</span>).
         </p>
       </TipRegistration>
-    </div>
+    </FlexColumn>
   </ThemedSection>
 
   <ShadowBoxSection theme="info" fluid={false}>
@@ -96,7 +97,7 @@ const crumbs: Breadcrumbs = [
       Tip of the Week <strong>Archive</strong>
     </h2>
     <hr />
-    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 mt-5">
+    <Row baseRowCols="1" mdRowCols="2" lgRowCols="3" class="mt-5">
       <div class="col">
         <h3>Most Recent</h3>
         <ul class="mt-1 mb-3 list-disc">
@@ -126,7 +127,7 @@ const crumbs: Breadcrumbs = [
           </div>
         ))
       }
-    </div>
+    </Row>
   </ThemedSection>
   */}
 

@@ -4,6 +4,7 @@ import { type PageMetadata } from "../lib/types";
 import Branding from "../components/Branding.astro";
 import Column from "@components/Column.astro";
 import ExternalLink from "../components/ExternalLink.astro";
+import FlexColumn from "../components/FlexColumn.astro";
 import Hero from "../components/Hero.astro";
 import { Icon } from "astro-icon/components";
 import Layout from "../layouts/Layout.astro";
@@ -74,8 +75,8 @@ const metadata: PageMetadata = {
 
   <ThemedSection style="secondary">
     <h2 class="display-3">What we <strong>believe</strong>.</h2>
-    <div
-      class="d-flex flex-column flex-xl-row justify-content-xl-evenly align-items-center"
+    <FlexColumn
+      xlFlexRow class="justify-content-xl-evenly align-items-center"
     >
       <Column xl="8" xxl="9">
         <p>
@@ -115,12 +116,12 @@ const metadata: PageMetadata = {
           >.
         </p>
       </Column>
-    </div>
+    </FlexColumn>
   </ThemedSection>
 
   <ThemedSection style="tertiary">
-    <div
-      class="d-flex flex-column flex-xl-row-reverse gap-4 justify-content-xl-between align-items-xl-center"
+    <FlexColumn
+      xlReverse gap="4" class="justify-content-xl-between align-items-xl-center"
     >
       <Column xl="7">
         <h2 class="display-3">What we <strong>do</strong>.</h2>
@@ -152,13 +153,13 @@ const metadata: PageMetadata = {
       >
         <Testimonial id="daniela/short" text="light" />
       </ThemedColumn>
-    </div>
+    </FlexColumn>
   </ThemedSection>
 
   <ThemedSection theme="secondary" style="subtle">
     <h2 class="display-3">Our <strong>services</strong>.</h2>
-    <div
-      class="d-flex flex-column flex-xl-row gap-4 py-3 justify-content-lg-evenly justify-content-xl-center text-primary"
+    <FlexColumn
+      xlFlexRow gap="4" class="py-3 justify-content-lg-evenly justify-content-xl-center text-primary"
     >
       <ThemedColumn
         xl="3"
@@ -267,7 +268,7 @@ const metadata: PageMetadata = {
           >
         </div>
       </ThemedColumn>
-    </div>
+    </FlexColumn>
     <p class="lead pt-5">
       Learn more about <a href="/services">our services</a>.
     </p>
@@ -277,7 +278,7 @@ const metadata: PageMetadata = {
     <h2 class="display-4 mb-4">
       Start your organization's <strong>disability-inclusion</strong> journey.
     </h2>
-    <div class="d-flex flex-column flex-lg-row gap-4 justify-content-lg-evenly">
+    <FlexColumn lgFlexRow gap="4" class="justify-content-lg-evenly">
       <ThemedColumn
         lg="5"
         theme="primary"
@@ -310,6 +311,6 @@ const metadata: PageMetadata = {
           an asterisk (<span class="asterisk">*</span>).
         </p>
       </TipRegistration>
-    </div>
+    </FlexColumn>
   </ThemedSection>
 </Layout>
