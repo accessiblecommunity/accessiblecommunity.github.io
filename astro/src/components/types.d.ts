@@ -1,33 +1,23 @@
-export interface Breakpoints<T> {
-  xs: T,
-  sm: T,
-  md: T,
-  lg: T,
-  xl: T,
-  xxl: T,
-}
 
-export interface OptionalBreakpoints<T> {
-  xs?: T,
-  sm?: T,
-  md?: T,
-  lg?: T,
-  xl?: T,
-  xxl?: T,
+// Breakpoints
+// Note: Not currently using xs, can add it later.
+export type Breakpoint = "sm" | "md" | "lg" | "xl" | "xxl";
+export type BreakpointOptions<T> = {
+  [key in Breakpoint]?: T
 }
 
 // Flex Types
-type FlexColumnConfig = "column" | "column-reverse";
-type FlexRowConfig = "row" | "row-reverse";
-type FlexDirection = FlexColumnConfig | FlexRowConfig;
-type FlexJustifyContent = "start" | "end" | "center" | "between" | "around" | "evenly";
-type FlexAlignItems = "start" | "end" | "center" | "baseline" | "stretch";
-interface FlexOptions {
+export type FlexColumnConfig = "column" | "column-reverse";
+export type FlexRowConfig = "row" | "row-reverse";
+export type FlexDirection = FlexColumnConfig | FlexRowConfig;
+export type FlexJustifyContent = "start" | "end" | "center" | "between" | "around" | "evenly";
+export type FlexAlignItems = "start" | "end" | "center" | "baseline" | "stretch";
+export interface FlexOptions {
   inline?: boolean;
   direction?: FlexDirection;
   justifyContent?: FlexJustifyContent;
   alignItems?: FlexAlignItems;
 }
-type FlexConfig = FlexDirection | FlexOptions;
+export type FlexConfig = FlexDirection | FlexOptions;
 
-type GapSizes = "0" | "1" | "2" | "3" | "4" | "5";
+export type GapSizes = "0" | "1" | "2" | "3" | "4" | "5";

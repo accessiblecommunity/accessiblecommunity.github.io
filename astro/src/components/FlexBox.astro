@@ -1,10 +1,10 @@
 ---
 import type { HTMLAttributes } from "astro/types";
-import type { FlexConfig, FlexOptions, GapSizes, OptionalBreakpoints } from "./types";
+import type { FlexConfig, FlexOptions, GapSizes, BreakpointOptions } from "./types";
 
 type DivAttrs = HTMLAttributes<'div'>;
 
-export interface Props extends DivAttrs, FlexOptions, OptionalBreakpoints<FlexConfig> {
+export interface Props extends DivAttrs, FlexOptions, BreakpointOptions<FlexConfig> {
   gap?: GapSizes;
 }
 
