@@ -1,0 +1,65 @@
+---
+import type { HTMLAttributes } from "astro/types";
+import type { FlexConfig, FlexOptions, GapSizes, OptionalBreakpoints } from "./types";
+
+type DivAttrs = HTMLAttributes<'div'>;
+
+export interface Props extends DivAttrs, FlexOptions, OptionalBreakpoints<FlexConfig> {
+  gap?: GapSizes;
+}
+
+function getSizedFlexClasses(config: FlexConfig, size?: string): string {
+  const sizePrefix = size ? `-{size}` : "";
+  const opts: FlexOptions = typeof config === "string" ? { direction: config } : config
+
+  const classes: string[] = [];
+  if (size === undefined) {
+    classes.push(`d-${opts.inline && 'inline-'}flex`)
+  } else if (opts.inline) {
+    classes.push(`d${sizePrefix}inline-flex`)
+  }
+  if (opts.direction) {
+    classes.push(`flex${sizePrefix}-${opts.direction}`);
+  }
+  if (opts.justifyContent) {
+    classes.push(`justify-content${sizePrefix}-${opts.justifyContent}`);
+  }
+  if (opts.alignItems) {
+    classes.push(`align-items${sizePrefix}-${opts.alignItems}`);
+  }
+  return classes.join(" ");
+}
+
+const {
+  inline = false,
+  direction = undefined,
+  justifyContent = undefined,
+  alignItems = undefined,
+  sm = undefined,
+  md = undefined,
+  lg = undefined,
+  xl = undefined,
+  xxl = undefined,
+  gap = undefined,
+  class: cssClass = undefined,
+  ...attrs
+} = Astro.props;
+
+const baseOptions = {
+  inline,
+  direction,
+  justifyContent,
+  alignItems,
+}
+---
+
+<div {...attrs} class:list={[
+  baseOptions && getSizedFlexClasses(baseOptions),
+  sm && getSizedFlexClasses(sm, "sm"),
+  md && getSizedFlexClasses(md, "md"),
+  lg && getSizedFlexClasses(lg, "lg"),
+  xl && getSizedFlexClasses(xl, "xl"),
+  xxl && getSizedFlexClasses(xxl, "xxl"),
+  gap && `gap-${gap}`,
+  cssClass ?? "",
+]}><slot /></div>

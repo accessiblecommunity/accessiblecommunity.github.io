@@ -1,21 +1,15 @@
 ---
-import { undefined } from 'astro:schema';
+import type { HTMLAttributes } from "astro/types";
+import type { OptionalBreakpoints } from './types';
 
 type ColumnSizes = "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9" | "10" | "11" | "12";
+type Div = HTMLAttributes<'div'>;
 
-export interface Props {
-  id?: string;
-  class?: string;
+export interface Props extends Div, OptionalBreakpoints<ColumnSizes> {
   noDefault?: boolean;
-  sm?: ColumnSizes;
-  md?: ColumnSizes;
-  lg?: ColumnSizes;
-  xl?: ColumnSizes;
-  xxl?: ColumnSizes;
 }
 
 const {
-  id: elementID = "",
   class: cssClass = "",
   noDefault = false,
   sm = undefined,
@@ -23,16 +17,16 @@ const {
   lg = undefined,
   xl = undefined,
   xxl = undefined,
+  ...attrs
 } = Astro.props;
 ---
 
-<div class:list={[
-  !noDefault && "col", 
+<div {...attrs} class:list={[
+  !noDefault && "col",
   sm && `col-sm-${sm}`,
   md && `col-md-${md}`,
   lg && `col-lg-${lg}`,
   xl && `col-xl-${xl}`,
   xxl && `col-xxl-${xxl}`,
-  elementID,
   cssClass,
 ]}><slot /></div>
