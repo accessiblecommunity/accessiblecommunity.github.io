@@ -1,5 +1,5 @@
 ---
-import { getBlogAuthors } from "../../../lib/blog";
+import { formatAuthorName, getBlogAuthors } from "../../../lib/blog";
 
 const authors = await getBlogAuthors();
 const title = "Authors";
@@ -29,7 +29,7 @@ import ThemedSection from "../../../components/ThemedSection.astro";
       {
         authors.map((author) => (
           <li>
-            <a href={`/blog/authors/${author.id}`}>{author.data.name}</a>
+            <a href={`/blog/authors/${author.id}`}>{formatAuthorName(author)}</a>
           </li>
         ))
       }
