@@ -45,27 +45,6 @@ import Branding from "./Branding.astro";
   class={`bg-${theme}`}
   style={`background: no-repeat center ${imageVertical}/cover ${heroBgUrl}`}
 >
-  <nav
-    id="breadcrumbs-nav"
-    aria-label="Breadcrumb"
-    class="breadcrumbs d-print-none"
-    slot="heading"
-  >
-    <ol class="breadcrumb lh-sm">
-      {
-        crumbs?.map(({ name, href, branded }) => (
-          <li class:list={['breadcrumb-item px-1', shade && `bg-${theme} bg-opacity-50`]}>
-            <a href={href} class="link-light link-offset-1 text-truncate">
-              { branded ? (<Branding set:text={name} />) : name }
-            </a>
-          </li>
-        ))
-      }
-      <li class:list={['breadcrumb-item active px-1', shade && `bg-${theme} bg-opacity-50`]} aria-current="page">
-        <span class="text-truncate">{ brandedTitle ? (<Branding set:text={title} />) : title }</span>
-      </li>
-    </ol>
-  </nav>
   <div class="container hero">
     <slot name="heading" />
     <div class:list={[columns, "mx-auto text-white"]}>

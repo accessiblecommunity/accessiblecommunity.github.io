@@ -1,8 +1,19 @@
 ---
+import { isEmpty } from "lodash-es";
 import { Icon } from "astro-icon/components";
 import Branding from "@components/Branding.astro";
 import SiteNav from "@components/navigation/NavSiteSecondary.astro";
 import { areSimilarURLs } from "@lib/links";
+
+import { type Breadcrumbs } from "../lib/types";
+
+interface Props {
+  title: string;
+  brandedTitle?: boolean;
+  crumbs?: Breadcrumbs;
+}
+
+const { title, brandedTitle = false, crumbs = [], } = Astro.props;
 
 const navLinks = [{
   name: "Build-Your-Own Rooms",
@@ -14,6 +25,9 @@ const navLinks = [{
   name: "Our Story",
   href: "/escape-room/our-story",
 }];
+
+const breadCrumbs: Breadcrumbs =
+  isEmpty(crumbs) && title != "Home" ? [{ name: "Home", href: "/" }] : crumbs;
 
 ---
 
@@ -44,14 +58,9 @@ const navLinks = [{
           aria-hidden="true"
         />
       </div>
-      <div class="d-flex flex-column flex-fill">
-        <div class="lh-1">
-          <a class="navbar-brand" href="/escape-room/">
-            <Branding>Accessible Escape Room</Branding>
-          </a>
-        </div>
-        <span class="d-lg-none"
-          ><em>by</em> <Branding>Accessible Community</Branding></span
+      <div class="my-1 flex-fill align-self-start">
+        <a class="navbar-brand" href="/"
+          >Accessible <strong>Escape Room</strong></a
         >
       </div>
     </div>
@@ -60,7 +69,7 @@ const navLinks = [{
       class="collapse navbar-collapse px-3 d-print-none d-lg-flex w-100 justify-content-end"
       aria-label="Escape Room"
     >
-      <ul class="navbar-nav my-1 mx-4">
+      <ul class="navbar-nav my-1 mx-2">
         {
           navLinks.map(({name, href}) => (
             <li class="nav-item">
@@ -81,6 +90,26 @@ const navLinks = [{
           >
         </li>
       </ul>
+    </nav>
+    <nav
+    id="breadcrumbs-nav"
+    aria-label="Breadcrumb"
+    class="position-absolute d-print-none"
+    >
+      <ol class="breadcrumb lh-sm">
+        {
+          breadCrumbs.map(({ name, href, branded }) => (
+            <li class="breadcrumb-item">
+              <a href={href} class="link-offset-1">
+                { branded ? (<Branding set:text={name} />) : name }
+              </a>
+            </li>
+          ))
+        }
+        <li class="breadcrumb-item active" aria-current="page">
+          <span>{ brandedTitle ? (<Branding set:text={title} />) : title }</span>
+        </li>
+      </ol>
     </nav>
   </div>
 </header>
@@ -131,6 +160,55 @@ const navLinks = [{
     font-size: 1.1rem;
   }
 
+  #breadcrumbs-nav {
+    min-width: 250px;
+  }
+
+  #breadcrumbs-nav {
+    top: 2.4rem;
+    left: 4.7rem;
+  }
+
+  .breadcrumb-item {
+    --bs-breadcrumb-item-active-color: var(--bs-primary);
+    --bs-link-color-rgb: var(--bs-primary-rgb);
+
+    > .text-truncate {
+      display: inline-block;
+      max-width: 10em;
+    }
+  }
+  
+  @include media-breakpoint-down(lg) {
+    #breadcrumbs-nav {
+      left: 3.333rem;
+    }
+  }
+  @include media-breakpoint-down(md) {
+    #breadcrumbs-nav .breadcrumb-item {
+      --bs-breadcrumb-item-padding-x: 0.4rem;
+      font-size: 0.9em;
+      line-height: 1.1em;
+    }
+  }
+  @include media-breakpoint-down(sm) {
+    #breadcrumbs-nav .breadcrumb-item {
+      --bs-breadcrumb-item-padding-x: 0.3rem;
+      font-size: 0.9em;
+    }
+    .breadcrumb-item > .text-truncate {
+      max-width: 8em;
+    }
+  }
+  @include media-breakpoint-down(xs) {
+    #breadcrumbs-nav .breadcrumb-item {
+      --bs-breadcrumb-item-padding-x: 0.25rem;
+    }
+    .breadcrumb-item > .text-truncate {
+      max-width: 6em;
+    }
+  }
+
   @include media-breakpoint-down(md) {
     .navbar-brand {
       --bs-navbar-brand-font-size: 1.1rem;
@@ -159,6 +237,11 @@ const navLinks = [{
       .nav-link {
         --bs-nav-link-color: var(--bs-white);
       }
+    }
+
+    .breadcrumb-item {
+      --bs-breadcrumb-item-active-color: var(--bs-white);
+      --bs-link-color-rgb: var(--bs-white-rgb);
     }
   }
 </style>
