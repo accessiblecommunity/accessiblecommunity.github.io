@@ -1,32 +1,22 @@
 ---
 import { getImage } from "astro:assets";
-import { isEmpty } from "lodash-es";
 
 import type { ImageMetadata } from "astro";
-import type { Breadcrumbs } from "@lib/types";
 
 interface Props {
   image: ImageMetadata | string;
   imageVertical?: string;
-  title: string;
-  brandedTitle?: boolean;
   theme?: string;
-  shade?: boolean;
   columns?: string;
   actionBreakpoint?: string;
-  crumbs?: Breadcrumbs;
 }
 
 const {
   image,
   imageVertical = "center",
-  title,
-  brandedTitle = false,
   theme = "primary",
-  shade = false,
   columns = "col-lg-6",
   actionBreakpoint = "lg",
-  crumbs = undefined,
 } = Astro.props;
 
 let heroBgUrl;
@@ -37,8 +27,6 @@ if (image) {
 } else {
   heroBgUrl = "";
 }
-
-import Branding from "./Branding.astro";
 ---
 
 <section
