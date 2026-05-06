@@ -144,7 +144,7 @@ import ThemedSection from "@components/ThemedSection.astro";
               aria-label="Region selection"
               required
             >
-              <option selected disabled>
+              <option value="" selected disabled>
                 Select the region you most frequently live and work in...
               </option>
               { regions.map((region) => <option value={region} set:text={region} />) }
@@ -162,7 +162,7 @@ import ThemedSection from "@components/ThemedSection.astro";
               aria-label="Timezone selection"
               required
             >
-              <option selected disabled aria-disabled="false">Select the timezone you live in...</option>
+              <option value="" selected disabled aria-disabled="false">Select the timezone you live in...</option>
               { timeZones.map((tz) => <option value={tz} set:text={tz} />) }
             </select>
           </fieldset>
