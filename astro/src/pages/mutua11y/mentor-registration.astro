@@ -162,13 +162,13 @@ import ThemedSection from "@components/ThemedSection.astro";
               class="form-select mb-2"
               name="Timezone"
               aria-label="Timezone selection"
-              aria-describedby="regionHelpLink"
+              aria-describedby="timezoneHelpLink"
               required
             >
               <option value="" selected disabled aria-disabled="false">Select the timezone you live in...</option>
               { timeZones.map((tz) => <option value={tz} set:text={tz} />) }
             </select>
-            <div id="regionHelpLink" class="form-text small">
+            <div id="timezoneHelpLink" class="form-text small">
               Not sure what your time zone is?
               <a href="https://time.is/" target="_blank" rel="noopener noreferrer">
                 Find your current time zone and UTC offset.
