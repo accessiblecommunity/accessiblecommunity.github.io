@@ -29,6 +29,7 @@ const crumbs: Breadcrumbs = [
 
 import Branding from "@components/Branding.astro";
 import Column from "@components/Column.astro";
+import ExternalLink from "@components/ExternalLink.astro";
 import GoogleForm from "@components/forms/GoogleForm.astro";
 import ImageHeading from "@components/ImageHeading.astro";
 import Layout from "src/layouts/Layout.astro";
@@ -168,9 +169,9 @@ import ThemedSection from "@components/ThemedSection.astro";
             </select>
             <div id="timezoneHelpLink" class="form-text small">
               Not sure what your time zone is?
-              <a href="https://time.is/" target="_blank" rel="noopener noreferrer">
-                Find your current time zone and UTC offset.
-              </a>
+              <ExternalLink href="https://time.is/">
+                Find your current time zone and UTC offset
+              </ExternalLink>.
             </div>
           </fieldset>
         </Column>
