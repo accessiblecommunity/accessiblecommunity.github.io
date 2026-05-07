@@ -1,10 +1,12 @@
 ---
 import Branding from "../../components/Branding.astro";
 import Column from "../../components/Column.astro";
+import FlexColumn from "@components/FlexColumn.astro";
 import GoogleForm from "../../components/forms/GoogleForm.astro";
 import { Icon } from "astro-icon/components";
 import ImageHeading from "../../components/ImageHeading.astro";
 import Layout from "../../layouts/Layout.astro";
+import Row from "../../components/Row.astro";
 import ThemedSection from "../../components/ThemedSection.astro";
 
 import type { Breadcrumbs, PageMetadata } from "@lib/types";
@@ -36,8 +38,8 @@ const crumbs: Breadcrumbs = [
     <strong>loc</strong>a11y <strong>Interview</strong>
   </ImageHeading>
   <div class="bg-primary py-2 text-white">
-    <div
-      class="d-flex flex-column flex-md-row align-items-center justify-content-md-evenly gap-2"
+    <FlexColumn
+      mdFlexRow gap="2" class="align-items-center justify-content-md-evenly"
     >
       <a href="#overview" class="icon-link link-light">
         <Icon name="loca11y-logo" class="bi" role="img" aria-hidden="true" />
@@ -47,7 +49,7 @@ const crumbs: Breadcrumbs = [
         <Icon name="bi:pencil-fill" class="bi" role="img" aria-hidden="true" />
         Fill out the interview form
       </a>
-    </div>
+    </FlexColumn>
   </div>
 
   <ThemedSection id="overview" style="tertiary">
@@ -89,7 +91,7 @@ const crumbs: Breadcrumbs = [
       arrayFields={["SelfDescription"]}
       messageText="Thank you for being willing to participate in our research. Based on the number of submissions we receive, we will email you about the next steps for an interview."
     >
-      <div class="row flex-lg-row">
+      <Row class="flex-lg-row">
         <Column noDefault lg="6">
           <div class="mb-3">
             <label for="nameField" class="form-label mb-1 required-field">
@@ -217,7 +219,7 @@ const crumbs: Breadcrumbs = [
             </div>
           </div>
         </Column>
-      </div>
+      </Row>
 
       <div slot="buttons" class="row">
         <Column noDefault md="6" class="my-3 mx-auto">

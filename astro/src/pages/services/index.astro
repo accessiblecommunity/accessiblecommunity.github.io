@@ -4,8 +4,10 @@ import { Image } from "astro:assets";
 
 import Branding from "../../components/Branding.astro";
 import ExternalLink from "../../components/ExternalLink.astro";
+import FlexColumn from "../../components/FlexColumn.astro";
 import Hero from "../../components/Hero.astro";
 import Layout from "../../layouts/Layout.astro";
+import Row from "../../components/Row.astro";
 import ShadowBoxSection from "../../components/ShadowBoxSection.astro";
 import ThemedSection from "../../components/ThemedSection.astro";
 
@@ -79,10 +81,10 @@ const metadata: PageMetadata = {
   </Hero>
 
   <ThemedSection style="tertiary">
-    <div class="row row-gap-4 row-cols-1 row-cols-lg-2 mb-3">
+    <Row baseRowCols="1" lgRowCols="2" class="row-gap-4 mb-3">
       {
         services.map(({ icon, name, title, text, link }) => (
-          <div class="feature col d-flex flex-column justify-content-between">
+          <FlexColumn class="feature col justify-content-between">
             <div class="d-flex align-items-center gap-2 mb-1">
               <div class="feature-icon d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient">
                 <Icon class="bi" name={icon} aria-hidden="true" />
@@ -125,10 +127,10 @@ const metadata: PageMetadata = {
                 }
               </div>
             </div>
-          </div>
+          </FlexColumn>
         ))
       }
-    </div>
+    </Row>
     <div
       class="border-top border-bottom border-primary-subtle mt-5 py-2 text-primary text-center"
     >
@@ -138,7 +140,7 @@ const metadata: PageMetadata = {
   </ThemedSection>
 
   <ShadowBoxSection id="ta11y" theme="info" fluid={false}>
-    <div class="row p-4 justify-content-evenly align-items-center rounded-3">
+    <Row class="p-4 justify-content-evenly align-items-center rounded-3">
       <div class="col-lg-7 py-lg-4">
         <h2 class="display-3" aria-hidden="true">
           <Branding no-aria>About ta11y.org</Branding>
@@ -175,7 +177,7 @@ const metadata: PageMetadata = {
           alt="A screenshot of tally.org"
         />
       </div>
-    </div>
+    </Row>
   </ShadowBoxSection>
 
   <ThemedSection id="mutua11y" theme="primary">

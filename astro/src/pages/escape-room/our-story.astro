@@ -18,6 +18,7 @@ const crumbs: Breadcrumbs = [
 import Column from "@components/Column.astro";
 import ExternalLink from "@components/ExternalLink.astro";
 import EscapeRoomLayout from "src/layouts/EscapeRoomLayout.astro";
+import FlexColumn from "@components/FlexColumn.astro";
 import Hero from "@components/HeroWithBreadcrumbs.astro";
 import Testimonial from "@components/Testimonial.astro";
 import ThemedColumn from "@components/ThemedColumn.astro";
@@ -35,8 +36,8 @@ import heroBg from "src/images/escape-room/shaded/puzzle-display.jpg";
   <div class="er-page">
     <ThemedSection>
       <h2 class="">The history of our escape rooms</h2>
-      <div
-        class="d-flex flex-column flex-lg-row gap-5 justify-content-lg-between align-items-lg-start"
+      <FlexColumn
+        lgFlexRow gap="5" class="justify-content-lg-between align-items-lg-start"
       >
         <Column>
           <p>
@@ -64,12 +65,12 @@ import heroBg from "src/images/escape-room/shaded/puzzle-display.jpg";
         >
           <Testimonial id="matt-ater/nap" text="light" />
         </ThemedColumn>
-      </div>
+      </FlexColumn>
     </ThemedSection>
 
     <ThemedSection theme="secondary" style="subtle">
-      <div
-        class="d-flex flex-column flex-lg-row-reverse gap-5 justify-content-lg-between align-items-center"
+      <FlexColumn
+        lgReverse gap="5" class="justify-content-lg-between align-items-center"
       >
         <Column>
           <h2 class="mb-4">Making an accessible escape room</h2>
@@ -103,7 +104,7 @@ import heroBg from "src/images/escape-room/shaded/puzzle-display.jpg";
             videoId="VAgKrhNIk2U"
           />
         </Column>
-      </div>
+      </FlexColumn>
     </ThemedSection>
   </div>
 </EscapeRoomLayout>
