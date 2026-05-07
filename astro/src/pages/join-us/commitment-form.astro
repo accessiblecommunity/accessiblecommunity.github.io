@@ -6,6 +6,7 @@ import GoogleForm from "@components/forms/GoogleForm.astro";
 import ImageHeading from "@components/ImageHeading.astro";
 import Layout from "../../layouts/Layout.astro";
 import ThemedSection from "@components/ThemedSection.astro";
+import Row from "@components/Row.astro";
 
 import type { Breadcrumbs, PageMetadata } from "@lib/types";
 
@@ -60,7 +61,7 @@ const crumbs: Breadcrumbs = [
         </p>
       </Fragment>
       <h3 class="mt-3">Name and Email</h3>
-      <div class="row">
+      <Row>
         <Column noDefault md="6" class="mb-3">
           <label for="firstNameField" class="form-label mb-1 required-field"
             >First Name</label
@@ -103,10 +104,10 @@ const crumbs: Breadcrumbs = [
             The email address we will use for all communications with you.
           </div>
         </Column>
-      </div>
+      </Row>
 
       <h3 class="mt-3">Code of Conduct</h3>
-      <div class="row">
+      <Row>
         <div class="mb-3">
           <fieldset>
             <legend class="mb-2 fs-5 required-field">
@@ -130,7 +131,7 @@ const crumbs: Breadcrumbs = [
             </div>
           </fieldset>
         </div>
-      </div>
+      </Row>
 
       <h3 class="mt-3">Acknowledgement and Social Media</h3>
       <p>
@@ -138,7 +139,7 @@ const crumbs: Breadcrumbs = [
         media. Please let us know how you would like to be acknowledged and what
         social media (if any) you want us to link to.
       </p>
-      <div class="row">
+      <Row>
         <Column noDefault lg="6" class="mb-3">
           <label for="citedNameField" class="form-label mb-1 required-field"
             >Cited Name</label
@@ -170,8 +171,8 @@ const crumbs: Breadcrumbs = [
             The URL of your LinkedIn profile (if you want us to link it).
           </div>
         </Column>
-      </div>
-      <div class="row flex-lg-row-reverse">
+      </Row>
+      <Row class="flex-lg-row-reverse">
         <Column noDefault lg="6" class="mb-3">
           <div class="mb-3">
             <label for="instagramProfileField" class="form-label mb-1"
@@ -239,9 +240,9 @@ const crumbs: Breadcrumbs = [
             </div>
           </fieldset>
         </Column>
-      </div>
+      </Row>
 
-      <div class="row mt-3">
+      <Row class="mt-3">
         <Column class="mb-3">
           <h3>T-shirt</h3>
           <fieldset>
@@ -269,7 +270,7 @@ const crumbs: Breadcrumbs = [
             </select>
           </fieldset>
         </Column>
-      </div>
+      </Row>
       <div class="lead" slot="message">
         Thank you for committing to volunteer with
         <Branding class="text-primary">Accessible Community</Branding>. We'll be

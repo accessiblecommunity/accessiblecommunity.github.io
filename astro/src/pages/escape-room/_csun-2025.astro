@@ -24,6 +24,7 @@ import Column from "@components/Column.astro";
 import GoogleForm from "@components/forms/GoogleForm.astro";
 import Hero from "@components/ColumnedHero.astro";
 import Layout from "src/layouts/Layout.astro";
+import Row from "@components/Row.astro";
 import ThemedSection from "@components/ThemedSection.astro";
 
 import picnicBg from "src/images/evangelina-silina-BzLUmuRDMWE-unsplash.jpg";
@@ -73,7 +74,7 @@ const timeSlots = ["7:20", "7:50", "8:20", "8:50", "9:20"];
       messageText="Thank you for registering for the Accessible Escape Room. We will contact you shortly."
       class="col p-4 bg-body border border-2 border-primary-contrast rounded"
     >
-      <div class="row">
+      <Row>
         <Column noDefault md="12" class="mb-3">
           <label for="nameField" class="form-label mb-1 required-field"
             >Full Name</label
@@ -130,7 +131,7 @@ const timeSlots = ["7:20", "7:50", "8:20", "8:50", "9:20"];
               Which times on Tuesday evening (March 11th, 2025) can you attend?
               <span class="asterisk" aria-hidden="true"></span>
             </legend>
-            <div class="row row-cols-auto g-1 mb-2">
+            <Row g="1" class="row-cols-auto mb-2">
               {
                 timeSlots.map((time, index) => (
                   <div class="col-6 col-md-3 col-lg-2 align-items-start">
@@ -147,7 +148,7 @@ const timeSlots = ["7:20", "7:50", "8:20", "8:50", "9:20"];
                   </div>
                 ))
               }
-            </div>
+            </Row>
           </fieldset>
         </div>
 
@@ -203,7 +204,7 @@ const timeSlots = ["7:20", "7:50", "8:20", "8:50", "9:20"];
             </div>
           </fieldset>
         </div>
-      </div>
+      </Row>
     </GoogleForm>
   </ThemedSection>
 </Layout>

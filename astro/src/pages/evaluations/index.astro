@@ -26,10 +26,12 @@ import Branding from "@components/Branding.astro";
 // import CollaboratorList from "@components/CollaboratorList.astro";
 import Column from "@components/Column.astro";
 import ExternalLink from "@components/ExternalLink.astro";
+import FlexColumn from "@components/FlexColumn.astro";
 import GoogleForm from "@components/forms/GoogleForm.astro";
 import Hero from "@components/ColumnedHero.astro";
 import { Icon } from "astro-icon/components";
 import Layout from "src/layouts/Layout.astro";
+import Row from "@components/Row.astro";
 import ThemedBox from "@components/ThemedBox.astro";
 import ThemedSection from "@components/ThemedSection.astro";
 
@@ -51,9 +53,9 @@ import ShadowBoxSection from "@components/ShadowBoxSection.astro";
         <Branding>Accessible Community</Branding> provides affordable accessibility
         evaluations for websites and social media.
       </p>
-      <div class="d-flex flex-column flex-xl-row gap-2">
+      <FlexColumn xlFlexRow gap="2">
         <a class="btn btn-info" href="#request">Request an evaluation</a>
-      </div>
+      </FlexColumn>
     </div>
   </Hero>
 
@@ -61,8 +63,8 @@ import ShadowBoxSection from "@components/ShadowBoxSection.astro";
     <h2 class="display-4 mb-3">
       Are you reaching <strong>everyone</strong> in your community?
     </h2>
-    <div
-      class="d-flex flex-column flex-xl-row-reverse gap-2 justify-content-xl-evenly align-items-center"
+    <FlexColumn
+      gap="2" xlReverse class="justify-content-xl-evenly align-items-center"
     >
       <Column xl="8" xxl="9">
         <p>
@@ -79,7 +81,7 @@ import ShadowBoxSection from "@components/ShadowBoxSection.astro";
           Evaluations are <strong>free</strong> for <strong>small businesses</strong> and <strong>community organizations</strong>.
         </p>
       </Column>
-    </div>
+    </FlexColumn>
     <p>
       We provide a detailed report based on international standards and best practices to help you reach as many people as possible with your business or mission. We also help you get there with additional assistance after the evaluation.
     </p>
@@ -95,7 +97,7 @@ import ShadowBoxSection from "@components/ShadowBoxSection.astro";
     <div class="text-center py-4">
       <h3 class="display-3 mx-auto">What are the <strong>options</strong>?</h3>
     </div>
-    <div class="row row-cols-1 row-cols-lg-2 gap-4 justify-content-center">
+    <Row baseRowCols="1" lgRowCols="2" gap="4" class="justify-content-center">
       <ThemedBox
         theme="primary"
         text={true}
@@ -213,7 +215,7 @@ import ShadowBoxSection from "@components/ShadowBoxSection.astro";
         </div>
         <p>Cost: <strong class="text-brand">$0</strong>.</p>
       </ThemedBox>
-    </div>
+    </Row>
   </ShadowBoxSection>
 
   <ThemedSection id="request" theme="secondary" style="subtle" text={true}>
@@ -228,7 +230,7 @@ import ShadowBoxSection from "@components/ShadowBoxSection.astro";
         </p>
         <h3 class="visually-hidden">Request form</h3>
       </div>
-      <div class="row justify-content-lg-between">
+      <Row class="justify-content-lg-between">
         <Column noDefault lg="5">
           <div class="mb-3">
             <label for="nameField" class="form-label mb-1 required-field"
@@ -296,7 +298,7 @@ import ShadowBoxSection from "@components/ShadowBoxSection.astro";
             Please add any additional information or questions you have.
           </div>
         </Column>
-      </div>
+      </Row>
     </GoogleForm>
   </ThemedSection>
 </Layout>
