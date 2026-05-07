@@ -1,6 +1,6 @@
 ---
 import { getEntry, render } from "astro:content";
-import { getBlogCatalog, type BlogCatalog } from "@lib/blog";
+import { formatAuthorName, getBlogCatalog, type BlogCatalog } from "@lib/blog";
 import { getOpenGraphImageData } from "@lib/og-image";
 import { isEmpty, kebabCase, startCase } from "lodash-es";
 
@@ -53,16 +53,11 @@ const metadata: PageMetadata = {
   ),
 };
 
-function formatName(author) {
-  const { name, cited = undefined } = author.data;
-  const { first, middle, last } = cited || name;
-  return [first, middle, last].filter((n) => n).join(" ");
-}
-
 const { Content } = await render(blog);
 
 import components from "../lib/mdx";
 import Branding from "@components/Branding.astro";
+import FlexColumn from "@components/FlexColumn.astro";
 import ImageHeading from "@components/ImageHeading.astro";
 import Layout from "./Layout.astro";
 import TeamVignette from "@components/TeamVignette.astro";
@@ -75,7 +70,7 @@ import ThemedSection from "@components/ThemedSection.astro";
       property="article:published_time"
       content={blog.data.published.toISOString()}
     />
-    <meta property="article:author" content={formatName(blogAuthor)} />
+    <meta property="article:author" content={formatAuthorName(blogAuthor)} />
     <meta property="article:section" content="Accessibility" />
     {blog.data.tags.map((tag) => <meta property="article:tag" content={tag} />)}
   </Fragment>
@@ -96,8 +91,8 @@ import ThemedSection from "@components/ThemedSection.astro";
     <div class="d-flex gap-4">
       <article class:list={[sidebar ? "d-none d-lg-block" : "col", "col-lg-9"]}>
         <h1 class="display-4 border-bottom mb-3" set:text={blog.data.title} />
-        <div
-          class="d-flex flex-column flex-md-row justify-content-between mb-4"
+        <FlexColumn
+          mdFlexRow class="justify-content-between mb-4"
         >
           <div>
             <div class="d-md-block display-6">
@@ -108,7 +103,7 @@ import ThemedSection from "@components/ThemedSection.astro";
             class="text-brand text-primary-emphasis me-1 text-center text-md-end"
             set:text={published}
           />
-        </div>
+        </FlexColumn>
         <div class="py-4 mb-4">
           <Content {components} />
         </div>
@@ -154,7 +149,7 @@ import ThemedSection from "@components/ThemedSection.astro";
                   {authors.map((author) => (
                     <li>
                       <a href={`/blog/authors/${author.id}`}>
-                        {formatName(author)}
+                        {formatAuthorName(author)}
                       </a>
                     </li>
                   ))}

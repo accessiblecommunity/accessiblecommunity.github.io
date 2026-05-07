@@ -4,6 +4,7 @@ import "../styles/bootstrap.scss";
 import Metadata from "../components/Metadata.astro";
 import Branding from "../components/Branding.astro";
 import HeaderER from "../components/HeaderER.astro";
+import Row from "../components/Row.astro";
 import { type PageMetadata } from "../lib/types";
 
 // Single these from the Header.
@@ -59,7 +60,7 @@ const { metadata, title } = Astro.props;
     <!-- Custom Footer will be replaced with a component once mockups are available -->
     <footer class="escape-room-footer">
       <div class="container">
-        <div class="row g-4">
+        <Row g="4">
           <div class="col-md-4">
             <h3 class="h5">About Accessible Community</h3>
             <p>
@@ -87,7 +88,7 @@ const { metadata, title } = Astro.props;
               >
             </p>
           </div>
-        </div>
+        </Row>
         <hr aria-hidden="true"/>
         <div class="text-center">
           <p class="mb-0">
