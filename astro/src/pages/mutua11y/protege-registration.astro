@@ -156,21 +156,21 @@ import ThemedSection from "@components/ThemedSection.astro";
         <Column noDefault lg="6" class="mb-3">
           <fieldset>
             <legend class="mb-1 fs-6 required-field">
-              What timezone do you live in? <span class="asterisk" aria-hidden="true"></span>
+              What time zone do you live in? <span class="asterisk" aria-hidden="true"></span>
             </legend>
             <select
               class="form-select mb-2"
-              name="Timezone"
-              aria-label="Timezone selection"
-              aria-describedby="timezoneHelpLink"
+              name="TimeZone"
+              aria-label="Time zone selection"
+              aria-describedby="timeZoneHelpLink"
               required
             >
-              <option value="" selected disabled aria-disabled="false">Select the timezone you live in...</option>
+              <option value="" selected disabled aria-disabled="false">Select the time zone you live in...</option>
               { timeZones.map((tz) => <option value={tz} set:text={tz} />) }
             </select>
-            <div id="timezoneHelpLink" class="form-text small">
+            <div id="timeZoneHelpLink" class="form-text small">
               Not sure what your time zone is?
-              <ExternalLink href="https://time.is/">
+              <ExternalLink href="https://time.is/your_time_zone">
                 Find your current time zone and UTC offset
               </ExternalLink>.
             </div>
