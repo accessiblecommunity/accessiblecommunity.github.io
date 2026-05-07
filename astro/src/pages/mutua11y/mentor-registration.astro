@@ -158,7 +158,9 @@ import ThemedSection from "@components/ThemedSection.astro";
         <Column noDefault lg="6" class="mb-3">
           <fieldset>
             <legend class="mb-1 fs-6 required-field">
-              What time zone do you live in? <span class="asterisk" aria-hidden="true"></span>
+              What time zone do you live in?
+              <span class="asterisk" aria-hidden="true"></span>
+              <span class="form-text">(UTC stands for Universal Coordinated Time)</span>
             </legend>
             <select
               class="form-select mb-2"
@@ -173,7 +175,7 @@ import ThemedSection from "@components/ThemedSection.astro";
             <div id="timeZoneHelpLink" class="form-text small">
               Not sure what your time zone is?
               <ExternalLink href="https://time.is/your_time_zone">
-                Find your current time zone and UTC offset
+                Find your time zone and UTC offset
               </ExternalLink>.
             </div>
           </fieldset>
