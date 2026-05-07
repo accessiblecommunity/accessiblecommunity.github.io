@@ -2,11 +2,12 @@
 import { getImage, Image } from "astro:assets";
 
 import Branding from "../../components/Branding.astro";
+import Column from "../../components/Column.astro";
 import ExternalLink from "../../components/ExternalLink.astro";
 import Layout from "../../layouts/Layout.astro";
 import Hero from "../../components/Hero.astro";
 import ShadowBoxSection from "../../components/ShadowBoxSection.astro";
-import ThemedBox from "../../components/ThemedBox.astro";
+import ThemedColumn from "../../components/ThemedColumn.astro";
 import ThemedSection from "../../components/ThemedSection.astro";
 
 import heroBg from "../../images/colored-hero/woman-using-laptop.png";
@@ -42,7 +43,7 @@ const crumbs = [];
     <div
       class="d-flex flex-column flex-xl-row justify-content-xl-evenly align-items-center"
     >
-      <div class="col col-xl-8 col-xxl-9">
+      <Column xl="8" xxl="9">
         <p>
           Headings in a document exist to indicate structure. Your users will
           use headings to scan through your content and find the relevant
@@ -54,8 +55,8 @@ const crumbs = [];
           always increment one level. Never use a heading or subheading because
           it's sized correctly.
         </p>
-      </div>
-      <div class="col col-lg-9 col-xl-3 col-xxl-2">
+      </Column>
+      <Column lg="9" xl="3" xxl="2">
         <h4
           class="display-5 text-center text-primary py-3 border-primary-subtle border-top border-bottom"
         >
@@ -63,7 +64,7 @@ const crumbs = [];
             >size</strong
           >.
         </h4>
-      </div>
+      </Column>
     </div>
   </ThemedSection>
 
@@ -72,28 +73,31 @@ const crumbs = [];
     <div
       class="d-flex flex-column flex-lg-row gap-4 py-3 justify-content-lg-evenly"
     >
-      <div class="p-4 col col-lg-3">
+      <Column lg="3" class="p-4">
         <p class="text-center fs-3 bad-contrast">
           This text is <strong>low contrast</strong> on this background.
         </p>
-      </div>
-      <ThemedBox border={1} class="col col-lg-3 p-3 shadow rounded">
+      </Column>
+      <ThemedColumn
+        lg="3"
+        border={1}
+        class="p-3 shadow rounded">
         <p class="text-center fs-5">
           <Image class="green-on-red" src={greenOnRed} alt="" />
           and <span class="red-on-green py-1 px-2">Red</span> is the
           <strong>most common</strong> combination of color blindness.
         </p>
-      </ThemedBox>
-      <div
-        class="col col-lg-3 p-3 shadow rounded no-bg-color"
-        style={`background-image: url(${fixBgNoColor.src});`}
+      </ThemedColumn>
+      <Column
+        lg="3"
+        class="p-3 shadow rounded no-bg-color bg-example"
       >
         <p class="text-center text-light fs-4">
           Always specify a <code>background-color</code>, even when an image is
           used.
         </p>
       </div>
-    </div>
+    </Column>
   </ThemedSection>
 
   <ShadowBoxSection theme="info" style="secondary">
@@ -108,7 +112,7 @@ const crumbs = [];
         > and the correct <code>for</code> attribute or ARIA description.
       </p>
       <div class="d-flex flex-column flex-xl-row justify-content-xl-evenly p-4">
-        <div class="col col-xl-5 pb-4">
+        <Column xl="5" class="pb-4">
           <h3 class="display-5"
             ><strong>Associate</strong> the fields and text.</h3
           >
@@ -150,9 +154,9 @@ const crumbs = [];
             <input class="form-control" type="file" />
             <p class="form-text px-2">... also need descriptions and labels.</p>
           </div>
-        </div>
+        </Column>
 
-        <div class="col col-xl-5">
+        <Column xl="5">
           <h3 class="display-5"
             >Choose the right <strong>field type</strong>.</h3
           >
@@ -237,7 +241,7 @@ const crumbs = [];
               will read the password to anyone who can hear it.
             </p>
           </div>
-        </div>
+        </Column>
       </div>
     </div>
   </ShadowBoxSection>
@@ -250,14 +254,14 @@ const crumbs = [];
     <div
       class="d-flex flex-column flex-lg-row justify-content-lg-around align-items-center"
     >
-      <div class="col col-lg-4 col-xxl-3">
+      <Column lg="4" xxl="3">
         <p class="fs-5 text-center text-primary py-3">
           Make sure you properly describe your link content. None of these do
           this well.
         </p>
-      </div>
+      </Column>
 
-      <div class="col col-xl-5 col-xxl-4">
+      <Column xl="5" xxl="4">
         <ul style="--bs-gutter-x: 6rem;">
           <li>
             Read more at <a href="https://accessiblecommunity.org"
@@ -277,7 +281,7 @@ const crumbs = [];
             <ExternalLink href="https://accessiblecommunity.org" />
           </li>
         </ul>
-      </div>
+      </Column>
     </div>
   </ThemedSection>
 </Layout>
@@ -303,6 +307,10 @@ const crumbs = [];
     background-size: 100% 100%;
     background-repeat: no-repeat;
     align-content: center;
+  }
+
+  .bg-example {
+    background-image: url(${fixBgNoColor.src});
   }
 
   @include color-mode(dark) {

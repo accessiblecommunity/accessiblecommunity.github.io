@@ -39,6 +39,7 @@ const { title = tip?.data.title || "Tip of the Week" } = Astro.props;
 const { tips = [] } = catalog;
 const related = await getRelatedTips(tip);
 
+import Column from "../components/Column.astro";
 import { Icon } from "astro-icon/components";
 import ImageHeading from "../components/ImageHeading.astro";
 import Layout from "../layouts/Layout.astro";
@@ -87,9 +88,9 @@ const metadata: PageMetadata = {
     <div
       class="d-flex flex-column flex-lg-row justify-content-lg-between gap-3"
     >
-      <div class="col col-lg-7">
+      <Column lg="7">
         {tip && <TipOfTheWeek {tip} />}
-      </div>
+      </Column>
       <nav
         class="d-flex flex-column flex-md-row d-lg-block gap-4 col-lg-4"
         aria-label="Tips"
@@ -112,7 +113,7 @@ const metadata: PageMetadata = {
             )
           }
         </ul>
-        <div class="col col-md-6 col-lg-12">
+        <Column md="6" lg="12">
           <TipRegistration defaultWidth border={2}>
             <p>
               Would you like to receive these tips automatically?
@@ -126,12 +127,12 @@ const metadata: PageMetadata = {
               Email the <strong>Tip of the Week</strong>.
             </p>
           </TipRegistration>
-        </div>
+        </Column>
       </nav>
     </div>
   </ThemedSection>
 
-  <ThemedSection style="secondary" py={3}>
+  <ThemedSection style="secondary">
     <TipLicense />
   </ThemedSection>
 </Layout>

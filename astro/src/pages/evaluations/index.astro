@@ -24,6 +24,7 @@ const crumbs: Breadcrumbs = [
 
 import Branding from "@components/Branding.astro";
 // import CollaboratorList from "@components/CollaboratorList.astro";
+import Column from "@components/Column.astro";
 import ExternalLink from "@components/ExternalLink.astro";
 import GoogleForm from "@components/forms/GoogleForm.astro";
 import Hero from "@components/ColumnedHero.astro";
@@ -63,21 +64,21 @@ import ShadowBoxSection from "@components/ShadowBoxSection.astro";
     <div
       class="d-flex flex-column flex-xl-row-reverse gap-2 justify-content-xl-evenly align-items-center"
     >
-      <div class="col col-xl-8 col-xxl-9">
+      <Column xl="8" xxl="9">
         <p>
           Websites and social media are often the first way people find your organization. We can help you reach more readers, more members, more customers by making your digital content accessible.
         </p>
         <p>
           <Branding class="text-primary">Accessible Community</Branding> evaluates websites and social media for small and medium size businesses and organizations. Evaluations are free for small businesses and community organizations, as well as disability-support organizations. We charge a small flat fee for our services to larger organizations and businesses.
         </p>
-      </div>
-      <div class="col col-lg-10 col-xl-3 mx-3">
+      </Column>
+      <Column lg="10" xl="3" class="mx-3">
         <p
           class="display-5 text-center text-primary py-3 border-primary-subtle border-2 border-top border-bottom"
         >
           Evaluations are <strong>free</strong> for <strong>small businesses</strong> and <strong>community organizations</strong>.
         </p>
-      </div>
+      </Column>
     </div>
     <p>
       We provide a detailed report based on international standards and best practices to help you reach as many people as possible with your business or mission. We also help you get there with additional assistance after the evaluation.
@@ -228,7 +229,7 @@ import ShadowBoxSection from "@components/ShadowBoxSection.astro";
         <h3 class="visually-hidden">Request form</h3>
       </div>
       <div class="row justify-content-lg-between">
-        <div class="col-lg-5">
+        <Column noDefault lg="5">
           <div class="mb-3">
             <label for="nameField" class="form-label mb-1 required-field"
               >Your Name</label
@@ -268,8 +269,8 @@ import ShadowBoxSection from "@components/ShadowBoxSection.astro";
               required
             />
           </div>
-        </div>
-        <div class="col-lg-6 mb-3">
+        </Column>
+        <Column noDefault lg="6" class="mb-3">
           <div class="mb-3">
             <label for="phoneNumberField" class="form-label mb-1"
               >Phone Number</label
@@ -294,7 +295,7 @@ import ShadowBoxSection from "@components/ShadowBoxSection.astro";
           <div id="messageHelp" class="form-text">
             Please add any additional information or questions you have.
           </div>
-        </div>
+        </Column>
       </div>
     </GoogleForm>
   </ThemedSection>

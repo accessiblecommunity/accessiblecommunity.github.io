@@ -111,6 +111,7 @@ const escapeRoomThemes = defineCollection({
       tagline: z.string(),
       image: image(),
       alt: z.string().optional(),
+      buttonText: z.string().optional().default("Learn more"),
       page: z.object({
         image: image(),
         theme: z.string().default("dark"),

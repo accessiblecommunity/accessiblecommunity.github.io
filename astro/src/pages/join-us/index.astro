@@ -5,7 +5,7 @@ import Hero from "../../components/Hero.astro";
 import { Icon } from "astro-icon/components";
 import Layout from "../../layouts/Layout.astro";
 import Quote from "../../components/Quote.astro";
-import ThemedBox from "../../components/ThemedBox.astro";
+import ThemedColumn from "../../components/ThemedColumn.astro";
 import ThemedSection from "../../components/ThemedSection.astro";
 
 import heroBg from "../../images/colored-hero/hands-together.png";
@@ -60,16 +60,20 @@ const metadata: PageMetadata = {
     <div
       class="container d-flex flex-column flex-lg-row gap-5 justify-content-xl-between"
     >
-      <ThemedBox theme="info" class="my-auto col col-lg-6 rounded shadow">
+      <ThemedColumn
+        lg="6"
+        theme="info"
+        class="my-auto rounded shadow">
         <Quote q="community" text="white" />
-      </ThemedBox>
-      <ThemedBox
+      </ThemedColumn>
+      <ThemedColumn
+        lg="6"
         theme="info"
         style="subtle"
-        class="my-auto col col-lg-6 rounded shadow"
+        class="my-auto rounded shadow"
       >
         <Quote q="kindness" />
-      </ThemedBox>
+      </ThemedColumn>
     </div>
   </ThemedSection>
 </Layout>

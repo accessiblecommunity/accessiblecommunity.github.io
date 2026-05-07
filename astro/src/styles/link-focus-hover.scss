@@ -135,6 +135,9 @@ a {
       color: var(--bs-nav-link-color); // Override hover color on focus
       outline: 2px solid var(--ac-link-focus-outline-color);
     }
+    &:focus {
+      color: var(--bs-nav-link-color);
+    }
     &:hover {
       color: var(--bs-navbar-hover-color); // Override focus color on hover
     }
