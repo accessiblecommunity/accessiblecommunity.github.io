@@ -7,7 +7,9 @@
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "test:e2e": "playwright test",
+    "test:e2e:ui": "playwright test --ui"
   },
   "dependencies": {
     "@astrojs/mdx": "4.3.13",
@@ -31,6 +33,8 @@
     "sass": "1.77.5"
   },
   "devDependencies": {
+    "@axe-core/playwright": "^4.11.3",
+    "@playwright/test": "^1.59.1",
     "@types/lodash-es": "^4.17.12",
     "prettier": "^3.2.5",
     "prettier-plugin-astro": "^0.14.0"
