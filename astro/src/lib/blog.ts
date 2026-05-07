@@ -1,6 +1,12 @@
 import { getCollection, getEntries, type CollectionEntry } from "astro:content";
 import { isEmpty, isNil, reverse, sortBy, uniqBy } from "lodash-es";
 
+export function formatAuthorName(author: CollectionEntry<"staff">): string {
+  const { name, cited } = author.data;
+  const { first, middle, last } = cited || name;
+  return [first, middle, last].filter((n) => n).join(" ");
+}
+
 export async function getBlogAuthors(
   blogs?,
 ): Promise<Array<CollectionEntry<"staff">>> {

@@ -38,7 +38,7 @@ const crumbs: Breadcrumbs = [
 ];
 
 const teams = await getCollection("recruiting");
-const orderedTeams = sortBy(teams, ["id"]);
+const orderedTeams = sortBy(teams, ["data.name"]);
 ---
 
 <Layout {title} {crumbs} {metadata}>
@@ -280,7 +280,7 @@ const orderedTeams = sortBy(teams, ["id"]);
             required
           >
             {
-              teams.map(({ data }) => (
+              orderedTeams.map(({ data }) => (
                 <option value={data.name} set:text={data.name} />
               ))
             }

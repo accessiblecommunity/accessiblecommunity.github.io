@@ -1,6 +1,6 @@
 ---
 import { getCollection } from "astro:content";
-import { getBlogAuthors, orderByRecent } from "../../../lib/blog";
+import { formatAuthorName, getBlogAuthors, orderByRecent } from "../../../lib/blog";
 import type { Breadcrumbs } from "@lib/types";
 import type { CollectionEntry } from "astro:content";
 
@@ -43,13 +43,13 @@ import BlogLayout from "../../../layouts/BlogLayout.astro";
 ---
 
 <BlogLayout
-  title={`Blogs by ${author.data.name}`}
+  title={`Blogs by ${formatAuthorName(author)}`}
   {crumbs}
   blog={orderedBlogs[0]}
   catalog={{ blogs: orderedBlogs }}
   sidebar={true}
 >
   <Fragment slot="header">
-    <strong>Blogs</strong> by {author.data.name}
+    <strong>Blogs</strong> by {formatAuthorName(author)}
   </Fragment>
 </BlogLayout>
