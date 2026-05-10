@@ -1,0 +1,35 @@
+---
+// When rendered on the server this, displays the first child and hides the rest. 
+// On page load, the client script picks one to show and hides the rest.
+---
+
+<div data-random-content>
+  <slot />
+</div>
+
+<style is:global>
+  /* Pre-JS / no-JS fallback: show only the first child. */
+  /* `is:global` because the children come from a slot (consumer-rendered),
+     so they don't get this component's scoped class. */
+  [data-random-content]:not([data-random-ready]) > *:nth-child(n + 2) {
+    display: none;
+  }
+</style>
+
+<script>
+  function randomize() {
+    /* In case there are multiple RandomContent components on the page, we need to randomize each one. */
+    document.querySelectorAll("[data-random-content]").forEach((root) => {
+      const items = Array.from(root.children);
+      if (items.length > 1)  {
+        const chosen = Math.floor(Math.random() * items.length);
+        items.forEach((item, i) => {
+          item.toggleAttribute("hidden", i !== chosen);
+        });
+      }
+      root.setAttribute("data-random-ready", "");
+    });
+  }
+  randomize();
+  document.addEventListener("astro:after-swap", randomize);
+</script>
