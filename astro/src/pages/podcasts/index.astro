@@ -11,13 +11,6 @@ const shows: CollectionEntry<"podcastShows">[] = sortBy(
   await getCollection("podcastShows"),
   [(show) => show.data.title],
 );
-const staff: CollectionEntry<"staff">[] = sortBy(
-  await getCollection(
-    "staff", ({data}) => data.current && Object.keys(data.roles ?? {}).includes("podcasts")
-  ),
-  // Alphabetize by first name
-  ({data}) => data.cited?.first ?? data.name.first,
-);
 
 function toUrlMap(links: PodcastLinks): SocialLinkDictionary {
   const urlMap: SocialLinkDictionary = {};
