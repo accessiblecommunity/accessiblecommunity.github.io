@@ -91,11 +91,17 @@ const { metadata, title } = Astro.props;
         </Row>
         <hr aria-hidden="true"/>
         <div class="text-center">
+          <p class="pt-2 text-center mb-0 text-light">
+      <small><Branding>Accessible Community</Branding> is a 501(c)3&nbsp;organization.</small
+      >
+    </p>
           <p class="mb-0">
-            &copy; {new Date().getFullYear()}
-            <Branding>Accessible Community</Branding>. All rights reserved.
+            <small>&copy; {new Date().getFullYear()}
+              <Branding>Accessible Community</Branding>
+            </small>
           </p>
         </div>
+        <p class="text-center mb-0 text-light">
       </div>
     </footer>
     <script src="../scripts/headings.js"></script>
