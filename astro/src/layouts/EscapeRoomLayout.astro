@@ -1,10 +1,13 @@
 ---
 import "../styles/bootstrap.scss";
+import { getEntry } from "astro:content";
 
 import Metadata from "../components/Metadata.astro";
 import Branding from "../components/Branding.astro";
 import Column from "../components/Column.astro";
+import FooterLinkList from "../components/navigation/FooterLinkList.astro";
 import HeaderER from "../components/HeaderER.astro";
+import { Icon } from "astro-icon/components";
 import Row from "../components/Row.astro";
 import { type PageMetadata } from "../lib/types";
 
@@ -26,6 +29,9 @@ interface Props {
 }
 
 const { metadata, title } = Astro.props;
+
+const socialEntry = await getEntry("navigation", "escape-social-media");
+const Socials = socialEntry?.data.groups[0];
 ---
 
 <!doctype html>
@@ -62,14 +68,12 @@ const { metadata, title } = Astro.props;
     <footer class="escape-room-footer">
       <div class="container">
         <Row g="4">
-          <Column sm="12" md="4">
+          <Column sm="12" md="6">
             <h3 class="h5">About Accessible Community</h3>
             <p>
               We help organizations make their digital content accessible to
               people with disabilities.
             </p>
-          </Column>
-          <Column sm="12" md="4">
             <h3 class="h5">Quick Links</h3>
             <ul class="list-unstyled">
               {
@@ -79,7 +83,31 @@ const { metadata, title } = Astro.props;
               }
             </ul>
           </Column>
-          <Column sm="12" md="4">
+          <Column sm="12" md="6">
+            <FooterLinkList name="outreach">
+              <h3 class="visually-hidden">Social Media</h3>
+              <ul class="text-center">
+                {
+                  Socials?.map(({ icon, href, iconCls, name }) => (
+                    <li class="d-inline-block ms-2 me-3">
+                      <a
+                        class="d-inline-block link-light"
+                        href={href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <Icon
+                          name={icon}
+                          class:list={["social-icon", iconCls]}
+                          role="img"
+                          aria-label={name}
+                        />
+                      </a>
+                    </li>
+                  ))
+                }
+              </ul>
+            </FooterLinkList>
             <h3 class="h5">Contact Us</h3>
             <p>
               Have questions about our services?<br />
@@ -90,11 +118,12 @@ const { metadata, title } = Astro.props;
             </p>
           </Column>
         </Row>
-        <div class="text-center">
+        <div class="text-center legal-footer">
           <p class="pt-2 text-center mb-0 text-light">
-      <small><Branding>Accessible Community</Branding> is a 501(c)3&nbsp;organization.</small
-      >
-    </p>
+            <small>
+              <Branding>Accessible Community</Branding> is a 501(c)3&nbsp;organization.
+            </small>
+          </p>
           <p class="mb-0">
             <small>&copy; {new Date().getFullYear()}
               <Branding>Accessible Community</Branding>
@@ -148,6 +177,16 @@ const { metadata, title } = Astro.props;
   .escape-room-footer hr {
     border-color: rgba(255, 255, 255, 0.1);
     margin: 2rem 0;
+  }
+
+  .social-icon {
+    min-height: 24px;
+    min-width: 24px;
+  }
+
+  .legal-footer {
+    border-top: 1px solid #dfe1ed;
+    margin: 0 1.5em;
   }
 
   /* Mobile Responsiveness */
