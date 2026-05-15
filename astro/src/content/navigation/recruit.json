@@ -6,6 +6,10 @@
       "name": "Volunteer",
       "href": "/volunteer/"
     }, {
+      "name": "Sponsor",
+      "href": "/join-us/sponsor/"
+    },
+    {
       "name": "Donate",
       "href": "/donate/"
     }]
