@@ -1,0 +1,206 @@
+---
+import { Icon } from "astro-icon/components";
+
+interface Props {
+  class?: string;
+}
+
+const { class: classes = "" } = Astro.props;
+---
+
+<div class:list={["theme-toggle dropdown", classes]}>
+  <button
+    type="button"
+    id="theme-toggle"
+    class="theme-toggle-btn btn btn-outline-primary display-65 dropdown-toggle"
+    data-bs-toggle="dropdown"
+    data-theme="system"
+    aria-expanded="false"
+    aria-label="Color theme: Auto. Activate to change."
+  >
+    <span class="theme-toggle-icon" data-theme-icon="light" aria-hidden="true">
+      <Icon name="bi:sun-fill" class="bi me-1" role="img" />
+    </span>
+    <span class="theme-toggle-icon" data-theme-icon="dark" aria-hidden="true">
+      <Icon name="bi:moon-fill" class="bi me-1" role="img" />
+    </span>
+    <span class="theme-toggle-icon" data-theme-icon="system" aria-hidden="true">
+      <Icon name="bi:circle-half" class="bi me-1" role="img" />
+    </span>
+    <span data-theme-label>Auto</span>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end px-15 pb-1" aria-labelledby="theme-toggle">
+    <li>
+      <button
+        type="button"
+        class="dropdown-item theme-option"
+        data-theme-option="light"
+        aria-pressed="false"
+      >
+        <Icon name="bi:sun-fill" class="bi me-2" role="img" aria-hidden="true" />
+        <span class="theme-option-label">Light</span>
+        <Icon name="bi:check-lg" class="bi ms-2 theme-option-check" role="img" aria-hidden="true" />
+      </button>
+    </li>
+    <li>
+      <button
+        type="button"
+        class="dropdown-item theme-option"
+        data-theme-option="dark"
+        aria-pressed="false"
+      >
+        <Icon name="bi:moon-fill" class="bi me-2" role="img" aria-hidden="true" />
+        <span class="theme-option-label">Dark</span>
+        <Icon name="bi:check-lg" class="bi ms-2 theme-option-check" role="img" aria-hidden="true" />
+      </button>
+    </li>
+    <li>
+      <button
+        type="button"
+        class="dropdown-item theme-option"
+        data-theme-option="system"
+        aria-pressed="false"
+      >
+        <Icon name="bi:circle-half" class="bi me-2" role="img" aria-hidden="true" />
+        <span class="theme-option-label">Auto</span>
+        <Icon name="bi:check-lg" class="bi ms-2 theme-option-check" role="img" aria-hidden="true" />
+      </button>
+    </li>
+  </ul>
+</div>
+
+<style is:global lang="scss">
+  @import "../styles/dark-mode.scss";
+
+  .theme-toggle .theme-toggle-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 7em;
+  }
+
+  .theme-toggle .theme-toggle-icon {
+    display: none;
+  }
+  .theme-toggle .theme-toggle-btn[data-theme="light"] [data-theme-icon="light"],
+  .theme-toggle .theme-toggle-btn[data-theme="dark"] [data-theme-icon="dark"],
+  .theme-toggle .theme-toggle-btn[data-theme="system"] [data-theme-icon="system"] {
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .theme-toggle .theme-option {
+    display: flex;
+    align-items: center;
+  }
+
+  .theme-toggle .theme-option-label {
+    flex: 1 1 auto;
+  }
+
+  .theme-toggle .theme-option-check {
+    visibility: hidden;
+  }
+  .theme-toggle .theme-option[aria-pressed="true"] .theme-option-check {
+    visibility: visible;
+  }
+
+  @include color-mode(dark) {
+    .theme-toggle .theme-toggle-btn.btn-outline-primary {
+      --bs-btn-color: var(--bs-white);
+      --bs-btn-border-color: var(--bs-white);
+      --bs-btn-hover-color: var(--bs-primary);
+      --bs-btn-hover-bg: var(--bs-white);
+      --bs-btn-hover-border-color: var(--bs-white);
+      --bs-btn-active-color: var(--bs-primary);
+      --bs-btn-active-bg: var(--bs-white);
+      --bs-btn-active-border-color: var(--bs-white);
+    }
+  }
+</style>
+
+<script>
+  type Mode = "light" | "dark" | "system";
+  const modes: Mode[] = ["light", "dark", "system"];
+  const labels: Record<Mode, string> = {
+    light: "Light",
+    dark: "Dark",
+    system: "Auto",
+  };
+
+  const retrieveTheme = (): Mode => {
+    try {
+      const stored = localStorage.getItem("theme");
+      return stored === "light" || stored === "dark" ? stored : "system";
+    } catch {
+      return "system";
+    }
+  };
+
+  const storeTheme = (mode: Mode) => {
+    try {
+      if (mode === "system") {
+        localStorage.removeItem("theme");
+      } else {
+        localStorage.setItem("theme", mode);
+      }
+    } catch {
+      // localStorage blocked — theme applies for this session but won't persist.
+    }
+  };
+
+  const init = () => {
+    const root = document.querySelector(".theme-toggle") as HTMLElement | null;
+    const button = document.getElementById(
+      "theme-toggle",
+    ) as HTMLButtonElement | null;
+    if (!root || !button) return;
+
+    const applyTheme = (mode: Mode) => {
+      let themeToApply = mode;
+      if (themeToApply === "system") {
+        themeToApply = window.matchMedia("(prefers-color-scheme: dark)").matches
+          ? "dark"
+          : "light";
+      }
+      document.documentElement.setAttribute("data-bs-theme", themeToApply);
+    };
+
+    const updateButton = (mode: Mode) => {
+      const label = button.querySelector(
+        "[data-theme-label]",
+      ) as HTMLElement | null;
+      button.setAttribute("data-theme", mode);
+      if (label) label.textContent = labels[mode];
+      button.setAttribute(
+        "aria-label",
+        `Color theme: ${labels[mode]}. Activate to change.`,
+      );
+      root.querySelectorAll<HTMLButtonElement>(".theme-option").forEach((el) => {
+        const isCurrent = el.dataset.themeOption === mode;
+        el.setAttribute("aria-pressed", isCurrent ? "true" : "false");
+      });
+    };
+
+    const apply = (mode: Mode) => {
+      storeTheme(mode);
+      applyTheme(mode);
+      updateButton(mode);
+    };
+
+    apply(retrieveTheme());
+
+    root.querySelectorAll<HTMLButtonElement>(".theme-option").forEach((el) => {
+      el.addEventListener("click", () => {
+        const next = el.dataset.themeOption as Mode | undefined;
+        if (next && modes.includes(next)) apply(next);
+      });
+    });
+  };
+
+  if (document.readyState === "loading") {
+    window.addEventListener("DOMContentLoaded", init);
+  } else {
+    init();
+  }
+</script>

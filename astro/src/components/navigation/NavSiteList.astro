@@ -1,5 +1,6 @@
 ---
 import NavDropdownMenu from "./NavDropdownMenu.astro";
+import ThemeToggle from "../ThemeToggle.astro";
 
 interface Props {
   main?: boolean;
@@ -42,13 +43,17 @@ const { main = false, class: classes = "" } = Astro.props;
   </ul>
   {
     main && (
-      <a
-        class="btn btn-info btn-contrast-dark display-65 mx-1 my-1"
-        href="/donate"
-        role="button"
-      >
-        Donate
-      </a>
+      <Fragment>
+        <ThemeToggle class="ms-1 me-4 my-1" />
+        <div class="w-100 d-lg-none" aria-hidden="true"></div>
+        <a
+          class="btn btn-info btn-contrast-dark display-65 mx-1 my-1"
+          href="/donate"
+          role="button"
+        >
+          Donate
+        </a>
+      </Fragment>
     )
   }
 </Fragment>
