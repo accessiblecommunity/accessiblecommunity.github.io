@@ -1,6 +1,9 @@
 ---
 import type { PageMetadata } from "@lib/types";
+import Branding from "@components/Branding.astro";
+import FlexColumn from "@components/FlexColumn.astro";
 import Layout from "../../layouts/Layout.astro";
+import ThemedColumn from "@components/ThemedColumn.astro";
 import ThemedSection from "../../components/ThemedSection.astro";
 
 const title = "Sponsor";
@@ -24,20 +27,79 @@ const crumbs = [
   <ThemedSection style="secondary">
     <h2>Support our mission</h2>
     <p class="display-5">At Accessible Community, we grow disability and senior inclusive communities through socially responsible technology. Help us provide free and low cost tools and information to help local organizations, accessibility professionals, seniors, and people with disabilities connect and make the world a bit more inclusive.</p>
+    <p class="display-5"><a href="#sponsorship-levels">Learn more about our sponsorhip levels</a></p>
   </ThemedSection>
   <ThemedSection style="primary">
-    <h2>Sponsorship levels</h2>
-    <p class="display-5">At Accessible Community, we grow disability and senior inclusive communities through socially responsible technology. Help us provide free and low cost tools and information to help local organizations, accessibility professionals, seniors, and people with disabilities connect and make the world a bit more inclusive.</p>
-    <ul>
-      <li>Silver ($2,500): Sponsor the mentoring program or ta11y. Logo and link on sponsorship page. Logo and link on sponsored web site and social media advertising the program.</li>
-      <li>Gold ($5,000): Sponsors mentoring program and ta11y (Logo and link on sponsored web site and social media advertising the program) OR a community in loca11y (sponsorship card within the community)</li>
-      <li>Platinum ($25,000): Sponsors mentoring program, ta11y and a community in loca11y with benefits listed in Gold. Also sponsor card in footer on all accessible community web pages and github repostitories.</li>
+    <h2>Thank you to our sponsors</h2>
+    <p class="display-5">Platinum:</p>
+    <ul class="list-unstyled">
+      <li><a href=""></a></li>
+      <li><a href=""></a></li>
     </ul>
+    <p class="display-5">Gold:</p>
+    <ul class="list-unstyled">
+      <li><a href=""></a></li>
+      <li><a href=""></a></li>
+    </ul>
+    <p class="display-5">Silver:</p>
+    <ul class="list-unstyled">
+      <li><a href=""></a></li>
+      <li><a href=""></a></li>
+    </ul>
+  </ThemedSection>
+  <ThemedSection id="sponsorship-levels" theme="secondary" style="subtle">
+    <h2>Sponsorship levels</h2>
+    <FlexColumn
+      xlFlexRow gap="1" class="py-3 justify-content-lg-evenly justify-content-xl-center text-primary"
+    >
+      <ThemedColumn
+        xl="4"
+        text={true}
+        border={1}
+        class="border-primary shadow rounded flex-row-reverse justify-content-between"
+      >
+        <h3 class="display-5">
+          Silver Sponsor ($2,500):
+        </h3>
+        <p>Sponsor either the <Branding>mutua11y</Branding> mentoring program or <Branding>ta11y.org</Branding></p>
+        <p>Benefits at the Silver level include:</p>
+        <ul>
+          <li>Your logo and link to your website on sponsorship page</li>
+          <li>Your logo and link on sponsored web site and social media advertising the program</li>
+        </ul>
+      </ThemedColumn>
+      <ThemedColumn
+        xl="4"
+        text={true}
+        border={1}
+        class="border-primary shadow rounded"
+      >
+        <h3 class="display-5">Gold Sponsor ($5,000):</h3>
+        <p>Sponsor both the <Branding>mutua11y</Branding> mentoring program and <Branding>ta11y.org</Branding></li></p>
+        <p>Benefits at the Gold level include:</p>
+        <ul>
+          <li>Your logo and link on sponsored web site and social media advertising the program OR a community in <Branding>loca11y</Branding> (sponsorship card within the community)</li>
+        </ul>
+      </ThemedColumn>
+      <ThemedColumn
+        xl="4"
+        text={true}
+        border={1}
+        class="border-primary shadow rounded"
+      >
+        <h3 class="display-5">Platinum Sponsor ($25,000):</h3>
+        <p>Sponsor the <Branding>mutua11y</Branding> mentoring program, <Branding>ta11y.org</Branding> and a community in <Branding>loca11y</Branding></p>
+        <p>Benefits at the Platinum level include:</p>
+        <ul>
+          <li>Your logo and link on sponsored web site and social media advertising the program OR a community in <Branding>loca11y</Branding> (sponsorship card within the community)</li>
+          <li>A sponsor card in the site footer on all <Branding>Accessible Community</Branding> web pages and GitHub repostitories</li>
+        </ul>
+      </ThemedColumn>
   </ThemedSection>
   <ThemedSection style="secondary">
     <h2>Audience demographics</h2>
   </ThemedSection>
-  <ThemedSection style="contact">
+  <ThemedSection style="primary">
     <h2>Contact us to become a sponsor</h2>
     <p>Email our executive director at <a href="mailto:rachael@accessiblecommunity.org">rachael@accessiblecommunity.org</a> if you are interested in sponsorships.</p>
   </ThemedSection>
