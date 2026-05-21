@@ -29,6 +29,9 @@ shell: up
 
 dist: clean-js-dist $(SOURCE_DIR)/dist
 
+check: up $(SOURCE_DIR)/node_modules
+	@docker compose exec $(CONTAINER) sh -c "npm run astro:check"
+
 prettier: up
 	@echo Verifying code formatting.
 	@docker compose exec $(CONTAINER) sh -c "npx prettier ./src --write"
@@ -39,11 +42,11 @@ ifndef number
 endif
 	docker compose exec $(CONTAINER) sh -c "npm version ${number}"
 
-upgrade-astro: up
+upgrade-astro: up $(SOURCE_DIR)/node_modules
 	@echo Updating Astro specific dependencies.
 	@docker compose exec ${CONTAINER} sh -c "npx @astrojs/upgrade"
 
-update-dependencies: up
+update-dependencies: up $(SOURCE_DIR)/node_modules
 	@echo Updating package.json.
 	@docker compose exec ${CONTAINER} sh -c "npx npm-check-updates -u"
 

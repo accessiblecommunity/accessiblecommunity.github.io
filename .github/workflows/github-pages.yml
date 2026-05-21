@@ -23,6 +23,8 @@ jobs:
 
   astro-check:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     defaults:
       run:
         working-directory: astro
@@ -37,7 +39,7 @@ jobs:
           cache-dependency-path: astro/package-lock.json
       - run: npm ci
       - run: npm run astro:check
-        continue-on-error: true
+        continue-on-error: true  # TODO: Remove when check is cleaned up.
 
   deploy:
     needs: build
