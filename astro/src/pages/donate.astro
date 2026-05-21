@@ -2,9 +2,8 @@
 import type { PageMetadata } from "@lib/types";
 import { getOpenGraphImageData } from "@lib/og-image";
 import components from "@lib/mdx";
-import { getEntry, render, type CollectionEntry } from "astro:content";
+import { getEntry, render } from "astro:content";
 
-import Branding from "../components/Branding.astro";
 import Column from "../components/Column.astro";
 import Hero from "../components/Hero.astro";
 import { Icon } from "astro-icon/components";
@@ -16,10 +15,8 @@ import TeamVignette from "@components/TeamVignette.astro";
 import ThemedSection from "../components/ThemedSection.astro";
 
 import heroBg from "../images/colored-hero/donate.png";
-import rachael from "../images/rachael-at-booth.jpg";
 
 import ThemedBox from "@components/ThemedBox.astro";
-import { Image } from "astro:assets";
 const directorEmail = "mailto:director@accessiblecommunity.org";
 const paypalUrl = "https://paypal.me/AccessibleCommunity";
 const stripeUrl = "https://donate.stripe.com/eVadR0agM8ec1TW5kk";
@@ -44,19 +41,16 @@ const donationLinks = [
     icon: "cib:cc-paypal",
     href: paypalUrl,
     title: "Donate via Paypal",
-    theme: "paypal",
   },
   {
     icon: "cib:cc-stripe",
     href: stripeUrl,
     title: "Donate via Stripe",
-    theme: "stripe",
   },
   {
     icon: "envelope-at",
     href: directorEmail,
     title: "Email the Director",
-    theme: "primary",
   },
 ];
 
@@ -70,19 +64,6 @@ const metadata: PageMetadata = {
 const letter = await getEntry("markdown", "donor-letter");
 if (!letter) throw new Error("Could not find content `markdown/donor-letter`");
  const { Content } = await render(letter);
-
-const statesRegistered = ["Maryland", "Virginia"];
-const statesAccepting = [
-  "Delaware",
-  "Idaho",
-  "Indiana",
-  "Iowa",
-  "Montana",
-  "Nebraska",
-  "South Dakota",
-  "Vermont",
-  "Wyoming",
-];
 ---
 
 <Layout {title} {metadata}>
@@ -173,7 +154,7 @@ const statesAccepting = [
           class="d-grid d-sm-flex flex-lg-column justify-content-sm-center gap-3 pb-3"
         >
           {
-            donationLinks.map(({ icon, href, title, theme }) => (
+            donationLinks.map(({ icon, href, title }) => (
               <a
                 class:list={[`btn btn-sm btn-primary rounded-2 shadow-sm`]}
                 href={href}
