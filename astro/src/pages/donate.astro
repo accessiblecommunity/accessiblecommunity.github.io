@@ -4,6 +4,7 @@ import { getOpenGraphImageData } from "@lib/og-image";
 import components from "@lib/mdx";
 import { getEntry, render } from "astro:content";
 
+import Branding from "@components/Branding.astro";
 import Column from "../components/Column.astro";
 import Hero from "../components/Hero.astro";
 import { Icon } from "astro-icon/components";
@@ -12,11 +13,11 @@ import Quote from "@components/Quote.astro";
 import Row from "@components/Row.astro";
 import ShadowBoxSection from "../components/ShadowBoxSection.astro";
 import TeamVignette from "@components/TeamVignette.astro";
+import ThemedBox from "@components/ThemedBox.astro";
 import ThemedSection from "../components/ThemedSection.astro";
 
 import heroBg from "../images/colored-hero/donate.png";
 
-import ThemedBox from "@components/ThemedBox.astro";
 const directorEmail = "mailto:director@accessiblecommunity.org";
 const paypalUrl = "https://paypal.me/AccessibleCommunity";
 const stripeUrl = "https://donate.stripe.com/eVadR0agM8ec1TW5kk";
@@ -98,6 +99,16 @@ if (!letter) throw new Error("Could not find content `markdown/donor-letter`");
   </Hero>
 
   <ThemedSection style="tertiary">
+
+    <Row class="justify-content-center">
+      <ThemedBox theme="primary" style="subtle" border={1} padding={3} class="mb-5 p-3 rounded">
+        <div class="announcement lead text-center">
+          An anonymous donor is currently <a href="/blog/2026-matching-campaign">matching contributions</a>
+          up to&nbsp;$5,000. <br class="d-none d-lg-inline-block" /> Your&nbsp;donation will be doubled!
+        </div>
+      </ThemedBox>
+    </Row>
+
     <Row class="justify-content-center donor-letter">
       <Column lg="10">
         <h2 class="display-5">Dear <strong>potential donor</strong>,</h2>
@@ -186,7 +197,13 @@ Purcellville, VA  20132</pre>
   </ShadowBoxSection>
 </Layout>
 
-<style lang="scss">
+<style>
+  @media (width < 576px) {
+    .announcement.lead {
+      font-size: 1rem;
+    }
+  }
+
   .donor-letter :global(pre),
   pre.address {
     padding: 0em 1.5em 0.5em;
