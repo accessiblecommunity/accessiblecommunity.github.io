@@ -25,6 +25,7 @@ import Branding from "@components/Branding.astro";
 import EscapeRoomLayout from "src/layouts/EscapeRoomLayout.astro";
 import Hero from "@components/HeroWithBreadcrumbs.astro";
 import { Icon } from "astro-icon/components";
+import Row from "@components/Row.astro";
 import ThemedSection from "@components/ThemedSection.astro";
 
 import heroBg from "src/images/escape-room/shaded/puzzle-display.jpg";
@@ -56,7 +57,7 @@ import heroBg from "src/images/escape-room/shaded/puzzle-display.jpg";
 
   <ThemedSection style="subtle" theme="secondary">
     <h2 class="text-center text-info mb-4">Quotes from our Customers</h2>
-    <div class="row row-cols-1 row-cols-lg-3 g-3 align-items-stretch align-items-lg-center">
+    <Row baseRowCols="1" lgRowCols="3" g="3" class="align-items-stretch align-items-lg-center">
       {
         quotes.map(q => (
           <div class="col">
@@ -71,7 +72,7 @@ import heroBg from "src/images/escape-room/shaded/puzzle-display.jpg";
           </div>
         ))
       }
-    </div>
+    </Row>
   </ThemedSection>
 
   <ThemedSection style="tertiary" id="faq">

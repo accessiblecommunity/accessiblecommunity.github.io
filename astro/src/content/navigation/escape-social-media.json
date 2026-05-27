@@ -1,0 +1,18 @@
+{
+  "name": "Escape Room Social Media",
+  "fullName": "Escape Room Social Media",
+  "groups": [
+    [{
+      "name": "Facebook",
+      "href": "https://www.facebook.com/AccessibleEscapeRoom/",
+      "external": true,
+      "icon": "bi:facebook",
+      "iconCls": "bi bi-facebook"
+    }, {
+      "name": "LinkedIn",
+      "href": "https://in.linkedin.com/showcase/accessible-escape-room/",
+      "icon": "bi:linkedin",
+      "iconCls": "bi bi-linkedin"
+    }]
+  ]
+}

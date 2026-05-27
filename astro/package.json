@@ -7,7 +7,8 @@
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "astro:check": "astro check --tsconfig tsconfig.json"
   },
   "dependencies": {
     "@astrojs/mdx": "4.3.13",
@@ -31,6 +32,7 @@
     "sass": "1.77.5"
   },
   "devDependencies": {
+    "@astrojs/check": "^0.9.9",
     "@types/lodash-es": "^4.17.12",
     "prettier": "^3.2.5",
     "prettier-plugin-astro": "^0.14.0"
