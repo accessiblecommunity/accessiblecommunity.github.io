@@ -3,11 +3,13 @@ import { getEntry, render } from "astro:content";
 import { Icon } from "astro-icon/components";
 import TeamVignette from "./TeamVignette.astro";
 
+type HTMLTag = keyof astroHTML.JSX.DefinedIntrinsicElements;
+
 interface Props {
   id: string;
   quotes?: boolean;
   text?: string;
-  element?: string;
+  element?: HTMLTag;
 }
 
 const { id, quotes = false, element = "div", text = undefined } = Astro.props;

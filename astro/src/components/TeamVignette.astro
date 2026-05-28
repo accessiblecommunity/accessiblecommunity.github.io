@@ -5,11 +5,13 @@ import { Icon } from "astro-icon/components";
 
 type MemberProp = string | NonNullable<CollectionEntry<"staff">>;
 type TeamMemberData = CollectionEntry<"staff">["data"];
+type TeamName = keyof TeamMemberData["roles"];
+type HTMLTag = keyof astroHTML.JSX.DefinedIntrinsicElements;
 
 interface Props {
   member: MemberProp;
-  role?: string | boolean;
-  element?: string;
+  role?: TeamName | boolean;
+  element?: HTMLTag;
   left?: boolean;
   highlightName?: boolean;
   firstNameOnly?: boolean;
@@ -52,7 +54,7 @@ async function getTeamMemberData(member: MemberProp): Promise<TeamMemberData> {
 
 const memberData: TeamMemberData = await getTeamMemberData(member);
 const { name, cited, roles, photo, links } = memberData;
-const teamName = typeof role === "boolean" ? "default" : role;
+const teamName: TeamName  = typeof role === "boolean" ? "default" : role;
 const title = role && roles[teamName];
 
 function getDisplayName({ first, middle, last }: Names) {
