@@ -167,12 +167,9 @@ const staff = defineCollection({
           image: image(),
           alt: z.string().optional(),
         })
-        .default({
-          // @ts-ignore: String path required.
-          image: {
-            src: "/src/images/staff/Ta11yCat.png",
-            format: "png",
-          },
+        .prefault({
+          // @ts-ignore: Match string of default image
+          image: "/src/images/staff/Ta11yCat.png",
           alt: "The Tally Cat has claimed this spot.",
         }),
       current: z.boolean().default(true),
