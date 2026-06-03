@@ -1,16 +1,16 @@
 ---
+import { getCollection, type CollectionEntry } from "astro:content";
+import { isEmpty } from "lodash-es";
+
 interface Props {
-  items?: Array<object>;
+  items?: Array<CollectionEntry<"collaborators">>;
 }
 
 const { items = [] } = Astro.props;
+const collaborators : Array<CollectionEntry<"collaborators">> =
+  !isEmpty(items) ? items : await getCollection("collaborators");
 
 import { Image } from "astro:assets";
-import { getCollection } from "astro:content";
-import { isEmpty } from "lodash-es";
-
-const collaborators =
-  !isEmpty(items) ? items : await getCollection("collaborators");
 ---
 
 <ul class="list-inline list-unstyled text-center collab-list rounded-2">

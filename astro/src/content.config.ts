@@ -1,7 +1,9 @@
-import { defineCollection, reference, z } from "astro:content";
+import { defineCollection, reference } from "astro:content";
 import { glob } from "astro/loaders";
+import { z } from 'astro/zod';
 
 import { HeroTheme } from "@lib/hero-image";
+
 
 const atotw = defineCollection({
   loader: glob({ pattern: "**/[^_]*.{md,mdx}", base: "./src/content/atotw" }),
@@ -12,7 +14,7 @@ const atotw = defineCollection({
     who: z.string(),
     benefits: z.string(),
     tags: z.array(z.string()),
-    theme: z.nativeEnum(HeroTheme).optional().default(HeroTheme.notes),
+    theme: z.enum(HeroTheme).optional().default(HeroTheme.notes),
   }),
 });
 
@@ -73,7 +75,7 @@ const collaborators = defineCollection({
     z.object({
       name: z.string(),
       logo: image(),
-      href: z.string().url(),
+      href: z.url(),
       tags: z.array(z.string()),
     }),
 });
@@ -138,10 +140,10 @@ const podcastShows = defineCollection({
       image: image(),
       links: z
         .object({
-          applePodcasts: z.string().url(),
-          podcastIndex: z.string().url(),
-          spotify: z.string().url(),
-          youtube: z.string().url(),
+          applePodcasts: z.url(),
+          podcastIndex: z.url(),
+          spotify: z.url(),
+          youtube: z.url(),
         })
         .partial()
         .optional(),
@@ -165,8 +167,8 @@ const staff = defineCollection({
           image: image(),
           alt: z.string().optional(),
         })
-        .default({
-          // @ts-ignore: String path required.
+        .prefault({
+          // @ts-ignore: Match string of default image
           image: "/src/images/staff/Ta11yCat.png",
           alt: "The Tally Cat has claimed this spot.",
         }),
@@ -191,14 +193,14 @@ const staff = defineCollection({
         .partial(),
       links: z
         .object({
-          email: z.string().email(),
-          facebook: z.string().url(),
-          instagram: z.string().url(),
-          linkedin: z.string().url(),
-          mastodon: z.string().url(),
-          threads: z.string().url(),
-          twitter: z.string().url(),
-          website: z.string().url(),
+          email: z.email(),
+          facebook: z.url(),
+          instagram: z.url(),
+          linkedin: z.url(),
+          mastodon: z.url(),
+          threads: z.url(),
+          twitter: z.url(),
+          website: z.url(),
         })
         .partial()
         .optional(),

@@ -3,7 +3,7 @@
 import { OGImageRoute } from "astro-og-canvas";
 import { merge } from "lodash-es";
 
-export const { getStaticPaths, GET } = OGImageRoute({
+export const { getStaticPaths, GET } = await OGImageRoute({
   param: "name",
   pages: {
     daf: {

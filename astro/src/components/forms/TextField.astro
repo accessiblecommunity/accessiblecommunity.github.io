@@ -1,4 +1,7 @@
 ---
+type InputTypeAttribute = astroHTML.JSX.DefinedIntrinsicElements["input"]["type"];
+type InputPlaceholderAttribute = astroHTML.JSX.DefinedIntrinsicElements["input"]["placeholder"];
+
 export interface Props {
   /** Unique id for input */
   id: string;
@@ -9,9 +12,9 @@ export interface Props {
   /** Input value */
   value?: string;
   /** Input type (text, email, password, etc.) */
-  type?: string;
+  type?: InputTypeAttribute;
   /** Placeholder text */
-  placeholder?: string;
+  placeholder?: InputPlaceholderAttribute;
   /** Help text below input */
   helpText?: string;
   /** Error text */
