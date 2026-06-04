@@ -60,7 +60,6 @@ import Branding from "@components/Branding.astro";
 import FlexColumn from "@components/FlexColumn.astro";
 import ImageHeading from "@components/ImageHeading.astro";
 import Layout from "./Layout.astro";
-import RandomContent from "@components/RandomContent.astro";
 import TeamVignette from "@components/TeamVignette.astro";
 import ThemedSection from "@components/ThemedSection.astro";
 ---
@@ -88,37 +87,6 @@ import ThemedSection from "@components/ThemedSection.astro";
       <strong>Blog</strong>
     </slot>
   </ImageHeading>
-  {!isEmpty(blogs) && (
-    <ThemedSection style="tertiary">
-      <h2 class="display-4 border-bottom mb-3">Demo: RandomContent Component</h2>
-      <p class="mb-3">
-        A different blog post is featured at random on each page load. Reload to see another.
-      </p>
-      <RandomContent>
-        {blogs.slice(0, 5).map((b) => (
-          <article class="border rounded p-3">
-            <h3><a href={`/blog/${b.id}`}>{b.data.title}</a></h3>
-            <p class="mb-0">{b.data.description}</p>
-          </article>
-        ))}
-      </RandomContent>
-    </ThemedSection>
-  )}
-  {!isEmpty(authors) && (
-    <ThemedSection style="tertiary">
-      <h2 class="display-4 border-bottom mb-3">Demo: RandomContent with an Author</h2>
-      <p class="mb-3">
-        A different blog author is featured at random on each page load.
-      </p>
-      <RandomContent>
-        {authors.slice(0, 5).map((author) => (
-          <div class="border rounded p-3">
-            <TeamVignette member={author} showLinks={true} />
-          </div>
-        ))}
-      </RandomContent>
-    </ThemedSection>
-  )}
   <ThemedSection style="tertiary">
     <div class="d-flex gap-4">
       <article class:list={[sidebar ? "d-none d-lg-block" : "col", "col-lg-9"]}>
