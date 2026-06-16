@@ -1,12 +1,14 @@
 ---
 import { getImage } from "astro:assets";
 import type { ImageMetadata } from "astro";
+import RandomContent from "./RandomContent.astro";
 
 interface Props {
   image: ImageMetadata | string;
   theme?: string;
   columns?: string;
   actionBreakpoint?: string;
+  actionBarItems?: number;
 }
 
 const {
@@ -14,6 +16,7 @@ const {
   theme = "primary",
   columns = "col-lg-6",
   actionBreakpoint = "lg",
+  actionBarItems = 3,
 } = Astro.props;
 
 let heroBgUrl;
@@ -39,11 +42,12 @@ if (image) {
   {
     Astro.slots.has("action-bar") && (
       <div class={`bg-${theme} bg-opacity-50 py-3 text-white`}>
-        <div
+        <RandomContent
+          numChildren={actionBarItems}
           class={`d-flex flex-column flex-${actionBreakpoint}-row align-items-center justify-content-${actionBreakpoint}-evenly gap-2`}
         >
           <slot name="action-bar" />
-        </div>
+        </RandomContent>
       </div>
     )
   }
