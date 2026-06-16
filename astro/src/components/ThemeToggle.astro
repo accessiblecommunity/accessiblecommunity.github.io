@@ -19,13 +19,13 @@ const { class: classes = "" } = Astro.props;
     aria-label="Color theme: Auto. Activate to change."
   >
     <span class="theme-toggle-icon" data-theme-icon="light" aria-hidden="true">
-      <Icon name="bi:sun-fill" class="bi me-1" role="img" />
+      <Icon name="bi:sun-fill" class="bi" role="img" />
     </span>
     <span class="theme-toggle-icon" data-theme-icon="dark" aria-hidden="true">
-      <Icon name="bi:moon-fill" class="bi me-1" role="img" />
+      <Icon name="bi:moon-fill" class="bi" role="img" />
     </span>
     <span class="theme-toggle-icon" data-theme-icon="system" aria-hidden="true">
-      <Icon name="bi:circle-half" class="bi me-1" role="img" />
+      <Icon name="bi:circle-half" class="bi" role="img" />
     </span>
     <span data-theme-label>Auto</span>
   </button>
@@ -77,6 +77,27 @@ const { class: classes = "" } = Astro.props;
     align-items: center;
     justify-content: center;
     min-width: 7em;
+  }
+
+  /* Spacing between the active icon and the text label (when shown). */
+  .theme-toggle [data-theme-label] {
+    margin-inline-start: 0.25rem;
+  }
+
+  /* theme-icon=icon (default): show only the icon, drop the fixed width. */
+  .theme-toggle.theme-toggle--icon-only .theme-toggle-btn {
+    min-width: 0;
+  }
+  .theme-toggle.theme-toggle--icon-only [data-theme-label] {
+    display: none;
+  }
+
+  /* theme-loc placement spacing (left of / right of the Donate button). */
+  .theme-toggle.theme-toggle--left {
+    margin-inline: 0.25rem 1.5rem;
+  }
+  .theme-toggle.theme-toggle--right {
+    margin-inline: 0.5rem 0.25rem;
   }
 
   .theme-toggle .theme-toggle-icon {
@@ -155,6 +176,28 @@ const { class: classes = "" } = Astro.props;
       "theme-toggle",
     ) as HTMLButtonElement | null;
     if (!root || !button) return;
+
+    // Layout is configurable via query params, resolved here because this is a
+    // static build with no per-request server. The button keeps a dynamic
+    // aria-label, so the icon-only mode is still announced to screen readers.
+    //   theme-loc=left|right   (default right: to the right of the Donate button)
+    //   theme-icon=icon|text   (default icon: icon-only, no visible text label)
+    const params = new URLSearchParams(window.location.search);
+    const placeLeft = params.get("theme-loc") === "left";
+    const showText = params.get("theme-icon") === "text";
+
+    root.classList.toggle("theme-toggle--icon-only", !showText);
+    root.classList.toggle("theme-toggle--left", placeLeft);
+    root.classList.toggle("theme-toggle--right", !placeLeft);
+
+    if (placeLeft) {
+      // Source order is Donate then toggle; move the toggle ahead of the
+      // mobile line break that precedes Donate so it sits to Donate's left.
+      const anchor =
+        root.parentElement?.querySelector(".w-100.d-lg-none") ??
+        root.parentElement?.querySelector('a.btn[href="/donate"]');
+      anchor?.before(root);
+    }
 
     const applyTheme = (mode: Mode) => {
       let themeToApply = mode;

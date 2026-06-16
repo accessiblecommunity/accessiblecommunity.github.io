@@ -44,7 +44,6 @@ const { main = false, class: classes = "" } = Astro.props;
   {
     main && (
       <Fragment>
-        <ThemeToggle class="ms-1 me-4 my-1" />
         <div class="w-100 d-lg-none" aria-hidden="true"></div>
         <a
           class="btn btn-info btn-contrast-dark display-65 mx-1 my-1"
@@ -53,6 +52,10 @@ const { main = false, class: classes = "" } = Astro.props;
         >
           Donate
         </a>
+        {/* Default: icon-only, to the right of Donate. Query params override
+            this client-side (static build): ?theme-loc=left|right and
+            ?theme-icon=icon|text. See ThemeToggle.astro. */}
+        <ThemeToggle class="my-1 theme-toggle--icon-only theme-toggle--right" />
       </Fragment>
     )
   }
