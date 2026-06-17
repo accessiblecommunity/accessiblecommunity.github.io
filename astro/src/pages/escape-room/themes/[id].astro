@@ -12,7 +12,7 @@ export async function getStaticPaths() {
     },
     {
       name: "Build-Your-Own Rooms",
-      href: "/escape-room/themes",
+      href: "/escape-room/themes/",
     },
   ];
 
@@ -55,9 +55,9 @@ import Row from "@components/Row.astro";
 import ThemedSection from "@components/ThemedSection.astro";
 ---
 
-<Layout {metadata} {title}>
+<Layout {metadata} {crumbs} {title}>
   <div class="local-wrapper">
-    <Hero slot="header" columns="col col-lg-7" {theme} shade {image} {crumbs} {title}>
+    <Hero slot="header" columns="col col-lg-7" {theme} {image}>
       <h1 class:list={["display-2 text-nowrap", `bg-${theme} bg-opacity-50 p-1`]} set:text={title} />
     </Hero>
   </div>

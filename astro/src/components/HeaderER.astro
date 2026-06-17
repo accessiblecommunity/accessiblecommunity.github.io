@@ -1,5 +1,4 @@
 ---
-import { isEmpty } from "lodash-es";
 import { Icon } from "astro-icon/components";
 import Branding from "@components/Branding.astro";
 import SiteNav from "@components/navigation/NavSiteSecondary.astro";
@@ -13,7 +12,8 @@ interface Props {
   crumbs?: Breadcrumbs;
 }
 
-const { title, brandedTitle = false, crumbs = [], } = Astro.props;
+const { title, brandedTitle = false, crumbs = undefined, } = Astro.props;
+const breadCrumbs: Breadcrumbs = crumbs ?? [{ name: "Home", href: "/escape-room/" }];
 
 const navLinks = [{
   name: "Build-Your-Own Rooms",
@@ -25,10 +25,6 @@ const navLinks = [{
   name: "Our Story",
   href: "/escape-room/our-story",
 }];
-
-const breadCrumbs: Breadcrumbs =
-  isEmpty(crumbs) && title != "Home" ? [{ name: "Home", href: "/escape-room/" }] : crumbs;
-
 ---
 
 <header class="sticky-top" style="top: -3.5em">
@@ -86,15 +82,18 @@ const breadCrumbs: Breadcrumbs =
         <li class="nav-item d-lg-none">
           <a
             class="nav-link"
-            href="/"><Branding>Accessible Community</Branding> Home</a
+            href="/"
           >
+            <Branding>Accessible Community</Branding>
+            Home
+          </a>
         </li>
       </ul>
     </nav>
     <nav
-    id="breadcrumbs-nav"
-    aria-label="Breadcrumb"
-    class="position-absolute d-print-none"
+      id="breadcrumbs-nav"
+      aria-label="Breadcrumb"
+      class="position-absolute d-print-none"
     >
       <ol class="breadcrumb lh-sm">
         {
@@ -178,7 +177,7 @@ const breadCrumbs: Breadcrumbs =
       max-width: 10em;
     }
   }
-  
+
   @include media-breakpoint-down(lg) {
     #breadcrumbs-nav {
       left: 3.333rem;

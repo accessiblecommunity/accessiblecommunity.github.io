@@ -1,11 +1,12 @@
 ---
+import type { Breadcrumbs, PageMetadata } from "../lib/types";
+
 import "../styles/bootstrap.scss";
 
 import Metadata from "../components/Metadata.astro";
 import Branding from "../components/Branding.astro";
 import HeaderER from "../components/HeaderER.astro";
 import Row from "../components/Row.astro";
-import { type PageMetadata } from "../lib/types";
 
 // Single these from the Header.
 const navLinks = [{
@@ -21,10 +22,11 @@ const navLinks = [{
 
 interface Props {
   title: string;
+  crumbs?: Breadcrumbs;
   metadata?: PageMetadata;
 }
 
-const { metadata, title } = Astro.props;
+const { metadata, crumbs, title } = Astro.props;
 ---
 
 <!doctype html>
@@ -49,7 +51,7 @@ const { metadata, title } = Astro.props;
 
   <body>
     <!-- Custom Header -->
-    <HeaderER {title} />
+    <HeaderER {title} {crumbs} />
 
     <main id="main-content">
       <div class="content-spacer"></div>
