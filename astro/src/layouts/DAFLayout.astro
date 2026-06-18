@@ -16,7 +16,7 @@ import FlexColumn from "@components/FlexColumn.astro";
 import { Icon } from "astro-icon/components";
 import Metadata from "@components/Metadata.astro";
 
-const { metadata, title } = Astro.props;
+const { metadata } = Astro.props;
 if (!metadata.site) metadata.site = "Digital Accessibility Framework";
 
 const entries = await getCollection("daf");
@@ -275,12 +275,13 @@ const navLinks = Object.fromEntries(
   <script src="src/scripts/headings.js"></script>
   {
     import.meta.env.PROD && (
-      <script
-        is:inline
-        defer
-        data-domain="accessiblecommunity.org"
-        src="https://plausible.io/js/script.js"
-      />
+      <script>
+        import { init } from '@plausible-analytics/tracker';
+        init({
+          domain: 'accessiblecommunity.org',
+          bindToWindow: true
+        });
+      </script>
     )
   }
 </html>
