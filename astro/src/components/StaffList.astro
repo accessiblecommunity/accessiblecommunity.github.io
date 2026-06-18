@@ -2,8 +2,10 @@
 import { getCollection, type CollectionEntry } from 'astro:content';
 import { sortBy } from "lodash-es";
 
+type Roles = keyof CollectionEntry<"staff">["data"]["roles"];
+
 interface Props {
-  team: string; // TODO: declare enum;
+  team: Roles;
   size?: string;
 }
 
