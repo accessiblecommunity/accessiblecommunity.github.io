@@ -9,7 +9,7 @@ import { getContainerRenderer as mdxRenderer } from "@astrojs/mdx";
 import type { CollectionEntry } from "astro:content";
 import { render } from "astro:content";
 import { orderByRecent } from "src/lib/tips";
-import { components, sanitizeOptions } from "src/lib/mdx";
+import { sanitizeOptions } from "src/lib/mdx";
 
 const renderers = await loadRenderers([mdxRenderer()]);
 const container = await AstroContainer.create({ renderers });

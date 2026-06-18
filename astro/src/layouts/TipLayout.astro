@@ -32,7 +32,7 @@ const {
 } = Astro.props;
 
 const { tip = id && (await getEntry("atotw", id)) } = Astro.props;
-if (tip === undefined || isEmpty(tip))
+if (tip === undefined || tip === "")
   throw new Error("Either the 'tip' or the 'id' is required");
 
 const { title = tip?.data.title || "Tip of the Week" } = Astro.props;
