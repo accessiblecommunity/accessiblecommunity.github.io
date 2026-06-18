@@ -1,3 +1,5 @@
+import type { APIRoute } from "astro";
+
 import rss from "@astrojs/rss";
 import sanitizeHtml from "sanitize-html";
 
@@ -14,7 +16,7 @@ import { sanitizeOptions } from "src/lib/mdx";
 const renderers = await loadRenderers([mdxRenderer()]);
 const container = await AstroContainer.create({ renderers });
 
-export async function GET(context) {
+export const GET = (async (context) => {
   const tips: Array<CollectionEntry<"atotw">> = await orderByRecent();
 
   return rss({
@@ -40,4 +42,4 @@ export async function GET(context) {
     ),
     customData: `<language>en-us</language>`,
   });
-}
+}) satisfies APIRoute;

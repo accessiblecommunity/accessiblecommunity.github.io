@@ -10,12 +10,11 @@ import TipLicense from "@components/TipLicense.astro";
 import TipOfTheWeek from "@components/TipOfTheWeek.astro";
 import TipRegistration from "@components/TipRegistration.astro";
 
-import { getTipCatalog } from "@lib/tips";
 import { getOpenGraphImageData } from "@lib/og-image";
-import { startCase } from "lodash-es";
 import type { Breadcrumbs, PageMetadata } from "@lib/types";
 
-const { categories, tips } = await getTipCatalog();
+// Unneeded due to hiding the Tip of the Week.
+// const { categories, tips } = await getTipCatalog();
 
 const title = "Tip of the Week";
 const description =
