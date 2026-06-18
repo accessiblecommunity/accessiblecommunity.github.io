@@ -4,11 +4,11 @@ import { Icon } from "astro-icon/components";
 
 // TODO: Not specific enough as a type
 export interface SocialLinkDictionary {
-  [index: string]: URL | undefined;
+  [index: string]: URL | string | undefined;
 }
 
 interface LinkConfig {
-  href: URL;
+  href: URL | string;
   icon: string;
   service: string;
   description: string;
@@ -23,7 +23,7 @@ interface Props {
 }
 
 const { links, label = "", iconSize = "2em", gap = 2 } = Astro.props;
-const brandingThemes = {
+const brandingThemes : Record<string, string> = {
   email: "primary",
 };
 
@@ -36,9 +36,9 @@ const socialLinks: Array<LinkConfig> = toPairs(links).map(([type, url]) => {
     else return `cib:${kebabCase(type)}`;
   })();
 
-  const href = type == "email" ? `mailto:${url}` : url;
-  const service = type == "linkedin" ? "LinkedIn" : startCase(type);
-  const description = type == "email" ? "address" : "profile";
+  const href = (type === "email" ? `mailto:${url}` : url) ?? "#";
+  const service = type === "linkedin" ? "LinkedIn" : startCase(type);
+  const description = type === "email" ? "address" : "profile";
   const theme = brandingThemes[type] ?? type;
 
   return {
