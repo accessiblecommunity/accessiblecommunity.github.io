@@ -1,4 +1,6 @@
 ---
+import type { Breadcrumbs, PageMetadata } from "../lib/types";
+
 import "../styles/bootstrap.scss";
 import { getEntry } from "astro:content";
 
@@ -9,7 +11,6 @@ import FooterLinkList from "../components/navigation/FooterLinkList.astro";
 import HeaderER from "../components/HeaderER.astro";
 import { Icon } from "astro-icon/components";
 import Row from "../components/Row.astro";
-import { type PageMetadata } from "../lib/types";
 
 // Single these from the Header.
 const navLinks = [{
@@ -25,13 +26,13 @@ const navLinks = [{
 
 interface Props {
   title: string;
+  crumbs?: Breadcrumbs;
   metadata?: PageMetadata;
 }
 
-const { metadata, title } = Astro.props;
-
+const { metadata, crumbs, title } = Astro.props;
 const socialEntry = await getEntry("navigation", "escape-social-media");
-const Socials = socialEntry?.data.groups[0];
+const socialLinks = socialEntry?.data.groups[0];
 ---
 
 <!doctype html>
@@ -56,7 +57,7 @@ const Socials = socialEntry?.data.groups[0];
 
   <body>
     <!-- Custom Header -->
-    <HeaderER {title} />
+    <HeaderER {title} {crumbs} />
 
     <main id="main-content">
       <div class="content-spacer"></div>
@@ -100,7 +101,7 @@ const Socials = socialEntry?.data.groups[0];
           <h3 class="visually-hidden">Social Media</h3>
           <ul class="text-center mt-3 mt-md-4">
             {
-              Socials?.map(({ icon, href, iconCls, name }) => (
+              socialLinks?.map(({ icon, href, iconCls, name }) => (
                 <li class="d-inline-block ms-2 me-3">
                   <a
                     class="d-inline-block link-light"
