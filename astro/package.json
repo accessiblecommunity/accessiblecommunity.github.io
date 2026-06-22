@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "@astrojs/mdx": "^5.0.6",
-    "@astrojs/netlify": "^7.0.10",
+    "@astrojs/netlify": "^7.0.13",
     "@astrojs/rss": "^4.0.18",
     "@astrojs/sitemap": "^3.7.3",
     "@fontsource-variable/archivo": "5.0.19",
