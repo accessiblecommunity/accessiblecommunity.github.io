@@ -21,7 +21,7 @@
     "@iconify-json/cib": "1.1.8",
     "@iconify-json/simple-icons": "1.2.67",
     "@plausible-analytics/tracker": "0.4.4",
-    "astro": "^6.3.8",
+    "astro": "^6.4.8",
     "astro-icon": "1.1.5",
     "astro-lazy-youtube-embed": "0.5.5",
     "astro-og-canvas": "0.11.1",
