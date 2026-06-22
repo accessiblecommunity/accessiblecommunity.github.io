@@ -1,7 +1,7 @@
 import type { ImageData } from "./types";
 
 export function getOpenGraphImageData(
-  baseUrl: URL | undefined,
+  baseUrl: URL | string | undefined,
   folder: string,
   filename: string,
   alt: string = "",

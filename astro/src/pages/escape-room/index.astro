@@ -1,16 +1,17 @@
 ---
+import type { Breadcrumbs, PageMetadata } from "@lib/types";
+
 import { getOpenGraphImageData } from "@lib/og-image";
-import type { PageMetadata } from "@lib/types";
 import { getCollection, type CollectionEntry } from "astro:content";
 import { sortBy } from "lodash-es";
 
-const title = "The Accessible Escape Room";
+const title = "Home";
 const metadata: PageMetadata = {
-  title,
+  title: "The Accessible Escape Room",
   description: "Overview of the Accessible Escape Room",
   image: getOpenGraphImageData(Astro.site, "pages", "escape-room"),
 };
-
+const crumbs: Breadcrumbs = [];
 const rooms: Array<CollectionEntry<"escapeRoomThemes">> =
   sortBy(
     await getCollection("escapeRoomThemes"),
@@ -33,7 +34,7 @@ import brailleBlocks from "src/images/escape-room/braille-blocks.png";
 import woodenPuzzles from "src/images/escape-room/wooden-puzzles.png";
 ---
 
-<EscapeRoomLayout {metadata} {title}>
+<EscapeRoomLayout {metadata} {crumbs} {title}>
   <ThemedSection slot="header" theme="info">
     <FlexColumn
       lgFlexRow gap="4" class="py-3 justify-content-lg-center align-items-center"
