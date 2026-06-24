@@ -66,6 +66,8 @@ export default defineConfig({
           'facebook', 'instagram', 'linkedin', 'rss-fill', 'tiktok', 'globe', 'mastodon', 'twitter',
           // Descriptive
           'gift-fill', 'pencil-fill', 'people-fill', 'person-fill', 'puzzle-fill', 'stopwatch-fill', 'tools',
+          // Theme toggle
+          'sun-fill', 'moon-fill', 'circle-half', 'check-lg',
         ],
         // CoreUI Brands
         cib: [
