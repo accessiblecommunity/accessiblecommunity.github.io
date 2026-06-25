@@ -2,10 +2,11 @@
 import { flatMap } from "lodash-es";
 
 import { getHeroThemeCssRules, type HeroThemeType } from "@lib/hero-image";
+type HTMLTag = keyof astroHTML.JSX.DefinedIntrinsicElements;
 
 interface Props {
   image: HeroThemeType;
-  element?: string;
+  element?: HTMLTag;
   fluid?: boolean;
 }
 

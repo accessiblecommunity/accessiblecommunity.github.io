@@ -4,6 +4,7 @@ import { getImage, Image } from "astro:assets";
 import Branding from "../../components/Branding.astro";
 import Column from "../../components/Column.astro";
 import ExternalLink from "../../components/ExternalLink.astro";
+import FlexColumn from "@components/FlexColumn.astro";
 import Layout from "../../layouts/Layout.astro";
 import Hero from "../../components/Hero.astro";
 import ShadowBoxSection from "../../components/ShadowBoxSection.astro";
@@ -40,8 +41,8 @@ const crumbs = [];
 
   <ThemedSection style="tertiary">
     <h1 class="display-4">Headings indicate <strong>structure</strong>.</h1>
-    <div
-      class="d-flex flex-column flex-xl-row justify-content-xl-evenly align-items-center"
+    <FlexColumn
+      xlFlexRow class="justify-content-xl-evenly align-items-center"
     >
       <Column xl="8" xxl="9">
         <p>
@@ -65,13 +66,13 @@ const crumbs = [];
           >.
         </h4>
       </Column>
-    </div>
+    </FlexColumn>
   </ThemedSection>
 
   <ThemedSection theme="secondary" style="subtle">
     <h2 class="display-4">Color needs <strong>contrast</strong>.</h2>
-    <div
-      class="d-flex flex-column flex-lg-row gap-4 py-3 justify-content-lg-evenly"
+    <FlexColumn
+      lgFlexRow gap="4" class="py-3 justify-content-lg-evenly"
     >
       <Column lg="3" class="p-4">
         <p class="text-center fs-3 bad-contrast">
@@ -96,8 +97,8 @@ const crumbs = [];
           Always specify a <code>background-color</code>, even when an image is
           used.
         </p>
-      </div>
-    </Column>
+      </Column>
+    </FlexColumn>
   </ThemedSection>
 
   <ShadowBoxSection theme="info" style="secondary">
@@ -111,7 +112,7 @@ const crumbs = [];
           >id</code
         > and the correct <code>for</code> attribute or ARIA description.
       </p>
-      <div class="d-flex flex-column flex-xl-row justify-content-xl-evenly p-4">
+      <FlexColumn xlFlexRow class="justify-content-xl-evenly p-4">
         <Column xl="5" class="pb-4">
           <h3 class="display-5"
             ><strong>Associate</strong> the fields and text.</h3
@@ -242,7 +243,7 @@ const crumbs = [];
             </p>
           </div>
         </Column>
-      </div>
+      </FlexColumn>
     </div>
   </ShadowBoxSection>
 
@@ -251,8 +252,8 @@ const crumbs = [];
       >Links should be <strong>described</strong> and <strong>clickable</strong
       >.</h2
     >
-    <div
-      class="d-flex flex-column flex-lg-row justify-content-lg-around align-items-center"
+    <FlexColumn
+      lgFlexRow class="justify-content-lg-around align-items-center"
     >
       <Column lg="4" xxl="3">
         <p class="fs-5 text-center text-primary py-3">
@@ -282,7 +283,7 @@ const crumbs = [];
           </li>
         </ul>
       </Column>
-    </div>
+    </FlexColumn>
   </ThemedSection>
 </Layout>
 

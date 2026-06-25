@@ -1,0 +1,73 @@
+---
+// When rendered on the server this, displays the first x children and hides the rest.
+// On page load, the client script picks the number given to show and hides the rest.
+
+import type { HTMLAttributes } from 'astro/types';
+interface Props extends HTMLAttributes<"div"> {
+  numChildren?: 1 | 2 | 3 | 4 | 5 | 6 | `${1 | 2 | 3 | 4 | 5 | 6}`;
+}
+const { numChildren = 1, ...attrs } = Astro.props;
+---
+
+<div data-random-content={numChildren} {...attrs}>
+  <slot />
+</div>
+
+<style>
+  /* Pre-JS / no-JS fallback: show only the x children. */
+  [data-random-content=1]:not([data-random-ready]) {
+    > *:nth-child(n + 2) {
+      display: none;
+    }
+  }
+  [data-random-content=2]:not([data-random-ready]) {
+    > *:nth-child(n + 3) {
+      display: none;
+    }
+  }
+  [data-random-content=3]:not([data-random-ready]) {
+    > *:nth-child(n + 4) {
+      display: none;
+    }
+  }
+  [data-random-content=4]:not([data-random-ready]) {
+    > *:nth-child(n + 5) {
+      display: none;
+    }
+  }
+  [data-random-content=5]:not([data-random-ready]) {
+    > *:nth-child(n + 6) {
+      display: none;
+    }
+  }
+  [data-random-content=6]:not([data-random-ready]) {
+    > *:nth-child(n + 7) {
+      display: none;
+    }
+  }
+</style>
+
+<script>
+  function randomizeContent() {
+    function getSample(elements: Element[], size: number) {
+      if (elements.length > size) {
+        const shuffled = [...elements].sort(() => 0.5 - Math.random());
+        return shuffled.slice(0, size);
+      }
+      return elements;
+    }
+
+    /* In case there are multiple RandomContent components on the page, we need to randomize each one. */
+    document.querySelectorAll("[data-random-content]").forEach((root: Element) => {
+      const numElements = parseInt(root.getAttribute("data-random-content") ?? "1");
+      const elements = Array.from(root.children);
+      const sample = getSample(elements, numElements);
+      elements.forEach(
+        (item) => item.toggleAttribute("hidden", !sample.includes(item))
+      )
+      root.setAttribute("data-random-ready", "");
+    });
+  }
+  randomizeContent();
+  document.addEventListener("astro:after-swap", randomizeContent);
+</script>

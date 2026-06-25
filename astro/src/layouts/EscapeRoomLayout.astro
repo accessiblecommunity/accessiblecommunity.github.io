@@ -1,10 +1,16 @@
 ---
+import type { Breadcrumbs, PageMetadata } from "../lib/types";
+
 import "../styles/bootstrap.scss";
+import { getEntry } from "astro:content";
 
 import Metadata from "../components/Metadata.astro";
 import Branding from "../components/Branding.astro";
+import Column from "../components/Column.astro";
+import FooterLinkList from "../components/navigation/FooterLinkList.astro";
 import HeaderER from "../components/HeaderER.astro";
-import { type PageMetadata } from "../lib/types";
+import { Icon } from "astro-icon/components";
+import Row from "../components/Row.astro";
 
 // Single these from the Header.
 const navLinks = [{
@@ -20,10 +26,13 @@ const navLinks = [{
 
 interface Props {
   title: string;
+  crumbs?: Breadcrumbs;
   metadata?: PageMetadata;
 }
 
-const { metadata, title } = Astro.props;
+const { metadata, crumbs, title } = Astro.props;
+const socialEntry = await getEntry("navigation", "escape-social-media");
+const socialLinks = socialEntry?.data.groups[0];
 ---
 
 <!doctype html>
@@ -48,7 +57,7 @@ const { metadata, title } = Astro.props;
 
   <body>
     <!-- Custom Header -->
-    <HeaderER {title} />
+    <HeaderER {title} {crumbs} />
 
     <main id="main-content">
       <div class="content-spacer"></div>
@@ -59,15 +68,15 @@ const { metadata, title } = Astro.props;
     <!-- Custom Footer will be replaced with a component once mockups are available -->
     <footer class="escape-room-footer">
       <div class="container">
-        <div class="row g-4">
-          <div class="col-md-4">
-            <h3 class="h5">About Accessible Community</h3>
+        <Row g="4">
+          <Column noDefault lg="4">
+            <h3 class="h5">About Us</h3>
             <p>
               We help organizations make their digital content accessible to
               people with disabilities.
             </p>
-          </div>
-          <div class="col-md-4">
+          </Column>
+          <Column noDefault lg="4">
             <h3 class="h5">Quick Links</h3>
             <ul class="list-unstyled">
               {
@@ -76,8 +85,8 @@ const { metadata, title } = Astro.props;
                 ))
               }
             </ul>
-          </div>
-          <div class="col-md-4">
+          </Column>
+          <Column noDefault lg="4">
             <h3 class="h5">Contact Us</h3>
             <p>
               Have questions about our services?<br />
@@ -86,15 +95,45 @@ const { metadata, title } = Astro.props;
                 >info@accessiblecommunity.org</a
               >
             </p>
-          </div>
-        </div>
-        <hr aria-hidden="true"/>
-        <div class="text-center">
+          </Column>
+        </Row>
+        <Row>
+          <h3 class="visually-hidden">Social Media</h3>
+          <ul class="text-center mt-3 mt-md-4">
+            {
+              socialLinks?.map(({ icon, href, iconCls, name }) => (
+                <li class="d-inline-block ms-2 me-3">
+                  <a
+                    class="d-inline-block link-light"
+                    href={href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <Icon
+                      name={icon}
+                      class:list={["social-icon", iconCls]}
+                      role="img"
+                      aria-label={name}
+                    />
+                  </a>
+                </li>
+              ))
+            }
+          </ul>
+        </Row>
+        <div class="text-center legal-footer">
+          <p class="pt-2 text-center mb-0 text-light">
+            <small>
+              <Branding>Accessible Community</Branding> is a 501(c)3&nbsp;organization.
+            </small>
+          </p>
           <p class="mb-0">
-            &copy; {new Date().getFullYear()}
-            <Branding>Accessible Community</Branding>. All rights reserved.
+            <small>&copy; {new Date().getFullYear()}
+              <Branding>Accessible Community</Branding>
+            </small>
           </p>
         </div>
+        <p class="text-center mb-0 text-light">
       </div>
     </footer>
     <script src="../scripts/headings.js"></script>
@@ -117,7 +156,7 @@ const { metadata, title } = Astro.props;
   .escape-room-footer {
     background: linear-gradient(135deg, #2c3e50 0%, var(--bs-black) 100%);
     color: white;
-    padding: 4rem 0 2rem;
+    padding: 1.5rem 0 2rem;
   }
 
   .escape-room-footer h3 {
@@ -143,6 +182,16 @@ const { metadata, title } = Astro.props;
     margin: 2rem 0;
   }
 
+  .social-icon {
+    min-height: 24px;
+    min-width: 24px;
+  }
+
+  .legal-footer {
+    border-top: 1px solid #dfe1ed;
+    margin: 0 1.5em;
+  }
+
   /* Mobile Responsiveness */
   @media (max-width: 991.98px) {
     .escape-room-footer {
@@ -150,13 +199,13 @@ const { metadata, title } = Astro.props;
       margin-top: 3rem;
     }
 
-    .escape-room-footer .col-md-4 {
+    /* .escape-room-footer .footer-column {
       margin-bottom: 2rem;
     }
 
-    .escape-room-footer .col-md-4:last-child {
+    .escape-room-footer .footer-column:last-child {
       margin-bottom: 0;
-    }
+    } */
   }
 </style>
 

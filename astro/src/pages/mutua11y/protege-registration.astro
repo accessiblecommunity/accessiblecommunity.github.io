@@ -29,9 +29,11 @@ const crumbs: Breadcrumbs = [
 
 import Branding from "@components/Branding.astro";
 import Column from "@components/Column.astro";
+import ExternalLink from "@components/ExternalLink.astro";
 import GoogleForm from "@components/forms/GoogleForm.astro";
 import ImageHeading from "@components/ImageHeading.astro";
 import Layout from "src/layouts/Layout.astro";
+import Row from "@components/Row.astro";
 import ThemedSection from "@components/ThemedSection.astro";
 ---
 
@@ -53,7 +55,7 @@ import ThemedSection from "@components/ThemedSection.astro";
         program.
       </Fragment>
       <input type="hidden" name="Type" value="ProtegeRegistration" />
-      <div class="row">
+      <Row>
         <Column noDefault md="6" class="mb-3">
           <label for="fullNameField" class="form-label mb-1 required-field"
             >Full Name</label
@@ -125,18 +127,19 @@ import ThemedSection from "@components/ThemedSection.astro";
             The url of your LinkedIn profile, in you have one and would like it shared.
           </p>
         </Column>
-      </div>
-      <div class="row border-top border-1 border-info mt-4 pt-4">
+      </Row>
+      <Row class="border-top border-1 border-info mt-4 pt-4">
         <Column noDefault md="12" class="mb-3">
           <h3 class="display-5">Your location and language information</h3>
           <p class="form-text">
-            We will use this information to try and best match your geographic region, timezone and spoken languages whenever possible.
+            We will use this information to try and best match your geographic region, time zone and spoken languages whenever possible.
           </p>
         </Column>
-        <Column noDefault md="6" class="mb-3">
+        <Column noDefault lg="6" class="mb-3">
           <fieldset>
             <legend class="mb-1 fs-6 required-field">
-              What region do you primarily live and work in? <span class="asterisk" aria-hidden="true"></span>
+              What region do you primarily live and work in?
+              <span class="asterisk" aria-hidden="true"></span>
             </legend>
             <select
               class="form-select mb-2"
@@ -151,20 +154,29 @@ import ThemedSection from "@components/ThemedSection.astro";
             </select>
           </fieldset>
         </Column>
-        <Column noDefault md="6" class="mb-3">
+        <Column noDefault lg="6" class="mb-3">
           <fieldset>
             <legend class="mb-1 fs-6 required-field">
-              What timezone do you live in? <span class="asterisk" aria-hidden="true"></span>
+              What time zone do you live in?
+              <span class="asterisk" aria-hidden="true"></span>
+              <span class="form-text">(UTC stands for Universal Coordinated Time)</span>
             </legend>
             <select
               class="form-select mb-2"
-              name="Timezone"
-              aria-label="Timezone selection"
+              name="TimeZone"
+              aria-label="Time zone selection"
+              aria-describedby="timeZoneHelpLink"
               required
             >
-              <option value="" selected disabled aria-disabled="false">Select the timezone you live in...</option>
+              <option value="" selected disabled aria-disabled="false">Select the time zone you live in...</option>
               { timeZones.map((tz) => <option value={tz} set:text={tz} />) }
             </select>
+            <div id="timeZoneHelpLink" class="form-text small">
+              Not sure what your time zone is?
+              <ExternalLink href="https://time.is/your_time_zone">
+                Find your time zone and UTC offset
+              </ExternalLink>.
+            </div>
           </fieldset>
         </Column>
         <div class="col-12 mb-3">
@@ -173,7 +185,7 @@ import ThemedSection from "@components/ThemedSection.astro";
               Do you work on accessibility in any of the following countries?
               <span class="form-text">(Select all that apply)</span>
             </legend>
-            <div class="row row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 row-cols-xxl-6 mx-1">
+            <Row smRowCols="2" mdRowCols="3" lgRowCols="4" xlRowCols="5" xxlRowCols="6" class="mx-1">
               {
                 countries.map((country) => (
                   <div class="form-check mb-2">
@@ -192,7 +204,7 @@ import ThemedSection from "@components/ThemedSection.astro";
                   </div>
                 ))
               }
-            </div>
+            </Row>
           </fieldset>
         </div>
         <Column noDefault md="6">
@@ -217,8 +229,8 @@ import ThemedSection from "@components/ThemedSection.astro";
         </Column>
         <Column noDefault md="12" class="mb-3">
         </Column>
-      </div>
-      <div class="row border-top border-1 border-info mt-4 pt-4">
+      </Row>
+      <Row class="border-top border-1 border-info mt-4 pt-4">
         <Column noDefault md="12">
           <h3 class="display-5">Your accessibility experience</h3>
           <p class="form-text">
@@ -263,7 +275,7 @@ import ThemedSection from "@components/ThemedSection.astro";
               What areas are you interested in?
               <span class="form-text">(Select all that apply)</span>
             </legend>
-            <div class="row row-cols-lg-2 row-cols-xl-1 mx-1">
+            <Row lgRowCols="2" xlRowCols="1" class="mx-1">
               {
                 accessibilityAreas.map((area) => (
                   <div class="form-check mb-2">
@@ -282,7 +294,7 @@ import ThemedSection from "@components/ThemedSection.astro";
                   </div>
                 ))
               }
-            </div>
+            </Row>
           </fieldset>
         </Column>
         <Column noDefault lg="12" xl="6">
@@ -294,7 +306,7 @@ import ThemedSection from "@components/ThemedSection.astro";
               <span class="asterisk" />
               <span class="form-text">(Select all that apply)</span>
             </legend>
-            <div class="row row-cols-lg-2 row-cols-xl-1 mx-1">
+            <Row lgRowCols="2" xlRowCols="1" class="mx-1">
               {
                 training.map((area) => (
                   <div class="form-check mb-2">
@@ -313,7 +325,7 @@ import ThemedSection from "@components/ThemedSection.astro";
                   </div>
                 ))
               }
-            </div>
+            </Row>
           </fieldset>
         </Column>
         <Column noDefault lg="12" xl="6">
@@ -324,7 +336,7 @@ import ThemedSection from "@components/ThemedSection.astro";
               What accessibility topics would you hope to discuss with your mentor?
               <span class="form-text">(Select all that apply)</span>
             </legend>
-            <div class="row row-cols-lg-2 row-cols-xl-1 mx-1">
+            <Row lgRowCols="2" xlRowCols="1" class="mx-1">
               {
                 topics.map((area) => (
                   <div class="form-check mb-2">
@@ -343,11 +355,11 @@ import ThemedSection from "@components/ThemedSection.astro";
                   </div>
                 ))
               }
-            </div>
+            </Row>
           </fieldset>
         </Column>
-      </div>
-      <div class="row border-top border-1 border-info mt-4 pt-4">
+      </Row>
+      <Row class="border-top border-1 border-info mt-4 pt-4">
         <h3 class="mt-4">Code of Conduct</h3>
         <p class="small">
           The purpose of this code of conduct is to set clear expectations of
@@ -442,7 +454,7 @@ import ThemedSection from "@components/ThemedSection.astro";
             </div>
           </fieldset>
         </div>
-      </div>
+      </Row>
     </GoogleForm>
   </ThemedSection>
   <style scoped>

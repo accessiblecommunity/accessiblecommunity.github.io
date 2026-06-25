@@ -2,6 +2,7 @@
 import Column from "@components/Column.astro";
 import ImageHeading from "@components/ImageHeading.astro";
 import Layout from "../../layouts/Layout.astro";
+import Row from "@components/Row.astro";
 import ThemedSection from "@components/ThemedSection.astro";
 import TipLicense from "@components/TipLicense.astro";
 
@@ -37,7 +38,7 @@ const crumbs: Breadcrumbs = [
   </ImageHeading>
 
   <ThemedSection theme="tertiary">
-    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 mt-5">
+    <Row baseRowCols="1" mdRowCols="2" lgRowCols="3" class="mt-5">
       <Column>
         <h2 class="display-5">Most Recent</h2>
         <ul class="mt-1 mb-3 list-disc">
@@ -67,7 +68,7 @@ const crumbs: Breadcrumbs = [
           </Column>
         ))
       }
-    </div>
+    </Row>
   </ThemedSection>
 
   <ThemedSection style="secondary">
