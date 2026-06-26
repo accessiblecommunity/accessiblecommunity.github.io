@@ -8,7 +8,11 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "astro:check": "astro check --tsconfig tsconfig.json"
+    "astro:check": "astro check --tsconfig tsconfig.json",
+    "playwright:check": "npx playwright install --with-deps",
+    "test:e2e": "playwright test",
+    "test:e2e:ui": "playwright test --ui",
+    "test:e2e:report": "npx playwright show-report"
   },
   "dependencies": {
     "@astrojs/mdx": "^5.0.6",
@@ -34,6 +38,8 @@
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.9",
+    "@axe-core/playwright": "^4.11.3",
+    "@playwright/test": "^1.61.1",
     "@types/lodash-es": "^4.17.12",
     "prettier": "^3.2.5",
     "prettier-plugin-astro": "^0.14.0"

@@ -10,3 +10,30 @@ services:
       - 4322:4322
     volumes:
       - '.:/website'
+
+  # End-to-end (Playwright) tests. Gated behind the `e2e` profile so it is not
+  # built or started by a plain `docker compose up` / `make serve`. The tests
+  # start their own dev server inside this container.
+  e2e:
+    container_name: website-e2e
+    profiles:
+      - e2e
+    build:
+      context: ./astro
+      target: e2e
+    # Tells playwright.config.ts not to auto-open/serve the report after a run
+    # (it would bind container-localhost and block); use `make report-e2e`.
+    environment:
+      - DOCKER_E2E=1
+    # 9323 is the port `playwright show-report` serves on (see `make report-e2e`).
+    ports:
+      - 9323:9323
+    volumes:
+      - '.:/website'
+      # Isolate node_modules in a container-private volume so the host's macOS
+      # binaries don't leak in (rollup/esbuild ship per-OS native modules). The
+      # e2e container installs its own Linux deps here via `make test-e2e`.
+      - 'e2e-node-modules:/website/astro/node_modules'
+
+volumes:
+  e2e-node-modules:
