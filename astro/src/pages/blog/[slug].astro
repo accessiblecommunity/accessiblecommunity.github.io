@@ -1,5 +1,8 @@
 ---
-import { getBlogCatalog } from "../../lib/blog";
+import type { Breadcrumbs } from "@lib/types";
+import type { CollectionEntry } from "astro:content";
+
+import { getBlogCatalog, type BlogCatalog } from "../../lib/blog";
 
 export async function getStaticPaths() {
   const catalog = await getBlogCatalog();
@@ -21,9 +24,9 @@ export async function getStaticPaths() {
 }
 
 interface Props {
-  blog: object; // TODO: Get object type definition from content.
-  catalog: object; // TODO: Define object in blog library
-  crumbs: Array<object>;
+  blog: CollectionEntry<"blogs">;
+  catalog: BlogCatalog; // TODO: Define object in blog library
+  crumbs: Breadcrumbs;
 }
 
 const { blog, catalog, crumbs } = Astro.props;

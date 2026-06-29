@@ -7,7 +7,6 @@ import { getEntry } from "astro:content";
 import Metadata from "../components/Metadata.astro";
 import Branding from "../components/Branding.astro";
 import Column from "../components/Column.astro";
-import FooterLinkList from "../components/navigation/FooterLinkList.astro";
 import HeaderER from "../components/HeaderER.astro";
 import { Icon } from "astro-icon/components";
 import Row from "../components/Row.astro";
@@ -140,12 +139,13 @@ const socialLinks = socialEntry?.data.groups[0];
     <script src="../scripts/body-no-scroll.js"></script>
     {
       import.meta.env.PROD && (
-        <script
-          is:inline
-          defer
-          data-domain="accessiblecommunity.org"
-          src="https://plausible.io/js/script.js"
-        />
+        <script>
+          import { init } from '@plausible-analytics/tracker';
+          init({
+            domain: 'accessiblecommunity.org',
+            bindToWindow: true
+          });
+        </script>
       )
     }
   </body>

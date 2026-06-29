@@ -10,7 +10,10 @@ const { class: extraClasses = "" } = Astro.props;
 ---
 
 <div class={extraClasses}>
+  {/* TODO: Adjust astro to allow custom namespacing on tags
   <p class="text-center" xmlns:cc="http://creativecommons.org/ns#">
+   */}
+  <p class="text-center">
     This work is licensed under
     <ExternalLink
       inline
