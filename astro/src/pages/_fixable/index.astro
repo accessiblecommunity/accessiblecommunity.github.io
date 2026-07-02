@@ -269,8 +269,8 @@ const crumbs = [];
               ><Image
                 src={horizontalLogo}
                 class="d-inline"
-                width="200px"
-                alt
+                width={200}
+                alt=""
               /></a
             >
           </li>
@@ -287,7 +287,7 @@ const crumbs = [];
   </ThemedSection>
 </Layout>
 
-<style lang="scss">
+<style lang="scss" define:vars={{ fixBg: `url(${fixBgNoColor.src})` }}>
   @import "../../styles/dark-mode.scss";
 
   .bad-contrast {
@@ -311,7 +311,7 @@ const crumbs = [];
   }
 
   .bg-example {
-    background-image: url(${fixBgNoColor.src});
+    background-image: var(--fixBg);
   }
 
   @include color-mode(dark) {
