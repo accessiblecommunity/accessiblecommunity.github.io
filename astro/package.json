@@ -36,6 +36,8 @@
     "@astrojs/check": "^0.9.9",
     "@types/lodash-es": "^4.17.12",
     "prettier": "^3.2.5",
-    "prettier-plugin-astro": "^0.14.0"
+    "prettier-plugin-astro": "^0.14.0",
+    "@astrojs/markdown-satteri": "0.3.0",
+    "satteri": "^0.8.0"
   }
 }
