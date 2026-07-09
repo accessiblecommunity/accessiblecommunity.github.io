@@ -1,7 +1,7 @@
 ---
 export interface Props {
   theme?: string;
-  style?: string;
+  styling?: string;
   text?: boolean;
   border?: number;
   class?: string;
@@ -10,7 +10,7 @@ export interface Props {
 
 const {
   theme = undefined,
-  style = undefined,
+  styling = undefined,
   text = true,
   border = 0,
   padding = 4,
@@ -19,8 +19,8 @@ const {
 
 import { getBackgroundAndText, getBorder } from "../lib/themes.ts";
 
-const bgAndTextClasses = getBackgroundAndText(theme, style, text);
-const borderClasses = getBorder(border, theme, style === "subtle");
+const bgAndTextClasses = getBackgroundAndText(theme, styling, text);
+const borderClasses = getBorder(border, theme, styling === "subtle");
 ---
 
 <div class:list={[bgAndTextClasses, borderClasses, `p-${padding}`, extraClasses]}>
