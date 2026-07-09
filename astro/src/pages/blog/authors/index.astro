@@ -1,9 +1,14 @@
 ---
 import { formatAuthorName, getBlogAuthors } from "../../../lib/blog";
+import type { Breadcrumbs, PageMetadata } from "../../../lib/types";
 
 const authors = await getBlogAuthors();
-const title = "Authors";
-const crumbs = [
+const title = "Blogs: Authors";
+const metadata: PageMetadata = {
+  title,
+  description: "A listing of all of the blog authors",
+};
+const crumbs: Breadcrumbs = [
   {
     name: "Home",
     href: "/",
@@ -19,9 +24,9 @@ import Layout from "../../../layouts/Layout.astro";
 import ThemedSection from "../../../components/ThemedSection.astro";
 ---
 
-<Layout crumbs={crumbs} title={title}>
+<Layout {crumbs} {title} {metadata}>
   <ImageHeading image="blog" slot="header">
-    <strong>Blogs</strong> by author
+    Blogs: <strong>Authors</strong>
   </ImageHeading>
   <ThemedSection style="tertiary">
     <h2 class="text-info-emphasis display-5" set:text={title} />
