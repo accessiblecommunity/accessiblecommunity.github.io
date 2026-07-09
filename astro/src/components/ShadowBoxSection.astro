@@ -2,7 +2,7 @@
 interface Props {
   id?: string;
   theme?: string;
-  style?: string;
+  styling?: string;
   py?: number;
   fluid?: boolean;
 }
@@ -10,7 +10,7 @@ interface Props {
 const {
   id = undefined,
   theme = "secondary",
-  style = undefined,
+  styling = undefined,
   py = 5,
   fluid = true,
 } = Astro.props;
@@ -18,7 +18,7 @@ const {
 import { getBackgroundAndText } from "../lib/themes.ts";
 
 const outerBgAndTextClass = getBackgroundAndText(theme, undefined);
-const innerBgClass = getBackgroundAndText(undefined, style);
+const innerBgClass = getBackgroundAndText(undefined, styling);
 ---
 
 <section id={id} class:list={[outerBgAndTextClass, `p-${py - 1} p-sm-${py}`]}>
