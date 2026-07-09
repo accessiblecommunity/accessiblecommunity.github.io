@@ -1,4 +1,5 @@
 import { defineConfig } from "astro/config";
+import { unified } from '@astrojs/markdown-remark';
 import styleGuide from "./style-guide/register.js";
 
 import icon from "astro-icon";
@@ -45,6 +46,10 @@ export default defineConfig({
     "/useable": "https://accessiblecommunity.github.io/useable/",
   },
 
+  markdown: {
+    processor: unified(),
+  },
+
   vite: {
     ssr: {
       noExternal: ["bootstrap"],
@@ -52,7 +57,9 @@ export default defineConfig({
   },
 
   integrations: [
-    mdx(),
+    mdx({
+      processor: unified(),
+    }),
     styleGuide(),
     icon({
       include: {
