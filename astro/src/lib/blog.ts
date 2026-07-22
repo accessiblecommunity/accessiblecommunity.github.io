@@ -1,5 +1,10 @@
-import { getCollection, getEntries, type CollectionEntry } from "astro:content";
+import type { CollectionEntry, ReferenceDataEntry } from "astro:content";
+
+import { getCollection, getEntries, } from "astro:content";
 import { isEmpty, isNil, reverse, sortBy, uniqBy } from "lodash-es";
+
+type Blog = CollectionEntry<"blogs">;
+type Blogs = Array<Blog>;
 
 export function formatAuthorName(author: CollectionEntry<"staff">): string {
   const { name, cited } = author.data;
@@ -8,13 +13,13 @@ export function formatAuthorName(author: CollectionEntry<"staff">): string {
 }
 
 export async function getBlogAuthors(
-  blogs?,
+  blogs?: Blogs,
 ): Promise<Array<CollectionEntry<"staff">>> {
   blogs = isNil(blogs) ? await getCollection("blogs") : blogs;
   if (isEmpty(blogs)) return [];
   // Id uniqueness is key.
   const authorIDs = [...new Set(blogs.map((b) => b.data.author.id).flat())];
-  const authorRefs = authorIDs.map((id) => ({
+  const authorRefs: Array<ReferenceDataEntry<"staff">> = authorIDs.map((id) => ({
     id,
     collection: "staff",
   }));
@@ -22,7 +27,7 @@ export async function getBlogAuthors(
   return sortBy(authors, ["data.name.first"]);
 }
 
-export async function getBlogTopics(blogs?) {
+export async function getBlogTopics(blogs?: Blogs) {
   blogs = isNil(blogs) ? await getCollection("blogs") : blogs;
   if (isEmpty(blogs)) return [];
   const topics = [...new Set(blogs.map((blog) => blog.data.tags).flat())];
@@ -30,13 +35,13 @@ export async function getBlogTopics(blogs?) {
   return topics;
 }
 
-export async function getBlogDates(blogs?) {
+export async function getBlogDates(blogs?: Blogs) {
   blogs = isNil(blogs) ? await getCollection("blogs") : blogs;
   if (isEmpty(blogs)) return [];
 
   const dates = blogs.map((blog) => ({
     date: blog.data.published,
-    sort: `${blog.data.published.getYear()}.${blog.data.published.getMonth().toLocaleString(
+    sort: `${blog.data.published.getFullYear()}.${blog.data.published.getMonth().toLocaleString(
       'en-US', {
         minimumIntegerDigits: 2,
         useGrouping: false
@@ -56,7 +61,7 @@ export async function getBlogDates(blogs?) {
   );
 }
 
-export async function orderByRecent(blogs?) {
+export async function orderByRecent(blogs?: Blogs) {
   blogs = isNil(blogs) ? await getCollection("blogs") : blogs;
   if (isEmpty(blogs)) return [];
 
@@ -68,20 +73,20 @@ export async function orderByRecent(blogs?) {
   return sortedBlogs;
 }
 
-export async function getMostRecent(blogs?) {
+export async function getMostRecent(blogs?: Blogs) {
   const sortedBlogs = await orderByRecent(blogs);
   return sortedBlogs[0];
 }
 
 export interface BlogCatalog {
-  blogs: Array<CollectionEntry<"blogs">>;
+  blogs: Blogs;
   authors: Array<CollectionEntry<"staff">>;
   topics: Array<string>;
   dates: Array<string>;
-  recent: CollectionEntry<"blogs">;
+  recent: Blog;
 }
 
-export async function getBlogCatalog(blogs?): Promise<BlogCatalog> {
+export async function getBlogCatalog(blogs?: Blogs): Promise<BlogCatalog> {
   blogs = isNil(blogs) ? await orderByRecent(blogs) : blogs;
   const topics = await getBlogTopics(blogs);
   const authors = await getBlogAuthors(blogs);

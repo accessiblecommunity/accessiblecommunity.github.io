@@ -1,4 +1,6 @@
-import { getCollection, type CollectionEntry } from "astro:content";
+import type { CollectionEntry } from "astro:content";
+
+import { getCollection } from "astro:content";
 import {
   compact,
   intersection,
@@ -8,48 +10,51 @@ import {
   sortBy,
 } from "lodash-es";
 
-export async function getTipCategories(tips?) {
+type Tip = CollectionEntry<"atotw">;
+type Tips = Array<Tip>;
+
+export async function getTipCategories(tips?: Tips) {
   tips = isNil(tips) ? await getCollection("atotw") : tips;
   if (isEmpty(tips)) return [];
   const topics = compact([
-    ...new Set(tips.map((blog) => blog.data.tags).flat()),
+    ...new Set(tips!.map((t) => t.data.tags).flat()),
   ]);
   topics.sort();
   return topics;
 }
 
-export async function getRelatedTips(tip) {
-  const relatedTips = await getCollection("atotw", ({ id, data }) => {
+export async function getRelatedTips(tip: Tip) {
+  const relatedTips: Tips = await getCollection("atotw", ({ id, data }) => {
     return id != tip.id && !isEmpty(intersection(tip.data.tags, data.tags));
   });
   const orderedTips = await orderByRecent(relatedTips);
   return orderedTips;
 }
 
-export async function orderByRecent(tips?) {
+export async function orderByRecent(tips?: Tips) {
   tips = isNil(tips) ? await getCollection("atotw") : tips;
   if (isEmpty(tips)) return [];
 
-  const sortedBlogs = sortBy(tips, [
+  const sortedTips = sortBy(tips, [
     (b) => b.data.published.getTime(),
     (b) => b.data.title,
   ]);
-  reverse(sortedBlogs);
-  return sortedBlogs;
+  reverse(sortedTips);
+  return sortedTips;
 }
 
-export async function getMostRecent(tips?): Promise<CollectionEntry<"atotw">> {
-  const sortedBlogs = await orderByRecent(tips);
-  return sortedBlogs[0];
+export async function getMostRecent(tips?: Tips): Promise<CollectionEntry<"atotw">> {
+  const sortedTips = await orderByRecent(tips);
+  return sortedTips[0];
 }
 
 export interface TipCatalog {
-  tips: Array<CollectionEntry<"atotw">>;
+  tips: Tips;
   categories: Array<string>;
-  recent: CollectionEntry<"atotw">;
+  recent: Tip;
 }
 
-export async function getTipCatalog(tips?): Promise<TipCatalog> {
+export async function getTipCatalog(tips?: Tips): Promise<TipCatalog> {
   tips = isNil(tips) ? await orderByRecent(tips) : tips;
   const categories = await getTipCategories(tips);
   const recent = await getMostRecent(tips);

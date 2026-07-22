@@ -8,6 +8,8 @@ interface Props {
   gaps?: boolean;
   // Whether to force the link to be completely inline with surrounding text. Defaults to false.
   inline?: boolean;
+  // Defines the custom relationship between the linked resource and the current document. Defaults to .
+  rel ?: string;
 }
 
 const {
@@ -16,6 +18,7 @@ const {
   title = undefined,
   gaps = false,
   inline = false,
+  rel = "noopener noreferrer",
 } = Astro.props;
 
 import { Icon } from "astro-icon/components";
@@ -43,11 +46,11 @@ import { Icon } from "astro-icon/components";
   }
 </style>
 <a
-  href={href}
-  title={title}
+  {href}
+  {title}
   class:list={["icon-link", extraClasses, inline && "d-inline"]}
   target="_blank"
-  rel="noopener noreferrer"
+  {rel}
   >{
     /* prettier-ignore */
     gaps ?
