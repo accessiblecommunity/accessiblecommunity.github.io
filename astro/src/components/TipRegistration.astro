@@ -1,16 +1,12 @@
 ---
 interface Props {
   theme?: string;
-  newsletters?: boolean;
-  announcements?: boolean;
   border?: number;
   defaultWidth?: boolean;
 }
 
 const {
   theme = "info-contrast",
-  newsletters = false,
-  announcements = false,
   border = 2,
   defaultWidth = false,
 } = Astro.props;

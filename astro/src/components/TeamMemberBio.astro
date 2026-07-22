@@ -7,9 +7,12 @@ import type { CollectionEntry } from "astro:content";
 import { components } from "../lib/mdx";
 import { render } from "astro:content";
 
+
+type Roles = keyof CollectionEntry<"staff">["data"]["roles"];
+
 interface Props {
   member: CollectionEntry<"staff">;
-  role: string | boolean;
+  role: Roles | boolean;
 }
 
 const { member, role = "default" } = Astro.props;

@@ -1,15 +1,16 @@
 ---
-import { getCollection } from "astro:content";
+import type { Breadcrumbs, PageMetadata } from "@lib/types";
+import { getCollection, type CollectionEntry } from "astro:content";
 import { sortBy } from "lodash-es";
 
-import type { Breadcrumbs, PageMetadata } from "@lib/types";
+type TeamName = keyof CollectionEntry<"staff">["data"]["roles"];
 
 export async function getStaticPaths() {
   const team = await getCollection("staff");
 
   return [
     {
-      params: { tag: "board" },
+      params: { tag: "board" as TeamName },
       props: {
         team,
         title: "Board Members",
@@ -18,7 +19,7 @@ export async function getStaticPaths() {
       },
     },
     {
-      params: { tag: "leadership" },
+      params: { tag: "leadership" as TeamName },
       props: {
         team,
         title: "Leadership Team",

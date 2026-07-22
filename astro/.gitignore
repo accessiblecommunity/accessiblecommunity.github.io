@@ -24,3 +24,8 @@ pnpm-debug.log*
 .vscode
 # Local Netlify folder
 .netlify
+
+# Playwright
+test-results/
+playwright-report/
+playwright/.cache/
