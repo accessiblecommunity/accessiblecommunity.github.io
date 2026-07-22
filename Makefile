@@ -15,8 +15,26 @@ else
 	FixPath = $1
 endif
 
+E2E_CONTAINER = e2e
+
 serve: up $(SOURCE_DIR)/node_modules
 	@docker compose exec $(CONTAINER) sh -c "npm run dev"
+
+test-e2e: up-e2e
+	@echo Installing JS dependencies in the e2e container if needed.
+	@docker compose exec $(E2E_CONTAINER) sh -c "[ -d node_modules/@playwright/test ] || npm install"
+	@echo Running Playwright end-to-end tests.
+	@docker compose exec $(E2E_CONTAINER) sh -c "npm run test:e2e"; status=$$?; \
+		printf '\nTo view the HTML report from Docker, run: make report-e2e\n'; \
+		printf '(Ignore the "npx playwright show-report" hint above -- that is the non-Docker command.)\n'; \
+		exit $$status
+
+report-e2e: up-e2e
+	@echo Serving the Playwright HTML report at http://localhost:9323 -- press Ctrl-C to stop.
+	@docker compose exec $(E2E_CONTAINER) sh -c "npx playwright show-report --host 0.0.0.0 --port 9323"
+
+up-e2e:
+	@docker compose --profile e2e up --detach $(E2E_CONTAINER)
 
 up:
 	@docker compose up --detach
@@ -76,6 +94,6 @@ clean-js-modules:
 
 clean: clean-js-dist clean-js-modules
 
-.PHONY: serve up down build shell dist version \
+.PHONY: serve test-e2e report-e2e up up-e2e down build shell dist version \
 	clean clean-astro-content clean-js-dist clean-js-modules \
 	.FORCE
