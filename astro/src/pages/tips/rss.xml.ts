@@ -6,7 +6,7 @@ import sanitizeHtml from "sanitize-html";
 // https://docs.astro.build/en/reference/container-reference/#adding-a-renderer-through-the-container-api
 import { loadRenderers } from "astro:container";
 import { experimental_AstroContainer as AstroContainer } from "astro/container";
-import { getContainerRenderer as mdxRenderer } from "@astrojs/mdx";
+import { getContainerRenderer as mdxRenderer } from "@astrojs/mdx/container-renderer";
 
 import type { CollectionEntry } from "astro:content";
 import { render } from "astro:content";

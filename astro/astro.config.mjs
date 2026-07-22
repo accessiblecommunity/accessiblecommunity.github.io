@@ -33,6 +33,7 @@ export default defineConfig({
     host: true,
   },
 
+  compressHTML: true,
   redirects: {
     "/daf/overview/": "/daf/",
     // Move old services URLs to new ones.
@@ -46,20 +47,17 @@ export default defineConfig({
     "/useable": "https://accessiblecommunity.github.io/useable/",
   },
 
-  markdown: {
-    processor: unified(),
-  },
-
   vite: {
     ssr: {
       noExternal: ["bootstrap"],
     },
   },
 
+  markdown: {
+    processor: unified(),
+  },
   integrations: [
-    mdx({
-      processor: unified(),
-    }),
+    mdx({ processor: unified(), }),
     styleGuide(),
     icon({
       include: {
