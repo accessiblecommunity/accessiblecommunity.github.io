@@ -17,6 +17,8 @@ const {
 
 import { getBackgroundAndText } from "../lib/themes.ts";
 
+// TODO: Why was this implemented this way, where we are separating the two this way?
+//       This should be implemented as outerTheme, outerStyling and innerStyling.
 const outerBgAndTextClass = getBackgroundAndText(theme, undefined);
 const innerBgClass = getBackgroundAndText(undefined, styling);
 ---
