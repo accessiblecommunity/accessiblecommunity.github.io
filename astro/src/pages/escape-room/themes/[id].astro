@@ -43,7 +43,7 @@ const { room, crumbs, metadata } = Astro.props;
 const { about, title, page } = room.data;
 const { theme, image } = page;
 const { Content } = await render(room);
-const themeVar = `var(--bs-${theme})`;
+// const themeVar = `var(--bs-${theme})`;
 const textVar = `var(--bs-${theme}-text-emphasis)`;
 
 import Column from "@components/Column.astro";

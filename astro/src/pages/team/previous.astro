@@ -41,8 +41,8 @@ function getFullName({first, middle, last}: CollectionEntry<"staff">["data"]["na
 type Roles = CollectionEntry<"staff">["data"]["roles"];
 type RoleKey = keyof Roles;
 
-interface TeamMembers {
-  [index: RoleKey]: TeamOverview;
+type TeamMembers = {
+  [key in RoleKey]: TeamOverview;
 }
 interface TeamOverview {
   name: string;
@@ -59,7 +59,7 @@ const teamMembers: TeamMembers = teams.reduce(
     accum[id] = overview;
     return accum;
   },
-  {},
+  {} as TeamMembers,
 );
 staff.reduce((members: TeamMembers, current: CollectionEntry<"staff">) => {
   const roles: Roles = current.data.roles || {};

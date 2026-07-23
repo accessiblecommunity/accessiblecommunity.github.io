@@ -9,8 +9,13 @@ import { sortBy } from "lodash-es";
 import type { Breadcrumbs, PageMetadata } from "@lib/types";
 import { getCollection, render } from "astro:content";
 import { components } from "@lib/mdx";
+import type { AstroComponentFactory } from "astro/runtime/server/index.js";
+import type { CollectionEntry } from "astro:content";
 
-const staff = await getCollection("staff");
+type StaffList = Array<CollectionEntry<"staff">>;
+type TeamName = keyof CollectionEntry<"staff">["data"]["roles"];
+
+const staff: StaffList = await getCollection("staff");
 
 function getTeamMembers(tag: string) {
   return sortBy(
@@ -26,6 +31,14 @@ function getTeamMembers(tag: string) {
   );
 }
 
+type Teams = {
+  name: string;
+  branded: boolean;
+  team: TeamName;
+  members: StaffList;
+  Content: AstroComponentFactory;
+}
+
 const teamEntries = sortBy(
   await getCollection(
     "teams",
@@ -33,14 +46,14 @@ const teamEntries = sortBy(
   ),
   ["id"]
 );
-const teams = await Promise.all(
+const teams: Teams[] = await Promise.all(
   teamEntries.map(async (entry) => {
     const { Content } = await render(entry);
 
     return {
       name: entry.data.name,
       branded: entry.data.branded,
-      team: entry.id,
+      team: entry.id as TeamName,
       members: getTeamMembers(entry.id),
       Content,
     };

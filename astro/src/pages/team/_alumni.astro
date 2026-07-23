@@ -9,6 +9,8 @@ import ThemedSection from "../../components/ThemedSection.astro";
 
 import { isEmpty, sortBy } from "lodash-es";
 
+type TeamName = keyof CollectionEntry<"staff">["data"]["roles"];
+
 const alumni = await getCollection("staff", ({ data }) => !data.current);
 
 function getTeamMembers(tag: string) {
@@ -30,7 +32,7 @@ const teamEntries = await getCollection(
 );
 const teams = teamEntries.map((entry) => ({
   name: entry.data.name,
-  team: entry.id,
+  team: entry.id as TeamName,
   members: getTeamMembers(entry.id),
 }));
 
