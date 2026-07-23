@@ -4,8 +4,8 @@
  * Theme is the name of the theme you are trying to use.
  * No theme (undefined) means to use the standard body "theme".
  *
- * Style is the type of augmentation you want to use.
- * No style (undefined) means to use the standard "theme" with no augmentation.
+ * Styling is the type of augmentation you want to use.
+ * No styling (undefined) means to use the standard "theme" with no augmentation.
  *   - For the body theme, this is 'secondary' or 'tertiary'.
  *     (We've also added a 'primary', although it doesn't do much.)
  *   - For other themes ('primary', 'info', etc), the only style is 'subtle'.
@@ -14,18 +14,18 @@
 
 export function getBackgroundAndText(
   theme: string | undefined,
-  style: string | undefined,
+  styling: string | undefined,
   text: boolean = false,
 ) {
   const classes: Array<string> = [];
 
   if (theme === undefined) {
-    classes.push(`bg-body${style ? `-${style}` : ""}`);
+    classes.push(`bg-body${styling ? `-${styling}` : ""}`);
     if (text) {
-      const textStyle = style === "primary" ? "emphasis" : style;
+      const textStyle = styling === "primary" ? "emphasis" : styling;
       classes.push(`text-body-${textStyle}`);
     }
-  } else if (style === "subtle") {
+  } else if (styling === "subtle") {
     classes.push(`bg-${theme}-subtle`);
     if (text) classes.push(`text-${theme}-emphasis`);
   } else {
