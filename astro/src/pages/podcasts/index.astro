@@ -66,13 +66,13 @@ import ThemedSection from "@components/ThemedSection.astro";
     <h1 class="display-3">Podcast Series</h1>
   </ImageHeading>
   <ThemedSection yPaddings={['3']}>
-    <ThemedBox theme="primary" style="subtle" border={1} padding={3} class="rounded mb-4">
+    <ThemedBox theme="primary" styling="subtle" border={1} padding={3} class="rounded mb-4">
       <div class="d-flex flex-column flex-lg-row justify-content-center column-gap-3 align-items-center pt-2">
         <p class="lead text-center">Subscribe to the <Branding>Accessible Community</Branding>&nbsp;podcast.</p>
         <SocialLinks links={toUrlMap(shows[0]!.data.links)} iconSize="1.5em" gap={2} label="Podcast Locations" />
       </div>
     </ThemedBox>
-    <ThemedBox theme="primary" style="subtle" border={1} padding={3} class="rounded">
+    <ThemedBox theme="primary" styling="subtle" border={1} padding={3} class="rounded">
       <p class="lead text-center mb-0 p-2">
         Would you like to share your experiences? <br class="d-inline d-lg-none" />
         Fill out this <a href="/podcasts/interest-form/">interest form</a>.
@@ -82,7 +82,7 @@ import ThemedSection from "@components/ThemedSection.astro";
 
   {
     shows.map((show, index) => (
-      <ThemedSection style={(index % 2) ? "tertiary" : undefined} id={show.id}>
+      <ThemedSection styling={(index % 2) ? "tertiary" : undefined} id={show.id}>
         <h2 class="pb-2 mb-4 border-bottom border-primary" set:text={show.data.title} />
         <FlexColumn
           mdReverse
@@ -118,7 +118,7 @@ import ThemedSection from "@components/ThemedSection.astro";
   }
 
   {/* Credits */}
-  <ThemedSection style="secondary">
+  <ThemedSection styling="secondary">
     <h2 class="display-4">Credits and Thanks</h2>
     <h3 class="mt-4 mb-2">Contributors</h3>
     <p>Thank you to all of our staff who help make these podcasts possible.</p>
