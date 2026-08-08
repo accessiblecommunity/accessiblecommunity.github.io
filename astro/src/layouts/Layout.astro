@@ -21,6 +21,39 @@ const { title, brandedTitle = false, crumbs, heading, metadata } = Astro.props;
 <!doctype html>
 <html lang="en">
   <head>
+    <script is:inline>
+      // Set data-bs-theme before paint to avoid a flash of the wrong theme.
+      // Reads localStorage; falls back to OS preference when no stored choice
+      // or when localStorage is blocked.
+      (function () {
+        function getStoredTheme() {
+          try {
+            var stored = localStorage.getItem("theme");
+            return stored === "light" || stored === "dark" ? stored : "system";
+          } catch (_) {
+            return "system";
+          }
+        }
+
+        function applyTheme() {
+          var theme = getStoredTheme();
+          if (theme === "system") {
+            theme = window.matchMedia("(prefers-color-scheme: dark)").matches
+              ? "dark"
+              : "light";
+          }
+          document.documentElement.setAttribute("data-bs-theme", theme);
+        }
+
+        applyTheme();
+
+        // While in "system" mode (no stored choice), follow live OS changes.
+        window
+          .matchMedia("(prefers-color-scheme: dark)")
+          .addEventListener("change", applyTheme);
+      })();
+    </script>
+
     <script>
       import { init } from '@plausible-analytics/tracker';
       init({
