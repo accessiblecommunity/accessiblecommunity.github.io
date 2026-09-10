@@ -1,4 +1,5 @@
 import { defineConfig } from "astro/config";
+import { unified } from '@astrojs/markdown-remark';
 import styleGuide from "./style-guide/register.js";
 
 import icon from "astro-icon";
@@ -32,6 +33,7 @@ export default defineConfig({
     host: true,
   },
 
+  compressHTML: true,
   redirects: {
     "/daf/overview/": "/daf/",
     // Move old services URLs to new ones.
@@ -51,8 +53,11 @@ export default defineConfig({
     },
   },
 
+  markdown: {
+    processor: unified(),
+  },
   integrations: [
-    mdx(),
+    mdx({ processor: unified(), }),
     styleGuide(),
     icon({
       include: {
