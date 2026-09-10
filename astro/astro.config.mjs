@@ -1,5 +1,5 @@
 import { defineConfig } from "astro/config";
-import { unified } from '@astrojs/markdown-remark';
+import { unified } from "@astrojs/markdown-remark";
 import styleGuide from "./style-guide/register.js";
 
 import icon from "astro-icon";

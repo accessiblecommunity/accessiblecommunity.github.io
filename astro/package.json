@@ -15,6 +15,7 @@
     "test:e2e:report": "npx playwright show-report"
   },
   "dependencies": {
+    "@astrojs/markdown-remark": "^7.3.1",
     "@astrojs/mdx": "^7.0.3",
     "@astrojs/netlify": "^8.1.2",
     "@astrojs/rss": "^4.0.19",
@@ -26,13 +27,13 @@
     "@iconify-json/simple-icons": "1.2.67",
     "@plausible-analytics/tracker": "0.4.4",
     "@popperjs/core": "^2.11.8",
-    "astro": "^7.1.3",
+    "astro": "^7.3.2",
     "astro-icon": "1.1.5",
     "astro-og-canvas": "0.13.1",
     "astro-robots-txt": "1.0.0",
     "bootstrap": "5.3.8",
     "lodash-es": "^4.18.1",
-    "sanitize-html": "2.13.0",
+    "sanitize-html": "2.17.7",
     "sass": "1.77.5"
   },
   "devDependencies": {
