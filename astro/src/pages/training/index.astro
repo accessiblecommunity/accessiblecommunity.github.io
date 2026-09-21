@@ -1,0 +1,106 @@
+---
+import type { PageMetadata } from "@lib/types";
+
+import { getCollection, render } from "astro:content";
+import { sortBy } from "lodash-es";
+
+import components from "@lib/mdx";
+import Branding from "../../components/Branding.astro";
+import FlexColumn from "../../components/FlexColumn.astro";
+import Hero from "../../components/Hero.astro";
+import { Icon } from "astro-icon/components";
+import Layout from "../../layouts/Layout.astro";
+import Row from "../../components/Row.astro";
+import ShadowBoxSection from "../../components/ShadowBoxSection.astro";
+import ThemedSection from "../../components/ThemedSection.astro";
+
+import heroBg from "../../images/colored-hero/classroom.png";
+
+const courses = sortBy(
+  await getCollection("courses"),
+  [(course) => course.data.order],
+);
+
+const title = "Accessibility Training";
+const metadata: PageMetadata = {
+  title,
+  description: "Accessibility Training Courses that Accessible Community offers",
+};
+---
+
+<Layout {title} {metadata}>
+  <Hero
+    image={heroBg}
+    columns="col-sm-12 col-md-9 col-lg-7 col-xl-6 col-xxl-5"
+    slot="header"
+  >
+    <div class="py-4" slot="heading">
+      <h1 class="display-2 px-2 text-bg-hero" style="--bs-bg-opacity: 0.5">
+        <strong>Accessibility training</strong><br />
+        that accommodates you.
+      </h1>
+    </div>
+    <div slot="prologue">
+      Getting started in accessibility? Learn more with our <a
+        class="link-light"
+        href="/tips">Tip of the Week</a
+      >.
+    </div>
+  </Hero>
+
+  <ThemedSection styling="tertiary">
+    <h2 class="display-3 mb-4">
+      About our <strong>training</strong>.
+    </h2>
+    <p>
+      <Branding>Accessible Community</Branding> provides training courses on digital accessibility that are informed by professional expertise and lived experience with the diverse disabilities in our community. Our offerings range from a focused 60-minute, topic-centered instruction to in-depth, multi-day training sessions. We provide our training virtually unless other arrangements are made. As many people within your organization as you desire can attend, and you are welcome to record the training for internal use. We offer 1-2 hours of additional support through our office hours with the purchase of a course.
+    </p>
+
+    <div
+      class="border-top border-bottom border-primary-subtle mt-5 py-2 text-primary text-center"
+    >
+      Please <a href="mailto:info@accessiblecommunity.org">contact us</a> for more information or to schedule a course.
+    </div>
+  </ThemedSection>
+
+  <ShadowBoxSection id="ta11y" theme="primary-subtle" fluid={false}>
+    <h2 slot="lead" class="display-3 text-primary-emphasis text-center mb-4">
+      Our <strong>course</strong> catalog.
+    </h2>
+    <Row baseRowCols="1" lgRowCols="2" class="row-gap-4 my-4">
+      {
+        courses.map((c) => (
+          <FlexColumn class="feature col justify-content-between">
+            <div class="d-flex align-items-center gap-2 mb-1">
+              <div class="feature-icon d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient">
+                <Icon class="bi" name={c.data.icon} aria-hidden="true" />
+              </div>
+              <h3 class="my-1 display-5 text-primary">
+                <Branding text={c.data.title} no-aria />
+              </h3>
+            </div>
+            <p class="ms-5 me-3 mb-2 text-brand"><strong>Cost:</strong> {c.data.cost === 0 ? 'Free' : `\$${c.data.cost}`}</p>
+            <div class="ms-5 me-3 flex-fill">
+              {render(c).then(({ Content }) => (
+                <Content {components} />
+              ))}
+            </div>
+          </FlexColumn>
+        ))
+      }
+    </Row>
+  </ShadowBoxSection>
+</Layout>
+
+<style>
+  .feature-icon {
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 0.75rem;
+  }
+
+  .feature-icon .bi {
+    height: 1.5em;
+    width: auto;
+  }
+</style>

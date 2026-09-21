@@ -26,6 +26,9 @@
       "branded": true,
       "href": "/escape-room/"
     }, {
+      "name": "Accessibility Training",
+      "href": "/training/"
+    }, {
       "name": "Digital Evaluations",
       "href": "/evaluations/"
     }],
