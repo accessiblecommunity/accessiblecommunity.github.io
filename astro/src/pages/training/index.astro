@@ -80,7 +80,9 @@ const metadata: PageMetadata = {
                 <Branding text={c.data.title} no-aria />
               </h3>
             </div>
-            <p class="ms-5 me-3 mb-2 text-brand"><strong>Cost:</strong> {c.data.cost === 0 ? 'Free' : `\$${c.data.cost}`}</p>
+            <p class="ms-5 me-3 mb-2 text-brand">
+              <strong>Cost:</strong> {c.data.cost === 0 ? 'Free' : `\$${c.data.cost.toLocaleString('en')}`}
+            </p>
             <div class="ms-5 me-3 flex-fill">
               {render(c).then(({ Content }) => (
                 <Content {components} />
