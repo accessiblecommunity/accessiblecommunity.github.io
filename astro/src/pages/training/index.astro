@@ -33,16 +33,15 @@ const metadata: PageMetadata = {
 <Layout {title} {metadata}>
   <Hero
     image={heroBg}
-    columns="col-sm-12 col-md-9 col-lg-7 col-xl-6 col-xxl-5"
     slot="header"
   >
     <div class="py-4" slot="heading">
-      <h1 class="display-2 px-2 text-bg-hero" style="--bs-bg-opacity: 0.5">
+      <h1 class="display-2 text-bg-hero mx-auto" style="--bs-bg-opacity: 0.6; max-width: 12em;">
         <strong>Accessibility training</strong><br />
         that accommodates you.
       </h1>
     </div>
-    <div slot="prologue">
+    <div slot="prologue" style="--bs-bg-opacity: 0.6">
       Getting started in accessibility? Learn more with our <a
         class="link-light"
         href="/tips">Tip of the Week</a
