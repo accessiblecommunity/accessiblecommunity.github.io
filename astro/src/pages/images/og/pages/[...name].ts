@@ -148,6 +148,27 @@ Your donation goes towards supporting our programs and technology to build disab
         position: ["center", "start"],
       },
     },
+    training: {
+      title: "Accessibility Training",
+      description:
+        "Accessible Community provides training courses on digital accessibility that are informed by professional expertise and lived experience with the diverse disabilities in our community.",
+      // border: {
+      //   color: [0, 255, 0],
+      //   width: 72,
+      //   side: 'inline-start',
+      // },
+      logo: {
+        path: "./public/images/favicon.png",
+        size: [72],
+      },
+      bgImage: {
+        path: "./src/images/colored-hero/classroom-blue.png",
+        fit: "fill",
+        position: ["end", "end"],
+      },
+      padding: 60,
+      cacheDir: false,
+    },
     volunteer: {
       title: "Volunteer at Accessible Community",
       description:

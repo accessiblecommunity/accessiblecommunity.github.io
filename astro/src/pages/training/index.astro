@@ -1,6 +1,7 @@
 ---
 import type { PageMetadata } from "@lib/types";
 
+import { getOpenGraphImageData } from "@lib/og-image";
 import { getCollection, render } from "astro:content";
 import { sortBy } from "lodash-es";
 
@@ -25,6 +26,7 @@ const title = "Accessibility Training";
 const metadata: PageMetadata = {
   title,
   description: "Accessibility Training Courses that Accessible Community offers",
+  image: getOpenGraphImageData(Astro.site, "pages", "training"),
 };
 ---
 
