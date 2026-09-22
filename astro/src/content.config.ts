@@ -30,6 +30,16 @@ const blogs = defineCollection({
   }),
 });
 
+const courses = defineCollection({
+  loader: glob({ pattern: "**/[^_]*.{md,mdx}", base: "./src/content/courses" }),
+  schema: z.object({
+    title: z.string(),
+    icon: z.string(),
+    order: z.int().positive(),
+    cost: z.int().nonnegative(),
+  }),
+});
+
 const markdown = defineCollection({
   loader: glob({ pattern: "**/[^_]*.{md,mdx}", base: "./src/content/markdown" }),
 });
@@ -255,6 +265,7 @@ export const collections = {
   atotw,
   blogs,
   collaborators,
+  courses,
   daf,
   // escapeRoomKits,
   escapeRoomThemes,

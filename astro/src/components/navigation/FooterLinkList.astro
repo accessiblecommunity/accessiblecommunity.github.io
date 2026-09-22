@@ -34,7 +34,7 @@ import { Icon } from "astro-icon/components";
                   role="img"
                   aria-hidden="true"
                 />)
-              }{ branded ? <Branding text={name} /> : name}</ExternalLink>
+              }{ branded ? <Branding class="fix-left" text={name} /> : name}</ExternalLink>
             : <a {href} class="link-light footer-link">{
                 icon && (<Icon
                   class:list={["fli", iconCls]}
@@ -43,7 +43,7 @@ import { Icon } from "astro-icon/components";
                   role="img"
                   aria-hidden="true"
                 />)
-              }{ branded ? <Branding text={name} /> : name}</a>
+              }{ branded ? <Branding class="fix-left" text={name} /> : name}</a>
           }
         </li>
       ))}
@@ -58,5 +58,10 @@ import { Icon } from "astro-icon/components";
     height: 1em;
     width: auto;
     margin-right: 0.2em;
+
+    & + :global(.fix-left) {
+      display: inline;
+      margin-left: -0.33em;
+    }
   }
 </style>
