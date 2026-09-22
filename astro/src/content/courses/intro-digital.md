@@ -5,4 +5,4 @@ cost: 1500
 order: 1
 ---
 
-This 90-minute training briefly covers accessibility standards and laws. It then focuses on web accessibility through the lens of the needs of people with disabilities. Learn how to create accessible content that broadens your audience and impact.
+This 90-minute training briefly covers accessibility standards and laws. It then focuses on digital accessibility through the lens of the needs of people with disabilities. Learn the foundations of how to create accessible content that broadens your audience and impact.
