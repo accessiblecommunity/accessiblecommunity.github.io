@@ -94,7 +94,7 @@ export async function getBlogCatalog(blogs?: Blogs): Promise<BlogCatalog> {
   const recent = await getMostRecent(blogs);
 
   return {
-    blogs,
+    blogs: blogs.slice(0, 10),
     authors,
     topics,
     dates,

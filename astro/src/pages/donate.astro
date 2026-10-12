@@ -4,6 +4,7 @@ import { getOpenGraphImageData } from "@lib/og-image";
 import components from "@lib/mdx";
 import { getEntry, render } from "astro:content";
 
+import Branding from "@components/Branding.astro";
 import Column from "../components/Column.astro";
 import Hero from "../components/Hero.astro";
 import { Icon } from "astro-icon/components";
@@ -102,8 +103,10 @@ if (!letter) throw new Error("Could not find content `markdown/donor-letter`");
     <Row class="justify-content-center">
       <ThemedBox theme="primary" styling="subtle" border={1} padding={3} class="mb-5 p-3 rounded">
         <div class="announcement lead text-center">
-          An anonymous donor is currently <a href="/blog/2026-matching-campaign">matching contributions</a>
-          up to&nbsp;$5,000. <br class="d-none d-lg-inline-block" /> Your&nbsp;donation will be doubled!
+          <Branding>Accessible Community</Branding> is a 501(c)3 organization. <br/>
+          Your donation goes towards supporting our programs, accommodations and technology costs.
+          <!-- An anonymous donor is currently <a href="/blog/2026-matching-campaign">matching contributions</a>
+          up to&nbsp;$5,000. <br class="d-none d-lg-inline-block" /> Your&nbsp;donation will be doubled! -->
         </div>
       </ThemedBox>
     </Row>
