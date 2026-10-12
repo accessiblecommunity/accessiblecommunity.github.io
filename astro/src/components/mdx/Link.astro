@@ -11,11 +11,7 @@ const external = href.startsWith("http");
 ---
 
 {
-  external ?
-    <ExternalLink href={href} inline title={title}>
-      <slot />
-    </ExternalLink>
-  : <a href={href} title={title}>
-      <slot />
-    </a>
+  external
+  ? <ExternalLink href={href} inline title={title}><slot /></ExternalLink>
+  : <a href={href} title={title}><slot /></a>
 }
