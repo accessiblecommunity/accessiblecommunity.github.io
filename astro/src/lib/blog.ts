@@ -86,7 +86,7 @@ export interface BlogCatalog {
   recent: Blog;
 }
 
-export async function getBlogCatalog(blogs?: Blogs): Promise<BlogCatalog> {
+export async function getFullBlogCatalog(blogs?: Blogs): Promise<BlogCatalog> {
   blogs = isNil(blogs) ? await orderByRecent(blogs) : blogs;
   const topics = await getBlogTopics(blogs);
   const authors = await getBlogAuthors(blogs);
@@ -94,10 +94,16 @@ export async function getBlogCatalog(blogs?: Blogs): Promise<BlogCatalog> {
   const recent = await getMostRecent(blogs);
 
   return {
-    blogs: blogs.slice(0, 10),
+    blogs,
     authors,
     topics,
     dates,
     recent,
   };
+}
+
+export async function getBlogCatalog(blogs?: Blogs): Promise<BlogCatalog> {
+  const catalog = await getFullBlogCatalog(blogs);
+  catalog.blogs = catalog.blogs.slice(0, 10);
+  return catalog;
 }

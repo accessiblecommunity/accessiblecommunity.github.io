@@ -2,10 +2,10 @@
 import type { Breadcrumbs } from "@lib/types";
 import type { CollectionEntry } from "astro:content";
 
-import { getBlogCatalog, type BlogCatalog } from "../../lib/blog";
+import { getFullBlogCatalog, type BlogCatalog } from "../../lib/blog";
 
 export async function getStaticPaths() {
-  const catalog = await getBlogCatalog();
+  const catalog = await getFullBlogCatalog();
   const crumbs = [
     {
       name: "Home",
@@ -30,8 +30,9 @@ interface Props {
 }
 
 const { blog, catalog, crumbs } = Astro.props;
+catalog.blogs = catalog.blogs.slice(0, 10);
 
 import BlogLayout from "../../layouts/BlogLayout.astro";
 ---
 
-<BlogLayout blog={blog} catalog={catalog} crumbs={crumbs} />
+<BlogLayout {blog} {catalog} {crumbs} />
