@@ -1,0 +1,103 @@
+---
+/** A navigation callout. Use the supporting slot for optional follow-up content. */
+interface Props {
+  heading: string;
+  description: string;
+  href: string;
+  linkText: string;
+  headingLevel?: 2 | 3 | 4 | 5 | 6;
+}
+
+const { heading, description, href, linkText, headingLevel = 2 } = Astro.props;
+const Heading = `h${headingLevel}` as "h2" | "h3" | "h4" | "h5" | "h6";
+---
+
+<div class="container call-to-action-container">
+  <section class="call-to-action" aria-label={heading}>
+    <Heading class="call-to-action-heading">{heading}</Heading>
+    <p class="call-to-action-description">{description}</p>
+    <a class="btn btn-primary call-to-action-link" href={href}>{linkText}</a>
+    {
+      Astro.slots.has("supporting") && (
+        <div class="call-to-action-supporting">
+          <slot name="supporting" />
+        </div>
+      )
+    }
+  </section>
+</div>
+
+<style lang="scss">
+  @import "../styles/dark-mode.scss";
+
+  .call-to-action-container {
+    padding-block: 1.5rem;
+  }
+  .call-to-action {
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    background: var(--cta-background, #f4f4f4);
+    color: var(--cta-text, #161616);
+    text-align: center;
+    overflow-wrap: anywhere;
+  }
+  .call-to-action-heading {
+    margin: 0 0 0.75rem;
+    color: var(--cta-heading, #081568);
+    font-size: 1.5rem;
+    font-weight: 600;
+    line-height: 1.3;
+  }
+  .call-to-action-description {
+    max-inline-size: 36rem;
+    margin: 0 auto 0.75rem;
+  }
+  .call-to-action-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-block-size: 2.75rem;
+    max-inline-size: 100%;
+    white-space: normal;
+    --bs-btn-color: #fff;
+    --bs-btn-bg: #395999;
+    --bs-btn-border-color: #395999;
+    --bs-btn-hover-color: #fff;
+    --bs-btn-hover-bg: #2c4374;
+    --bs-btn-hover-border-color: #2c4374;
+  }
+  .call-to-action :global(a:focus-visible) {
+    outline: 3px solid var(--cta-heading, #081568);
+    outline-offset: 3px;
+  }
+  .call-to-action-supporting {
+    margin-block-start: 0.75rem;
+    color: var(--cta-supporting, #454545);
+    font-size: 0.875rem;
+  }
+  .call-to-action-supporting :global(p) {
+    margin: 0;
+  }
+  .call-to-action-supporting :global(a) {
+    color: var(--cta-supporting, #454545);
+    text-decoration: underline;
+    text-underline-offset: 0.15em;
+  }
+  .call-to-action-supporting :global(a:hover) {
+    background: var(--cta-supporting, #454545);
+    color: var(--cta-background, #fff);
+  }
+  @include color-mode(dark) {
+    .call-to-action {
+      --cta-background: var(--bs-tertiary-bg);
+      --cta-text: var(--bs-body-color);
+      --cta-heading: var(--bs-heading-color);
+      --cta-supporting: #dee2e6;
+    }
+  }
+  @media (forced-colors: active) {
+    .call-to-action {
+      border: 1px solid CanvasText;
+    }
+  }
+</style>

@@ -1,5 +1,6 @@
 ---
 import { getOpenGraphImageData } from "@lib/og-image";
+import CallToAction from "@components/CallToAction.astro";
 import type { Breadcrumbs, PageMetadata } from "@lib/types";
 
 const title = "Our Story";
@@ -109,6 +110,12 @@ import heroBg from "src/images/escape-room/shaded/puzzle-display.jpg";
       </FlexColumn>
     </ThemedSection>
   </div>
+  <CallToAction
+    heading="Ready to take a look?"
+    description="See the three rooms, what each one includes, and what they cost"
+    href="/escape-room/themes"
+    linkText="See our escape rooms"
+  />
 </EscapeRoomLayout>
 
 <style>
