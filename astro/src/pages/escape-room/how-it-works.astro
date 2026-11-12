@@ -1,5 +1,6 @@
 ---
 import { getOpenGraphImageData } from "@lib/og-image";
+import CallToAction from "@components/CallToAction.astro";
 import type { Breadcrumbs, PageMetadata } from "@lib/types";
 
 const title = "How it Works";
@@ -130,6 +131,14 @@ import heroBg from "src/images/escape-room/shaded/puzzle-display.jpg";
       </dd>
     </dl>
   </ThemedSection>
+  <CallToAction
+    heading="Easy assembly…"
+    description="Every room comes with the instructions, files, and guidance to run it. Have a look at what’s available."
+    href="/escape-room/themes"
+    linkText="See our escape rooms"
+  >
+    <p slot="supporting">Have a question we didn’t answer? <a href="mailto:escaperoom@accessiblecommunity.org">Email us</a></p>
+  </CallToAction>
 </EscapeRoomLayout>
 
 <style>

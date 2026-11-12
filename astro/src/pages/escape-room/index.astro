@@ -1,4 +1,5 @@
 ---
+import CallToAction from "@components/CallToAction.astro";
 import type { Breadcrumbs, PageMetadata } from "@lib/types";
 
 import { getOpenGraphImageData } from "@lib/og-image";
@@ -149,14 +150,13 @@ import woodenPuzzles from "src/images/escape-room/wooden-puzzles.png";
         ))
       }
     </Row>
-    <p class="lead pt-4">
-      If you are interested in purchasing, please email us at <a
-        class="link-info link-truncate"
-        href="mailto:escaperoom@accessiblecommunity.org"
-        >escaperoom@accessiblecommunity.org</a
-      >.
-    </p>
   </ThemedSection>
+  <CallToAction
+    heading="Ready to take a look?"
+    description="See the three rooms, what each one includes, and what they cost"
+    href="/escape-room/themes"
+    linkText="See our escape rooms"
+  />
 </EscapeRoomLayout>
 
 <style>
