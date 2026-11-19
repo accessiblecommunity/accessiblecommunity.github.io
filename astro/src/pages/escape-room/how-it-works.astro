@@ -28,6 +28,7 @@ import { Icon } from "astro-icon/components";
 import Row from "@components/Row.astro";
 import ThemedSection from "@components/ThemedSection.astro";
 
+import faqs from "src/content/escape-room-faq.json";
 import heroBg from "src/images/escape-room/shaded/puzzle-display.jpg";
 ---
 
@@ -37,7 +38,7 @@ import heroBg from "src/images/escape-room/shaded/puzzle-display.jpg";
   </Hero>
 
   <ThemedSection>
-    <h2 class="visually-hidden">Overview</h2>
+    <h2 class="text-info">Overview</h2>
     <p class="lead">
       We believe that team-building activities should be available to everyone. We've created
       the <Branding>Accessible Escape Room</Branding> to ensure that everyone can take part.
@@ -77,58 +78,23 @@ import heroBg from "src/images/escape-room/shaded/puzzle-display.jpg";
 
   <ThemedSection styling="tertiary" id="faq">
     <h2 class="text-info">Frequently Asked Questions</h2>
-    <dl>
-      <dt class="text-brand">What comes with an escape room kit?</dt>
-      <dd>
-        Each escape room kit comes with the following:
-        <ul>
-          <li>Detailed instructions for assembling the room, include a list of materials to purchase.</li>
-          <li>Suggestions of additional (optional) materials and ideas to theme the space and add to the experience.</li>
-          <li>Files to download and print. If you are supporting blind players, you will need access to a braille printer.</li>
-          <li>Digital components that will make use of a provided phone, tablet or laptop.</li>
-          <li>Orientation materials to introduce the players and prepare them for the room and the theme.</li>
-          <li>Useful tips and hints for running a successful Escape Room, including specific instructions on resetting the room and packing the materials for shipping, travel or storage.</li>
-        </ul>
-      </dd>
-
-      <dt class="text-brand">Can people who are blind or deaf-blind play?</dt>
-      <dd>
-        Yes, we have playtested with blind participants to ensure they can participate. Deaf-blind players
-        are supported through a braille printouts of audio and other content. We also use tactile feedback
-        on most of our puzzles and provide some tips for orienting visually- or cognitively-impaired players
-        around the room before starting.
-      </dd>
-
-      <dt class="text-brand">How long does it take to build an escape room?</dt>
-      <dd>
-        In general, it will take a few hours to assemble one of these kits once you've purchased the materials.
-        We recommend setting up and playtesting the room a few times beforehand.
-      </dd>
-
-      <dt class="text-brand">How long does it take to play an escape room?</dt>
-      <dd>
-        In general, our escape rooms will take between 15-40 mintues to play. However, this depends on several factors:
-        <ul>
-          <li>How many people are in a group?</li>
-          <li>How experienced your participants are at escape rooms or puzzles?</li>
-          <li>How well your groups work together?</li>
-          <li>How spread out the puzzle pieces are in the room?</li>
-          <li>How well are certain clues hidden?</li>
-        </ul>
-        Each of our kits allow for an optional puzzle to be purchased and built, which will also extend the
-        play time.
-      </dd>
-
-      <dt class="text-brand">Can I use the escape room to raise money for my organization?</dt>
-      <dd>
-        Yes, you absolutely can. We only ask that you credit <Branding class="text-primary">Accessible Community</Branding> and any sponsors of each escape room by using the provided slide(s) in the orientation.
-      </dd>
-
-      <dt class="text-brand">Are these available in languages other than English?</dt>
-      <dd>
-        We provide foreign language versions on request. If you are interested, please reach out to us directly at <a class="link-truncate" href="mailto:escaperoom@accessiblecommunity.org">escaperoom@accessiblecommunity.org</a>.
-      </dd>
-    </dl>
+    {faqs.map(({ question, answer, items, closing }, index) => (
+      <details class="faq-item" name="escape-room-faq" open={index === 0}>
+        <summary>
+          <span>{question}</span>
+          <span class="faq-indicator" aria-hidden="true"></span>
+        </summary>
+        <div class="faq-answer">
+          {answer.map(part => {
+            if (typeof part === "string") return part;
+            if (part.brand) return <Branding class="text-primary" text={part.brand} />;
+            return <a class="link-truncate" href={`mailto:${part.email}`}>{part.email}</a>;
+          })}
+          {items && <ul>{items.map(item => <li>{item}</li>)}</ul>}
+          {closing}
+        </div>
+      </details>
+    ))}
   </ThemedSection>
 </EscapeRoomLayout>
 
@@ -142,10 +108,66 @@ import heroBg from "src/images/escape-room/shaded/puzzle-display.jpg";
     height: 0.7em;
   }
 
-  dl dd {
-    padding-inline-start: 1em;
+  .faq-item {
+    background-color: var(--bs-body-bg);
+    border: 1px solid var(--bs-border-color);
+    border-radius: var(--bs-border-radius-lg);
   }
-  dl dd + dt {
-    margin-top: 1em;
+
+  .faq-item + .faq-item {
+    margin-block-start: 0.5rem;
+  }
+
+  summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.75rem 1rem;
+    border-radius: inherit;
+    font-weight: 700;
+    list-style: none;
+    cursor: pointer;
+  }
+
+  summary::-webkit-details-marker {
+    display: none;
+  }
+
+  summary:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 2px;
+  }
+
+  .faq-indicator {
+    flex: none;
+    display: grid;
+    place-items: center;
+    width: 1rem;
+    height: 1rem;
+  }
+
+  .faq-indicator::before,
+  .faq-indicator::after {
+    content: "";
+    grid-area: 1 / 1;
+    width: 0.75rem;
+    border-block-start: 2px solid currentColor;
+  }
+
+  .faq-indicator::after {
+    transform: rotate(90deg);
+  }
+
+  details[open] .faq-indicator::after {
+    display: none;
+  }
+
+  .faq-answer {
+    padding: 0 1rem 1rem;
+  }
+
+  .faq-answer > ul:last-child {
+    margin-block-end: 0;
   }
 </style>
