@@ -2,8 +2,6 @@
 import type { Breadcrumbs, PageMetadata } from "@lib/types";
 
 import { getOpenGraphImageData } from "@lib/og-image";
-import { getCollection, type CollectionEntry } from "astro:content";
-import { sortBy } from "lodash-es";
 
 const title = "Home";
 const metadata: PageMetadata = {
@@ -12,12 +10,6 @@ const metadata: PageMetadata = {
   image: getOpenGraphImageData(Astro.site, "pages", "escape-room"),
 };
 const crumbs: Breadcrumbs = [];
-const rooms: Array<CollectionEntry<"escapeRoomThemes">> =
-  sortBy(
-    await getCollection("escapeRoomThemes"),
-    (room: CollectionEntry<"escapeRoomThemes">) => room.data.title
-  );
-
 
 import Branding from "@components/Branding.astro";
 import Column from "@components/Column.astro";
@@ -27,7 +19,7 @@ import EscapeRoomLayout from "src/layouts/EscapeRoomLayout.astro";
 import FlexColumn from "@components/FlexColumn.astro";
 import Row from "@components/Row.astro";
 import ThemedSection from "@components/ThemedSection.astro";
-import ImageCard from "@components/ImageCard.astro";
+import EscapeRoomPanels from "@components/EscapeRoomPanels.astro";
 // TODO: Once the `peerDependencies are update, use the plugin.
 // import { YouTube } from 'astro-lazy-youtube-embed'
 import YouTube from "@components/YouTube.astro";
@@ -52,7 +44,7 @@ import woodenPuzzles from "src/images/escape-room/wooden-puzzles.png";
           <Column>
             <a
               class="link-light link-offset-1 icon-link"
-              href="/escape-room/themes"
+              href="/rooms/"
             >
               <Icon name="bi:puzzle-fill" class="bi"></Icon>
               Explore our rooms
@@ -91,6 +83,10 @@ import woodenPuzzles from "src/images/escape-room/wooden-puzzles.png";
   </ThemedSection>
 
   <ThemedSection>
+    <EscapeRoomPanels />
+  </ThemedSection>
+
+  <ThemedSection styling="tertiary">
     <FlexColumn xlReverse gap="5" class="justify-content-xl-between align-items-xl-center">
       <Column>
         <h2 class="">I like puzzles. I would like to play.</h2>
@@ -118,45 +114,6 @@ import woodenPuzzles from "src/images/escape-room/wooden-puzzles.png";
     </FlexColumn>
   </ThemedSection>
 
-  <ThemedSection styling="subtle" theme="secondary">
-    <h2 class="text-center">Our build-your-own rooms.</h2>
-    <p class="lead">
-      Requests for the <Branding>Accessible Escape Room</Branding> have gone beyond
-      our ability to run them. Instead, we are providing kits to build and run your
-      own accessible escape room! Each kit includes information on what to purchase,
-      how to build and run the escape room, and access to all the electronic files
-      for the escape room you select.
-    </p>
-    <p class="lead">
-      If you would like to bring one of our accessible escape rooms to your business
-      or venue, we now offer the <a href="/escape-room/themes" class="link-info">following themes</a>:</p
-    >
-
-    <Row baseRowCols="2" g="3" class="align-items-stretch">
-      {
-        rooms.map(room => (
-          <ImageCard
-            image={room.data.image}
-            alt={room.data.alt || null}
-            title={room.data.title}
-            theme={room.data.page.theme}
-            href={`/escape-room/themes/${room.id}`}
-            buttonText={room.data.buttonText || "Learn more"}
-            titleClass={`text-truncate text-${room.data.page.theme}`}
-          >
-            <p class="card-text" set:text={room.data.tagline} />
-          </ImageCard>
-        ))
-      }
-    </Row>
-    <p class="lead pt-4">
-      If you are interested in purchasing, please email us at <a
-        class="link-info link-truncate"
-        href="mailto:escaperoom@accessiblecommunity.org"
-        >escaperoom@accessiblecommunity.org</a
-      >.
-    </p>
-  </ThemedSection>
 </EscapeRoomLayout>
 
 <style>
@@ -168,18 +125,11 @@ import woodenPuzzles from "src/images/escape-room/wooden-puzzles.png";
     width: 70%;
     height: auto;
   }
-  .card-img-top {
-    height: auto;
-  }
-  .card-title {
-    font-weight: 500;
-    font-size: 1.3rem;
-  }
   .escape-img-column {
     height: 325px;
   }
   h2, h3, h4 {
-    color: var(--bs-info);
+    color: var(--bs-info-text-emphasis);
     font-weight: 600;
     margin-bottom: 0.5em;
   }

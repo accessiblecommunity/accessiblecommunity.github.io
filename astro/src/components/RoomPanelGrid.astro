@@ -1,0 +1,28 @@
+---
+import Row from "@components/Row.astro";
+
+interface Props {
+  id: string;
+  title: string;
+  description?: string;
+  headingLevel?: "h1" | "h2";
+}
+
+const { id, title, description, headingLevel: Heading = "h2" } = Astro.props;
+---
+
+<section {id} aria-labelledby={`${id}-heading`}>
+  <div class="text-center mb-4">
+    <Heading id={`${id}-heading`} class="h2 text-primary-emphasis fw-semibold">{title}</Heading>
+    {description && <p class="mb-0">{description}</p>}
+  </div>
+  <Row baseRowCols="1" mdRowCols="2" lgRowCols="3" g="4">
+    <slot />
+  </Row>
+</section>
+
+<style>
+  section {
+    scroll-margin-top: 5rem;
+  }
+</style>

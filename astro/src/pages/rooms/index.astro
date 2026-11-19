@@ -1,0 +1,41 @@
+---
+import { Image } from "astro:assets";
+import EscapeRoomPanels from "@components/EscapeRoomPanels.astro";
+import ThemedSection from "@components/ThemedSection.astro";
+import { getOpenGraphImageData } from "@lib/og-image";
+import type { PageMetadata } from "@lib/types";
+import banner from "src/images/escape-room/shaded/puzzle-display.jpg";
+import EscapeRoomLayout from "src/layouts/EscapeRoomLayout.astro";
+
+const title = "Escape Rooms";
+const metadata: PageMetadata = {
+  title,
+  description: "Explore the in-person kits and virtual room from the Accessible Escape Room.",
+  image: getOpenGraphImageData(Astro.site, "pages", "escape-room"),
+};
+---
+
+<EscapeRoomLayout {metadata} {title}>
+  <Image slot="header" src={banner} alt="" class="rooms-banner w-100" />
+
+  <ThemedSection>
+    <EscapeRoomPanels headingLevel="h1" />
+    <p class="mt-4">
+      Each build-your-own kit includes setup instructions, printable files, orientation
+      materials, and guidance for running the room.
+      <a href="/escape-room/how-it-works/">See how it works</a>.
+    </p>
+    <p class="mb-0">
+      To purchase a prebuilt room or request an escape room for your event, email
+      <a class="text-break" href="mailto:escaperoom@accessiblecommunity.org">escaperoom@accessiblecommunity.org</a>.
+    </p>
+  </ThemedSection>
+</EscapeRoomLayout>
+
+<style>
+  .rooms-banner {
+    display: block;
+    height: clamp(6rem, 13vw, 12rem);
+    object-fit: cover;
+  }
+</style>

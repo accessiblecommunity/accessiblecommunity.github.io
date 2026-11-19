@@ -17,7 +17,7 @@ export async function getStaticPaths() {
   ];
 
   const rooms: Array<CollectionEntry<"escapeRoomThemes">> =
-    await getCollection("escapeRoomThemes");
+    await getCollection("escapeRoomThemes", ({ data }) => data.format !== "virtual");
 
   return rooms.map((room) => {
     const metadata: PageMetadata = {

@@ -1,0 +1,38 @@
+---
+import { getCollection } from "astro:content";
+import { sortBy } from "lodash-es";
+import RoomPanel from "@components/RoomPanel.astro";
+import RoomPanelGrid from "@components/RoomPanelGrid.astro";
+
+interface Props {
+  headingLevel?: "h1" | "h2";
+}
+
+const { headingLevel } = Astro.props;
+const panelHeadingLevel = headingLevel === "h1" ? "h2" : "h3";
+const rooms = sortBy(await getCollection("escapeRoomThemes"), (room) => room.data.title);
+---
+
+<RoomPanelGrid
+  id="our-rooms"
+  title="Our Rooms"
+  description="Two rooms you set up in your own space, and one your group plays together online."
+  {headingLevel}
+>
+  {rooms.map(({ id, data }) => (
+    <RoomPanel
+      headingLevel={panelHeadingLevel}
+      title={data.title}
+      image={data.image}
+      alt={data.alt}
+      description={data.tagline}
+      details={data.panelDetails}
+      borderAfterDetails={data.format === "virtual"}
+      availability={data.availability}
+      theme={data.page.theme}
+      href={data.link ?? `/escape-room/themes/${id}/`}
+      linkText={data.buttonText}
+      linkLabel={data.buttonLabel}
+    />
+  ))}
+</RoomPanelGrid>
