@@ -1,0 +1,19 @@
+---
+interface Props {
+  text: string;
+}
+
+const { text } = Astro.props;
+---
+
+<blockquote class="mb-0 ps-3 py-2">
+  <p class="mb-0" set:text={text} />
+</blockquote>
+
+<style>
+  blockquote {
+    flex: 1 1 0;
+    min-inline-size: 0;
+    border-inline-start: 2px solid var(--bs-info);
+  }
+</style>

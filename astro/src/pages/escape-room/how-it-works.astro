@@ -15,17 +15,9 @@ const crumbs: Breadcrumbs = [
   },
 ];
 
-const quotes = [
-  "The puzzles were no joke! It was a perfect mix of frustrating and fun. I walked away feeling like I learned something, not just about the activity, but about myself.",
-  "I didn't expect to enjoy it as much as I did. It was genuiniely fun and I loved how much it made us think through problems.",
-  "I was surprised by how much I relied on my teammates. It reminded me that collaboration is such a huge part of problem-solving in our training and working with others every day.",
-]
-
 import Branding from "@components/Branding.astro";
 import EscapeRoomLayout from "src/layouts/EscapeRoomLayout.astro";
 import Hero from "@components/Hero.astro";
-import { Icon } from "astro-icon/components";
-import Row from "@components/Row.astro";
 import ThemedSection from "@components/ThemedSection.astro";
 
 import heroBg from "src/images/escape-room/shaded/puzzle-display.jpg";
@@ -53,26 +45,6 @@ import heroBg from "src/images/escape-room/shaded/puzzle-display.jpg";
       that everything you need to purchase and assemble it is included. This allows you to pay
       less and customize the experience.
     </p>
-  </ThemedSection>
-
-  <ThemedSection styling="subtle" theme="secondary">
-    <h2 class="text-center text-info mb-4">Quotes from our Customers</h2>
-    <Row baseRowCols="1" lgRowCols="3" g="3" class="align-items-stretch align-items-lg-center">
-      {
-        quotes.map(q => (
-          <div class="col">
-            <div class="card border border-2 border-info">
-              <div class="card-body">
-                <p class="card-text">
-                  <sup aria-hidden="true"><Icon name="quote-left" />&nbsp;</sup><span
-                  set:text={q} /><sup aria-hidden="true">&nbsp;<Icon name="quote-right" /></sup>
-                </p>
-              </div>
-            </div>
-          </div>
-        ))
-      }
-    </Row>
   </ThemedSection>
 
   <ThemedSection styling="tertiary" id="faq">
@@ -136,12 +108,6 @@ import heroBg from "src/images/escape-room/shaded/puzzle-display.jpg";
   h1 {
     font-weight: 500;
   }
-  [data-icon="quote-left"],
-  [data-icon="quote-right"] {
-    color: var(--bs-info);
-    height: 0.7em;
-  }
-
   dl dd {
     padding-inline-start: 1em;
   }
