@@ -1,0 +1,62 @@
+[
+  {
+    "question": "What comes with an escape room kit?",
+    "answer": [
+      "Each escape room kit comes with the following:"
+    ],
+    "items": [
+      "Detailed instructions for assembling the room, include a list of materials to purchase.",
+      "Suggestions of additional (optional) materials and ideas to theme the space and add to the experience.",
+      "Files to download and print. If you are supporting blind players, you will need access to a braille printer.",
+      "Digital components that will make use of a provided phone, tablet or laptop.",
+      "Orientation materials to introduce the players and prepare them for the room and the theme.",
+      "Useful tips and hints for running a successful Escape Room, including specific instructions on resetting the room and packing the materials for shipping, travel or storage."
+    ]
+  },
+  {
+    "question": "Can people who are blind or deaf-blind play?",
+    "answer": [
+      "Yes, we have playtested with blind participants to ensure they can participate. Deaf-blind players are supported through a braille printouts of audio and other content. We also use tactile feedback on most of our puzzles and provide some tips for orienting visually- or cognitively-impaired players around the room before starting."
+    ]
+  },
+  {
+    "question": "How long does it take to build an escape room?",
+    "answer": [
+      "In general, it will take a few hours to assemble one of these kits once you've purchased the materials. We recommend setting up and playtesting the room a few times beforehand."
+    ]
+  },
+  {
+    "question": "How long does it take to play an escape room?",
+    "answer": [
+      "In general, our escape rooms will take between 15-40 mintues to play. However, this depends on several factors:"
+    ],
+    "items": [
+      "How many people are in a group?",
+      "How experienced your participants are at escape rooms or puzzles?",
+      "How well your groups work together?",
+      "How spread out the puzzle pieces are in the room?",
+      "How well are certain clues hidden?"
+    ],
+    "closing": "Each of our kits allow for an optional puzzle to be purchased and built, which will also extend the play time."
+  },
+  {
+    "question": "Can I use the escape room to raise money for my organization?",
+    "answer": [
+      "Yes, you absolutely can. We only ask that you credit ",
+      {
+        "brand": "Accessible Community"
+      },
+      " and any sponsors of each escape room by using the provided slide(s) in the orientation."
+    ]
+  },
+  {
+    "question": "Are these available in languages other than English?",
+    "answer": [
+      "We provide foreign language versions on request. If you are interested, please reach out to us directly at ",
+      {
+        "email": "escaperoom@accessiblecommunity.org"
+      },
+      "."
+    ]
+  }
+]
