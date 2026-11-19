@@ -1,0 +1,65 @@
+---
+import { Image } from "astro:assets";
+import type { ImageMetadata } from "astro";
+
+interface Props {
+  title: string;
+  image: ImageMetadata;
+  alt?: string;
+  description: string;
+  details?: string[];
+  borderAfterDetails?: boolean;
+  availability: string;
+  theme: string;
+  href: string;
+  linkText: string;
+  linkLabel: string;
+  headingLevel?: "h2" | "h3";
+}
+
+const {
+  title,
+  image,
+  alt = "",
+  description,
+  details = [],
+  borderAfterDetails = false,
+  availability,
+  theme,
+  href,
+  linkText,
+  linkLabel,
+  headingLevel: Heading = "h3",
+} = Astro.props;
+---
+
+<div class="col">
+  <article class:list={["card h-100 overflow-hidden", `border-${theme}-subtle`]}>
+    <Image src={image} {alt} width={720} class="card-img-top" />
+    <div class="card-body d-flex flex-column align-items-start">
+      <Heading class:list={["card-title h5 fw-semibold", `text-${theme}-emphasis`]}>{title}</Heading>
+      <p class="card-text mb-3">{description}</p>
+      {details.length > 0 && (
+        <ul class="list-unstyled w-100 mb-4" role="list">
+          {details.map((detail, index) => (
+            <li class:list={["py-1", (borderAfterDetails || index < details.length - 1) && "border-bottom"]}>
+              {detail}
+            </li>
+          ))}
+        </ul>
+      )}
+      <p class="card-text w-100 mt-auto pt-3 border-top">{availability}</p>
+      <a class={`btn btn-${theme}`} {href} aria-label={linkLabel}>
+        {linkText}
+      </a>
+    </div>
+  </article>
+</div>
+
+<style>
+  .card-img-top {
+    aspect-ratio: 2 / 1;
+    height: auto;
+    object-fit: cover;
+  }
+</style>

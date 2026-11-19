@@ -26,7 +26,7 @@ import ImageCard from "@components/ImageCard.astro";
 import heroBg from "src/images/escape-room/jonathan-kemper-9tamF4J0vLk-unsplash.jpg";
 
 const rooms = sortBy(
-  await getCollection("escapeRoomThemes"),
+  await getCollection("escapeRoomThemes", ({ data }) => data.format !== "virtual"),
   (room: CollectionEntry<"escapeRoomThemes">) => room.data.title
 );
 
