@@ -1,0 +1,18 @@
+---
+import FlexColumn from "./FlexColumn.astro";
+import PlayerQuote from "./PlayerQuote.astro";
+import ThemedSection from "./ThemedSection.astro";
+
+const quotes = [
+  "The puzzles were no joke! It was a perfect mix of frustrating and fun. I walked away feeling like I learned something, not just about the activity, but about myself.",
+  "I didn't expect to enjoy it as much as I did. It was genuiniely fun and I loved how much it made us think through problems.",
+  "I was surprised by how much I relied on my teammates. It reminded me that collaboration is such a huge part of problem-solving in our training and working with others every day.",
+];
+---
+
+<ThemedSection id="player-quotes">
+  <h2 class="mb-4 fw-semibold">What people say after playing</h2>
+  <FlexColumn lgFlexRow gap="4">
+    {quotes.map(quote => <PlayerQuote text={quote} />)}
+  </FlexColumn>
+</ThemedSection>
