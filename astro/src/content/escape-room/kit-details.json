@@ -1,0 +1,40 @@
+{
+  "contactEmail": "escaperoom@accessiblecommunity.org",
+  "buildYourOwnPrice": 500,
+  "readyMade": {
+    "kitchen": {
+      "price": 1500,
+      "availability": "Ships within 2 weeks"
+    }
+  },
+  "includedAssets": [
+    {
+      "title": "A List of Required Materials",
+      "description": "These typically include various accessible locks and puzzle components. Links for purchase will be included. Any needed technology (phone, laptop, tablet, TV, etc) is also mentioned here."
+    },
+    {
+      "title": "Ideas for Recommended Materials",
+      "description": "These typically include backups of certain required materials, items to help with participant orientation, ideas to help theme or style the space or helpful or fun additions that are part of escape rooms in general. Links for purchase will be included."
+    },
+    {
+      "title": "Assembly Instructions",
+      "description": "Instructions on how to build the clues and layout the room. This includes the order of how to solve the puzzles/clues. For more complicated builds, a video may be available."
+    },
+    {
+      "title": "Downloadable/Printable Files",
+      "description": "Certain parts of the puzzle are files that should be downloaded and printed. These might include pictures, letters, recipe cards, etc. To support participants with visual impairments, a Braille printer may be needed."
+    },
+    {
+      "title": "Needed Digital Assets",
+      "description": "Any virtual components (pages, videos, etc) that we design and develop. This could also include a Leaderboard to use that is themed for the kit."
+    },
+    {
+      "title": "Orientation Information",
+      "description": "A document and/or presentation to help the customer introduce the room and prepare the participants. These might be in slides or a video, and will be fully accessible."
+    },
+    {
+      "title": "Operational, Reset and Packing Guidance",
+      "description": "Useful tips and hints for running a successful Escape Room, including any specific instructions on resetting the room and packing the materials for shipping, travel or storage."
+    }
+  ]
+}
